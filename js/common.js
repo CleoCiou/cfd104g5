@@ -36,7 +36,7 @@ function init() {
     // 網頁瀏覽器頁籤圖示
     link  = document.createElement('link');
     link.rel  = 'shortcut icon';
-    link.href = 'images/icon.jpg';
+    link.href = 'images/logo_ico_square.ico';
     head.appendChild(link);
 
     // 插入js連結

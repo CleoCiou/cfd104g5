@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解星鏡 Mistro | 註冊</title>
+    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
+</head>
+<body>
+    
+<!-- 網頁頭 -->
+<!-- 內容由 common.js 新增 by PIN -->
+<header class="main_header"></header>
+
+
+<!-- 網頁內容 -->
+<main>
+
+<!-- 註冊 by PIN -->
+    <section class="sign_up">
+        <div class="container">
+
+        <!-- 基本資料上方logo -->
+            <div class="logo">
+                <div class="img_box">
+                    <img src="https://picsum.photos/50/50/?random=10">
+                </div>
+                <div class="txt_box">
+                    <h2>Mistro</h2>
+                </div>
+            </div>
+
+        <!-- 使用者資訊 -->
+            <form>
+                <h3>基本資料</h3>
+            <!-- 帳號 -->
+                    <div>
+                        <label for="mem_id">帳號</label>
+                        <input type="text" id="mem_id">
+                    </div>
+        
+            <!-- 密碼 -->
+                    <div>
+                        <label for="mem_pwd">密碼</label>
+                        <input type="password" id="mem_pwd">
+                        <ul>
+                            <li>至少有一個大寫英文字母</li>
+                            <li>至少有一個小寫英文字母</li>
+                            <li>至少有一個數字</li>
+                            <li>長度大於6個字元</li>
+                            <li>長度小於20個字元</li>
+                        </ul>
+                    </div>
+        
+            <!-- 確認密碼 -->
+                <div>
+                    <label for="mem_pwd">確認密碼</label>
+                    <input type="password" id="pwd_confirm">
+                </div>
+
+            <!-- 姓名 -->
+                <div>
+                    <label for="mem_name">姓名</label>
+                    <input type="text" id="mem_name">
+                </div>
+                
+            <!-- 生日 -->
+            <div>
+                <label for="birthday">生日</label>
+                <input type="text" id="birthdat">
+            </div>
+            
+            <!-- email -->
+                <div>
+                    <label for="email">信箱</label>
+                    <input type="email" id="email">
+                </div>
+
+            <!-- 大頭貼 -->
+                <div>
+                    <label for="sticker">大頭貼
+                        <img src="https://picsum.photos/80/80/?random=9">
+                    </label>
+                    <input type="file" id="sticker">
+                </div>
+
+            <!-- 身分: 一般會員/占卜師 -->
+                <div>
+                    <label>註冊身分</label>
+                    <input type="radio" name="identity" id="member">
+                    <label for="member">一般會員</label>
+                    <input type="radio" name="identity" id="astrologist">
+                    <label for="astrologist">占卜師</label>
+                </div>
+
+            <!-- 占卜師專區 -->
+            <!-- 身分選擇占卜師才顯示 -->
+                <div>
+                    <h3>占卜師資料</h3>
+                <!-- 占卜師介紹 -->
+                    <div>
+                        <label>占卜師介紹</label>
+                        <textarea></textarea>
+                    </div>
+
+                <!-- 占卜師證照上傳 -->
+                    <div>
+                        <label for="certificate">請上傳占卜師執照
+                            <img src="https://picsum.photos/300/200/?random=8">
+                        </label>
+                        <input type="file" id="certificate">
+                    </div>
+                </div>
+
+            <!-- 註冊 -->
+                <p>已經有帳號?
+                    <a href="#">登入</a>
+                </p>
+
+                <!-- 註冊或取消 -->
+                <button>註冊</button>
+                <button>取消</button>
+            </form>
+
+        </div>
+    </section>
+
+</main>
+
+
+<!-- 網頁尾 -->
+<!-- 內容由 common.js 新增 by PIN -->
+<footer class="main_footer"></footer>
+
+<script src="js/common.js"></script>
+</body>
+</html>
