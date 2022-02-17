@@ -7,22 +7,23 @@
 }
 /* ===== 顏色 ===== */
 /* --- 主色 --- */
-.primary_color {
+.primary_title_color {
     color: #fff;
 }
-.primary_color {
+.primary_bg_color {
     color: #000;
 }
-/* --- 輔色 --- */
-.secondary_color {
+.primary_content_color {
     color: #CFB886;
 }
-.secondary_color {
-    color: #3A3A3A;
-}
-.secondary_color {
+/* --- 輔色 --- */
+.secondary_content_color {
     color: #ccc;
 }
+.secondary_bg_color {
+    color: #3A3A3A;
+}
+
 /* --- 強調色 --- */
 .accent_color {
     color: #DFAF47;
@@ -151,6 +152,7 @@ input {
     border-radius: 5px;
     color: #DFAF47;
     padding: 2px 5px;
+    outline: none;
 }
 select{
     border: 1px #CFB886 solid;
