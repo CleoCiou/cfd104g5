@@ -14,46 +14,56 @@
 <header class="main_header"></header>
 
 
-<!-- 網頁內容 -->
+<!-- 網頁內容 by PIN -->
 <main>
 
-<!-- 登入 by PIN -->
-    <section class="login">
+<!-- 登入 -->
+    <section class="member login">
         <div class="container">
 
-        <!-- 登箱上方logo -->
-            <div class="logo">
-                <div class="img_box">
-                    <img src="https://picsum.photos/50/50/?random=10">
-                </div>
-                <div class="txt_box">
-                    <h2>Mistro</h2>
-                </div>
+        <!-- 登箱 -->
+            <div class="login_box">
+                <!-- 登箱上方logo -->
+                    <div class="logo">
+                        <div class="img_box">
+                            <img src="images/logo_ico_square.ico" alt="logo">
+                        </div>
+                        <div class="txt_box">
+                            <h2>Mistro</h2>
+                        </div>
+                    </div>
+        
+                <!-- 使用者資訊 -->
+                    <form class="login_info">
+                    <!-- 帳號 -->
+                        <div class="mem_id">
+                            <label for="mem_id">帳號</label>
+                            <input type="text" id="mem_id">
+                        </div>
+            
+                    <!-- 密碼 -->
+                        <div class="mem_pwd">
+                            <label for="mem_pwd">密碼</label>
+                            <input type="password" id="mem_pwd">
+                        </div>
+
+                    <!-- 忘記密碼 -->
+                        <div class="forgot_pwd">
+                            <a href="#">忘記密碼</a>
+                        </div>
+
+                    <!-- 登入 -->
+                        <button id="login">登入</button>
+            
+                    <!-- 註冊 -->
+                        <div class="sign_up">
+                            <span>新朋友?
+                                <a href="#">註冊</a>
+                            </span>
+                        </div>
+        
+                    </form>
             </div>
-
-        <!-- 使用者資訊 -->
-            <form>
-            <!-- 帳號 -->
-                <div>
-                    <label for="mem_id">帳號</label>
-                    <input type="text" id="mem_id">
-                </div>
-    
-            <!-- 密碼 -->
-                <div>
-                    <label for="mem_pwd">密碼</label>
-                    <input type="password" id="mem_pwd">
-                    <a href="#">忘記密碼</a>
-                </div>
-    
-            <!-- 註冊 -->
-                <p>新朋友?
-                    <a href="#">註冊</a>
-                </p>
-
-            <!-- 登入 -->
-                <button>登入</button>
-            </form>
 
         </div>
     </section>

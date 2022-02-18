@@ -1,0 +1,18 @@
+.member {
+  width: 100%;
+}
+
+.member .container {
+  padding: 8.3333%;
+}
+
+.member .container .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.member .container .logo .img_box img {
+  width: 100%;
+}
+/*# sourceMappingURL=member.css.map */

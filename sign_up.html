@@ -14,36 +14,47 @@
 <header class="main_header"></header>
 
 
-<!-- 網頁內容 -->
+<!-- 網頁內容 by PIN -->
 <main>
 
-<!-- 註冊 by PIN -->
-    <section class="sign_up">
+<!-- 註冊 -->
+    <section class="member sign_up">
         <div class="container">
 
-        <!-- 基本資料上方logo -->
-            <div class="logo">
-                <div class="img_box">
-                    <img src="https://picsum.photos/50/50/?random=10">
-                </div>
-                <div class="txt_box">
-                    <h2>Mistro</h2>
-                </div>
-            </div>
-
-        <!-- 使用者資訊 -->
-            <form>
-                <h3>基本資料</h3>
-            <!-- 帳號 -->
-                    <div>
-                        <label for="mem_id">帳號</label>
-                        <input type="text" id="mem_id">
+            <div class="sign_up_box">
+            <!-- 基本資料上方logo -->
+                <div class="logo">
+                    <div class="img_box">
+                        <img src="images/logo_ico_square.ico">
                     </div>
-        
-            <!-- 密碼 -->
-                    <div>
-                        <label for="mem_pwd">密碼</label>
-                        <input type="password" id="mem_pwd">
+                    <div class="txt_box">
+                        <h2>Mistro</h2>
+                    </div>
+                </div>
+    
+            <!-- 使用者資訊 -->
+                <form class="sign_up_info">
+                    <h3>基本資料</h3>
+                <!-- 帳號 -->
+                        <div class="mem_id">
+                            <label for="mem_id">帳號</label>
+                            <input type="text" id="mem_id">
+                        </div>
+            
+                <!-- 密碼 -->
+                        <div class="med_pwd">
+                            <label for="mem_pwd">密碼</label>
+                            <input type="password" id="mem_pwd">
+                        </div>
+            
+                <!-- 確認密碼 -->
+                    <div class="confirm">
+                        <label for="mem_pwd">確認密碼</label>
+                        <input type="password" id="pwd_confirm">
+                    </div>
+
+                <!-- 驗證密碼 -->
+                    <div class="verify_pwd">
                         <ul>
                             <li>至少有一個大寫英文字母</li>
                             <li>至少有一個小寫英文字母</li>
@@ -52,76 +63,72 @@
                             <li>長度小於20個字元</li>
                         </ul>
                     </div>
-        
-            <!-- 確認密碼 -->
-                <div>
-                    <label for="mem_pwd">確認密碼</label>
-                    <input type="password" id="pwd_confirm">
-                </div>
-
-            <!-- 姓名 -->
-                <div>
-                    <label for="mem_name">姓名</label>
-                    <input type="text" id="mem_name">
+    
+                <!-- 姓名 -->
+                    <div class="mem_name">
+                        <label for="mem_name">姓名</label>
+                        <input type="text" id="mem_name">
+                    </div>
+                    
+                <!-- 生日 -->
+                <div class="birthday">
+                    <label for="birthday">生日</label>
+                    <input type="text" id="birthdat">
                 </div>
                 
-            <!-- 生日 -->
-            <div>
-                <label for="birthday">生日</label>
-                <input type="text" id="birthdat">
-            </div>
-            
-            <!-- email -->
-                <div>
-                    <label for="email">信箱</label>
-                    <input type="email" id="email">
-                </div>
-
-            <!-- 大頭貼 -->
-                <div>
-                    <label for="sticker">大頭貼
-                        <img src="https://picsum.photos/80/80/?random=9">
-                    </label>
-                    <input type="file" id="sticker">
-                </div>
-
-            <!-- 身分: 一般會員/占卜師 -->
-                <div>
-                    <label>註冊身分</label>
-                    <input type="radio" name="identity" id="member">
-                    <label for="member">一般會員</label>
-                    <input type="radio" name="identity" id="astrologist">
-                    <label for="astrologist">占卜師</label>
-                </div>
-
-            <!-- 占卜師專區 -->
-            <!-- 身分選擇占卜師才顯示 -->
-                <div>
-                    <h3>占卜師資料</h3>
-                <!-- 占卜師介紹 -->
-                    <div>
-                        <label>占卜師介紹</label>
-                        <textarea></textarea>
+                <!-- email -->
+                    <div class="email">
+                        <label for="email">信箱</label>
+                        <input type="email" id="email">
                     </div>
-
-                <!-- 占卜師證照上傳 -->
-                    <div>
-                        <label for="certificate">請上傳占卜師執照
-                            <img src="https://picsum.photos/300/200/?random=8">
+    
+                <!-- 大頭貼 -->
+                    <div class="sticker_box">
+                        <label for="sticker">
+                            <p>大頭貼</p>
+                            <img src="https://picsum.photos/80/80/?random=9">
                         </label>
-                        <input type="file" id="certificate">
+                        <input type="file" id="sticker">
                     </div>
-                </div>
-
-            <!-- 註冊 -->
-                <p>已經有帳號?
-                    <a href="#">登入</a>
-                </p>
-
-                <!-- 註冊或取消 -->
-                <button>註冊</button>
-                <button>取消</button>
-            </form>
+    
+                <!-- 身分: 一般會員/占卜師 -->
+                    <div class="identity">
+                        <label>註冊身分</label>
+                        <input type="radio" name="identity" id="member">
+                        <label for="member">一般會員</label>
+                        <input type="radio" name="identity" id="astrologist">
+                        <label for="astrologist">占卜師</label>
+                    </div>
+    
+                <!-- 占卜師專區 -->
+                <!-- 身分選擇占卜師才顯示 -->
+                    <div class="astrologist_box">
+                        <h3>占卜師資料</h3>
+                    <!-- 占卜師介紹 -->
+                        <div class="introduct">
+                            <label>占卜師介紹</label>
+                            <textarea class="introduct_txt"></textarea>
+                        </div>
+    
+                    <!-- 占卜師證照上傳 -->
+                        <div class="certificate">
+                            <label for="certificate">請上傳占卜師執照
+                                <img src="https://picsum.photos/300/200/?random=8">
+                            </label>
+                            <input type="file" id="certificate">
+                        </div>
+                    </div>
+    
+                <!-- 註冊 -->
+                    <p>已經有帳號?
+                        <a href="login.html">登入</a>
+                    </p>
+    
+                    <!-- 註冊或取消 -->
+                    <button id="sign_up">註冊</button>
+                    <button id="cancel">取消</button>
+                </form>
+            </div>
 
         </div>
     </section>
