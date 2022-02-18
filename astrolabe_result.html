@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/astrolabe.css">
+    <title>解星鏡 Mistro | 星座</title>
+    <script src="js/common.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="fake"></div>
+        </header>
+        <!-- 星座頁籤 -->
+        <div id="app">
+            <section class="pagination_nav">
+                <div class="container">
+                    <ul>
+                        <li v-for="nav in navs"><label>{{nav}}</label></li>
+                    </ul>
+                </div>
+            </section>
+        
+            <!-- 星座命盤的區塊 -->
+            <section class="astrolabe_chart"> 
+                <div class="container">
+                    <!-- 個人資訊 -->
+                    <div class="chart_item">
+                        <p>豪累豪想睡</p>
+                        <p>1998年10月10日</p>
+                        <p>15:30</p>
+                    </div>
+                    <!-- 命盤圖 -->
+                    <div class="chart_item">
+                        <img src="https://fakeimg.pl/200x200/ccc">
+                    </div>
+                    <!-- 星座參數/解讀篩選器 -->
+
+                    <!-- 左側欄 -->
+                    <div class="chart_classification"></div>
+                    <ul>
+                        <li>上升</li>
+                        <li>太陽</li>
+                        <li>月亮</li>
+                        <li>水星</li>
+                        <li>金星</li>
+                        <li>火星</li>
+                        <li>木星</li>
+                        <li>土星</li>
+                        <li>天王</li>
+                        <li>海王</li>
+                        <li>冥王</li>
+                    </ul>
+                </div>
+                <!-- 星盤解讀 -->
+                <div class="analyze">
+                    <div class="analyze_title container">
+                        <h2>星盤解讀</h2>
+                        <h3>Lorem ipsum dolor sit amet.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+    </main>
+    <footer></footer>
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                navs: ['本日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+            },
+        });
+    </script>
+</body>
+</html>

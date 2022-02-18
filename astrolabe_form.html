@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/astrolabe.css">
+    <title>解星鏡 Mistro | 星座</title>
+    <script src="js/common.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="fake"></div>
+        </header>
+        <!-- 星座頁籤 -->
+        <div id="app">
+            <section class="pagination_nav">
+                <div class="container">
+                    <ul>
+                        <li v-for="nav in navs"><label>{{nav}}</label></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <!-- 填寫資料的區塊 -->
+        <section class="astrolabe_form"> 
+            <div class="container">
+                <!-- 左圖 -->
+                <div class="form_item img_box">
+                    <img src="https://fakeimg.pl/350x350/fff">
+                </div>
+                <!-- 資料表單 -->
+                <div class="form_item">
+                    <form action="">
+                        <label>名　　稱 
+                            <input type="text" id="name">
+                        </label>
+                        <label>性　　別 
+                            <input type="radio" name="gender" value="male"> 男生
+                            <input type="radio" name="gender" value="female"> 女生
+                        </label>
+                        <label>生　　日 
+                            <input type="date">
+                        </label>
+                        <label>出生時間 
+                            <input type="time">
+                        </label>
+                    </form>
+                    <!-- 表單的清除和送出按鈕 -->
+                    <div class="form_btns">
+                        <input type="reset" id="reset" value="清除">
+                        <input type="submit" id="submit" value="送出">
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+    </main>
+    <footer></footer>
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                navs: ['本日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+            },
+        });
+    </script>
+</body>
+</html>

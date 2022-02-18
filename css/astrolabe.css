@@ -1,0 +1,205 @@
+* {
+    font-family: 'Cinzel','Shippori Mincho', serif;
+    box-sizing: border-box;
+}
+body{
+    background-color: #000;
+}
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #CFB886;
+}
+.fake{
+    width: 100%;
+    padding-bottom: 50px;
+    background-color: #CFB886;
+}
+
+/* ============================= */
+/* 星座頁籤 */
+.pagination_nav .container ul{
+    padding: 2% 8.333333%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.pagination_nav .container label{
+    margin: 12px;
+    padding: 6px 15px;
+    line-height: 2;
+    border: 1px solid #CFB886;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.pagination_nav .container label a{
+    text-decoration: none;
+    color: #CFB886;
+}
+/* ============================= */
+/* 開始推算區塊 */
+.astrolabe_start .container{
+    position: relative;
+    padding: 2% 8.333333%;
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    font-size: 3rem;
+    letter-spacing: 0.2rem;
+    line-height: 1.5;
+    color: #fff;
+    text-align: center;
+}
+/* ============================= */
+/* 圖片容器 */
+.start_img_box{
+    width: 350px;
+}
+.start_img_box img{
+    width: 100%;
+    vertical-align: top;
+}
+/* ============================= */
+/* 推算按鈕 定位父層在.container*/
+.primary_btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    color: #DFAF47;
+    background-color: transparent;
+    border: 1px solid #DFAF47;
+    display:inline-block;
+    padding: 0.8% 2.5%;
+    /* white-space: nowrap; */
+    cursor: pointer;
+}
+.primary_btn > a{
+    text-decoration: none;
+    color: #DFAF47;
+}
+
+/* ============================= */
+/* 填寫資料區塊開始 */
+.astrolabe_form .container{
+    padding: 2% 8.333333%;
+    display: flex;
+    justify-content: center;
+}
+.form_item img{
+    width: 100%;
+    vertical-align: top;
+}
+.form_item{
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+}
+label {
+    color: #CFB886;
+    padding: 2px 5px;
+    line-height: 2;
+}
+input {
+    border: 1px #CFB886 solid;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #CFB886;
+    padding: 2px 5px;
+    outline: none;
+    
+}
+::placeholder{
+    color: #CFB886;
+    background-color: transparent;
+}
+.form_btns{
+    text-align: center;
+}
+#name{
+    width: 60%;
+}
+#submit , #reset {
+    border-radius: 15px;
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    display:inline-block;
+    padding: 3% 10%;
+    white-space: nowrap;
+    margin: 2%;
+}
+/* ============================= */
+/* 星座命盤區塊開始 */
+.astrolabe_chart .container{
+    padding: 2% 8.333333%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.chart_classification li{
+    color: #CFB886;
+}
+/* 命盤圖 */
+.chart_item img{
+    width: 350px;
+}
+
+@media screen and (max-width:767px) {
+    html{
+     font-size: 14px;
+    }
+    /* 手機板不顯示頁籤 */
+    .pagination_nav{
+        display: none;
+    }
+    /* 手機板大標題 */
+    h1{
+        margin-top: 10%;
+    }
+    /* 手機板按鈕大小 */
+    .primary_btn {
+        padding: 10px 100px;
+    }
+    /* ============================= */
+    /*  astrolabe_form.html 
+        填寫資料區塊開始 */
+    .astrolabe_form .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .form_item img{
+        margin-bottom: 5%;
+    }
+    /* ============================= */
+    /*  astrolabe_result.html 
+        星盤解讀 */
+
+
+    /* ============================= */
+    /*  astrolabe_result.html 
+        左側欄區塊開始 */
+    .chart_classification{
+        display: block;
+    }
+
+}
+@media screen and (min-width:768px) {
+
+}
+@media screen and (min-width:992px) {
+
+}
+@media screen and (min-width:1200px) {
+
+}

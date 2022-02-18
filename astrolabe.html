@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>解星鏡 Mistro | 星座</title>
+    <script src="js/common.js"></script>
+    <link rel="stylesheet" href="css/astrolabe.css">
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <header>
+        <div class="fake"></div>
+    </header>
+    <main>
+        
+        <!-- 星座頁籤 -->
+        <div id="app">
+            <section class="pagination_nav">
+                <div class="container">
+                    <ul>
+                        <li v-for="nav in navs"><label>{{nav}}</label></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        
+        <!-- 開始推算的區塊 -->
+        <section class="astrolabe_start"> 
+            <h1>星盤推算</h1>
+            <div class="container">
+                <div class="start_img_box">
+                    <img src="https://fakeimg.pl/350x350/ccc">
+                </div>
+                <button class="primary_btn"><a href="astrolabe_form.html"><p>開始推算</p></a></button>
+            </div>
+        </section>
+    </main>
+    
+    <footer></footer>
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                navs: ['本日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+            },
+        });
+    </script>
+</body>
+</html>
