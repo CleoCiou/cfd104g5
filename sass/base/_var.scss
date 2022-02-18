@@ -1,11 +1,31 @@
-// 字體
+/* --- 主色 
+    標題顏色
+    color: map-get($primary_color, 'title');
+    背景顏色
+    background-color: map-get($primary_color, 'bg');
+    內文顏色
+    color: map-get($primary_color, 'content');
+*/
+$primary_color: (
+    'title': #fff,
+    'bg': #000,
+    'content': #CFB886,
+);
 
+/* --- 輔色
+    背景顏色
+    background-color: map-get($secondary_color, 'bg');
+    內文顏色
+    color: map-get($secondary_color, 'content');
+*/
+$secondary_color: (
+    'bg': #3A3A3A,
+    'content': #ccc,
+);
 
-// 字級
-
-
-// 顏色
-$primary: #fff;
-$secondary_color: #CFB886;
+/* --- 強調色
+    color: $accent_color;
+    background-color: $accent_color;
+*/
 $accent_color: #DFAF47;
 

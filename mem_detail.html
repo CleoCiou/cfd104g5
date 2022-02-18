@@ -20,50 +20,67 @@
 <h2>會員資料</h2>
 
 <!-- 會員資料 -->
-    <section class="mem_detail">
+    <section class="member mem_detail">
         <div class="container">
 
         <!-- 使用者資訊 -->
-            <form>
+        <div class="mem_detail_box">
+            <form class="mem_detail_info">
                 <h3>基本資料</h3>
-            <!-- 帳號 -->
-                    <div>
-                        <label for="mem_id">帳號</label>
-                        <input type="text" id="mem_id">
+            <!-- 大頭貼 -->
+                <div class="sticker_box">
+                    <div class="txt_box">
+                        <label>上傳相片</label>
+                        <p>聽說會帶來好運噢!</p>
                     </div>
+                    <label for="sticker" class="img_box">
+                        <img src="https://picsum.photos/80/80/?random=9">
+                    </label>
+                    <input type="file" id="sticker" class="display_none">
+                </div>
+                
+            <!-- 帳號 -->
+                <div class="mem_id">
+                    <label for="mem_id">帳號</label>
+                    <input type="text" id="mem_id">
+                </div>
         
             <!-- 密碼 -->
-                    <div>
-                        <label for="mem_pwd">密碼</label>
-                        <input type="password" id="mem_pwd">
-                    </div>
+                <div class="mem_pwd">
+                    <label for="mem_pwd">密碼</label>
+                    <input type="password" id="mem_pwd">
+                    <button>修改</button>
+                </div>
 
             <!-- 修改密碼 -->
-                    <div class="change_pwd">
-                        <h3>修改密碼</h3>
-                        <div>
-                            <label for="old_pwd">舊密碼</label>
-                            <input type="password" id="old_pwd">
-                        </div>
-                        <div>
-                            <label for="new_pwd">新密碼</label>
-                            <input type="password" id="new_pwd">
-                            <ul>
-                                <li>至少有一個大寫英文字母</li>
-                                <li>至少有一個小寫英文字母</li>
-                                <li>至少有一個數字</li>
-                                <li>長度大於6個字元</li>
-                                <li>長度小於20個字元</li>
-                            </ul>
-                        </div>
-
-                    <!-- 確認密碼 -->
-                        <div>
-                            <label for="mem_pwd">確認密碼</label>
-                            <input type="password" id="pwd_confirm">
-                        </div>
-            
+                <div class="change_pwd display_none">
+                    <h3>修改密碼</h3>
+                    <div>
+                        <label for="old_pwd">舊密碼</label>
+                        <input type="password" id="old_pwd">
                     </div>
+                    <div>
+                        <label for="new_pwd">新密碼</label>
+                        <input type="password" id="new_pwd">
+                    </div>
+
+                <!-- 確認密碼 -->
+                    <div class="confirm_pwd">
+                        <label for="confirm_pwd">確認密碼</label>
+                        <input type="password" id="confirm_pwd">
+                    </div>
+                    
+                <!-- 驗證密碼 -->
+                    <div class="verify_pwd">
+                        <ul>
+                            <li>至少有一個大寫英文字母</li>
+                            <li>至少有一個小寫英文字母</li>
+                            <li>至少有一個數字</li>
+                            <li>長度大於6個字元</li>
+                            <li>長度小於20個字元</li>
+                        </ul>
+                    </div>
+                </div>
 
             <!-- 姓名 -->
                 <div>
@@ -72,25 +89,18 @@
                 </div>
                 
             <!-- 生日 -->
-            <div>
-                <label for="birthday">生日</label>
-                <input type="text" id="birthdat">
-            </div>
+                <div>
+                    <label for="birthday">生日</label>
+                    <input type="text" id="birthdat">
+                </div>
             
             <!-- email -->
                 <div>
                     <label for="email">信箱</label>
                     <input type="email" id="email">
                 </div>
-
-            <!-- 大頭貼 -->
-                <div>
-                    <label for="sticker">大頭貼
-                        <img src="https://picsum.photos/80/80/?random=9">
-                    </label>
-                    <input type="file" id="sticker">
-                </div>
             </form>
+        </div>
 
         </div>
     </section>

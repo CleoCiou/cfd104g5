@@ -1,1 +1,149 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+@charset "UTF-8";
+/* --- 主色 
+    標題顏色
+    color: map-get($primary_color, 'title');
+    背景顏色
+    background-color: map-get($primary_color, 'bg');
+    內文顏色
+    color: map-get($primary_color, 'content');
+*/
+/* --- 輔色
+    背景顏色
+    background-color: map-get($secondary_color, 'bg');
+    內文顏色
+    color: map-get($secondary_color, 'content');
+*/
+/* --- 強調色
+    color: $accent_color;
+    background-color: $accent_color;
+*/
+.display_none {
+  display: none;
+}
+
+.img_box img {
+  width: 100%;
+  display: block;
+}
+
+.member {
+  background-color: #eee;
+}
+
+.member .login_box .logo,
+.member .sign_up_box .logo,
+.member .mem_detail_box .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5em 0;
+}
+
+.member .login_box .logo .img_box,
+.member .sign_up_box .logo .img_box,
+.member .mem_detail_box .logo .img_box {
+  width: 3em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.member .login_box .logo .txt_box,
+.member .sign_up_box .logo .txt_box,
+.member .mem_detail_box .logo .txt_box {
+  padding: 0.5em 0;
+}
+
+.member .login_box form > *,
+.member .sign_up_box form > *,
+.member .mem_detail_box form > * {
+  margin: 0.5em 0;
+}
+
+.member .login_box form input[type=text],
+.member .login_box form input[type=password],
+.member .login_box form input[type=email],
+.member .login_box form textarea,
+.member .login_box form button,
+.member .sign_up_box form input[type=text],
+.member .sign_up_box form input[type=password],
+.member .sign_up_box form input[type=email],
+.member .sign_up_box form textarea,
+.member .sign_up_box form button,
+.member .mem_detail_box form input[type=text],
+.member .mem_detail_box form input[type=password],
+.member .mem_detail_box form input[type=email],
+.member .mem_detail_box form textarea,
+.member .mem_detail_box form button {
+  width: 100%;
+}
+
+.member .login_box form *:not(:first-child),
+.member .sign_up_box form *:not(:first-child),
+.member .mem_detail_box form *:not(:first-child) {
+  margin-top: 0.5em;
+}
+
+.member .mem_detail_box .sticker_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.member .mem_detail_box .sticker_box .img_box {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: auto;
+  width: 30%;
+  border-radius: 50%;
+}
+
+.member .mem_detail_box .sticker_box .img_box:after {
+  content: "編輯";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 25%;
+  bottom: 0;
+  left: 0;
+  padding-top: .8em;
+  text-align: center;
+  color: #fff;
+  background-color: #aaaa;
+}
+
+.member .login_box {
+  position: absolute;
+  left: 50%;
+  top: 50vh;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+* {
+  font-family: 'Cinzel','Shippori Mincho', serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body section {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+body section .container {
+  width: 100%;
+  padding: 0 8.333333%;
+  margin: auto;
+}
+/*# sourceMappingURL=style.css.map */
