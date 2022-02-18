@@ -14,10 +14,42 @@
 <header class="main_header"></header>
 
 
-<!-- 網頁內容 -->
+<!-- 網頁內容 by PIN -->
 <main>
 
-<!-- 訂單 by PIN -->
+<h2>訂單管理</h2>
+
+<!-- 搜尋及篩選 by PIN -->
+    <section class="query_orders">
+        <div class="container">
+        <!-- 搜尋 -->
+            <div class="search_box">
+                <input type="search">
+                <button>搜尋</button>
+            </div>
+
+            <!-- 篩選訂單: 已下單/待出貨/運送中/已到店 -->
+            <div class="order_status_box">
+                <ul>
+                    <li>
+                        <label>已下單</label>
+                    </li>
+                    <li>
+                        <label>待出貨</label>
+                    </li>
+                    <li>
+                        <label>運送中</label>
+                    </li>
+                    <li>
+                        <label>已到店</label>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+<!-- 訂單 -->
     <section class="mem_orders">
         <div class="container">
 
@@ -93,11 +125,17 @@
     <section class="mem_link">
         <div class="container">
 
-            <ul>
-                <li>預約管理</li>
-                <li>訂單管理</li>
+            <ul class="link_item">
+                <li class="reservation">
+                    <a href="#">預約管理</a>
+                </li>
+                <li class="mem_orders">
+                    <a href="#">訂單管理</a>
+                </li>
             <!-- 僅身分為占卜師會顯示 -->
-                <li>占卜師專區</li>
+                <li class="astrologist">
+                    <a href="#">占卜師專區</a>
+                </li>
             </ul>
 
         </div>
