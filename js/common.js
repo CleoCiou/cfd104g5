@@ -31,6 +31,7 @@ function init() {
     link.rel  = 'stylesheet';
     link.type = 'text/css';
     link.href = 'css/style.css';
+    // link.href = 'css/common.css';
     head.appendChild(link);
 
     // 網頁瀏覽器頁籤圖示

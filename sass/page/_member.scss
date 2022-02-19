@@ -1,25 +1,21 @@
-// 共用class
-.display_none {
-    display: none;
-}
+main {
+    .member {
 
-// 圖片填滿圖片盒子
-.img_box {
-    img {
-        width: 100%;
-        display: block;
-    }
-}
+        background-color: #eee;
 
-.member {
-    background-color: #eee;
-    .login_box,
-    .sign_up_box,
-    .mem_detail_box {
-        // padding: 1.5em;
-        // border: 1px solid $accent_color;
-        // border-radius: .5em;
+        // ===== 會員專區共用設定 ===== //
+        .display_none {
+            display: none;
+        }
         
+        // 圖片填滿圖片盒子
+        .img_box {
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+
         // logo框
         .logo {
             display: flex;
@@ -53,40 +49,88 @@
                 margin-top: 0.5em;
             }
         }
-    }
-    // 會員資料大頭貼-編輯
-    .mem_detail_box {
-        .sticker_box {
-            display: flex;
-            align-items: center;
-            .img_box {
-                position: relative;
-                display: block;
-                overflow: hidden;
-                margin: auto;
-                width: 30%;
-                border-radius: 50%;
-            }
-            .img_box:after {
-                content: "編輯";
-                position: absolute;
-                display: block;
-                width: 100%;
-                height: 25%;
-                bottom: 0;
-                left: 0;
-                padding-top: .8em;
-                text-align: center;
-                color: #fff;
-                background-color: #aaaa;
+
+        // 分頁頁籤不換行
+        .status_box {
+            li {
+                display: inline-block;
             }
         }
-    }
-    // 登入框垂直、水平置中
-    .login_box {
-        position: absolute;
-        left: 50%;
-        top: 50vh;
-        transform: translate(-50%, -50%);
-    }
-}
+
+        // ========================= //
+
+        // 登入框垂直、水平置中
+        .login_box {
+            position: absolute;
+            left: 50%;
+            top: 50vh;
+            transform: translate(-50%, -50%);
+        }
+
+        // 會員資料大頭貼-編輯
+        .mem_detail_box {
+            .sticker_box {
+                display: flex;
+                align-items: center;
+                .img_box {
+                    position: relative;
+                    display: block;
+                    overflow: hidden;
+                    margin: auto;
+                    width: 30%;
+                    border-radius: 50%;
+                }
+                .img_box:after {
+                    content: "編輯";
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    height: 25%;
+                    bottom: 0;
+                    left: 0;
+                    padding-top: .8em;
+                    text-align: center;
+                    color: #fff;
+                    background-color: #aaaa;
+                }
+            }
+        }
+
+        // 訂單
+        .order_box {
+            border: 1px solid #aaa;
+
+            .order_header,
+            .order_content .item .txt,
+            .order_footer .item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .order_content {
+                .detail_item:not(:first-child) {
+                    margin-top: 0.5em;
+                }
+                .item {
+                    display: flex;
+                    align-items: center;
+                    // 訂單項目圖片
+                    .img_box {
+                        width: 4em;
+                    }
+                    // 訂單項目資訊
+                    .txt_box {
+                        flex-grow: 1;
+                    }
+                }
+                .more_item {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+
+    } // member
+} // main
