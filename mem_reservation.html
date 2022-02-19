@@ -20,27 +20,26 @@
 <h2>管理預約</h2>
 
 <!-- 管理預約子選單 -->
-<section class="reservation_page">
+<section class="member query_reservation">
     <div class="container">
 
     <!-- 預約分頁頁籤: 我的預約/歷史預約 -->
-        <div class="status_box reservation_status">
-            <ul class="reservation_status_list">
+        <div class="status_box order_status">
+            <ul class="order_status_list">
                 <li>
-                    <label>我的預約</label>
+                    <label class="selected_btn">我的預約</label>
                 </li>
                 <li>
-                    <label>歷史預約</label>
+                    <label class="unselected_btn">歷史預約</label>
                 </li>
             </ul>
-
         </div>
 
     </div>
 </section>
 
 <!-- 預約 -->
-    <section class="mem_reservation">
+    <section class="member reservation">
         <div class="contaier">
 
         <!-- 已預約，尚未占卜 -->
@@ -81,14 +80,15 @@
         <div class="container">
 
             <ul class="link_item">
-                <li class="reservation">
-                    <a href="#">預約管理</a>
+                <li class="item mem_detail">
+                    <a href="#">個人資料</a>
                 </li>
-                <li class="mem_orders">
+                <li class="item mem_orders">
                     <a href="#">訂單管理</a>
                 </li>
-            <!-- 僅身分為占卜師會顯示 -->
-                <li class="astrologist">
+
+                <!-- 僅身分為占卜師會顯示 -->
+                <li class="item astrologist">
                     <a href="#">占卜師專區</a>
                 </li>
             </ul>
