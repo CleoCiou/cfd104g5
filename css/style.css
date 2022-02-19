@@ -17,6 +17,20 @@
     color: $accent_color;
     background-color: $accent_color;
 */
+main .mem_link .container .link_item {
+  margin-top: 1em;
+}
+
+main .mem_link .container .link_item .item:not(:first-child) {
+  border-top: 2px solid #000;
+}
+
+main .mem_link .container .link_item .item {
+  background-color: #5558;
+  padding: 1em;
+  width: 100%;
+}
+
 main .member .container .display_none {
   display: none;
 }
@@ -79,8 +93,23 @@ main .member .container .search_box .search {
   margin-right: 0.5em;
 }
 
-main .member .container .status_box li {
-  display: inline-block;
+main .member .container .status_box {
+  margin-top: 1em;
+}
+
+main .member .container .status_box .order_status_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .member .container .status_box .order_status_list li {
+  padding: .3em 0;
+}
+
+main .member .container .status_box .order_status_list li label {
+  padding: 0 0.5em;
+  display: block;
 }
 
 main .member .container .login_box {
@@ -125,7 +154,6 @@ main .member .container .mem_detail_box .sticker_box .img_box:after {
 
 main .member .container .order_box {
   background-color: #5558;
-  border-radius: .5em;
   padding: 1em;
 }
 
@@ -172,20 +200,6 @@ main .member .container .order_box .order_content .more_item {
   text-align: center;
 }
 
-main .mem_link .container .link_item {
-  margin-top: 1em;
-}
-
-main .mem_link .container .link_item .item:not(:first-child) {
-  border-top: 2px solid #000;
-}
-
-main .mem_link .container .link_item .item {
-  background-color: #5558;
-  padding: 1em;
-  width: 100%;
-}
-
 * {
   font-family: 'Cinzel','Shippori Mincho', serif;
   -webkit-box-sizing: border-box;
@@ -227,6 +241,7 @@ body section .container {
   display: inline-block;
   padding: 0.8% 2.5%;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 /* --- 二級按鈕 --- */
@@ -239,6 +254,7 @@ body section .container {
   display: inline-block;
   padding: 0.8% 2.5%;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 /* 頁籤 */
@@ -248,9 +264,11 @@ body section .container {
 /* 占卜師專區--分析資料頁籤 */
 .selected_btn {
   background-color: #CFB886;
+  border: 1px solid transparent;
   color: #000;
   text-align: center;
   line-height: 50px;
+  cursor: pointer;
 }
 
 .unselected_btn {
@@ -259,8 +277,7 @@ body section .container {
   border: 1px #CFB886 solid;
   text-align: center;
   line-height: 50px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  cursor: pointer;
 }
 
 /* --- 三級按鈕 --- */
@@ -274,6 +291,7 @@ body section .container {
   background-color: transparent;
   border: 1px solid #CFB886;
   padding: 0.8% 2.5%;
+  cursor: pointer;
 }
 
 /* --- 其他按鈕 --- */
@@ -284,6 +302,7 @@ body section .container {
   display: inline-block;
   padding: 1.5px 10px;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 /* ===== 文字 ===== */
@@ -336,6 +355,7 @@ li {
 a {
   text-decoration: none;
   color: #CFB886;
+  cursor: pointer;
 }
 
 a:hover {

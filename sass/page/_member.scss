@@ -1,4 +1,22 @@
 main {
+    // member手機下方其他會員分頁連結
+    .mem_link {
+        .container {
+            
+            .link_item {
+                margin-top: 1em;
+                .item:not(:first-child) {
+                    border-top: 2px solid #000;
+                }
+                .item {
+                    background-color: #5558;
+                    padding: 1em;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     .member {
         .container {
             // ===== 會員專區共用設定 ===== //
@@ -60,11 +78,19 @@ main {
     
             // 分頁頁籤不換行
             .status_box {
-                li {
-                    display: inline-block;
+                margin-top: 1em;
+                .order_status_list {
+                    display: flex;
+                    // justify-content: space-between;
+                    li {
+                        padding: .3em 0;
+                        label {
+                            padding: 0 0.5em;
+                            display: block;
+                        }
+                    }
                 }
             }
-    
             // ========================= //
     
             // 登入框垂直、水平置中
@@ -108,7 +134,7 @@ main {
             .order_box {
                 // border: 1px solid #aaa;
                 background-color: #5558;
-                border-radius: .5em;
+                // border-radius: .5em;
                 padding: 1em;
     
                 .order_header,
@@ -144,23 +170,4 @@ main {
             }
         } // container
     } // member
-
-    // member手機下方其他會員分頁連結
-    .mem_link {
-        .container {
-            
-            .link_item {
-                margin-top: 1em;
-                .item:not(:first-child) {
-                    border-top: 2px solid #000;
-                }
-                .item {
-                    background-color: #5558;
-                    padding: 1em;
-                    width: 100%;
-                }
-            }
-        }
-    }
-
 } // main

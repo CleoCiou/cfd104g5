@@ -26,23 +26,26 @@
             <!-- 搜尋 -->
             <div class="search_box">
                 <input type="search" class="search">
-                <button>搜尋</button>
+                <button class="secondary_btn">搜尋</button>
             </div>
 
             <!-- 訂單分頁頁籤: 已下單/待出貨/運送中/已到店 -->
             <div class="status_box order_status">
                 <ul class="order_status_list">
                     <li>
-                        <label>已下單</label>
+                        <label class="unselected_btn">已下單</label>
                     </li>
                     <li>
-                        <label>待出貨</label>
+                        <label class="unselected_btn">待出貨</label>
                     </li>
                     <li>
-                        <label>運送中</label>
+                        <label class="unselected_btn">運送中</label>
                     </li>
                     <li>
-                        <label>已到店</label>
+                        <label class="unselected_btn">已到店</label>
+                    </li>
+                    <li>
+                        <label class="selected_btn">已完成</label>
                     </li>
                 </ul>
             </div>
@@ -157,11 +160,11 @@
         <div class="container">
 
             <ul class="link_item">
+                <li class="item mem_details">
+                    <a href="#">會員資料</a>
+                </li>
                 <li class="item reservation">
                     <a href="#">預約管理</a>
-                </li>
-                <li class="item mem_orders">
-                    <a href="#">訂單管理</a>
                 </li>
 
                 <!-- 僅身分為占卜師會顯示 -->
