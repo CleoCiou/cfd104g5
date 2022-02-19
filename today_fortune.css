@@ -1,0 +1,117 @@
+
+/* 有共用的就用同一個class名稱 ex: */
+/* .container{
+    width: 100%;
+    padding: 8.333333%;
+    box-sizing: border-box;
+    
+} */
+@media screen and (max-width:767px) {
+
+    /* 最大寬度768以上不顯示 所以這裡是手機 */
+     ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    }
+    h2{
+        text-align: center;
+    }
+    .today_fortune{
+        width: 100%;
+    }
+    .today_fortune .constellation_img_box{
+        width: 100%;    
+        padding: 8.333333%;
+    
+    } 
+    .today_fortune .constellation_img_box img{
+        width: 100%;    
+        padding: 8.333333%;
+    
+    } 
+    .today_fortune .constellation_txt{
+        width: 100%;
+        padding: 8.333333%;    
+    }
+    h3{
+        text-align: center;
+    }
+    .fortune ul{
+        width: 100%;
+        display: flex;
+    } 
+    
+    /* 二 */
+    .fortune_btn{
+        width: 100%;
+        padding: 8.333333%;
+        text-align: center;
+    }
+    .fortune_btn .unselected_btn{
+        width: 33.33%;
+    }
+    .fortune_btn ul{
+        padding: 0px;
+    }
+    .container{
+        width: 100%;
+        padding: 8.333333%;
+        box-sizing: border-box;
+        
+    }
+
+}     
+
+@media screen and (min-width:768px) { 
+    html{
+        font-size: 14px;
+    }
+    .pagination ul{
+        display: flex;
+        padding: 0;
+    }
+    .pagination ul li{
+        list-style:none;
+        width: 16.666666%;
+        /* padding: 8.333333%; */
+        box-sizing: border-box;
+    }
+    .bigtoday_forturn{
+        display: flex;
+    }
+    .today_fortune{
+        width: 30%;
+        
+    }
+    .fortune_btn ul{
+        display: flex;
+
+    }
+    .big_fortune_btn .fortune_btn ul .unselected_btn{
+        width: 33.3333%;
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        }
+    .today_Comment .container{
+        display: flex;
+    }
+    .overall_fortune .overall_fortune_txt{
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+    }
+    .today_Comment .today_Comment_btn{
+        width: 100%;
+    }
+    .today_Comment .today_Comment_btn .unselected_btn{
+        width: 100%;
+    }
+}

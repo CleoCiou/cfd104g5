@@ -26,11 +26,11 @@ function init() {
     link.type = 'text/css';
     link.href = 'css/reset.css';
     head.appendChild(link);
-    // common.css
+    // style.css
     link  = document.createElement('link');
     link.rel  = 'stylesheet';
     link.type = 'text/css';
-    link.href = 'css/common.css';
+    link.href = 'css/style.css';
     head.appendChild(link);
 
     // 網頁瀏覽器頁籤圖示

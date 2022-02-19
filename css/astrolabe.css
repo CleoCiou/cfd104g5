@@ -1,0 +1,326 @@
+* {
+    font-family: 'Cinzel','Shippori Mincho', serif;
+    box-sizing: border-box;
+}
+body{
+    background-color: #000;
+}
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #CFB886;
+}
+li{
+    list-style: none;
+}
+.fake{
+    width: 100%;
+    padding-bottom: 50px;
+    background-color: #CFB886;
+}
+
+/* ============================= */
+/* 星座頁籤 */
+.pagination_nav .container ul{
+    padding: 2% 8.333333%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.pagination_nav .container label{
+    margin: 12px;
+    padding: 6px 15px;
+    line-height: 2;
+    border: 1px solid #CFB886;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* ============================= */
+/* 開始推算引導區塊 */
+.astrolabe_start .container{
+    width: 100%;
+    position: relative;
+    padding: 2% 8.333333%;
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    font-size: 3rem;
+    letter-spacing: 0.2rem;
+    line-height: 1.5;
+    color: #fff;
+    text-align: center;
+}
+/* ============================= */
+/* 開始推算底圖的容器 */
+.start_img_box{
+    width: 350px;
+}
+.start_img_box img{
+    width: 100%;
+    vertical-align: top;
+}
+/* ============================= */
+/* 推算按鈕 定位父層在.astrolabe_start的.container*/
+.primary_btn.btn_bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    background-color: #d89482;
+    border: none;
+    padding: 10px 80px;
+    cursor: pointer;
+}
+.btn_bg a{
+    text-decoration: none;
+    color: #CFB886;
+}
+.btn_bg p{
+    color: #000;
+    font-weight: 600;
+}
+
+
+/* ============================= */
+/* 填寫資料區塊開始 */
+.astrolabe_form .container{
+    width: 100%;
+    padding: 2% 8.333333%;
+    display: flex;
+    justify-content: center;
+}
+.form_item img{
+    width: 100%;
+    vertical-align: top;
+}
+.form_item{
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+}
+label {
+    color: #CFB886;
+    padding: 2px 5px;
+    line-height: 2;
+}
+input {
+    border: 1px #CFB886 solid;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #CFB886;
+    padding: 2px 5px;
+    outline: none;
+}
+::placeholder{
+    color: #CFB886;
+    background-color: transparent;
+}
+.form_btns{
+    text-align: center;
+}
+/* 名稱的輸入盒 */
+#name{
+    width: 60%;
+}
+/* 表單的清除和送出按鈕 */
+#submit , #reset {
+    border-radius: 15px;
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    display:inline-block;
+    padding: 3% 10%;
+    white-space: nowrap;
+    margin: 2%;
+    cursor: pointer;
+}
+/* ============================= */
+/* 星座命盤結果區塊開始 */
+.astrolabe_chart .container{
+    width: 100%;
+    padding: 2% 8.333333%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 命盤圖 */
+.chart_item img{
+    width: 350px;
+}
+/* ============================= */
+/*  astrolabe_result.html 
+    星盤解讀 */
+
+/* 背景發光 */
+.light_bg{
+    z-index: 1;
+    position: absolute;
+    bottom: -100%;
+    width: 300px;
+    height: 300px;
+    border-radius: 3000px;
+    background-color: #CFB886;
+    box-shadow: 0px 0px 300px 0px rgb(207 184 134);
+}
+
+/* 宮位分類欄 */
+.chart_classification ul{
+    margin: 5% 0;
+}
+.chart_classification li{
+    color: #CFB886;
+}
+/* 星盤解讀分析內容的外框 */
+.analyze_bg{
+    position: relative;
+    z-index:2;
+    border: 1px solid #CFB886;
+    padding: 5%;
+    background-color: #000;
+    width: 50%;
+}
+.analyze_title h2{
+    background-color: #000;
+    display: inline-block;
+}
+.analyze_title{
+    position: relative;
+    top: -25%;
+    bottom: 50%;
+}
+
+/* ============================= */
+    /*  astrolabe_result.html 
+    推薦商品卡片 */
+
+.products_cards .container{
+    width: 100%;
+    padding: 2% 8.333333%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.products_cards .container .products_title_wrap h2{
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    right: 50%;
+    left: 50%;
+}
+.products_cards .container .products_title_wrap{
+    position: relative;
+}
+/* 商品卡片的item(包著pic和txt) */
+.products_cards .container .products_cards_wrap .products_item{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* 商品卡片的pic的img 寬度100% */
+.products_cards .container .products_cards_wrap .products_item .item_pic img{
+    width:100%;
+}
+
+/* 商品卡片的pic和txt */
+.products_cards .container .products_cards_wrap .products_item .item_pic , .products_cards .container .products_cards_wrap .products_item .item_txt{
+    margin: 3%;
+}
+
+@media screen and (max-width:767px) {
+    html{
+     font-size: 14px;
+    }
+    /* 手機板不顯示頁籤 */
+    .pagination_nav{
+        display: none;
+    }
+    /* 手機板大標題 */
+    h1{
+        margin-top: 10%;
+    }
+    /* 手機板按鈕大小 */
+    .primary_btn {
+        padding: 10px 100px;
+    }
+    /* ============================= */
+    /*  astrolabe_form.html 
+        填寫資料區塊開始 */
+    .astrolabe_form .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .form_item img{
+        margin-bottom: 5%;
+    }
+    /* ============================= */
+    /*  astrolabe_result.html 
+        宮位分類欄開始 */
+    .chart_classification ul{
+        display:flex;
+        flex-wrap: wrap;
+        margin: 5% 0;
+    }
+    /* ============================= */
+    /*  astrolabe_result.html 
+    星盤解讀 */
+    .analyze_title{
+        position: relative;
+        bottom: 40px;
+    }
+    .analyze_bg{
+        display: flex;
+        flex-direction: column;
+    }
+    /* ============================= */
+    /*  astrolabe_result.html 
+    推薦商品卡片 */
+    .products_cards .container{
+        flex-wrap: wrap;
+    }
+    .products_item{
+        width: 50%;
+        box-sizing: border-box;
+    }
+}
+@media screen and (min-width:768px) {
+    /* ============================= */
+    /*  astrolabe_result.html 
+        星盤解讀的內容 */
+    .analyze_title{
+        position: absolute;
+        top: -22px;
+        bottom: 0;
+        right: 70%;
+    }
+}
+@media screen and (max-width:1200px) {
+/* ============================= */
+/*  astrolabe_result.html 
+        星盤解讀 */
+        .analyze_bg{
+            width: 100%;
+            display: flex;
+            
+        }
+}
+@media screen and (min-width:1200px) {
+
+}
