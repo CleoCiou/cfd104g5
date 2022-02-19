@@ -164,6 +164,7 @@ main .member .order_box .order_content .more_item {
   font-family: 'Cinzel','Shippori Mincho', serif;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  color: #CFB886;
 }
 
 body {
@@ -194,9 +195,9 @@ body section .container {
 /* - 購買 */
 .primary_btn {
   border-radius: 15px;
-  color: #DFAF47;
+  color: #CFB886;
   background-color: transparent;
-  border: 1px solid #DFAF47;
+  border: 1px solid #CFB886;
   display: inline-block;
   padding: 0.8% 2.5%;
   white-space: nowrap;
@@ -261,7 +262,7 @@ body section .container {
 
 /* ===== 文字 ===== */
 /*==== 手機板字體大小一定要加這個html ====*/
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 767px) {
   html {
     font-size: 14px;
   }
@@ -276,7 +277,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   letter-spacing: 0.1rem;
   line-height: 1.5;
   color: #CFB886;
@@ -300,6 +301,10 @@ p {
   color: #fff;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+li {
+  list-style: none;
 }
 
 a {
