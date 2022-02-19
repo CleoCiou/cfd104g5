@@ -1,8 +1,8 @@
 var carousel = $(".item_box"),
   currdeg = 0;
 
-$(".next").on("click", { d: "n" }, rotate);
-$(".prev").on("click", { d: "p" }, rotate);
+$(".next_teller").on("click", { d: "n" }, rotate);
+$(".prev_teller").on("click", { d: "p" }, rotate);
 
 function rotate(e) {
   if (e.data.d == "n") {
