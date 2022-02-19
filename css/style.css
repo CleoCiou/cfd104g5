@@ -17,20 +17,16 @@
     color: $accent_color;
     background-color: $accent_color;
 */
-main .member {
-  background-color: #eee;
-}
-
-main .member .display_none {
+main .member .container .display_none {
   display: none;
 }
 
-main .member .img_box img {
+main .member .container .img_box img {
   width: 100%;
   display: block;
 }
 
-main .member .logo {
+main .member .container .logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,37 +39,51 @@ main .member .logo {
   padding: 0.5em 0;
 }
 
-main .member .logo .img_box {
+main .member .container .logo .img_box {
   width: 3em;
   border-radius: 50%;
   overflow: hidden;
 }
 
-main .member .logo .txt_box {
+main .member .container .logo .txt_box {
   padding: 0.5em 0;
 }
 
-main .member form > * {
+main .member .container form > * {
   margin: 0.5em 0;
 }
 
-main .member form input[type=text],
-main .member form input[type=password],
-main .member form input[type=email],
-main .member form textarea,
-main .member form button {
+main .member .container form input[type=text],
+main .member .container form input[type=password],
+main .member .container form input[type=email],
+main .member .container form textarea,
+main .member .container form button {
   width: 100%;
 }
 
-main .member form *:not(:first-child) {
+main .member .container form *:not(:first-child) {
   margin-top: 0.5em;
 }
 
-main .member .status_box li {
+main .member .container .search_box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .member .container .search_box .search {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-right: 0.5em;
+}
+
+main .member .container .status_box li {
   display: inline-block;
 }
 
-main .member .login_box {
+main .member .container .login_box {
   position: absolute;
   left: 50%;
   top: 50vh;
@@ -81,7 +91,7 @@ main .member .login_box {
           transform: translate(-50%, -50%);
 }
 
-main .member .mem_detail_box .sticker_box {
+main .member .container .mem_detail_box .sticker_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,7 +100,7 @@ main .member .mem_detail_box .sticker_box {
           align-items: center;
 }
 
-main .member .mem_detail_box .sticker_box .img_box {
+main .member .container .mem_detail_box .sticker_box .img_box {
   position: relative;
   display: block;
   overflow: hidden;
@@ -99,7 +109,7 @@ main .member .mem_detail_box .sticker_box .img_box {
   border-radius: 50%;
 }
 
-main .member .mem_detail_box .sticker_box .img_box:after {
+main .member .container .mem_detail_box .sticker_box .img_box:after {
   content: "編輯";
   position: absolute;
   display: block;
@@ -113,13 +123,15 @@ main .member .mem_detail_box .sticker_box .img_box:after {
   background-color: #aaaa;
 }
 
-main .member .order_box {
-  border: 1px solid #aaa;
+main .member .container .order_box {
+  background-color: #5558;
+  border-radius: .5em;
+  padding: 1em;
 }
 
-main .member .order_box .order_header,
-main .member .order_box .order_content .item .txt,
-main .member .order_box .order_footer .item {
+main .member .container .order_box .order_header,
+main .member .container .order_box .order_content .item .txt,
+main .member .container .order_box .order_footer .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -131,11 +143,11 @@ main .member .order_box .order_footer .item {
           align-items: center;
 }
 
-main .member .order_box .order_content .detail_item:not(:first-child) {
+main .member .container .order_box .order_content .detail_item:not(:first-child) {
   margin-top: 0.5em;
 }
 
-main .member .order_box .order_content .item {
+main .member .container .order_box .order_content .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,20 +156,34 @@ main .member .order_box .order_content .item {
           align-items: center;
 }
 
-main .member .order_box .order_content .item .img_box {
+main .member .container .order_box .order_content .item .img_box {
   width: 4em;
 }
 
-main .member .order_box .order_content .item .txt_box {
+main .member .container .order_box .order_content .item .txt_box {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-main .member .order_box .order_content .more_item {
+main .member .container .order_box .order_content .more_item {
   display: block;
   width: 100%;
   text-align: center;
+}
+
+main .mem_link .container .link_item {
+  margin-top: 1em;
+}
+
+main .mem_link .container .link_item .item:not(:first-child) {
+  border-top: 2px solid #000;
+}
+
+main .mem_link .container .link_item .item {
+  background-color: #5558;
+  padding: 1em;
+  width: 100%;
 }
 
 * {
@@ -261,7 +287,7 @@ body section .container {
 
 /* ===== 文字 ===== */
 /*==== 手機板字體大小一定要加這個html ====*/
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
   html {
     font-size: 14px;
   }

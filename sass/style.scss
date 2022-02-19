@@ -94,7 +94,7 @@ body {
 
 /* ===== 文字 ===== */
 /*==== 手機板字體大小一定要加這個html ====*/
-@media screen and (min-width:768px) {
+@media screen and (max-width:768px) {
     html{
      font-size: 14px;
     }
