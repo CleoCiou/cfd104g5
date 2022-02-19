@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #000;
+    background-attachment: fixed;
+}
+  
+.content {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}
+
+.card {
+    color: inherit;
+    cursor: pointer;
+    width: calc(25% - 2rem);
+    min-width: calc(25% - 2rem);
+    height: 400px;
+    min-height: 400px;
+    perspective: 1000px;
+    margin: 1rem;
+    position: relative;
+}
+@media screen and (max-width: 992px) {
+.card {
+    width: calc(50% - 2rem);
+}
+}
+@media screen and (max-width: 768px) {
+.card {
+    width: 50%;
+}
+}
+
+.front,
+.back {
+    display: flex;
+    border-radius: 6px;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: ease-in-out 600ms;
+}
+
+.front {
+    background-size: cover;
+    padding: 2rem;
+    background-color: #835245;
+    overflow: hidden;
+}
+.card:hover .front {
+    transform: rotateY(180deg);
+}
+.card:nth-child(even):hover .front {
+    transform: rotateY(-180deg);
+}
+
+.back {
+    background: rgb(58, 39, 39);
+    transform: rotateY(-180deg);
+    padding: 0 2em;
+}
+.card:hover .back {
+    transform: rotateY(0deg);
+}
+
+.choose_btn {
+    transform: translateZ(40px);
+    cursor: pointer;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding: 0.8% 20px;
+    margin: 0.5em 1em;
+    border-radius: 50px;
+    border: none;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 300ms ease;
+    color: #CFB886;
+    background-color: transparent;
+    border: 1px #CFB886 solid;
+    text-align: center;
+    line-height: 50px;
+    box-sizing: border-box;
+}
+
+
