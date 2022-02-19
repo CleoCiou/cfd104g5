@@ -160,6 +160,32 @@ main .member .order_box .order_content .more_item {
   text-align: center;
 }
 
+/* 星座頁籤 */
+main .pagination_nav .container ul {
+  padding: 2% 8.33333%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .pagination_nav .container label {
+  margin: 12px;
+  padding: 6px 15px;
+  line-height: 2;
+  border: 1px solid #CFB886;
+  color: #CFB886;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 * {
   font-family: 'Cinzel','Shippori Mincho', serif;
   -webkit-box-sizing: border-box;
@@ -328,6 +354,7 @@ label {
 
 input {
   border: 1px #CFB886 solid;
+  background-color: transparent;
   border-radius: 5px;
   color: #CFB886;
   padding: 2px 5px;

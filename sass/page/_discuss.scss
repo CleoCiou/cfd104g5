@@ -1,0 +1,28 @@
+/* === 星座頁籤 by JC === */
+$padding: 2% 8.333333%;
+
+main {
+    .pagination_nav{
+        .container{ 
+            ul{
+                padding: $padding;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            label{
+                margin: 12px;
+                padding: 6px 15px;
+                line-height: 2;
+                border: 1px solid #CFB886;
+                color: map-get($primary_color, "content");
+                border-radius: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+} 
+
+
+            

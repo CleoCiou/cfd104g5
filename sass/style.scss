@@ -2,6 +2,7 @@
 @import "layout/header";
 @import "layout/footer";
 @import "page/member";
+@import "page/discuss";
 * {
     font-family: 'Cinzel','Shippori Mincho', serif;
     box-sizing: border-box;
@@ -150,6 +151,7 @@ label {
 }
 input {
     border: 1px #CFB886 solid;
+    background-color: transparent;
     border-radius: 5px;
     color: #CFB886;
     padding: 2px 5px;
