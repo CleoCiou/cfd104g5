@@ -15,8 +15,8 @@
         <header>
             <div class="fake"></div>
         </header>
-        <!-- 星座頁籤 -->
         <div id="app">
+        <!-- 星座頁籤 by JC-->
             <section class="pagination_nav">
                 <div class="container">
                     <ul>
@@ -24,57 +24,111 @@
                     </ul>
                 </div>
             </section>
-        
-            <!-- 星座命盤的區塊 -->
+    <!-- 星座命盤結果 by JC -->
+        <!-- 星座命盤結果的區塊開始 -->
             <section class="astrolabe_chart"> 
                 <div class="container">
                     <!-- 個人資訊 -->
-                    <div class="chart_item">
-                        <p>豪累豪想睡</p>
-                        <p>1998年10月10日</p>
-                        <p>15:30</p>
-                    </div>
+                        <div class="chart_item">
+                            <p>豪累豪想睡</p>
+                            <p>1998年10月10日</p>
+                            <p>15:30</p>
+                        </div>
                     <!-- 命盤圖 -->
-                    <div class="chart_item">
-                        <img src="https://fakeimg.pl/200x200/ccc">
-                    </div>
-                    <!-- 星座參數/解讀篩選器 -->
+                        <div class="chart_item">
+                            <img src="https://fakeimg.pl/200x200/ccc">
+                        </div>
+                </div>
+            </section>
+        
+        <!-- 星盤解讀 by JC -->
+            <section class="astrolabe_chart"> 
+                <div class="container">
+                    <!-- 宮位分類欄 有11個該死的宮位 -->
+                        <div class="chart_classification">
+                            <ul>
+                                <li v-for="chart in charts"><label>{{chart}}</label></li>
+                            </ul>
+                        </div>
 
-                    <!-- 左側欄 -->
-                    <div class="chart_classification"></div>
-                    <ul>
-                        <li>上升</li>
-                        <li>太陽</li>
-                        <li>月亮</li>
-                        <li>水星</li>
-                        <li>金星</li>
-                        <li>火星</li>
-                        <li>木星</li>
-                        <li>土星</li>
-                        <li>天王</li>
-                        <li>海王</li>
-                        <li>冥王</li>
-                    </ul>
+                    <!-- 星盤解讀分析內容的外框 用來包住大標和內文 -->
+                        <div class="analyze_bg">
+                            <!-- 星盤解讀大標題 -->
+                                <div class="analyze_title">
+                                    <h2>星盤解讀</h2>
+                                </div>
+                            <!-- 星盤解讀內文 -->
+                                <div class="analyze_txt">
+                                    <h3>Lorem ipsum dolor sit amet.</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.</p>
+                                </div>
+                            
+                        </div>
+                        <!-- 背景發光  -->
+                        <!-- <div class="light_bg"></div> -->
                 </div>
-                <!-- 星盤解讀 -->
-                <div class="analyze">
-                    <div class="analyze_title container">
-                        <h2>星盤解讀</h2>
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.</p>
+            </section>
+        </div>
+        <!-- 推薦商品卡片 by JC -->
+            <section class="products_cards">
+               
+                <div class="container">
+                    <!-- 左欄標題和底圖 -->
+                    <div class="products_title_wrap">
+                        <h2>推薦商品</h2>
+                        <img src="https://fakeimg.pl/200x200/000">
                     </div>
+                    
+                    <div class="products_cards_wrap">
+                        <!-- 商品卡片 -->
+                            <div class="products_item">
+                                <div class="item_pic">
+                                <img src="https://fakeimg.pl/500x500/ccc">
+                                </div>
+                                <div class="item_txt">
+                                    <h4>Loremipsum</h4>
+                                </div>
+                            </div>
+                        <!-- 商品卡片 -->
+                            <div class="products_item">
+                                <div class="item_pic">
+                                <img src="https://fakeimg.pl/500x500/ccc">
+                                </div>
+                                <div class="item_txt">
+                                    <h4>Loremipsum</h4>
+                                </div>
+                            </div>
+                        <!-- 商品卡片 -->
+                            <div class="products_item">
+                                <div class="item_pic">
+                                <img src="https://fakeimg.pl/500x500/ccc">
+                                </div>
+                                <div class="item_txt">
+                                    <h4>Loremipsum</h4>
+                                </div>
+                            </div>
+                        <!-- 商品卡片 -->
+                            <div class="products_item">
+                                <div class="item_pic">
+                                <img src="https://fakeimg.pl/500x500/ccc">
+                                </div>
+                                <div class="item_txt">
+                                    <h4>Loremipsum</h4>
+                                </div>
+                            </div>
+                    </div>
+                        
                 </div>
-            </div>
+            </section>
             
-        </section>
-
     </main>
     <footer></footer>
     <script>
         new Vue({
             el: '#app',
             data: { //變數放這
-                navs: ['本日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+                charts: ['上升','太陽','月亮','水星','金星','火星','木星','土星','天王','海王','冥王']
             },
         });
     </script>
