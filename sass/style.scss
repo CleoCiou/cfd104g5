@@ -41,6 +41,7 @@ body {
     display:inline-block;
     padding: 0.8% 2.5%;
     white-space: nowrap;
+    cursor: pointer;
 }
 /* --- 二級按鈕 --- */
 /* 線上占卜--商品瀏覽 */
@@ -52,6 +53,7 @@ body {
     display:inline-block;
     padding: 0.8% 2.5%;
     white-space: nowrap;
+    cursor: pointer;
 }
 /* 頁籤 */
 /* 預約占卜--頁籤(線上或實體) */
@@ -60,9 +62,11 @@ body {
 /* 占卜師專區--分析資料頁籤 */
 .selected_btn{
     background-color: #CFB886;
+    border: 1px solid transparent;
     color: #000;
     text-align: center;
     line-height: 50px;
+    cursor: pointer;
 }
 .unselected_btn{
     color: #CFB886;
@@ -70,7 +74,7 @@ body {
     border: 1px #CFB886 solid;
     text-align: center;
     line-height: 50px;
-    box-sizing: border-box;
+    cursor: pointer;
 }
 /* --- 三級按鈕 --- */
 /* 發表/檢舉文章按鈕 */
@@ -83,6 +87,7 @@ body {
     background-color: transparent;
     border: 1px solid #CFB886;
     padding: 0.8% 2.5%;
+    cursor: pointer;
 }
 /* --- 其他按鈕 --- */
 /* icon線條顏色--#fff */
@@ -92,6 +97,7 @@ body {
     display:inline-block;
     padding: 1.5px 10px;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 /* ===== 文字 ===== */
@@ -137,6 +143,7 @@ li{
 a {
     text-decoration: none;
     color: #CFB886;
+    cursor: pointer;
 }
 a:hover{
     color: #d89482;
