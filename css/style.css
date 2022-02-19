@@ -200,6 +200,130 @@ main .member .container .order_box .order_content .more_item {
   text-align: center;
 }
 
+/* === 星座頁籤 by JC === */
+main .pagination_nav .container ul {
+  padding: 2% 8.33333%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .pagination_nav .container label {
+  margin: 12px;
+  padding: 6px 15px;
+  line-height: 2;
+  border: 1px solid #CFB886;
+  color: #CFB886;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+body .back {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body .back .img_box img {
+  width: 100%;
+  display: block;
+}
+
+body .back .link_panel {
+  width: 15em;
+}
+
+body .back .link_panel .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5em 0;
+}
+
+body .back .link_panel .logo .img_box {
+  width: 3em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+body .back .link_panel .logo .txt_box {
+  margin-left: 1em;
+  padding: 0.5em 0;
+}
+
+body .back .link_panel .link_list li {
+  width: 100%;
+  padding: .5em 2em;
+  text-align: center;
+}
+
+body .back .link_panel .link_list li a {
+  display: block;
+}
+
+body .contain {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-height: 100vh;
+  background-color: #5558;
+}
+
+body .contain header {
+  position: fixed;
+  width: 85%;
+  height: 4em;
+  background-color: #0003;
+  margin: auto;
+}
+
+body .contain header button {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+body .contain main {
+  padding: 5em 0 0 5em;
+}
+
+body .contain main table tr {
+  border: 1px solid #fff;
+}
+
+body .contain main table tr th,
+body .contain main table tr td {
+  text-align: center;
+  border: 1px solid #fff;
+  padding: 1em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+body .contain main button {
+  padding: .5em 1em;
+}
+
 * {
   font-family: 'Cinzel','Shippori Mincho', serif;
   -webkit-box-sizing: border-box;
@@ -374,6 +498,7 @@ label {
 
 input {
   border: 1px #CFB886 solid;
+  background-color: transparent;
   border-radius: 5px;
   color: #CFB886;
   padding: 2px 5px;
