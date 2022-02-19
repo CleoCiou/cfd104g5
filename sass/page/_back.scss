@@ -1,0 +1,90 @@
+body {
+    .back {
+        // 圖片填滿圖片盒子
+        .img_box {
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        display: flex;
+        flex-wrap: wrap;
+
+        .link_panel {
+            width: 15em;
+
+            // logo框
+            .logo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.5em 0;
+                .img_box {
+                    width: 3em;
+                    border-radius: 50%;
+                    overflow: hidden;
+                }
+                .txt_box {
+                    margin-left: 1em;
+                    padding: 0.5em 0;
+                }
+            }
+
+            .link_list {
+                li {
+                    width: 100%;
+                    padding: .5em 2em;
+                    text-align: center;
+                    a {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .contain {
+        position: relative;
+        flex-grow: 1;
+        min-height: 100vh;
+        background-color: #5558;
+        
+        header {
+            position: fixed;
+            width: 85%;
+            height: 4em;
+            background-color: #0003;
+            margin: auto;
+
+            button {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 1em;
+                transform: translateY(-50%);
+            }
+        }
+        main {
+            padding: 5em 0 0 5em;
+            table {
+                tr {
+                    border: 1px solid #fff;
+                    th,
+                    td {
+                        text-align: center;
+                        border: 1px solid #fff;
+                        padding: 1em;
+                        flex-shrink: 0;
+                    }
+                }
+            }
+            button {
+                padding: .5em 1em;
+            }
+        }
+
+        footer {
+
+        }
+    }
+}
