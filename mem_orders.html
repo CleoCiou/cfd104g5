@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>解星鏡 Mistro | 訂單管理</title>
     <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
+    <!-- <link rel="stylesheet" href="css/common.css"> -->
 </head>
 <body>
     
@@ -22,15 +23,16 @@
 <!-- 搜尋及篩選 by PIN -->
     <section class="member query_orders">
         <div class="container">
-        <!-- 搜尋 -->
+
+            <!-- 搜尋 -->
             <div class="search_box">
                 <input type="search">
                 <button>搜尋</button>
             </div>
 
-            <!-- 篩選訂單: 已下單/待出貨/運送中/已到店 -->
-            <div class="order_status_box">
-                <ul>
+            <!-- 訂單分頁頁籤: 已下單/待出貨/運送中/已到店 -->
+            <div class="status_box order_status">
+                <ul class="order_status_list">
                     <li>
                         <label>已下單</label>
                     </li>
@@ -50,74 +52,104 @@
     </section>
 
 <!-- 訂單 -->
-    <section class="mem_orders">
+    <section class="member mem_orders">
         <div class="container">
 
-        <!-- 訂單清單 -->
-            <ul>
-            <!-- 訂單 -->
-                <li>
-                <!-- 訂單項目頭 -->
-                    <div class="order_header">
-                    <!-- 訂單編號 -->
-                        <div class="order_no">#001</div>
-                    <!-- 訂單狀態 -->
-                        <div class="status">已確認</div>
-                    </div>
+            <div class="order_box">
+                <!-- 訂單清單 -->
+                <ul class="order_list">
 
-                <!-- 訂單項目清單 -->
-                    <div class="order_content">
-                        <ul>
-                            <!-- 訂單項目 -->
-                            <li>
-                                <div class="item">
-                                    <div class="img_box">
-                                        <img src="https://picsum.photos/50/50/?random=10">
-                                    </div>
-                                <div class="txt_box">
-                                    <!-- 品名 -->
-                                        <span>星座手鍊-雙魚</span>
-                                    <!-- 數量 -->
-                                        <span>1</span>
-                                    <!-- 單價 -->
-                                        <span>NT $400</span>
-                                    <!-- 小計 -->
-                                        <span>NT $400</span>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <!-- 訂單項目 -->
-                            <li>
-                                <div class="item">
-                                    <div class="img_box">
-                                        <img src="https://picsum.photos/50/50/?random=10">
-                                    </div>
-                                <div class="txt_box">
-                                    <!-- 品名 -->
-                                        <span>星座手鍊-雙魚</ㄋ>
-                                    <!-- 數量 -->
-                                        <span>1</span>
-                                    <!-- 單價 -->
-                                        <span>NT $400</span>
-                                    <!-- 小計 -->
-                                        <span>NT $400</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- 訂單 -->
+                    <li class="order_item">
+                        <!-- 訂單項目頭 -->
+                        <div class="order_header">
+                            <!-- 訂單編號 -->
+                            <div class="order_no">#001</div>
+                            <!-- 訂單狀態 -->
+                            <div class="status">已完成</div>
+                        </div>
+    
+                        <!-- 訂單項目內容 -->
+                        <div class="order_content">
+                            <!-- 訂單項目清單 -->
+                            <ul class="detail_list">
+                                <!-- 訂單項目 -->
+                                <li class="detail_item">
+                                    <div class="item">
+                                        <!-- 商品圖片 -->
+                                        <div class="img_box">
+                                            <img src="https://picsum.photos/50/50/?random=10">
+                                        </div>
 
-                <!-- 訂單項目尾 -->
-                    <div class="order_footer">
-                    <!-- 訂單時間 -->
-                        <div class="order_time">2022/02/20 09:00</div>
-                    <!-- 總計 -->
-                        <div class="total">NT $1400</div>
-                    </div>
-                </li>
-            </ul>
+                                        <!-- 商品資訊 -->
+                                        <div class="txt_box">
 
+                                            <div class="txt info">
+                                                <!-- 品名 -->
+                                                <span>星座手鍊-雙魚</span>
+                                                <!-- 單價 -->
+                                                <span>NT$400</span>
+                                            </div>
+
+                                            <div class="txt subtotal">
+                                                <!-- 數量 -->
+                                                <span>x1</span>
+                                                <!-- 小計 -->
+                                                <span>NT$400</span>
+                                            </div>
+                                    </div>
+                                </li>
+                                
+                                <!-- 訂單項目 -->
+                                <li class="detail_item">
+                                    <div class="item">
+                                        <!-- 商品圖片 -->
+                                        <div class="img_box">
+                                            <img src="https://picsum.photos/50/50/?random=10">
+                                        </div>
+
+                                        <!-- 商品資訊 -->
+                                        <div class="txt_box">
+
+                                            <div class="txt info">
+                                                <!-- 品名 -->
+                                                <span>星座手鍊-雙魚</span>
+                                                <!-- 單價 -->
+                                                <span>NT $400</span>
+                                            </div>
+
+                                            <div class="txt subtotal">
+                                                <!-- 數量 -->
+                                                <span>x1</span>
+                                                <!-- 小計 -->
+                                                <span>NT $800</span>
+                                            </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- 檢視其他商品 -->
+                            <span class="more_item">檢視其他商品</span>
+                        </div>
+    
+                        <!-- 訂單項目尾 -->
+                        <div class="order_footer">
+                            <div class="item">
+                                <!-- 購買項目數量 -->
+                                <span class="order_mount">2商品</span>
+                                <!-- 總計 -->
+                                <span class="total">NT $1400</span>
+                            </div>
+
+                            <div class="item">
+                                <!-- 訂單時間 -->
+                                <span class="order_time">2022/02/20 09:00</span>
+                                <button>再買一次</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        
         </div>
     </section>
 
@@ -132,7 +164,8 @@
                 <li class="mem_orders">
                     <a href="#">訂單管理</a>
                 </li>
-            <!-- 僅身分為占卜師會顯示 -->
+
+                <!-- 僅身分為占卜師會顯示 -->
                 <li class="astrologist">
                     <a href="#">占卜師專區</a>
                 </li>

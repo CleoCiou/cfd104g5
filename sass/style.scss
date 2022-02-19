@@ -19,3 +19,142 @@ body {
         }
     }
 }
+
+// ******************** 待整理 ******************** //
+/* ===== 按鈕 ===== */
+/* --- 主按鈕 --- */
+/* 跳轉頁的button */
+/* 首頁--商品瀏覽、占卜師瀏覽 */
+/* 體驗占卜--線上占卜、再看一次、推薦商品 */
+/* 線上占卜--其他問題、預約占卜師、推薦商品 */
+/* 星座--開始測驗 */
+/* 預約占卜--開始預約、確認預約、下一步、確認 */
+/* 登入註冊 */
+/* - 購買 */
+.primary_btn {
+    border-radius: 15px;
+    color: #DFAF47;
+    background-color: transparent;
+    border: 1px solid #DFAF47;
+    display:inline-block;
+    padding: 0.8% 2.5%;
+    white-space: nowrap;
+}
+/* --- 二級按鈕 --- */
+/* 線上占卜--商品瀏覽 */
+.secondary_btn {
+    border-radius: 15px;
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    display:inline-block;
+    padding: 0.8% 2.5%;
+    white-space: nowrap;
+}
+/* 頁籤 */
+/* 預約占卜--頁籤(線上或實體) */
+/* 星座--頁籤 */
+/* 占卜師專區--星級頁籤 */
+/* 占卜師專區--分析資料頁籤 */
+.selected_btn{
+    background-color: #CFB886;
+    color: #000;
+    text-align: center;
+    line-height: 50px;
+}
+.unselected_btn{
+    color: #CFB886;
+    background-color: transparent;
+    border: 1px #CFB886 solid;
+    text-align: center;
+    line-height: 50px;
+    box-sizing: border-box;
+}
+/* --- 三級按鈕 --- */
+/* 發表/檢舉文章按鈕 */
+/* 會員--修改資料、新增休假資料、取消 */
+/* 占卜師專區--接受、拒絕 */
+/* 星座--測驗選項(要加固定寬) */
+.third_btn {
+    border-radius: 15px;
+    color: #CFB886;
+    background-color: transparent;
+    border: 1px solid #CFB886;
+    padding: 0.8% 2.5%;
+}
+/* --- 其他按鈕 --- */
+/* icon線條顏色--#fff */
+.other_btn {
+    border-radius: 50px;
+    background-color: #CFB886;
+    display:inline-block;
+    padding: 1.5px 10px;
+    white-space: nowrap;
+}
+
+/* ===== 文字 ===== */
+/*==== 手機板字體大小一定要加這個html ====*/
+@media screen and (min-width:768px) {
+    html{
+     font-size: 14px;
+    }
+}
+/*==== 手機板字體大小一定要加這個html ====*/
+h1 {
+    font-size: 3rem;
+    letter-spacing: 0.2rem;
+    line-height: 1.5;
+    color: #fff;
+}
+h2 {
+    font-size: 2.2rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.5;
+    color: #CFB886;
+}
+h3 {
+    font-size: 1.75rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.5;
+    color: #CFB886;
+}
+h4 {
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.5;
+    color: #CFB886;
+}
+p {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+a {
+    text-decoration: none;
+    color: #CFB886;
+}
+a:hover{
+    color: #d89482;
+}
+span {
+    color: #d89482;
+
+}
+label {
+    color: #CFB886;
+    padding: 2px 5px;
+    line-height: 2;
+}
+input {
+    border: 1px #CFB886 solid;
+    border-radius: 5px;
+    color: #CFB886;
+    padding: 2px 5px;
+    outline: none;
+}
+select{
+    border: 1px #CFB886 solid;
+    border-radius: 5px;
+    color: #CFB886;
+    padding: 2px 5px;
+}
