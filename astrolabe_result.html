@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/astrolabe.css">
     <title>解星鏡 Mistro | 星座</title>
-    <script src="js/common.js"></script>
+    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/astrolabe.css">
+    
     <script src="../js/vue.js"></script>
 </head>
 <body>
@@ -26,7 +27,7 @@
             </section>
     <!-- 星座命盤結果 by JC -->
         <!-- 星座命盤結果的區塊開始 -->
-            <section class="astrolabe_chart"> 
+            <section class="astrolabe_chart info"> 
                 <div class="container">
                     <!-- 個人資訊 -->
                         <div class="chart_item">
@@ -42,7 +43,7 @@
             </section>
         
         <!-- 星盤解讀 by JC -->
-            <section class="astrolabe_chart"> 
+            <section class="astrolabe_chart parse"> 
                 <div class="container">
                     <!-- 宮位分類欄 有11個該死的宮位 -->
                         <div class="chart_classification">
@@ -62,23 +63,27 @@
                                     <h3>Lorem ipsum dolor sit amet.</h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptate, mollitia maiores minus blanditiis asperiores ab delectus sit facilis at vitae, provident dignissimos reprehenderit tempora odit, aperiam sequi itaque dolorum.</p>
                                 </div>
-                            
                         </div>
+                        <div class="analyze_next"> 
+                            <h3>下一張</h3> 
+                        </div>     
                         <!-- 背景發光  -->
                         <!-- <div class="light_bg"></div> -->
                 </div>
+
             </section>
         </div>
-        <!-- 推薦商品卡片 by JC -->
+        <!-- 主打商品卡片 by JC -->
             <section class="products_cards">
-               
                 <div class="container">
-                    <!-- 左欄標題和底圖 -->
+                    <!-- 左欄標題和底圖 大容器 -->
                     <div class="products_title_wrap">
-                        <h2>推薦商品</h2>
-                        <img src="https://fakeimg.pl/200x200/000">
+                            <h2>主打商品</h2>
+                        <div class="products_title_wrap img_box">
+                            <img src="https://fakeimg.pl/400x400/000">
+                        </div>
                     </div>
-                    
+                    <!-- 卡品 大容器 -->
                     <div class="products_cards_wrap">
                         <!-- 商品卡片 -->
                             <div class="products_item">
@@ -132,5 +137,6 @@
             },
         });
     </script>
+    <script src="js/common.js"></script>
 </body>
 </html>
