@@ -17,22 +17,20 @@
     color: $accent_color;
     background-color: $accent_color;
 */
-.display_none {
+main .member {
+  background-color: #eee;
+}
+
+main .member .display_none {
   display: none;
 }
 
-.img_box img {
+main .member .img_box img {
   width: 100%;
   display: block;
 }
 
-.member {
-  background-color: #eee;
-}
-
-.member .login_box .logo,
-.member .sign_up_box .logo,
-.member .mem_detail_box .logo {
+main .member .logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,51 +43,45 @@
   padding: 0.5em 0;
 }
 
-.member .login_box .logo .img_box,
-.member .sign_up_box .logo .img_box,
-.member .mem_detail_box .logo .img_box {
+main .member .logo .img_box {
   width: 3em;
   border-radius: 50%;
   overflow: hidden;
 }
 
-.member .login_box .logo .txt_box,
-.member .sign_up_box .logo .txt_box,
-.member .mem_detail_box .logo .txt_box {
+main .member .logo .txt_box {
   padding: 0.5em 0;
 }
 
-.member .login_box form > *,
-.member .sign_up_box form > *,
-.member .mem_detail_box form > * {
+main .member form > * {
   margin: 0.5em 0;
 }
 
-.member .login_box form input[type=text],
-.member .login_box form input[type=password],
-.member .login_box form input[type=email],
-.member .login_box form textarea,
-.member .login_box form button,
-.member .sign_up_box form input[type=text],
-.member .sign_up_box form input[type=password],
-.member .sign_up_box form input[type=email],
-.member .sign_up_box form textarea,
-.member .sign_up_box form button,
-.member .mem_detail_box form input[type=text],
-.member .mem_detail_box form input[type=password],
-.member .mem_detail_box form input[type=email],
-.member .mem_detail_box form textarea,
-.member .mem_detail_box form button {
+main .member form input[type=text],
+main .member form input[type=password],
+main .member form input[type=email],
+main .member form textarea,
+main .member form button {
   width: 100%;
 }
 
-.member .login_box form *:not(:first-child),
-.member .sign_up_box form *:not(:first-child),
-.member .mem_detail_box form *:not(:first-child) {
+main .member form *:not(:first-child) {
   margin-top: 0.5em;
 }
 
-.member .mem_detail_box .sticker_box {
+main .member .status_box li {
+  display: inline-block;
+}
+
+main .member .login_box {
+  position: absolute;
+  left: 50%;
+  top: 50vh;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+main .member .mem_detail_box .sticker_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,7 +90,7 @@
           align-items: center;
 }
 
-.member .mem_detail_box .sticker_box .img_box {
+main .member .mem_detail_box .sticker_box .img_box {
   position: relative;
   display: block;
   overflow: hidden;
@@ -107,7 +99,7 @@
   border-radius: 50%;
 }
 
-.member .mem_detail_box .sticker_box .img_box:after {
+main .member .mem_detail_box .sticker_box .img_box:after {
   content: "編輯";
   position: absolute;
   display: block;
@@ -121,12 +113,51 @@
   background-color: #aaaa;
 }
 
-.member .login_box {
-  position: absolute;
-  left: 50%;
-  top: 50vh;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+main .member .order_box {
+  border: 1px solid #aaa;
+}
+
+main .member .order_box .order_header,
+main .member .order_box .order_content .item .txt,
+main .member .order_box .order_footer .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .member .order_box .order_content .detail_item:not(:first-child) {
+  margin-top: 0.5em;
+}
+
+main .member .order_box .order_content .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .member .order_box .order_content .item .img_box {
+  width: 4em;
+}
+
+main .member .order_box .order_content .item .txt_box {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main .member .order_box .order_content .more_item {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 * {
@@ -149,5 +180,159 @@ body section .container {
   width: 100%;
   padding: 0 8.333333%;
   margin: auto;
+}
+
+/* ===== 按鈕 ===== */
+/* --- 主按鈕 --- */
+/* 跳轉頁的button */
+/* 首頁--商品瀏覽、占卜師瀏覽 */
+/* 體驗占卜--線上占卜、再看一次、推薦商品 */
+/* 線上占卜--其他問題、預約占卜師、推薦商品 */
+/* 星座--開始測驗 */
+/* 預約占卜--開始預約、確認預約、下一步、確認 */
+/* 登入註冊 */
+/* - 購買 */
+.primary_btn {
+  border-radius: 15px;
+  color: #DFAF47;
+  background-color: transparent;
+  border: 1px solid #DFAF47;
+  display: inline-block;
+  padding: 0.8% 2.5%;
+  white-space: nowrap;
+}
+
+/* --- 二級按鈕 --- */
+/* 線上占卜--商品瀏覽 */
+.secondary_btn {
+  border-radius: 15px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  display: inline-block;
+  padding: 0.8% 2.5%;
+  white-space: nowrap;
+}
+
+/* 頁籤 */
+/* 預約占卜--頁籤(線上或實體) */
+/* 星座--頁籤 */
+/* 占卜師專區--星級頁籤 */
+/* 占卜師專區--分析資料頁籤 */
+.selected_btn {
+  background-color: #CFB886;
+  color: #000;
+  text-align: center;
+  line-height: 50px;
+}
+
+.unselected_btn {
+  color: #CFB886;
+  background-color: transparent;
+  border: 1px #CFB886 solid;
+  text-align: center;
+  line-height: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* --- 三級按鈕 --- */
+/* 發表/檢舉文章按鈕 */
+/* 會員--修改資料、新增休假資料、取消 */
+/* 占卜師專區--接受、拒絕 */
+/* 星座--測驗選項(要加固定寬) */
+.third_btn {
+  border-radius: 15px;
+  color: #CFB886;
+  background-color: transparent;
+  border: 1px solid #CFB886;
+  padding: 0.8% 2.5%;
+}
+
+/* --- 其他按鈕 --- */
+/* icon線條顏色--#fff */
+.other_btn {
+  border-radius: 50px;
+  background-color: #CFB886;
+  display: inline-block;
+  padding: 1.5px 10px;
+  white-space: nowrap;
+}
+
+/* ===== 文字 ===== */
+/*==== 手機板字體大小一定要加這個html ====*/
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/*==== 手機板字體大小一定要加這個html ====*/
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+h2 {
+  font-size: 2.2rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #CFB886;
+}
+
+h3 {
+  font-size: 1.75rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #CFB886;
+}
+
+h4 {
+  font-size: 1.25rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+  color: #CFB886;
+}
+
+p {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: #CFB886;
+}
+
+a:hover {
+  color: #d89482;
+}
+
+span {
+  color: #d89482;
+}
+
+label {
+  color: #CFB886;
+  padding: 2px 5px;
+  line-height: 2;
+}
+
+input {
+  border: 1px #CFB886 solid;
+  border-radius: 5px;
+  color: #CFB886;
+  padding: 2px 5px;
+  outline: none;
+}
+
+select {
+  border: 1px #CFB886 solid;
+  border-radius: 5px;
+  color: #CFB886;
+  padding: 2px 5px;
 }
 /*# sourceMappingURL=style.css.map */
