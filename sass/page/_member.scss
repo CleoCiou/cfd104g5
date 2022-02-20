@@ -50,8 +50,9 @@ main {
     
             // 資訊輸入框及按鈕
             form {
-                > * {
-                    margin: 0.5em 0;
+                // 輸入項目上下間隔
+                > *:not(:first-child) {
+                    margin-top: 0.8em;
                 }
                 input[type=text],
                 input[type=password],
@@ -59,10 +60,6 @@ main {
                 textarea,
                 button {
                     width: 100%;
-                }
-                // 輸入項目上下間隔
-                *:not(:first-child) {
-                    margin-top: 0.5em;
                 }
             }
 
@@ -79,7 +76,7 @@ main {
             // 分頁頁籤不換行
             .status_box {
                 margin-top: 1em;
-                .order_status_list {
+                .status_list {
                     display: flex;
                     // justify-content: space-between;
                     li {
@@ -111,7 +108,7 @@ main {
                         display: block;
                         overflow: hidden;
                         margin: auto;
-                        width: 30%;
+                        width: 10em;
                         border-radius: 50%;
                     }
                     .img_box:after {
@@ -168,6 +165,60 @@ main {
                     }
                 }
             }
+
+            // 占卜師專區
+            // 審核預約-客戶大頭貼
+            .on_reservation {
+                display: flex;
+                align-items: center;
+                .img_box {
+                    width: 8em;
+                    border-radius: 50%;
+                    overflow: hidden;
+                }
+                .txt_box {
+                    flex-grow: 1;
+                    padding: 0 1em;
+                    .item {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+            }
+            // 我的評論
+            .comment_box {
+                .comment_list {
+                    .message_box {
+                        border: 1px solid map-get($primary_color, 'content');
+                        padding: 1em;
+                        .message_header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            span {
+                                display: block;
+                            }
+                            .messager {
+                                display: flex;
+                                align-items: center;
+                                padding: 0.5em 0;
+                                .img_box {
+                                    width: 2em;
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                }
+                                .txt_box {
+                                    padding: 0 0.5em;
+                                }
+                            }
+                        }
+                        .message_content {
+                            padding: .5em 0;
+                        }
+                    }
+                }
+            }
+
         } // container
     } // member
 } // main
