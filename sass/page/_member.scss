@@ -17,9 +17,17 @@ main {
         }
     }
 
+    // 會員專區首頁排版
+    section.main_member {
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
     .member {
         .container {
-            // ===== 會員專區共用設定 ===== //
+            // === 會員專區共用設定 === //
             .display_none {
                 display: none;
             }
@@ -88,7 +96,7 @@ main {
                     }
                 }
             }
-            // ========================= //
+            // === 會員專區共用設定 END === //
     
             // 登入框垂直、水平置中
             .login_box {
@@ -97,6 +105,86 @@ main {
                 top: 50vh;
                 transform: translate(-50%, -50%);
             }
+
+            // === 會員專區首頁 === //
+            // main .member .container
+            > section {
+                // border: 1px solid map-get($primary_color, 'content');
+                padding: 1em;
+            }
+            // 首頁區塊排版
+            .mem_info,
+            .article {
+                width: 100%;
+            }
+            .reservation,
+            .orders,
+            .comment,
+            .message {
+                width: 50%;
+            }
+            // 個人資料
+            .mem_info {
+                .info_box {
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    .info > .item {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    .info .img_box {
+                        width: 10em;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        margin-right: 1em;
+                    }
+                    .info .txt_box {
+                        span {
+                            display: block;
+                            padding: 0.3em;
+                        }
+                    }
+                }
+            }
+            // 預約
+            .reservation {
+                .reservation_box {
+                    width: 100%;
+                    .reservation_list {
+                        background-color: #5558;
+                        padding: 1em;
+                        .reservation_info:not(:first-child) {
+                            margin-top: 1em;
+                        }
+                        .reservation_info {
+                            .info_box {
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: space-around;
+                                .img_box {
+                                    width: 5em;
+                                    margin-right: 1em;
+                                }
+                                .txt_box {
+                                    align-self: center;
+                                    flex-grow: 1;
+                                    span {
+                                        display: block;
+                                    }
+                                }
+                                .canel {
+                                    align-self: flex-end;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // === 會員專區首頁 END === //
     
             // 會員資料大頭貼-編輯
             .mem_detail_box {
@@ -129,9 +217,7 @@ main {
     
             // 訂單
             .order_box {
-                // border: 1px solid #aaa;
                 background-color: #5558;
-                // border-radius: .5em;
                 padding: 1em;
     
                 .order_header,
@@ -172,7 +258,7 @@ main {
                 display: flex;
                 align-items: center;
                 .img_box {
-                    width: 8em;
+                    width: 5em;
                     border-radius: 50%;
                     overflow: hidden;
                 }
@@ -180,8 +266,27 @@ main {
                     flex-grow: 1;
                     padding: 0 1em;
                     .item {
-                        display: flex;
-                        justify-content: space-between;
+                        span {
+                            display: block;
+                            padding: 0.2em;
+                        }
+                    }
+                    @media screen and (min-width: 992px) {
+                        .item {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-between;
+                            span {
+                                width: 50%;
+                            }
+                        }
+                    }
+                }
+                .confirm {
+                    button {
+                        display: block;
+                        margin: 0.3em 0;
+                        padding: .5em 1em;
                     }
                 }
             }

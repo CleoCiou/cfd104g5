@@ -1,0 +1,52 @@
+/* 購物車流程 */
+.shopping_process {
+    display: flex;
+    justify-content: center;
+}
+.shopping_process .item{
+    margin: 5%;
+}
+
+/* 購物車內容 */
+/* 購物車header */
+.cart_header {
+    padding-bottom: 3%;
+}
+.cart_detail {
+    border: 1px solid #CFB886;
+    padding: 3%;
+}
+.cart_header {
+    display: flex;
+    align-items: center;
+}
+.cart_header>div{
+    width: 25%;
+    text-align: right;
+
+}
+/* 購物車body */
+.product_box {
+    display: flex;
+    align-items: center;
+}
+.product_box>div{
+    width: 25%;
+    text-align: right;
+}
+.cart_card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+/* .cart_card .img_box{
+    width: 100%;
+    height: 100%;
+} */
+.cart_card .img_box img{
+    width: 100%;
+    height: 100%;
+}
+.cart_body p{
+    word-wrap: break-word;
+}

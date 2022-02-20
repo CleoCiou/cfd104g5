@@ -27,7 +27,7 @@
         justify-content: center;
         
     }
-
+    /* 父層設在introduce_img_box上*/
     .introduce_img{
         width: 300px;
         height: 450px;
@@ -46,8 +46,7 @@
         
     }
     
-    .introduce_img img{
-              
+    .introduce_img img{          
         
     }
 
@@ -57,10 +56,6 @@
     }
 
     /* 視差滾動 鑰匙孔區塊 */
-    .scroll_keyhole{
-        margin-top: 15%;
-        
-    } 
 
     .scroll_keyhole_box{
         width: 100%;
@@ -97,6 +92,23 @@
     }
 
      /* 線上測驗開始 */
+     .online_test_tarot_box{
+        display: flex;
+        justify-content: center;
+     }
+
+     .online_test_tarot_txt{
+        position: absolute;
+        margin: auto;
+        top: 25%;
+        z-index: 1; 
+     }
+     
+
+        
+
+     
+
 
      
 

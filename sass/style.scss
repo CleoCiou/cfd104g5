@@ -167,8 +167,7 @@ a:hover{
 span {
     color: #d89482;
 }
-
-label {
+label:not(.no_style) {
     color: #CFB886;
     padding: 2px 5px;
     line-height: 2;
