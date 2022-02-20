@@ -22,6 +22,24 @@ main {
             }
         }
     }
+    /* 討論區 by JC */
+    .discuss{
+        .container{
+            padding: $padding;
+            width: 100%;
+            margin: auto;
+        }
+        .content_head{
+            width: 100%;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .content{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
 } 
 
 
