@@ -1,0 +1,185 @@
+.tarotcards .book_item{
+    background-color: aqua;
+    display: flex; 
+}
+.tarotcards .book_item .box_a{
+    height: 500px;
+    background-color:#CFB886;
+}
+.tarotcards .book_item .box_b{
+    height: 500px;
+    background-color: rgb(107, 107, 107);
+    display: flex;
+    align-items: center;
+}
+.tarotcards .book_item .box_b .txt_box{
+    /* background-color: #000000; */
+    border: #CFB886 1px solid;
+    display: inline-block;
+    white-space: nowrap;
+    border-radius: 0 10px 10px 0;
+    padding: 5px;
+}
+.tarotcards .book_item .box_b .img_box{
+    width: 300px;
+    margin: 5% auto;
+}
+.tarotcards .book_item .box_c{
+    height: 500px;
+    background-color: #3A3A3A;
+}
+.tarotcards .book_item .box_c {
+    background-color: #3A3A3A;
+    text-align: center;
+}
+.tarotcards .book_item .box_c::before{
+    content:'';
+  display: inline-block;
+  height: 40%;
+  width: 0;
+  vertical-align: middle
+} 
+.tarotcards .book_item .box_c .txt_box{
+    display: inline-block;
+    vertical-align: middle;
+}
+.row{
+    display: flex;
+}
+.row_down{
+    display: flex;
+}
+.row_down .four{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+}
+.row_down .four .item{
+    width: 50%;
+}
+.row_down .item{
+    width: 40%;
+}
+.taboo_item{
+    display: flex;
+    justify-content: space-around;
+    padding: auto 10%;
+    margin:40px 0;
+}
+li{
+    color: seashell;
+    height: 40px;
+}
+.test_item{
+    display: flex;
+    justify-content: space-evenly;
+}
+.test_item .txt_box{
+    margin-top: 50px;
+}
+.test_item img{
+    border-radius: 50%;
+}
+.secondary_btn{
+    cursor: pointer;
+    margin: 20px 10px;
+}
+.secondary_btn:hover{
+    cursor: pointer;
+    background-color: #CFB886;
+    color: #000;
+}
+.btn_clicked{
+    background-color: #CFB886;
+    color: #000;
+}
+.test_result{
+    text-align: center;
+    margin:40px auto;
+}
+.change_page_item{
+    text-align: center;
+    margin:auto;
+}
+.change_page_item .primary_btn{
+    margin: 20px;
+}
+/* 手機專用 */
+@media screen and (max-width:768px) {
+    .tarotcards .book_item .box_a{
+        width: 10%;
+    }
+    .tarotcards .book_item .box_b{
+        width: 70%;
+    }
+    .tarotcards .book_item .box_b img{
+        width: 250px;
+        border: 2px solid red;
+    }
+    .tarotcards .book_item .box_c{
+        width: 20%;
+    }
+    .row{
+        display: block;
+    }
+    .row_down{
+        display: block;
+    }
+    .row_down .four{
+        display: block;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .row_down .four .item {
+        width: 100%;
+    }
+    .row_down .four .item img{
+        width: 300px;
+        height: 200px;
+    }
+    .row_down .item{
+        width: 100%;
+    }
+    .row_down .item img{
+        width: 300px;
+        height: 200px;
+    }
+    .taboo_item{
+        display: block;
+        padding: auto 10%;
+    }
+    .test_item img{
+        width: 100%;
+    }
+   }
+@media screen and (min-width:768px) {
+    
+   }
+@media screen and (min-width:992px) {
+    .tarotcards .book_item .box_a{
+        width: 10%;
+    }
+    .tarotcards .book_item .box_b{
+        width: 60%;
+    }
+    /* .tarotcards .book_item .box_b .img_box{
+        width: 100%;
+    } */
+    .tarotcards .book_item .box_c{
+        width: 30%;
+    }
+   }
+@media screen and (min-width:1200px) {
+    .tarotcards .book_item .box_a{
+        width: 10%;
+    }
+    .tarotcards .book_item .box_b{
+        width: 60%;
+    }
+    /* .tarotcards .book_item .box_b .img_box{
+        width: 300px;
+    } */
+    .tarotcards .book_item .box_c{
+        width: 30%;
+    }
+   }

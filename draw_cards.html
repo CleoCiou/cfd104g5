@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/draw_cards.css">
+    <title>解星鏡 Mistro</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
+</head>
+<body>
+    
+<!-- 網頁頭 -->
+<!-- 內容由 common.js 新增 by PIN -->
+<header class="main_header"></header>
+
+
+<!-- 網頁內容 -->
+<main>
+
+<!-- 線上占卜 by NJ -->
+    <!-- 抽牌 -->
+    <section class="draw_cards">
+        <div class="container">
+
+            <!-- 容器到item_box，從item開始才是正式內容 -->
+            <div class="cards" id="example">
+                <h2>抽牌</h2>
+                <ul>
+                    <p>
+                        <button id="open-popup" type="button" class="read">
+                            <img src="https://picsum.photos/150/250/?random=10">
+                            看牌</button>
+                    </p>
+                    <li>卡1</li>
+                    <li>卡2</li>
+                    <li>卡3</li>
+                    <li>卡4</li>
+                    <li>卡5</li>
+                    <li>卡6</li>
+                    <li>卡7</li>
+                    <li>卡8</li>
+                    <li>卡9</li>
+                    <li>卡10</li>
+                    <li>卡11</li>
+                    <li>卡12</li>
+                    <li>卡13</li>
+                    <li>卡14</li>
+                    <li>卡15</li>
+                    <li>卡16</li>
+                    <li>卡17</li>
+                    <li>卡18</li>
+                    <li>卡19</li>
+                    <li>卡20</li>
+                    <li>卡21</li>
+                    <li>卡22</li>                    
+                </ul>
+            </div>
+
+            <div class="overlay"></div>
+  
+            <div class="lightbox" id="popup">
+                <h2>解牌</h2>
+                <div class="content">
+                    <div class="item">
+                        <div class="img_box">
+                            <img src="https://picsum.photos/150/250/?random=10" alt="請幫每張圖片加破圖註解">
+                        </div>
+                        <div class="txt_box">
+                            <h3>愚者</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, repudiandae reprehenderit officiis minus vero et similique fugiat temporibus possimus cum.</p>
+                        </div>
+                    </div>
+
+                    <div class="products_item">
+                        <div class="img_box">
+                            <img src="https://picsum.photos/300/250/?random=10" alt="商品圖">
+                        </div>
+                        <div class="txt_box">
+                            <h3>推薦商品</h3>
+                            <p>幸運手環
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis aperiam nulla, perspiciatis excepturi at id ratione consequuntur? Iusto atque eos minima officiis eum deleniti voluptas quibusdam soluta at laboriosam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="button-panel">
+                    <a href=""><button type="button" class="second_btn lightbox-close">重新抽牌</button></a>
+                    <a href=""><button type="button" class="second_btn ">預約占卜師</button></a>
+                    <a href=""><button type="button" class="second_btn ">體驗占卜師</button></a>
+                    <a href=""><button type="button" class="second_btn ">前往商城</button></a>
+                </p>
+            </div>
+
+
+        </div>
+    </section>
+
+    
+
+</main>
+
+
+<!-- 網頁尾 -->
+<!-- 內容由 common.js 新增 by PIN -->
+<footer class="main_footer"></footer>
+
+<script src="js/common.js"></script>
+<script>
+    // jQuery
+    $('#open-popup').on('click', function(){
+        $('.overlay').fadeIn('fast');
+        $('#popup').show('fast');
+    });
+
+    $('.lightbox-close').on('click', function(){
+        $(this).closest('.lightbox').hide('fast');
+        $('.overlay').fadeOut('fast');
+    });
+</script>
+
+</body>
+</html>
