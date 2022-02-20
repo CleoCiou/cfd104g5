@@ -12,14 +12,16 @@
 }
 body {
     background-color: map-get($primary_color, 'bg');
-    section {
-        width: 100%;
-        margin: auto;
-        position: relative;
-        .container {
+    main {
+        > section {
             width: 100%;
-            padding: 0 8.333333%;
             margin: auto;
+            position: relative;
+            > .container {
+                width: 100%;
+                padding: 0 8.333333%;
+                margin: auto;
+            }
         }
     }
 }

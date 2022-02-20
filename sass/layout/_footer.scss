@@ -1,7 +1,7 @@
-.main_footer{
+footer .main_footer{
     background-color: #000;
 }
-.footer_up{
+footer .footer_up{
     padding: 2% 2% 1%;
     display: flex;
     justify-content: space-between;  
@@ -20,7 +20,7 @@ footer .footer_logo img{
     footer p{
         font-size: 0.8rem;
     }
-    .footer_txt_box{
+    footer .footer_txt_box{
         margin: 5% 6%;
         text-align: center;
     }
@@ -44,7 +44,7 @@ footer .footer_nav li{
     justify-content: space-around;  
     
 }
-.footer_nav  li a{
+footer .footer_nav  li a{
     padding:0 10px;
     font-size: 1.5rem;
     letter-spacing: 0.1rem;
@@ -52,7 +52,7 @@ footer .footer_nav li{
     color: #CFB886;
     
 }
-.footer_txt_box{
+footer .footer_txt_box{
     margin: 2% 18% ;
     text-align: center;
 }
@@ -68,7 +68,7 @@ footer .footer_icon img{
     width: 60px;
 }
 
-p {
+footer p {
     font-size: 1rem;
     line-height: 1.5;
     color: #fff;
