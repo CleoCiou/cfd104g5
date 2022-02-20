@@ -21,7 +21,7 @@
             <section class="pagination_nav">
                 <div class="container">
                     <ul>
-                        <li v-for="nav in navs"><label>{{nav}}</label></li>
+                        <li v-for="nav in navs"><a :href="url"><label>{{nav}}</label></a></li>
                     </ul>
                 </div>
             </section>
@@ -48,6 +48,7 @@
             el: '#app',
             data: { //變數放這
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+                url: 'astrolabe_result.html',
             },
         });
     </script>
