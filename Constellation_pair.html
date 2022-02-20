@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/constellation_pair.css">
 </head>
 <body>
@@ -21,40 +20,57 @@
     </div>
     <h2>星座配對指數</h2>
     <main>   
-        <section class="constellationpair constellationpair_pair">
-            <p>男生星座:</p>
-                <select name="">
-                    <option value="">水瓶座</option>
-                    <option value="dog">白羊座</option>
-                    <option value="dog">金牛座</option>
-                    <option value="cat" selected>雙子座</option>
-                    <option value="dog">巨蟹座</option>
-                    <option value="hamster">處女座</option>
-                    <option value="parrot">獅子座</option>
-                    <option value="spider">天秤座</option>
-                    <option value="goldfish">天蠍座</option>
-                    <option value="goldfish">射手座</option>
-                    <option value="goldfish">摩羯座</option>
-                    <option value="goldfish">雙魚座</option>
-                </select>
-            <p>女生星座:</p>
-                <select name="girl" class="girl">
-                    <option value="">水瓶座</option>
-                    <option value="dog">白羊座</option>
-                    <option value="dog">金牛座</option>
-                    <option value="cat" selected>雙子座</option>
-                    <option value="dog">巨蟹座</option>
-                    <option value="hamster">處女座</option>
-                    <option value="parrot">獅子座</option>
-                    <option value="spider">天秤座</option>
-                    <option value="goldfish">天蠍座</option>
-                    <option value="goldfish">射手座</option>
-                    <option value="goldfish">摩羯座</option>
-                    <option value="goldfish">雙魚座</option>
-                </select>
-            <div class="pair_btn">
-            <button>星座配對</button>
+        <section class="constellation constellation_pair">
+            <!-- 控制padding的容器 -->
+            <div class="container">
+                <!-- 包住男生星座選單和女生星座選單的容器 -->
+                <div class="pair">
+                    <!-- 男生星座的選單 -->
+                    <div class="constellation_male">
+                        <label>男生星座:</label>
+                        <select name="">
+                        
+                            <option value="">水瓶座</option>
+                            <option value="dog">白羊座</option>
+                            <option value="dog">金牛座</option>
+                            <option value="cat" selected>雙子座</option>
+                            <option value="dog">巨蟹座</option>
+                            <option value="hamster">處女座</option>
+                            <option value="parrot">獅子座</option>
+                            <option value="spider">天秤座</option>
+                            <option value="goldfish">天蠍座</option>
+                            <option value="goldfish">射手座</option>
+                            <option value="goldfish">摩羯座</option>
+                            <option value="goldfish">雙魚座</option>
+                        </select>
+                    </div>
+                    <!-- 女生星座的選單 -->
+                    <div class="constellation_female">
+                        <label>女生星座:</label>
+                        <select name="girl" class="girl">
+                        
+                            <option value="">水瓶座</option>
+                            <option value="dog">白羊座</option>
+                            <option value="dog">金牛座</option>
+                            <option value="cat" selected>雙子座</option>
+                            <option value="dog">巨蟹座</option>
+                            <option value="hamster">處女座</option>
+                            <option value="parrot">獅子座</option>
+                            <option value="spider">天秤座</option>
+                            <option value="goldfish">天蠍座</option>
+                            <option value="goldfish">射手座</option>
+                            <option value="goldfish">摩羯座</option>
+                            <option value="goldfish">雙魚座</option>
+                        </select>
+                    </div>
+                </div>
+               
+                <!-- 星座配對的按鈕 -->
+                <div class="pair_btn">
+                    <input type="submit" value="星座配對"></input>
+                </div>
             </div>
+            
         </section>
         <section class="constellationpair result">
             <p>xxx座跟XXX座配對</p>
@@ -65,5 +81,6 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae omnis delectus iusto soluta sunt tenetur explicabo neque repellendus vel error. Totam vel fugit quidem debitis accusantium? Doloribus officiis expedita dolore!</p>
         </section>
     </main>
+    <script src="js/common.js"></script>
 </body>
 </html>

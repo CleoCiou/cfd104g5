@@ -539,6 +539,7 @@ label {
   color: #CFB886;
   padding: 2px 5px;
   line-height: 2;
+  cursor: pointer;
 }
 
 input {
