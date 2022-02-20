@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/real_constellation_2page.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/real_constellation.css">
     <script src="../js/vue.js"></script>
 </head>
 <body>
-  <main>
+   <main>
     <div id="app">
         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
         <section class="pagination_nav">
@@ -22,30 +23,21 @@
     </div>
     <h2>真實星座</h2>
         <section class="real_constellation real">
-           <!-- 控制padding的容器 -->
-            <div class="container">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem, voluptas veritatis asperiores nihil saepe quae similique consectetur incidunt doloremque natus repellat omnis nobis deserunt molestiae dolore magni atque molestias quos?</p>
-              <!-- 包住圖文的容器   -->
-                <div class="answer">
-                    <img src="https://fakeimg.pl/250x100/">
-                    <input type="button" value="選項答案" onclick="location.href='real_constellation_3page.html'">
-                    <input type="button" value="選項答按" onclick="location.href='real_constellation_3page.html'">
-                </div>
-            </div>
-            
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem, voluptas veritatis asperiores nihil saepe quae similique consectetur incidunt doloremque natus repellat omnis nobis deserunt molestiae dolore magni atque molestias quos?</p>
+            <input type="button" value="開始測試" onclick="location.href='real_constellation_2page.html'">
         </section>
-    </main> 
-    <script src="js/common.js"></script>
+    </main>
+    <script src="css/common.css"></script>
     <script>
         new Vue({
             el: '#app',
             data: { //變數放這
                 urls: {
-                    '今日運勢': 'today_fortune.html',
-                    '星座配對': 'Constellation_pair.html',
+                    '今日運勢': 'con_today_fortune.html',
+                    '星座配對': 'con_pair.html',
                     '真實星座': 'back.html',
                     '星盤推算': 'astrolabe.html',
-                    '星座故事': 'constellation_story.html',
+                    '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
                 cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
