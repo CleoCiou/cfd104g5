@@ -30,6 +30,9 @@
         box-sizing: border-box;
         
     }
+    main .constellation .container .pair_btn{
+        margin-left: 5%;
+    }
 }
 
 @media screen and (min-width:768px) { 

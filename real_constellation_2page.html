@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/real_constellation_2page.css">
 </head>
 <body>
@@ -22,11 +21,19 @@
     <h2>真實星座</h2>
     <main>
         <section class="real_constellation real">
-           
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem, voluptas veritatis asperiores nihil saepe quae similique consectetur incidunt doloremque natus repellat omnis nobis deserunt molestiae dolore magni atque molestias quos?</p>
-            <img src="https://fakeimg.pl/250x100/">
-            <button>選項答案</button><button>選項答案</button>
+           <!-- 控制padding的容器 -->
+            <div class="container">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem, voluptas veritatis asperiores nihil saepe quae similique consectetur incidunt doloremque natus repellat omnis nobis deserunt molestiae dolore magni atque molestias quos?</p>
+              <!-- 包住圖文的容器   -->
+                <div class="answer">
+                    <img src="https://fakeimg.pl/250x100/">
+                    <input type="button" value="選項答案" onclick="location.href='real_constellation_3page.html'">
+                    <input type="button" value="選項答案" onclick="location.href='real_constellation_3page.html'">
+                </div>
+            </div>
+            
         </section>
-    </main>
+    </main> 
+    <script src="js/common.js"></script>
 </body>
 </html>
