@@ -55,27 +55,18 @@ main {
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            label{
-                width: 20%;
-                visibility: hidden;
-                @include mobile {
-                    display: none;
-                }
-            }
+            justify-content: flex-end;
             .content_header{
-                position: relative;
-                width: 80%;
                 display: flex;
                 align-items: center;
-                justify-content: flex-end;
                 margin-bottom: 1.2em;
                 @include mobile {
                     width: 100%;
                 }
                 .search_bar{
-                    width: 100%;
-                    text-align: left;
+                    display: flex;
+                    align-items: flex-end;
+                    margin-right: 1.5em;
                     @include mobile {
                         text-align: left;
                         width: 100%;
@@ -89,6 +80,7 @@ main {
                     .third_btn{
                         // width: 10%;
                         padding: 0.2em 0.5em;
+                        margin-left: 1em;
                         @include mobile {
                             padding: 0.2em 0.5em;
                         }
@@ -109,7 +101,7 @@ main {
         .content{
             display: flex;
             align-items: flex-start;
-            
+            /* 左欄文章分類 */
             .content_cate{
                 position: sticky;
                 top: 0;
@@ -128,11 +120,12 @@ main {
                     }
                 }
             }
+            /* 文章卡片 */
             .content_article{
-                background-color: #CFB886;
+                border: 1px solid #CFB886;
+                background-color: transparent;
                 border-radius: 10px;
                 width: 80%;
-                // background-color: #888;
                 padding: 3em;
                     @include mobile {
                         width: 100%;
@@ -152,7 +145,7 @@ main {
                     .content_main{
                         .article_cards{
                             border: 1px solid #CFB886;
-                            background-color: #fff;
+                            background-color: transparent;
                             backdrop-filter: opacity(80%);
                             padding: 2em;
                             border-radius: 5px;
@@ -167,7 +160,7 @@ main {
                                 margin-right: 0.5em;
                             }
                             p{
-                                color:#CFB886;
+                                color:#fff;
                                 display: inline-block;
                             }
                         }
@@ -176,17 +169,20 @@ main {
                             align-items: center;
                             .line_middle_txt{
                                 h3{
-                                    color: #000;
+                                    color: #CFB886;
                                     font-weight: 500;
                                     margin: 0.3em 0;
                                 }
                                 p{
-                                    color: #000;
+                                    color: #aaa;
                                 }
                             }
                             .line_middle_pic{
                                 img{
                                     border-radius: 10px;
+                                    @include mobile {
+                                        display: none;
+                                    }
                                 }
                             }
                         }
