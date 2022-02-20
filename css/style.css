@@ -397,6 +397,12 @@ main {
   /* 討論區 by JC */
 }
 
+@media (max-width: 767px) {
+  main .pagination_nav {
+    display: none;
+  }
+}
+
 main .pagination_nav .container ul {
   padding: 2% 8.33333%;
   display: -webkit-box;
@@ -412,12 +418,6 @@ main .pagination_nav .container ul {
       flex-wrap: wrap;
 }
 
-@media (max-width: 767px) {
-  main .pagination_nav .container ul {
-    display: none;
-  }
-}
-
 main .pagination_nav .container label {
   margin: 12px;
   padding: 6px 15px;
@@ -428,6 +428,16 @@ main .pagination_nav .container label {
   cursor: pointer;
 }
 
+main .discuss img {
+  vertical-align: top;
+}
+
+@media (min-width: 768px) {
+  main .discuss .owl-carousel {
+    display: none;
+  }
+}
+
 main .discuss .container {
   padding: 2% 8.33333%;
   width: 100%;
@@ -436,21 +446,221 @@ main .discuss .container {
 
 main .discuss .content_head {
   width: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-main .discuss .content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .discuss .content_head label {
+  width: 20%;
+  visibility: hidden;
+}
+
+@media (max-width: 767px) {
+  main .discuss .content_head label {
+    display: none;
+  }
+}
+
+main .discuss .content_head .content_header {
+  position: relative;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-bottom: 1.2em;
+}
+
+@media (max-width: 767px) {
+  main .discuss .content_head .content_header {
+    width: 100%;
+  }
+}
+
+main .discuss .content_head .content_header .search_bar {
+  width: 100%;
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  main .discuss .content_head .content_header .search_bar {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+main .discuss .content_head .content_header .search_bar input:nth-child(1) {
+  width: 85%;
+}
+
+@media (max-width: 767px) {
+  main .discuss .content_head .content_header .search_bar input:nth-child(1) {
+    width: 75%;
+  }
+}
+
+main .discuss .content_head .content_header .search_bar .third_btn {
+  padding: 0.2em 0.5em;
+}
+
+@media (max-width: 767px) {
+  main .discuss .content_head .content_header .search_bar .third_btn {
+    padding: 0.2em 0.5em;
+  }
+}
+
+main .discuss .content_head .content_header .icon_btn {
+  width: 5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .discuss .content_head .content_header .icon_btn img {
+  margin: 0 0.1em;
+}
+
+main .discuss .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+main .discuss .content .content_cate {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 20%;
+}
+
+@media (max-width: 767px) {
+  main .discuss .content .content_cate {
+    width: 0;
+  }
+}
+
+main .discuss .content .content_cate li {
+  margin: 0.3em 0;
+}
+
+@media (max-width: 767px) {
+  main .discuss .content .content_cate ul {
+    display: none;
+  }
+}
+
+main .discuss .content .content_article {
+  background-color: #CFB886;
+  border-radius: 10px;
+  width: 80%;
+  padding: 3em;
+}
+
+@media (max-width: 767px) {
+  main .discuss .content .content_article {
+    width: 100%;
+  }
+}
+
+main .discuss .content .content_article .content_wrap {
+  width: 100%;
+}
+
+main .discuss .content .content_article .content_wrap .content_label {
+  margin-bottom: 1em;
+}
+
+main .discuss .content .content_article .content_wrap .content_label label {
+  border: 1px solid #CFB886;
+  padding: 0.5em 1.6em;
+  margin: 0.2em 0.2em 1em 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .article_cards {
+  border: 1px solid #CFB886;
+  background-color: #fff;
+  -webkit-backdrop-filter: opacity(80%);
+          backdrop-filter: opacity(80%);
+  padding: 2em;
+  border-radius: 5px;
+  margin: 1em 0;
+  cursor: pointer;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .line_top span {
+  color: #000;
+  background-color: #d89482;
+  padding: 0.2em 0.5em;
+  margin-right: 0.5em;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .line_top p {
+  color: #CFB886;
+  display: inline-block;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .line_middle {
+  margin-bottom: 1em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .line_middle .line_middle_txt h3 {
+  color: #000;
+  font-weight: 500;
+  margin: 0.3em 0;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .line_middle .line_middle_txt p {
+  color: #000;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .line_middle .line_middle_pic img {
+  border-radius: 10px;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .line_bottom img {
+  margin-right: 1em;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .content_pages {
+  text-align: right;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .content_pages button {
+  margin: 0.2em 0 0.2em 0.2em;
+}
+
+main .discuss .content .content_article .line_middle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
