@@ -82,7 +82,9 @@
         box-sizing: border-box;
         padding: 2% 8.333333%;
     }
-
+    .constellationpair .constellationpair_pai .pair_btn{
+       border: 100px solid red;
+    }
 
 
 
