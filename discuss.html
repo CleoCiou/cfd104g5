@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>解星鏡 Mistro | 星座</title>
-    <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
 </head>
 <body>
     <header></header>
@@ -25,14 +26,34 @@
                 <div class="container">
                     <!-- 最上面搜尋bar,撰寫,我的 -->
                     <div class="content_head">
+                        <label>占空間</label>
                         <div class="content_header">
-                            <input type="search" id="search">
-                            <input type="submit" value="搜尋" class="secondary_btn">
-                            <img :src="iconURL" @click="action">
-                            <img :src="iconURL" @click="action">
+                            <div class="search_bar">
+                                <input type="search" id="search">
+                                <input type="submit" value="搜尋" class="third_btn">
+                            </div>
+                            <div class="icon_btn">
+                                <img :src="iconURL" @click="action">
+                                <img :src="iconURL" @click="action">
+                            </div>
                         </div>
                     </div>
-
+                    <!-- 貓頭鷹分類 -->
+                    <div class="owl-carousel owl-theme display">
+                        <div class="item"><label>全部</label></div>
+                        <div class="item"><label>摩羯座</label></div>
+                        <div class="item"><label>水瓶座</label></div>
+                        <div class="item"><label>雙魚座</label></div>
+                        <div class="item"><label>牡羊座</label></div>
+                        <div class="item"><label>金牛座</label></div>
+                        <div class="item"><label>雙子座</label></div>
+                        <div class="item"><label>巨蟹座</label></div>
+                        <div class="item"><label>獅子座</label></div>
+                        <div class="item"><label>處女座</label></div>
+                        <div class="item"><label>天秤座</label></div>
+                        <div class="item"><label>天蠍座</label></div>
+                        <div class="item"><label>射手座</label></div>
+                    </div>
                     <!-- 文章 搜尋bar下排包住左邊和右邊的容器 -->
                     <div class="content">
                         
@@ -55,18 +76,19 @@
                                 <!-- 放文章的地方 -->
                                 <div class="content_main">
                                     <div class="row">
-                                        <div class="article_box">
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
                                             <div class="line_top">
-                                                <label>巨蟹座</label>
-                                                <label>abc0710</label>
+                                                <span>巨蟹座</span>
+                                                <p>sleepzzz123</p>
                                             </div>
                                             <div class="line_middle">
                                                 <div class="line_middle_txt">
-                                                    <h4>title</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus.</p>
+                                                    <h3>好想睡覺嗚嗚嗚</h3>
+                                                    <p>睡眠的各種目的和機制是正在進行的大量研究的主題。每天睡眠不足6小時...........</p>
                                                 </div>
                                                 <div class="line_middle_pic">
-                                                    <img src="https://fakeimg.pl/90x90/ccc">
+                                                    <img :src="imgURL">
                                                 </div>
                                             </div>
                                             <div class="line_bottom">
@@ -74,20 +96,107 @@
                                                 <img :src="iconURL" >
                                             </div>
                                         </div>
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
+                                            <div class="line_top">
+                                                <span>天秤座</span>
+                                                <p>1004tired</p>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h3>睡覺是最好的復健</h3>
+                                                    <p>你每天晚上都有睡足7~9個鐘頭嗎？根據美國國家睡眠基金會(National .....</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img :src="imgURL">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconURL" >
+                                                <img :src="iconURL" >
+                                            </div>
+                                        </div>
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
+                                            <div class="line_top">
+                                                <span>牡羊座</span>
+                                                <p>zzz666zz</p>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h3>title</h3>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus...........</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img :src="imgURL">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconURL" >
+                                                <img :src="iconURL" >
+                                            </div>
+                                        </div>
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
+                                            <div class="line_top">
+                                                <span>射手座</span>
+                                                <p>haha_5678</p>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h3>title</h3>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus...........</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img :src="imgURL">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconURL" >
+                                                <img :src="iconURL" >
+                                            </div>
+                                        </div>
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
+                                            <div class="line_top">
+                                                <span>水瓶座</span>
+                                                <p>h_e_l_l_o_</p>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h3>title</h3>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus...........</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img :src="imgURL">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconURL" >
+                                                <img :src="iconURL" >
+                                            </div>
+                                        </div>
+                                        <div class="content_pages">
+                                            <button class="other_btn">1</button>
+                                            <button class="other_btn">2</button>
+                                            <button class="other_btn">3</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
             </section>
         </div>
-       
         
 
     </main>
     <footer></footer>
+
+    <script src="../js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
     <script src="js/common.js"></script>
     <script>
         new Vue({
@@ -104,12 +213,30 @@
                 },
                 cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
                 iconURL: 'https://fakeimg.pl/32x32/ccc',
+                imgURL: 'https://picsum.photos/90/90/?random=10',
             },
             methods: {
               action(){
                   alert(this.$data.message);
               }  
             },
+        });
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                stagePadding: 10,
+                loop:true,
+                margin:5,
+                nav:false,
+                responsive:{
+                    0:{
+                        items:5
+                    },
+                    767:{
+                        items:8
+                    },
+
+                }
+            });
         });
     </script>
     
