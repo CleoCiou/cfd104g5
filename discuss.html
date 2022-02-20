@@ -11,19 +11,79 @@
     <header></header>
     <main>
         <div id="app">
+            <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
             <section class="pagination_nav">
                 <div class="container">
                     <ul>
-                        <li><a href="#"><label>今日運勢</label></a></li>
-                        <li><a href="#"><label>星座配對</label></a></li>
-                        <li><a href="#"><label>真實星座</label></a></li>
-                        <li><a href="astrolabe.html"><label>星盤推算</label></a></li>
-                        <li><a href="#"><label>星座故事</label></a></li>
-                        <li><a href="discuss.html"><label>星座討論區</label></a></li>
+                        <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
                     </ul>
                 </div>
             </section>
+             <!-- 討論區 by JC -->
+            <section class="discuss">
+                <!-- 控制整個討論區padding的大大容器 -->
+                <div class="container">
+                    <!-- 最上面搜尋bar,撰寫,我的 -->
+                    <div class="content_head">
+                        <div class="content_header">
+                            <input type="search" id="search">
+                            <input type="submit" value="搜尋" class="secondary_btn">
+                            <img :src="iconURL" @click="action">
+                            <img :src="iconURL" @click="action">
+                        </div>
+                    </div>
+
+                    <!-- 文章 搜尋bar下排包住左邊和右邊的容器 -->
+                    <div class="content">
+                        
+                        <!-- 左邊分類欄 -->
+                        <div class="content_cate">
+                            <ul>
+                                <li v-for="cate in cates"><label>{{cate}}</label></li>
+                            </ul>
+                        </div>
+
+                        <!-- 右邊內容欄 -->
+                        <div class="content_article">
+                            <div class="content_wrap">
+
+                                <!-- 熱門 & 最新的兩個標籤 -->
+                                <div class="content_label">
+                                    <label>熱門</label>
+                                    <label>最新</label>
+                                </div>
+                                <!-- 放文章的地方 -->
+                                <div class="content_main">
+                                    <div class="row">
+                                        <div class="article_box">
+                                            <div class="line_top">
+                                                <label>巨蟹座</label>
+                                                <label>abc0710</label>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h4>title</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus.</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img src="https://fakeimg.pl/90x90/ccc">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconURL" >
+                                                <img :src="iconURL" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
         </div>
+       
         
 
     </main>
@@ -33,8 +93,23 @@
         new Vue({
             el: '#app',
             data: { //變數放這
-                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
-            }
+                message: 'hello',
+                urls: {
+                    '今日運勢': 'today_fortune.html',
+                    '星座配對': 'constellation_pair.html',
+                    '真實星座': 'real_constellation.html',
+                    '星盤推算': 'astrolabe.html',
+                    '星座故事': 'constellation_story.html',
+                    '星座討論區': 'discuss.html',
+                },
+                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
+                iconURL: 'https://fakeimg.pl/32x32/ccc',
+            },
+            methods: {
+              action(){
+                  alert(this.$data.message);
+              }  
+            },
         });
     </script>
     

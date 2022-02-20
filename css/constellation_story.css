@@ -1,0 +1,107 @@
+@media screen and (max-width:767px) {
+            /* 0~767px */
+    /* 手機板不顯示頁籤 */
+    main .pagination_nav{
+        display: none;
+    }
+    h2{
+        text-align: center;
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+    }
+    h3{
+        text-align: center;
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+    }
+    ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    } 
+    .constellation_img{
+        text-align: center;
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        display: block;
+        
+    }
+    .story{
+        text-align: center;
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+    }
+    p{
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+    }
+}
+
+
+@media screen and (min-width:768px) {
+    main .pagination_nav .container ul{
+        padding: 2% 8.333333%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }  
+    h2{
+        /* text-align: center; */
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+    }
+    h3{
+       text-align: center;
+       padding: 2% 8.333333%;
+       box-sizing: border-box;
+    }
+    ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    } 
+    .constellation_img{
+        text-align: center;
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        
+    }
+    .story{
+        /* text-align: center; */
+        padding: 2% 8.333333%;
+        display: flex;
+        box-sizing: border-box;
+    }
+    p{
+        /* padding: 2% 8.333333%; */
+        box-sizing: border-box;
+        padding: 2% 8.333333%;
+    }
+    .constellationpair .constellationpair_pai .pair_btn{
+       border: 100px solid red;
+    }
+
+
+
+}
+
+
+
+

@@ -14,16 +14,17 @@
             <div class="fake"></div>
         </header>
         <div id="app">
-        <!-- 星座頁籤 by JC-->
+            <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
             <section class="pagination_nav">
                 <div class="container">
                     <ul>
-                        <li v-for="nav in navs"><label>{{nav}}</label></li>
+                        <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
                     </ul>
                 </div>
             </section>
-    <!-- 星座命盤結果 by JC -->
-        <!-- 星座命盤結果的區塊開始 個資和命盤圖 -->
+
+            <!-- 星座命盤結果 by JC -->
+                <!-- 星座命盤結果的區塊開始 個資和命盤圖 -->
             <section class="astrolabe_chart info"> 
                 <div class="container">
                     <!-- 個人資訊 -->
@@ -39,7 +40,7 @@
                 </div>
             </section>
         
-        <!-- 星盤解讀 by JC -->
+            <!-- 星盤解讀 by JC -->
             <section class="astrolabe_chart parse"> 
                 <div class="container">
                     <!-- 宮位分類欄 有11個該死的宮位 -->
@@ -130,6 +131,14 @@
         new Vue({
             el: '#app',
             data: { //變數放這
+                urls: {
+                    '今日運勢': 'today_fortune.html',
+                    '星座配對': 'Constellation_pair.html',
+                    '真實星座': 'real_constellation.html',
+                    '星盤推算': 'astrolabe.html',
+                    '星座故事': 'constellation_story.html',
+                    '星座討論區': 'discuss.html',
+                },
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
                 charts: ['上升','太陽','月亮','水星','金星','火星','木星','土星','天王','海王','冥王']
             },

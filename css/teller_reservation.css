@@ -17,7 +17,6 @@
 }
 .teller_reservation .teller_button button{
     margin: 0 5%;
-    cursor: pointer;
 }
 /* 表單 */
 .teller_reservation .teller_form p{
@@ -53,5 +52,18 @@
     }
     .teller_reservation .teller_button{
         padding-bottom: 0;
+    }
+    .teller_form{
+        text-align: center;
+    }
+    .teller_form label{
+        display: flex;
+        padding: 1% 0;
+    }
+    .teller_form p{
+        margin-right: 30px;
+    }
+    .teller_btn {
+        margin-top: 3px;
     }
 }

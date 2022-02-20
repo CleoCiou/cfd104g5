@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>解星鏡 Mistro | 訂單管理</title>
+    <title>解星鏡 Mistro | 占卜師專區</title>
     <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
 </head>
 <body>
@@ -17,48 +17,59 @@
 <!-- 網頁內容 by PIN -->
 <main>
     
-    <h2>占卜師專區</h2>
-
-<!-- 占卜師專區子選單 -->
-    <section class="astrologist_page">
+    
+    <!-- 占卜師專區子選單 -->
+    <section class="member query_astrologist">
         <div class="container">
+            
+            <h2>占卜師專區</h2>
 
-            <!-- 占卜師專區子選單 -->
-            <ul>
-                <li>
-                    <label>關於我</label>
-                </li>
-                <li>
-                    <label>審核預約</label>
-                </li>
-                <li>
-                    <label>排班表</label>
-                </li>
-                <li>
-                    <label>我的評論</label>
-                </li>
-                <li>
-                    <label>查看預約數據</label>
-                </li>
-            </ul>
+            <!-- 占卜師專區分頁頁籤: 我的介紹/審核預約/排班表/我的評論/查看預約數據 -->
+            <div class="status_box astrologist_status">
+                <ul class="status_list astrologist_status_list">
+                    <li>
+                        <label class="selected_btn">我的介紹</label>
+                    </li>
+                    <li>
+                        <label class="unselected_btn">審核預約</label>
+                    </li>
+                    <li>
+                        <label class="unselected_btn">排班表</label>
+                    </li>
+                    <li>
+                        <label class="unselected_btn">我的評論</label>
+                    </li>
+                    <!-- <li>
+                        <label class="unselected_btn">查看數據</label>
+                    </li> -->
+                </ul>
+            </div>
 
         </div>
     </section>
 
 <!-- 占卜師資訊 -->
-    <section class="astrologist_info">
+    <section class="member astrologist_info">
         <div class="container">
 
-        <!-- 介紹 -->
-            <div class="introduct">
+            <h3>我的介紹</h3>
 
+            <!-- 介紹 -->
+            <div class="introduct">
+                <div class="introduct">
+                    <p>
+                        行情開發才是，美麗或許，後果那些，公司或許委員會相信水溝進步失望威脅站長僅供國家類型，一些一週幾天。
+                    </p>
+                    <button class="third_btn">修改</button>
+                    <!-- <textarea class="introduct_txt"></textarea> -->
+                </div>
             </div>
 
         </div>
     </section>
 
 <!-- 預約審核 -->
-    <section class="allow_reservation">
+    <section class="member allow_reservation">
         <div class="container">
 
             <h3>收到的預約邀請</h3>
@@ -69,15 +80,17 @@
                 </div>
             <!-- 預約日期、時段及狀態 -->
                 <div class="txt_box">
-                    <span>日期：2022.03.15</span>
-                    <span>時段：上午</span>
-                    <span>客戶名稱：林濤華</span>
-                    <span>狀態：尚未審核</span>
+                    <div class="item">
+                        <span>日期：2022.03.15</span>
+                        <span>時段：上午</span>
+                        <span>客戶名稱：林濤華</span>
+                        <span>狀態：尚未審核</span>
+                    </div>
                 </div>
             <!-- 取消 -->
                 <div class="confirm">
-                    <button>接受</button>
-                    <button>拒絕</button>
+                    <button class="primary_btn">接受</button>
+                    <button class="third_btn">拒絕</button>
                 </div>
             </div>
 
@@ -85,30 +98,146 @@
     </section>
 
 <!-- 排班表 -->
-    <section class="schedule_box">
+    <section class="member schedule_box">
         <div class="container">
 
             <h3>我的行事曆</h3>
-            <script src='./node_modules/@fullcalendar/common/main.js'></script>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth'
-                });
-                calendar.render();
-            });
-            </script>
-
-            <div id='calendar'></div>
+            <div id='external-events'>
+                <div id='calendar-container'>
+                    <div id='calendar'></div>
+                </div>
+                <p>試試將休假直接拖曳至行事曆中...</p>
+                <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                    <div class='fc-event-main'>全天</div>
+                </div>
+                <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                    <div class='fc-event-main'>上午</div>
+                </div>
+                <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                    <div class='fc-event-main'>下午</div>
+                </div>
+                <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                    <div class='fc-event-main'>晚上</div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
 <!-- 評論 -->
-    <section class="comment">
+    <section class="member comment">
         <div class="container">
 
             <h3>我的評論</h3>
+            <!-- 評論頁籤: 1-5星級 -->
+            <div class="status_box star_status">
+                <ul class="status_list star_status_list">
+                    <li>
+                        <label class="selected_btn">全部</label>
+                    </li>
+                    <li>
+                        <label class="unselected_btn">5顆星</label>
+                    </li>
+                    <li>
+                        <label class="unselected_btn">4顆星</label>
+                    </li>
+                    <li>
+                        <label class="unselected_btn">3顆星</label>
+                    </li>
+                    <li>
+                        <label class="unselected_btn">2顆星</label>
+                    </li>
+                    <li>
+                        <label class="unselected_btn">1顆星</label>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 客戶評論 -->
+            <div class="comment_box">
+                <ul class="comment_list">
+                    <!-- 評論 -->
+                    <li class="message_box">
+                        <!-- 評論資訊 -->
+                        <div class="message_header">
+                            <div class="messager">
+                                <div class="img_box">
+                                    <img src="images/logo_ico_square.ico">
+                                </div>
+                                <div class="txt_box">
+                                    <span>test23</span>
+                                </div>
+                            </div>
+                            <!-- 星級 -->
+                            <span>★★★★★</span>
+                        </div>
+
+                        <!-- 評論內容 -->
+                        <div class="message_content">
+                            <p>新聞為你全文男孩停止外面吃了今後，跟着新浪強大寶寶再也西安，始終專區，挑戰幾個，主角新聞上帝，半。</p>
+                        </div>
+
+                        <!-- 評論時間 -->
+                        <div class="message_footer">
+                            <span>2021-09-08 18:03</span>
+                        </div>
+                    </li>
+                    
+                    <!-- 評論 -->
+                    <li class="message_box">
+                        <!-- 評論資訊 -->
+                        <div class="message_header">
+                            <div class="messager">
+                                <div class="img_box">
+                                    <img src="images/logo_ico_square.ico">
+                                </div>
+                                <div class="txt_box">
+                                    <span>test23</span>
+                                </div>
+                            </div>
+                            <!-- 星級 -->
+                            <span>★★★★★</span>
+                        </div>
+
+                        <!-- 評論內容 -->
+                        <div class="message_content">
+                            <p>新聞為你全文男孩停止外面吃了今後，跟着新浪強大寶寶再也西安，始終專區，挑戰幾個，主角新聞上帝，半。</p>
+                        </div>
+
+                        <!-- 評論時間 -->
+                        <div class="message_footer">
+                            <span>2021-09-08 18:03</span>
+                        </div>
+                    </li>
+                    
+                    <!-- 評論 -->
+                    <li class="message_box">
+                        <!-- 評論資訊 -->
+                        <div class="message_header">
+                            <div class="messager">
+                                <div class="img_box">
+                                    <img src="images/logo_ico_square.ico">
+                                </div>
+                                <div class="txt_box">
+                                    <span>test23</span>
+                                </div>
+                            </div>
+                            <!-- 星級 -->
+                            <span>★★★★★</span>
+                        </div>
+
+                        <!-- 評論內容 -->
+                        <div class="message_content">
+                            <p>新聞為你全文男孩停止外面吃了今後，跟着新浪強大寶寶再也西安，始終專區，挑戰幾個，主角新聞上帝，半。</p>
+                        </div>
+
+                        <!-- 評論時間 -->
+                        <div class="message_footer">
+                            <span>2021-09-08 18:03</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
         </div>
     </section>
@@ -118,15 +247,14 @@
         <div class="container">
 
             <ul class="link_item">
-                <li class="reservation">
-                    <a href="#">預約管理</a>
+                <li class="item mem_details">
+                    <a href="mem_detail.html">會員資料</a>
                 </li>
-                <li class="mem_orders">
-                    <a href="#">訂單管理</a>
+                <li class="item reservation">
+                    <a href="mem_reservation.html">預約管理</a>
                 </li>
-            <!-- 僅身分為占卜師會顯示 -->
-                <li class="astrologist">
-                    <a href="#">占卜師專區</a>
+                <li class="item reservation">
+                    <a href="mem_orders.html">訂單管理</a>
                 </li>
             </ul>
 
@@ -142,5 +270,52 @@
 
 <script src="js/common.js"></script>
 <script src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.10.2/main.min.js,npm/fullcalendar@5.10.2/locales-all.min.js"></script>
+
+<link rel="stylesheet" href="./node_modules/fullcalendar/main.css">
+<script src='./node_modules/fullcalendar/main.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var Calendar = FullCalendar.Calendar;
+        var Draggable = FullCalendar.Draggable;
+
+        var containerEl = document.getElementById('external-events');
+        var calendarEl = document.getElementById('calendar');
+        var checkbox = document.getElementById('drop-remove');
+
+        // initialize the external events
+        // -----------------------------------------------------------------
+
+        new Draggable(containerEl, {
+            itemSelector: '.fc-event',
+            eventData: function(eventEl) {
+            return {
+                title: eventEl.innerText
+            };
+            }
+        });
+
+        // initialize the calendar
+        // -----------------------------------------------------------------
+
+        var calendar = new Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            editable: true,
+            droppable: true, // this allows things to be dropped onto the calendar
+            drop: function(info) {
+                // is the "remove after drop" checkbox checked?
+                // if (checkbox.checked) {
+                    // if so, remove the element from the "Draggable Events" list
+                    // info.draggedEl.parentNode.removeChild(info.draggedEl);
+                // }
+            }
+        });
+
+        calendar.render();
+    });
+</script>
 </body>
 </html>

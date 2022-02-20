@@ -1,0 +1,94 @@
+/* .constellationpair button{
+    display: block;
+    border: 1px solid red;
+} */
+@media screen and (max-width:767px) {
+    /* 最大寬度768以上不顯示 所以這裡是手機 */
+            /* 0~767px */
+    /* 手機板不顯示頁籤 */
+    main .pagination_nav{
+        display: none;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 8.333333%;
+        box-sizing: border-box;
+    }
+
+    ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    } 
+    .result p{
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        
+    }
+    main .constellation .container .pair_btn{
+        margin-left: 5%;
+    }
+}
+
+@media screen and (min-width:768px) { 
+    main .pagination_nav .container ul{
+        padding: 2% 8.333333%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    } 
+    main .constellation .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 8.333333%;
+        box-sizing: border-box;
+        
+    }
+    main .constellation .container .pair{
+        display: flex;
+    }
+
+    ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    } 
+    .result p{
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        
+    }
+    main .constellation .container .pair_btn{
+        display: flex;
+        align-items: center;
+        margin: 2%;
+    }
+
+
+
+
+
+
+}
