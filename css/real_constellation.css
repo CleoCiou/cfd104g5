@@ -1,0 +1,63 @@
+@media screen and (max-width:767px) {
+    h2{
+        text-align: center;
+    }
+    ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    } 
+    .real{
+        width: 100%;
+        padding: 8.333333%;
+        box-sizing: border-box;
+        text-align: center;
+    } 
+    .real_constellation button{
+        margin: auto;
+        box-sizing: border-box;
+        padding: 2% 8.333333%;
+        margin-top: 10%;
+    }
+
+}
+
+@media screen and (min-width:768px) { 
+    h2{
+        text-align: center;
+    }
+    ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    } 
+    .real{
+        width: 100%;
+        padding: 8.333333%;
+        box-sizing: border-box;
+        text-align: center;
+    } 
+    .real_constellation button{
+        margin: auto;
+        box-sizing: border-box;
+        padding: 2% 8.333333%;
+        margin-top: 10%;
+    }
+
+}
