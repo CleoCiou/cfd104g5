@@ -1,4 +1,9 @@
 @media screen and (max-width:767px) {
+            /* 0~767px */
+    /* 手機板不顯示頁籤 */
+    main .pagination_nav{
+        display: none;
+    }
     h2{
         text-align: center;
         padding: 2% 8.333333%;
@@ -41,9 +46,16 @@
 }
 
 
-@media screen and (min-width:768px) { 
+@media screen and (min-width:768px) {
+    main .pagination_nav .container ul{
+        padding: 2% 8.333333%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }  
     h2{
-        text-align: center;
+        /* text-align: center; */
         padding: 2% 8.333333%;
         box-sizing: border-box;
     }

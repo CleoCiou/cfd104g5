@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/real_constellation_2page.css">
+    <script src="../js/vue.js"></script>
 </head>
 <body>
-    <div class="pagination">
-        <ul>
-            <li>今日運勢</li>
-            <li>星座配對指數</li>
-            <li>測試真實星座</li>
-            <li>星盤推算</li>    
-            <li>星座故事</li>   
-            <li>星座討論區</li>     
-        </ul>
+  <main>
+    <div id="app">
+        <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
+        <section class="pagination_nav">
+            <div class="container">
+                <ul>
+                    <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
+                </ul>
+            </div>
+        </section>        
     </div>
     <h2>真實星座</h2>
-    <main>
         <section class="real_constellation real">
            <!-- 控制padding的容器 -->
             <div class="container">
@@ -32,9 +33,28 @@
                 </div>
             </div>
             
+<<<<<<< HEAD:real_constellation_2page.html
 
+=======
+>>>>>>> b83ab2974534bb833aba4551a1cf68c7c60448a8:con_real_constellation_buy.html
         </section>
     </main> 
     <script src="js/common.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                urls: {
+                    '今日運勢': 'con_today_fortune.html',
+                    '星座配對': 'con_pair.html',
+                    '真實星座': 'back.html',
+                    '星盤推算': 'astrolabe.html',
+                    '星座故事': 'con_story.html',
+                    '星座討論區': 'discuss.html',
+                },
+                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+            }
+        });
+    </script>
 </body>
 </html>
