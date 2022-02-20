@@ -19,14 +19,16 @@
 */
 header {
   background: #000000;
+  /* Nav Style */
+  /* 手機專用 */
 }
 
-.header_img_box img {
+header .header_img_box img {
   height: 60px;
   display: inline-block;
 }
 
-.header_all {
+header .header_all {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37,13 +39,13 @@ header {
   border-bottom: 2px solid #fff;
 }
 
-.header_all .header_bar {
+header .header_all .header_bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.header_all .header_bar .header_icon {
+header .header_all .header_bar .header_icon {
   width: 100%;
   /* margin-right: 15px; */
   text-align: center;
@@ -54,13 +56,13 @@ header {
   display: flex;
 }
 
-.header_all .header_bar .header_icon p {
+header .header_all .header_bar .header_icon p {
   margin-top: 20px;
   margin-right: 20px;
   font-size: 1.25rem;
 }
 
-.header_all .header_bar .header_icon img {
+header .header_all .header_bar .header_icon img {
   height: 25px;
   margin-top: 20px;
   margin-right: 20px;
@@ -72,7 +74,7 @@ header {
   display: flex;
 }
 
-.ham_menu .ham-origin {
+header .ham_menu .ham-origin {
   position: relative;
   /* left: 90%; */
   width: 30px;
@@ -85,7 +87,7 @@ header {
   margin-top: 23px;
 }
 
-.ham_menu .ham-origin div {
+header .ham_menu .ham-origin div {
   height: 0px;
   border: 1.5px solid #fff;
   width: 22px;
@@ -96,21 +98,21 @@ header {
   background: #fff;
 }
 
-.ham_menu .ham-origin:hover {
+header .ham_menu .ham-origin:hover {
   -webkit-transition-delay: 100ms;
           transition-delay: 100ms;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.ham_menu .ham-origin:hover div:nth-child(3):before {
+header .ham_menu .ham-origin:hover div:nth-child(3):before {
   width: 2px;
   height: 2px;
   border-radius: 50%;
   background: #F26451;
 }
 
-.ham_menu .ham-origin:hover div {
+header .ham_menu .ham-origin:hover div {
   border: 2px solid #fff;
   height: 9px;
   border-radius: 50%;
@@ -123,27 +125,27 @@ header {
   background: transparent;
 }
 
-#nav-toggle {
+header #nav-toggle {
   display: none;
 }
 
-.ham_menu .ham-origin:focus {
+header .ham_menu .ham-origin:focus {
   outline: 0px;
 }
 
-.ham_menu div:nth-child(1) {
+header .ham_menu div:nth-child(1) {
   top: 0px;
 }
 
-.ham_menu div:nth-child(2) {
+header .ham_menu div:nth-child(2) {
   top: 8px;
 }
 
-.ham_menu div:nth-child(3) {
+header .ham_menu div:nth-child(3) {
   top: 16px;
 }
 
-.ham_menu div:nth-child(3):before {
+header .ham_menu div:nth-child(3):before {
   opacity: 0;
   -webkit-animation: ball 1.5s linear infinite;
           animation: ball 1.5s linear infinite;
@@ -154,36 +156,36 @@ header {
   top: 0.25px;
 }
 
-.ham_menu .ham-origin:hover div:nth-child(1) {
+header .ham_menu .ham-origin:hover div:nth-child(1) {
   -webkit-transform: rotate(-33deg);
           transform: rotate(-33deg);
 }
 
-.ham_menu .ham-origin:hover div:nth-child(2) {
+header .ham_menu .ham-origin:hover div:nth-child(2) {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
-.ham_menu .ham-origin:hover div:nth-child(3) {
+header .ham_menu .ham-origin:hover div:nth-child(3) {
   -webkit-transform: rotate(33deg);
           transform: rotate(33deg);
 }
 
-.ham_menu .ham-origin:hover div:nth-child(3):before {
+header .ham_menu .ham-origin:hover div:nth-child(3):before {
   opacity: 1;
   -webkit-transition: opacity 600ms cubic-bezier(0.61, 0.01, 0.42, 1);
   transition: opacity 600ms cubic-bezier(0.61, 0.01, 0.42, 1);
 }
 
-.ham_menu .ham-origin:active:hover div:nth-child(3):before,
-.ham_menu .ham-origin:active div:nth-child(3):before,
-.ham_menu .ham-origin:active div:nth-child(2) {
+header .ham_menu .ham-origin:active:hover div:nth-child(3):before,
+header .ham_menu .ham-origin:active div:nth-child(3):before,
+header .ham_menu .ham-origin:active div:nth-child(2) {
   opacity: 0;
   -webkit-transition: all 200ms;
   transition: all 200ms;
 }
 
-.ham_menu .ham-origin:active div {
+header .ham_menu .ham-origin:active div {
   border: 1.5px solid #fff;
   height: 0px;
   border-radius: 0%;
@@ -195,16 +197,16 @@ header {
   top: 0px;
 }
 
-.ham_menu .ham-origin:active div:nth-child(2) {
+header .ham_menu .ham-origin:active div:nth-child(2) {
   width: 0px;
 }
 
-.ham_menu .ham-origin:active div:nth-child(3) {
+header .ham_menu .ham-origin:active div:nth-child(3) {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.ham_menu .ham-origin:active div:nth-child(1) {
+header .ham_menu .ham-origin:active div:nth-child(1) {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
@@ -315,8 +317,7 @@ header {
   }
 }
 
-/* Nav Style */
-.menu {
+header .menu {
   position: fixed;
   width: 100%;
   right: 0;
@@ -334,78 +335,77 @@ header {
   text-align: center;
 }
 
-#nav-toggle:checked ~ .menu {
+header #nav-toggle:checked ~ .menu {
   -webkit-transform: none;
           transform: none;
 }
 
-.menu-list {
+header .menu-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.menu-item + .menu-item {
+header .menu-item + .menu-item {
   margin-top: 35px;
 }
 
-.menu-link {
+header .menu-link {
   text-decoration: none;
   color: white;
 }
 
-.sub-menu {
+header .sub-menu {
   display: none;
 }
 
-.menu-item .menu_login {
+header .menu-item .menu_login {
   display: none;
 }
 
-.menu-item .menu_member {
+header .menu-item .menu_member {
   display: none;
 }
 
-/* 手機專用 */
 @media screen and (max-width: 768px) {
-  .menu {
+  header .menu {
     top: 75px;
   }
-  .menu li:hover > .sub-menu {
+  header .menu li:hover > .sub-menu {
     display: block;
   }
-  .sub-menu-check:checked ~ ul {
+  header .sub-menu-check:checked ~ ul {
     display: block;
   }
-  .menu .sub-menu {
+  header .menu .sub-menu {
     position: relative;
     top: 100%;
   }
-  .menu .sub-menu li {
+  header .menu .sub-menu li {
     margin-top: 10px;
   }
-  .menu-item .menu_login {
+  header .menu-item .menu_login {
     margin: 20px;
     display: inline-block;
   }
-  .menu-item .menu_member {
+  header .menu-item .menu_member {
     display: block;
   }
-  .header_all .header_bar .header_icon p {
+  header .header_all .header_bar .header_icon p {
     margin-top: 23px;
     font-size: 1rem;
   }
-  .header_all .header_bar .header_icon img {
+  header .header_all .header_bar .header_icon img {
     height: 20px;
     margin-top: 23px;
   }
 }
 
-.main_footer {
+footer .main_footer {
   background-color: #000;
 }
 
-.footer_up {
+footer .footer_up {
   padding: 2% 2% 1%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -430,7 +430,7 @@ footer .footer_logo img {
   footer p {
     font-size: 0.8rem;
   }
-  .footer_txt_box {
+  footer .footer_txt_box {
     margin: 5% 6%;
     text-align: center;
   }
@@ -466,14 +466,14 @@ footer .footer_logo img {
     -ms-flex-pack: distribute;
         justify-content: space-around;
   }
-  .footer_nav li a {
+  footer .footer_nav li a {
     padding: 0 10px;
     font-size: 1.5rem;
     letter-spacing: 0.1rem;
     line-height: 1.5;
     color: #CFB886;
   }
-  .footer_txt_box {
+  footer .footer_txt_box {
     margin: 2% 18%;
     text-align: center;
   }
@@ -497,137 +497,35 @@ footer .footer_icon img {
   width: 60px;
 }
 
-p {
+footer p {
   font-size: 1rem;
   line-height: 1.5;
   color: #fff;
 }
 
-main .mem_link .container .link_item {
-  margin-top: 1em;
-}
-
-main .mem_link .container .link_item .item:not(:first-child) {
-  border-top: 2px solid #000;
-}
-
-main .mem_link .container .link_item .item {
-  background-color: #5558;
-  padding: 1em;
+main section.member .container .img_box img {
   width: 100%;
+  vertical-align: middle;
 }
 
-main section.main_member .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-main .member .container .display_none {
-  display: none;
-}
-
-main .member .container .img_box img {
-  width: 100%;
-  display: block;
-}
-
-main .member .container .logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 0.5em 0;
-}
-
-main .member .container .logo .img_box {
-  width: 3em;
+main section.member .container .img_box.sticker {
+  width: 4em;
   border-radius: 50%;
   overflow: hidden;
 }
 
-main .member .container .logo .txt_box {
-  padding: 0.5em 0;
+main section.member .container section.item {
+  padding: .5em;
 }
 
-main .member .container form > *:not(:first-child) {
-  margin-top: 0.8em;
-}
-
-main .member .container form input[type=text],
-main .member .container form input[type=password],
-main .member .container form input[type=email],
-main .member .container form textarea,
-main .member .container form button {
+main section.member .container section.item > * {
+  height: 100%;
   width: 100%;
+  outline: 1px solid #CFB886;
+  padding: .5em;
 }
 
-main .member .container .search_box {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-main .member .container .search_box .search {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  margin-right: 0.5em;
-}
-
-main .member .container .status_box {
-  margin-top: 1em;
-}
-
-main .member .container .status_box .status_list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-main .member .container .status_box .status_list li {
-  padding: .3em 0;
-}
-
-main .member .container .status_box .status_list li label {
-  padding: 0 0.5em;
-  display: block;
-}
-
-main .member .container .login_box {
-  position: absolute;
-  left: 50%;
-  top: 50vh;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-main .member .container > section {
-  padding: 1em;
-}
-
-main .member .container .mem_info,
-main .member .container .article {
-  width: 100%;
-}
-
-main .member .container .reservation,
-main .member .container .orders,
-main .member .container .comment,
-main .member .container .message {
-  width: 50%;
-}
-
-main .member .container .mem_info .info_box {
-  width: 100%;
+main section.member .container .main_member {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -636,246 +534,179 @@ main .member .container .mem_info .info_box {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+main section.member .container .main_member .mem_info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-main .member .container .mem_info .info_box .info > .item {
+main section.member .container .main_member .mem_info .info_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em;
+}
+
+main section.member .container .main_member .mem_info .info_box .txt_box {
+  margin-left: 1em;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main section.member .container .main_member .reservation {
+  width: 35%;
+}
+
+main section.member .container .main_member .reservation .reservation_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1em;
+}
+
+main section.member .container .main_member .reservation .reservation_box .astrologist_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .reservation .reservation_box .astrologist_info .img_box {
+  width: 5em;
+}
+
+main section.member .container .main_member .orders {
+  width: 65%;
+}
+
+main section.member .container .main_member .orders .orders_box > * {
+  padding: .5em;
+}
+
+main section.member .container .main_member .orders .orders_box .order_header {
+  text-align: right;
+}
+
+main section.member .container .main_member .orders .orders_box .order_content > * {
   display: inline-block;
   vertical-align: middle;
 }
 
-main .member .container .mem_info .info_box .info .img_box {
-  width: 10em;
-  border-radius: 50%;
-  overflow: hidden;
+main section.member .container .main_member .orders .orders_box .order_content .img_box {
+  width: 5em;
   margin-right: 1em;
 }
 
-main .member .container .mem_info .info_box .info .txt_box span {
+main section.member .container .main_member .orders .orders_box .order_footer .total {
+  text-align: right;
+  font-size: 1.125rem;
+}
+
+main section.member .container .main_member .orders .orders_box .other_order {
   display: block;
-  padding: 0.3em;
-}
-
-main .member .container .reservation .reservation_box {
   width: 100%;
+  text-align: center;
+  border-top: 1px solid #5558;
+  padding-top: .7em;
 }
 
-main .member .container .reservation .reservation_box .reservation_list {
-  background-color: #5558;
-  padding: 1em;
+main section.member .container .main_member .comment {
+  width: 50%;
 }
 
-main .member .container .reservation .reservation_box .reservation_list .reservation_info:not(:first-child) {
-  margin-top: 1em;
-}
-
-main .member .container .reservation .reservation_box .reservation_list .reservation_info .info_box {
+main section.member .container .main_member .comment .comment_box {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-main .member .container .reservation .reservation_box .reservation_list .reservation_info .info_box .img_box {
-  width: 5em;
-  margin-right: 1em;
-}
-
-main .member .container .reservation .reservation_box .reservation_list .reservation_info .info_box .txt_box {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-
-main .member .container .reservation .reservation_box .reservation_list .reservation_info .info_box .txt_box span {
-  display: block;
-}
-
-main .member .container .reservation .reservation_box .reservation_list .reservation_info .info_box .canel {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-main .member .container .mem_detail_box .sticker_box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-main .member .container .mem_detail_box .sticker_box .img_box {
-  position: relative;
-  display: block;
-  overflow: hidden;
+main section.member .container .main_member .comment .comment_box .reservation_info {
+  padding: 0.5em;
+}
+
+main section.member .container .main_member .comment .comment_box .reservation_info .img_box {
   margin: auto;
-  width: 10em;
-  border-radius: 50%;
 }
 
-main .member .container .mem_detail_box .sticker_box .img_box:after {
-  content: "編輯";
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 25%;
-  bottom: 0;
-  left: 0;
-  padding-top: .8em;
-  text-align: center;
-  color: #fff;
-  background-color: #aaaa;
-}
-
-main .member .container .order_box {
-  background-color: #5558;
-  padding: 1em;
-}
-
-main .member .container .order_box .order_header,
-main .member .container .order_box .order_content .item .txt,
-main .member .container .order_box .order_footer .item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-main .member .container .order_box .order_content .detail_item:not(:first-child) {
+main section.member .container .main_member .comment .comment_box .reservation_info .txt_box {
   margin-top: 0.5em;
-}
-
-main .member .container .order_box .order_content .item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-main .member .container .order_box .order_content .item .img_box {
-  width: 4em;
-}
-
-main .member .container .order_box .order_content .item .txt_box {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-
-main .member .container .order_box .order_content .more_item {
-  display: block;
-  width: 100%;
   text-align: center;
 }
 
-main .member .container .on_reservation {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+main section.member .container .main_member .comment .comment_box:nth-child(even) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 
-main .member .container .on_reservation .img_box {
-  width: 5em;
-  border-radius: 50%;
-  overflow: hidden;
+main section.member .container .main_member .message {
+  width: 50%;
 }
 
-main .member .container .on_reservation .txt_box {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  padding: 0 1em;
-}
-
-main .member .container .on_reservation .txt_box .item span {
-  display: block;
-  padding: 0.2em;
-}
-
-@media screen and (min-width: 992px) {
-  main .member .container .on_reservation .txt_box .item {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  main .member .container .on_reservation .txt_box .item span {
-    width: 50%;
-  }
-}
-
-main .member .container .on_reservation .confirm button {
-  display: block;
-  margin: 0.3em 0;
-  padding: .5em 1em;
-}
-
-main .member .container .comment_box .comment_list .message_box {
-  border: 1px solid #CFB886;
+main section.member .container .main_member .message .message_box {
   padding: 1em;
 }
 
-main .member .container .comment_box .comment_list .message_box .message_header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+main section.member .container .main_member .message .message_box .article_info {
+  position: relative;
+  padding: .5em;
+  background-color: #5558;
 }
 
-main .member .container .comment_box .comment_list .message_box .message_header span {
-  display: block;
+main section.member .container .main_member .message .message_box .article_info:not(:first-child) {
+  margin-top: .5em;
 }
 
-main .member .container .comment_box .comment_list .message_box .message_header .messager {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.5em 0;
-}
-
-main .member .container .comment_box .comment_list .message_box .message_header .messager .img_box {
-  width: 2em;
+main section.member .container .main_member .message .message_box .article_info:before {
+  content: attr(data-newMsg);
+  display: inline-block;
+  position: absolute;
+  top: .5em;
+  right: .5em;
+  width: 1.5em;
+  line-height: 1.5em;
+  vertical-align: bottom;
+  text-align: center;
+  background-color: #d89482;
+  color: #fff;
   border-radius: 50%;
-  overflow: hidden;
-}
-
-main .member .container .comment_box .comment_list .message_box .message_header .messager .txt_box {
-  padding: 0 0.5em;
-}
-
-main .member .container .comment_box .comment_list .message_box .message_content {
-  padding: .5em 0;
 }
 
 /* === 星座頁籤 by JC === */
@@ -1096,13 +927,13 @@ body {
   background-color: #000;
 }
 
-body section {
+body main > section {
   width: 100%;
   margin: auto;
   position: relative;
 }
 
-body section .container {
+body main > section > .container {
   width: 100%;
   padding: 0 8.333333%;
   margin: auto;

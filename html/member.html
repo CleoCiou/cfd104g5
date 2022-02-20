@@ -9,157 +9,132 @@
 </head>
 <body>
 
-<!-- <header class="main_header"></header> -->
-@@include('layout/header.html')
+<!-- @@include('layout/header.html') -->
 
 <!-- 網頁內容 by PIN -->
 <main>
-    
-    <!-- 會員專區主頁 -->
-    <section class="member main_member">
+    <!-- 會員專區 -->
+    <section class="member">
         <div class="container">
-            
-            <!-- 個人資料 -->
-            <section class="mem_info">
-                <div class="info_box">
 
-                    <div class="info">
-                        <div class="item img_box">
+            <!-- 會員專區主頁 -->
+            <section class="main_member">
+                
+                <!-- 個人資訊 -->
+                <section class="item mem_info">
+                    <div class="info_box">
+                        <div class="img_box sticker">
                             <img src="https://picsum.photos/50/50/?random=10">
                         </div>
-                        <div class="item txt_box">
-                            <span class="mem_id">test123</span>
-                            <span class="mem_name">王曉明</span>
-                            <span class="mem_identity">一般會員</span>
+                        <div class="txt_box">
+                            <span>test123</span>
+                            <h3>王曉明</h3>
+                            <p>一般會員</p>
+                        </div>
+                        <div class="action_box">
+                            <button class="third_btn">修改資料</button>
                         </div>
                     </div>
-
-                    <div class="edit">
-                        <button class="third_btn">修改個人資訊</button>
+                </section>
+    
+                <!-- 目前預約 -->
+                <section class="item reservation">
+                    <div class="reservation_box">
+                        <p>目前預約</p>
+                        <div class="astrologist_info">
+                            <h3>吳恆隼</h3>
+                            <div class="img_box">
+                                <img src="https://picsum.photos/50/50/?random=10">
+                            </div>
+                        </div>
+                        <span>2022.02.28 上午</span>
                     </div>
-
-                </div>
-            </section>
-
-            <!-- 預約 -->
-            <section class="reservation">
-                <div class="reservation_box">
-                    
-                    <ul class="reservation_list">
-
-                        <li class="reservation_info">    
-                            <div class="info_box">
-                                <div class="img_box">
-                                    <img src="https://picsum.photos/50/50/?random=1">
-                                </div>
-            
-                                <div class="txt_box">
-                                    <span>日期：2022.02.28</span>
-                                    <span>時段：上午</span>
-                                    <span>占卜師：吳恆隼</span>
-                                    <span>狀態：已確認</span>
-                                </div>
-                                
-                                <div class="canel">
-                                    <button class="third_btn">取消</button>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li class="reservation_info">    
-                            <div class="info_box">
-                                <div class="img_box">
-                                    <img src="https://picsum.photos/50/50/?random=1">
-                                </div>
-            
-                                <div class="txt_box">
-                                    <span>日期：2022.03.15</span>
-                                    <span>時段：上午</span>
-                                    <span>占卜師：吳恆隼</span>
-                                    <span>狀態：審核中</span>
-                                </div>
-                                
-                                <div class="canel">
-                                    <button class="third_btn">取消</button>
-                                </div>
-                            </div>
-                        </li>
-                        
-                    </ul>
-
-                </div>
-            </section>
-
-            <!-- 購物清單 -->
-            <section class="orders">
-                <div class="order_box">
-                    
-                    <ul class="order_list">
+                </section>
     
-                        <!-- 訂單 -->
-                        <li class="order_item">
-                            <div class="order_header">
-                                <div class="order_no">#001</div>
-                                <div class="status">待出貨</div>
+                <!-- 目前訂單 -->
+                <section class="item orders">
+                    <div class="orders_box">
+                        <div class="order_header">
+                            <span>待出貨</span>
+                        </div>
+                        <div class="order_content">
+                            <div class="img_box">
+                                <img src="https://picsum.photos/50/50/?random=10">
                             </div>
-        
-                            <div class="order_content">
-                                <div class="item">
-
-                                    <div class="img_box">
-                                        <img src="https://picsum.photos/50/50/?random=9">
-                                    </div>
-
-                                    <div class="txt_box">
-
-                                        <div class="txt info">
-                                            <span>星座手鍊-雙魚</span>
-                                            <span>x1</span>
-                                            <span>小計 NT$400</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="more_item">檢視其他商品</span>
+                            <div class="txt_box">
+                                <p>開運項鍊 x1</p>
                             </div>
-        
-                            <!-- 訂單項目尾 -->
-                            <div class="order_footer">
-                                <div class="item">
-                                    <span class="order_mount">2商品</span>
-                                    <span class="total">總計 NT$1,400</span>
-                                </div>
+                        </div>
+                        <div class="order_footer">
+                            <p class="total">訂單金額: NT$800</p>
+                        </div>
+                        <a class="other_order">檢視其他訂單</a>
+                    </div>
+                </section>
     
-                                <div class="item">
-                                    <span class="order_time">2022/02/20 09:00</span>
-                                    <button class="primary_btn">查看詳情</button>
+                <!-- 最近的評論(占卜師) -->
+                <section class="item comment">
+                    <div class="comment_box">
+                        <!-- 占卜資訊 -->
+                        <div class="comment_box">
+                            <div class="reservation_info">
+                                <div class="img_box sticker">
+                                    <img src="https://picsum.photos/50/50/?random=10">
                                 </div>
                             </div>
+                            
+                            <div class="txt_box ast_info">
+                                <span>#001</span>
+                                <h3>吳恆隼</h3>
+                            </div>
+                        </div>
+
+                        <!-- 給占卜師的評論 -->
+                        <div class="comment_box">
+                            <div class="reservation_info">
+                                <div class="img_box sticker">
+                                    <img src="https://picsum.photos/50/50/?random=10">
+                                </div>
+                            </div>
+                            
+                            <div class="txt_box comment">
+                                <span class="star">★★★</span>
+                                <p>
+                                    解放臉上，承受業務還在經營當前位置地球各國下午返回，上次文件這款，龍岡個人著名等人文。
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+    
+                <!-- 最近的留言 -->
+                <section class="item message">
+                    <ul class="message_box">
+                        <li class="article_info" data-newMsg="5">
+                            <span class="artNo">#004</span>
+                            <h4 class="artTitle">
+                                這次土地電視
+                            </h4>
+                        </li>
+                        <li class="article_info" data-newMsg="5">
+                            <span class="artNo">#012</span>
+                            <h4 class="artTitle">
+                                但我加大場所隨多
+                            </h4>
                         </li>
                     </ul>
-                </div>
+                </section>
+    
             </section>
-
-            <!-- 收藏的文章 -->
-            <section class="article"></section>
-
-            <!-- 最近的評論(占卜師) -->
-            <section class="comment"></section>
-
-            <!-- 最近的留言 -->
-            <section class="message"></section>
-
+            
         </div>
     </section>
 
 </main>
 
 
-<!-- 網頁尾 -->
-<!-- 內容由 common.js 新增 by PIN -->
-<footer class="main_footer"></footer>
-
-<!-- <footer class="main_footer"></footer> -->
-@@include('layout/footer.html')
+<!-- @@include('layout/footer.html') -->
 
 <script src="js/common.js"></script>
 </body>
