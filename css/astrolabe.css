@@ -8,35 +8,20 @@ body{
 li{
     list-style: none;
 }
-.fake{
-    width: 100%;
-    padding-bottom: 50px;
-    background-color: #CFB886;
-}
-main .astrolabe_chart h3{
-    font-size: 1.75rem;
-    letter-spacing: 0.1rem;
-    line-height: 1.5;
-    color: #CFB886;
-}
 
 /* ============================= */
 /* 星座頁籤 */
-main .pagination_nav .container ul{
+main .pagination_nav .container {
     padding: 2% 8.333333%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 main .pagination_nav .container label{
-    margin: 12px;
+    margin: 20px;
     padding: 6px 15px;
-    line-height: 2;
-    border: 1px solid #CFB886;
-    color: #CFB886;
-    border-radius: 10px;
-    cursor: pointer;
 }
 
 /* ============================= */
