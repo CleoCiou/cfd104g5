@@ -17,20 +17,30 @@
     color: $accent_color;
     background-color: $accent_color;
 */
-main .member {
-  background-color: #eee;
+main .mem_link .container .link_item {
+  margin-top: 1em;
 }
 
-main .member .display_none {
+main .mem_link .container .link_item .item:not(:first-child) {
+  border-top: 2px solid #000;
+}
+
+main .mem_link .container .link_item .item {
+  background-color: #5558;
+  padding: 1em;
+  width: 100%;
+}
+
+main .member .container .display_none {
   display: none;
 }
 
-main .member .img_box img {
+main .member .container .img_box img {
   width: 100%;
   display: block;
 }
 
-main .member .logo {
+main .member .container .logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,37 +53,66 @@ main .member .logo {
   padding: 0.5em 0;
 }
 
-main .member .logo .img_box {
+main .member .container .logo .img_box {
   width: 3em;
   border-radius: 50%;
   overflow: hidden;
 }
 
-main .member .logo .txt_box {
+main .member .container .logo .txt_box {
   padding: 0.5em 0;
 }
 
-main .member form > * {
+main .member .container form > * {
   margin: 0.5em 0;
 }
 
-main .member form input[type=text],
-main .member form input[type=password],
-main .member form input[type=email],
-main .member form textarea,
-main .member form button {
+main .member .container form input[type=text],
+main .member .container form input[type=password],
+main .member .container form input[type=email],
+main .member .container form textarea,
+main .member .container form button {
   width: 100%;
 }
 
-main .member form *:not(:first-child) {
+main .member .container form *:not(:first-child) {
   margin-top: 0.5em;
 }
 
-main .member .status_box li {
-  display: inline-block;
+main .member .container .search_box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-main .member .login_box {
+main .member .container .search_box .search {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-right: 0.5em;
+}
+
+main .member .container .status_box {
+  margin-top: 1em;
+}
+
+main .member .container .status_box .order_status_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .member .container .status_box .order_status_list li {
+  padding: .3em 0;
+}
+
+main .member .container .status_box .order_status_list li label {
+  padding: 0 0.5em;
+  display: block;
+}
+
+main .member .container .login_box {
   position: absolute;
   left: 50%;
   top: 50vh;
@@ -81,7 +120,7 @@ main .member .login_box {
           transform: translate(-50%, -50%);
 }
 
-main .member .mem_detail_box .sticker_box {
+main .member .container .mem_detail_box .sticker_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,7 +129,7 @@ main .member .mem_detail_box .sticker_box {
           align-items: center;
 }
 
-main .member .mem_detail_box .sticker_box .img_box {
+main .member .container .mem_detail_box .sticker_box .img_box {
   position: relative;
   display: block;
   overflow: hidden;
@@ -99,7 +138,7 @@ main .member .mem_detail_box .sticker_box .img_box {
   border-radius: 50%;
 }
 
-main .member .mem_detail_box .sticker_box .img_box:after {
+main .member .container .mem_detail_box .sticker_box .img_box:after {
   content: "編輯";
   position: absolute;
   display: block;
@@ -113,13 +152,14 @@ main .member .mem_detail_box .sticker_box .img_box:after {
   background-color: #aaaa;
 }
 
-main .member .order_box {
-  border: 1px solid #aaa;
+main .member .container .order_box {
+  background-color: #5558;
+  padding: 1em;
 }
 
-main .member .order_box .order_header,
-main .member .order_box .order_content .item .txt,
-main .member .order_box .order_footer .item {
+main .member .container .order_box .order_header,
+main .member .container .order_box .order_content .item .txt,
+main .member .container .order_box .order_footer .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -131,11 +171,11 @@ main .member .order_box .order_footer .item {
           align-items: center;
 }
 
-main .member .order_box .order_content .detail_item:not(:first-child) {
+main .member .container .order_box .order_content .detail_item:not(:first-child) {
   margin-top: 0.5em;
 }
 
-main .member .order_box .order_content .item {
+main .member .container .order_box .order_content .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,26 +184,196 @@ main .member .order_box .order_content .item {
           align-items: center;
 }
 
-main .member .order_box .order_content .item .img_box {
+main .member .container .order_box .order_content .item .img_box {
   width: 4em;
 }
 
-main .member .order_box .order_content .item .txt_box {
+main .member .container .order_box .order_content .item .txt_box {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-main .member .order_box .order_content .more_item {
+main .member .container .order_box .order_content .more_item {
   display: block;
   width: 100%;
   text-align: center;
+}
+
+/* === 星座頁籤 by JC === */
+main .pagination_nav .container ul {
+  padding: 2% 8.33333%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .pagination_nav .container label {
+  margin: 12px;
+  padding: 6px 15px;
+  line-height: 2;
+  border: 1px solid #CFB886;
+  color: #CFB886;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+body .back {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .back .img_box img {
+  width: 100%;
+  display: block;
+}
+
+body .back .link_panel {
+  width: 15em;
+}
+
+body .back .link_panel .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5em 0;
+}
+
+body .back .link_panel .logo .img_box {
+  width: 3em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+body .back .link_panel .logo .txt_box {
+  margin-left: 1em;
+  padding: 0.5em 0;
+}
+
+body .back .link_panel .link_list li {
+  width: 100%;
+  padding: .5em 2em;
+  text-align: center;
+}
+
+body .back .link_panel .link_list li a {
+  display: block;
+}
+
+body .contain {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: relative;
+  min-height: 100vh;
+  background-color: #5558;
+}
+
+body .contain header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  height: 4em;
+  background-color: #0003;
+}
+
+body .contain header button {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+body .contain main .container {
+  padding: 5em 3em;
+}
+
+body .contain main .container .action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+body .contain main .container .action > *:not(:first-child) {
+  padding-left: .5em;
+}
+
+body .contain main .container table tr {
+  border: 1px solid #CFB886;
+}
+
+body .contain main .container table tr th,
+body .contain main .container table tr td {
+  text-align: center;
+  border: 1px solid #CFB886;
+  padding: .5em 1em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+body .contain main .container table tr th {
+  position: relative;
+  background-color: #CFB886;
+  color: #000;
+  cursor: pointer;
+}
+
+body .contain main .container table tr th:not(:first-child):before {
+  content: '';
+  position: absolute;
+  right: .3em;
+  top: 30%;
+  width: 0;
+  height: 0;
+  border-left: .2em solid transparent;
+  border-right: .2em solid transparent;
+  border-bottom: .3em solid black;
+}
+
+body .contain main .container table tr th:not(:first-child):after {
+  content: '';
+  position: absolute;
+  right: .3em;
+  bottom: 30%;
+  width: 0;
+  height: 0;
+  border-left: .2em solid transparent;
+  border-right: .2em solid transparent;
+  border-top: .3em solid black;
+}
+
+body .contain main button {
+  padding: .5em 1em;
 }
 
 * {
   font-family: 'Cinzel','Shippori Mincho', serif;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  color: #CFB886;
 }
 
 body {
@@ -194,12 +404,13 @@ body section .container {
 /* - 購買 */
 .primary_btn {
   border-radius: 15px;
-  color: #DFAF47;
+  color: #CFB886;
   background-color: transparent;
-  border: 1px solid #DFAF47;
+  border: 1px solid #CFB886;
   display: inline-block;
   padding: 0.8% 2.5%;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 /* --- 二級按鈕 --- */
@@ -212,6 +423,7 @@ body section .container {
   display: inline-block;
   padding: 0.8% 2.5%;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 /* 頁籤 */
@@ -221,9 +433,11 @@ body section .container {
 /* 占卜師專區--分析資料頁籤 */
 .selected_btn {
   background-color: #CFB886;
+  border: 1px solid transparent;
   color: #000;
   text-align: center;
   line-height: 50px;
+  cursor: pointer;
 }
 
 .unselected_btn {
@@ -232,8 +446,7 @@ body section .container {
   border: 1px #CFB886 solid;
   text-align: center;
   line-height: 50px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  cursor: pointer;
 }
 
 /* --- 三級按鈕 --- */
@@ -247,6 +460,7 @@ body section .container {
   background-color: transparent;
   border: 1px solid #CFB886;
   padding: 0.8% 2.5%;
+  cursor: pointer;
 }
 
 /* --- 其他按鈕 --- */
@@ -257,11 +471,12 @@ body section .container {
   display: inline-block;
   padding: 1.5px 10px;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 /* ===== 文字 ===== */
 /*==== 手機板字體大小一定要加這個html ====*/
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 767px) {
   html {
     font-size: 14px;
   }
@@ -276,7 +491,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   letter-spacing: 0.1rem;
   line-height: 1.5;
   color: #CFB886;
@@ -302,9 +517,14 @@ p {
   line-height: 1.5;
 }
 
+li {
+  list-style: none;
+}
+
 a {
   text-decoration: none;
   color: #CFB886;
+  cursor: pointer;
 }
 
 a:hover {
@@ -323,6 +543,7 @@ label {
 
 input {
   border: 1px #CFB886 solid;
+  background-color: transparent;
   border-radius: 5px;
   color: #CFB886;
   padding: 2px 5px;

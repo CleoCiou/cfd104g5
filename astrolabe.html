@@ -21,7 +21,7 @@
             <section class="pagination_nav">
                 <div class="container">
                     <ul>
-                        <li v-for="nav in navs"><label>{{nav}}</label></li>
+                        <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
                     </ul>
                 </div>
             </section>
@@ -47,7 +47,16 @@
         new Vue({
             el: '#app',
             data: { //變數放這
+                urls: {
+                    '今日運勢': 'astrolabe_result.html',
+                    '星座配對': 'Constellation_pair.html',
+                    '真實星座': 'back.html',
+                    '星盤推算': 'discuss.html',
+                    '星座故事': 'index.html',
+                    '星座討論區': 'discuss.html',
+                },
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+                url: 'astrolabe_result.html',
             },
         });
     </script>
