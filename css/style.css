@@ -63,8 +63,8 @@ main .member .container .logo .txt_box {
   padding: 0.5em 0;
 }
 
-main .member .container form > * {
-  margin: 0.5em 0;
+main .member .container form > *:not(:first-child) {
+  margin-top: 0.8em;
 }
 
 main .member .container form input[type=text],
@@ -73,10 +73,6 @@ main .member .container form input[type=email],
 main .member .container form textarea,
 main .member .container form button {
   width: 100%;
-}
-
-main .member .container form *:not(:first-child) {
-  margin-top: 0.5em;
 }
 
 main .member .container .search_box {
@@ -97,17 +93,17 @@ main .member .container .status_box {
   margin-top: 1em;
 }
 
-main .member .container .status_box .order_status_list {
+main .member .container .status_box .status_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-main .member .container .status_box .order_status_list li {
+main .member .container .status_box .status_list li {
   padding: .3em 0;
 }
 
-main .member .container .status_box .order_status_list li label {
+main .member .container .status_box .status_list li label {
   padding: 0 0.5em;
   display: block;
 }
@@ -134,7 +130,7 @@ main .member .container .mem_detail_box .sticker_box .img_box {
   display: block;
   overflow: hidden;
   margin: auto;
-  width: 30%;
+  width: 10em;
   border-radius: 50%;
 }
 
@@ -198,6 +194,82 @@ main .member .container .order_box .order_content .more_item {
   display: block;
   width: 100%;
   text-align: center;
+}
+
+main .member .container .on_reservation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .member .container .on_reservation .img_box {
+  width: 8em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+main .member .container .on_reservation .txt_box {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0 1em;
+}
+
+main .member .container .on_reservation .txt_box .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .member .container .comment_box .comment_list .message_box {
+  border: 1px solid #CFB886;
+  padding: 1em;
+}
+
+main .member .container .comment_box .comment_list .message_box .message_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .member .container .comment_box .comment_list .message_box .message_header span {
+  display: block;
+}
+
+main .member .container .comment_box .comment_list .message_box .message_header .messager {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5em 0;
+}
+
+main .member .container .comment_box .comment_list .message_box .message_header .messager .img_box {
+  width: 2em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+main .member .container .comment_box .comment_list .message_box .message_header .messager .txt_box {
+  padding: 0 0.5em;
+}
+
+main .member .container .comment_box .comment_list .message_box .message_content {
+  padding: .5em 0;
 }
 
 /* === 星座頁籤 by JC === */
