@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>解星鏡 Mistro | 訂單管理</title>
+    <title>解星鏡 Mistro | 占卜師專區</title>
     <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
 </head>
 <body>
@@ -17,13 +17,14 @@
 <!-- 網頁內容 by PIN -->
 <main>
     
-    <h2>占卜師專區</h2>
-
-<!-- 占卜師專區子選單 -->
+    
+    <!-- 占卜師專區子選單 -->
     <section class="member query_astrologist">
         <div class="container">
+            
+            <h2>占卜師專區</h2>
 
-            <!-- 占卜師專區分頁頁籤: 已下單/待出貨/運送中/已到店 -->
+            <!-- 占卜師專區分頁頁籤: 我的介紹/審核預約/排班表/我的評論/查看預約數據 -->
             <div class="status_box astrologist_status">
                 <ul class="status_list astrologist_status_list">
                     <li>
@@ -38,9 +39,9 @@
                     <li>
                         <label class="unselected_btn">我的評論</label>
                     </li>
-                    <li>
-                        <label class="unselected_btn">查看預約數據</label>
-                    </li>
+                    <!-- <li>
+                        <label class="unselected_btn">查看數據</label>
+                    </li> -->
                 </ul>
             </div>
 
@@ -56,8 +57,11 @@
             <!-- 介紹 -->
             <div class="introduct">
                 <div class="introduct">
-                    <label>占卜師介紹</label>
-                    <textarea class="introduct_txt"></textarea>
+                    <p>
+                        行情開發才是，美麗或許，後果那些，公司或許委員會相信水溝進步失望威脅站長僅供國家類型，一些一週幾天。
+                    </p>
+                    <button class="third_btn">修改</button>
+                    <!-- <textarea class="introduct_txt"></textarea> -->
                 </div>
             </div>
 
@@ -76,19 +80,17 @@
                 </div>
             <!-- 預約日期、時段及狀態 -->
                 <div class="txt_box">
-                    <div class="item time">
+                    <div class="item">
                         <span>日期：2022.03.15</span>
                         <span>時段：上午</span>
-                    </div>
-                    <div class="item other_info">
                         <span>客戶名稱：林濤華</span>
                         <span>狀態：尚未審核</span>
                     </div>
                 </div>
             <!-- 取消 -->
                 <div class="confirm">
-                    <button>接受</button>
-                    <button>拒絕</button>
+                    <button class="primary_btn">接受</button>
+                    <button class="third_btn">拒絕</button>
                 </div>
             </div>
 
@@ -246,13 +248,13 @@
 
             <ul class="link_item">
                 <li class="item mem_details">
-                    <a href="#">會員資料</a>
+                    <a href="mem_detail.html">會員資料</a>
                 </li>
                 <li class="item reservation">
-                    <a href="#">預約管理</a>
+                    <a href="mem_reservation.html">預約管理</a>
                 </li>
                 <li class="item reservation">
-                    <a href="#">訂單管理</a>
+                    <a href="mem_orders.html">訂單管理</a>
                 </li>
             </ul>
 
