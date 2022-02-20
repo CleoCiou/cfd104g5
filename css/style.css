@@ -204,8 +204,6 @@ body .back {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 
 body .back .img_box img {
@@ -252,20 +250,22 @@ body .back .link_panel .link_list li a {
 }
 
 body .contain {
-  position: relative;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: relative;
   min-height: 100vh;
   background-color: #5558;
 }
 
 body .contain header {
   position: fixed;
-  width: 85%;
+  right: 0;
+  left: 0;
   height: 4em;
   background-color: #0003;
-  margin: auto;
 }
 
 body .contain header button {
@@ -277,21 +277,66 @@ body .contain header button {
           transform: translateY(-50%);
 }
 
-body .contain main {
-  padding: 5em 0 0 5em;
+body .contain main .container {
+  padding: 5em 3em;
 }
 
-body .contain main table tr {
-  border: 1px solid #fff;
+body .contain main .container .action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1em;
 }
 
-body .contain main table tr th,
-body .contain main table tr td {
+body .contain main .container .action > *:not(:first-child) {
+  padding-left: .5em;
+}
+
+body .contain main .container table tr {
+  border: 1px solid #CFB886;
+}
+
+body .contain main .container table tr th,
+body .contain main .container table tr td {
   text-align: center;
-  border: 1px solid #fff;
-  padding: 1em;
+  border: 1px solid #CFB886;
+  padding: .5em 1em;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+}
+
+body .contain main .container table tr th {
+  position: relative;
+  background-color: #CFB886;
+  color: #000;
+  cursor: pointer;
+}
+
+body .contain main .container table tr th:not(:first-child):before {
+  content: '';
+  position: absolute;
+  right: .3em;
+  top: 30%;
+  width: 0;
+  height: 0;
+  border-left: .2em solid transparent;
+  border-right: .2em solid transparent;
+  border-bottom: .3em solid black;
+}
+
+body .contain main .container table tr th:not(:first-child):after {
+  content: '';
+  position: absolute;
+  right: .3em;
+  bottom: 30%;
+  width: 0;
+  height: 0;
+  border-left: .2em solid transparent;
+  border-right: .2em solid transparent;
+  border-top: .3em solid black;
 }
 
 body .contain main button {
