@@ -1,0 +1,82 @@
+<!-- 網頁頭 by NJ-->
+<header class="main_header">
+    <div class="header_all">
+
+        <!-- main logo -->
+        <div class="header_img_box">
+            <a href="#" class="logo">
+                <img src="images/index_logo_golden-02.png" alt="mistro logo">
+            </a>
+        </div>
+
+         <!-- icon -->
+        <div class="header_bar">
+
+            <div class="header_icon">
+                <a href="#"><p>登入</p></a>
+                <a href="#"><img src="/images/header-member-02.png" alt="會員"></a>
+                <a href="#"><img src="/images/header_shopping cart.png" alt="購物車"></a>
+            </div>
+
+            <!-- 漢堡 -->
+            <div class="ham_menu">
+                <input id="nav-toggle" type="checkbox">
+                <label for="nav-toggle" class="ham no_style">
+                    <div class="ham-origin">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </label>
+
+                <!-- 選單 -->
+                <nav class="menu">
+                    <ul class="menu-list">
+                        <li class="menu-item">
+                            <a class="menu-link" href="#">塔羅</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">體驗占卜師</a></li>
+                                <li><a href="#">線上占卜</a></li>
+                                <li><a href="#">預約占卜師</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link" href="#">星座</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">每日運勢</a></li>
+                                <li><a href="#">真實星座測驗</a></li>
+                                <li><a href="#">星座配對</a></li>
+                                <li><a href="#">討論區</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link" href="#">商城</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link menu_member" href="#">會員專區</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">個人資訊</a></li>
+                                <li><a href="#">我的預約</a></li>
+                                <li><a href="#">我的訂單</a></li>
+                                <li><a href="#">占卜師專區</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link menu_login" href="#">登入</a>
+                            <a class="menu-link menu_login" href="#">註冊</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- <script src="js/common.js"></script> -->
+<script src="js/jquery.js"></script>
+<script>
+    $('.menu-link').click(function(){
+        $('.sub-menu').slideUp();
+        $(this).siblings('.sub-menu').slideToggle();
+    })
+</script>
