@@ -1,5 +1,15 @@
 /* === 星座頁籤 by JC === */
 $padding: 2% 8.333333%;
+@mixin desktop{
+    @media(min-width:768px){
+        @content;
+    }
+}
+@mixin mobile{
+    @media(max-width:767px){
+        @content;
+    }
+}
 
 main {
     .pagination_nav{
@@ -10,6 +20,9 @@ main {
                 align-items: center;
                 justify-content: center;
                 flex-wrap: wrap;
+                @include mobile {
+                    display: none;
+                }
             }
             label{
                 margin: 12px;
@@ -20,6 +33,24 @@ main {
                 border-radius: 10px;
                 cursor: pointer;
             }
+        }
+    }
+    /* 討論區 by JC */
+    .discuss{
+        .container{
+            padding: $padding;
+            width: 100%;
+            margin: auto;
+        }
+        .content_head{
+            width: 100%;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .content{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
     }
 } 

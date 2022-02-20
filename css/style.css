@@ -393,6 +393,10 @@ main .member .container .comment_box .comment_list .message_box .message_content
 }
 
 /* === 星座頁籤 by JC === */
+main {
+  /* 討論區 by JC */
+}
+
 main .pagination_nav .container ul {
   padding: 2% 8.33333%;
   display: -webkit-box;
@@ -408,6 +412,12 @@ main .pagination_nav .container ul {
       flex-wrap: wrap;
 }
 
+@media (max-width: 767px) {
+  main .pagination_nav .container ul {
+    display: none;
+  }
+}
+
 main .pagination_nav .container label {
   margin: 12px;
   padding: 6px 15px;
@@ -416,6 +426,34 @@ main .pagination_nav .container label {
   color: #CFB886;
   border-radius: 10px;
   cursor: pointer;
+}
+
+main .discuss .container {
+  padding: 2% 8.33333%;
+  width: 100%;
+  margin: auto;
+}
+
+main .discuss .content_head {
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+main .discuss .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 body .back {
