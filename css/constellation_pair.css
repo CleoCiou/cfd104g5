@@ -1,0 +1,69 @@
+/* .constellationpair button{
+    display: block;
+    border: 1px solid red;
+} */
+@media screen and (max-width:767px) {
+    /* 最大寬度768以上不顯示 所以這裡是手機 */
+    .constellationpair_pair{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 8.333333%;
+        box-sizing: border-box;
+    }
+
+    ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    } 
+    .result p{
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        
+    }
+}
+
+@media screen and (min-width:768px) { 
+    .constellationpair_pair{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 8.333333%;
+        box-sizing: border-box;
+    }
+
+    ul{
+        width: 100%;
+        display: flex;
+        list-style:none;
+        flex-wrap: wrap;
+    }
+    ul div{
+        width: 33.33%;
+        list-style: none;
+    } 
+    html{
+        font-size: 14px;
+    } 
+    .result p{
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        
+    }
+
+
+
+
+
+
+
+}
