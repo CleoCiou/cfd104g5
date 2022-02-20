@@ -4,7 +4,7 @@
 } */
 @media screen and (max-width:767px) {
     /* 最大寬度768以上不顯示 所以這裡是手機 */
-    .constellationpair_pair{
+    .container{
         display: flex;
         justify-content: center;
         width: 100%;
@@ -33,12 +33,17 @@
 }
 
 @media screen and (min-width:768px) { 
-    .constellationpair_pair{
+    main .constellation .container{
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
         width: 100%;
         padding: 8.333333%;
         box-sizing: border-box;
+    }
+    main .constellation .container .pair{
+        display: flex;
     }
 
     ul{
@@ -59,7 +64,11 @@
         box-sizing: border-box;
         
     }
-
+    main .constellation .container .pair_btn{
+        display: flex;
+        align-items: center;
+        margin: 2%;
+    }
 
 
 
