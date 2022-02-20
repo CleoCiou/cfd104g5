@@ -10,10 +10,16 @@
 .teller_reservation .txt_box h3{
     text-align: center;
 }
+/* 線上實體按鈕 */
 .teller_reservation .teller_button{
     text-align: center;
     padding-bottom: 3%;
 }
+.teller_reservation .teller_button button{
+    margin: 0 5%;
+    cursor: pointer;
+}
+/* 表單 */
 .teller_reservation .teller_form p{
     color: #CFB886;
 }
@@ -25,6 +31,27 @@
     padding: 5%;
     margin-bottom: 1%;
 }
+
 @media screen and (min-width:768px){
-    
+    .teller_reservation .container{
+        display: flex;
+        justify-content: center;
+    }
+    .teller_profile{
+        display: flex;
+        width: 50%;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 3%;
+    }
+    .reservation_form{
+        display: flex;
+        width: 50%;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 3%;
+    }
+    .teller_reservation .teller_button{
+        padding-bottom: 0;
+    }
 }
