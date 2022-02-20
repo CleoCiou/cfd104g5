@@ -27,6 +27,19 @@ body {
 // ******************** 待整理 ******************** //
 /* ===== 按鈕 ===== */
 /* --- 主按鈕 --- */
+/* 要花錢的按鈕 購買、預約 */
+.primary_btn {
+    border-radius: 12px;
+    color: #000;
+    letter-spacing: 2px;
+    background-color: #d89482;
+    border: 1px solid #d89482;
+    display: inline-block;
+    padding: 0.8em 2em;
+    white-space: nowrap;
+    cursor: pointer;
+}
+/* --- 二級按鈕 --- */
 /* 跳轉頁的button */
 /* 首頁--商品瀏覽、占卜師瀏覽 */
 /* 體驗占卜--線上占卜、再看一次、推薦商品 */
@@ -34,26 +47,14 @@ body {
 /* 星座--開始測驗 */
 /* 預約占卜--開始預約、確認預約、下一步、確認 */
 /* 登入註冊 */
-/* - 購買 */
-.primary_btn {
-    border-radius: 15px;
+.secondary_btn {
+    border-radius: 12px;
     color: #CFB886;
+    letter-spacing: 2px;
     background-color: transparent;
     border: 1px solid #CFB886;
     display:inline-block;
-    padding: 0.8% 2.5%;
-    white-space: nowrap;
-    cursor: pointer;
-}
-/* --- 二級按鈕 --- */
-/* 線上占卜--商品瀏覽 */
-.secondary_btn {
-    border-radius: 15px;
-    color: #ffffff;
-    background-color: transparent;
-    border: 1px solid #ffffff;
-    display:inline-block;
-    padding: 0.8% 2.5%;
+    padding: 0.8em 2em;
     white-space: nowrap;
     cursor: pointer;
 }
@@ -63,19 +64,23 @@ body {
 /* 占卜師專區--星級頁籤 */
 /* 占卜師專區--分析資料頁籤 */
 .selected_btn{
-    background-color: #CFB886;
-    border: 1px solid transparent;
     color: #000;
+    letter-spacing: 3px;
+    background-color: #CFB886;
+    border: 1px solid #CFB886;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
+    padding: 0.5em 3em;
     cursor: pointer;
 }
 .unselected_btn{
-    color: #CFB886;
+    color: #fff;
+    letter-spacing: 3px;
     background-color: transparent;
     border: 1px #CFB886 solid;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
+    padding: 0.5em 3em;
     cursor: pointer;
 }
 /* --- 三級按鈕 --- */
@@ -84,20 +89,29 @@ body {
 /* 占卜師專區--接受、拒絕 */
 /* 星座--測驗選項(要加固定寬) */
 .third_btn {
-    border-radius: 15px;
+    letter-spacing: 2px;
+    border-radius: 12px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 0.8em 2em;
+    cursor: pointer;
+}
+.third_btn:hover{
     color: #CFB886;
     background-color: transparent;
     border: 1px solid #CFB886;
-    padding: 0.8% 2.5%;
-    cursor: pointer;
 }
 /* --- 其他按鈕 --- */
 /* icon線條顏色--#fff */
 .other_btn {
-    border-radius: 50px;
-    background-color: #CFB886;
+    color: #CFB886;
+    border-radius: 50%;
+    border: 1px solid #CFB886;
+    background-color: transparent;
     display:inline-block;
-    padding: 1.5px 10px;
+    width: 4em;
+    height: 4em;
     white-space: nowrap;
     cursor: pointer;
 }
@@ -153,6 +167,7 @@ a:hover{
 span {
     color: #d89482;
 }
+
 label {
     color: #CFB886;
     padding: 2px 5px;
