@@ -30,6 +30,7 @@
     }
     main .real_constellation .container .answer img{
         display: block;
+        width: 100%;
     }
 
 }

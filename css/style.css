@@ -292,6 +292,12 @@ main .pagination_nav .container ul {
       flex-wrap: wrap;
 }
 
+@media (max-width: 767px) {
+  main .pagination_nav .container ul {
+    display: none;
+  }
+}
+
 main .pagination_nav .container label {
   margin: 12px;
   padding: 6px 15px;
