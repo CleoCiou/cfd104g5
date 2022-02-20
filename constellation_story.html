@@ -7,19 +7,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/constellation_story.css">
+    <script src="../js/vue.js"></script>
 </head>
 <body>
-    <div class="pagination">
-        <ul>
-            <li>今日運勢</li>
-            <li>星座配對指數</li>
-            <li>測試真實星座</li>
-            <li>星盤推算</li>    
-            <li>星座故事</li>   
-            <li>星座討論區</li>     
-        </ul>
+  <main>
+    <div id="app">
+        <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
+        <section class="pagination_nav">
+            <div class="container">
+                <ul>
+                    <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
+                </ul>
+            </div>
+        </section>        
     </div>
-    <main>
         <section class="constellation_img
         "><img src="https://fakeimg.pl/250x100/"></section>
 
@@ -32,5 +33,21 @@
 
     </main>
   <script src="css/common.css"></script>
+  <script>
+    new Vue({
+        el: '#app',
+        data: { //變數放這
+            urls: {
+                '今日運勢': 'today_fortune.html',
+                '星座配對': 'Constellation_pair.html',
+                '真實星座': 'back.html',
+                '星盤推算': 'astrolabe.html',
+                '星座故事': 'constellation_story.html',
+                '星座討論區': 'discuss.html',
+            },
+            cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+        }
+    });
+</script>
 </body>
 </html>

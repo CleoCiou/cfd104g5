@@ -5,35 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="css/today_fortune.css">
+    <script src="../js/vue.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">  -->
     
-   <!-- <style>  
-    @media screen and (min-width:768px) {
-    html{
-     font-size: 14px;
-    }
-
-    .today_fortune{
-    width: 100%;
-    }
-    .today_fortune .constellation_img_box{
-    width: 100%;    
-    padding: 8.333333%;
-    
-    } 
-    .today_fortune .constellation_img_box img{
-    width: 100%;    
-    padding: 8.333333%;
-    
-    } 
-    .today_fortune .constellation_txt{
-    width: 100%;
-    padding: 8.333333%;    
-    }
-}     -->
    </style>
 
 </head>
@@ -46,18 +23,17 @@
     <!-- 今日運勢 -->
     
     <main>
-        
-        <div class="pagination">
-            <ul>
-                <li>今日運勢</li>
-                <li>星座配對指數</li>
-                <li>測試真實星座</li>
-                <li>星盤推算</li>    
-                <li>星座故事</li>   
-                <li>星座討論區</li>     
-            </ul>
+        <div id="app">
+            <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
+            <section class="pagination_nav">
+                <div class="container">
+                    <ul>
+                        <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
+                    </ul>
+                </div>
+            </section>        
         </div>
-        <h2>今日運勢</h2>
+            <h2>今日運勢</h2>
         <div class="bigtoday_forturn">
             <section class="today_fortune">
                 <div class="constellation_img_box">
@@ -79,11 +55,11 @@
                                 <li>本周運勢</li>
                             </div>
                             <div class="unselected_btn">
-                                <li>今月運勢</li>
+                                <li>當月運勢</li>
                             </div>
                         </ul>
                     </div>
-                    <h3>今日短評</h3>
+                    <h3>短評</h3>
                     <section class="today_Comment">
                     <div class="container">
                         <div class="today_Comment_btn unselected_btn">幸運數字</div>
@@ -93,7 +69,7 @@
                     </div>
                     <div class="today_Comment_btn">
                         <div class="container">
-                            <div class="today_Comment_btn unselected_btn">今日吉時</div>
+                            <div class="today_Comment_btn unselected_btn">開運方向</div>
                             <div class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem amet doloribus accusamus totam nostrum facilis aperiam quod adipisci, temporibus sit labore natus facere debitis distinctio earum officiis sint, tempore saepe.</div>
                             <div class="today_Comment_btn unselected_btn">幸運星座</div>
                             <div class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem amet doloribus accusamus totam nostrum facilis aperiam quod adipisci, temporibus sit labore natus facere debitis distinctio earum officiis sint, tempore saepe.</div>
@@ -110,7 +86,23 @@
         </div>
    </section>
     </main>
-    
+    <script src="js/common.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                urls: {
+                    '今日運勢': 'today_fortune.html',
+                    '星座配對': 'Constellation_pair.html',
+                    '真實星座': 'back.html',
+                    '星盤推算': 'astrolabe.html',
+                    '星座故事': 'constellation_story.html',
+                    '星座討論區': 'discuss.html',
+                },
+                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+            }
+        });
+    </script>
     
 </body>
 </html>
