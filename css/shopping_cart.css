@@ -157,6 +157,16 @@
         text-align: right;
     }
     .cart_deliver .container .customer_info .customer_form{
-        padding-left: 5em;
+        /* padding-left: 5em; */
+        text-align: center;
+    }
+    .shopping_cart{
+        padding-bottom: 3em;
+    }
+    .customer_info .customer_confirm{
+        text-align: center;
+    }
+    .cart_deliver{
+        width: 80%;
     }
 }
