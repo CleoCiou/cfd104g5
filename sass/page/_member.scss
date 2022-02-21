@@ -27,6 +27,18 @@ main {
                     padding: .5em;
                 }
             }
+            // LOGO+網站名稱
+            .logo {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1em;
+
+                .img_box {
+                    margin-right: 1em;
+                }
+            }
     
             // 會員專區共用 END === //
     
@@ -176,9 +188,44 @@ main {
                 }
 
             }
+            // END
 
-            // 會員專區首頁 END === //
+            // === 登入 === //
+            // 登箱
+            .login_box {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 3em;
+                outline: 1px solid map-get($primary_color, 'content');
+                border-radius: 1em;
+                
+                .login_info {
+                    .item {
+                        margin-bottom: 1em;
+                    }
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+            // END
 
+            // === 註冊 === //
+            .sign_up_box {
+                padding: 1em;
+                .item {
+                    margin-bottom: 1em;
+                    input[type=text],
+                    input[type=password],
+                    input[type=email],
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+            // END
 
         } // container
     } // section.member

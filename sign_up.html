@@ -22,9 +22,9 @@
         <div class="container">
 
             <div class="sign_up_box">
-            <!-- 基本資料上方logo -->
+                <!-- 基本資料上方logo -->
                 <div class="logo">
-                    <div class="img_box">
+                    <div class="img_box sticker">
                         <img src="images/logo_ico_square.ico">
                     </div>
                     <div class="txt_box">
@@ -32,29 +32,31 @@
                     </div>
                 </div>
     
-            <!-- 使用者資訊 -->
+                <!-- 使用者資訊 -->
                 <form class="sign_up_info">
+
                     <h3>基本資料</h3>
-                <!-- 帳號 -->
-                        <div class="mem_id">
-                            <label for="mem_id">帳號</label>
-                            <input type="text" id="mem_id">
-                        </div>
-            
-                <!-- 密碼 -->
-                        <div class="med_pwd">
-                            <label for="mem_pwd">密碼</label>
-                            <input type="password" id="mem_pwd">
-                        </div>
-            
-                <!-- 確認密碼 -->
-                    <div class="confirm">
+
+                    <!-- 帳號 -->
+                    <div class="item mem_id">
+                        <label for="mem_id">帳號</label>
+                        <input type="text" id="mem_id">
+                    </div>
+        
+                    <!-- 密碼 -->
+                    <div class="item med_pwd">
+                        <label for="mem_pwd">密碼</label>
+                        <input type="password" id="mem_pwd">
+                    </div>
+        
+                    <!-- 確認密碼 -->
+                    <div class="item confirm">
                         <label for="mem_pwd">確認密碼</label>
                         <input type="password" id="pwd_confirm">
                     </div>
 
-                <!-- 驗證密碼 -->
-                    <div class="verify_pwd">
+                    <!-- 驗證密碼 -->
+                    <div class="item verify_pwd">
                         <ul>
                             <li>至少有一個大寫英文字母</li>
                             <li>至少有一個小寫英文字母</li>
@@ -64,26 +66,26 @@
                         </ul>
                     </div>
     
-                <!-- 姓名 -->
-                    <div class="mem_name">
+                    <!-- 姓名 -->
+                    <div class="item mem_name">
                         <label for="mem_name">姓名</label>
                         <input type="text" id="mem_name">
                     </div>
                     
-                <!-- 生日 -->
-                <div class="birthday">
-                    <label for="birthday">生日</label>
-                    <input type="text" id="birthdat">
-                </div>
+                    <!-- 生日 -->
+                    <div class="item birthday">
+                        <label for="birthday">生日</label>
+                        <input type="text" id="birthdat">
+                    </div>
                 
-                <!-- email -->
-                    <div class="email">
+                    <!-- email -->
+                    <div class="item email">
                         <label for="email">信箱</label>
                         <input type="email" id="email">
                     </div>
     
-                <!-- 大頭貼 -->
-                    <div class="sticker_box">
+                    <!-- 大頭貼 -->
+                    <div class="item sticker_box">
                         <label for="sticker">
                             <p>大頭貼</p>
                             <img src="https://picsum.photos/80/80/?random=9">
@@ -91,8 +93,8 @@
                         <input type="file" id="sticker">
                     </div>
     
-                <!-- 身分: 一般會員/占卜師 -->
-                    <div class="identity">
+                    <!-- 身分: 一般會員/占卜師 -->
+                    <div class="item identity">
                         <label>註冊身分</label>
                         <input type="radio" name="identity" id="member">
                         <label for="member">一般會員</label>
@@ -100,18 +102,18 @@
                         <label for="astrologist">占卜師</label>
                     </div>
     
-                <!-- 占卜師專區 -->
-                <!-- 身分選擇占卜師才顯示 -->
-                    <div class="astrologist_box">
+                    <!-- 占卜師專區 -->
+                    <!-- 身分選擇占卜師才顯示 -->
+                    <div class="item astrologist_box">
                         <h3>占卜師資料</h3>
-                    <!-- 占卜師介紹 -->
+                        <!-- 占卜師介紹 -->
                         <div class="introduct">
                             <label>占卜師介紹</label>
                             <textarea class="introduct_txt"></textarea>
                         </div>
     
-                    <!-- 占卜師證照上傳 -->
-                        <div class="certificate">
+                        <!-- 占卜師證照上傳 -->
+                        <div class="item certificate">
                             <label for="certificate">請上傳占卜師執照
                                 <img src="https://picsum.photos/300/200/?random=8">
                             </label>
@@ -119,14 +121,19 @@
                         </div>
                     </div>
     
-                <!-- 註冊 -->
-                    <p>已經有帳號?
-                        <a href="login.html">登入</a>
-                    </p>
+                    <!-- 登入 -->
+                    <div class="item login">
+                        <p>
+                            已經有帳號?
+                            <a href="login.html">登入</a>
+                        </p>
+                    </div>
     
                     <!-- 註冊或取消 -->
-                    <button class="primary_btn" id="sign_up">註冊</button>
-                    <button class="third_btn" id="cancel">取消</button>
+                    <div class="item action">
+                        <button class="primary_btn" id="sign_up">註冊</button>
+                        <button class="third_btn" id="cancel">取消</button>
+                    </div>
                 </form>
             </div>
 
