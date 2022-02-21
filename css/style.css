@@ -1740,27 +1740,28 @@ main #articleView .article_response .response_card span {
   font-size: 0.9em;
 }
 
-body .back {
+body section.back {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-body .back .img_box img {
+body section.back .img_box img {
   width: 100%;
   display: block;
 }
 
-body .back .selected_btn,
-body .back .unselected_btn {
+body section.back .selected_btn,
+body section.back .unselected_btn {
   padding: .5em 1em;
 }
 
-body .back .link_panel {
+body section.back .link_panel {
+  z-index: 5;
   width: 15em;
 }
 
-body .back .link_panel .logo {
+body section.back .link_panel .logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1773,28 +1774,28 @@ body .back .link_panel .logo {
   padding: 0.5em 0;
 }
 
-body .back .link_panel .logo .img_box {
+body section.back .link_panel .logo .img_box {
   width: 3em;
   border-radius: 50%;
   overflow: hidden;
 }
 
-body .back .link_panel .logo .txt_box {
+body section.back .link_panel .logo .txt_box {
   margin-left: 1em;
   padding: 0.5em 0;
 }
 
-body .back .link_panel .link_list li {
+body section.back .link_panel .link_list li {
   width: 100%;
   padding: .5em 2em;
   text-align: center;
 }
 
-body .back .link_panel .link_list li a {
+body section.back .link_panel .link_list li a {
   display: block;
 }
 
-body .contain {
+body section.back .contain {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -1805,7 +1806,7 @@ body .contain {
   background-color: #5558;
 }
 
-body .contain header {
+body section.back .contain header {
   position: fixed;
   right: 0;
   left: 0;
@@ -1813,7 +1814,7 @@ body .contain header {
   background-color: #0003;
 }
 
-body .contain header button {
+body section.back .contain header button {
   display: block;
   position: absolute;
   top: 50%;
@@ -1822,11 +1823,11 @@ body .contain header button {
           transform: translateY(-50%);
 }
 
-body .contain main .container {
+body section.back .contain main .container {
   padding: 5em 3em;
 }
 
-body .contain main .container .action {
+body section.back .contain main .container .action {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1836,16 +1837,16 @@ body .contain main .container .action {
   margin-bottom: 1em;
 }
 
-body .contain main .container .action > *:not(:first-child) {
+body section.back .contain main .container .action > *:not(:first-child) {
   padding-left: .5em;
 }
 
-body .contain main .container table tr {
+body section.back .contain main .container table tr {
   border: 1px solid #CFB886;
 }
 
-body .contain main .container table tr th,
-body .contain main .container table tr td {
+body section.back .contain main .container table tr th,
+body section.back .contain main .container table tr td {
   text-align: center;
   border: 1px solid #CFB886;
   padding: .5em 1em;
@@ -1853,14 +1854,14 @@ body .contain main .container table tr td {
       flex-shrink: 0;
 }
 
-body .contain main .container table tr th {
+body section.back .contain main .container table tr th {
   position: relative;
   background-color: #CFB886;
   color: #000;
   cursor: pointer;
 }
 
-body .contain main .container table tr th:not(:first-child):before {
+body section.back .contain main .container table tr th:not(:first-child):before {
   content: '';
   position: absolute;
   right: .3em;
@@ -1872,7 +1873,7 @@ body .contain main .container table tr th:not(:first-child):before {
   border-bottom: .3em solid black;
 }
 
-body .contain main .container table tr th:not(:first-child):after {
+body section.back .contain main .container table tr th:not(:first-child):after {
   content: '';
   position: absolute;
   right: .3em;
@@ -1884,7 +1885,7 @@ body .contain main .container table tr th:not(:first-child):after {
   border-top: .3em solid black;
 }
 
-body .contain main button {
+body section.back .contain main button {
   padding: .5em 1em;
 }
 
