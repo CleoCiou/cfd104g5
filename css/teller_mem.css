@@ -72,10 +72,5 @@
   margin-top: 1em;
   padding: 2em;
   border: 1px solid #af9c72;
-  position: relative;
 }
-.teller_info .container .txt_box button{
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
-}
+
