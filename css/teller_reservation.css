@@ -27,6 +27,7 @@
 }
 .teller_board .txt_box{
     border: 3px solid #CFB886;
+    border-radius: 10px;
     padding: 5%;
     margin-bottom: 1%;
 }
