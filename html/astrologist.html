@@ -111,7 +111,7 @@
                 <!-- 我的評論 -->
                 <section class="item ast_comment">
                     我的評論
-                    <div class="action hidden">
+                    <div class="action ast_hidden">
                         <button class="selected_btn active_star" @click="changeStar">全部</button>
                         <button class="selected_btn star_btn" @click="changeStar">全部</button>
                         <button class="unselected_btn star_btn" @click="changeStar">五星</button>
@@ -209,7 +209,7 @@
             changeStar(e) {
                 if (e.target.classList.contains('active_star')) {
                     let parent = e.target.parentNode;
-                    parent.classList.toggle('hidden');
+                    parent.classList.toggle('ast_hidden');
                     e.target.classList.toggle('display_none');
                 }
                 else {
@@ -221,7 +221,7 @@
                     let activeStar = document.querySelectorAll('.active_star')[0];
                     activeStar.textContent = e.target.textContent;
                     activeStar.classList.toggle('display_none');
-                    activeStar.parentNode.classList.toggle('hidden');
+                    activeStar.parentNode.classList.toggle('ast_hidden');
                 }
             }
         },
