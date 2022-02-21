@@ -1,9 +1,6 @@
-body {
-    background:black;
-  }
 .teller_pic{
-  margin-top: 100px;
-  overflow: hidden;
+  padding-top: 100px;
+  /* overflow: hidden; */
 }
 .teller_pic .container {
   margin: 0 auto;
@@ -11,12 +8,13 @@ body {
   height: 350px;
   position: relative;
   perspective: 1000px;
+  padding: 0;
 }
 
 .item_box {
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: relative;
   transform-style: preserve-3d;
   transition: transform 1s;
 }
@@ -25,9 +23,6 @@ body {
   display: block;
   position: absolute;
   background: #000;
-  width: 100%;
-  height: 100%;
-  border-radius: 50px;
 }
 .item img{  
   width: 100%;
@@ -60,55 +55,27 @@ body {
   transform: rotateY(300deg) translateZ(250px);
   background: #8c6239;
 }
-.teller_pic .teller_name {
-  /* position: absolute; */
-  top: 430px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.teller_name p{
-  color: #fff;
-}
 .next_teller, .prev_teller {
   color: #000;
-  /* position: absolute; */
-  top: 450px;
-  padding: 15px 20px;
   cursor: pointer;
   background: #CFB886;
-  border-radius: 50%;
-  box-shadow: 0 5px 0 #af9c72;
+  box-shadow: 0 2px 0 #af9c72;
   transition: box-shadow 0.1s, top 0.1s;
 }
-.next_teller:active, .prev_teller:active {
-  top: 454px;
-  box-shadow: 0 1px 0 #af9c72;
+.teller_info .container{
+  text-align: center;
 }
-
-.next_teller { 
-  right: 5em; 
+.teller_info .container .next_teller button{
+  border-radius: 50%;
 }
-
-.prev_teller {
-   left: 5em; 
+.teller_info .container .txt_box{
+  margin-top: 1em;
+  padding: 2em;
+  border: 1px solid #af9c72;
+  position: relative;
 }
-.teller_info p{
-  color: #fff;
-}
-
-@media screen and (min-width:768px) {
-  h1{
-    font-size: 3.5rem;
-  }
-}
-@media screen and (min-width:992px) {
-  h1{
-  font-size:  4rem;
-  }
-  
-  }
-@media screen and (min-width:1200px) {
-  h1{
-  font-size: 5rem;
-  }
+.teller_info .container .txt_box button{
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
 }
