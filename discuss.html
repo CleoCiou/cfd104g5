@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>解星鏡 Mistro | 星座</title>
-    <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
 </head>
 <body>
     <header></header>
@@ -26,20 +27,39 @@
                     <!-- 最上面搜尋bar,撰寫,我的 -->
                     <div class="content_head">
                         <div class="content_header">
-                            <input type="search" id="search">
-                            <input type="submit" value="搜尋" class="secondary_btn">
-                            <img :src="iconURL" @click="action">
-                            <img :src="iconURL" @click="action">
+                            <div class="search_bar">
+                                <input type="search" id="search">
+                                <input type="submit" value="搜尋" class="third_btn">
+                            </div>
+                            <div class="icon_btn">
+                                <img src="images/icon_discuss_add.svg" alt="撰寫文章" @click="action">
+                                <img src="images/icon_discuss_mine.svg" alt="我的文章" @click="action">
+                            </div>
                         </div>
                     </div>
-
+                    <!-- 貓頭鷹分類 -->
+                    <div class="owl-carousel owl-theme display">
+                        <div class="item"><label>全部</label></div>
+                        <div class="item"><label>摩羯座</label></div>
+                        <div class="item"><label>水瓶座</label></div>
+                        <div class="item"><label>雙魚座</label></div>
+                        <div class="item"><label>牡羊座</label></div>
+                        <div class="item"><label>金牛座</label></div>
+                        <div class="item"><label>雙子座</label></div>
+                        <div class="item"><label>巨蟹座</label></div>
+                        <div class="item"><label>獅子座</label></div>
+                        <div class="item"><label>處女座</label></div>
+                        <div class="item"><label>天秤座</label></div>
+                        <div class="item"><label>天蠍座</label></div>
+                        <div class="item"><label>射手座</label></div>
+                    </div>
                     <!-- 文章 搜尋bar下排包住左邊和右邊的容器 -->
                     <div class="content">
                         
                         <!-- 左邊分類欄 -->
                         <div class="content_cate">
                             <ul>
-                                <li v-for="cate in cates"><label>{{cate}}</label></li>
+                                <li v-for="cate in cates"><label class="category">{{cate}}</label></li>
                             </ul>
                         </div>
 
@@ -49,30 +69,128 @@
 
                                 <!-- 熱門 & 最新的兩個標籤 -->
                                 <div class="content_label">
-                                    <label>熱門</label>
+                                    <label class="select_label">熱門</label>
                                     <label>最新</label>
                                 </div>
                                 <!-- 放文章的地方 -->
                                 <div class="content_main">
                                     <div class="row">
-                                        <div class="article_box">
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
                                             <div class="line_top">
-                                                <label>巨蟹座</label>
-                                                <label>abc0710</label>
+                                                <p>巨蟹座</p>
+                                                <p>|</p>
+                                                <p>10小時</p>
                                             </div>
                                             <div class="line_middle">
                                                 <div class="line_middle_txt">
-                                                    <h4>title</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus.</p>
+                                                    <h3>巨蟹座的性格分析</h3>
+                                                    <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實...</p>
                                                 </div>
                                                 <div class="line_middle_pic">
-                                                    <img src="https://fakeimg.pl/90x90/ccc">
+                                                    <img :src="imgURL">
                                                 </div>
                                             </div>
                                             <div class="line_bottom">
-                                                <img :src="iconURL" >
-                                                <img :src="iconURL" >
+                                                <img :src="iconLike" >
+                                                <img :src="iconMessage" >
+                                                <img :src="iconFav" >
                                             </div>
+                                        </div>
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
+                                            <div class="line_top">
+                                                <p>天秤座</p>
+                                                <p>|</p>
+                                                <p>39分鐘前</p>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h3>睡覺是最好的復健</h3>
+                                                    <p>你每天晚上都有睡足7~9個鐘頭嗎？根據美國國家睡眠基金會(National .....</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img :src="imgURL">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconLike" >
+                                                <img :src="iconMessage" >
+                                                <img :src="iconFav" >
+                                            </div>
+                                        </div>
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
+                                            <div class="line_top">
+                                                <p>牡羊座</p>
+                                                <p>|</p>
+                                                <p>14小時前</p>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h3>11點就寢最好！提早1小時睡覺重度憂鬱風險大減</h3>
+                                                    <p>睡覺每提早一小時，罹患重度憂鬱症的風險會降低23%..........</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img :src="imgURL">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconLike" >
+                                                <img :src="iconMessage" >
+                                                <img :src="iconFav" >
+                                            </div>
+                                        </div>
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
+                                            <div class="line_top">
+                                                <p>射手座</p>
+                                                <p>|</p>
+                                                <p>9小時前</p>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h3>英國研究：晚上10點到11點睡覺對心臟最好</h3>
+                                                    <p>英國科學家在「歐洲心臟期刊—數位健康」（..............</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img :src="imgURL">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconLike" >
+                                                <img :src="iconMessage" >
+                                                <img :src="iconFav" >
+                                            </div>
+                                        </div>
+                                        <!-- 文章卡片 -->
+                                        <div class="article_cards">
+                                            <div class="line_top">
+                                                <p>水瓶座</p>
+                                                <p>|</p>
+                                                <p>21分鐘前</p>
+                                            </div>
+                                            <div class="line_middle">
+                                                <div class="line_middle_txt">
+                                                    <h3>為什麼要睡覺？：睡出健康與學習力、夢出創意的新科學</h3>
+                                                    <p>各界推薦《為什麼要睡覺？》是一本充滿使命感命的書...........</p>
+                                                </div>
+                                                <div class="line_middle_pic">
+                                                    <img :src="imgURL">
+                                                </div>
+                                            </div>
+                                            <div class="line_bottom">
+                                                <img :src="iconLike" >
+                                                <img :src="iconMessage" >
+                                                <img :src="iconFav" >
+                                            </div>
+                                        </div>
+                                        <!-- 頁籤按鈕 -->
+                                        <div class="content_pages">
+                                            <button class="other_btn">1</button>
+                                            <button class="other_btn">2</button>
+                                            <button class="other_btn">3</button>
+                                            <span>&#10230;</span>
                                         </div>
                                     </div>
                                 </div>
@@ -80,36 +198,146 @@
                         </div>
                     </div>
                 </div>
-                
             </section>
+    <!-- 文章瀏覽燈箱 by JC -->
+    <section id="articleView" class="hidden">
+        <div class="container">
+            <img :src="iconClose" id="close">
+            <div class="author container">
+                <button class="other_btn">T</button>
+                <span>test123456</span>
+            </div>
+            <div class="article_view_title container">
+                <h3>巨蟹座的性格分析</h3>
+                <a href="discuss.html">巨蟹座</a>
+                <p>2022/02/21 22:34:07</p>
+            </div>
+            <div class="article_view_content container">
+                    <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實在令人感到不可思議。巨蟹座的反應並不遲鈍，相反的，他的感覺很敏銳，往往因受到無心人的傷害，暗地裡偷偷的傷心流淚。因為過份慎重考慮的結果。所以會變得過於現實。好惡的感情過於明顯，也應多加注意才好。感情豐富，對事物的感受性強。對外親和謙恭，頗有公眾意識，但是對W內則有強烈的防衛本能，不願私生活受到干擾。大體上是一個溫和內向的人，但是絕不向惡勢力低頭。熱心參加愛家、愛鄉、愛民的團體，自我意識很強，尊敬能夠保護自己立場的人，帶有懷舊的心情，是一個十分傳統的人。</p>
+                    <p>巨蟹座的人較保守，能享受歡樂，並結交朋友，不自私或虛榮，坦白，大方，正直，忠於朋友和個人的信仰，能夠託付以重要秘密職務或工作。有很好的領悟力和觀察力，喜歡沈思，非常專心，勤於分析自己的思想和衝動，想像力非常活躍，喜歡默想過去曾發生的事，能分析自己內在的衝動，有優越的直覺力，有一顆敏感親愛，但是保守的心，不常表露真情，溫柔，體貼，親愛，看重愛情，鍾愛自己所愛的人，並有嫉妒的傾向，非常喜歡小孩。屬羅曼蒂克型，不過，有的時候心不在焉，性情不定。</p>
+                    <p>巨蟹座有活躍型與消極型的兩種型態。活躍型者具有堅強的意志力與耐力，對於人生的生活門徑非常的熟練，而且喜愛活動，能趕得上時代潮流，對於摩登流行的任何事物都感到興趣。消極型的人，顯得容易自足、沒精打彩、行為懶散，不願意做任何邁向成功所必需的努力，喜歡逆來順受，很固執也很依戀於他所已經擁有的，這兩種型態是早期所受的訓練與教化有關。</p>
+                    <p>巨蟹座的人很敏感，往往因別人的惡意批評非難而感到傷心。對過去的一切均懷念而且多情善感，很少拋棄舊日的伙伴與昔日的友情。喜歡收藏古老藝術品或書籍，也喜歡回憶往時趣事。通常擁有良好的記憶力。</p>
+                </div>
+            </div>
+            <!-- 功能列-- 愛心回應數分享等等 -->
+            <div class="article_using narrow">
+                <!-- 左 -->
+                <img src="images/icon_discuss_likes.svg" alt="按喜歡的數量">
+                <p>99</p>
+                <span>| 2 回應</span>
+                <!-- 右 -->
+                <img src="images/icon_discuss_like.svg" alt="喜歡">
+                <img src="images/icon_discuss_favorite.svg" alt="收藏">
+                <img src="images/icon_discuss_share.svg" alt="分享">
+            </div>
+            <!-- 留言回應區塊  -->
+            <div class="article_response narrow">
+                <div class="response_head">
+                    <h4>文章回應</h4>
+                    <hr class="style">
+                </div>
+                <!-- 留言卡片 -->
+                <div class="response_card">
+                    <div class="row card_pic">
+                        <button class="other_btn">A</button>
+                    </div>
+                    <div class="row card_txt">
+                        <div class="response_author">
+                            <span>Apple_555</span>
+                            <img src="images/icon_discuss_opt.svg" alt="選項">
+                        </div>
+                        <div class="response_card_content">
+                            <p>耶頭香<br>
+                                巨蟹座gooood<br>
+                            </p>
+                        </div>
+                        <div class="response_card_time">
+                            <span>11分鐘前</span>
+                        </div>
+                    </div>
+                </div>
+                <hr class="style">
+                <!-- 留言卡片 -->
+                <div class="response_card">
+                    <div class="row card_pic">
+                        <button class="other_btn">8</button>
+                    </div>
+                    <div class="row card_txt">
+                        <div class="response_author">
+                            <span>888sleep888</span>
+                            <img src="images/icon_discuss_opt.svg" alt="選項">
+                        </div>
+                        <div class="response_card_content">
+                            <p>哈哈哈哈哈哈<br>
+                                寫得很符合<br>
+                                剛好有巨蟹好閨密 一模一樣<br>
+                            </p>
+                        </div>
+                        <div class="response_card_time">
+                            <span>5分鐘前</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <hr class="style">
+            </div>
         </div>
-       
+    </section>
+    </div>
         
+
+
 
     </main>
     <footer></footer>
+
+    <script src="../js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
     <script src="js/common.js"></script>
+    <script src="js/lightbox.js"></script>
     <script>
         new Vue({
             el: '#app',
             data: { //變數放這
                 message: 'hello',
                 urls: {
-                    '今日運勢': 'today_fortune.html',
-                    '星座配對': 'constellation_pair.html',
-                    '真實星座': 'real_constellation.html',
+                    '今日運勢': 'con_today_fortune.html',
+                    '星座配對': 'con_pair.html',
+                    '真實星座': 'con_real_constellation.html',
                     '星盤推算': 'astrolabe.html',
-                    '星座故事': 'constellation_story.html',
+                    '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
                 cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
-                iconURL: 'https://fakeimg.pl/32x32/ccc',
+                imgURL: 'https://picsum.photos/90/90/?random=10',
+                iconLike: 'images/icon_discuss_like.svg',
+                iconMessage: 'images/icon_discuss_message.svg',
+                iconFav: 'images/icon_discuss_favorite.svg',
+                iconClose: 'images/icon_discuss_close.svg',
             },
             methods: {
               action(){
                   alert(this.$data.message);
-              }  
+              }, 
             },
+        });
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                stagePadding: 10,
+                loop:true,
+                margin:5,
+                nav:false,
+                responsive:{
+                    0:{
+                        items:5
+                    },
+                    767:{
+                        items:8
+                    },
+
+                }
+            });
         });
     </script>
     

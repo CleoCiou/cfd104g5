@@ -1,5 +1,6 @@
 /* === 星座頁籤 by JC === */
 $padding: 2% 8.333333%;
+
 @mixin desktop{
     @media(min-width:768px){
         @content;
@@ -13,6 +14,9 @@ $padding: 2% 8.333333%;
 
 main {
     .pagination_nav{
+        @include mobile {
+            display: none;
+        }
         .container{ 
             ul{
                 padding: $padding;
@@ -20,9 +24,6 @@ main {
                 align-items: center;
                 justify-content: center;
                 flex-wrap: wrap;
-                @include mobile {
-                    display: none;
-                }
             }
             label{
                 margin: 12px;
@@ -37,23 +38,316 @@ main {
     }
     /* 討論區 by JC */
     .discuss{
+        img{
+            vertical-align: top;
+        }
+        .owl-carousel {
+            @include desktop {
+                display: none;
+            }
+        }
         .container{
             padding: $padding;
             width: 100%;
             margin: auto;
         }
+        /* 搜尋bar那塊 */
         .content_head{
             width: 100%;
+            display: flex;
             align-items: center;
             justify-content: flex-end;
+            .content_header{
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.2em;
+                @include mobile {
+                    width: 100%;
+                }
+                .search_bar{
+                    display: flex;
+                    align-items: flex-end;
+                    margin-right: 1.5em;
+                    @include mobile {
+                        text-align: left;
+                        width: 100%;
+                    }
+                    input:nth-child(1){
+                        width: 85%;
+                        @include mobile {
+                            width: 75%;
+                        }
+                    }
+                    .third_btn{
+                        // width: 10%;
+                        padding: 0.2em 0.5em;
+                        margin-left: 1em;
+                        @include mobile {
+                            padding: 0.2em 0.5em;
+                        }
+                    }
+                }
+                .icon_btn{
+                    width: 5em;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: space-between;
+                    img{
+                        width: 2m;
+                        height: 2em;
+                        cursor: pointer;
+                    }
+                    
+                }
+            }
         }
         .content{
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            align-items: flex-start;
+            /* 左欄文章分類 */
+            .content_cate{
+                position: sticky;
+                top: 0;
+                left: 0;
+                text-align: center;
+                width: 20%;
+                @include mobile {
+                    width: 0;
+                }
+                li{
+                    align-items: center;
+                    width: 50%;
+                    margin: 0.3em 0;
+                    border-bottom: 1px solid #CFB886;
+                    cursor: pointer;
+                    .category{
+                        cursor: pointer;
+                        padding-bottom: 0.5em;
+                    }
+                }
+                li:hover{
+                    background-color: #3A3A3A;
+                    transition: .5s;
+                }
+                ul{
+                    @include mobile {
+                        display: none;
+                    }
+                }
+                
+            }
+            /* 文章區 */
+            .content_article{
+                border: 1px solid #CFB886;
+                background-color: transparent;
+                border-radius: 10px;
+                width: 80%;
+                padding: 3em;
+                    @include mobile {
+                        width: 100%;
+                    }
+                /* 熱門最新 */
+                .content_wrap{
+                    width: 100%;
+                    .content_label{
+                        margin-bottom: 1em;
+                        label{
+                            border: 1px solid #CFB886;
+                            padding: 0.5em 1.6em;
+                            margin: 0.2em 0.2em 1em 0;
+                            border-radius: 2px;
+                            cursor: pointer;
+                        }
+                        .select_label{
+                            border: 1px solid #CFB886;
+                            background-color: #CFB886;
+                            color: #000;
+                        }
+                    }
+                    .content_main{
+                        /* 文章卡片 */
+                        .article_cards{
+                            border: 1px solid #CFB886;
+                            background-color: transparent;
+                            backdrop-filter: opacity(80%);
+                            padding: 2em;
+                            border-radius: 5px;
+                            margin: 1em 0;
+                            cursor: pointer;
+                        }
+                        .line_top{
+                            span{
+                                color: #000;
+                                background-color: #d89482;
+                                padding: 0.2em 0.5em;
+                                margin-right: 0.5em;
+                            }
+                            p{
+                                color:#aaa;
+                                display: inline-block;
+                            }
+                        }
+                        .line_middle{
+                            margin-bottom: 1em;
+                            align-items: center;
+                            .line_middle_txt{
+                                h3{
+                                    color: #CFB886;
+                                    font-weight: 500;
+                                    margin: 0.3em 0;
+                                }
+                                p{
+                                    color: #fff;
+                                }
+                            }
+                            .line_middle_pic{
+                                img{
+                                    border-radius: 10px;
+                                    @include mobile {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                        .line_bottom{
+                            img{
+                                margin-right: 1em;
+                                width: 1.5em;
+                                height: 1.5em;
+                                cursor: pointer;
+                            }
+                        }
+                        .content_pages{
+                            text-align: right;
+                            button{
+                                margin: 0.2em 0 0.2em 0.2em;
+                            }
+                            span{
+                                margin-left: 0.2em;
+                                color: #CFB886;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                .line_middle{
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+            }
+
         }
     }
-} 
-
-
+    /*瀏覽文章燈箱 by JC */
+    .show{
+        display: block;
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+        height: 100%;
+    }
+    .hidden{
+        display: none;
+    }
+    #articleView{
+        background-color: #3A3A3A;
+        padding: 1em;
+        width: 50%;
+        margin: auto;
+        transform: translateX(50%);
+        img{
+            width: 1.8em;
+            height: 1.8em;
+            cursor: pointer;
+        }
+        .author{
+            display: flex;
+            align-items: center;
+            padding-top: 2em;
+            span{
+                margin-left: 1em;
+            }
+        }
+        .article_view_title{
+            margin: 1.5em 0;
+            h3{
+                font-weight: 500;
+                margin: 0.3em 0;
+            }
+            P{
+                color: #ccc;
+                font-size: 0.8em;
+                display: inline;
+            }
+        }
+        .article_view_content{
+            p{
+                line-height: 1.6;
+            }
+        }
+        .narrow{
+            padding: 2% 16.666666%;
+        }
+        /* 功能列-- 愛心回應數分享等等*/
+        .article_using{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            img{
+                margin: 0 0.2em;
+            }
+            p{
+                margin: 0 0.2em;
+                color: #aaa;
+            }
+            span{
+                margin: 0 0.2em;
+                color: #aaa;
+                width: 100%;
+            }
+        }
+        /* 留言回應區塊 */
+        .article_response{
+            width: 100%;
+            hr.style{
+                border-top: #3A3A3A 1px solid;
+                margin: 1em 0;
+            }
             
+            .response_card{
+                display: flex;
+                justify-content: space-between;
+                .other_btn{
+                    width: 2.2em;
+                    height: 2.2em;
+                }
+                .card_pic{
+                    flex-grow: 0;
+                }
+                .card_txt{
+                    flex-grow: 1;
+                }
+                .row{
+                    margin: 0.3em;
+                    .response_author{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+                    .response_card_content{
+                        margin: 1em 0;
+                    }
+                }
+                span{
+                    color: #ccc;
+                    font-size: 0.9em;
+                }
+            }
+        }
+        
+
+    }
+}

@@ -41,6 +41,9 @@ function init() {
     head.appendChild(link);
 
     // 插入js連結
-    
+    // jquery
+    link  = document.createElement('script');
+    link.src = 'js/jquery.js';
+    head.appendChild(link);
 }
 window.addEventListener('load', init);

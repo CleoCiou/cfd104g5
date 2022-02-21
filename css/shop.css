@@ -1,0 +1,163 @@
+
+
+/* .container{
+    width: 100%;
+    padding: 8.333333%;
+    box-sizing: border-box;
+    }
+    
+    前面增加 main section 表示跟其他頁面檔名不會重疊
+    */
+
+
+
+
+    /* 商城 by ZH  手機*/
+/* ============================= */
+    /* 商城標題推下來*/
+    main .shop_title{
+        padding: 10%;
+    }
+
+    main .shop_category_box{
+        padding: 5%;
+    }
+    /* 分類塔羅跟星座標題容器置中*/
+    main .shop_category_box{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-evenly
+    }
+    /* 分類塔羅跟星座標題容器加外框*/
+    .shop_category_Tarot, .shop_category_Constellation{
+        padding: 0.5em 1em;
+        border: 1px solid #CFB886;
+        border-radius: 0.5em;
+    }
+
+    /* 產品分類手機置中*/
+    .product_item_box{
+        text-align: center;
+        padding-top: 1em;
+    }
+    /* 產品分類標題區別分開上推 */
+    .product_row_title{
+        padding-top: 1.5em;
+    }
+    
+    /* 產品分類項目桌機間隔個開 */
+    .product_row_box {
+        padding-top: 1em ;
+        
+    }
+    /* 手機產品分類導覽列消失 */
+    .product_item_nav{
+        padding-right: 3em;
+        display: none;
+    }
+
+    
+
+    .shop_product_card{
+        box-sizing: border-box;
+        text-align: center;
+        border: 1px solid #CFB886;
+        border-image: initial;
+        padding: 3em ;
+        margin: 1em;
+        border-radius: 200px;
+    
+    }
+    /* 產品卡片碰到後發亮 */
+    .shop_product_card:hover{
+        Box-shadow: 1px 1px 12px 1px  #CFB886,
+        1px 1px 2px 1px  #CFB886 inset;
+
+    }
+    
+
+    /* 主打商品圖字icon上下間隔隔開 */
+    .shop_product_card_img, .shop_product_card_txt,.shop_product_card_icon{
+        padding-top: 1em;
+    }
+
+    .shop_product_card_img img{
+        width: 100%;
+        padding: 4%;
+        border-radius: 50%;
+        vertical-align: top;
+    }
+
+    .shop_product_card_icon img{
+        border-radius: 50%;
+    }
+
+   
+
+    
+
+    
+
+    
+
+   
+        
+
+    
+
+
+
+    
+
+
+
+
+     
+
+
+
+
+/* 電腦 */
+@media screen and (min-width:768px) {
+  
+        html{
+            font-size: 14px;
+        }
+        /* 產品分類下拉項目消失 */
+        #product_item_app{
+            display: none;
+        }
+        /* 桌機產品分類導覽列顯示 */
+        .product_item_nav{
+            display: block;
+            
+        }
+
+        .shop_product_box{
+            display: flex;
+        }
+        
+        .shop_product_item{
+            display: flex;
+        }
+
+        
+
+       
+
+        
+            
+
+
+}
+
+@media screen and (min-width:1200px) {
+
+
+
+    
+
+    
+
+}

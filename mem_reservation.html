@@ -9,99 +9,88 @@
 </head>
 <body>
     
-<!-- 網頁頭 -->
-<!-- 內容由 common.js 新增 by PIN -->
-<header class="main_header"></header>
-
 
 <!-- 網頁內容 by PIN -->
 <main>
-    
-<h2>管理預約</h2>
-
-<!-- 管理預約子選單 -->
-<section class="member query_reservation">
-    <div class="container">
-
-    <!-- 預約分頁頁籤: 我的預約/歷史預約 -->
-        <div class="status_box order_status">
-            <ul class="order_status_list">
-                <li>
-                    <label class="selected_btn">我的預約</label>
-                </li>
-                <li>
-                    <label class="unselected_btn">歷史預約</label>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-
-<!-- 預約 -->
-    <section class="member reservation">
-        <div class="contaier">
-
-            <!-- 已預約，尚未占卜 -->
-            <h3>正在進行中的預約</h3>
-            <div class="on_reservation">
-                <!-- 占卜師大頭貼 -->
-                <div class="img_box">
-                    <img src="https://picsum.photos/50/50/?random=1">
-                </div>
-                <!-- 預約日期、時段及狀態 -->
-                <div class="txt_box">
-                    <span>日期：2022.03.15</span>
-                    <span>時段：上午</span>
-                    <span>占卜師：吳恆隼</span>
-                    <span>狀態：審核中</span>
-                </div>
-                <!-- 取消 -->
-                <div class="canel">
-                    <button>取消</button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-<!-- 預約歷史紀錄 -->
-    <section class="resvation_log">
+    <!-- 會員專區 -->
+    <section class="member">
         <div class="container">
 
-            <h3>歷史預約紀錄</h3>
+            <!-- 我的預約 -->
+            <section class="reservation_box">
+                <ul class="reservation_list">
 
-        </div>
-    </section>
+                    <li class="reservation_card">
+                        <div class="card_header">
+                            <div class="txt_box">
+                                <span>吳恆隼</span>
+                            </div>
+                        </div>
+                        <div class="card_content">
+                            <div class="img_box">
+                                <img src="https://picsum.photos/50/50/?random=8">
+                            </div>
+                            <div class="txt_box">
+                                <p>2022.02.24</p>
+                                <p>上午</p>
+                            </div>
+                        </div>
+                        <div class="card_footer">
+                            <button>預約成功</button>
+                            <button>取消</button>
+                        </div>
+                    </li>
 
+                    <li class="reservation_card">
+                        <div class="card_header">
+                            <div class="txt_box">
+                                <span>吳恆隼</span>
+                            </div>
+                        </div>
+                        <div class="card_content">
+                            <div class="img_box">
+                                <img src="https://picsum.photos/50/50/?random=8">
+                            </div>
+                            <div class="txt_box">
+                                <p>2022.02.28</p>
+                                <p>晚上</p>
+                            </div>
+                        </div>
+                        <div class="card_footer">
+                            <button>審核中</button>
+                            <button>取消</button>
+                        </div>
+                    </li>
+                    
+                    <li class="reservation_card">
+                        <div class="card_header">
+                            <div class="txt_box">
+                                <span>吳恆隼</span>
+                            </div>
+                        </div>
+                        <div class="card_content">
+                            <div class="img_box">
+                                <img src="https://picsum.photos/50/50/?random=8">
+                            </div>
+                            <div class="txt_box">
+                                <p>2022.01.17</p>
+                                <p>上午</p>
+                            </div>
+                        </div>
+                        <div class="card_footer">
+                            <button>評價占卜師</button>
+                            <!-- <button>取消</button> -->
+                        </div>
+                    </li>
+                </ul>
 
-<!-- 其他會員專區連結 -->
-    <section class="mem_link">
-        <div class="container">
-
-            <ul class="link_item">
-                <li class="item mem_detail">
-                    <a href="#">個人資料</a>
-                </li>
-                <li class="item mem_orders">
-                    <a href="#">訂單管理</a>
-                </li>
-
-                <!-- 僅身分為占卜師會顯示 -->
-                <li class="item astrologist">
-                    <a href="#">占卜師專區</a>
-                </li>
-            </ul>
+            </section>
 
         </div>
     </section>
 
 </main>
 
-
-<!-- 網頁尾 -->
-<!-- 內容由 common.js 新增 by PIN -->
-<footer class="main_footer"></footer>
 
 <script src="js/common.js"></script>
 </body>
