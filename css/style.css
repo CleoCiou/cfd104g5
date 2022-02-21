@@ -553,9 +553,13 @@ main section.member .container .display_none {
 main section.member .container .invisible {
   height: 0;
   overflow: hidden;
+  font-size: 0;
+  padding: 0;
+  border: none;
 }
 
-main section.member .container .main_member {
+main section.member .container .main_member,
+main section.member .container .main_astrologist {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -566,7 +570,8 @@ main section.member .container .main_member {
           justify-content: space-between;
 }
 
-main section.member .container .main_member .mem_info {
+main section.member .container .main_member .mem_info,
+main section.member .container .main_astrologist .mem_info {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -581,7 +586,8 @@ main section.member .container .main_member .mem_info {
           justify-content: space-between;
 }
 
-main section.member .container .main_member .mem_info .info_box {
+main section.member .container .main_member .mem_info .info_box,
+main section.member .container .main_astrologist .mem_info .info_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -593,14 +599,43 @@ main section.member .container .main_member .mem_info .info_box {
   padding: 1em;
 }
 
-main section.member .container .main_member .mem_info .info_box .txt_box {
-  margin-left: 1em;
+main section.member .container .main_member .mem_info .info_box .txt_box,
+main section.member .container .main_astrologist .mem_info .info_box .txt_box {
+  margin-left: 1.5em;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-main section.member .container .main_member .mem_info .detail_info {
+main section.member .container .main_member .mem_info .info_box .txt_box .ast_star,
+main section.member .container .main_astrologist .mem_info .info_box .txt_box .ast_star {
+  font-size: .5em;
+  vertical-align: middle;
+}
+
+main section.member .container .main_member .mem_info .info_box .ast_sticker,
+main section.member .container .main_astrologist .mem_info .info_box .ast_sticker {
+  width: 10em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+main section.member .container .main_member .mem_info .info_box .ast_action,
+main section.member .container .main_astrologist .mem_info .info_box .ast_action {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+main section.member .container .main_member .mem_info .info_box .update_intro,
+main section.member .container .main_astrologist .mem_info .info_box .update_intro {
+  width: 90%;
+  color: #555;
+  height: 10em;
+  padding: 1em;
+}
+
+main section.member .container .main_member .mem_info .detail_info,
+main section.member .container .main_astrologist .mem_info .detail_info {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -609,28 +644,41 @@ main section.member .container .main_member .mem_info .detail_info {
       flex-wrap: wrap;
 }
 
-main section.member .container .main_member .mem_info .detail_info .item {
+main section.member .container .main_member .mem_info .detail_info .item,
+main section.member .container .main_astrologist .mem_info .detail_info .item {
   width: 50%;
 }
 
-main section.member .container .main_member .mem_info .detail_info .item > [class*='_box'] {
+@media screen and (max-width: 768px) {
+  main section.member .container .main_member .mem_info .detail_info .item,
+  main section.member .container .main_astrologist .mem_info .detail_info .item {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .mem_info .detail_info .item > [class*='_box'],
+main section.member .container .main_astrologist .mem_info .detail_info .item > [class*='_box'] {
   padding: .3em 0;
 }
 
-main section.member .container .main_member .mem_info .detail_info .confirm_list {
+main section.member .container .main_member .mem_info .detail_info .confirm_list,
+main section.member .container .main_astrologist .mem_info .detail_info .confirm_list {
   padding: .5em;
 }
 
-main section.member .container .main_member .mem_info .detail_info .confirm_list li {
+main section.member .container .main_member .mem_info .detail_info .confirm_list li,
+main section.member .container .main_astrologist .mem_info .detail_info .confirm_list li {
   color: #aaa;
   line-height: 1.2;
 }
 
-main section.member .container .main_member .reservation {
+main section.member .container .main_member .reservation,
+main section.member .container .main_astrologist .reservation {
   width: 35%;
 }
 
-main section.member .container .main_member .reservation .reservation_box {
+main section.member .container .main_member .reservation .reservation_box,
+main section.member .container .main_astrologist .reservation .reservation_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -646,7 +694,8 @@ main section.member .container .main_member .reservation .reservation_box {
   padding: 1em;
 }
 
-main section.member .container .main_member .reservation .reservation_box .astrologist_info {
+main section.member .container .main_member .reservation .reservation_box .astrologist_info,
+main section.member .container .main_astrologist .reservation .reservation_box .astrologist_info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -657,45 +706,126 @@ main section.member .container .main_member .reservation .reservation_box .astro
           justify-content: space-between;
 }
 
-main section.member .container .main_member .reservation .reservation_box .astrologist_info .img_box {
+main section.member .container .main_member .reservation .reservation_box .astrologist_info .img_box,
+main section.member .container .main_astrologist .reservation .reservation_box .astrologist_info .img_box {
   width: 7em;
   margin-right: 2em;
   border-radius: 50%;
   overflow: hidden;
 }
 
-main section.member .container .main_member .reservation .reservation_box .reservation_time {
+main section.member .container .main_member .reservation .reservation_box .reservation_time,
+main section.member .container .main_astrologist .reservation .reservation_box .reservation_time {
   font-size: 1.3em;
 }
 
-main section.member .container .main_member .orders {
+main section.member .container .main_member .ast_reservation,
+main section.member .container .main_astrologist .ast_reservation {
+  width: 100%;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box,
+main section.member .container .main_astrologist .ast_reservation .reservation_box {
+  padding-right: 3em;
+  position: relative;
+  overflow: hidden;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .reservation_list,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .reservation_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .reservation_list .reservation_card,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .reservation_list .reservation_card {
+  width: 15em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  outline: none;
+  background-color: #5558;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .change_page,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .change_page {
+  display: block;
+  position: absolute;
+  padding: .3em;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #CFB886;
+  bottom: .3em;
+  cursor: pointer;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .next_page,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .next_page {
+  right: .3em;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .last_page,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .last_page {
+  left: 0.3em;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .gray,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .gray {
+  background-color: #555;
+}
+
+main section.member .container .main_member .calendar,
+main section.member .container .main_astrologist .calendar {
+  width: 100%;
+}
+
+main section.member .container .main_member .calendar .fc-h-event,
+main section.member .container .main_astrologist .calendar .fc-h-event {
+  background-color: #5558;
+  padding: .5em;
+  border: none;
+  margin: 0.5em;
+}
+
+main section.member .container .main_member .orders,
+main section.member .container .main_astrologist .orders {
   width: 65%;
 }
 
-main section.member .container .main_member .orders .orders_box > * {
+main section.member .container .main_member .orders .orders_box > *,
+main section.member .container .main_astrologist .orders .orders_box > * {
   padding: .5em;
 }
 
-main section.member .container .main_member .orders .orders_box .order_header {
+main section.member .container .main_member .orders .orders_box .order_header,
+main section.member .container .main_astrologist .orders .orders_box .order_header {
   text-align: right;
 }
 
-main section.member .container .main_member .orders .orders_box .order_content > * {
+main section.member .container .main_member .orders .orders_box .order_content > *,
+main section.member .container .main_astrologist .orders .orders_box .order_content > * {
   display: inline-block;
   vertical-align: middle;
 }
 
-main section.member .container .main_member .orders .orders_box .order_content .img_box {
+main section.member .container .main_member .orders .orders_box .order_content .img_box,
+main section.member .container .main_astrologist .orders .orders_box .order_content .img_box {
   width: 5em;
   margin-right: 1em;
 }
 
-main section.member .container .main_member .orders .orders_box .order_footer .total {
+main section.member .container .main_member .orders .orders_box .order_footer .total,
+main section.member .container .main_astrologist .orders .orders_box .order_footer .total {
   text-align: right;
   font-size: 1.125rem;
 }
 
-main section.member .container .main_member .orders .orders_box .other_order {
+main section.member .container .main_member .orders .orders_box .other_order,
+main section.member .container .main_astrologist .orders .orders_box .other_order {
   display: block;
   width: 100%;
   text-align: center;
@@ -703,18 +833,21 @@ main section.member .container .main_member .orders .orders_box .other_order {
   padding-top: .7em;
 }
 
-main section.member .container .main_member .comment {
+main section.member .container .main_member .comment,
+main section.member .container .main_astrologist .comment {
   width: 50%;
 }
 
-main section.member .container .main_member .comment .comment_list {
+main section.member .container .main_member .comment .comment_list,
+main section.member .container .main_astrologist .comment .comment_list {
   position: relative;
   padding-top: 1em;
   -webkit-transition: .5s;
   transition: .5s;
 }
 
-main section.member .container .main_member .comment .comment_list .prev_comment {
+main section.member .container .main_member .comment .comment_list .prev_comment,
+main section.member .container .main_astrologist .comment .comment_list .prev_comment {
   position: absolute;
   top: 0.5em;
   left: 50%;
@@ -724,11 +857,13 @@ main section.member .container .main_member .comment .comment_list .prev_comment
   cursor: pointer;
 }
 
-main section.member .container .main_member .comment .comment_list .prev_comment:hover {
+main section.member .container .main_member .comment .comment_list .prev_comment:hover,
+main section.member .container .main_astrologist .comment .comment_list .prev_comment:hover {
   color: #888;
 }
 
-main section.member .container .main_member .comment .comment_list.view_old {
+main section.member .container .main_member .comment .comment_list.view_old,
+main section.member .container .main_astrologist .comment .comment_list.view_old {
   position: fixed;
   top: 2em;
   bottom: 2em;
@@ -753,14 +888,24 @@ main section.member .container .main_member .comment .comment_list.view_old {
           justify-content: flex-end;
 }
 
-main section.member .container .main_member .comment .comment_list.view_old .prev_comment {
+@media screen and (max-width: 768px) {
+  main section.member .container .main_member .comment .comment_list.view_old,
+  main section.member .container .main_astrologist .comment .comment_list.view_old {
+    left: 1em;
+    right: 1em;
+  }
+}
+
+main section.member .container .main_member .comment .comment_list.view_old .prev_comment,
+main section.member .container .main_astrologist .comment .comment_list.view_old .prev_comment {
   position: absolute;
   width: 95%;
   text-align: right;
   top: 1em;
 }
 
-main section.member .container .main_member .comment .comment_box {
+main section.member .container .main_member .comment .comment_box,
+main section.member .container .main_astrologist .comment .comment_box {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -770,26 +915,31 @@ main section.member .container .main_member .comment .comment_box {
   margin: 1em 0;
 }
 
-main section.member .container .main_member .comment .comment_box .txt_box {
+main section.member .container .main_member .comment .comment_box .txt_box,
+main section.member .container .main_astrologist .comment .comment_box .txt_box {
   border-radius: .5em;
   padding: 1em;
   position: relative;
 }
 
-main section.member .container .main_member .comment .comment_box .reservation_info {
+main section.member .container .main_member .comment .comment_box .reservation_info,
+main section.member .container .main_astrologist .comment .comment_box .reservation_info {
   padding: 0.5em;
 }
 
-main section.member .container .main_member .comment .comment_box .reservation_info .img_box {
+main section.member .container .main_member .comment .comment_box .reservation_info .img_box,
+main section.member .container .main_astrologist .comment .comment_box .reservation_info .img_box {
   margin: auto;
 }
 
-main section.member .container .main_member .comment .comment_box .reservation_info .txt_box {
+main section.member .container .main_member .comment .comment_box .reservation_info .txt_box,
+main section.member .container .main_astrologist .comment .comment_box .reservation_info .txt_box {
   margin-top: 0.5em;
   text-align: center;
 }
 
-main section.member .container .main_member .comment .comment_box .reservation_time {
+main section.member .container .main_member .comment .comment_box .reservation_time,
+main section.member .container .main_astrologist .comment .comment_box .reservation_time {
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin-left: 0.5em;
@@ -797,12 +947,14 @@ main section.member .container .main_member .comment .comment_box .reservation_t
   font-size: 0.8em;
 }
 
-main section.member .container .main_member .comment .comment_box:nth-child(odd) .txt_box {
+main section.member .container .main_member .comment .comment_box:nth-child(odd) .txt_box,
+main section.member .container .main_astrologist .comment .comment_box:nth-child(odd) .txt_box {
   margin-left: 1em;
   background-color: #333;
 }
 
-main section.member .container .main_member .comment .comment_box:nth-child(odd) .txt_box:after {
+main section.member .container .main_member .comment .comment_box:nth-child(odd) .txt_box:after,
+main section.member .container .main_astrologist .comment .comment_box:nth-child(odd) .txt_box:after {
   content: '';
   display: block;
   position: absolute;
@@ -817,19 +969,38 @@ main section.member .container .main_member .comment .comment_box:nth-child(odd)
   border-color: transparent #333 transparent transparent;
 }
 
-main section.member .container .main_member .comment .comment_box:nth-child(even) {
+main section.member .container .main_member .comment .comment_box:nth-child(even),
+main section.member .container .main_astrologist .comment .comment_box:nth-child(even) {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
 }
 
-main section.member .container .main_member .comment .comment_box:nth-child(even) .txt_box {
+main section.member .container .main_member .comment .comment_box:nth-child(even) .txt_box,
+main section.member .container .main_astrologist .comment .comment_box:nth-child(even) .txt_box {
   margin-right: 1em;
   background-color: #CFB886;
 }
 
-main section.member .container .main_member .comment .active {
+main section.member .container .main_member .comment .comment_box:nth-child(even) .txt_box:after,
+main section.member .container .main_astrologist .comment .comment_box:nth-child(even) .txt_box:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.5em;
+  right: 0;
+  -webkit-transform: translateX(90%);
+          transform: translateX(90%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1em 1em 0 0;
+  border-color: #CFB886 transparent transparent transparent;
+}
+
+main section.member .container .main_member .comment .active,
+main section.member .container .main_astrologist .comment .active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -838,18 +1009,21 @@ main section.member .container .main_member .comment .active {
   padding: .5em;
 }
 
-main section.member .container .main_member .comment .active input {
+main section.member .container .main_member .comment .active input,
+main section.member .container .main_astrologist .comment .active input {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   margin-right: 1em;
 }
 
-main section.member .container .main_member .message {
+main section.member .container .main_member .message,
+main section.member .container .main_astrologist .message {
   width: 50%;
 }
 
-main section.member .container .main_member .message .message_box {
+main section.member .container .main_member .message .message_box,
+main section.member .container .main_astrologist .message .message_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -863,7 +1037,8 @@ main section.member .container .main_member .message .message_box {
   padding: 1em;
 }
 
-main section.member .container .main_member .message .message_box .article_info {
+main section.member .container .main_member .message .message_box .article_info,
+main section.member .container .main_astrologist .message .message_box .article_info {
   position: relative;
   padding: .8em;
   background-color: #5558;
@@ -871,15 +1046,18 @@ main section.member .container .main_member .message .message_box .article_info 
   cursor: pointer;
 }
 
-main section.member .container .main_member .message .message_box .article_info:hover {
+main section.member .container .main_member .message .message_box .article_info:hover,
+main section.member .container .main_astrologist .message .message_box .article_info:hover {
   background-color: #5555;
 }
 
-main section.member .container .main_member .message .message_box .article_info:not(:first-child) {
+main section.member .container .main_member .message .message_box .article_info:not(:first-child),
+main section.member .container .main_astrologist .message .message_box .article_info:not(:first-child) {
   margin-top: .5em;
 }
 
-main section.member .container .main_member .message .message_box .article_info:before {
+main section.member .container .main_member .message .message_box .article_info:before,
+main section.member .container .main_astrologist .message .message_box .article_info:before {
   content: attr(data-newMsg);
   display: inline-block;
   position: absolute;
@@ -894,8 +1072,89 @@ main section.member .container .main_member .message .message_box .article_info:
   border-radius: 50%;
 }
 
+main section.member .container .main_member .item.ast_comment,
+main section.member .container .main_astrologist .item.ast_comment {
+  width: 100%;
+}
+
+main section.member .container .main_member .item.ast_comment > *,
+main section.member .container .main_astrologist .item.ast_comment > * {
+  height: auto;
+  outline: none;
+  font-size: 0;
+}
+
+@media screen and (min-width: 767px) {
+  main section.member .container .main_member .item.ast_comment .active_star,
+  main section.member .container .main_astrologist .item.ast_comment .active_star {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main section.member .container .main_member .item.ast_comment .hidden,
+  main section.member .container .main_astrologist .item.ast_comment .hidden {
+    height: 4rem;
+    overflow: hidden;
+  }
+  main section.member .container .main_member .item.ast_comment .action button,
+  main section.member .container .main_astrologist .item.ast_comment .action button {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+  main section.member .container .main_member .item.ast_comment .action button:not(:first-child):hover,
+  main section.member .container .main_astrologist .item.ast_comment .action button:not(:first-child):hover {
+    background-color: #CFB886;
+  }
+  main section.member .container .main_member .item.ast_comment .action button.display_none,
+  main section.member .container .main_astrologist .item.ast_comment .action button.display_none {
+    display: none;
+  }
+  main section.member .container .main_member .item.ast_comment .action button:first-child:before,
+  main section.member .container .main_astrologist .item.ast_comment .action button:first-child:before {
+    content: '';
+    position: absolute;
+    right: .3em;
+    top: 30%;
+    width: 0;
+    height: 0;
+    border-left: .2em solid transparent;
+    border-right: .2em solid transparent;
+    border-bottom: .3em solid black;
+  }
+  main section.member .container .main_member .item.ast_comment .action button:first-child:after,
+  main section.member .container .main_astrologist .item.ast_comment .action button:first-child:after {
+    content: '';
+    position: absolute;
+    right: .3em;
+    bottom: 30%;
+    width: 0;
+    height: 0;
+    border-left: .2em solid transparent;
+    border-right: .2em solid transparent;
+    border-top: .3em solid black;
+  }
+}
+
+main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment,
+main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment {
+  outline: 1px solid #CFB886;
+}
+
+main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment span,
+main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment span {
+  display: block;
+}
+
+main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment p,
+main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment p {
+  padding: 2em;
+}
+
 @media screen and (max-width: 767px) {
-  main section.member .container .main_member .item {
+  main section.member .container .main_member .item,
+  main section.member .container .main_astrologist .item {
     width: 100%;
   }
 }

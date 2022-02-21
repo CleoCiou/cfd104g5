@@ -158,14 +158,14 @@
                         <div class="comment_box">
                             <div class="reservation_info">
                                 <div class="img_box sticker">
-                                    <img src="https://picsum.photos/50/50/?random=10">
+                                    <img src="https://picsum.photos/50/50/?random=8">
                                 </div>
                             </div>
                             
                             <div class="txt_box comment">
                                 <span class="star">★★★</span>
                                 <p>
-                                    真的是當天一時興起訂了的那種，居然聽到運勢總論說到可能需要出國走走，來豐富最近平淡的生活，我聽到的當下真的嚇呆了。
+                                    真的是當天一時興起訂了的那種，居然聽到運勢總論說到可能需要出國走走來豐富最近平淡的生活，我聽到的當下真的嚇呆了。
                                 </p>
                             </div>
                         </div>
@@ -247,6 +247,7 @@
                 e.target.innerText = (e.target.innerText === '查看其他評論 ^') ? '關閉' : '查看其他評論 ^';
                 let comment_list = e.target.parentNode;
                 comment_list.classList.toggle('view_old');
+                document.body.classList.toggle('overflow_hidden');
             }
         },
         computed: {

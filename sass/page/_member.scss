@@ -48,12 +48,17 @@ main {
             .invisible {
                 height: 0;
                 overflow: hidden;
+                font-size: 0;
+                padding: 0;
+                border: none;
             }
     
             // 會員專區共用 END === //
     
             // === 會員專區首頁 === //
-            .main_member {
+            // === 占卜師專區首頁 === //
+            .main_member,
+            .main_astrologist {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
@@ -73,8 +78,29 @@ main {
                         padding: 1em;
 
                         .txt_box {
-                            margin-left: 1em;
+                            margin-left: 1.5em;
                             flex-grow: 1;
+
+                            .ast_star {
+                                font-size: .5em;
+                                vertical-align: middle;
+                            }
+                        }
+
+                        // 占卜師專區
+                        .ast_sticker {
+                            width: 10em;
+                            border-radius: 50%;
+                            overflow: hidden;
+                        }
+                        .ast_action {
+                            align-self: flex-end;
+                        }
+                        .update_intro {
+                            width: 90%;
+                            color: #555;
+                            height: 10em;
+                            padding: 1em;
                         }
                     }
                     
@@ -85,6 +111,9 @@ main {
 
                         .item {
                             width: 50%;
+                            @media screen and(max-width: 768px) {
+                                width: 100%;
+                            }
 
                             > [class*='_box'] {
                                 padding: .3em 0;
@@ -131,7 +160,63 @@ main {
                         }
                     }
                 }
-        
+                // 占卜師-審核預約
+                .ast_reservation {
+                    width: 100%;
+                    
+                    .reservation_box {
+                        padding-right: 3em;
+                        position: relative;
+                        overflow: hidden;
+
+                        .reservation_list {
+                            display: flex;
+                            flex-wrap: nowrap;
+
+                            .reservation_card {
+                                width: 15em;
+                                flex-shrink: 0;
+                                outline: none;
+                                background-color: #5558;
+                            }
+                        }
+                        .change_page {
+                            display: block;
+                            position: absolute;
+                            padding: .3em;
+                            text-align: center;
+                            border-radius: 50%;
+                            font-size: 1.5em;
+                            color: #fff;
+                            background-color: map-get($primary_color, 'content');
+                            bottom: .3em;
+                            cursor: pointer;
+                        }
+                        .next_page {
+                            right: .3em;
+                        }
+                        .last_page {
+                            left: 0.3em;
+                        }
+                        .gray {
+                            background-color: #555;
+                        }
+
+                    }
+                }
+                
+                // 行事曆
+                .calendar {
+                    width: 100%;
+
+                    .fc-h-event {
+                        background-color: #5558;
+                        padding: .5em;
+                        border: none;
+                        margin: 0.5em;
+                    }
+                }
+
                 // 目前訂單
                 .orders {
                     width: 65%;
@@ -205,6 +290,10 @@ main {
                         display: flex;
                         flex-direction: column;
                         justify-content: flex-end;
+                        @media screen and (max-width: 768px) {
+                            left: 1em;
+                            right: 1em;
+                        }
 
                         .prev_comment {
                             position: absolute;
@@ -269,6 +358,19 @@ main {
                             margin-right: 1em;
                             background-color: map-get($primary_color, 'content');
                         }
+                        .txt_box:after {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            top: 0.5em;
+                            right: 0;
+                            transform: translateX(90%);
+                            width: 0;
+                            height: 0;
+                            border-style: solid;
+                            border-width: 1em 1em 0 0;
+                            border-color:  map-get($primary_color, 'content') transparent transparent transparent;
+                        }
                     }
                     .active {
                         display: flex;
@@ -321,6 +423,75 @@ main {
                         }
                     }
                 }
+
+                // 占卜師專區
+                // 評論
+                .item.ast_comment {
+                    width: 100%;
+                    > * {
+                        height: auto;
+                        outline: none;
+                        font-size: 0;
+                    }
+                    @media screen and (min-width: 767px) {
+                        .active_star {
+                            display: none;
+                        }
+                    }
+                    @media screen and (max-width: 768px) {
+                        .hidden {
+                            height: 4rem;
+                            overflow: hidden;
+                        }
+                        .action {
+                            button {
+                                display: block;
+                                position: relative;
+                                width: 100%;
+                            }
+                            button:not(:first-child):hover {
+                                background-color: map-get($primary_color, 'content');
+                            }
+                            button.display_none {
+                                display: none;
+                            }
+                            button:first-child:before {
+                                content: '';
+                                position: absolute;
+                                right: .3em;
+                                top: 30%;
+                                width: 0; 
+                                height: 0; 
+                                border-left: .2em solid transparent;
+                                border-right: .2em solid transparent;
+                                border-bottom: .3em solid black;
+                            }
+                            button:first-child:after {
+                                content: '';
+                                position: absolute;
+                                right: .3em;
+                                bottom: 30%; 
+                                width: 0; 
+                                height: 0; 
+                                border-left: .2em solid transparent;
+                                border-right: .2em solid transparent;
+                                border-top: .3em solid black;
+                            }
+                        }
+                    }
+                    .ast_comment_list {
+                        .ast_comment {
+                            outline: 1px solid map-get($primary_color, 'content');
+                            span {
+                                display: block;
+                            }
+                            p {
+                                padding: 2em;
+                            }
+                        }
+                    }
+                }
+
                 @media screen and (max-width: 767px) {
                     .item {
                         width: 100%;
