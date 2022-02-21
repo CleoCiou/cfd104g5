@@ -2,23 +2,49 @@
 .shopping_process {
     display: flex;
     justify-content: center;
+    padding: 2em;
 }
 .shopping_process .item{
-    margin: 5%;
+    margin: auto;
+    position: relative;
+    text-align: center;
+}
+.shopping_cart .container .shopping_process .item p{
+    position: relative;
+    text-align: right;
+}
+.shopping_cart .container .shopping_process .item p::before{
+    content: "";
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    background-color: #CFB886;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+    opacity: 0.5;
 }
 
 /* 購物車內容 */
 /* 購物車header */
+.shopping_cart .container{
+    padding: 0;
+}
 .cart_header {
     padding-bottom: 3%;
 }
 .cart_detail {
-    border: 1px solid #CFB886;
-    padding: 3%;
+    border: 2px solid #CFB886;
+    padding: 3% 1.5% 0 1.5%;
+
 }
 .cart_header {
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #CFB886;
 }
 .cart_header>div{
     width: 25%;
@@ -29,7 +55,15 @@
 .product_box {
     display: flex;
     align-items: center;
+    padding: 3%;
+    border-bottom: 1px solid #CFB886;
+    position: relative;
+    flex-wrap: wrap;
 }
+.product_box:last-child{
+    border-bottom: none;
+}
+
 .product_box>div{
     width: 25%;
     text-align: right;
@@ -39,14 +73,90 @@
     flex-direction: column;
     width: 100%;
 }
-/* .cart_card .img_box{
-    width: 100%;
-    height: 100%;
-} */
 .cart_card .img_box img{
     width: 100%;
     height: 100%;
 }
+.cart_card .txt_box p{
+    text-align: center;
+}
 .cart_body p{
     word-wrap: break-word;
+}
+.cart_body .product_box .count{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.cart_body .product_box .count p{
+    margin: 0.5em;
+}
+.cart_body .product_box .count i{
+    font-size: 0.5em;
+}
+.delete_button {
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+}
+/* 填寫資料區 */
+.cart_deliver .container .customer_info {
+    border-bottom: 1px solid #CFB886;
+    padding: 0.5em;
+}
+.cart_info_right .order_total{
+    padding: 0.5em 0;
+    text-align: left;
+}
+.cart_info_right .confirm_btns {
+    text-align: right;
+}
+
+/* 底部推薦商品 */
+.cart_bottom{
+    margin-top: 2em;
+    border-top: 2px dotted #CFB886;
+}
+.cart_bottom .container .item_box{
+    display: flex;
+    flex-wrap: wrap;
+}
+.cart_bottom .container .item_box .item{
+    width: 50%;
+}
+.cart_bottom .container .item_box{
+    padding: 1em;
+}
+.cart_bottom .container .item_box .item .img_box img{
+    width: 100%;
+    padding: 1em;
+}
+.cart_bottom .container .item_box .item .txt_box{
+    text-align: center;
+}
+@media screen and (min-width:768px){
+    .shopping_cart .container{
+        padding: 0 8.333333%;
+    }
+    /* 填寫資料區 */
+    .cart_deliver .container {
+        display: flex;
+    }
+    .cart_deliver .container .customer_info{
+        width: 50%;
+        border-bottom: none;
+    }
+    .cart_deliver .container .cart_info_right {
+        width: 50%;
+        padding-right: 5em;
+    }
+    .cart_bottom .container .item_box .item{
+        width: 25%;
+    }
+    .cart_info_right .order_total{
+        text-align: right;
+    }
+    .cart_deliver .container .customer_info .customer_form{
+        padding-left: 5em;
+    }
 }
