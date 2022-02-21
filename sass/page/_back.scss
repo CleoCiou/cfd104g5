@@ -1,5 +1,6 @@
 body {
     .back {
+        // === 後台共用 === //
         // 圖片填滿圖片盒子
         .img_box {
             img {
@@ -7,6 +8,12 @@ body {
                 display: block;
             }
         }
+        // 按鈕內文字不換行
+        .selected_btn,
+        .unselected_btn {
+            padding: .5em 1em;
+        }
+        // END
 
         display: flex;
 

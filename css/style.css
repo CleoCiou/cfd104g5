@@ -516,6 +516,7 @@ main section.member .container .img_box.sticker {
 
 main section.member .container section.item {
   padding: .5em;
+  margin-bottom: 1em;
 }
 
 main section.member .container section.item > * {
@@ -523,6 +524,7 @@ main section.member .container section.item > * {
   width: 100%;
   outline: 1px solid #CFB886;
   padding: .5em;
+  border-radius: .5em;
 }
 
 main section.member .container .logo {
@@ -542,6 +544,15 @@ main section.member .container .logo {
 
 main section.member .container .logo .img_box {
   margin-right: 1em;
+}
+
+main section.member .container .display_none {
+  display: none;
+}
+
+main section.member .container .invisible {
+  height: 0;
+  overflow: hidden;
 }
 
 main section.member .container .main_member {
@@ -589,6 +600,32 @@ main section.member .container .main_member .mem_info .info_box .txt_box {
           flex-grow: 1;
 }
 
+main section.member .container .main_member .mem_info .detail_info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.member .container .main_member .mem_info .detail_info .item {
+  width: 50%;
+}
+
+main section.member .container .main_member .mem_info .detail_info .item > [class*='_box'] {
+  padding: .3em 0;
+}
+
+main section.member .container .main_member .mem_info .detail_info .confirm_list {
+  padding: .5em;
+}
+
+main section.member .container .main_member .mem_info .detail_info .confirm_list li {
+  color: #aaa;
+  line-height: 1.2;
+}
+
 main section.member .container .main_member .reservation {
   width: 35%;
 }
@@ -621,7 +658,14 @@ main section.member .container .main_member .reservation .reservation_box .astro
 }
 
 main section.member .container .main_member .reservation .reservation_box .astrologist_info .img_box {
-  width: 5em;
+  width: 7em;
+  margin-right: 2em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+main section.member .container .main_member .reservation .reservation_box .reservation_time {
+  font-size: 1.3em;
 }
 
 main section.member .container .main_member .orders {
@@ -663,6 +707,59 @@ main section.member .container .main_member .comment {
   width: 50%;
 }
 
+main section.member .container .main_member .comment .comment_list {
+  position: relative;
+  padding-top: 1em;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+main section.member .container .main_member .comment .comment_list .prev_comment {
+  position: absolute;
+  top: 0.5em;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #aaa5;
+  cursor: pointer;
+}
+
+main section.member .container .main_member .comment .comment_list .prev_comment:hover {
+  color: #888;
+}
+
+main section.member .container .main_member .comment .comment_list.view_old {
+  position: fixed;
+  top: 2em;
+  bottom: 2em;
+  left: 10em;
+  right: 10em;
+  width: auto;
+  height: auto;
+  background: #111;
+  border: 8px solid #fff;
+  z-index: 5;
+  border-radius: 1em;
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+main section.member .container .main_member .comment .comment_list.view_old .prev_comment {
+  position: absolute;
+  width: 95%;
+  text-align: right;
+  top: 1em;
+}
+
 main section.member .container .main_member .comment .comment_box {
   width: 100%;
   display: -webkit-box;
@@ -670,9 +767,13 @@ main section.member .container .main_member .comment .comment_box {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  margin: 1em 0;
+}
+
+main section.member .container .main_member .comment .comment_box .txt_box {
+  border-radius: .5em;
+  padding: 1em;
+  position: relative;
 }
 
 main section.member .container .main_member .comment .comment_box .reservation_info {
@@ -688,6 +789,34 @@ main section.member .container .main_member .comment .comment_box .reservation_i
   text-align: center;
 }
 
+main section.member .container .main_member .comment .comment_box .reservation_time {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-left: 0.5em;
+  color: #ccc;
+  font-size: 0.8em;
+}
+
+main section.member .container .main_member .comment .comment_box:nth-child(odd) .txt_box {
+  margin-left: 1em;
+  background-color: #333;
+}
+
+main section.member .container .main_member .comment .comment_box:nth-child(odd) .txt_box:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  -webkit-transform: translateX(-90%);
+          transform: translateX(-90%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 1em 1em 0;
+  border-color: transparent #333 transparent transparent;
+}
+
 main section.member .container .main_member .comment .comment_box:nth-child(even) {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
@@ -695,18 +824,55 @@ main section.member .container .main_member .comment .comment_box:nth-child(even
           flex-direction: row-reverse;
 }
 
+main section.member .container .main_member .comment .comment_box:nth-child(even) .txt_box {
+  margin-right: 1em;
+  background-color: #CFB886;
+}
+
+main section.member .container .main_member .comment .active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: .5em;
+}
+
+main section.member .container .main_member .comment .active input {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-right: 1em;
+}
+
 main section.member .container .main_member .message {
   width: 50%;
 }
 
 main section.member .container .main_member .message .message_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 1em;
 }
 
 main section.member .container .main_member .message .message_box .article_info {
   position: relative;
-  padding: .5em;
+  padding: .8em;
   background-color: #5558;
+  border-radius: .5em;
+  cursor: pointer;
+}
+
+main section.member .container .main_member .message .message_box .article_info:hover {
+  background-color: #5555;
 }
 
 main section.member .container .main_member .message .message_box .article_info:not(:first-child) {
@@ -726,6 +892,12 @@ main section.member .container .main_member .message .message_box .article_info:
   background-color: #d89482;
   color: #fff;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .item {
+    width: 100%;
+  }
 }
 
 main section.member .container .login_box {
@@ -751,20 +923,98 @@ main section.member .container .sign_up_box {
   padding: 1em;
 }
 
-main section.member .container .sign_up_box .item {
+main section.member .container .sign_up_box .sign_up_info .item {
+  margin-bottom: .5em;
+  padding: 1em;
+  border-radius: 1em;
+  width: 100%;
+}
+
+main section.member .container .sign_up_box .sign_up_info .item input[type=text],
+main section.member .container .sign_up_box .sign_up_info .item input[type=password],
+main section.member .container .sign_up_box .sign_up_info .item input[type=email],
+main section.member .container .sign_up_box .sign_up_info .item textarea {
+  width: 100%;
+}
+
+main section.member .container .sign_up_box .sign_up_info .item .pwd_item {
   margin-bottom: 1em;
 }
 
-main section.member .container .sign_up_box .item input[type=text],
-main section.member .container .sign_up_box .item input[type=password],
-main section.member .container .sign_up_box .item input[type=email],
-main section.member .container .sign_up_box .item button {
+main section.member .container .sign_up_box .sign_up_info .login,
+main section.member .container .sign_up_box .sign_up_info .action,
+main section.member .container .sign_up_box .sign_up_info .upload_img {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main section.member .container .sign_up_box .sign_up_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  main section.member .container .sign_up_box .sign_up_info h3 {
+    width: 100%;
+  }
+  main section.member .container .sign_up_box .sign_up_info .item {
+    margin: 1em;
+    width: calc(50% - 2em);
+  }
+}
+
+main section.member .container .reservation_box {
   width: 100%;
+}
+
+main section.member .container .reservation_box .reservation_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card {
+  width: calc(100% / 3 - 3em);
+  margin: 1em;
+  padding: 2em 1em;
+  outline: 1px solid #fff;
+  border-radius: 1em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .reservation_box .reservation_list .reservation_card {
+    width: 100%;
+  }
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .txt_box {
+  text-align: center;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .card_content {
+  padding: 1em 0;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .card_content .img_box {
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+  overflow: hidden;
+  width: 8em;
+  border-radius: 50%;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .card_footer {
+  text-align: center;
 }
 
 /* === 星座頁籤 by JC === */
 main {
   /* 討論區 by JC */
+  /*瀏覽文章燈箱 by JC */
 }
 
 @media (max-width: 767px) {
@@ -796,6 +1046,10 @@ main .pagination_nav .container label {
   color: #CFB886;
   border-radius: 10px;
   cursor: pointer;
+}
+
+main .discuss {
+  /* 搜尋bar那塊 */
 }
 
 main .discuss img {
@@ -895,7 +1149,9 @@ main .discuss .content_head .content_header .icon_btn {
 }
 
 main .discuss .content_head .content_header .icon_btn img {
-  margin: 0 0.1em;
+  width: 2m;
+  height: 2em;
+  cursor: pointer;
 }
 
 main .discuss .content {
@@ -906,7 +1162,7 @@ main .discuss .content {
       -ms-flex-align: start;
           align-items: flex-start;
   /* 左欄文章分類 */
-  /* 文章卡片 */
+  /* 文章區 */
 }
 
 main .discuss .content .content_cate {
@@ -925,7 +1181,24 @@ main .discuss .content .content_cate {
 }
 
 main .discuss .content .content_cate li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
   margin: 0.3em 0;
+  border-bottom: 1px solid #CFB886;
+  cursor: pointer;
+}
+
+main .discuss .content .content_cate li .category {
+  cursor: pointer;
+  padding-bottom: 0.5em;
+}
+
+main .discuss .content .content_cate li:hover {
+  background-color: #3A3A3A;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 @media (max-width: 767px) {
@@ -940,6 +1213,7 @@ main .discuss .content .content_article {
   border-radius: 10px;
   width: 80%;
   padding: 3em;
+  /* 熱門最新 */
 }
 
 @media (max-width: 767px) {
@@ -964,6 +1238,16 @@ main .discuss .content .content_article .content_wrap .content_label label {
   cursor: pointer;
 }
 
+main .discuss .content .content_article .content_wrap .content_label .select_label {
+  border: 1px solid #CFB886;
+  background-color: #CFB886;
+  color: #000;
+}
+
+main .discuss .content .content_article .content_wrap .content_main {
+  /* 文章卡片 */
+}
+
 main .discuss .content .content_article .content_wrap .content_main .article_cards {
   border: 1px solid #CFB886;
   background-color: transparent;
@@ -983,7 +1267,7 @@ main .discuss .content .content_article .content_wrap .content_main .line_top sp
 }
 
 main .discuss .content .content_article .content_wrap .content_main .line_top p {
-  color: #fff;
+  color: #aaa;
   display: inline-block;
 }
 
@@ -1001,7 +1285,7 @@ main .discuss .content .content_article .content_wrap .content_main .line_middle
 }
 
 main .discuss .content .content_article .content_wrap .content_main .line_middle .line_middle_txt p {
-  color: #aaa;
+  color: #fff;
 }
 
 main .discuss .content .content_article .content_wrap .content_main .line_middle .line_middle_pic img {
@@ -1016,6 +1300,9 @@ main .discuss .content .content_article .content_wrap .content_main .line_middle
 
 main .discuss .content .content_article .content_wrap .content_main .line_bottom img {
   margin-right: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
 }
 
 main .discuss .content .content_article .content_wrap .content_main .content_pages {
@@ -1024,6 +1311,12 @@ main .discuss .content .content_article .content_wrap .content_main .content_pag
 
 main .discuss .content .content_article .content_wrap .content_main .content_pages button {
   margin: 0.2em 0 0.2em 0.2em;
+}
+
+main .discuss .content .content_article .content_wrap .content_main .content_pages span {
+  margin-left: 0.2em;
+  color: #CFB886;
+  cursor: pointer;
 }
 
 main .discuss .content .content_article .line_middle {
@@ -1035,6 +1328,159 @@ main .discuss .content .content_article .line_middle {
           justify-content: space-between;
 }
 
+main .show {
+  display: block;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+main .hidden {
+  display: none;
+}
+
+main #articleView {
+  background-color: #3A3A3A;
+  padding: 1em;
+  width: 50%;
+  margin: auto;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  /* 功能列-- 愛心回應數分享等等*/
+  /* 留言回應區塊 */
+}
+
+main #articleView img {
+  width: 1.8em;
+  height: 1.8em;
+  cursor: pointer;
+}
+
+main #articleView .author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 2em;
+}
+
+main #articleView .author span {
+  margin-left: 1em;
+}
+
+main #articleView .article_view_title {
+  margin: 1.5em 0;
+}
+
+main #articleView .article_view_title h3 {
+  font-weight: 500;
+  margin: 0.3em 0;
+}
+
+main #articleView .article_view_title P {
+  color: #ccc;
+  font-size: 0.8em;
+  display: inline;
+}
+
+main #articleView .article_view_content p {
+  line-height: 1.6;
+}
+
+main #articleView .narrow {
+  padding: 2% 16.666666%;
+}
+
+main #articleView .article_using {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main #articleView .article_using img {
+  margin: 0 0.2em;
+}
+
+main #articleView .article_using p {
+  margin: 0 0.2em;
+  color: #aaa;
+}
+
+main #articleView .article_using span {
+  margin: 0 0.2em;
+  color: #aaa;
+  width: 100%;
+}
+
+main #articleView .article_response {
+  width: 100%;
+}
+
+main #articleView .article_response hr.style {
+  border-top: #3A3A3A 1px solid;
+  margin: 1em 0;
+}
+
+main #articleView .article_response .response_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main #articleView .article_response .response_card .other_btn {
+  width: 2.2em;
+  height: 2.2em;
+}
+
+main #articleView .article_response .response_card .card_pic {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
+main #articleView .article_response .response_card .card_txt {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main #articleView .article_response .response_card .row {
+  margin: 0.3em;
+}
+
+main #articleView .article_response .response_card .row .response_author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main #articleView .article_response .response_card .row .response_card_content {
+  margin: 1em 0;
+}
+
+main #articleView .article_response .response_card span {
+  color: #ccc;
+  font-size: 0.9em;
+}
+
 body .back {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1044,6 +1490,11 @@ body .back {
 body .back .img_box img {
   width: 100%;
   display: block;
+}
+
+body .back .selected_btn,
+body .back .unselected_btn {
+  padding: .5em 1em;
 }
 
 body .back .link_panel {
