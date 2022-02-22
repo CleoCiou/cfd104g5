@@ -11,16 +11,16 @@ function init(){
 
         function show(){
             // alert('hi');
-            if(articleView.classList.contains("hidden") == true){
-                articleView.classList.remove("hidden");
-                articleView.classList.add("show");
+            if(articleView.classList.contains("articleHidden") == true){
+                articleView.classList.remove("articleHidden");
+                articleView.classList.add("articleShow");
             }
         }
 
         let iconClose = document.getElementById("close");
         function close(){
-            if(articleView.classList.contains("show") == true){
-            articleView.classList.add("hidden");
+            if(articleView.classList.contains("articleShow") == true){
+            articleView.classList.add("articleHidden");
             }
         }
 

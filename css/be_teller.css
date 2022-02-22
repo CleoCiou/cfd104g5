@@ -34,10 +34,10 @@
 }
 .tarotcards .book_item .box_c::before{
     content:'';
-  display: inline-block;
-  height: 40%;
-  width: 0;
-  vertical-align: middle
+    display: inline-block;
+    height: 40%;
+    width: 0;
+    vertical-align: middle
 } 
 .tarotcards .book_item .box_c .txt_box{
     display: inline-block;
@@ -111,13 +111,21 @@ li{
     }
     .tarotcards .book_item .box_b{
         width: 70%;
+        display: block;
     }
+    
     .tarotcards .book_item .box_b img{
         width: 250px;
         border: 2px solid red;
     }
     .tarotcards .book_item .box_c{
         width: 20%;
+    }
+    .tarotcards .book_item .box_c .txt_box{
+        margin-top: 200px;
+    }
+    .tarotcards .book_item .box_c .txt_box p{
+        display: none;
     }
     .row{
         display: block;
