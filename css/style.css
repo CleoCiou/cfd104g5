@@ -1275,6 +1275,7 @@ main section.member .container .reservation_box .reservation_list .reservation_c
 main {
   /* 討論區 by JC */
   /*瀏覽文章燈箱 by JC */
+  /*美美的scroll bar*/
 }
 
 @media screen and (max-width: 767px) {
@@ -1470,7 +1471,7 @@ main .discuss .content .content_cate li:hover {
 main .discuss .content .content_article {
   border: 1px solid #CFB886;
   background-color: transparent;
-  border-radius: 10px;
+  border-radius: 0.625em;
   width: 80%;
   padding: 3em;
   /* 熱門最新 */
@@ -1602,16 +1603,16 @@ main .articleHidden {
   display: none;
 }
 
-main #articleView::-webkit-scrollbar {
+main #articleView::-webkit-scrollbar, main #write_content textarea::-webkit-scrollbar {
   width: 30px;
 }
 
-main #articleView::-webkit-scrollbar-track {
+main #articleView::-webkit-scrollbar-track, main #write_content textarea::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 100px;
 }
 
-main #articleView::-webkit-scrollbar-thumb {
+main #articleView::-webkit-scrollbar-thumb, main #write_content textarea::-webkit-scrollbar-thumb {
   border-radius: 100px;
   border: 10px solid transparent;
   background-clip: content-box;
@@ -1759,6 +1760,53 @@ main #articleView .article_response .response_card .row .response_card_content {
 main #articleView .article_response .response_card span {
   color: #ccc;
   font-size: 0.9em;
+}
+
+main .article_writing_board {
+  width: 100%;
+  border: 1px solid #CFB886;
+  padding: 5%;
+  border-radius: 0.625em;
+}
+
+main .article_writing_board .choose_theme select {
+  margin: 0.5em 0;
+}
+
+main .article_writing_board .write_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0.5em 0;
+}
+
+main .article_writing_board .write_head .writer_detail_box {
+  margin-left: 0.5em;
+}
+
+main .article_writing_board .write_title #write_txt_title {
+  width: 50%;
+  margin-left: 0.3em;
+}
+
+main .article_writing_board textarea {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+main .article_writing_board .write_bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 body section.back {
@@ -2044,6 +2092,8 @@ h1 {
   letter-spacing: 0.2rem;
   line-height: 1.5;
   color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
 }
 
 h2 {
@@ -2079,12 +2129,8 @@ li {
 
 a {
   text-decoration: none;
-  color: #CFB886;
+  color: #fff;
   cursor: pointer;
-}
-
-a:hover {
-  color: #d89482;
 }
 
 span {
@@ -2104,12 +2150,58 @@ input {
   color: #CFB886;
   padding: 2px 5px;
   outline: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 select {
   border: 1px #CFB886 solid;
+  background-color: transparent;
   border-radius: 5px;
   color: #CFB886;
   padding: 2px 5px;
+}
+
+select option {
+  background-color: #000;
+}
+
+textarea {
+  border: 1px #CFB886 solid;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #CFB886;
+  outline: none;
+  resize: none;
+  padding: 0.6em;
+  font-size: 1em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #cfb886cb;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea:-ms-input-placeholder {
+  color: #cfb886cb;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea::-ms-input-placeholder {
+  color: #cfb886cb;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea::placeholder {
+  color: #cfb886cb;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /*# sourceMappingURL=style.css.map */
