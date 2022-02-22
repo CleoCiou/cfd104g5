@@ -172,6 +172,7 @@ main {
                         .reservation_list {
                             display: flex;
                             flex-wrap: nowrap;
+                            position: relative;
 
                             .reservation_card {
                                 width: 15em;
