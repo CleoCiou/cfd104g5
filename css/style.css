@@ -738,6 +738,7 @@ main section.member .container .main_astrologist .ast_reservation .reservation_b
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+  position: relative;
 }
 
 main section.member .container .main_member .ast_reservation .reservation_box .reservation_list .reservation_card,

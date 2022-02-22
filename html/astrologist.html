@@ -54,7 +54,31 @@
                 <section class="item ast_reservation">
                     審核預約
                     <div class="reservation_box">
+
                         <ul class="reservation_list">
+                            <li class="reservation_card active">
+                                <div class="item card_header">
+                                    <p>預約日期</p>
+                                    <span>2022.02.28</span>
+                                    <span>上午</span>
+                                </div>
+                                <div class="item card_content">
+                                    <div class="txt_box">
+                                        <h4>王曉明</h4>
+                                    </div>
+                                    <div class="img_box sticker">
+                                        <img src="https://picsum.photos/50/50/?random=7">
+                                    </div>
+                                    <div class="txt_box">
+                                        <span>歷史預約次數</span>
+                                        <p>9</p>
+                                    </div>
+                                </div>
+                                <div class="item card_footer">
+                                    <button class="third_btn">接受</button>
+                                    <button class="third_btn">拒絕</button>
+                                </div>
+                            </li>
                             <li class="reservation_card" v-for="i in 8">
                                 <div class="item card_header">
                                     <p>預約日期</p>
@@ -70,7 +94,7 @@
                                     </div>
                                     <div class="txt_box">
                                         <span>歷史預約次數</span>
-                                        <p>5</p>
+                                        <p>{{i}}</p>
                                     </div>
                                 </div>
                                 <div class="item card_footer">
@@ -78,9 +102,10 @@
                                     <button class="third_btn">拒絕</button>
                                 </div>
                             </li>
-                            <div class="change_page last_page gray">←</div>
-                            <div class="change_page next_page">→</div>
                         </ul>
+
+                        <div @click="carsoul_last" class="change_page last_page gray">←</div>
+                        <div @click="carsoul_next" class="change_page next_page">→</div>
                     </div>
                 </section>
     
@@ -223,6 +248,19 @@
                     activeStar.classList.toggle('display_none');
                     activeStar.parentNode.classList.toggle('ast_hidden');
                 }
+            },
+            carsoul_last(e) {
+            },
+            carsoul_next(e) {
+                console.log(e.target);
+                let reservation_card = document.querySelectorAll('.reservation_card');
+                console.log(reservation_card);
+                let activeCard = document.querySelectorAll('.reservation_card.active')[0];
+                console.log(activeCard);
+                let i = Array.from(reservation_card).indexOf(activeCard);
+                let moveList = document.querySelectorAll('.reservation_list')[0];
+                console.log(moveList);
+                moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
             }
         },
         computed: {
