@@ -709,7 +709,7 @@ main .discuss .content .content_article .line_middle {
           justify-content: space-between;
 }
 
-main .show {
+main .articleShow {
   display: block;
   z-index: 10;
   position: fixed;
@@ -719,7 +719,7 @@ main .show {
   height: 100%;
 }
 
-main .hidden {
+main .articleHidden {
   display: none;
 }
 
