@@ -240,7 +240,7 @@ main {
         }
     }
     /*瀏覽文章燈箱 by JC */
-    .show{
+    .articleShow{
         display: block;
         z-index: 10;
         position: fixed;
@@ -249,7 +249,7 @@ main {
         overflow-y: scroll;
         height: 100%;
     }
-    .hidden{
+    .articleHidden{
         display: none;
     }
     #articleView{
@@ -258,6 +258,7 @@ main {
         width: 50%;
         margin: auto;
         transform: translateX(50%);
+        
         img{
             width: 1.8em;
             height: 1.8em;

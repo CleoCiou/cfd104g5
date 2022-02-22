@@ -1,7 +1,8 @@
 .teller_pic{
   padding-top: 100px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
+
 .teller_pic .container {
   margin: 0 auto;
   width: 200px;
@@ -55,18 +56,8 @@
   transform: rotateY(300deg) translateZ(250px);
   background: #8c6239;
 }
-.next_teller, .prev_teller {
-  color: #000;
-  cursor: pointer;
-  background: #CFB886;
-  box-shadow: 0 2px 0 #af9c72;
-  transition: box-shadow 0.1s, top 0.1s;
-}
 .teller_info .container{
   text-align: center;
-}
-.teller_info .container .next_teller button{
-  border-radius: 50%;
 }
 .teller_info .container .txt_box{
   margin-top: 1em;
