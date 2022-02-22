@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/shopping_cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>解星鏡 Mistro</title>
     
 </head>
 <body>
     
 <!-- 網頁頭 -->
-<!-- 內容由 common.js 新增 by PIN -->
 <header class="main_header"></header>
 
 
@@ -21,7 +21,7 @@
     <div class="container">
         <!-- 購物車流程 -->
         <div class="shopping_process">
-            <div class="item">購物車</div>
+            <div class="item"><p>確認商品</p></div>
             <div class="item">填寫資料</div>
             <div class="item">訂單確認</div>
         </div>
@@ -80,55 +80,106 @@
                 </div>
             </div>
         </div>
-        <!-- 填寫資料區 -->
+    </div>
+</section>
+
+<!-- 填寫資料區 -->
+<section class="cart_deliver">
+    <div class="container">
         <div class="customer_info">
-            <div class="deliver_way">
-                <label for="">送貨方式：</label>
-                <select>
-                    <option>711店到店</option>
-                    <option>全家店到店</option>
-                    <option>萊爾富店到店</option>
-                </select>
-            </div>
-            <div class="txt_box">
-                <p>
-                    約3~7個工作天到貨，姓名請填寫證件上名字，以確保順利取貨，實際到貨日期，需依各地區超商物流速度而定
-                </p>
-            </div>
-            <div class="pay_way">
-                <label for="">付款方式：</label>
-                <select>
-                    <option>轉帳付款</option>
-                    <option>信用卡</option>
-                    <option>貨到付款</option>
-                </select>
-            </div>
-        </div>
-        <div class="order_total">
-            <div class="first_price">
-                <p>小計：NT$1,000</p>
-            </div>
-            <div class="delivery_fee">
-                <p>運費：NT$60</p>
-            </div>
-            <div class="total_price">
-                <p>總計：NT$1,060</p>
+            <div class="customer_form">
+                <form action="">
+                    <p>名稱</p>
+                    <label>
+                        <input type="text" id="name">
+                    </label>
+                    <p>信箱</p>
+                    <label>
+                        <input type="email">
+                    </label>
+                    <p>電話</p>
+                    <label>
+                        <input type="text">
+                    </label>
+                    <p>收件人姓名</p>
+                    <label>
+                        <input type="text">
+                    </label>
+                    <p>收件人電話</p>
+                    <label>
+                        <input type="text">
+                    </label>
+                    <p>店到店門市名稱</p>
+                    <label>
+                        <input type="text">
+                    </label>
+                </form>
             </div>
         </div>
-        <div class="confirm_btns">
-            <button>繼續購物</button>
-            <button>下一步</button>
+        <div class="cart_info_right">
+            <div class="order_total">
+                <div class="first_price">
+                    <h4>小計：NT$4,000</h4>
+                </div>
+                <div class="delivery_fee">
+                    <h4>運費：NT$60</h4>
+                </div>
+                <div class="total_price">
+                    <h4>總計：NT$4,060</h4>
+                </div>
+            </div>
+            <div class="confirm_btns">
+                <a href="shopping_cart.html"><button class="primary_btn">上一步</button></a>
+                <a href="shopping_confirm.html"><button class="primary_btn">結帳</button></a>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- 底部推薦商品 -->
 <section class="cart_bottom">
     <div class="container">
         <div class="item_box">
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
+            <div class="item">
+                <a href="">
+                    <div class="img_box">
+                        <img src="https://picsum.photos/200/200/?random=10">
+                    </div>
+                </a>
+                <div class="txt_box">
+                    <p>開運小物</p>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">
+                    <div class="img_box">
+                        <img src="https://picsum.photos/200/200/?random=10">
+                    </div>
+                </a>
+                <div class="txt_box">
+                    <p>開運小物</p>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">
+                    <div class="img_box">
+                        <img src="https://picsum.photos/200/200/?random=10">
+                    </div>
+                </a>
+                <div class="txt_box">
+                    <p>開運小物</p>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">
+                    <div class="img_box">
+                        <img src="https://picsum.photos/200/200/?random=10">
+                    </div>
+                </a>
+                <div class="txt_box">
+                    <p>開運小物</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -22,29 +22,27 @@
     }
 
 /* 介紹區塊開始 */
+
     .introduce_img_box{
-        display: flex;
+        width: 90%;
+        border: 1px solid #CFB886;
+        border-radius: 200px;
         justify-content: center;
+        border-image: initial;
+        padding: 15px;
         
     }
+
     /* 父層設在introduce_img_box上*/
     .introduce_img{
         width: 300px;
         height: 450px;
         border-radius: 200px;
-        position:absolute ;
         overflow: hidden;
-        
+        margin: auto;
+       
     }
 
-    .introduce_img_line{
-        width: 330px;
-        height: 480px;
-        display: flex;
-        border: 1px solid #CFB886;
-        border-radius: 200px;
-        
-    }
     
     .introduce_img img{          
         
@@ -64,7 +62,6 @@
     }
     .scroll_keyhole_txt{
         position: absolute;
-        
         z-index: 1;
     }
  
@@ -110,7 +107,7 @@
     }
 
     .hot_fortune_teller_card{
-        border: 1px solid #CFB886;;
+        border: 1px solid #CFB886;
         padding: 2em 1em ;
         margin: 1.5em ;
         box-sizing: border-box;
@@ -137,22 +134,25 @@
     }
     /* 主打商品卡片 */
     .hot_product_card{
-        border: 1px solid #CFB886;;
-        padding: 3em 0 ;
-        margin: 1em ;
         box-sizing: border-box;
         text-align: center;
+        border: 1px solid #CFB886;
+        border-image: initial;
+        padding: 3em ;
+        margin: 1em;
         border-radius: 200px;
-        
+    
     }
+    
+
     /* 主打商品圖字icon上下間隔隔開 */
     .hot_product_card_img, .hot_product_card_txt,.hot_product_icon{
         padding-top: 2em;
     }
 
-
     .hot_product_card_img img{
-        width: 50%;
+        width: 100%;
+        padding: 4%;
         border-radius: 50%;
         vertical-align: top;
     }
@@ -180,7 +180,6 @@
             
         }
 
-
         .hot_fortune_teller_box{
             display: flex;
             align-items: center;
@@ -188,6 +187,9 @@
 
         .hot_product_box{
             display: flex;
+        }
+
+        
             
 
 
