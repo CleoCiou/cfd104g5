@@ -1,13 +1,16 @@
 /* === 星座頁籤 by JC === */
 $padding: 2% 8.333333%;
 
+$d : 768px;
+$m : 767px;
+
 @mixin desktop{
-    @media(min-width:768px){
+    @media screen and (min-width:$d){
         @content;
     }
 }
 @mixin mobile{
-    @media(max-width:767px){
+    @media screen and (max-width:$m){
         @content;
     }
 }
@@ -252,17 +255,35 @@ main {
     .articleHidden{
         display: none;
     }
+    #articleView::-webkit-scrollbar {
+        width: 30px;
+    }
+    #articleView::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+    }
+    
+    #articleView::-webkit-scrollbar-thumb {
+        border-radius: 100px;
+        border: 10px solid transparent;
+        background-clip: content-box;
+        background-color: #CFB886;
+    }
+
     #articleView{
         background-color: #3A3A3A;
         padding: 1em;
         width: 50%;
         margin: auto;
         transform: translateX(50%);
-        
         img{
             width: 1.8em;
             height: 1.8em;
             cursor: pointer;
+        }
+        .article_icon_box{
+            // display: inline;
+            text-align: right;
         }
         .author{
             display: flex;
