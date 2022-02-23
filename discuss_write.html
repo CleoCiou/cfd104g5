@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解星鏡 Mistro | 撰寫文章</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <section class="discuss discuss_write">
+            <div class="container">
+                <!-- 撰寫文章區 by JC -->
+                <div class="article_writing_board">
+                    <!-- 選擇看板 -->
+                    <div class="choose_theme">
+                        <select name="theme" id="theme">
+                            <option value="all">全部</option>
+                            <option value="">摩羯座</option>
+                            <option value="">水瓶座</option>
+                            <option value="">雙魚座</option>
+                        </select>
+                    </div>
+                
+                    <div class="write_head">
+                        <div class="writer_id_box">
+                            <button class="other_btn">T</button>
+                        </div>
+                        <div class="writer_detail_box">
+                            <p>Test123</p>
+                            <p>2022/2/23 00:53:23</p>
+                        </div>
+                    </div>
+                    <form action="">
+                        <!-- 文章標題 -->
+                        <div class="write_title">
+                            <label>標題
+                            <input type="text" name="title" id="write_txt_title">
+                            </label>
+                        </div>
+                        <!-- 寫內容的地方 -->
+                        <div class="write_content" id="write_content">
+                            <label>內容
+                            <textarea name="content" rows="12" placeholder="請輸入文章內容..."></textarea>
+                            </label>
+                        </div>
+                        <!-- 最下面 選圖片 清除 發布 -->
+                        <div class="write_bottom">
+                            <div class="file_insert_btn">
+                                <input type="file" id="theFile">
+                            </div>
+                            <div class="write_using_btn">
+                                <input type="reset" value="清除" class="third_btn">
+                                <input type="submit" value="發佈" class="third_btn">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer></footer>
+    <script src="js/common.js"></script>
+</body>
+</html>

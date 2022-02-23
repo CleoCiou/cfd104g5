@@ -32,8 +32,8 @@
                                 <input type="submit" value="搜尋" class="third_btn">
                             </div>
                             <div class="icon_btn">
-                                <img src="images/icon_discuss_add.svg" alt="撰寫文章" @click="action">
-                                <img src="images/icon_discuss_mine.svg" alt="我的文章" @click="action">
+                                <a href="discuss_write.html"><img src="images/icon_discuss_add.svg" alt="撰寫文章"></a>
+                                <a href="discuss_mine.html"><img src="images/icon_discuss_mine.svg" alt="我的文章"></a>
                             </div>
                         </div>
                     </div>
@@ -202,17 +202,19 @@
     <!-- 文章瀏覽燈箱 by JC -->
     <section id="articleView" class="articleHidden">
         <div class="container">
-            <img :src="iconClose" id="close">
-            <div class="author container">
+            <div class="article_icon_box">
+                <img :src="iconClose" id="close">
+            </div>
+            <div class="author narrow">
                 <button class="other_btn">T</button>
                 <span>test123456</span>
             </div>
-            <div class="article_view_title container">
+            <div class="article_view_title narrow">
                 <h3>巨蟹座的性格分析</h3>
                 <a href="discuss.html">巨蟹座</a>
                 <p>2022/02/21 22:34:07</p>
             </div>
-            <div class="article_view_content container">
+            <div class="article_view_content narrow">
                     <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實在令人感到不可思議。巨蟹座的反應並不遲鈍，相反的，他的感覺很敏銳，往往因受到無心人的傷害，暗地裡偷偷的傷心流淚。因為過份慎重考慮的結果。所以會變得過於現實。好惡的感情過於明顯，也應多加注意才好。感情豐富，對事物的感受性強。對外親和謙恭，頗有公眾意識，但是對W內則有強烈的防衛本能，不願私生活受到干擾。大體上是一個溫和內向的人，但是絕不向惡勢力低頭。熱心參加愛家、愛鄉、愛民的團體，自我意識很強，尊敬能夠保護自己立場的人，帶有懷舊的心情，是一個十分傳統的人。</p>
                     <p>巨蟹座的人較保守，能享受歡樂，並結交朋友，不自私或虛榮，坦白，大方，正直，忠於朋友和個人的信仰，能夠託付以重要秘密職務或工作。有很好的領悟力和觀察力，喜歡沈思，非常專心，勤於分析自己的思想和衝動，想像力非常活躍，喜歡默想過去曾發生的事，能分析自己內在的衝動，有優越的直覺力，有一顆敏感親愛，但是保守的心，不常表露真情，溫柔，體貼，親愛，看重愛情，鍾愛自己所愛的人，並有嫉妒的傾向，非常喜歡小孩。屬羅曼蒂克型，不過，有的時候心不在焉，性情不定。</p>
                     <p>巨蟹座有活躍型與消極型的兩種型態。活躍型者具有堅強的意志力與耐力，對於人生的生活門徑非常的熟練，而且喜愛活動，能趕得上時代潮流，對於摩登流行的任何事物都感到興趣。消極型的人，顯得容易自足、沒精打彩、行為懶散，不願意做任何邁向成功所必需的努力，喜歡逆來順受，很固執也很依戀於他所已經擁有的，這兩種型態是早期所受的訓練與教化有關。</p>
@@ -226,7 +228,6 @@
                 <p>99</p>
                 <span>| 2 回應</span>
                 <!-- 右 -->
-                <img src="images/icon_discuss_like.svg" alt="喜歡">
                 <img src="images/icon_discuss_favorite.svg" alt="收藏">
                 <img src="images/icon_discuss_share.svg" alt="分享">
             </div>

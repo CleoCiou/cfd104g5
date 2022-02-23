@@ -1,7 +1,6 @@
 ngrok.exe
 node_modules
 .vscode
-
 # sass
 .sass-cache/
 *.css.map
