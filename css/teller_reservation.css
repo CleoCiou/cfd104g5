@@ -12,8 +12,10 @@
 }
 /* 線上實體按鈕 */
 .teller_reservation .teller_button{
-    text-align: center;
+    display: flex;  
+    justify-content: center;
     padding-bottom: 3%;
+    align-items: center;
 }
 .teller_reservation .teller_button button{
     margin: 0 5%;
