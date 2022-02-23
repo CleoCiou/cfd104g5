@@ -367,6 +367,7 @@ main {
             }
         }
     }
+    /* 撰寫文章頁 */
     .article_writing_board{
         width: 100%;
         border: 1px solid #CFB886;
@@ -385,9 +386,10 @@ main {
                 margin-left: 0.5em;
             }
         }
+        /* 撰寫文章的標題 */
         .write_title{
             #write_txt_title{
-                width: 50%;
+                width: 30%;
                 margin-left: 0.3em;
             }
         }
