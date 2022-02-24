@@ -1,38 +1,60 @@
 /* 購物車流程 */
-.shopping_process {
+.shopping_cart{
+    padding-top: 3em;
+}
+.shopping_cart .container{
     display: flex;
     justify-content: center;
-    padding: 2em;
+    flex-direction: column;
+
 }
-.shopping_process .item{
-    margin: auto;
-    position: relative;
+.shopping_process {
+    display: flex;
+    justify-content: space-between;
+    width: 20em;
     text-align: center;
+    margin: 0 auto;
+    padding-bottom: 2em;
 }
-.shopping_cart .container .shopping_process .item p{
+.shopping_cart .container .shopping_process .item {
     position: relative;
-    text-align: right;
-}
-.shopping_cart .container .shopping_process .item p::before{
-    content: "";
-    position: absolute;
+    color: black;
     width: 5em;
     height: 5em;
-    background-color: #CFB886;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #DFAF47;
+    line-height: 5em;
+    z-index: 6;
+}
+.shopping_cart .container .shopping_process .active{
+    background-color: #DFAF47; 
+    transform: scale(1.4);
+    z-index: 4;
+}
+.shopping_cart .container .shopping_process .item:not(:first-child)::before{
+    content: '';
+    position: absolute;
+    height: 0.5em;
+    background-color: #DFAF47;
+    width: 3em;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
+    right: 95%;
     margin: auto;
-    border-radius: 50%;
-    opacity: 0.5;
+    z-index: 1;
 }
-
+.shopping_cart .container .shopping_process li.active ~ li{
+    background-color: #a59692;
+    z-index: 1;
+}
+.shopping_cart .container .shopping_process li.active ~ .item::before{
+    background-color: #a59692;
+    z-index: 1;
+}
 /* 購物車內容 */
 /* 購物車header */
-.shopping_cart .container{
-    padding: 0;
-}
+
 .cart_header {
     padding-bottom: 3%;
 }
