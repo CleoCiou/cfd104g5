@@ -1161,6 +1161,76 @@ main section.member .container .main_astrologist .item.ast_comment .ast_comment_
   }
 }
 
+main section.member .container .main_member .tarot_quiz,
+main section.member .container .main_astrologist .tarot_quiz {
+  width: 100%;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box {
+  width: 100%;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
+  width: 25%;
+  margin: 0.5em;
+  padding: .8em;
+  background-color: #5558;
+  border-radius: .5em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head P,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head P {
+  color: #aaa;
+  font-size: 0.8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_result,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_result {
+  margin: 1em 0 0.5em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_view,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_view {
+  text-align: center;
+}
+
 main section.member .container .login_box {
   position: fixed;
   top: 50%;
@@ -1580,11 +1650,26 @@ main .discuss .article_cards .line_middle .line_middle_pic img {
   }
 }
 
+main .discuss .article_cards .line_bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 main .discuss .article_cards .line_bottom img {
-  margin-right: 1em;
+  margin-right: 0.3em;
   width: 1.5em;
   height: 1.5em;
   cursor: pointer;
+}
+
+main .discuss .article_cards .line_bottom p {
+  margin-right: 0.6em;
+  color: #aaa;
+  font-size: 0.8em;
 }
 
 main .articleShow {

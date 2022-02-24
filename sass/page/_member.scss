@@ -1,3 +1,16 @@
+$d : 768px;
+$m : 767px;
+
+@mixin desktop{
+    @media screen and (min-width:$d){
+        @content;
+    }
+}
+@mixin mobile{
+    @media screen and (max-width:$m){
+        @content;
+    }
+}
 main {
     section.member {
         .container {
@@ -496,6 +509,51 @@ main {
                     .item {
                         width: 100%;
                     }
+                }
+                //線上占卜測驗紀錄 by JC
+                .tarot_quiz{
+                    width: 100%;
+                    
+                    .quiz_box{
+                        display: flex;
+                        padding: 1em;
+                        .quiz_left_box{
+                            width: 100%;
+                            .quiz_row{
+                                display: flex;
+                                align-items: center;
+                            }
+                            @include mobile{
+                                // flex-direction: column;
+                               
+                            }
+                            .quiz_cards{
+                                width: 25%;
+                                margin: 0.5em;
+                                padding: .8em;
+                                background-color: #5558;
+                                border-radius: .5em;
+                                @include mobile{
+                                    width: 100%;                        
+                                }
+                                .quiz_head{
+                                    display: flex;
+                                    justify-content: space-between;
+                                    P{
+                                        color: #aaa;
+                                        font-size: 0.8em;
+                                    }
+                                }
+                                .quiz_result{
+                                    margin: 1em 0 0.5em;
+                                }
+                            }
+                        }
+                    .quiz_view{
+                        width: 100%;
+                        text-align: center;
+                    }
+                    }     
                 }
             }
             // END
