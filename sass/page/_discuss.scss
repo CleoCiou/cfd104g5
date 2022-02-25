@@ -229,11 +229,19 @@ main {
                 }
             }
             .line_bottom{
+                display: flex;
+                align-items: center;
                 img{
-                    margin-right: 1em;
+                    margin-right: 0.3em;
                     width: 1.5em;
                     height: 1.5em;
                     cursor: pointer;
+                }
+                p{
+                    margin-right: 0.6em;
+                    color: #aaa;
+                    font-size: 0.8em;
+                    
                 }
             }
         }
