@@ -1,8 +1,15 @@
 .teller_reservation{
     padding:20px 0px;
 }
-.teller_reservation .img_box{
+.teller_reservation .container .teller_profile{
     text-align: center;
+}
+.teller_reservation .container .teller_profile .img_box{
+    margin: auto;
+    /* padding: 1em; */
+}
+.teller_reservation .container .teller_profile .img_box img{
+    width: 100%;
 }
 .teller_reservation .txt_box {
     padding-bottom: 3%;
@@ -10,17 +17,16 @@
 .teller_reservation .txt_box h3{
     text-align: center;
 }
-/* 線上實體按鈕 */
-.teller_reservation .teller_button{
-    display: flex;  
-    justify-content: center;
-    padding-bottom: 3%;
-    align-items: center;
-}
-.teller_reservation .teller_button button{
-    margin: 0 5%;
+.teller_profile{
+    padding-bottom: 1em;
 }
 /* 表單 */
+
+/* 月曆 */
+.reservation_form .reservation_calendar{
+    padding-bottom: 1em ;
+    margin: 0 auto;
+}
 .teller_reservation .teller_form p{
     color: #CFB886;
 }
@@ -34,6 +40,9 @@
     margin-bottom: 1%;
 }
 
+.reservation_form .teller_form form label{
+    display: block;
+}
 @media screen and (min-width:768px){
     .teller_reservation .container{
         display: flex;
@@ -52,9 +61,6 @@
         flex-wrap: wrap;
         flex-direction: column;
         padding: 3%;
-    }
-    .teller_reservation .teller_button{
-        padding-bottom: 0;
     }
     .teller_form{
         text-align: center;

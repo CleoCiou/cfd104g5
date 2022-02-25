@@ -1,3 +1,5 @@
+<!-- 圖片是否一開始要先裁好?然後圖片用之前要先解壓縮會比較好 圖片最好用png檔 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/real_constellation_2page.css">
     <script src="../js/vue.js"></script>
+    <script src="/js/con_real_constellation_buy.js"></script>
 </head>
 <body>
   <main>
@@ -24,19 +27,23 @@
         <section class="real_constellation real">
            <!-- 控制padding的容器 -->
             <div class="container">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem, voluptas veritatis asperiores nihil saepe quae similique consectetur incidunt doloremque natus repellat omnis nobis deserunt molestiae dolore magni atque molestias quos?</p>
+                <div class="pic"><img id="initimg" src="https://fakeimg.pl/250x100/"></div>
+                <p>去看夜景 喜歡看星星還是月亮</p>
               <!-- 包住圖文的容器   -->
                 <div class="answer">
-                    <img src="https://fakeimg.pl/250x100/">
-                    <input type="button" value="選項答案" onclick="location.href='real_constellation_3page.html'">
-                    <input type="button" value="選項答按" onclick="location.href='real_constellation_3page.html'">
+                    <div class="btn third_btn" id="star">
+                        <a href="con_constellation_go.html"><span>星星</span></a>
+                        <input type="text" value="images/con_pair.jpg" hidden>
+                    </div>
+                    <div class="btn third_btn" id="moon">
+                        <a href="con_constellation_go.html"><span>月亮</span></a>
+                        <input type="text" value="images/full_moon_night_black_dark_sky_astronomy_universe_planet-683587.jpg" hidden>
+                    </div>
+                    
+                    <!-- <input type="button" value="月亮" name="moon" onclick="location.href='con_constellation_go.html'"> -->
                 </div>
             </div>
             
-<<<<<<< HEAD:real_constellation_2page.html
-
-=======
->>>>>>> b83ab2974534bb833aba4551a1cf68c7c60448a8:con_real_constellation_buy.html
         </section>
     </main> 
     <script src="js/common.js"></script>
@@ -47,7 +54,7 @@
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
-                    '真實星座': 'back.html',
+                    '真實星座': 'con_real_constellation.html',
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
