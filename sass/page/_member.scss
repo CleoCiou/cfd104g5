@@ -515,24 +515,29 @@ main {
                     width: 100%;
                     
                     .quiz_box{
+                        align-items: center;
                         display: flex;
-                        padding: 1em;
                         .quiz_left_box{
-                            width: 100%;
+                            width: 50%;
+                            @include mobile{
+                                width: 100%;   
+                            }
                             .quiz_row{
                                 display: flex;
                                 align-items: center;
+                                @include mobile{
+                                    width: 100%;     
+                                    flex-direction: column;
+                                    margin: .2em;
+                                }
                             }
-                            @include mobile{
-                                // flex-direction: column;
-                               
-                            }
+                            
                             .quiz_cards{
-                                width: 25%;
+                                width: 50%;
                                 margin: 0.5em;
                                 padding: .8em;
                                 background-color: #5558;
-                                border-radius: .5em;
+                                border-radius: $bRadius;
                                 @include mobile{
                                     width: 100%;                        
                                 }
@@ -549,10 +554,21 @@ main {
                                 }
                             }
                         }
-                    .quiz_view{
-                        width: 100%;
-                        text-align: center;
-                    }
+                        .quiz_right_box{
+                            margin: 0.5em;
+                            width: 50%;
+                            border: 1px solid map-get($primary_color, 'content');
+                            border-radius: $bRadius;
+                            @include mobile{
+                                display: none;
+                                
+                            }
+                            .quiz_view{
+                                text-align: center;
+                                padding: 8em;
+                            }
+                        }
+                    
                     }     
                 }
             }

@@ -1,7 +1,4 @@
-/* .constellationpair button{
-    display: block;
-    border: 1px solid red;
-} */
+/* 圖片直接設寬高%數 會出事? */
 @media screen and (max-width:767px) {
     /* 最大寬度768以上不顯示 所以這裡是手機 */
             /* 0~767px */
@@ -35,9 +32,21 @@
         box-sizing: border-box;
         
     }
-    main .constellation .container .pair_btn{
+    main .constellation .container .third_btn{
         margin-left: 5%;
     }
+    main .constellation .container .img_box{
+        text-align: center;
+    }
+    main .constellation .container .img_box img{
+        /* display: block; */
+        /* margin-bottom: 10%;
+        box-sizing: border-box; */
+        width: 80%;
+        /* height: 10%; */
+        
+    }
+
 }
 
 @media screen and (min-width:768px) { 
@@ -54,7 +63,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        padding: 8.333333%;
+        padding: 2% 8.333333%;
         box-sizing: border-box;
         
     }
@@ -80,10 +89,20 @@
         box-sizing: border-box;
         
     }
-    main .constellation .container .pair_btn{
+    main .constellation .container .third_btn{
         display: flex;
         align-items: center;
         margin: 2%;
+        text-align: center;
+    }
+    main .constellation .container .img_box{
+        text-align: center;
+    }
+    main .constellation .container .img_box img{
+        /* display: block; */
+        margin: 3%;
+        box-sizing: border-box;
+        width: 20%;
     }
 
 

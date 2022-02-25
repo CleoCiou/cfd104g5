@@ -19,69 +19,59 @@
                 </ul>
             </div>
         </section>        
-    </div>
-    <h2>星座配對指數</h2>
+    
+        
         <section class="constellation constellation_pair">
             <!-- 控制padding的容器 -->
             <div class="container">
                 <!-- 包住男生星座選單和女生星座選單的容器 -->
-                <div class="pair">
-                    <!-- 男生星座的選單 -->
-                    <div class="constellation_male">
-                        <label>男生星座:</label>
-                        <select name="">
-                        
-                            <option value="">水瓶座</option>
-                            <option value="dog">白羊座</option>
-                            <option value="dog">金牛座</option>
-                            <option value="cat" selected>雙子座</option>
-                            <option value="dog">巨蟹座</option>
-                            <option value="hamster">處女座</option>
-                            <option value="parrot">獅子座</option>
-                            <option value="spider">天秤座</option>
-                            <option value="goldfish">天蠍座</option>
-                            <option value="goldfish">射手座</option>
-                            <option value="goldfish">摩羯座</option>
-                            <option value="goldfish">雙魚座</option>
-                        </select>
-                    </div>
-                    <!-- 女生星座的選單 -->
-                    <div class="constellation_female">
-                        <label>女生星座:</label>
-                        <select name="girl" class="girl">
-                        
-                            <option value="">水瓶座</option>
-                            <option value="dog">白羊座</option>
-                            <option value="dog">金牛座</option>
-                            <option value="cat" selected>雙子座</option>
-                            <option value="dog">巨蟹座</option>
-                            <option value="hamster">處女座</option>
-                            <option value="parrot">獅子座</option>
-                            <option value="spider">天秤座</option>
-                            <option value="goldfish">天蠍座</option>
-                            <option value="goldfish">射手座</option>
-                            <option value="goldfish">摩羯座</option>
-                            <option value="goldfish">雙魚座</option>
-                        </select>
-                    </div>
+            <h1>星座配對指數</h1>
+                <div class="img_box">
+                    <img src="images/con_pair.jpg">
                 </div>
+                    <div class="pair">
+                        <!-- 男生星座的選單 -->
+                        <div class="constellation_male">
+                            <label>男生星座:</label>
+                                <select v-model="constellation">
+                                    <option v-for="name in names">{{name}}</option>
+                                </select>
+                                <!-- 女生星座的選單 -->
+                                <div class="constellation_female">
+                                    <label>女生星座:</label>
+
+                                    <select>
+                                        <option>水瓶座</option>
+                                        <option>白羊座</option>
+                                        <option>金牛座</option>
+                                        <option>雙子座</option>
+                                        <option>巨蟹座</option>
+                                        <option>處女座</option>
+                                        <option>獅子座</option>
+                                        <option>天秤座</option>
+                                        <option>天蠍座</option>
+                                        <option>射手座</option>
+                                        <option>摩羯座</option>
+                                        <option>雙魚座</option>
+                                </select>
+                            </div>
+                        
+                            <!-- 星座配對的按鈕 -->
+                                <input type="submit" value="星座配對" class="third_btn"></input>
+                        </div>
+                    </div>
+        </section>
                
-                <!-- 星座配對的按鈕 -->
-                <div class="pair_btn">
-                    <input type="submit" value="星座配對"></input>
-                </div>
-            </div>
-            
-        </section>
         <section class="constellationpair result">
-            <p>xxx座跟XXX座配對</p>
-            <p>友情配對指數：</p>
-            <p>愛情配對指數：</p>
-            <p>婚姻配對指數：</p>
-            <p>親情配對指數：</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae omnis delectus iusto soluta sunt tenetur explicabo neque repellendus vel error. Totam vel fugit quidem debitis accusantium? Doloribus officiis expedita dolore!</p>
-        </section>
-    </main>
+            <p>{{constellation}}男生跟射手座女生配對</p>
+            <p>友情配對指數：★★★★</p>
+            <p>愛情配對指數：★★★★</p>
+            <p>婚姻配對指數：★★★</p>
+            <p>親情配對指數：★★★</p>
+            <p>符合要求，自得其樂的一對情侶!!射手座自由而又獨立的人生觀和水瓶座非常相近，水瓶座最討厭癡纏型的伴侶，對你就是正中下懷了，你們都不喜歡無變化的生活，生活圈子又廣泛，如果要你們吃力地浪費時間去照顧伴侶，你寧願放棄他。</p>
+        </section>            
+    </div>
+</main>
     <script src="js/common.js"></script>
     <script>
         new Vue({
@@ -90,14 +80,36 @@
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
-                    '真實星座': 'back.html',
+                    '真實星座': 'con_real_constellation.html',
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
-                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
+
+                constellation:'',
+                names: ['摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
             }
         });
+        
+        // new Vue({
+        //     el: '#app2',
+        //     data: {
+        //         constellation:'',
+
+
+        //     }
+
+        // });
+        // new Vue({
+        //     el: '#girl',
+        //     data: {
+        //         girl:'',
+
+
+        //     }
+
+        // });
     </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+@media screen and (max-width:767px) {
+    /* 最大寬度768以上不顯示 所以這裡是手機 */
+.real_constellation .container .answer img{
+    width: 100%;
+    margin: auto;
+    
+}
+.real_constellation .container .answer .again {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+@media screen and (min-width:768px) {
+    .real_constellation .container .answer img{
+        width: 100%;
+        margin: auto;
+        
+    }
+    .real_constellation .container .answer .again {
+        display: flex;
+        justify-content: center;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
