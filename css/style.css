@@ -1476,6 +1476,10 @@ main {
   /* 撰寫文章頁 */
 }
 
+main .pagination_nav {
+  margin-top: 5em;
+}
+
 @media screen and (max-width: 767px) {
   main .pagination_nav {
     display: none;
@@ -1812,7 +1816,7 @@ main .discuss .article_cards .line_bottom p {
 
 main .articleShow {
   display: block;
-  z-index: 10;
+  z-index: 2500;
   position: fixed;
   top: 0;
   left: 0;
@@ -2900,6 +2904,22 @@ main .products_cards .products_box .products_cards_wrap .cards_row .products_ite
 
 body {
   background-color: #000;
+}
+
+body::-webkit-scrollbar {
+  width: 30px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 10px solid transparent;
+  background-clip: content-box;
+  background-color: #CFB886;
 }
 
 body main > section {

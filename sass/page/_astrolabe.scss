@@ -14,7 +14,7 @@ $m : 767px;
 main{
     /* 星座共用 */
     .astrolabe{
-
+        
         .container{
             .img_box{
                 img{
@@ -193,6 +193,7 @@ main{
                         padding: 2em 3.5em;
                         background-color: #3a3a3a;
                         border-radius: $bRadius;
+                        // box-shadow: 0px 0px 30px 4px #cfb886b6;
                         &:hover{
                             background-color: #58585865;
                         }
