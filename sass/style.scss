@@ -4,6 +4,7 @@
 @import "page/member";
 @import "page/discuss";
 @import "page/back";
+@import "page/astrolabe";
 
 * {
     font-family: 'Cinzel','Shippori Mincho', serif;
@@ -213,9 +214,9 @@ button.primary_line_btn {
     font-weight: 500;
 
     &:hover{
-        color: #CFB886;
+        transform: translateY(-2px);
+        transition: .5s;
         background-color: transparent;
-        border: 1px solid map-get($primary_color, 'content');
     }
 }
 /* --- 其他按鈕 --- */

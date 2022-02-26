@@ -7,7 +7,7 @@
     
     <title>解星鏡 Mistro | 星座</title>
 
-    <link rel="stylesheet" href="css/astrolabe.css">
+    <!-- <link rel="stylesheet" href="css/astrolabe.css"> -->
     <script src="../js/vue.js"></script>
 </head>
 <body>
@@ -28,16 +28,48 @@
 
         
         <!-- 開始推算引導的區塊 by JC -->
-        <section class="astrolabe_start"> 
-            <h1>星盤推算</h1>
+        <section class="astrolabe astrolabe_start"> 
+            
             <div class="container">
+                <h1>星盤推算</h1>
                 <!-- 底圖 -->
-                    <div class="start_img_box">
-                        <img src="images/bg_astrolabe.svg">
+                    <div class="img_box start">
+                        <img src="images/constellation/bg_astrolabe.svg">
+                        <div class="btn_box">
+                            <a href="astrolabe_form.html"><button class="primary_btn big_style"><p>開始推算</p></button></a>
+                        </div>
                     </div>
                 <!-- 自訂的大按鈕 -->
-                <a href="astrolabe_form.html"><button class="primary_btn btn_bg"><p>開始推算</p></button></a>
+                
             </div>
+        </section>
+        <section class="astrolabe astrolabe_form"> 
+            <div class="container">
+                <!-- 星盤資料表單 -->
+                <div class="form_item">
+                    <form action="">
+                        <label>名　　稱 
+                            <input type="text" id="name">
+                        </label>
+                        <label>性　　別 
+                            <input type="radio" name="gender" value="male"> 男生
+                            <input type="radio" name="gender" value="female"> 女生
+                        </label>
+                        <label>生　　日 
+                            <input type="date">
+                        </label>
+                        <label>出生時間 
+                            <input type="time">
+                        </label>
+                    </form>
+                    <!-- 表單的清除和送出按鈕 -->
+                    <div class="form_btns">
+                        <input type="reset" id="reset" value="清除" class="third_btn">
+                        <a href="astrolabe_result.html"><input type="submit" id="submit" value="送出" class="secondary_btn"></a>
+                    </div>
+                </div>
+            </div>
+            
         </section>
     </main>
     

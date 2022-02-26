@@ -1463,8 +1463,11 @@ main {
   }
 }
 
-main .pagination_nav .container ul {
+main .pagination_nav .container {
   padding: 2% 8.33333%;
+}
+
+main .pagination_nav .container ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1478,14 +1481,23 @@ main .pagination_nav .container ul {
       flex-wrap: wrap;
 }
 
+main .pagination_nav .container ul li {
+  margin: 1em;
+}
+
 main .pagination_nav .container label {
-  margin: 12px;
-  padding: 6px 15px;
-  line-height: 2;
+  margin: .9em;
+  padding: .5em 1em;
   border: 1px solid #CFB886;
-  color: #CFB886;
-  border-radius: 10px;
+  border-radius: .5em;
   cursor: pointer;
+}
+
+main .pagination_nav .container label:hover {
+  background-color: #CFB886;
+  color: #000;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 main .discuss {
@@ -2198,6 +2210,86 @@ body section.back .contain main button {
   padding: .5em 1em;
 }
 
+main {
+  /* 星座頁籤 */
+  /* 開始推算 */
+  /* 填寫表單 */
+}
+
+main .astrolabe .container .img_box img {
+  width: 100%;
+  vertical-align: top;
+}
+
+main .astrolabe_start .container .img_box.start {
+  width: 350px;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* 推算按鈕 定位父層在.img_box.start*/
+}
+
+main .astrolabe_start .container .img_box.start .btn_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+main .astrolabe_start .container .img_box.start .btn_box button.big_style {
+  border: none;
+  padding: 10px 80px;
+  cursor: pointer;
+}
+
+main .astrolabe_start .container .img_box.start .btn_box button.big_style p {
+  color: #000;
+  font-weight: 600;
+}
+
+main .astrolabe_form .form_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .astrolabe_form .form_item form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+main .astrolabe_form .form_item .form_btns {
+  margin-top: 1em;
+  text-align: center;
+  /* 名稱的輸入盒 */
+}
+
+main .astrolabe_form .form_item .form_btns #name {
+  width: 60%;
+}
+
 * {
   font-family: 'Cinzel','Shippori Mincho', serif;
   -webkit-box-sizing: border-box;
@@ -2421,9 +2513,11 @@ button.primary_line_btn:active ol {
 }
 
 .third_btn:hover {
-  color: #CFB886;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-transition: .5s;
+  transition: .5s;
   background-color: transparent;
-  border: 1px solid #CFB886;
 }
 
 /* --- 其他按鈕 --- */

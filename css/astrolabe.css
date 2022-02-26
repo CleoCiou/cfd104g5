@@ -47,22 +47,20 @@ main .astrolabe_start .container .start_img_box img{
 }
 
 /* 推算按鈕 定位父層在.astrolabe_start的.container*/
-main .astrolabe_start .container .primary_btn.btn_bg {
+main .astrolabe_start .container .primary_btn {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #000;
-    background-color: #d89482;
     border: none;
     padding: 10px 80px;
     cursor: pointer;
 }
-main .astrolabe_start .container .btn_bg a{
+main .astrolabe_start .container .primary_btn a{
     text-decoration: none;
     color: #CFB886;
 }
-main .astrolabe_start .container .btn_bg p{
+main .astrolabe_start .container .primary_btn p{
     color: #000;
     font-weight: 600;
 }

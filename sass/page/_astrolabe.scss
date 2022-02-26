@@ -1,0 +1,80 @@
+$d : 768px;
+$m : 767px;
+
+@mixin desktop{
+    @media screen and (min-width:$d){
+        @content;
+    }
+}
+@mixin mobile{
+    @media screen and (max-width:$m){
+        @content;
+    }
+}
+main{
+    /* 星座頁籤 */
+
+    .astrolabe{
+        .container{
+            .img_box{
+                img{
+                    width: 100%;
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+    /* 開始推算 */
+    .astrolabe_start{
+        .container{
+            .img_box.start{
+                width: 350px;
+                position: relative;
+                left: 0;
+                right: 0;
+                margin: auto;
+                /* 推算按鈕 定位父層在.img_box.start*/
+                .btn_box{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 2;
+                    button.big_style{
+                        border: none;
+                        padding: 10px 80px;
+                        cursor: pointer;
+                        p{
+                            color: #000;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    /* 填寫表單 */
+    .astrolabe_form{
+        
+        .form_item{
+            display: flex;
+            flex-direction: column;
+            margin: 2%;
+            align-items: center;
+            form{
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                align-items: flex-start;
+            }
+            .form_btns{
+                margin-top: 1em;
+                text-align: center;
+                /* 名稱的輸入盒 */
+                #name{
+                    width: 60%;
+                }
+            }
+        }
+    }    
+}
