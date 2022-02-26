@@ -44,6 +44,7 @@
     /* 產品分類標題區別分開上推 */
     .product_row_title{
         padding-top: 1.5em;
+        white-space:nowrap;
     }
     
     /* 產品分類項目桌機間隔個開 */
