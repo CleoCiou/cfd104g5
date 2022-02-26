@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <title>解星鏡 Mistro | 星座</title>
 
     <!-- <link rel="stylesheet" href="css/astrolabe.css"> -->
@@ -29,48 +29,48 @@
         
         <!-- 開始推算引導的區塊 by JC -->
         <section class="astrolabe astrolabe_start"> 
-            
             <div class="container">
-                <h1>星盤推算</h1>
-                <!-- 底圖 -->
+                <!-- <h1>星盤推算</h1> -->
+                <div class="astrolabe_start_box">
+                     <!-- 底圖 -->
                     <div class="img_box start">
-                        <img src="images/constellation/bg_astrolabe.svg">
+                        <img src="images/constellation/bg_astrolabe.svg" class="astrolabe_bg">
+                        <!-- 自訂的大按鈕 -->
                         <div class="btn_box">
-                            <a href="astrolabe_form.html"><button class="primary_btn big_style"><p>開始推算</p></button></a>
+                            <a href="#"><button class="primary_btn big_style" id="startBtn"><p>開始推算</p></button></a>
                         </div>
                     </div>
-                <!-- 自訂的大按鈕 -->
-                
-            </div>
-        </section>
-        <section class="astrolabe astrolabe_form"> 
-            <div class="container">
-                <!-- 星盤資料表單 -->
-                <div class="form_item">
-                    <form action="">
-                        <label>名　　稱 
-                            <input type="text" id="name">
-                        </label>
-                        <label>性　　別 
-                            <input type="radio" name="gender" value="male"> 男生
-                            <input type="radio" name="gender" value="female"> 女生
-                        </label>
-                        <label>生　　日 
-                            <input type="date">
-                        </label>
-                        <label>出生時間 
-                            <input type="time">
-                        </label>
-                    </form>
-                    <!-- 表單的清除和送出按鈕 -->
-                    <div class="form_btns">
-                        <input type="reset" id="reset" value="清除" class="third_btn">
-                        <a href="astrolabe_result.html"><input type="submit" id="submit" value="送出" class="secondary_btn"></a>
+                    <!-- 星盤資料表單 -->
+                    <div class="start_hidden" id="formItem">
+                        <div class="form_item" >
+                            <form action="">
+                                <label>名　　稱 
+                                    <input type="text" id="name">
+                                </label>
+                                <label>性　　別 
+                                    <input type="radio" name="gender" value="male"> 男生
+                                    <input type="radio" name="gender" value="female"> 女生
+                                </label>
+                                <label for="bir_date">生　　日 
+                                    <input type="date" name="bir_date">
+                                </label>
+                                <label for="bir_time">出生時間 
+                                    <input type="time" name="bir_time">
+                                </label>
+                            </form>
+                            <!-- 表單的清除和送出按鈕 -->
+                            <div class="form_btns">
+                                <input type="reset" id="reset" value="清除" class="third_btn">
+                                <a href="astrolabe_result.html"><input type="submit" id="submit" value="送出" class="secondary_btn"></a>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
+                   
             </div>
-            
         </section>
+                
     </main>
     
     <footer></footer>
@@ -89,7 +89,9 @@
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
             },
         });
+        
     </script>
         <script src="js/common.js"></script>
+        <script src="js/astrolabe_start.js"></script>
 </body>
 </html>

@@ -2211,9 +2211,8 @@ body section.back .contain main button {
 }
 
 main {
-  /* 星座頁籤 */
+  /* 星座共用 */
   /* 開始推算 */
-  /* 填寫表單 */
 }
 
 main .astrolabe .container .img_box img {
@@ -2221,8 +2220,13 @@ main .astrolabe .container .img_box img {
   vertical-align: top;
 }
 
-main .astrolabe_start .container .img_box.start {
-  width: 350px;
+main .astrolabe .container .astrolabe_start_box {
+  position: relative;
+  /* 填寫表單 */
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start {
+  width: 45%;
   position: relative;
   left: 0;
   right: 0;
@@ -2230,7 +2234,11 @@ main .astrolabe_start .container .img_box.start {
   /* 推算按鈕 定位父層在.img_box.start*/
 }
 
-main .astrolabe_start .container .img_box.start .btn_box {
+main .astrolabe .container .astrolabe_start_box .img_box.start img {
+  width: 100%;
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2239,18 +2247,31 @@ main .astrolabe_start .container .img_box.start .btn_box {
   z-index: 2;
 }
 
-main .astrolabe_start .container .img_box.start .btn_box button.big_style {
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box button.big_style {
   border: none;
   padding: 10px 80px;
   cursor: pointer;
 }
 
-main .astrolabe_start .container .img_box.start .btn_box button.big_style p {
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box button.big_style p {
   color: #000;
   font-weight: 600;
 }
 
-main .astrolabe_form .form_item {
+main .astrolabe .container .astrolabe_start_box .start_hidden {
+  display: none;
+}
+
+main .astrolabe .container .astrolabe_start_box .start_show {
+  display: block;
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 50%;
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2258,13 +2279,18 @@ main .astrolabe_form .form_item {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 2%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  z-index: 2;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
-main .astrolabe_form .form_item form {
+main .astrolabe .container .astrolabe_start_box .form_item form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2272,22 +2298,231 @@ main .astrolabe_form .form_item form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  background-color: #3a3a3ab0;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  padding: 2em;
+  border-radius: 0.2em;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
-main .astrolabe_form .form_item .form_btns {
+main .astrolabe .container .astrolabe_start_box .form_item form:hover {
+  background-color: #58585865;
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item .form_btns {
   margin-top: 1em;
   text-align: center;
   /* 名稱的輸入盒 */
 }
 
-main .astrolabe_form .form_item .form_btns #name {
+main .astrolabe .container .astrolabe_start_box .form_item .form_btns #name {
   width: 60%;
+}
+
+main section.chart .container h1 {
+  text-align: left;
+  display: inline-block;
+}
+
+main section.chart .container .astrolabe_chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification {
+  width: 7%;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_classification {
+    width: 100%;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul {
+  margin: 0 .5em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_classification ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li {
+  margin: .5em;
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li label {
+  border-bottom: 1px solid #CFB886;
+  padding-bottom: .2em;
+  cursor: pointer;
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li label:hover {
+  color: #d89482;
+  border-bottom: 1px solid #d89482;
+}
+
+main section.chart .container .astrolabe_chart .parse_box {
+  width: 60%;
+  margin-top: 2em;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .parse_box {
+    width: 100%;
+  }
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg {
+  position: relative;
+  border: 1px solid #CFB886;
+  padding: 5%;
+  background-color: #000;
+  border-radius: 0.2em;
+  /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_title {
+  position: relative;
+  bottom: 4.2em;
+  right: 1.2em;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_title h2 {
+  background-color: #000;
+  display: inline-block;
+  font-size: 2.8rem;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_txt h3 {
+  margin-bottom: 1em;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_txt p {
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+main section.chart .container .astrolabe_chart .chart_info {
+  width: 33%;
+  margin: 0 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_info {
+    width: 100%;
+    margin: 2em auto;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_txt {
+  margin: auto;
+  padding: 2em 3.5em;
+  background-color: #3a3a3a;
+  border-radius: 0.2em;
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_txt:hover {
+  background-color: #58585865;
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_txt p {
+  color: #CFB886;
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_img {
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_info .chart_img {
+    margin: 2em auto;
+  }
+}
+
+main .products_cards .products_box .products_title_wrap {
+  width: 100%;
+  text-align: left;
+  margin: 5em 0 2em;
+}
+
+main .products_cards .products_box .products_cards_wrap {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  main .products_cards .products_box .products_cards_wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+main .products_cards .products_box .products_cards_wrap .cards_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .products_cards .products_box .products_cards_wrap .cards_row .products_item {
+  width: 50%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 1em 1em 0;
+}
+
+@media screen and (max-width: 767px) {
+  main .products_cards .products_box .products_cards_wrap .cards_row .products_item {
+    width: 50%;
+  }
+}
+
+main .products_cards .products_box .products_cards_wrap .cards_row .products_item .img_box img {
+  width: 100%;
 }
 
 * {
@@ -2409,11 +2644,11 @@ button.primary_line_btn:active ol {
   cursor: pointer;
   -webkit-box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
           box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .primary_btn:hover {
-  -webkit-transition: .5s;
-  transition: .5s;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   background-color: #f8d68d;
@@ -2447,6 +2682,8 @@ button.primary_line_btn:active ol {
   padding: 0.8em 2em;
   white-space: nowrap;
   cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .secondary_btn:hover {
@@ -2454,8 +2691,6 @@ button.primary_line_btn:active ol {
   border: 1px solid #ffe09c;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
-  -webkit-transition: .5s;
-  transition: .5s;
 }
 
 /* 頁籤 */
@@ -2510,13 +2745,13 @@ button.primary_line_btn:active ol {
   padding: 0.8em 2em;
   cursor: pointer;
   font-weight: 500;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .third_btn:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
-  -webkit-transition: .5s;
-  transition: .5s;
   background-color: transparent;
 }
 
