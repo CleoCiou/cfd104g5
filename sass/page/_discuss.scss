@@ -17,6 +17,7 @@ $m : 767px;
 
 main {
     .pagination_nav{
+        margin-top: 5em;
         @include mobile {
             display: none;
         }
@@ -255,7 +256,7 @@ main {
     /*瀏覽文章燈箱 by JC */
     .articleShow{
         display: block;
-        z-index: 10;
+        z-index: 2500;
         position: fixed;
         top: 0;
         left: 0;
