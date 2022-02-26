@@ -16,174 +16,174 @@
 
 
 <!-- 網頁內容 -->
-<main>
-<section class="shopping_cart">
-    <div class="container">
+    <main>
         <!-- 購物車流程 -->
-        <ol class="shopping_process">
-            <li class="item">確認商品</li>
-            <li class="item active">填寫資料</li>
-            <li class="item">訂單確認</li>
-        </ol>
-        <!-- 購物車內容 -->
-        <div class="cart_detail">
-            <!-- 購物車header -->
-            <div class="cart_header">
-                <div class="item_detail">商品</div>
-                <div class="price">單價</div>
-                <div class="count">數量</div> 
-                <div class="amount">總計</div>
+        <section class="shopping_circle">
+            <div class="container">
+                <ol class="shopping_process">
+                    <li class="item active">確認商品</li>
+                    <li class="item">填寫資料</li>
+                    <li class="item">訂單確認</li>
+                </ol>
             </div>
-            <!-- 購物車body -->
-            <div class="cart_body">
-                <div class="product_box">
-                    <div class="item_detail">
-                        <div class="cart_card">
-                            <div class="img_box">
-                                <img src="https://picsum.photos/300/200/?random=10">
+        </section>
+        <section class="shopping_cart">
+            <div class="container">
+                <!-- 購物車內容 -->
+                <div class="cart_detail">
+                    <!-- 購物車header -->
+                    <div class="cart_header">
+                        <div class="item_detail">商品</div>
+                        <div class="price">單價</div>
+                        <div class="count">數量</div> 
+                        <div class="amount">總計</div>
+                    </div>
+                    <!-- 購物車body -->
+                    <div class="cart_body">
+                        <div class="product_box">
+                            <div class="item_detail">
+                                <div class="cart_card">
+                                    <div class="img_box">
+                                        <img src="https://picsum.photos/300/200/?random=10">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p>開運小物</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="txt_box">
-                                <p>開運小物</p>
+                            <div class="price">
+                                <p>$1,000</p>
+                            </div>
+                            <div class="count">
+                                <p>2</p>
+                            </div>
+                            <div class="amount">
+                                <p>$2,000</p>
+                            </div>
+                        </div>
+                        <div class="product_box">
+                            <div class="item_detail">
+                                <div class="cart_card">
+                                    <div class="img_box">
+                                        <img src="https://picsum.photos/300/200/?random=10">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p>開運小物</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="price">
+                                <p>$1,000</p>
+                            </div>
+                            <div class="count">
+                                <p>2</p>
+                            </div>
+                            <div class="amount">
+                                <p>$2,000</p>
                             </div>
                         </div>
                     </div>
-                    <div class="price">
-                        <p>$1,000</p>
-                    </div>
-                    <div class="count">
-                        <p>2</p>
-                    </div>
-                    <div class="amount">
-                        <p>$2,000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 填寫資料區 -->
+        <section class="cart_deliver">
+            <div class="container">
+                <div class="customer_info">
+                    <div class="customer_form">
+                        <form action="">
+                            <label>
+                                <p>姓名</p>
+                                <input type="text" id="name">
+                            </label>
+                            <label>
+                                <p>信箱</p>
+                                <input type="email">
+                            </label>
+                            <label>
+                                <p>電話</p>
+                                <input type="text">
+                            </label>
+                            <label>
+                                <p>地址</p>
+                                <input type="text">
+                            </label>
+                            <label>
+                                <p>信用卡卡號</p>
+                                <input type="text">
+                            </label>
+                        </form>
                     </div>
                 </div>
-                <div class="product_box">
-                    <div class="item_detail">
-                        <div class="cart_card">
-                            <div class="img_box">
-                                <img src="https://picsum.photos/300/200/?random=10">
-                            </div>
-                            <div class="txt_box">
-                                <p>開運小物</p>
-                            </div>
+                <div class="cart_info_right">
+                    <div class="order_total">
+                        <div class="first_price">
+                            <h4>小計：NT$4,000</h4>
+                        </div>
+                        <div class="delivery_fee">
+                            <h4>運費：NT$60</h4>
+                        </div>
+                        <div class="total_price">
+                            <h4>總計：NT$4,060</h4>
                         </div>
                     </div>
-                    <div class="price">
-                        <p>$1,000</p>
-                    </div>
-                    <div class="count">
-                        <p>2</p>
-                    </div>
-                    <div class="amount">
-                        <p>$2,000</p>
+                    <div class="confirm_btns">
+                        <a href="shopping_cart.html"><button class="primary_btn">上一步</button></a>
+                        <a href="shopping_confirm.html"><button class="primary_btn">結帳</button></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- 填寫資料區 -->
-<section class="cart_deliver">
-    <div class="container">
-        <div class="customer_info">
-            <div class="customer_form">
-                <form action="">
-                    <p>名稱</p>
-                    <label>
-                        <input type="text" id="name">
-                    </label>
-                    <p>信箱</p>
-                    <label>
-                        <input type="email">
-                    </label>
-                    <p>電話</p>
-                    <label>
-                        <input type="text">
-                    </label>
-                    <p>收件人姓名</p>
-                    <label>
-                        <input type="text">
-                    </label>
-                    <p>收件人電話</p>
-                    <label>
-                        <input type="text">
-                    </label>
-                    <p>店到店門市名稱</p>
-                    <label>
-                        <input type="text">
-                    </label>
-                </form>
-            </div>
-        </div>
-        <div class="cart_info_right">
-            <div class="order_total">
-                <div class="first_price">
-                    <h4>小計：NT$4,000</h4>
-                </div>
-                <div class="delivery_fee">
-                    <h4>運費：NT$60</h4>
-                </div>
-                <div class="total_price">
-                    <h4>總計：NT$4,060</h4>
-                </div>
-            </div>
-            <div class="confirm_btns">
-                <a href="shopping_cart.html"><button class="primary_btn">上一步</button></a>
-                <a href="shopping_confirm.html"><button class="primary_btn">結帳</button></a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 底部推薦商品 -->
-<section class="cart_bottom">
-    <div class="container">
-        <div class="item_box">
-            <div class="item">
-                <a href="">
-                    <div class="img_box">
-                        <img src="https://picsum.photos/200/200/?random=10">
+        <!-- 底部推薦商品 -->
+        <section class="cart_bottom">
+            <div class="container">
+                <div class="item_box">
+                    <div class="item">
+                        <a href="">
+                            <div class="img_box">
+                                <img src="https://picsum.photos/200/200/?random=10">
+                            </div>
+                        </a>
+                        <div class="txt_box">
+                            <p>開運小物</p>
+                        </div>
                     </div>
-                </a>
-                <div class="txt_box">
-                    <p>開運小物</p>
-                </div>
-            </div>
-            <div class="item">
-                <a href="">
-                    <div class="img_box">
-                        <img src="https://picsum.photos/200/200/?random=10">
+                    <div class="item">
+                        <a href="">
+                            <div class="img_box">
+                                <img src="https://picsum.photos/200/200/?random=10">
+                            </div>
+                        </a>
+                        <div class="txt_box">
+                            <p>開運小物</p>
+                        </div>
                     </div>
-                </a>
-                <div class="txt_box">
-                    <p>開運小物</p>
-                </div>
-            </div>
-            <div class="item">
-                <a href="">
-                    <div class="img_box">
-                        <img src="https://picsum.photos/200/200/?random=10">
+                    <div class="item">
+                        <a href="">
+                            <div class="img_box">
+                                <img src="https://picsum.photos/200/200/?random=10">
+                            </div>
+                        </a>
+                        <div class="txt_box">
+                            <p>開運小物</p>
+                        </div>
                     </div>
-                </a>
-                <div class="txt_box">
-                    <p>開運小物</p>
-                </div>
-            </div>
-            <div class="item">
-                <a href="">
-                    <div class="img_box">
-                        <img src="https://picsum.photos/200/200/?random=10">
+                    <div class="item">
+                        <a href="">
+                            <div class="img_box">
+                                <img src="https://picsum.photos/200/200/?random=10">
+                            </div>
+                        </a>
+                        <div class="txt_box">
+                            <p>開運小物</p>
+                        </div>
                     </div>
-                </a>
-                <div class="txt_box">
-                    <p>開運小物</p>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-</main>
+        </section>
+    </main>
 
 
 <!-- 網頁尾 -->

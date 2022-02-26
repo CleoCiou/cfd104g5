@@ -1,0 +1,249 @@
+$d : 768px;
+$m : 767px;
+
+@mixin desktop{
+    @media screen and (min-width:$d){
+        @content;
+    }
+}
+@mixin mobile{
+    @media screen and (max-width:$m){
+        @content;
+    }
+}
+main{
+    /* 星座共用 */
+    .astrolabe{
+
+        .container{
+            .img_box{
+                img{
+                    width: 100%;
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+    /* 開始推算 */
+    .astrolabe{
+        .container{
+            .astrolabe_start_box{
+                position: relative;
+                .img_box.start{
+                    width: 45%;
+                    position: relative;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    /* 推算按鈕 定位父層在.img_box.start*/
+                    img{
+                        width: 100%;
+                    }
+                    .btn_box{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 2;
+                        button.big_style{
+                            border: none;
+                            padding: 10px 80px;
+                            cursor: pointer;
+                            p{
+                                color: #000;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+                .start_hidden{
+                    display: none;
+                }
+                .start_show{
+                    display: block;
+                }
+                /* 填寫表單 */
+                .form_item{
+                    position: absolute;
+                    top: 50%;
+                    bottom: 0;
+                    right: 50%;
+                    height: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    transform: translate(50%, -50%);
+                    z-index: 2;
+                    height: fit-content;
+                    form{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        background-color: #3a3a3ab0;
+                        backdrop-filter: blur(3px);
+                        padding: 2em;
+                        border-radius: $bRadius;
+                        transition: .5s;
+                        &:hover{
+                            background-color: #58585865;
+                        }
+                    }
+                    .form_btns{
+                        margin-top: 1em;
+                        text-align: center;
+                        /* 名稱的輸入盒 */
+                        #name{
+                            width: 60%;
+                        }
+                    }
+                } 
+            }
+        }
+    }
+    section.chart{
+        .container{
+            h1{
+                text-align: left;
+                display: inline-block;
+            }
+            .astrolabe_chart{
+                display: flex;
+                @include mobile{
+                    display: flex;
+                    flex-direction: column-reverse;
+
+                }
+                .chart_classification{
+                    width: 7%;
+                    @include mobile{
+                        width:100%;
+                    }
+                    ul{
+                        margin: 0 .5em;
+                        @include mobile{
+                            display: flex;
+                        }
+                        li{
+                            margin: .5em;
+                            label{
+                            border-bottom: 1px solid #CFB886;
+                            padding-bottom: .2em;
+                            cursor: pointer;
+                                &:hover{
+                                    color: #d89482;
+                                    border-bottom: 1px solid #d89482;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                .parse_box{
+                    width: 60%;
+                    margin-top: 2em;
+                    position: relative;
+                    display: flex;
+                    // background-image: url("../images/constellation/bg_astrolabe_card.jpg");
+                    // background-repeat: no-repeat;
+                    // background-size: cover;
+                    // height: auto;
+                    @include mobile{
+                        width:100%
+                    }
+                    .analyze_bg{
+                        position: relative;
+                        border: 1px solid #CFB886;
+                        padding: 5%;
+                        background-color: #000;
+                        border-radius: $bRadius;
+                        /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
+                        .analyze_title{
+                            position: relative;
+                            bottom: 4.2em;
+                            right: 1.2em;
+                            h2{
+                                background-color: #000;
+                                display: inline-block;
+                                font-size: 2.8rem;
+                            }
+                        }
+                        .analyze_txt{
+                            h3{
+                                margin-bottom: 1em;
+                            }
+                            p{
+                                line-height: 2;
+                                letter-spacing: 1px;
+                            }
+                        }
+                    }
+                }
+                .chart_info{
+                    width: 33%;
+                    margin: 0 2em;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    @include mobile{
+                        width: 100%;
+                        margin: 2em auto;
+                    }
+                    .chart_txt{
+                        margin: auto;
+                        padding: 2em 3.5em;
+                        background-color: #3a3a3a;
+                        border-radius: $bRadius;
+                        &:hover{
+                            background-color: #58585865;
+                        }
+                        p{
+                            color: #CFB886;
+                        }
+                    }
+                    .chart_img{
+                        width: 100%;
+                        @include mobile{
+                            margin: 2em auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .products_cards{
+        .products_box{
+            .products_title_wrap{
+                width: 100%;
+                text-align: left;
+                margin: 5em 0 2em;
+            }
+            .products_cards_wrap{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                @include mobile{
+                    flex-direction: column;
+                }
+                .cards_row{
+                    display: flex;
+                    
+                    .products_item{
+                        width: 50%;
+                        align-items: center;
+                        margin: 0 1em 1em 0;
+                        @include mobile{
+                            width: 50%;
+                        }
+                        .img_box{
+                            img{
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+    }
+}
