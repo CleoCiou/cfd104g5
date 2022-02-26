@@ -328,7 +328,7 @@ header .menu {
   top: 75px;
   bottom: 0;
   padding: 30px;
-  background: #3a3333;
+  background: #000;
   /* 用 translate 把選單藏到畫面右邊去 */
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
@@ -371,7 +371,9 @@ header .menu .crystal_ball {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: aliceblue;
+  background-image: url(/images/header/giphy.gif);
+  background-position: center;
+  background-size: 180%;
   margin: auto;
 }
 
@@ -411,6 +413,10 @@ header .menu .rotate_card .tarot {
   left: 15%;
   -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
+  background-image: url(/images/header/card_back_tarot.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 header .menu .rotate_card .zodiac {
@@ -419,6 +425,10 @@ header .menu .rotate_card .zodiac {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  background-image: url(/images/header/card_back_zodiac.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 header .menu .rotate_card .shop {
@@ -427,6 +437,10 @@ header .menu .rotate_card .shop {
   top: -30px;
   -webkit-transform: rotate(-30deg);
   transform: rotate(-30deg);
+  background-image: url(/images/header/card_back_shop.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 768px) {
