@@ -163,3 +163,13 @@ body {
 .first_page img{
   width: 100%;
 }
+
+/* 設定目錄可以點選 */
+main .tarot_book .container .book .pages .page .tarot_book_menu.active {
+    pointer-events: all;
+    position: absolute;
+    z-index: 500;
+}
+main .tarot_book .container .book .pages .page .tarot_book_menu.active li:hover {
+    color: #fa0;
+}
