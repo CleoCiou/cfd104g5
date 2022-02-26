@@ -1,10 +1,4 @@
-* {
-    font-family: 'Cinzel','Shippori Mincho', serif;
-    box-sizing: border-box;
-}
-body{
-    background-color: #000;
-}
+
 li{
     list-style: none;
 }
@@ -53,22 +47,20 @@ main .astrolabe_start .container .start_img_box img{
 }
 
 /* 推算按鈕 定位父層在.astrolabe_start的.container*/
-main .astrolabe_start .container .primary_btn.btn_bg {
+main .astrolabe_start .container .primary_btn {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #000;
-    background-color: #d89482;
     border: none;
     padding: 10px 80px;
     cursor: pointer;
 }
-main .astrolabe_start .container .btn_bg a{
+main .astrolabe_start .container .primary_btn a{
     text-decoration: none;
     color: #CFB886;
 }
-main .astrolabe_start .container .btn_bg p{
+main .astrolabe_start .container .primary_btn p{
     color: #000;
     font-weight: 600;
 }
@@ -177,7 +169,8 @@ main .astrolabe_chart .chart_classification{
 }
 
 main .astrolabe_chart .chart_classification li{
-    padding:12% 0;
+    padding:0.5em 0;
+    border-bottom: 1px #CFB886 solid;
 }
 
 /* 星盤解讀分析內容的外框 */
@@ -188,19 +181,32 @@ main .astrolabe_chart .analyze_bg{
     padding: 5%;
     background-color: #000;
     width: 50%;
+    transform: translate(20%,0);
 }
 /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
 main .astrolabe_chart .analyze_title{
     position: relative;
-    top: -25%;
-    bottom: 50%;
+    top: 0;
+    bottom: 0;
 }
+.parse{
+    margin-top: 10%;
+}
+.parse_box{
+    position: relative;
+    display: flex;
 
+}
 /* 星盤解讀分析內容 大標 */
 main .astrolabe_chart .analyze_title h2{
     background-color: #000;
     display: inline-block;
     font-size: 2.5rem;
+}
+
+main .astrolabe_chart .analyze_txt p {
+    line-height: 2;
+    letter-spacing: 1px;
 }
 
 /* ============================= */
@@ -351,7 +357,7 @@ main .products_cards .container{
         width: 100%;
         display: flex;
     }
-    /* 星盤解讀分析內容 下一張 定位父層是container*/
+    /* 星盤解讀分析內容 下一張 定位父層是parse_box*/
     main .astrolabe_chart .analyze_next , main .astrolabe_chart .analyze_next h3 {
         display: none;
     }
@@ -359,13 +365,13 @@ main .products_cards .container{
 @media screen and (min-width:1200px) {
     /*  1200以上 
         星盤解讀的內容 */
-/* 星盤解讀分析內容 下一張 定位父層是container*/
+/* 星盤解讀分析內容 下一張 定位父層是parse_box*/
     main .astrolabe_chart .analyze_next {
         background-color: #CFB886;
         padding: 60px 90px;
         position: absolute;
-        right: 5%;
-        top: 10%;
+        right: 10em;
+        top: -10em;
         z-index: 2;
     }
     main .astrolabe_chart .analyze_next h3{

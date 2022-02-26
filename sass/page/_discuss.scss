@@ -21,21 +21,27 @@ main {
             display: none;
         }
         .container{ 
+            padding: $padding;
             ul{
-                padding: $padding;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-wrap: wrap;
+                li{
+                    margin: 1em;
+                }
             }
             label{
-                margin: 12px;
-                padding: 6px 15px;
-                line-height: 2;
+                margin: .9em;
+                padding: .5em 1em;
                 border: 1px solid #CFB886;
-                color: map-get($primary_color, "content");
-                border-radius: 10px;
+                border-radius: .5em;
                 cursor: pointer;
+                &:hover{
+                    background-color: map-get($primary_color, 'content' );
+                    color: map-get($primary_color, 'bg' );
+                    transition: .3s;
+                }
             }
         }
     }
@@ -229,11 +235,19 @@ main {
                 }
             }
             .line_bottom{
+                display: flex;
+                align-items: center;
                 img{
-                    margin-right: 1em;
+                    margin-right: 0.3em;
                     width: 1.5em;
                     height: 1.5em;
                     cursor: pointer;
+                }
+                p{
+                    margin-right: 0.6em;
+                    color: #aaa;
+                    font-size: 0.8em;
+                    
                 }
             }
         }

@@ -21,6 +21,9 @@
 header {
   background: #000000;
   /* Nav Style */
+  /* .menu-item{
+            position: relative;
+        } */
   /* 手機專用 */
 }
 
@@ -75,7 +78,7 @@ header .header_all .header_bar .header_icon img {
   display: flex;
 }
 
-header .ham_menu .ham-origin {
+header .ham_menu .ham_origin {
   position: relative;
   /* left: 90%; */
   width: 30px;
@@ -88,7 +91,7 @@ header .ham_menu .ham-origin {
   margin-top: 23px;
 }
 
-header .ham_menu .ham-origin div {
+header .ham_menu .ham_origin div {
   height: 0px;
   border: 1.5px solid #fff;
   width: 22px;
@@ -99,21 +102,21 @@ header .ham_menu .ham-origin div {
   background: #fff;
 }
 
-header .ham_menu .ham-origin:hover {
+header .ham_menu .ham_origin:hover {
   -webkit-transition-delay: 100ms;
           transition-delay: 100ms;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-header .ham_menu .ham-origin:hover div:nth-child(3):before {
+header .ham_menu .ham_origin:hover div:nth-child(3):before {
   width: 2px;
   height: 2px;
   border-radius: 50%;
   background: #F26451;
 }
 
-header .ham_menu .ham-origin:hover div {
+header .ham_menu .ham_origin:hover div {
   border: 2px solid #fff;
   height: 9px;
   border-radius: 50%;
@@ -126,11 +129,11 @@ header .ham_menu .ham-origin:hover div {
   background: transparent;
 }
 
-header #nav-toggle {
+header #nav_toggle {
   display: none;
 }
 
-header .ham_menu .ham-origin:focus {
+header .ham_menu .ham_origin:focus {
   outline: 0px;
 }
 
@@ -157,36 +160,36 @@ header .ham_menu div:nth-child(3):before {
   top: 0.25px;
 }
 
-header .ham_menu .ham-origin:hover div:nth-child(1) {
+header .ham_menu .ham_origin:hover div:nth-child(1) {
   -webkit-transform: rotate(-33deg);
           transform: rotate(-33deg);
 }
 
-header .ham_menu .ham-origin:hover div:nth-child(2) {
+header .ham_menu .ham_origin:hover div:nth-child(2) {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
-header .ham_menu .ham-origin:hover div:nth-child(3) {
+header .ham_menu .ham_origin:hover div:nth-child(3) {
   -webkit-transform: rotate(33deg);
           transform: rotate(33deg);
 }
 
-header .ham_menu .ham-origin:hover div:nth-child(3):before {
+header .ham_menu .ham_origin:hover div:nth-child(3):before {
   opacity: 1;
   -webkit-transition: opacity 600ms cubic-bezier(0.61, 0.01, 0.42, 1);
   transition: opacity 600ms cubic-bezier(0.61, 0.01, 0.42, 1);
 }
 
-header .ham_menu .ham-origin:active:hover div:nth-child(3):before,
-header .ham_menu .ham-origin:active div:nth-child(3):before,
-header .ham_menu .ham-origin:active div:nth-child(2) {
+header .ham_menu .ham_origin:active:hover div:nth-child(3):before,
+header .ham_menu .ham_origin:active div:nth-child(3):before,
+header .ham_menu .ham_origin:active div:nth-child(2) {
   opacity: 0;
   -webkit-transition: all 200ms;
   transition: all 200ms;
 }
 
-header .ham_menu .ham-origin:active div {
+header .ham_menu .ham_origin:active div {
   border: 1.5px solid #fff;
   height: 0px;
   border-radius: 0%;
@@ -198,16 +201,16 @@ header .ham_menu .ham-origin:active div {
   top: 0px;
 }
 
-header .ham_menu .ham-origin:active div:nth-child(2) {
+header .ham_menu .ham_origin:active div:nth-child(2) {
   width: 0px;
 }
 
-header .ham_menu .ham-origin:active div:nth-child(3) {
+header .ham_menu .ham_origin:active div:nth-child(3) {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-header .ham_menu .ham-origin:active div:nth-child(1) {
+header .ham_menu .ham_origin:active div:nth-child(1) {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
@@ -325,7 +328,7 @@ header .menu {
   top: 75px;
   bottom: 0;
   padding: 30px;
-  background: rgba(184, 132, 132, 0.3);
+  background: #3a3333;
   /* 用 translate 把選單藏到畫面右邊去 */
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
@@ -334,62 +337,123 @@ header .menu {
   transition: transform .5s;
   transition: transform .5s, -webkit-transform .5s;
   text-align: center;
+  z-index: 1500;
 }
 
-header #nav-toggle:checked ~ .menu {
+header #nav_toggle:checked ~ .menu {
   -webkit-transform: none;
           transform: none;
 }
 
-header .menu-list {
+header .menu_list {
   list-style: none;
   margin: 0;
   padding: 0;
+  position: relative;
+  z-index: 1500;
 }
 
-header .menu-item + .menu-item {
+header .menu_item + .menu_item {
   margin-top: 35px;
 }
 
-header .menu-link {
+header .menu_link {
   text-decoration: none;
   color: white;
-}
-
-header .sub-menu {
   display: none;
 }
 
-header .menu-item .menu_login {
+header .sub_menu {
   display: none;
 }
 
-header .menu-item .menu_member {
-  display: none;
+header .menu .crystal_ball {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: aliceblue;
+  margin: auto;
+}
+
+header .menu_item {
+  position: relative;
+  z-index: 25;
+  margin: auto;
+}
+
+header .menu .rotate_card {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  z-index: 1500;
+}
+
+header .menu .rotate_card .menu_card {
+  width: 150px;
+  height: 220px;
+  background-color: black;
+  /* border: 2px solid #F26451; */
+  display: inline-block;
+  position: absolute;
+  /* left: 50%;
+            transform: translateX(-50%); */
+}
+
+header .menu .rotate_card .menu_card:hover {
+  -webkit-box-shadow: 0px 0px 20px 3px #cfb886dc;
+          box-shadow: 0px 0px 20px 3px #cfb886dc;
+}
+
+header .menu .rotate_card .tarot {
+  position: absolute;
+  top: -30px;
+  left: 15%;
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+header .menu .rotate_card .zodiac {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+header .menu .rotate_card .shop {
+  position: absolute;
+  right: 15%;
+  top: -30px;
+  -webkit-transform: rotate(-30deg);
+  transform: rotate(-30deg);
 }
 
 @media screen and (max-width: 768px) {
   header .menu {
     top: 75px;
   }
-  header .menu li:hover > .sub-menu {
+  header .menu li:hover > .sub_menu {
     display: block;
   }
-  header .sub-menu-check:checked ~ ul {
+  header .sub_menu_check:checked ~ ul {
     display: block;
   }
-  header .menu .sub-menu {
+  header .menu .sub_menu {
     position: relative;
     top: 100%;
   }
-  header .menu .sub-menu li {
+  header .menu .sub_menu li {
     margin-top: 10px;
   }
-  header .menu-item .menu_login {
+  header .menu_item .menu_login {
     margin: 20px;
     display: inline-block;
   }
-  header .menu-item .menu_member {
+  header .menu_item .menu_member {
+    display: block;
+  }
+  header .menu_link {
     display: block;
   }
   header .header_all .header_bar .header_icon p {
@@ -399,6 +463,12 @@ header .menu-item .menu_member {
   header .header_all .header_bar .header_icon img {
     height: 20px;
     margin-top: 23px;
+  }
+  header .menu .rotate_card {
+    display: none;
+  }
+  header .menu .crystal_ball {
+    display: none;
   }
 }
 
@@ -1161,6 +1231,113 @@ main section.member .container .main_astrologist .item.ast_comment .ast_comment_
   }
 }
 
+main section.member .container .main_member .tarot_quiz,
+main section.member .container .main_astrologist .tarot_quiz {
+  width: 100%;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box {
+  width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row {
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: .2em;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
+  width: 50%;
+  margin: 0.5em;
+  padding: .8em;
+  background-color: #5558;
+  border-radius: 0.2em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head P,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head P {
+  color: #aaa;
+  font-size: 0.8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_result,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_result {
+  margin: 1em 0 0.5em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
+  margin: 0.5em;
+  width: 50%;
+  border: 1px solid #CFB886;
+  border-radius: 0.2em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
+    display: none;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view {
+  text-align: center;
+  padding: 8em;
+}
+
 main section.member .container .login_box {
   position: fixed;
   top: 50%;
@@ -1286,8 +1463,11 @@ main {
   }
 }
 
-main .pagination_nav .container ul {
+main .pagination_nav .container {
   padding: 2% 8.33333%;
+}
+
+main .pagination_nav .container ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1301,14 +1481,23 @@ main .pagination_nav .container ul {
       flex-wrap: wrap;
 }
 
+main .pagination_nav .container ul li {
+  margin: 1em;
+}
+
 main .pagination_nav .container label {
-  margin: 12px;
-  padding: 6px 15px;
-  line-height: 2;
+  margin: .9em;
+  padding: .5em 1em;
   border: 1px solid #CFB886;
-  color: #CFB886;
-  border-radius: 10px;
+  border-radius: .5em;
   cursor: pointer;
+}
+
+main .pagination_nav .container label:hover {
+  background-color: #CFB886;
+  color: #000;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 main .discuss {
@@ -1580,11 +1769,26 @@ main .discuss .article_cards .line_middle .line_middle_pic img {
   }
 }
 
+main .discuss .article_cards .line_bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 main .discuss .article_cards .line_bottom img {
-  margin-right: 1em;
+  margin-right: 0.3em;
   width: 1.5em;
   height: 1.5em;
   cursor: pointer;
+}
+
+main .discuss .article_cards .line_bottom p {
+  margin-right: 0.6em;
+  color: #aaa;
+  font-size: 0.8em;
 }
 
 main .articleShow {
@@ -2006,6 +2210,86 @@ body section.back .contain main button {
   padding: .5em 1em;
 }
 
+main {
+  /* 星座頁籤 */
+  /* 開始推算 */
+  /* 填寫表單 */
+}
+
+main .astrolabe .container .img_box img {
+  width: 100%;
+  vertical-align: top;
+}
+
+main .astrolabe_start .container .img_box.start {
+  width: 350px;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* 推算按鈕 定位父層在.img_box.start*/
+}
+
+main .astrolabe_start .container .img_box.start .btn_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+main .astrolabe_start .container .img_box.start .btn_box button.big_style {
+  border: none;
+  padding: 10px 80px;
+  cursor: pointer;
+}
+
+main .astrolabe_start .container .img_box.start .btn_box button.big_style p {
+  color: #000;
+  font-weight: 600;
+}
+
+main .astrolabe_form .form_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .astrolabe_form .form_item form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+main .astrolabe_form .form_item .form_btns {
+  margin-top: 1em;
+  text-align: center;
+  /* 名稱的輸入盒 */
+}
+
+main .astrolabe_form .form_item .form_btns #name {
+  width: 60%;
+}
+
 * {
   font-family: 'Cinzel','Shippori Mincho', serif;
   -webkit-box-sizing: border-box;
@@ -2229,9 +2513,11 @@ button.primary_line_btn:active ol {
 }
 
 .third_btn:hover {
-  color: #CFB886;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-transition: .5s;
+  transition: .5s;
   background-color: transparent;
-  border: 1px solid #CFB886;
 }
 
 /* --- 其他按鈕 --- */

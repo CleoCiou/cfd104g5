@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>解星鏡 Mistro | 後台</title>
+    <title>解星鏡 Mistro | 網站管理</title>
     <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
 </head>
 <body>
-    <section class="back container">
-        <!-- link panel -->
+    <section id="app" class="back container">
+        <!-- 管理選項bar -->
         <aside class="link_panel">
             <!-- logo -->
             <div class="logo">
@@ -21,32 +21,26 @@
                 </div>
             </div>
 
-            <!-- 連結 -->
+            <!-- 左側邊欄 管理選項 -->
             <ul class="link_list">
-                <li><a class="selected_btn" href="#">帳號管理</a></li>
-                <li><a class="unselected_btn" href="#">會員管理</a></li>
-                <li><a class="unselected_btn" href="#">審核占卜師</a></li>
-                <li><a class="unselected_btn" href="#">商品管理</a></li>
-                <li><a class="unselected_btn" href="#">預約管理</a></li>
-                <li><a class="unselected_btn" href="#">商品管理</a></li>
-                <li><a class="unselected_btn" href="#">訂單管理</a></li>
-                <li><a class="unselected_btn" href="#">文章管理</a></li>
-                <li><a class="unselected_btn" href="#">測驗管理</a></li>
+                <li v-for="(item, tableName) in manageItem">
+                    <a class="unselected_btn" @click="getCol($event, tableName, item)">{{item.tableName}}</a>
+                </li>
             </ul>
         </aside>
 
-        <!-- contain panel -->
+        <!-- 管理內容區 -->
         <div class="contain">
-            <!-- contain header -->
+            <!-- 登出 -->
             <header>
                 <div class="burger"></div>
                 <button class="third_btn">登出</button>
             </header>
 
-            <!-- contain main -->
+            <!-- 管理內容 -->
             <main>
                 <div class="container">
-                    
+                    <!-- 表格上方操作列 -->
                     <div class="action">
                         <button class="primary_btn">新增會員</button>
                         <div>
@@ -61,26 +55,19 @@
                         </div>
                     </div>
                     
+                    <!-- 資料內容 -->
                     <table>
                         <tr>
                             <th scope="col"><input type="checkbox"></th>
-                            <th scope="col">會員編號</th>
-                            <th scope="col">會員帳號</th>
-                            <th scope="col">會員密碼</th>
-                            <th scope="col">會員身分</th>
-                            <th scope="col">會員姓名</th>
-                            <th scope="col">會員狀態</th>
-                            <th scope="col">會員其他資訊</th>
+                            <th scope="col" v-for="col in selectCol">{{col}}</th>
                         </tr>
-                        <tr>
+                        <tr v-for="row in queryResult">
                             <td><input type="checkbox"></td>
-                            <td>001</td>
-                            <td>test123</td>
-                            <td><button class="third_btn">修改</button></td>
-                            <td>一般會員</td>
-                            <td>王曉明</td>
-                            <td>正常</td>
-                            <td><button class="third_btn">修改</button></td>
+                            <td v-for="col in row">{{col}}</td>
+                        </tr>
+                        <tr v-if="!queryResult">
+                            <td><input type="checkbox"></td>
+                            <td :colspan="Object.keys(selectCol).length">查無資料</td>
                         </tr>
                     </table>
 
@@ -88,12 +75,116 @@
             </main>
 
             <!-- contain footer -->
-            <footer>
-
-            </footer>
+            <!-- <footer>
+            </footer> -->
         </div>
     </section>
-
-<script src="js/common.js"></script>
 </body>
 </html>
+
+<script src="js/common.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/vue.js"></script>
+<script>
+    $(document).ready(function() {
+
+        // ==================================================
+        // MEMAGEITEM 左側邊欄 管理選項
+        // ==================================================
+        // 資料表名稱:{
+        //     table: '左側欄顯示的選項名稱',
+        //     showCol: {
+        //         資料表欄位名稱: '顯示在content的欄位名稱'
+        //     }
+        // }
+        // ==================================================
+        const MANAGEITEM = {
+            // 帳號管理
+            admin: {
+                tableName: '帳號管理',
+                showCol: {
+                    adminId: '管理者帳號',
+                    adminName: '管理者姓名',
+                    status: '狀態'
+                }
+            },
+
+            // 會員管理
+            members: {
+                tableName: '會員管理',
+                showCol: {
+                    memId: '會員帳號',
+                    memName: '會員姓名',
+                    sex: '性別',
+                    birthday: '生日',
+                    identity: '身分',
+                    status: '狀態'
+                }
+            },
+
+            // 預約管理
+            appointment: {
+                tableName: '預約管理',
+                showCol: {
+                    memNo: '預約人',
+                    astNo: '預約占卜師',
+                    appointDate: '預約日期',
+                    appointTime: '預約時段',
+                    status: '狀態'
+                }
+            },
+
+            // 訂單管理
+            orders: {
+                tableName: '訂單管理',
+                showCol: {
+                    memNo: '訂購者',
+                    orderDate: '下單日期',
+                    price: '總金額',
+                    pay: '付款方式',
+                    creditNum: '信用卡號',
+                    status: '狀態'
+                }
+            },
+
+            
+        }
+        // ==================================================
+
+        new Vue({
+            el: '#app',
+            data: {
+                // 管理欄位
+                manageItem: MANAGEITEM,
+                selectCol: {},
+                queryResult: {}
+            },
+            methods: {
+                // 依選擇項目取得資料表
+                getCol(e, selectTable, selectItem) {
+                    // 取得資料表欄位名稱
+                    this.selectCol = selectItem.showCol;
+                    
+                    // select欄位改為sql查詢格式
+                    let queryCol = Object.keys(selectItem.showCol).join(',');
+                    
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/back_getCol.php',
+                        data: {
+                            table: selectTable,
+                            queryCol: queryCol
+                        },
+                        success: function(data) {
+                            thisVue.queryResult = data.msg;
+                        },
+                        error: function() {
+                            console.log('error');
+                        }
+                    });
+                }
+            }
+        });
+    });
+</script>
