@@ -19,7 +19,12 @@
 */
 /*按鈕共用*/
 header {
-  background: #000000;
+  background: #000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2000;
   /* Nav Style */
   /* .menu-item{
             position: relative;
@@ -328,7 +333,7 @@ header .menu {
   top: 75px;
   bottom: 0;
   padding: 30px;
-  background: #3a3333;
+  background: #000;
   /* 用 translate 把選單藏到畫面右邊去 */
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
@@ -371,7 +376,9 @@ header .menu .crystal_ball {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: aliceblue;
+  background-image: url(/images/header/giphy.gif);
+  background-position: center;
+  background-size: 180%;
   margin: auto;
 }
 
@@ -411,6 +418,10 @@ header .menu .rotate_card .tarot {
   left: 15%;
   -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
+  background-image: url(/images/header/card_back_tarot.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 header .menu .rotate_card .zodiac {
@@ -419,6 +430,10 @@ header .menu .rotate_card .zodiac {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  background-image: url(/images/header/card_back_zodiac.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 header .menu .rotate_card .shop {
@@ -427,6 +442,10 @@ header .menu .rotate_card .shop {
   top: -30px;
   -webkit-transform: rotate(-30deg);
   transform: rotate(-30deg);
+  background-image: url(/images/header/card_back_shop.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 768px) {
@@ -2208,6 +2227,152 @@ body section.back .contain main .container table tr th:not(:first-child):after {
 
 body section.back .contain main button {
   padding: .5em 1em;
+}
+
+section.login .container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #333c;
+  z-index: 100;
+}
+
+section.login .container .display_none {
+  display: none;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch {
+  background-color: #555;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch:before {
+  -webkit-transform: translateX(44px) rotate(-270deg);
+          transform: translateX(44px) rotate(-270deg);
+  background-color: #CFB886;
+  color: #555;
+}
+
+section.login .container #reg_log:checked ~ .card_box .rotate_3d_box {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+section.login .container section.card_box {
+  position: absolute;
+  top: 10em;
+  bottom: 10em;
+  width: 20em;
+  max-width: 90%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+}
+
+section.login .container section.card_box .switch_box {
+  margin-top: -5em;
+  padding-bottom: 1.5em;
+}
+
+section.login .container section.card_box .switch_box .select_title {
+  text-align: center;
+}
+
+section.login .container section.card_box .switch_box .select_title span {
+  display: inline-block;
+  padding: 1em 1.5em;
+}
+
+section.login .container section.card_box .switch_box .item .switch {
+  width: 100%;
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #CFB886;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+section.login .container section.card_box .switch_box .item .switch:before {
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #CFB886;
+  background-color: #555;
+  font-family: 'unicons';
+  content: '\eb4f';
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+section.login .container section.card_box .rotate_3d_box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 600ms ease-out;
+  transition: all 600ms ease-out;
+  background-color: #000;
+  border: 1px solid #CFB886;
+  border-radius: 1em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  margin: auto;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  padding: 3em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content {
+  margin-top: 2em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item {
+  border: 1px solid #CFB886;
+  padding: .5em;
+  margin: 1em 0;
+  border-radius: .5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input {
+  border: none;
+  background-color: transparent;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action {
+  text-align: center;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action > * {
+  margin: 1em 0;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  padding: 1em 3em;
 }
 
 main {
