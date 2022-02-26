@@ -1,22 +1,15 @@
 /* 購物車流程 */
-.shopping_cart{
-    padding-top: 3em;
+.shopping_circle{
+    padding: 2em 0;
 }
-.shopping_cart .container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-}
-.shopping_process {
+.shopping_circle .container .shopping_process {
     display: flex;
     justify-content: space-between;
     width: 20em;
     text-align: center;
     margin: 0 auto;
-    padding-bottom: 2em;
 }
-.shopping_cart .container .shopping_process .item {
+.shopping_circle .container .shopping_process .item {
     position: relative;
     color: black;
     width: 5em;
@@ -27,12 +20,12 @@
     line-height: 5em;
     z-index: 6;
 }
-.shopping_cart .container .shopping_process .active{
+.shopping_circle .container .shopping_process .active{
     background-color: #DFAF47; 
     transform: scale(1.4);
     z-index: 4;
 }
-.shopping_cart .container .shopping_process .item:not(:first-child)::before{
+.shopping_circle .container .shopping_process .item:not(:first-child)::before{
     content: '';
     position: absolute;
     height: 0.5em;
@@ -44,37 +37,43 @@
     margin: auto;
     z-index: 1;
 }
-.shopping_cart .container .shopping_process li.active ~ li{
+.shopping_circle .container .shopping_process li.active ~ li{
     background-color: #a59692;
     z-index: 1;
 }
-.shopping_cart .container .shopping_process li.active ~ .item::before{
+.shopping_circle .container .shopping_process li.active ~ .item::before{
     background-color: #a59692;
     z-index: 1;
 }
+
 /* 購物車內容 */
-/* 購物車header */
-
-.cart_header {
-    padding-bottom: 3%;
+.shopping_cart{
+    margin-bottom: 2em;
 }
-.cart_detail {
-    border: 2px solid #CFB886;
-    padding: 3% 1.5% 0 1.5%;
-
-}
-.cart_header {
+.shopping_cart .container{
     display: flex;
-    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+}
+/* 購物車header */
+.shopping_cart .container .cart_detail {
+    border: 2px solid #CFB886;
+    padding: 1em 0.5em 0;
+
+}
+.shopping_cart .container .cart_detail .cart_header {
+    padding-bottom: 1em;
+    display: flex;
     border-bottom: 1px solid #CFB886;
 }
-.cart_header>div{
+.shopping_cart .container .cart_detail .cart_header>div{
     width: 25%;
     text-align: right;
 
 }
 /* 購物車body */
-.product_box {
+.shopping_cart .container .cart_detail .cart_body .product_box {
     display: flex;
     align-items: center;
     padding: 3%;
@@ -82,58 +81,64 @@
     position: relative;
     flex-wrap: wrap;
 }
-.product_box:last-child{
+.shopping_cart .container .cart_detail .cart_body .product_box:last-child{
     border-bottom: none;
 }
 
-.product_box>div{
+.shopping_cart .container .cart_detail .cart_body .product_box>div{
     width: 25%;
     text-align: right;
 }
-.cart_card{
+.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card{
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.cart_card .img_box img{
+.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .img_box {
+    height: 5em;
+}
+.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .img_box img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
-.cart_card .txt_box p{
+.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .txt_box p{
     text-align: center;
 }
-.cart_body p{
+.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card p{
     word-wrap: break-word;
 }
-.cart_body .product_box .count{
+.shopping_cart .container .cart_detail .cart_body .product_box .count{
     display: flex;
     justify-content: right;
     align-items: center;
 }
-.cart_body .product_box .count p{
+.shopping_cart .container .cart_detail .cart_body .product_box .count p{
     margin: 0.5em;
 }
-.cart_body .product_box .count i{
+.shopping_cart .container .cart_detail .cart_body .product_box .count i{
     font-size: 0.5em;
 }
-.delete_button {
+.shopping_cart .container .cart_detail .cart_body .product_box .delete_button {
     position: absolute;
     right: 0.5em;
     top: 0.5em;
 }
 /* 填寫資料區 */
-.cart_deliver .container .customer_info {
-    border-bottom: 1px solid #CFB886;
-    padding: 0.5em;
-}
-.cart_info_right .order_total{
-    padding: 0.5em 0;
-    text-align: left;
-}
-.cart_info_right .confirm_btns {
+.cart_deliver .container .cart_info_right .confirm_btns{
     text-align: right;
+    padding-top: 1em;
 }
-
+.cart_deliver .container .customer_info .customer_form{
+    display: flex;
+    margin-bottom: 1em;
+}
+.cart_deliver .container .customer_info .customer_form form label{
+    padding: 0;
+}
+.cart_deliver .container .customer_info .pay_way{
+    margin-bottom: 1em;
+}
 /* 底部推薦商品 */
 .cart_bottom{
     margin-top: 2em;
@@ -146,23 +151,36 @@
 .cart_bottom .container .item_box .item{
     width: 50%;
 }
+.cart_bottom .container .item_box .item .img_box{
+    height: 10em;
+}
 .cart_bottom .container .item_box{
     padding: 1em;
 }
 .cart_bottom .container .item_box .item .img_box img{
     width: 100%;
+    height: 100%;
     padding: 1em;
+    object-fit: cover;
 }
 .cart_bottom .container .item_box .item .txt_box{
     text-align: center;
 }
 @media screen and (min-width:768px){
+    /* 購物車內容 */
     .shopping_cart .container{
         padding: 0 8.333333%;
     }
+    .cart_card .img_box {
+        height: 10em;
+    }
+    .shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .img_box {
+        height: 10em;
+    }
     /* 填寫資料區 */
-    .cart_deliver .container {
+    .cart_deliver .container{
         display: flex;
+        width: 90%;
     }
     .cart_deliver .container .customer_info{
         width: 50%;
@@ -170,7 +188,6 @@
     }
     .cart_deliver .container .cart_info_right {
         width: 50%;
-        padding-right: 5em;
     }
     .cart_bottom .container .item_box .item{
         width: 25%;
@@ -178,17 +195,17 @@
     .cart_info_right .order_total{
         text-align: right;
     }
-    .cart_deliver .container .customer_info .customer_form{
-        /* padding-left: 5em; */
-        text-align: center;
-    }
-    .shopping_cart{
-        padding-bottom: 3em;
-    }
     .customer_info .customer_confirm{
         text-align: center;
     }
-    .cart_deliver{
-        width: 80%;
+    .cart_bottom .container .item_box .item .img_box{
+        height: 15em;
+    }
+    .cart_deliver .container .customer_info .customer_form form label{
+        display: flex;
+        flex-direction: column;
+    }
+    .cart_deliver .container .customer_info .customer_form form label p{
+        margin:0 1em;
     }
 }
