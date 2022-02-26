@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解星鏡 Mistro | 後台</title>
+    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
+</head>
+<body>
+    <section id="app" class="back container">
+        <!-- 管理選項bar -->
+        <aside class="link_panel">
+            <!-- logo -->
+            <div class="logo">
+                <div class="img_box">
+                    <img src="images/logo_ico_square.ico" alt="logo">
+                </div>
+                <div class="txt_box">
+                    <h2>Mistro</h2>
+                </div>
+            </div>
+
+            <!-- 連結 -->
+            <ul class="link_list">
+                <li v-for="(item, i) in manageItem"><a class="unselected_btn" :data-index="i" @click="getCol">{{item}}</a></li>
+            </ul>
+        </aside>
+
+        <!-- 管理內容區 -->
+        <div class="contain">
+            <!-- 登出 -->
+            <header>
+                <div class="burger"></div>
+                <button class="third_btn">登出</button>
+            </header>
+
+            <!-- 管理內容 -->
+            <main>
+                <div class="container">
+                    
+                    <div class="action">
+                        <button class="primary_btn">新增會員</button>
+                        <div>
+                            顯示
+                            <select>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="all">all</option>
+                            </select>
+                            筆
+                        </div>
+                    </div>
+                    
+                    <table>
+                        <tr>
+                            <th scope="col"><input type="checkbox"></th>
+                            <th scope="col" v-for="col in selectCol">{{col}}</th>
+                            <!-- <th scope="col">會員帳號</th>
+                            <th scope="col">會員帳號</th>
+                            <th scope="col">會員密碼</th>
+                            <th scope="col">會員身分</th>
+                            <th scope="col">會員姓名</th>
+                            <th scope="col">會員狀態</th>
+                            <th scope="col">會員其他資訊</th> -->
+                        </tr>
+                        <tr>
+                            <td v-if="selectCol.length == 0">查無資料</td>
+                        </tr>
+                        <!-- <tr>
+                            <td><input type="checkbox"></td>
+                            <td>001</td>
+                            <td>test123</td>
+                            <td><button class="third_btn">修改</button></td>
+                            <td>一般會員</td>
+                            <td>王曉明</td>
+                            <td>正常</td>
+                            <td><button class="third_btn">修改</button></td>
+                        </tr> -->
+                    </table>
+
+                </div>
+            </main>
+
+            <!-- contain footer -->
+            <!-- <footer>
+            </footer> -->
+        </div>
+    </section>
+</body>
+</html>
+
+<script src="js/common.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/vue.js"></script>
+<!-- <script src="node_modules/axios/dist/axios.js"></script> -->
+<script>
+    $(document).ready(function() {
+        
+        const MANAGEITEM = {
+            admin: '帳號管理',
+            member: '會員管理',
+            astrologist: '審核占卜師',
+            product: '商品管理',
+            appointment: '預約管理',
+            orders: '訂單管理',
+            article: '文章管理',
+            constellation_quiz: '測驗管理'
+        };
+    
+        new Vue({
+            el: '#app',
+            data: {
+                // 管理欄位
+                manageItem: MANAGEITEM,
+                // queryTable: 0,
+                selectCol: [],
+                data: [],
+            },
+            methods: {
+                getCol(e) {
+                    // console.log(e.target.getAttribute('data-index'));
+                    let queryTable = e.target.getAttribute('data-index');
+                    // console.log(typeOf(queryTable));
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/back_getCol.php',
+                        data: {
+                            table: queryTable
+                        },
+                        success: function(data) {
+                            console.log(data.msg);
+                            console.log(data.data);
+                        },
+                        error: function() {
+                            console.log('error');
+                        }
+                    });
+        }
+            },
+            computed: {
+                
+            },
+            mounted() {
+            }
+        });
+
+        // function getCol(e) {
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: 'php/back_getCol.php',
+        //         data: {
+        //             id: '123',
+        //             pwd: '456'
+        //         },
+        //         success: function(data) {
+        //             console.log(data.msg);
+        //             // if (data.boo) {
+        //             //     $.cookie('user', $('#id').val());
+        //             //     $.cookie('login', data.loginTime);
+        //             //     window.location.href='./part.member.html';
+        //             // }
+        //             // else {
+        //             //     $('#msg').html(data.msg);
+        //             //     // console.log(data.msg);
+        //             // }
+        //         },
+        //         error: function() {
+        //             console.log('error');
+        //         }
+        //     });
+        // }
+
+    });
+</script>

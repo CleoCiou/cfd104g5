@@ -24,6 +24,9 @@
     width: 300px;
     margin: 5% auto;
 }
+.tarotcards .book_item .box_b .img_box img{
+    width: 80%;
+}
 .tarotcards .book_item .box_c{
     height: 500px;
     background-color: #3A3A3A;
@@ -46,6 +49,15 @@
 .row{
     display: flex;
 }
+.row .item{
+    width: 50%;
+}
+.row .item .img_box{
+    width: 80%;
+}
+.row .item .img_box img{
+    width: 100%;
+}
 .row_down{
     display: flex;
 }
@@ -57,6 +69,18 @@
 .row_down .four .item{
     width: 50%;
 }
+.row_down .four .item .img_box{
+    width: 100%;
+}
+.row_down .four .item .img_box img{
+    width: 80%;
+}
+.row_down .item .img_box{
+    width: 100%;
+}
+.row_down .item .img_box img{
+    width: 80%;
+}
 .row_down .item{
     width: 40%;
 }
@@ -65,6 +89,16 @@
     justify-content: space-around;
     padding: auto 10%;
     margin:40px 0;
+}
+.taboo_item .txt_box{
+    padding: 4em 0; 
+    box-sizing: border-box;
+}
+.taboo_item .img_box{
+    width: 30%;
+}
+.taboo_item .img_box img{
+    width: 100%;
 }
 li{
     color: seashell;
@@ -79,15 +113,6 @@ li{
 }
 .test_item img{
     border-radius: 50%;
-}
-.secondary_btn{
-    cursor: pointer;
-    margin: 20px 10px;
-}
-.secondary_btn:hover{
-    cursor: pointer;
-    background-color: #CFB886;
-    color: #000;
 }
 .btn_clicked{
     background-color: #CFB886;
@@ -104,19 +129,52 @@ li{
 .change_page_item .primary_btn{
     margin: 20px;
 }
+.second_btn :hover {
+    background-color: #CFB886;
+    color: #000;
+    cursor: pointer;
+}
+
+.second_btn  {
+    color: #CFB886;
+    background-color: transparent;
+    border: 1px #CFB886 solid;
+    margin: 1em;
+    padding:0.5em 1em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
+
+.other{
+    display: none;
+}
+.test_result{
+    display: none;
+}
+
+
+
+
+
+
 /* 手機專用 */
 @media screen and (max-width:768px) {
     .tarotcards .book_item .box_a{
         width: 10%;
     }
     .tarotcards .book_item .box_b{
+        padding: 2rem 0;
         width: 70%;
         display: block;
     }
     
     .tarotcards .book_item .box_b img{
         width: 250px;
-        border: 2px solid red;
+        margin-left: 1.1em;
+        /* border: 2px solid red; */
     }
     .tarotcards .book_item .box_c{
         width: 20%;
@@ -129,9 +187,17 @@ li{
     }
     .row{
         display: block;
+        flex-wrap: wrap;
+    }
+    .row .item{
+        width: 100%;
+    }
+    .row .item .img_box {
+        width: 100%;
     }
     .row_down{
         display: block;
+        flex-wrap: wrap;
     }
     .row_down .four{
         display: block;
@@ -141,27 +207,41 @@ li{
     .row_down .four .item {
         width: 100%;
     }
-    .row_down .four .item img{
-        width: 300px;
-        height: 200px;
+    .row_down .four .img_box{
+        width: 100%;
     }
     .row_down .item{
         width: 100%;
     }
-    .row_down .item img{
-        width: 300px;
-        height: 200px;
+    .row_down .item .img_box img{
+        width: 100%;
+    }
+    .row_down .four .item .img_box img{
+        width: 100%;
     }
     .taboo_item{
         display: block;
         padding: auto 10%;
     }
+    .taboo_item .img_box{
+        width: 90%;
+    }
+    .taboo_item .img_box img{
+        width: 100%;
+    }
+    .taboo_item .txt_box{
+        padding: 2em 0; 
+        box-sizing: border-box;
+    }
     .test_item img{
         width: 100%;
     }
    }
-@media screen and (min-width:768px) {
-    
+@media screen and (min-width:769px) {
+    .row .item .txt_box {
+        padding: 2em 0;
+        box-sizing: border-box;
+    }
    }
 @media screen and (min-width:992px) {
     .tarotcards .book_item .box_a{
@@ -191,3 +271,4 @@ li{
         width: 30%;
     }
    }
+   

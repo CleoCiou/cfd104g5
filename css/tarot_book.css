@@ -1,0 +1,175 @@
+.book {
+  transition: opacity 0.4s 0.2s;
+}
+
+.page {
+  width: 40vw;
+  height: 40vw;
+  /* background-color: #111111; */
+  /* float: left; */
+  margin-bottom: 0.5em;
+  background: left top no-repeat;
+  background-size: cover;
+}
+.page:nth-child(even) {
+  clear: both;
+}
+.book {
+  perspective: 250vw;
+}
+.book .pages {
+  width: 80vw;
+  height: 40vw;
+  position: relative;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  border-radius: 4px;
+  /*box-shadow: 0 0 0 1px #e3dfd8;*/
+}
+.book .page {
+  float: none;
+  clear: none;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 40vw;
+  height: 40vw;
+  transform-origin: 0 0;
+  transition: transform 1.4s;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  user-select: none;
+  background-color: #f0f0f0;
+}
+.book .page:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.7s;
+  z-index: 2;
+  padding: 1em;
+}
+.book .page:nth-child(odd) {
+  pointer-events: all;
+  transform: rotateY(0deg);
+  right: 0;
+  border-radius: 0 4px 4px 0;
+  background-image: linear-gradient(to right, rgba(0,0,0,.15) 0%, rgba(0,0,0,0) 10%);
+  padding: 1em;
+}
+.book .page:nth-child(odd):hover {
+  transform: rotateY(-15deg);
+  padding: 1em;
+}
+.book .page:nth-child(odd):hover:before {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 1em;
+}
+.book .page:nth-child(odd):before {
+  background: rgba(0, 0, 0, 0);
+  padding: 1em;
+}
+.book .page:nth-child(even) {
+  pointer-events: none;
+  transform: rotateY(180deg);
+  transform-origin: 100% 0;
+  left: 0;
+  border-radius: 4px 0 0 4px;
+  border-color: black;
+  background-image: linear-gradient(to left, rgba(0,0,0,.12) 0%, rgba(0,0,0,0) 10%);
+  padding: 1em;
+
+}
+.book .page:nth-child(even):before {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1em;
+}
+.book .page.grabbing {
+  transition: none;
+  padding: 1em;
+
+}
+.book .page.flipped:nth-child(odd) {
+  pointer-events: none;
+  transform: rotateY(-180deg);
+  padding: 1em;
+}
+.book .page.flipped:nth-child(odd):before {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1em;
+}
+.book .page.flipped:nth-child(even) {
+  pointer-events: all;
+  transform: rotateY(0deg);
+  padding: 1em;
+}
+.book .page.flipped:nth-child(even):hover {
+  transform: rotateY(15deg);
+  padding: 1em;
+
+}
+.book .page.flipped:nth-child(even):hover:before {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 1em;
+}
+.book .page.flipped:nth-child(even):before {
+  background: rgba(0, 0, 0, 0);
+  padding: 1em;
+
+}
+*,
+* :before,
+*:after {
+  box-sizing: border-box;
+  padding: 1em;
+}
+html,
+body {
+  background: #333;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 0;
+  line-height: 1.5em;
+}
+.page:nth-child(odd){
+  background-position: right top;
+  padding: 1em;
+}
+
+.other_btn{
+  position: fixed;
+  top: 50%;
+  left: -15%;
+}
+.txt_box p{
+  color: #000;
+}
+.first_page {
+  width: 90%;
+}
+.first_page img{
+  width: 100%;
+}
+
+/* 設定目錄可以點選 */
+main .tarot_book .container .book .pages .page .tarot_book_menu.active {
+    pointer-events: all;
+    position: absolute;
+    z-index: 500;
+}
+main .tarot_book .container .book .pages .page .tarot_book_menu.active li:hover {
+    color: #fa0;
+}

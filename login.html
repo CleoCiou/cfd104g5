@@ -18,7 +18,7 @@
 <main>
 
 <!-- 登入 -->
-    <section class="member login">
+    <section class="member login" id="app">
         <div class="container">
 
             <!-- 登箱 -->
@@ -54,8 +54,9 @@
 
                     <!-- 登入 -->
                     
-                    <button class="item primary_btn" id="login">
-                        <a href="member.html">登入</a>
+                    <button class="item primary_btn" @click.prevent="checkLogin">
+                        登入
+                        <!-- <a href="member.html">登入</a> -->
                     </button>
         
                     <!-- 註冊 -->
@@ -78,5 +79,44 @@
 <footer class="main_footer"></footer>
 
 <script src="js/common.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/vue.js"></script>
 </body>
 </html>
+
+<script>
+    $(document).ready(function() {
+        new Vue({
+            el: '#app',
+            data: {
+                
+            },
+            methods: {
+                // 依選擇項目取得資料表
+                checkLogin(e) {
+
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/login.php',
+                        data: {
+                            memId: $('#mem_id').val(),
+                            memPwd: $('#mem_pwd').val(),
+                        },
+                        success: function(data) {
+                            if (data.login) {
+                                window.location.href = 'index.html';
+                            }
+                            else {
+                                alert(data.msg);
+                            }
+                        },
+                        error: function() {
+                            console.log('error');
+                        }
+                    });
+                }
+            }
+        });
+    });
+</script>

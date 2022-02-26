@@ -1,82 +1,104 @@
 <!-- 網頁頭 by NJ-->
 <header class="main_header">
-    <div class="header_all">
 
+
+    <!-- main logo -->
+    <div class="header_all">
         <!-- main logo -->
         <div class="header_img_box">
             <a href="#" class="logo">
                 <img src="images/index_logo_golden-02.png" alt="mistro logo">
             </a>
         </div>
-
-         <!-- icon -->
+            <!-- icon -->
         <div class="header_bar">
-
             <div class="header_icon">
                 <a href="#"><p>登入</p></a>
-                <a href="#"><img src="/images/header-member-02.png" alt="會員"></a>
-                <a href="#"><img src="/images/header_shopping cart.png" alt="購物車"></a>
+                <a href="#"><img src="/images/header-member-02.png" alt="會員icon"></a>
+                <a href="#"><img src="/images/header_shopping cart.png" alt="購物車icon"></a>
             </div>
+        
 
             <!-- 漢堡 -->
             <div class="ham_menu">
-                <input id="nav-toggle" type="checkbox">
-                <label for="nav-toggle" class="ham no_style">
-                    <div class="ham-origin">
+                <input id="nav_toggle" type="checkbox">
+                <label for="nav_toggle" class="ham no_style">
+                    <div class="ham_origin">
                         <div></div>
                         <div></div>
                         <div></div>
                     </div>
                 </label>
-
-                <!-- 選單 -->
+                <!-- 電腦選單 -->
                 <nav class="menu">
-                    <ul class="menu-list">
-                        <li class="menu-item">
-                            <a class="menu-link" href="#">塔羅</a>
-                            <ul class="sub-menu">
+                    <div class="crystal_ball">
+                        <!-- <img src="/images/giphy.gif" alt=""> -->
+                        水晶球
+                    </div>
+                    <div class="rotate_card">
+                        <a href="be_teller.html">
+                            <div class="menu_card tarot">塔羅</div>
+                        </a>
+                        <a href="$">
+                            <div class="menu_card zodiac">星座</div>
+                        </a>
+                        <a href="shop.html">
+                            <div class="menu_card shop">商城</div>
+                        </a>
+                    </div>
+                    <!-- 手機選單 -->
+                    <ul class="menu_list">
+                        <li class="menu_item">
+                            <a class="menu_link" href="#">
+                                塔羅
+                            </a>
+                            <ul class="sub_menu">
                                 <li><a href="#">體驗占卜師</a></li>
                                 <li><a href="#">線上占卜</a></li>
                                 <li><a href="#">預約占卜師</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item">
-                            <a class="menu-link" href="#">星座</a>
-                            <ul class="sub-menu">
+                        <li class="menu_item">
+                            <a class="menu_link" href="#">
+                                星座</a>
+                            <ul class="sub_menu">
                                 <li><a href="#">每日運勢</a></li>
                                 <li><a href="#">真實星座測驗</a></li>
                                 <li><a href="#">星座配對</a></li>
                                 <li><a href="#">討論區</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item">
-                            <a class="menu-link" href="#">商城</a>
+                        <li class="menu_item">
+                        <a class="menu_link" href="#">
+                            商城</a>
                         </li>
-                        <li class="menu-item">
-                            <a class="menu-link menu_member" href="#">會員專區</a>
-                            <ul class="sub-menu">
+                        <li class="menu_item">
+                            <a class="menu_link menu_member" href="#">會員專區</a>
+                            <ul class="sub_menu">
                                 <li><a href="#">個人資訊</a></li>
                                 <li><a href="#">我的預約</a></li>
                                 <li><a href="#">我的訂單</a></li>
                                 <li><a href="#">占卜師專區</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item">
-                            <a class="menu-link menu_login" href="#">登入</a>
-                            <a class="menu-link menu_login" href="#">註冊</a>
+                        <li class="menu_item">
+                        <a class="menu_link menu_login" href="#">登入</a>
+                        <a class="menu_link menu_login" href="#">註冊</a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </div>
     </div>
+
+
 </header>
 
 <!-- <script src="js/common.js"></script> -->
 <script src="js/jquery.js"></script>
 <script>
-    $('.menu-link').click(function(){
-        $('.sub-menu').slideUp();
-        $(this).siblings('.sub-menu').slideToggle();
+    $('.menu_link').click(function(){
+        $('.sub_menu').slideUp();
+        $(this).siblings('.sub_menu').slideToggle();
     })
 </script>
