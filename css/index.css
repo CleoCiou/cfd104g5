@@ -40,13 +40,12 @@
         border-radius: 200px;
         overflow: hidden;
         margin: auto;
+        outline: 1.3px solid #CFB886;
+        outline-offset: 15px;
+        flex-shrink: 0;
        
     }
 
-    
-    .introduce_img img{          
-        
-    }
 
     .introduce_txt{
         padding: 10%;
@@ -55,27 +54,28 @@
 
 /* 視差滾動 鑰匙孔區塊 開始 */
 
-    .scroll_keyhole_box{
-        width: 100%;
-        
-
+    .scroll_keyhole{
+        background-image: url(../images/index/sky_bg.jpg);
+        background-size: cover;
+        height: 150vh;
+        position: relative;
+        overflow: hidden;
     }
+    
     .scroll_keyhole_txt{
+        text-align: center;
         position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
         z-index: 1;
     }
  
 
-    .scroll_keyhole_bgimg{
+    .scroll_keyhole_img img{
         width: 100vw;
 
     }
-    
-    /* .scroll_keyhole_img img{
-        width: 100%;
-        opacity:0.5;
-        
-    } */
 
     .scroll_keyhole_bgimg img{
         width: 100%;
@@ -103,16 +103,20 @@
 /* 熱門占卜師開始 */
 
     .hot_fortune_teller_box{
-        padding: 3% ;
+        /* padding: 3% ; */
+        
+        
     }
 
     .hot_fortune_teller_card{
         border: 1px solid #CFB886;
         padding: 2em 1em ;
-        margin: 1.5em ;
+        margin: 2em ;
         box-sizing: border-box;
         text-align: center;
         border-radius: 15%;
+        
+        
 
     }
 
@@ -124,6 +128,10 @@
 
     .hot_fortune_teller_txt{
          margin:3% 10% 0 10%;
+    }
+
+    .hot_fortune_teller_icon img{
+        border-radius: 50%;
     }
 
 /* 主打商品 開始 */
@@ -160,6 +168,10 @@
     .hot_product_icon img{
         border-radius: 50%;
     }
+/* ============================= */
+ /* 歡迎頁 */
+
+
 
 
      
@@ -187,6 +199,13 @@
 
         .hot_product_box{
             display: flex;
+        }
+
+        .hot_fortune_teller_box{
+            display: flex;
+            justify-content: center;
+            
+            
         }
 
         
