@@ -19,7 +19,12 @@
 */
 /*按鈕共用*/
 header {
-  background: #000000;
+  background: #000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2000;
   /* Nav Style */
   /* .menu-item{
             position: relative;

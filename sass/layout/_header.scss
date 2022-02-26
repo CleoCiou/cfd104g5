@@ -1,5 +1,10 @@
 header {
-    background: #000000;
+    background: #000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
     
     .header_img_box img{
         height: 60px;
