@@ -67,8 +67,7 @@
                         </tr>
                         <tr v-if="!queryResult">
                             <td><input type="checkbox"></td>
-                            <td :colspan="selectCol.length">查無資料</td>
-                            <!-- 轉json?? -->
+                            <td :colspan="Object.keys(selectCol).length">查無資料</td>
                         </tr>
                     </table>
 
@@ -121,7 +120,34 @@
                     identity: '身分',
                     status: '狀態'
                 }
-            }
+            },
+
+            // 預約管理
+            appointment: {
+                tableName: '預約管理',
+                showCol: {
+                    memNo: '預約人',
+                    astNo: '預約占卜師',
+                    appointDate: '預約日期',
+                    appointTime: '預約時段',
+                    status: '狀態'
+                }
+            },
+
+            // 訂單管理
+            orders: {
+                tableName: '訂單管理',
+                showCol: {
+                    memNo: '訂購者',
+                    orderDate: '下單日期',
+                    price: '總金額',
+                    pay: '付款方式',
+                    creditNum: '信用卡號',
+                    status: '狀態'
+                }
+            },
+
+            
         }
         // ==================================================
 
@@ -139,7 +165,7 @@
                     // 取得資料表欄位名稱
                     this.selectCol = selectItem.showCol;
                     
-                    // 改為sql查詢格式，post至server
+                    // select欄位改為sql查詢格式
                     let queryCol = Object.keys(selectItem.showCol).join(',');
                     
                     let thisVue = this;
@@ -158,7 +184,6 @@
                         }
                     });
                 }
-
             }
         });
     });
