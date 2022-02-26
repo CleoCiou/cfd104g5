@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/draw_cards.css">
     <title>解星鏡 Mistro | 塔羅</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
 </head>
 <body>
@@ -27,38 +28,17 @@
             <!-- 容器到item_box，從item開始才是正式內容 -->
             <div class="cards" id="example">
                 <h2>抽牌</h2>
-                <ul>
-                    <p>
-                        <button id="open-popup" type="button" class="read">
-                            <img src="https://picsum.photos/150/250/?random=10">
-                            看牌
-                        </button>
-                    </p>
-                    <div class="try"><img src="/images/rotate-card-02.png" alt=""></div>
-                    
-                    <li>卡1</li>
-                    <li>卡2</li>
-                    <li>卡3</li>
-                    <li>卡4</li>
-                    <li>卡5</li>
-                    <li>卡6</li>
-                    <li>卡7</li>
-                    <li>卡8</li>
-                    <li>卡9</li>
-                    <li>卡10</li>
-                    <li>卡11</li>
-                    <li>卡12</li>
-                    <li>卡13</li>
-                    <li>卡14</li>
-                    <li>卡15</li>
-                    <li>卡16</li>
-                    <li>卡17</li>
-                    <li>卡18</li>
-                    <li>卡19</li>
-                    <li>卡20</li>
-                    <li>卡21</li>
-                    <li>卡22</li>                    
-                </ul>
+                
+                    <button id="open_popup" type="button" class="read">
+                        <img id="choose" src="/images/draw_cards/draw_cards_back.jpg">
+                    </button>
+                   
+                <div class="all">
+                    <ul class="calendar">
+                        <div class="selected-event">
+                        </div>
+                    </ul>
+                </div>
             </div>
 
             <div class="overlay"></div>
@@ -89,11 +69,11 @@
                         </div>
                     </div>
                 </div>
-                <p class="button-panel">
-                    <a href="draw_cards.html"><button type="button" class="second_btn lightbox-close">重新抽牌</button></a>
-                    <a href="teller_reservation.html"><button type="button" class="second_btn ">預約占卜師</button></a>
+                <p class="button_panel">
+                    <a href="draw_cards_old.html"><button type="button" class="second_btn lightbox_close">重新抽牌</button></a>
+                    <a href="teller_mem.html"><button type="button" class="second_btn ">占卜師總覽</button></a>
                     <a href="be_teller.html"><button type="button" class="second_btn ">體驗占卜師</button></a>
-                    <a href="shop.html"><button type="button" class="second_btn ">前往商城</button></a>
+                    <a href=""><button type="button" class="second_btn ">前往商城</button></a>
                 </p>
             </div>
 
@@ -113,16 +93,141 @@
 <script src="js/common.js"></script>
 <script>
     // jQuery
-    $('#open-popup').on('click', function(){
+    $('#open_popup').on('click', function(){
         $('.overlay').fadeIn('fast');
         $('#popup').show('fast');
     });
 
-    $('.lightbox-close').on('click', function(){
+    $('.lightbox_close').on('click', function(){
         $(this).closest('.lightbox').hide('fast');
         $('.overlay').fadeOut('fast');
     });
 </script>
+<script>
+    const febEvents = [
+	{ name: "Periodic Table Day", imgL: "hjR5drX9", imgS: "NybDhR7M" },
+	{ name: "Kite Flying Day", imgL: "WbNx8XX8", imgS: "Cd2vLHyn" },
+	{ name: "Pizza Day", imgL: "d34Hgc4B", imgS: "q66xCSfh" },
+	{ name: "Umbrella Day", imgL: "DZcBbKkT", imgS: "LYnzrw8C" },
+	{ name: "Inventor's Day", imgL: "7hVdD2YS", imgS: "JHsP5tXh" },
+	{ name: "Global Movie Day", imgL: "hth6WhF7", imgS: "mPf87Lgb" },
+	{ name: "Tortellini Day", imgL: "DzLCnXxm", imgS: "VSs9FdQc" },
+	{ name: "Valentine's Day", imgL: "pL9Gc78f", imgS: "LJp3nxx5" },
+	{ name: "Gumdrop Day", imgL: "v8zN45bV", imgS: "Hjr2KcJY" },
+	{ name: "Do a Grouch a Favor Day", imgL: "xjyWLWyq", imgS: "fky2NqPh" },
+	{ name: "Cabbage Day", imgL: "FHBt73bZ", imgS: "pmzcS96h" },
+	{ name: "Battery Day", imgL: "2S6Rk2Wy", imgS: "WhQfSmXc" },
+	{ name: "Chocolate Mint Day", imgL: "L5RwrTRH", imgS: "2bc0WnVJ" },
+	{ name: "Love Your Pet Day", imgL: "K8VVZFFp", imgS: "18GMHk8D" },
+	{ name: "President's Day", imgL: "C1C6Hq89", imgS: "hzjrKhp0" },
+	{ name: "Cook a Sweet Potato Day", imgL: "N0HnFVjs", imgS: "qtpwZ1KS" },
+	{ name: "Tile Day", imgL: "PxHSx57y", imgS: "qtmsD446" },
+	{ name: "Toast Day", imgL: "9FggpV4X", imgS: "crYcxpMP" },
+	{ name: "Clam Chowder Day", imgL: "fbG6vsrS", imgS: "KK5qZ6Fm" },
+	{ name: "Pistachio Day", imgL: "VLkHn5kH", imgS: "MXgD86Ry" },
+	{ name: "Polar Bear Day", imgL: "4yJ28xby", imgS: "k6pyG9HP" },
+	{ name: "Tooth Fairy Day", imgL: "BbYpMcn7", imgS: "WqZ04Zr0" }
+]; // gallery: https://postimg.cc/gallery/t9FRjBF
 
+//照片放這裡！！！
+const postImgUrl = (name, id) =>
+	`https://img.onl/kx6Qcw`;
+const dayIdx = Math.min(new Date().getDate(), febEvents.length) - 1;
+const calendarEl = document.querySelector(".calendar");
+// const selectedDateEl = document.querySelector(".selected-date");
+// const selectedNameEl = document.querySelector(".selected-name");
+let selectedIndex = dayIdx;
+calendarEl.style.setProperty("--event-count", febEvents.length);
+
+init();
+
+function init() {
+	febEvents.forEach((event, idx) =>
+		calendarEl.append(singleEventEl(event, idx))
+	);
+	changeSelectedEvent(selectedIndex);
+}
+
+function singleEventEl(event, idx) {
+	const eventEl = document.createElement("li");
+	eventEl.classList.add("event");
+	eventEl.style.setProperty("--event-index", idx);
+	eventEl.tabIndex = 0;
+	//date
+	const timeEl = document.createElement("time");
+	timeEl.datetime = `2022-02-${(idx + 1).toString().padStart(2, "0")}`;
+	// timeEl.innerText = idx + 1;
+	//name
+	// const nameEl = document.createElement("span");
+	// nameEl.innerText = event.name;
+	//img
+	const imgEl = new Image();
+	imgEl.src = postImgUrl(event.name, event.imgS);
+	imgEl.alt = event.name;
+
+	eventEl.addEventListener("click", (e) => changeSelectedEvent(idx));
+	eventEl.addEventListener("focus", (e) => changeSelectedEvent(idx));
+	eventEl.append(imgEl, timeEl);
+	return eventEl;
+}
+
+function changeSelectedEvent(idx) {
+	idx = (idx + febEvents.length) % febEvents.length;
+	//change thumb
+	const currentEl = document.querySelectorAll(".event.active") || [];
+	currentEl.forEach((el) => el.classList.remove("active"));
+	// currentEl ? currentEl.classList.remove('active') : '';
+	// const targetEl = document.querySelector(`.event:nth-of-type(${idx + 1})`);
+	// targetEl.classList.add("active");
+	// targetEl.focus();
+
+	//change selected
+	const { name, imgL } = febEvents[idx];
+	// const d = new Date(`2022-02-${idx + 1}`);
+	// selectedDateEl.datetime = `2022-02-${(idx + 1).toString().padStart(2, "0")}`;
+	// const displayDateOptions = {
+	// 	weekday: "long",
+	// 	year: "numeric",
+	// 	month: "long",
+	// 	day: "numeric"
+	// };
+	selectedDateEl.innerHTML = d.toLocaleDateString("en-US", displayDateOptions);
+	selectedNameEl.innerText = name;
+	selectedIndex = idx;
+}
+
+window.addEventListener("keydown", (e) => {
+	switch (e.key) {
+		case "ArrowRight":
+			changeSelectedEvent(selectedIndex + 1);
+			break;
+		case "ArrowUp":
+			changeSelectedEvent(selectedIndex + 1);
+			break;
+		case "ArrowLeft":
+			changeSelectedEvent(selectedIndex - 1);
+			break;
+		case "ArrowDown":
+			changeSelectedEvent(selectedIndex - 1);
+			break;
+	}
+});
+
+</script>
+<script>
+    $(document).ready(function() {
+    $( "ul > li" ).css({'transform': 'rotate(var(--rotate)) translateX(20em) scale(var(--scale, 1))','transition-delay':'1s'})  
+  });
+</script>
+<script>
+    $( "li.event" ).click(function() {
+    $( "#choose" ).css('display', 'block')  
+  });
+</script>
+<!-- <script>
+    gsap.to("ul", {duration: 10, rotation: 360,
+            repeat: -1,
+        });
+</script> -->
 </body>
 </html>
