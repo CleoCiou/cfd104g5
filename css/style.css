@@ -17,6 +17,7 @@
     color: $accent_color;
     background-color: $accent_color;
 */
+/*按鈕共用*/
 header {
   background: #000000;
   /* Nav Style */
@@ -1276,6 +1277,7 @@ main {
   /* 討論區 by JC */
   /*瀏覽文章燈箱 by JC */
   /*美美的scroll bar*/
+  /* 撰寫文章頁 */
 }
 
 @media screen and (max-width: 767px) {
@@ -1763,6 +1765,7 @@ main .article_writing_board {
   border: 1px solid #CFB886;
   padding: 5%;
   border-radius: 0.625em;
+  /* 撰寫文章的標題 */
 }
 
 main .article_writing_board .choose_theme select {
@@ -1784,7 +1787,7 @@ main .article_writing_board .write_head .writer_detail_box {
 }
 
 main .article_writing_board .write_title #write_txt_title {
-  width: 50%;
+  width: 30%;
   margin-left: 0.3em;
 }
 
@@ -2005,53 +2008,91 @@ body section.back .contain main button {
 
 /* 如果要顯示在CSS的註解 要用斜線星 跟星斜線把內容標註 */
 /*今日運勢 By 阿皓*/
+main {
+  /*下面的區塊*/
+}
+
 main .today_forture .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /*包住最下面的區塊*/
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .container .overall_fortune_txt {
+  main .today_forture .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+main .today_forture .container .today {
+  width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .container .today {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .overall_fortune_txt {
     padding: 2% 8.333333%;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
 }
 
-main .today_forture .container .all_furtune {
+main .today_forture .all_furtune {
   width: 50%;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .container .all_furtune {
+  main .today_forture .all_furtune {
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
   }
 }
 
-main .today_forture .container .all_furtune .furtune_time {
+main .today_forture .all_furtune .furtune_time {
   width: 100%;
 }
 
-main .today_forture .container .all_furtune .furtune_time ul {
+main .today_forture .all_furtune .furtune_time ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .container .all_furtune li.unselected_btn {
+  main .today_forture .all_furtune .furtune_time ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main .today_forture .all_furtune .furtune_time ul li {
+    width: 33%;
+    padding: 2%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune li.unselected_btn {
     width: 100%;
   }
 }
 
-main .today_forture .container .all_furtune li.unselected_btn .lucky {
+main .today_forture .all_furtune .lucky {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2063,77 +2104,106 @@ main .today_forture .container .all_furtune li.unselected_btn .lucky {
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .container .all_furtune li.unselected_btn .lucky {
+  main .today_forture .all_furtune .lucky {
     width: 100%;
   }
 }
 
-main .today_forture .container .all_furtune li.unselected_btn .lucky .lucky_row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-main .today_forture .container .all_furtune li.unselected_btn .lucky .lucky_row .txt_box {
-  width: 50%;
+main .today_forture .all_furtune .lucky .lucky_row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .container .all_furtune li.unselected_btn .lucky .lucky_row .txt_box {
+  main .today_forture .all_furtune .lucky .lucky_row {
+    display: block;
+  }
+}
+
+main .today_forture .all_furtune .lucky .lucky_row .txt_box {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .lucky .lucky_row .txt_box {
     width: 100%;
   }
 }
 
-main .today_forture .container .all_furtune li.unselected_btn .lucky .lucky_row .txt_box .number {
-  width: 50%;
+main .today_forture .all_furtune .lucky .lucky_row .txt_box .number {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
-main .today_forture .container .all_furtune li.unselected_btn .lucky .lucky_row .txt_box .txt {
-  width: 50%;
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .lucky .lucky_row .txt_box .number {
+    width: 50%;
+  }
+}
+
+main .today_forture .all_furtune .lucky .lucky_row .txt_box .txt {
+  width: 30%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   text-align: center;
 }
 
-main .today_forture .container .all_furtune .today {
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .lucky .lucky_row .txt_box .txt {
+    width: 50%;
+  }
+}
+
+main .today_forture .today {
   width: 50%;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .container .all_furtune .today {
+  main .today_forture .today {
     width: 100%;
   }
 }
 
-main .today_forture .container .all_furtune .today p {
+main .today_forture .today p {
   text-align: center;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .container .all_furtune .today p {
+  main .today_forture .today p {
     text-align: center;
   }
 }
 
-main .today_forture .container .all_furtune .today .item {
+main .today_forture .today .item {
   width: 50%;
   margin: auto;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .container .all_furtune .today .item {
+  main .today_forture .today .item {
     width: 100%;
     margin: auto;
   }
 }
 
-main .today_forture .container .all_furtune .today .item .img_box {
+main .today_forture .today .item .img_box {
   text-align: center;
 }
 
-main .today_forture .container .all_furtune .today .item .txt_box {
+main .today_forture .today .item .txt_box {
   text-align: center;
+}
+
+main .forture_dec .container .overall_fortune .overall_fortune_txt {
+  padding: 2% 8.333333%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /*今日運勢 By 阿皓 --- END */
@@ -2162,17 +2232,118 @@ body main > section > .container {
 
 /* ===== 按鈕 ===== */
 /* --- 主按鈕 --- */
+/* 一個按鈕在html裡下列要全放
+
+<button class="primary_btn">
+<span>立級購買</span>
+<svg>
+<polyline class="o1" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
+<polyline class="o2" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
+</svg>
+</button> 
+
+---------------------------*/
 /* 要花錢的按鈕 購買、預約 */
-.primary_btn {
-  border-radius: 12px;
+button.primary_line_btn {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+button.primary_line_btn svg {
+  height: 55px;
+  width: 150px;
+  fill: none;
+  stroke-width: 4;
+  border-radius: 0.2em;
+}
+
+button.primary_line_btn svg .o1 {
+  stroke: #d3b065 216, 148, 130, 0.7;
+  fill: #CFB886;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+button.primary_line_btn svg .o2 {
+  stroke: white;
+  stroke-dasharray: 20 420;
+  stroke-dashoffset: 20;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+button.primary_line_btn span {
+  position: absolute;
+  letter-spacing: 0.3em;
   color: #000;
-  letter-spacing: 2px;
-  background-color: #d89482;
-  border: 1px solid #d89482;
+  font-weight: 600;
+}
+
+button.primary_line_btn:hover .o1 {
+  fill: #cfa54a;
+}
+
+button.primary_line_btn:hover .o2 {
+  stroke-dashoffset: -420;
+}
+
+button.primary_line_btn:active {
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+button.primary_line_btn:active ol {
+  fill: #ffd16eef;
+}
+
+/* --- 主按鈕 --- */
+/* 塔羅牌 */
+/* 星座--開始測驗 */
+/* 占卜師專區--接受 */
+/* --------------------------- */
+.primary_btn {
+  border-radius: 0.2em;
+  color: #000;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  font-weight: 500;
+  background-color: #CFB886;
+  border: 1px solid #CFB886;
   display: inline-block;
   padding: 0.8em 2em;
   white-space: nowrap;
   cursor: pointer;
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
+          box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
+}
+
+.primary_btn:hover {
+  -webkit-transition: .5s;
+  transition: .5s;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  background-color: #f8d68d;
+  border: 1px solid #f8d68d;
+  -webkit-box-shadow: 0px 0px 20px 3px #cfb886dc;
+          box-shadow: 0px 0px 20px 3px #cfb886dc;
+}
+
+.primary_btn:active {
+  background-color: #f8e5bf;
+  border: 1px solid #f8e5bf;
+  -webkit-box-shadow: 0px 0px 20px 3px #cfb886dc;
+          box-shadow: 0px 0px 20px 3px #cfb886dc;
 }
 
 /* --- 二級按鈕 --- */
@@ -2180,19 +2351,28 @@ body main > section > .container {
 /* 首頁--商品瀏覽、占卜師瀏覽 */
 /* 體驗占卜--線上占卜、再看一次、推薦商品 */
 /* 線上占卜--其他問題、預約占卜師、推薦商品 */
-/* 星座--開始測驗 */
 /* 預約占卜--開始預約、確認預約、下一步、確認 */
 /* 登入註冊 */
 .secondary_btn {
-  border-radius: 12px;
-  color: #CFB886;
-  letter-spacing: 2px;
-  background-color: transparent;
+  border-radius: 0.2em;
+  color: #000;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  background-color: #CFB886;
   border: 1px solid #CFB886;
   display: inline-block;
   padding: 0.8em 2em;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.secondary_btn:hover {
+  background-color: #ffe09c;
+  border: 1px solid #ffe09c;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 /* 頁籤 */
@@ -2202,7 +2382,7 @@ body main > section > .container {
 /* 占卜師專區--分析資料頁籤 */
 .selected_btn {
   color: #000;
-  letter-spacing: 3px;
+  letter-spacing: 0.3em;
   background-color: #CFB886;
   border: 1px solid #CFB886;
   text-align: center;
@@ -2211,9 +2391,14 @@ body main > section > .container {
   cursor: pointer;
 }
 
+.selected_btn:hover {
+  color: #eed7a4;
+  border: 1px solid #eed7a4;
+}
+
 .unselected_btn {
   color: #fff;
-  letter-spacing: 3px;
+  letter-spacing: 0.3em;
   background-color: transparent;
   border: 1px #CFB886 solid;
   text-align: center;
@@ -2222,19 +2407,26 @@ body main > section > .container {
   cursor: pointer;
 }
 
+.unselected_btn:hover {
+  color: #eed7a4;
+  border: 1px solid #eed7a4;
+}
+
 /* --- 三級按鈕 --- */
 /* 發表/檢舉文章按鈕 */
 /* 會員--修改資料、新增休假資料、取消 */
-/* 占卜師專區--接受、拒絕 */
+/* 占卜師專區--拒絕 */
 /* 星座--測驗選項(要加固定寬) */
 .third_btn {
-  letter-spacing: 2px;
-  border-radius: 12px;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  border-radius: 0.2em;
   color: #fff;
   background-color: transparent;
   border: 1px solid #fff;
   padding: 0.8em 2em;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .third_btn:hover {
@@ -2255,6 +2447,11 @@ body main > section > .container {
   height: 4em;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.other_btn:hover {
+  color: #eed7a4;
+  border: 1px solid #eed7a4;
 }
 
 /* ===== 文字 ===== */

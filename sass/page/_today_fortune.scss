@@ -1,0 +1,167 @@
+// 星座運勢 by hao
+
+// 也可以設變數
+// ex:
+// $d=768px
+// @mixin=宣告  @include=引用
+/* 如果要顯示在CSS的註解 要用斜線星 跟星斜線把內容標註 */
+    
+
+@mixin  desktop{
+    @media screen and (min-width:768px) {
+        @content;
+
+    }   
+}
+@mixin  mobile{
+    @media screen and (max-width:767px) {
+        @content;
+    }   
+}
+/*今日運勢 By 阿皓*/
+main{
+    .today_forture{
+        
+        .container{
+            display: flex;
+            @include mobile{
+                flex-direction: column;
+            }
+            .overall_fortune{
+
+            }
+            .today{
+                width: 50%;
+                @include mobile{
+                    width: 100%;
+                }
+                // h2{
+                //     @include mobile{
+                //         width: 100%;
+                //     }
+                }
+            }
+
+            .overall_fortune_txt{
+                @include mobile{
+                    padding: 2% 8.333333%;
+                    box-sizing: border-box;
+                }
+            }
+            // 包住右邊的區塊
+            .all_furtune{
+                width: 50%;
+                
+                @include mobile{
+                    
+                    width: 100%;
+                    // display: flex;
+                    // flex-wrap: wrap;
+                }
+                .furtune_time{
+                    width: 100%;
+                    ul{
+                        display: flex;
+                        @include mobile{
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        li{ 
+                            @include desktop{
+                                width: 33%;
+                                padding: 2%;
+                                box-sizing: border-box;
+                            }
+                        }
+                    } 
+                }
+                li.unselected_btn{
+                    @include mobile{
+                        width: 100%;
+                    }
+                }
+                //包住右下的區塊
+                .lucky{
+                    width: 100%;
+                    
+                    display: flex;
+                    flex-direction: column;
+                    @include mobile{
+                        width: 100%; 
+                    }
+                    .lucky_row{
+                        display: flex;
+                        @include mobile{
+                            display: block;
+                        }
+                        .txt_box{
+                            width: 50%;
+                            display: flex;
+                            @include mobile{
+                                width: 100%;
+                            }
+                            .number{
+                                flex-grow: 1;
+                                @include mobile{
+                                    width: 50%;
+                                }
+                            }
+                            .txt{
+                                width: 30%;
+                                // flex-grow: 1;
+                                align-self: center;
+                                text-align: center;
+                                @include mobile{
+                                    width: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // 包住左邊的區塊
+            .today{
+                width: 50%;
+                @include mobile{
+                     width: 100%;
+                }
+                p{
+                    text-align: center;   
+                    @include mobile{
+                        text-align: center;  
+                    } 
+                }
+                .item{
+                    width: 50%;
+                    margin: auto;
+                    @include mobile{
+                        width: 100%;
+                        margin: auto;
+                    }
+                    .img_box{
+                        text-align: center; 
+                        img{
+                            
+                        }
+                    }
+                    .txt_box{
+                        text-align: center;
+
+                    }
+                }
+            }
+        }
+        /*下面的區塊*/
+        .forture_dec{
+            .container{
+                .overall_fortune{
+                    .overall_fortune_txt{
+                        padding: 2% 8.333333%;
+                        box-sizing: border-box;
+                    }
+                }
+            }
+        }
+}
+
+/*今日運勢 By 阿皓 --- END */
