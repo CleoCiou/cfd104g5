@@ -2773,7 +2773,12 @@ main section.chart .container .astrolabe_chart .parse_box .analyze_bg {
   position: relative;
   border: 1px solid #CFB886;
   padding: 5%;
-  background-color: #000;
+  -webkit-backdrop-filter: opacity(30%);
+          backdrop-filter: opacity(30%);
+  background-image: url("../images/constellation/bg_astrolabe_card.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
   border-radius: 0.2em;
   /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
 }

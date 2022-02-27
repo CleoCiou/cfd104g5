@@ -143,10 +143,7 @@ main{
                     margin-top: 2em;
                     position: relative;
                     display: flex;
-                    // background-image: url("../images/constellation/bg_astrolabe_card.jpg");
-                    // background-repeat: no-repeat;
-                    // background-size: cover;
-                    // height: auto;
+                    
                     @include mobile{
                         width:100%
                     }
@@ -154,7 +151,11 @@ main{
                         position: relative;
                         border: 1px solid #CFB886;
                         padding: 5%;
-                        background-color: #000;
+                        backdrop-filter: opacity(30%);
+                        background-image: url("../images/constellation/bg_astrolabe_card.jpg");
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: auto;
                         border-radius: $bRadius;
                         /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
                         .analyze_title{
