@@ -2922,6 +2922,10 @@ body::-webkit-scrollbar-thumb {
   background-color: #CFB886;
 }
 
+body main {
+  padding-top: 5em;
+}
+
 body main > section {
   width: 100%;
   margin: auto;
