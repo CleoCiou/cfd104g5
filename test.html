@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>解星鏡 Mistro | 註冊</title>
-    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
+    <title>測試頁</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
-<!-- 網頁頭 by NJ -->
-<!-- <header class="main_header"></header> -->
-<!-- 網頁頭 by NJ-->
+    <!-- 網頁頭 by NJ-->
 <header class="main_header">
 
 
@@ -114,125 +111,126 @@
     })
 </script>
 
+    <!-- icon -->
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
 
-<!-- 網頁內容 by PIN -->
-<main>
+<section class="login">
+    <div class="container">
+
+        <input type="checkbox" class="display_none" id="reg_log" name="reg_log">
+
+        <section class="card_box">
+            <div class="switch_box">
+                <div class="select_title">
+                    <span class="item">登入</span>
+                    <span class="item">註冊</span>
+                </div>
+                <div class="item">
+                    <label class="switch" for="reg_log"></label>
+                </div>
+            </div>
+
+            <div class="rotate_3d_box">
+                <!-- 卡片正面: 登入 -->
+                <div class="card_item card_font">
+                    <!-- 切換登入/註冊 -->
+                    <div class="card_header"></div>
+                    
+                    <!-- 帳號密碼輸入框 -->
+                    <div class="card_content">
+                        <div class="content_box">
+                            <!-- 帳號 -->
+                            <div class="item account">
+                                <i class="input-icon uil uil-user"></i>
+                                <input type="text" name="memId" id="memId" placeholder="帳號">
+                            </div>
     
-    <!-- 會員資料 -->
-    <section class="member mem_detail">
-        <div class="container">
-            
-        <h2>會員資料</h2>
-
-        <!-- 使用者資訊 -->
-        <div class="mem_detail_box">
-            <form class="mem_detail_info">
-                <h3>基本資料</h3>
-            <!-- 大頭貼 -->
-                <div class="sticker_box">
-                    <div class="txt_box">
-                        <label>上傳相片</label>
-                        <p>聽說會帶來好運噢!</p>
-                    </div>
-                    <label for="sticker" class="img_box">
-                        <img src="https://picsum.photos/80/80/?random=9">
-                    </label>
-                    <input type="file" id="sticker" class="display_none">
-                </div>
-                
-            <!-- 帳號 -->
-                <div class="mem_id">
-                    <label for="mem_id">帳號</label>
-                    <input type="text" id="mem_id">
-                </div>
-        
-            <!-- 密碼 -->
-                <div class="mem_pwd">
-                    <label for="mem_pwd">密碼</label>
-                    <input type="password" id="mem_pwd">
-                    <button class="third_btn">修改</button>
-                </div>
-
-            <!-- 修改密碼 -->
-                <div class="change_pwd display_none">
-                    <h3>修改密碼</h3>
-                    <div>
-                        <label for="old_pwd">舊密碼</label>
-                        <input type="password" id="old_pwd">
-                    </div>
-                    <div>
-                        <label for="new_pwd">新密碼</label>
-                        <input type="password" id="new_pwd">
-                    </div>
-
-                <!-- 確認密碼 -->
-                    <div class="confirm_pwd">
-                        <label for="confirm_pwd">確認密碼</label>
-                        <input type="password" id="confirm_pwd">
+                            <!-- 密碼 -->
+                            <div class="item password">
+                                <i class="input-icon uil uil-lock-alt"></i>
+                                <input type="password" name="memPwd" id="memPwd" placeholder="密碼">
+                            </div>
+    
+                        </div>
                     </div>
                     
-                <!-- 驗證密碼 -->
-                    <div class="verify_pwd">
-                        <ul>
-                            <li>至少有一個大寫英文字母</li>
-                            <li>至少有一個小寫英文字母</li>
-                            <li>至少有一個數字</li>
-                            <li>長度大於6個字元</li>
-                            <li>長度小於20個字元</li>
-                        </ul>
+                    <!-- 登入/忘記密碼 -->
+                    <div class="card_footer">
+                        <div class="action">
+                            <button class="secondary_btn">登入</button>
+                            <div class="txt_box">
+                                <span>忘記密碼?</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- 卡片背面: 註冊 -->
+                <div class="card_item card_back">
+                    <!-- 切換登入/註冊 -->
+                    <div class="card_header">
+                        <!-- 切換登入/註冊 -->
+                        <div class="card_header"></div>
+                    </div>
+                    <!-- 帳號密碼輸入框 -->
+                    <div class="card_content">
+                        <div class="content_box">
+                            
+                            <!-- 帳號 -->
+                            <div class="item account">
+                                <i class="input-icon uil uil-user"></i>
+                                <input type="text" name="memId" id="memId" placeholder="請輸入帳號">
+                            </div>
+    
+                            <!-- 密碼 -->
+                            <div class="item password">
+                                <i class="input-icon uil uil-lock-alt"></i>
+                                <input type="password" name="memPwd" id="memPwd" placeholder="請輸入密碼">
+                            </div>
+
+                            <!-- 確認密碼 -->
+                            <div class="item confirm_pwd">
+                                <i class="input-icon uil uil-lock-alt"></i>
+                                <input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="再次輸入密碼">
+                            </div>
+
+                            <!-- 生日 -->
+                            <div class="item birthday">
+                                <i class="uil uil-calender"></i>
+                                <input type="date" name="birthday" id="birthday">
+                            </div>
+
+                            <!-- 電話 -->
+                            <div class="item tel">
+                                <i class="uil uil-phone"></i>
+                                <input type="phone" name="tel" id="tel" placeholder="請輸入手機號碼">
+                            </div>
+                            
+                            <!-- 身分 -->
+                            <!-- <div class="item identity">
+                                <i class="input-icon uil uil-user"></i>
+                                <input type="radio">一般會員
+                                <input type="radio">占卜師
+                            </div> -->
+
+                        </div>
+                    </div>
+                    
+                    <!-- 登入/忘記密碼 -->
+                    <div class="card_footer">
+                        <div class="action">
+                            <button class="secondary_btn">註冊</button>
+                        </div>
                     </div>
                 </div>
 
-            <!-- 姓名 -->
-                <div>
-                    <label for="mem_name">姓名</label>
-                    <input type="text" id="mem_name">
-                </div>
-                
-            <!-- 生日 -->
-                <div>
-                    <label for="birthday">生日</label>
-                    <input type="text" id="birthdat">
-                </div>
-            
-            <!-- email -->
-                <div>
-                    <label for="email">信箱</label>
-                    <input type="email" id="email">
-                </div>
-            </form>
-        </div>
+            </div>
+        </section>
 
-        </div>
-    </section>
+    </div>
+</section>
 
-<!-- 其他會員專區連結 -->
-    <section class="mem_link">
-        <div class="container">
-
-            <ul class="link_item">
-                <li class="item reservation">
-                    <a href="mem_reversation.html">預約管理</a>
-                </li>
-                <li class="item mem_orders">
-                    <a href="mem_orders.html">訂單管理</a>
-                </li>
-
-                <!-- 僅身分為占卜師會顯示 -->
-                <li class="item astrologist">
-                    <a href="astrologist.html">占卜師專區</a>
-                </li>
-            </ul>
-
-        </div>
-    </section>
-
-</main>
-
-
-<!-- 網頁尾 By NJ -->
-<!-- <footer class="main_footer"></footer> -->
-<!-- 網頁尾  by NJ-->
+    <!-- 網頁尾  by NJ-->
 <footer class="main_footer">
     <hr>
     <div class="footer_up">
@@ -271,7 +269,5 @@
         </div>
     </div>
 </footer>
-
-<script src="js/common.js"></script>
 </body>
 </html>

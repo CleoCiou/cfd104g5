@@ -46,6 +46,9 @@
         /* height: 10%; */
         
     }
+    main #result{
+        display: none;
+    }
 
 }
 
@@ -103,6 +106,9 @@
         margin: 3%;
         box-sizing: border-box;
         width: 20%;
+    }
+    main #result{
+        display: none;
     }
 
 

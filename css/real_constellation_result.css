@@ -6,8 +6,9 @@
     
 }
 .real_constellation .container .answer .again {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
 }
 
 
@@ -20,9 +21,16 @@
         
     }
     .real_constellation .container .answer .again {
-        display: flex;
-        justify-content: center;
+        /* display: flex;
+        justify-content: center; */
+        text-align: center;
     }
+    
+    /* #flotcontainer {
+        width: 600px;
+        height: 400px;
+        text-align: left;
+    } */
 
 
 }

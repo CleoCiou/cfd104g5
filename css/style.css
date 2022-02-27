@@ -19,7 +19,12 @@
 */
 /*按鈕共用*/
 header {
-  background: #000000;
+  background: #000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2000;
   /* Nav Style */
   /* .menu-item{
             position: relative;
@@ -328,7 +333,7 @@ header .menu {
   top: 75px;
   bottom: 0;
   padding: 30px;
-  background: #3a3333;
+  background: #000;
   /* 用 translate 把選單藏到畫面右邊去 */
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
@@ -371,7 +376,9 @@ header .menu .crystal_ball {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: aliceblue;
+  background-image: url(/images/header/giphy.gif);
+  background-position: center;
+  background-size: 180%;
   margin: auto;
 }
 
@@ -411,6 +418,10 @@ header .menu .rotate_card .tarot {
   left: 15%;
   -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
+  background-image: url(/images/header/card_back_tarot.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 header .menu .rotate_card .zodiac {
@@ -419,6 +430,10 @@ header .menu .rotate_card .zodiac {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  background-image: url(/images/header/card_back_zodiac.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 header .menu .rotate_card .shop {
@@ -427,6 +442,10 @@ header .menu .rotate_card .shop {
   top: -30px;
   -webkit-transform: rotate(-30deg);
   transform: rotate(-30deg);
+  background-image: url(/images/header/card_back_shop.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 768px) {
@@ -1457,6 +1476,10 @@ main {
   /* 撰寫文章頁 */
 }
 
+main .pagination_nav {
+  margin-top: 5em;
+}
+
 @media screen and (max-width: 767px) {
   main .pagination_nav {
     display: none;
@@ -1793,7 +1816,7 @@ main .discuss .article_cards .line_bottom p {
 
 main .articleShow {
   display: block;
-  z-index: 10;
+  z-index: 2500;
   position: fixed;
   top: 0;
   left: 0;
@@ -2210,10 +2233,356 @@ body section.back .contain main button {
   padding: .5em 1em;
 }
 
+/* 如果要顯示在CSS的註解 要用斜線星 跟星斜線把內容標註 */
+/*今日運勢 By 阿皓*/
 main {
-  /* 星座頁籤 */
+  /*下面的區塊*/
+}
+
+main .today_forture .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+main .today_forture .container .today {
+  width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .container .today {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .overall_fortune_txt {
+    padding: 2% 8.333333%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+main .today_forture .all_furtune {
+  width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune {
+    width: 100%;
+  }
+}
+
+main .today_forture .all_furtune .furtune_time {
+  width: 100%;
+}
+
+main .today_forture .all_furtune .furtune_time ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .furtune_time ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main .today_forture .all_furtune .furtune_time ul li {
+    width: 33%;
+    padding: 2%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune li.unselected_btn {
+    width: 100%;
+  }
+}
+
+main .today_forture .all_furtune .lucky {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .lucky {
+    width: 100%;
+  }
+}
+
+main .today_forture .all_furtune .lucky .lucky_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .lucky .lucky_row {
+    display: block;
+  }
+}
+
+main .today_forture .all_furtune .lucky .lucky_row .txt_box {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .lucky .lucky_row .txt_box {
+    width: 100%;
+  }
+}
+
+main .today_forture .all_furtune .lucky .lucky_row .txt_box .number {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .lucky .lucky_row .txt_box .number {
+    width: 50%;
+  }
+}
+
+main .today_forture .all_furtune .lucky .lucky_row .txt_box .txt {
+  width: 30%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .all_furtune .lucky .lucky_row .txt_box .txt {
+    width: 50%;
+  }
+}
+
+main .today_forture .today {
+  width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .today {
+    width: 100%;
+  }
+}
+
+main .today_forture .today p {
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .today p {
+    text-align: center;
+  }
+}
+
+main .today_forture .today .item {
+  width: 50%;
+  margin: auto;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .today .item {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+main .today_forture .today .item .img_box {
+  text-align: center;
+}
+
+main .today_forture .today .item .txt_box {
+  text-align: center;
+}
+
+main .forture_dec .container .overall_fortune .overall_fortune_txt {
+  padding: 2% 8.333333%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*今日運勢 By 阿皓 --- END */
+section.login .container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #333c;
+  z-index: 100;
+}
+
+section.login .container .display_none {
+  display: none;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch {
+  background-color: #555;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch:before {
+  -webkit-transform: translateX(44px) rotate(-270deg);
+          transform: translateX(44px) rotate(-270deg);
+  background-color: #CFB886;
+  color: #555;
+}
+
+section.login .container #reg_log:checked ~ .card_box .rotate_3d_box {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+section.login .container section.card_box {
+  position: absolute;
+  top: 10em;
+  bottom: 10em;
+  width: 20em;
+  max-width: 90%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+}
+
+section.login .container section.card_box .switch_box {
+  margin-top: -5em;
+  padding-bottom: 1.5em;
+}
+
+section.login .container section.card_box .switch_box .select_title {
+  text-align: center;
+}
+
+section.login .container section.card_box .switch_box .select_title span {
+  display: inline-block;
+  padding: 1em 1.5em;
+}
+
+section.login .container section.card_box .switch_box .item .switch {
+  width: 100%;
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #CFB886;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+section.login .container section.card_box .switch_box .item .switch:before {
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #CFB886;
+  background-color: #555;
+  font-family: 'unicons';
+  content: '\eb4f';
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+section.login .container section.card_box .rotate_3d_box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 600ms ease-out;
+  transition: all 600ms ease-out;
+  background-color: #000;
+  border: 1px solid #CFB886;
+  border-radius: 1em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  margin: auto;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  padding: 3em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content {
+  margin-top: 2em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item {
+  border: 1px solid #CFB886;
+  padding: .5em;
+  margin: 1em 0;
+  border-radius: .5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input {
+  border: none;
+  background-color: transparent;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action {
+  text-align: center;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action > * {
+  margin: 1em 0;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  padding: 1em 3em;
+}
+
+main {
+  /* 星座共用 */
   /* 開始推算 */
-  /* 填寫表單 */
 }
 
 main .astrolabe .container .img_box img {
@@ -2221,8 +2590,13 @@ main .astrolabe .container .img_box img {
   vertical-align: top;
 }
 
-main .astrolabe_start .container .img_box.start {
-  width: 350px;
+main .astrolabe .container .astrolabe_start_box {
+  position: relative;
+  /* 填寫表單 */
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start {
+  width: 45%;
   position: relative;
   left: 0;
   right: 0;
@@ -2230,7 +2604,11 @@ main .astrolabe_start .container .img_box.start {
   /* 推算按鈕 定位父層在.img_box.start*/
 }
 
-main .astrolabe_start .container .img_box.start .btn_box {
+main .astrolabe .container .astrolabe_start_box .img_box.start img {
+  width: 100%;
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2239,18 +2617,31 @@ main .astrolabe_start .container .img_box.start .btn_box {
   z-index: 2;
 }
 
-main .astrolabe_start .container .img_box.start .btn_box button.big_style {
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box button.big_style {
   border: none;
   padding: 10px 80px;
   cursor: pointer;
 }
 
-main .astrolabe_start .container .img_box.start .btn_box button.big_style p {
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box button.big_style p {
   color: #000;
   font-weight: 600;
 }
 
-main .astrolabe_form .form_item {
+main .astrolabe .container .astrolabe_start_box .start_hidden {
+  display: none;
+}
+
+main .astrolabe .container .astrolabe_start_box .start_show {
+  display: block;
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 50%;
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2258,13 +2649,18 @@ main .astrolabe_form .form_item {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 2%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  z-index: 2;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
-main .astrolabe_form .form_item form {
+main .astrolabe .container .astrolabe_start_box .form_item form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2272,22 +2668,236 @@ main .astrolabe_form .form_item form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  background-color: #3a3a3ab0;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  padding: 2em;
+  border-radius: 0.2em;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
-main .astrolabe_form .form_item .form_btns {
+main .astrolabe .container .astrolabe_start_box .form_item form:hover {
+  background-color: #58585865;
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item .form_btns {
   margin-top: 1em;
   text-align: center;
   /* 名稱的輸入盒 */
 }
 
-main .astrolabe_form .form_item .form_btns #name {
+main .astrolabe .container .astrolabe_start_box .form_item .form_btns #name {
   width: 60%;
+}
+
+main section.chart .container h1 {
+  text-align: left;
+  display: inline-block;
+}
+
+main section.chart .container .astrolabe_chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification {
+  width: 7%;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_classification {
+    width: 100%;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul {
+  margin: 0 .5em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_classification ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li {
+  margin: .5em;
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li label {
+  border-bottom: 1px solid #CFB886;
+  padding-bottom: .2em;
+  cursor: pointer;
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li label:hover {
+  color: #d89482;
+  border-bottom: 1px solid #d89482;
+}
+
+main section.chart .container .astrolabe_chart .parse_box {
+  width: 60%;
+  margin-top: 2em;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .parse_box {
+    width: 100%;
+  }
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg {
+  position: relative;
+  border: 1px solid #CFB886;
+  padding: 5%;
+  -webkit-backdrop-filter: opacity(30%);
+          backdrop-filter: opacity(30%);
+  background-image: url("../images/constellation/bg_astrolabe_card.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  border-radius: 0.2em;
+  /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_title {
+  position: relative;
+  bottom: 4.2em;
+  right: 1.2em;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_title h2 {
+  background-color: #000;
+  display: inline-block;
+  font-size: 2.8rem;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_txt h3 {
+  margin-bottom: 1em;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_txt p {
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+main section.chart .container .astrolabe_chart .chart_info {
+  width: 33%;
+  margin: 0 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_info {
+    width: 100%;
+    margin: 2em auto;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_txt {
+  margin: auto;
+  padding: 2em 3.5em;
+  background-color: #3a3a3a;
+  border-radius: 0.2em;
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_txt:hover {
+  background-color: #58585865;
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_txt p {
+  color: #CFB886;
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_img {
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_info .chart_img {
+    margin: 2em auto;
+  }
+}
+
+main .products_cards .products_box .products_title_wrap {
+  width: 100%;
+  text-align: left;
+  margin: 5em 0 2em;
+}
+
+main .products_cards .products_box .products_cards_wrap {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  main .products_cards .products_box .products_cards_wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+main .products_cards .products_box .products_cards_wrap .cards_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .products_cards .products_box .products_cards_wrap .cards_row .products_item {
+  width: 50%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 1em 1em 0;
+}
+
+@media screen and (max-width: 767px) {
+  main .products_cards .products_box .products_cards_wrap .cards_row .products_item {
+    width: 50%;
+  }
+}
+
+main .products_cards .products_box .products_cards_wrap .cards_row .products_item .img_box img {
+  width: 100%;
 }
 
 * {
@@ -2299,6 +2909,22 @@ main .astrolabe_form .form_item .form_btns #name {
 
 body {
   background-color: #000;
+}
+
+body::-webkit-scrollbar {
+  width: 30px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 10px solid transparent;
+  background-clip: content-box;
+  background-color: #CFB886;
 }
 
 body main > section {
@@ -2409,11 +3035,11 @@ button.primary_line_btn:active ol {
   cursor: pointer;
   -webkit-box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
           box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .primary_btn:hover {
-  -webkit-transition: .5s;
-  transition: .5s;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   background-color: #f8d68d;
@@ -2447,6 +3073,8 @@ button.primary_line_btn:active ol {
   padding: 0.8em 2em;
   white-space: nowrap;
   cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .secondary_btn:hover {
@@ -2454,8 +3082,6 @@ button.primary_line_btn:active ol {
   border: 1px solid #ffe09c;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
-  -webkit-transition: .5s;
-  transition: .5s;
 }
 
 /* 頁籤 */
@@ -2510,13 +3136,13 @@ button.primary_line_btn:active ol {
   padding: 0.8em 2em;
   cursor: pointer;
   font-weight: 500;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .third_btn:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
-  -webkit-transition: .5s;
-  transition: .5s;
   background-color: transparent;
 }
 

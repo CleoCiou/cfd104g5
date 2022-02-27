@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/constellation_pair.css">
     <script src="../js/vue.js"></script>
+    <script src="/js/con_pair.js"></script>
 </head>
 <body>
    <main>   
@@ -33,14 +34,14 @@
                         <!-- 男生星座的選單 -->
                         <div class="constellation_male">
                             <label>男生星座:</label>
-                                <select v-model="constellation">
+                                <select v-model="boy">
                                     <option v-for="name in names">{{name}}</option>
                                 </select>
                                 <!-- 女生星座的選單 -->
                                 <div class="constellation_female">
                                     <label>女生星座:</label>
 
-                                    <select>
+                                    <select v-model="girl">
                                         <option>水瓶座</option>
                                         <option>白羊座</option>
                                         <option>金牛座</option>
@@ -57,13 +58,14 @@
                             </div>
                         
                             <!-- 星座配對的按鈕 -->
-                                <input type="submit" value="星座配對" class="third_btn"></input>
+
+                                <input type="button" value="星座配對" class="third_btn" id="pair_btn"></input>
                         </div>
                     </div>
         </section>
                
-        <section class="constellationpair result">
-            <p>{{constellation}}男生跟射手座女生配對</p>
+        <section id = "result" class ="constellationpair result">
+            <p>{{boy}}男生跟{{girl}}女生配對</p>
             <p>友情配對指數：★★★★</p>
             <p>愛情配對指數：★★★★</p>
             <p>婚姻配對指數：★★★</p>
@@ -87,7 +89,8 @@
                 },
                 cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
 
-                constellation:'',
+                boy:'',
+                girl:'',
                 names: ['摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
             }
         });

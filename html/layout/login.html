@@ -1,0 +1,118 @@
+<!-- icon -->
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+
+<section class="login">
+    <div class="container">
+
+        <input type="checkbox" class="display_none" id="reg_log" name="reg_log">
+
+        <section class="card_box">
+            <div class="switch_box">
+                <div class="select_title">
+                    <span class="item">登入</span>
+                    <span class="item">註冊</span>
+                </div>
+                <div class="item">
+                    <label class="switch" for="reg_log"></label>
+                </div>
+            </div>
+
+            <div class="rotate_3d_box">
+                <!-- 卡片正面: 登入 -->
+                <div class="card_item card_font">
+                    <!-- 切換登入/註冊 -->
+                    <div class="card_header"></div>
+                    
+                    <!-- 帳號密碼輸入框 -->
+                    <div class="card_content">
+                        <div class="content_box">
+                            <!-- 帳號 -->
+                            <div class="item account">
+                                <i class="input-icon uil uil-user"></i>
+                                <input type="text" name="memId" id="memId" placeholder="帳號">
+                            </div>
+    
+                            <!-- 密碼 -->
+                            <div class="item password">
+                                <i class="input-icon uil uil-lock-alt"></i>
+                                <input type="password" name="memPwd" id="memPwd" placeholder="密碼">
+                            </div>
+    
+                        </div>
+                    </div>
+                    
+                    <!-- 登入/忘記密碼 -->
+                    <div class="card_footer">
+                        <div class="action">
+                            <button class="secondary_btn">登入</button>
+                            <div class="txt_box">
+                                <span>忘記密碼?</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- 卡片背面: 註冊 -->
+                <div class="card_item card_back">
+                    <!-- 切換登入/註冊 -->
+                    <div class="card_header">
+                        <!-- 切換登入/註冊 -->
+                        <div class="card_header"></div>
+                    </div>
+                    <!-- 帳號密碼輸入框 -->
+                    <div class="card_content">
+                        <div class="content_box">
+                            
+                            <!-- 帳號 -->
+                            <div class="item account">
+                                <i class="input-icon uil uil-user"></i>
+                                <input type="text" name="memId" id="memId" placeholder="請輸入帳號">
+                            </div>
+    
+                            <!-- 密碼 -->
+                            <div class="item password">
+                                <i class="input-icon uil uil-lock-alt"></i>
+                                <input type="password" name="memPwd" id="memPwd" placeholder="請輸入密碼">
+                            </div>
+
+                            <!-- 確認密碼 -->
+                            <div class="item confirm_pwd">
+                                <i class="input-icon uil uil-lock-alt"></i>
+                                <input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="再次輸入密碼">
+                            </div>
+
+                            <!-- 生日 -->
+                            <div class="item birthday">
+                                <i class="uil uil-calender"></i>
+                                <input type="date" name="birthday" id="birthday">
+                            </div>
+
+                            <!-- 電話 -->
+                            <div class="item tel">
+                                <i class="uil uil-phone"></i>
+                                <input type="phone" name="tel" id="tel" placeholder="請輸入手機號碼">
+                            </div>
+                            
+                            <!-- 身分 -->
+                            <!-- <div class="item identity">
+                                <i class="input-icon uil uil-user"></i>
+                                <input type="radio">一般會員
+                                <input type="radio">占卜師
+                            </div> -->
+
+                        </div>
+                    </div>
+                    
+                    <!-- 登入/忘記密碼 -->
+                    <div class="card_footer">
+                        <div class="action">
+                            <button class="secondary_btn">註冊</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</section>

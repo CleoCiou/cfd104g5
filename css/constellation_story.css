@@ -54,12 +54,13 @@
         justify-content: center;
         flex-wrap: wrap;
     }  
-    h2{
+    main h2{
         /* text-align: center; */
         padding: 2% 8.333333%;
         box-sizing: border-box;
+        
     }
-    h3{
+    main h3{
        text-align: center;
        padding: 2% 8.333333%;
        box-sizing: border-box;
@@ -83,16 +84,19 @@
         box-sizing: border-box;
         
     }
-    .story{
+    main .story{
         /* text-align: center; */
         padding: 2% 8.333333%;
         display: flex;
         box-sizing: border-box;
+        
     }
-    p{
+    main .story p{
         /* padding: 2% 8.333333%; */
         box-sizing: border-box;
         padding: 2% 8.333333%;
+        border: 1PX solid white;
+        
     }
     .constellationpair .constellationpair_pai .pair_btn{
        border: 100px solid red;
