@@ -113,10 +113,11 @@ main{
                     flex-direction: column-reverse;
 
                 }
+                /* 宮位分類欄 有11個該死的宮位 */
                 .chart_classification{
                     width: 7%;
                     @include mobile{
-                        width:100%;
+                        display: none;
                     }
                     ul{
                         margin: 0 .5em;
@@ -129,6 +130,7 @@ main{
                             border-bottom: 1px solid #CFB886;
                             padding-bottom: .2em;
                             cursor: pointer;
+                            
                                 &:hover{
                                     color: #d89482;
                                     border-bottom: 1px solid #d89482;
@@ -136,7 +138,7 @@ main{
                             }
                         }
                     }
-
+                
                 }
                 .parse_box{
                     width: 60%;
@@ -206,6 +208,13 @@ main{
                         width: 100%;
                         @include mobile{
                             margin: 2em auto;
+                        }
+                    }
+                    .owl-carousel.display{
+                        margin-top: 1em;
+                        display: flex;
+                        @include desktop{
+                            display: none;
                         }
                     }
                 }

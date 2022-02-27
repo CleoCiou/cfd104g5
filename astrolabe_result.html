@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>解星鏡 Mistro | 星座</title>
-    <!-- <link rel="stylesheet" href="css/astrolabe.css"> -->
+    <link rel="stylesheet" href="css/shop.css">
     <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
 </head>
 <body>
     <!-- 網頁頭 by NJ -->
@@ -151,6 +152,7 @@
                                 <li v-for="chart in charts"><label>{{chart}}</label></li>
                             </ul>
                         </div>
+                        
                         <!-- 左 === 星盤解讀 -->
                         <div class="parse_box card3d">                       
                             <!-- 星盤解讀分析內容的外框 用來包住大標和內文 -->
@@ -184,6 +186,10 @@
                             <div class="img_box chart_img">
                                 <img src="images/constellation/fakechart.png">
                             </div>
+                            <!-- 貓頭鷹分類 -->
+                            <div class="owl-carousel owl-theme display">
+                                <div class="item" v-for="chart in charts"><label>{{chart}}</label></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,50 +203,51 @@
                             <h2>主打商品</h2>
                         </div>
                         <!-- 卡品 大容器 -->
-                        <div class="products_cards_wrap">
-                           
-                            <div class="cards_row">
-                                 <!-- 商品卡片 -->
-                                <div class="products_item">
-                                    <div class="img_box">
-                                    <img src="https://fakeimg.pl/500x500/ccc">
-                                    </div>
-                                    <div class="item_txt">
-                                        <h4>Loremipsum</h4>
-                                    </div>
-                                </div>
-                                <!-- 商品卡片 -->
-                                <div class="products_item">
-                                    <div class="img_box">
-                                    <img src="https://fakeimg.pl/500x500/ccc">
-                                    </div>
-                                    <div class="item_txt">
-                                        <h4>Loremipsum</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="cards_row">
-                                <!-- 商品卡片 -->
-                               <div class="products_item">
-                                   <div class="img_box">
-                                   <img src="https://fakeimg.pl/500x500/ccc">
+                        <div class="shop_product_item">
+                            <!-- 產品卡片-->
+                           <a href="#">    
+                               <div class="shop_product_card">
+                                   <div class="shop_product_card_img">
+                                       <img src="images/shop/Constellation/wristband/wristband_libra.png">
                                    </div>
-                                   <div class="item_txt">
-                                       <h4>Loremipsum</h4>
+                                   <div class="shop_product_card_txt">
+                                       <h4>星座手環-天秤座</h4>
+                                       <h4>NT$1,299</h4>
+                                   </div>
+                                   <div class="shop_product_card_icon">
+                                       <img src="images/icon/icon_shop_eye.svg">
                                    </div>
                                </div>
-                               <!-- 商品卡片 -->
-                               <div class="products_item">
-                                   <div class="img_box">
-                                   <img src="https://fakeimg.pl/500x500/ccc">
+                           </a>
+                           <a href="#">    
+                               <div class="shop_product_card">
+                                   <div class="shop_product_card_img">
+                                       <img src="images/shop/Constellation/wristband/wristband_scorpio.png">
                                    </div>
-                                   <div class="item_txt">
-                                       <h4>Loremipsum</h4>
+                                   <div class="shop_product_card_txt">
+                                       <h4>星座手環-天蠍座</h4>
+                                       <h4>NT$1,299</h4>
+                                   </div>
+                                   <div class="shop_product_card_icon">
+                                       <img src="images/icon/icon_shop_eye.svg">
                                    </div>
                                </div>
-                           </div>
-                        </div>
+                           </a>
+                           <a href="#">    
+                               <div class="shop_product_card">
+                                   <div class="shop_product_card_img">
+                                       <img src="images/shop/Constellation/wristband/wristband_sagittarius.png">
+                                   </div>
+                                   <div class="shop_product_card_txt">
+                                       <h4>星座手環-射手座</h4>
+                                       <h4>NT$1,299</h4>
+                                   </div>
+                                   <div class="shop_product_card_icon">
+                                       <img src="images/icon/icon_shop_eye.svg">
+                                   </div>
+                               </div>
+                           </a>
+                       </div>
                     </div>
                 </div>
             </section>
@@ -332,7 +339,26 @@
         card.addEventListener("mousemove", handleHover);
         card.addEventListener("mouseleave", resetStyles);
         }
+
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                stagePadding: 10,
+                loop:true,
+                margin:5,
+                nav:false,
+                responsive:{
+                    0:{
+                        items:5
+                    },
+                    767:{
+                        items:8
+                    },
+
+                }
+            });
+        });
     </script>
     <script src="js/common.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
 </body>
 </html>

@@ -1476,10 +1476,6 @@ main {
   /* 撰寫文章頁 */
 }
 
-main .pagination_nav {
-  margin-top: 5em;
-}
-
 @media screen and (max-width: 767px) {
   main .pagination_nav {
     display: none;
@@ -2015,6 +2011,43 @@ main #articleView .article_response .response_card .row .response_card_content {
 main #articleView .article_response .response_card span {
   color: #ccc;
   font-size: 0.9em;
+}
+
+main #articleView .response_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+}
+
+main #articleView .response_box .user_img_box {
+  width: 15%;
+}
+
+main #articleView .response_box .user_txt_box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+}
+
+main #articleView .response_box .user_txt_box textarea {
+  width: 100%;
+}
+
+main #articleView .response_box .res_btn_box {
+  width: 15%;
+  text-align: center;
+}
+
+main #articleView .response_box .res_btn_box .submit_btn {
+  padding: .3em .5em;
 }
 
 main .article_writing_board {
@@ -2733,6 +2766,7 @@ main section.chart .container .astrolabe_chart {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  /* 宮位分類欄 有11個該死的宮位 */
 }
 
 @media screen and (max-width: 767px) {
@@ -2753,7 +2787,7 @@ main section.chart .container .astrolabe_chart .chart_classification {
 
 @media screen and (max-width: 767px) {
   main section.chart .container .astrolabe_chart .chart_classification {
-    width: 100%;
+    display: none;
   }
 }
 
@@ -2878,6 +2912,19 @@ main section.chart .container .astrolabe_chart .chart_info .chart_img {
 @media screen and (max-width: 767px) {
   main section.chart .container .astrolabe_chart .chart_info .chart_img {
     margin: 2em auto;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+    display: none;
   }
 }
 
