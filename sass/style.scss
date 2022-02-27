@@ -31,6 +31,7 @@ body {
     }
     background-color: map-get($primary_color, 'bg');
     main {
+        padding-top: 5em;
         > section {
             width: 100%;
             margin: auto;
