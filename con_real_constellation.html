@@ -13,8 +13,110 @@
     <script src="../js/vue.js"></script>
 </head>
 <body>
+    <!-- 網頁頭 by NJ-->
+<header class="main_header">
+
+
+    <!-- main logo -->
+    <div class="header_all">
+        <!-- main logo -->
+        <div class="header_img_box">
+            <a href="#" class="logo">
+                <img src="images/index_logo_golden-02.png" alt="mistro logo">
+            </a>
+        </div>
+            <!-- icon -->
+        <div class="header_bar">
+            <div class="header_icon">
+                <a href="/login.html"><p>登入</p></a>
+                <a href="/member.html"><img src="/images/header/header-member-02.png" alt="會員icon"></a>
+                <a href="/shopping_cart.html"><img src="/images/header/header_shopping cart.png" alt="購物車icon"></a>
+            </div>
+        
+
+            <!-- 漢堡 -->
+            <div class="ham_menu">
+                <input id="nav_toggle" type="checkbox">
+                <label for="nav_toggle" class="ham no_style">
+                    <div class="ham_origin">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </label>
+                <!-- 電腦選單 -->
+                <nav class="menu">
+                    <div class="crystal_ball">
+                    </div>
+                    <div class="rotate_card">
+                        <a href="/be_teller.html">
+                            <div class="menu_card tarot"></div>
+                        </a>
+                        <a href="">
+                            <div class="menu_card zodiac"></div>
+                        </a>
+                        <a href="/shop.html">
+                            <div class="menu_card shop"></div>
+                        </a>
+                    </div>
+                    <!-- 手機選單 -->
+                    <ul class="menu_list">
+                        <li class="menu_item">
+                            <a class="menu_link" href="#">
+                                塔羅
+                            </a>
+                            <ul class="sub_menu">
+                                <li><a href="/be_teller.html">體驗占卜師</a></li>
+                                <li><a href="/online_divination.html">線上占卜</a></li>
+                                <li><a href="/teller_reservation.html">預約占卜師</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="#">
+                                星座</a>
+                            <ul class="sub_menu">
+                                <li><a href="/con_today_fortune.html">每日運勢</a></li>
+                                <li><a href="/con_real_constellation.html">真實星座測驗</a></li>
+                                <li><a href="/con_pair.html">星座配對</a></li>
+                                <li><a href="/discuss.html">討論區</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu_item">
+                        <a class="menu_link" href="/shop.html">
+                            商城</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link menu_member" href="#">會員專區</a>
+                            <ul class="sub_menu">
+                                <li><a href="/member.html">個人資訊</a></li>
+                                <li><a href="/mem_reservation.html">我的預約</a></li>
+                                <li><a href="/mem_orders.html">我的訂單</a></li>
+                                <li><a href="/teller_mem.html">占卜師專區</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu_item">
+                        <a class="menu_link menu_login" href="/login.html">登入</a>
+                        <a class="menu_link menu_login" href="/login.html">註冊</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+</header>
+
+<!-- <script src="js/common.js"></script> -->
+<script src="js/jquery.js"></script>
+<script>
+    $('.menu_link').click(function(){
+        $('.sub_menu').slideUp();
+        $(this).siblings('.sub_menu').slideToggle();
+    })
+</script>
    <main>
-    <div id="app">
+    <div id="app" style="margin-top: 5%;">
         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
         <section class="pagination_nav">
             <div class="container">
@@ -30,6 +132,45 @@
             <input type="button" value="開始測試" onclick="location.href='con_real_constellation_buy.html'">
         </section>
     </main>
+    <!-- 網頁尾  by NJ-->
+<footer class="main_footer">
+    <hr>
+    <div class="footer_up">
+        
+        <a href="#" class="footer_logo">
+            <img src="/images/logo_golden.png" alt="解星鏡logo">
+        </a>
+        
+        <div class="footer_nav">
+            <ul>
+                <li><a href="#">介紹</a></li>
+                <li><a href="#">占卜</a></li>
+                <li><a href="#">星座</a></li>
+                <li><a href="#">熱門占卜師</a></li>
+                <li><a href="#">主打商品</a></li>
+                <li><a href="#">會員中心</a></li>
+            </ul>
+        </div>
+
+        <div class="footer_icon">
+            <a href=""><img src="/images/footer/icon-fb.png" alt=""></a>
+            <a href=""><img src="/images/footer/icon-ig.png" alt=""></a>
+            <a href=""><img src="/images/footer/icon-yt.png" alt=""></a>
+        </div>
+    </div>
+
+    <div class="footer_down">
+        <div class="footer_txt_box">
+            <p>
+                本網站為緯育TibaMe_前端設計工程師班第73期第五組學員專題成果作品，本平台僅供學習、展示之用。若有牴觸有關著作權，或有第三人主張侵害智慧財產權等情事，若有侵權疑慮，請私訊
+                <a href="https://www.tibame.com/goodjob/frontend">[TibaMe-前端設計工程師養成班]</a>，後續由專人協助處理。
+                <br>
+                <br>
+                Copyright © 2022 ft. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
     <script src="js/common.js"></script>
     <script>
         new Vue({
