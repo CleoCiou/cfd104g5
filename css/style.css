@@ -45,7 +45,7 @@ header .header_all {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 5px 20px;
-  border-bottom: 2px solid #fff;
+  border-bottom: 1px solid #cfb886;
 }
 
 header .header_all .header_bar {
@@ -558,7 +558,7 @@ footer .footer_logo img {
   }
   footer .footer_nav li a {
     padding: 0 10px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     letter-spacing: 0.1rem;
     line-height: 1.5;
     color: #CFB886;
@@ -1476,10 +1476,6 @@ main {
   /* 撰寫文章頁 */
 }
 
-main .pagination_nav {
-  margin-top: 5em;
-}
-
 @media screen and (max-width: 767px) {
   main .pagination_nav {
     display: none;
@@ -1696,6 +1692,17 @@ main .discuss .content .content_article {
 @media screen and (max-width: 767px) {
   main .discuss .content .content_article {
     width: 100%;
+    border: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
@@ -1739,10 +1746,8 @@ main .discuss .article_cards {
   width: 100%;
   border: 1px solid #CFB886;
   background-color: transparent;
-  -webkit-backdrop-filter: opacity(80%);
-          backdrop-filter: opacity(80%);
   padding: 2em;
-  border-radius: 5px;
+  border-radius: 0.625em;
   margin: 1em 0;
   cursor: pointer;
 }
@@ -1814,6 +1819,12 @@ main .discuss .article_cards .line_bottom p {
   font-size: 0.8em;
 }
 
+@media screen and (max-width: 767px) {
+  main .discuss .article_cards .line_bottom p {
+    font-size: .6em;
+  }
+}
+
 main .articleShow {
   display: block;
   z-index: 2500;
@@ -1853,6 +1864,14 @@ main #articleView {
           transform: translateX(50%);
   /* 功能列-- 愛心回應數分享等等*/
   /* 留言回應區塊 */
+}
+
+@media screen and (max-width: 767px) {
+  main #articleView {
+    width: 100%;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
 
 main #articleView img {
@@ -1896,10 +1915,17 @@ main #articleView .article_view_title P {
 
 main #articleView .article_view_content p {
   line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 main #articleView .narrow {
   padding: 2% 16.666666%;
+}
+
+@media screen and (max-width: 767px) {
+  main #articleView .narrow {
+    padding: 2% 1%;
+  }
 }
 
 main #articleView .article_using {
@@ -1985,6 +2011,43 @@ main #articleView .article_response .response_card .row .response_card_content {
 main #articleView .article_response .response_card span {
   color: #ccc;
   font-size: 0.9em;
+}
+
+main #articleView .response_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+}
+
+main #articleView .response_box .user_img_box {
+  width: 15%;
+}
+
+main #articleView .response_box .user_txt_box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+}
+
+main #articleView .response_box .user_txt_box textarea {
+  width: 100%;
+}
+
+main #articleView .response_box .res_btn_box {
+  width: 15%;
+  text-align: center;
+}
+
+main #articleView .response_box .res_btn_box .submit_btn {
+  padding: .3em .5em;
 }
 
 main .article_writing_board {
@@ -2604,7 +2667,7 @@ main .astrolabe .container .astrolabe_start_box .img_box.start {
   /* 推算按鈕 定位父層在.img_box.start*/
 }
 
-main .astrolabe .container .astrolabe_start_box .img_box.start img {
+main .astrolabe .container .astrolabe_start_box .img_box.start #canvas {
   width: 100%;
 }
 
@@ -2703,6 +2766,7 @@ main section.chart .container .astrolabe_chart {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  /* 宮位分類欄 有11個該死的宮位 */
 }
 
 @media screen and (max-width: 767px) {
@@ -2723,7 +2787,7 @@ main section.chart .container .astrolabe_chart .chart_classification {
 
 @media screen and (max-width: 767px) {
   main section.chart .container .astrolabe_chart .chart_classification {
-    width: 100%;
+    display: none;
   }
 }
 
@@ -2851,6 +2915,19 @@ main section.chart .container .astrolabe_chart .chart_info .chart_img {
   }
 }
 
+main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+    display: none;
+  }
+}
+
 main .products_cards .products_box .products_title_wrap {
   width: 100%;
   text-align: left;
@@ -2898,6 +2975,281 @@ main .products_cards .products_box .products_cards_wrap .cards_row .products_ite
 
 main .products_cards .products_box .products_cards_wrap .cards_row .products_item .img_box img {
   width: 100%;
+}
+
+main section.draw_cards {
+  /* 原始樣式備份 */
+  /* 抽牌結果 */
+  /* 抽牌圈 */
+  /* 手機專用 */
+}
+
+main section.draw_cards .ori_bk {
+  /* .content_box {
+                display: none;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+            .lightbox {
+                position: fixed;
+                background: #3A3A3A;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+                padding: 20px;
+                top: 3em;
+                bottom: 3em;
+                width: 60%;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1200;
+                overflow-y: scroll;
+            }
+            
+            .lightbox h3 {
+                font-size:1.5em;
+                margin-top:0;
+                text-align:center;
+            }
+            
+            .lightbox .content {
+                height: 150vh;
+                background-color:#000;
+                border-radius:10px;
+                padding:20px;
+                text-align: center;
+                margin: 10px 0;
+            }
+            .lightbox .content .item{
+                margin: 10px 100px;
+            }
+            .lightbox .content .products_item{
+                display: flex;
+                justify-content: space-evenly;
+                border: 1px dashed #CFB886;
+                margin: 50px 100px;
+                padding: 20px;
+                box-sizing: border-box;
+                border-radius: 30px;
+            }
+            
+            .lightbox .button_panel {
+                text-align:center;
+            }
+            
+            .read img:hover {
+                box-shadow: 0px 0px 20px 3px #cfb886dc;
+            }
+
+            .read {
+                background-color: transparent;
+            }
+
+            .second_btn :hover {
+                background-color: #CFB886;
+                color: #000;
+            }
+
+            .second_btn  {
+                color: #CFB886;
+                background-color: transparent;
+                border: 1px #CFB886 solid;
+            }*/
+}
+
+main section.draw_cards .container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+main section.draw_cards .cards_box {
+  position: relative;
+  height: 100vh;
+}
+
+main section.draw_cards .cards_box > p {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  padding: .5em 8em;
+  white-space: nowrap;
+  color: #888;
+}
+
+main section.draw_cards .cards_box > p.ans {
+  -webkit-transform: translate(-50%, 120%);
+          transform: translate(-50%, 120%);
+}
+
+main section.draw_cards .detail_box {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+main section.draw_cards .detail_box .img_box {
+  position: absolute;
+  scale: 5;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+main section.draw_cards .detail_box .img_box .item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+main section.draw_cards .detail_box .img_box .face {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  z-index: 300;
+}
+
+main section.draw_cards .detail_box .img_box .back {
+  z-index: 400;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+main section.draw_cards .detail_box .img_box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main section.draw_cards .all {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+main section.draw_cards ul {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "listoverlap";
+  -webkit-transform: rotate(-90deg) scale(0.9);
+          transform: rotate(-90deg) scale(0.9);
+  font-size: 2vmin;
+  position: relative;
+}
+
+main section.draw_cards ul > li {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: listoverlap;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "itemoverlap";
+  --rotate: calc(360deg / var(--event-count) * var(--event-index));
+  -webkit-transform: rotate(var(--rotate)) translateX(19em) scale(var(--scale, 1));
+          transform: rotate(var(--rotate)) translateX(19em) scale(var(--scale, 1));
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+
+main section.draw_cards ul > li.event {
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 0 var(--shadowSpread, 0) var(--highlightcolor, black), 0 0 1em black;
+          box-shadow: 0 0 0 var(--shadowSpread, 0) var(--highlightcolor, black), 0 0 1em black;
+  outline: none;
+}
+
+main section.draw_cards ul > li.event:hover,
+main section.draw_cards ul > li.event.selected {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  z-index: 100;
+  --scale: 1.2;
+  --highlightcolor: #CFB886;
+  --shadowSpread: 0.1em;
+}
+
+main section.draw_cards ul > li.event.selected {
+  z-index: 150;
+}
+
+main section.draw_cards ul > li.event.selected:hover {
+  --shadowSpread: 0.2em;
+}
+
+main section.draw_cards ul > li.event > * {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: itemoverlap;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+main section.draw_cards ul > li.event > img {
+  width: 12em;
+  height: 8em;
+  aspect-ratio: 1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-transform: rotate(90deg) scale(1.55);
+          transform: rotate(90deg) scale(1.55);
+}
+
+@media screen and (max-width: 768px) {
+  main section.draw_cards .ori_bk {
+    /* .all{
+                    min-height: 50vh;
+                }
+                #popup {
+                    width: 80%;
+                }
+                .cards .read img{
+                    width: 100px;
+                }
+                .lightbox .content {
+                    height: 220vh;
+                    background-color:#000;
+                    border-radius:10px;
+                    padding:20px;
+                    text-align: center;
+                    margin: 10px 0;
+                }
+                .lightbox .content .item{
+                    margin: 10px 10px;
+                }
+                .lightbox .content .products_item{
+                    display: block;
+                    justify-content: space-evenly;
+                    border: 1px dashed #CFB886;
+                    margin: 50px 10px;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    border-radius: 30px;
+                }
+                .lightbox .content .products_item .img_box{
+                    width: 100%;
+                }
+                .lightbox .content .products_item .img_box img{
+                    width: 100%;
+                } */
+  }
 }
 
 * {

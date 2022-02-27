@@ -9,52 +9,54 @@
     height: 100%;
     overflow: hidden;
 }
+
+/* === 解牌的左邊選單 by JC === */
+/* lightbox定位在content_box */
 .lightbox {
     position: fixed;
-    background: #3A3A3A;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    padding: 20px;
-    top: 3em;
-    bottom: 3em;
-    width: 60%;
-    left: 50%;
-    transform: translateX(-50%);
+    background-color: rgba(71, 71, 71, 0.315);
+    top: 50%;
+    padding: .2em 1em;
+    left: 0;
+    transform: translate(0,-50%);
     z-index: 1200;
-    overflow-y: scroll;
 }
 
-.lightbox h3 {
-    font-size:1.5em;
-    margin-top:0;
-    text-align:center;
-}
-
-.lightbox .content {
-    height: 150vh;
-    background-color:#000;
-    border-radius:10px;
-    padding:20px;
-    text-align: center;
-    margin: 10px 0;
-}
 .lightbox .content .item{
-    margin: 10px 100px;
+    margin: 2em;
+    /* display: flex; */
+    
 }
-.lightbox .content .products_item{
-    display: flex;
-    justify-content: space-evenly;
-    border: 1px dashed #CFB886;
-    margin: 50px 100px;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 30px;
+.lightbox .content .item a{
+    margin: 2em;
+    display: block;
+}
+.lightbox .content .item a::before{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: -1em;
+    width: 0.2em;
+    height: 1.1em;
+    transform: translateY(-50%);
+    background: #CFB886;
+    transition: 0.6s;
+}
+.lightbox .content .item a{
+    position: relative;
+    top: 0;
+    left: 0;
+    transition: 0.45s;
+}
+.lightbox .content .item a:hover::before{
+    left: calc(100% + .6em);
 }
 
-.lightbox .button_panel {
-    text-align:center;
+.lightbox .content .item a:hover{
+    color: #CFB886;
 }
+/* === END by JC === */
+
 
 /* buttons */
 input[type=button],
@@ -143,6 +145,8 @@ ul > li.event > img {
     /* aspect-ratio: 1; */
     object-fit: cover;
 }
+
+
 
 /* 手機專用 */
 @media screen and (max-width:768px) {

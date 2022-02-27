@@ -58,7 +58,9 @@ body {
 .front {
     background-size: cover;
     padding: 2rem;
-    background-color: #835245;
+    background-color: #000000;
+    background-image: url(/images/draw_cards/card_back.jpg);
+    background-size: cover;
     overflow: hidden;
 }
 .card:hover .front {
@@ -69,7 +71,7 @@ body {
 }
 
 .back {
-    background: rgb(58, 39, 39);
+    background: #3A3A3A;
     transform: rotateY(-180deg);
     padding: 0 2em;
 }
@@ -82,7 +84,7 @@ body {
     cursor: pointer;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    padding: 0.8% 20px;
+    padding: 0.8% 1rem;
     margin: 0.5em 1em;
     border-radius: 50px;
     border: none;
@@ -97,4 +99,7 @@ body {
     box-sizing: border-box;
 }
 
-
+.choose_btn:hover{
+    color: #000;
+    background-color:#CFB886;
+}
