@@ -4,6 +4,8 @@
 @import "page/member";
 @import "page/discuss";
 @import "page/back";
+@import "page/today_fortune";
+@import "page/login";
 @import "page/astrolabe";
 
 * {
@@ -11,7 +13,22 @@
     box-sizing: border-box;
     color: map-get($primary_color, 'content');
 }
+
+
 body {
+    &::-webkit-scrollbar{
+        width: 30px;
+    }  
+    &::-webkit-scrollbar-track{
+        background-color: transparent;
+        border-radius: 100px;
+    }
+    &::-webkit-scrollbar-thumb{
+        border-radius: 100px;
+        border: 10px solid transparent;
+        background-clip: content-box;
+        background-color: #CFB886;
+    }
     background-color: map-get($primary_color, 'bg');
     main {
         > section {
@@ -121,9 +138,9 @@ button.primary_line_btn {
     white-space: nowrap;
     cursor: pointer;
     box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
+    transition: .5s;
 
     &:hover{
-        transition: .5s;
         transform: translateY(-2px);
         background-color: #f8d68d;
         border: 1px solid #f8d68d;
@@ -154,12 +171,12 @@ button.primary_line_btn {
     padding: 0.8em 2em;
     white-space: nowrap;
     cursor: pointer;
+    transition: .5s;
 
     &:hover{
         background-color: #ffe09c;
         border: 1px solid #ffe09c;
         transform: translateY(-2px);
-        transition: .5s;
     }
 }
 /* 頁籤 */
@@ -212,10 +229,9 @@ button.primary_line_btn {
     padding: 0.8em 2em;
     cursor: pointer;
     font-weight: 500;
-
+    transition: .5s;
     &:hover{
         transform: translateY(-2px);
-        transition: .5s;
         background-color: transparent;
     }
 }

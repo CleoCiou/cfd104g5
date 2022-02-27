@@ -37,10 +37,20 @@
     main .real_constellation .container .answer img{
         display: block;
         width: 100%;
-<<<<<<< HEAD
-=======
         margin-bottom: 10%;
->>>>>>> b83ab2974534bb833aba4551a1cf68c7c60448a8
+    }
+    .real_constellation .container p{
+        margin: 30% 0%;
+    }
+    .real_constellation .container .answer{
+        display: flex;
+        justify-content: center;
+        /* margin-top: 5%; */
+    }
+    .real_constellation .container .answer .btn:nth-child(1){
+        
+        margin-right: 3%;
+        box-sizing: border-box;
     }
 
 }
@@ -88,6 +98,19 @@
         padding: 2% 8.333333%;
         margin: 10% 0% 2% 2%;
         
+    }
+    .real_constellation .container p{
+        margin: 10% 0%;
+    }
+    .real_constellation .container .answer{
+        display: flex;
+        justify-content: center;
+        /* margin-top: 5%; */
+    }
+    .real_constellation .container .answer .btn:nth-child(1){
+        
+        margin-right: 3%;
+        box-sizing: border-box;
     }
 
 }

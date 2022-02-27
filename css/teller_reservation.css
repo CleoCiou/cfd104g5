@@ -3,13 +3,15 @@
 }
 .teller_reservation .container .teller_profile{
     text-align: center;
+    padding: 2em;
 }
-.teller_reservation .container .teller_profile .img_box{
-    margin: auto;
-    /* padding: 1em; */
-}
+/* .teller_reservation .container .teller_profile .img_box{
+    height: 28em;
+} */
 .teller_reservation .container .teller_profile .img_box img{
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .teller_reservation .txt_box {
     padding-bottom: 3%;
@@ -21,17 +23,23 @@
     padding-bottom: 1em;
 }
 /* 表單 */
-
+.teller_reservation .container .reservation_form{
+    padding: 2em 0; 
+}
 /* 月曆 */
 .reservation_form .reservation_calendar{
     padding-bottom: 1em ;
     margin: 0 auto;
+}
+.reservation_form .reservation_calendar .img_box img{
+    width: 100%
 }
 .teller_reservation .teller_form p{
     color: #CFB886;
 }
 .teller_reservation .teller_btn{
     padding-top: 5px;
+    text-align: right;
 }
 .teller_board .txt_box{
     border: 3px solid #CFB886;
@@ -55,15 +63,12 @@
         flex-wrap: wrap;
         padding: 3%;
     }
-    .reservation_form{
+    .teller_reservation .container .reservation_form{
         display: flex;
         width: 50%;
         flex-wrap: wrap;
         flex-direction: column;
-        padding: 3%;
-    }
-    .teller_form{
-        text-align: center;
+        padding: 2em 4em;
     }
     .teller_form label{
         display: flex;

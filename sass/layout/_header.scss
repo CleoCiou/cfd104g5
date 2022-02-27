@@ -1,5 +1,10 @@
 header {
-    background: #000000;
+    background: #000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
     
     .header_img_box img{
         height: 60px;
@@ -218,7 +223,7 @@ header {
         top: 75px;
         bottom: 0;
         padding: 30px;
-        background: rgb(58, 51, 51);
+        background: #000;
         /* 用 translate 把選單藏到畫面右邊去 */
         transform: translateX(100%);
         transition: transform .5s;
@@ -258,9 +263,11 @@ header {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background-color: aliceblue;
+            background-image: url(/images/header/giphy.gif);
+            background-position: center;
+            background-size: 180%;
             margin: auto;
-        }
+          }
     
         .menu_item{
             position: relative;
@@ -298,12 +305,20 @@ header {
             -o-transform:rotate(30deg);
             -ms-transform:rotate(30deg);
             transform:rotate(30deg);
-        }
+            background-image: url(/images/header/card_back_tarot.svg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
         .menu .rotate_card .zodiac{
             position: absolute;
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
+            background-image: url(/images/header/card_back_zodiac.svg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
         }
         .menu .rotate_card .shop{
             position: absolute;
@@ -314,7 +329,11 @@ header {
             -o-transform:rotate(-30deg);
             -ms-transform:rotate(-30deg);
             transform:rotate(-30deg);
-        }
+            background-image: url(/images/header/card_back_shop.svg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
     
         /* 手機專用 */
     @media screen and (max-width:768px) {

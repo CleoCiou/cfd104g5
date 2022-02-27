@@ -1,5 +1,6 @@
 
 <!-- 拉到最後最大 會跑版一點? -->
+<!-- 圓餅圖flotcontainer固定寬高是否會出事? 改成%數會不見 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,25 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/real_constellation_result.css">
     <script src="../js/vue.js"></script>
+      <!-- 下面引入是圓餅圖用的 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://static.pureexample.com/js/flot/excanvas.min.js"></script>
+    <script src="http://static.pureexample.com/js/flot/jquery.flot.min.js"></script>
+    <script src="http://static.pureexample.com/js/flot/jquery.flot.pie.min.js"></script>
+    <style type="text/css">
+        #flotcontainer {
+            width: 600px;
+            height: 400px;
+            text-align: left;
+        }
+        #legendPlaceholder {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
+    <!-- <div id="legendPlaceholder"></div>
+    <div id="flotcontainer"></div> -->
   <main>  
     <div id="app">
         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
@@ -23,14 +41,17 @@
             </div>
         </section>        
     </div>
-    <h2>真實星座</h2>
-        <section class="real_constellation real">
-          <!-- 控制padding的容器 -->
-          <div class="container">
+    <section class="real_constellation real">
+        <!-- 控制padding的容器 -->
+        <div class="container">
+              <h2>真實星座</h2>
             <p>你的真實星座是:</p>
           <!-- 包住圖文的容器   -->
             <div class="answer">
-                <img src="https://fakeimg.pl/250x100/">
+                <div id="legendPlaceholder"></div>
+                <div id="flotcontainer"></div>
+                
+            
                 <div class="again"><input type="button" value="再測一次" onclick="location.href='con_real_constellation.html'"></div>
                
             </div>
@@ -54,5 +75,39 @@
             }
         });
     </script>
+     <script type="text/javascript">
+        $(function () { 
+            var data = [
+                {label: "天秤座", data:10},
+                {label: "天蠍座", data: 20},
+                {label: "水瓶座", data: 30},
+                {label: "巨蟹座", data: 40},
+                {label: "牡羊座", data: 50},
+                {label: "金牛座", data: 60},
+                {label: "射手座", data: 100},
+                {label: "處女座", data: 20},
+                {label: "獅子座", data: 20},
+                {label: "摩羯座", data: 10},
+                {label: "雙子座", data: 30},
+                {label: "雙魚座", data: 20}
+
+            ];
+
+            
+
+        
+            var options = {
+                    series: {
+                        pie: {show: true}
+                    },
+                    legend: {
+                        show: false
+                    }
+                 };
+        
+            $.plot($("#flotcontainer"), data, options);  
+        });
+    </script>
+
 </body>
 </html>
