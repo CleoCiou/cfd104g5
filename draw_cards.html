@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/draw_cards.css">
+	<link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/draw_cards.css">
     <title>解星鏡 Mistro | 塔羅</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
@@ -12,222 +13,178 @@
 </head>
 <body>
     
-<!-- 網頁頭 -->
-<!-- 內容由 common.js 新增 by PIN -->
-<header class="main_header"></header>
-
-
-<!-- 網頁內容 -->
-<main>
+<!-- header -->
 
 <!-- 線上占卜 by NJ -->
-    <!-- 抽牌 -->
+<main>
     <section class="draw_cards">
         <div class="container">
 
-            <!-- 容器到item_box，從item開始才是正式內容 -->
-            <div class="cards" id="example">
+    		<!-- 抽牌 -->
+            <div class="cards_box">
                 <h2>抽牌</h2>
                 
-                    <button id="open_popup" type="button" class="read">
-                        <img id="choose" src="/images/draw_cards/draw_cards_back.jpg">
-                    </button>
-                   
+				<!-- 抽牌圈 -->
                 <div class="all">
-                    <ul class="calendar">
-                        <div class="selected-event">
-                        </div>
-                    </ul>
+                    <ul class="cards"></ul>
                 </div>
+
+				<!-- 占卜詳解 -->
+				<div class="content_box">
+					<div class="lightbox" id="popup">
+						<h2>解牌</h2>
+						<div class="content">
+							<div class="item">
+								<div class="img_box">
+									<img src="https://picsum.photos/150/250/?random=10" alt="請幫每張圖片加破圖註解">
+								</div>
+								<div class="txt_box">
+									<h3>愚者</h3>
+									<p>愚者塔羅牌意義：旅程<br>
+									它表明您希望尋求未來的機會，但缺乏明確的具體計劃。由於你沒有什麼顧慮，有時這些特質反而會給你帶來意想不到的成功。然而沒有遠見，使你容易產生動搖，當遇到太多障礙的時候往往會失去原有的目標。 當你想要開始諸如學習，搬家或簽署商業協議之類的，追隨你的直覺並付出行動是不錯的方式。</p>
+								</div>
+							</div>
+
+							<div class="products_item">
+								<div class="img_box">
+									<img src="https://picsum.photos/300/250/?random=10" alt="商品圖">
+								</div>
+								<div class="txt_box">
+									<h3>推薦商品</h3>
+									<p>幸運手環
+										Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis aperiam nulla, perspiciatis excepturi at id ratione consequuntur? Iusto atque eos minima officiis eum deleniti voluptas quibusdam soluta at laboriosam.
+									</p>
+								</div>
+							</div>
+						</div>
+						<p class="button_panel">
+							<a href="draw_cards_old.html"><button type="button" class="second_btn lightbox_close">重新抽牌</button></a>
+							<a href="teller_mem.html"><button type="button" class="second_btn ">占卜師總覽</button></a>
+							<a href="be_teller.html"><button type="button" class="second_btn ">體驗占卜師</button></a>
+							<a href=""><button type="button" class="second_btn ">前往商城</button></a>
+						</p>
+					</div>
+				</div>
             </div>
-
-            <div class="overlay"></div>
-  
-            <div class="lightbox" id="popup">
-                <h2>解牌</h2>
-                <div class="content">
-                    <div class="item">
-                        <div class="img_box">
-                            <img src="https://picsum.photos/150/250/?random=10" alt="請幫每張圖片加破圖註解">
-                        </div>
-                        <div class="txt_box">
-                            <h3>愚者</h3>
-                            <p>愚者塔羅牌意義：旅程<br>
-                            它表明您希望尋求未來的機會，但缺乏明確的具體計劃。由於你沒有什麼顧慮，有時這些特質反而會給你帶來意想不到的成功。然而沒有遠見，使你容易產生動搖，當遇到太多障礙的時候往往會失去原有的目標。 當你想要開始諸如學習，搬家或簽署商業協議之類的，追隨你的直覺並付出行動是不錯的方式。</p>
-                        </div>
-                    </div>
-
-                    <div class="products_item">
-                        <div class="img_box">
-                            <img src="https://picsum.photos/300/250/?random=10" alt="商品圖">
-                        </div>
-                        <div class="txt_box">
-                            <h3>推薦商品</h3>
-                            <p>幸運手環
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis aperiam nulla, perspiciatis excepturi at id ratione consequuntur? Iusto atque eos minima officiis eum deleniti voluptas quibusdam soluta at laboriosam.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <p class="button_panel">
-                    <a href="draw_cards_old.html"><button type="button" class="second_btn lightbox_close">重新抽牌</button></a>
-                    <a href="teller_mem.html"><button type="button" class="second_btn ">占卜師總覽</button></a>
-                    <a href="be_teller.html"><button type="button" class="second_btn ">體驗占卜師</button></a>
-                    <a href=""><button type="button" class="second_btn ">前往商城</button></a>
-                </p>
-            </div>
-
 
         </div>
     </section>
-
-    
-
 </main>
 
+<!-- footer -->
 
-<!-- 網頁尾 -->
-<!-- 內容由 common.js 新增 by PIN -->
-<footer class="main_footer"></footer>
-
-<script src="js/common.js"></script>
 <script>
-    // jQuery
-    $('#open_popup').on('click', function(){
-        $('.overlay').fadeIn('fast');
-        $('#popup').show('fast');
-    });
+	// 牌數
+	const CARDINDEX = 22;
+	// 抽牌圈
+	const CARDSEL = document.querySelector('.cards');
+	// 預選牌
+	let selectedIndex = 0;
+	// 設定抽牌圈牌數
+	CARDSEL.style.setProperty('--event-count', CARDINDEX);
 
-    $('.lightbox_close').on('click', function(){
-        $(this).closest('.lightbox').hide('fast');
-        $('.overlay').fadeOut('fast');
-    });
-</script>
-<script>
-    const febEvents = [
-	{ name: "Periodic Table Day", imgL: "hjR5drX9", imgS: "NybDhR7M" },
-	{ name: "Kite Flying Day", imgL: "WbNx8XX8", imgS: "Cd2vLHyn" },
-	{ name: "Pizza Day", imgL: "d34Hgc4B", imgS: "q66xCSfh" },
-	{ name: "Umbrella Day", imgL: "DZcBbKkT", imgS: "LYnzrw8C" },
-	{ name: "Inventor's Day", imgL: "7hVdD2YS", imgS: "JHsP5tXh" },
-	{ name: "Global Movie Day", imgL: "hth6WhF7", imgS: "mPf87Lgb" },
-	{ name: "Tortellini Day", imgL: "DzLCnXxm", imgS: "VSs9FdQc" },
-	{ name: "Valentine's Day", imgL: "pL9Gc78f", imgS: "LJp3nxx5" },
-	{ name: "Gumdrop Day", imgL: "v8zN45bV", imgS: "Hjr2KcJY" },
-	{ name: "Do a Grouch a Favor Day", imgL: "xjyWLWyq", imgS: "fky2NqPh" },
-	{ name: "Cabbage Day", imgL: "FHBt73bZ", imgS: "pmzcS96h" },
-	{ name: "Battery Day", imgL: "2S6Rk2Wy", imgS: "WhQfSmXc" },
-	{ name: "Chocolate Mint Day", imgL: "L5RwrTRH", imgS: "2bc0WnVJ" },
-	{ name: "Love Your Pet Day", imgL: "K8VVZFFp", imgS: "18GMHk8D" },
-	{ name: "President's Day", imgL: "C1C6Hq89", imgS: "hzjrKhp0" },
-	{ name: "Cook a Sweet Potato Day", imgL: "N0HnFVjs", imgS: "qtpwZ1KS" },
-	{ name: "Tile Day", imgL: "PxHSx57y", imgS: "qtmsD446" },
-	{ name: "Toast Day", imgL: "9FggpV4X", imgS: "crYcxpMP" },
-	{ name: "Clam Chowder Day", imgL: "fbG6vsrS", imgS: "KK5qZ6Fm" },
-	{ name: "Pistachio Day", imgL: "VLkHn5kH", imgS: "MXgD86Ry" },
-	{ name: "Polar Bear Day", imgL: "4yJ28xby", imgS: "k6pyG9HP" },
-	{ name: "Tooth Fairy Day", imgL: "BbYpMcn7", imgS: "WqZ04Zr0" }
-]; // gallery: https://postimg.cc/gallery/t9FRjBF
-
-//照片放這裡！！！
-const postImgUrl = (name, id) =>
-	`https://img.onl/kx6Qcw`;
-const dayIdx = Math.min(new Date().getDate(), febEvents.length) - 1;
-const calendarEl = document.querySelector(".calendar");
-// const selectedDateEl = document.querySelector(".selected-date");
-// const selectedNameEl = document.querySelector(".selected-name");
-let selectedIndex = dayIdx;
-calendarEl.style.setProperty("--event-count", febEvents.length);
-
-init();
-
-function init() {
-	febEvents.forEach((event, idx) =>
-		calendarEl.append(singleEventEl(event, idx))
-	);
-	changeSelectedEvent(selectedIndex);
-}
-
-function singleEventEl(event, idx) {
-	const eventEl = document.createElement("li");
-	eventEl.classList.add("event");
-	eventEl.style.setProperty("--event-index", idx);
-	eventEl.tabIndex = 0;
-	//date
-	const timeEl = document.createElement("time");
-	timeEl.datetime = `2022-02-${(idx + 1).toString().padStart(2, "0")}`;
-	// timeEl.innerText = idx + 1;
-	//name
-	// const nameEl = document.createElement("span");
-	// nameEl.innerText = event.name;
-	//img
-	const imgEl = new Image();
-	imgEl.src = postImgUrl(event.name, event.imgS);
-	imgEl.alt = event.name;
-
-	eventEl.addEventListener("click", (e) => changeSelectedEvent(idx));
-	eventEl.addEventListener("focus", (e) => changeSelectedEvent(idx));
-	eventEl.append(imgEl, timeEl);
-	return eventEl;
-}
-
-function changeSelectedEvent(idx) {
-	idx = (idx + febEvents.length) % febEvents.length;
-	//change thumb
-	const currentEl = document.querySelectorAll(".event.active") || [];
-	currentEl.forEach((el) => el.classList.remove("active"));
-	// currentEl ? currentEl.classList.remove('active') : '';
-	// const targetEl = document.querySelector(`.event:nth-of-type(${idx + 1})`);
-	// targetEl.classList.add("active");
-	// targetEl.focus();
-
-	//change selected
-	const { name, imgL } = febEvents[idx];
-	// const d = new Date(`2022-02-${idx + 1}`);
-	// selectedDateEl.datetime = `2022-02-${(idx + 1).toString().padStart(2, "0")}`;
-	// const displayDateOptions = {
-	// 	weekday: "long",
-	// 	year: "numeric",
-	// 	month: "long",
-	// 	day: "numeric"
-	// };
-	selectedDateEl.innerHTML = d.toLocaleDateString("en-US", displayDateOptions);
-	selectedNameEl.innerText = name;
-	selectedIndex = idx;
-}
-
-window.addEventListener("keydown", (e) => {
-	switch (e.key) {
-		case "ArrowRight":
-			changeSelectedEvent(selectedIndex + 1);
-			break;
-		case "ArrowUp":
-			changeSelectedEvent(selectedIndex + 1);
-			break;
-		case "ArrowLeft":
-			changeSelectedEvent(selectedIndex - 1);
-			break;
-		case "ArrowDown":
-			changeSelectedEvent(selectedIndex - 1);
-			break;
+	init();
+	function init() {
+		// 創造抽牌圈
+		for(let i = 0; i < CARDINDEX; i++) {
+			const EVENTEL = document.createElement('li');
+			EVENTEL.classList.add('event');
+			// 設定牌的旋轉角度
+			EVENTEL.style.setProperty('--event-index', i);
+			// 抽牌放中間
+			EVENTEL.addEventListener('click',selectCard);
+			// 創造牌的背景圖片
+			const IMGEL = document.createElement('img');
+			IMGEL.src = './images/draw_cards/draw_cards_back.jpg';
+			// 將圖片放在牌上
+			EVENTEL.append(IMGEL);
+			// 將牌放進抽牌圈
+			CARDSEL.append(EVENTEL);
+		}
 	}
-});
 
+	function selectCard(e) {
+
+		// 取得選擇的卡片
+		let card = e.target.parentNode;
+		let idx = card.style.getPropertyValue('--event-index');
+
+		// 抽牌圈數量
+		let allCard = document.querySelectorAll('li.event');
+
+		// 若選擇抽出來的卡，顯示解析
+		if (card.classList.contains('selected')) {
+			// 加入一點點的動畫畫畫畫畫
+			// let rotateCard = (idx > 10) ? 720 : -720;
+			gsap.set('.all', {perspective: 1000});
+			gsap.set('ul', {transformStyle: 'reserve-3d'});
+			gsap.set('li.event.selected', {rotationX: 0, transition: 0})
+			gsap.to('li.event.selected', {
+				duration: 1,
+				rotationX: 720,
+				scale: 3,
+				boxShadow: '0 0 5px 0.5em #CFB886',
+				ease: Power1.easeOut,
+
+				// 或是可以改成釘在卡片上面
+				onComplete: showDetail
+			});
+
+			return false;
+		}
+
+		// 若已有選擇卡片，使其復位
+		let selectedCard = document.querySelector('.selected');
+		if (selectedCard) {
+			selectedCard.classList.remove('selected');
+			selectedCard.style.removeProperty('transform');
+
+			// 一圈22張牌
+			card.parentNode.style.setProperty('--event-count', 22);
+			// 取得先前選到牌的編號
+			let selectedIdx = selectedCard.style.getPropertyValue('--event-index');
+			for (let i = (parseInt(selectedIdx)+1); i < 22; i++) {
+				// 抽出牌後面牌的號碼往後歸位
+				allCard[i].style.setProperty('--event-index', i);
+			}
+		}
+
+		// 設定選擇卡片出來的旋轉方向
+		card.classList.add('selected');
+		if (idx > 10) {
+			// 左邊抽牌出來順時針旋轉
+			card.style.transform = 'rotate(360deg)';
+		}
+		else {
+			// 右邊抽牌出來逆時針旋轉
+			card.style.transform = 'none';
+		}
+
+		// 抽一張牌，一圈剩21張牌
+		card.parentNode.style.setProperty('--event-count', 21);
+		for (let i = (parseInt(idx) + 1); i < 22; i++) {
+			// 抽出牌後面的牌編號往前補位
+			allCard[i].style.setProperty('--event-index', i-1);
+		}
+	}
+
+	function showDetail() {
+		// document.querySelectorAll('.content_box')[0].style.display = 'block';
+		let selectCard = document.querySelector('li.event.selected');
+		let detailBox = document.createElement('div');
+		detailBox.classList.add('detail-box');
+		detailBox.style.opacity = 0;
+		
+		selectCard.append(detailBox);
+		gsap.from(selectCard, {boxShadow: '0 0 5px 0.5em #CFB886'});
+		gsap.to(selectCard, {
+			repeat: -1,
+			duration: 1,
+			boxShadow: '0 0 5px 0.4em #CFB886',
+			yoyo: true,
+		});
+	}
 </script>
-<script>
-    $(document).ready(function() {
-    $( "ul > li" ).css({'transform': 'rotate(var(--rotate)) translateX(20em) scale(var(--scale, 1))','transition-delay':'1s'})  
-  });
-</script>
-<script>
-    $( "li.event" ).click(function() {
-    $( "#choose" ).css('display', 'block')  
-  });
-</script>
-<!-- <script>
-    gsap.to("ul", {duration: 10, rotation: 360,
-            repeat: -1,
-        });
-</script> -->
+
 </body>
 </html>
