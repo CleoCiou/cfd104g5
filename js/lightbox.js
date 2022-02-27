@@ -1,7 +1,7 @@
 function init(){
 
         
-        let articleContent = document.querySelectorAll(".article_cards");
+        let articleContent = document.querySelectorAll(".line_middle");
 
         for(let i = 0; i<articleContent.length; i++){
             articleContent[i].onclick = show;

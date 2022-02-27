@@ -11,6 +11,17 @@ $m : 767px;
         @content;
     }
 }
+
+#twinklingStar{
+    height: 100%;
+    .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        border-radius: 2px;
+        background: white;
+      }
+}
 main{
     /* 星座共用 */
     .astrolabe{

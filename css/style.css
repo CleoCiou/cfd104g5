@@ -2643,6 +2643,18 @@ section.login .container section.card_box .rotate_3d_box .card_item.card_back {
   padding: 1em 3em;
 }
 
+#twinklingStar {
+  height: 100%;
+}
+
+#twinklingStar .star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: white;
+}
+
 main {
   /* 星座共用 */
   /* 開始推算 */

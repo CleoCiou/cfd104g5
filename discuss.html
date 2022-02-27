@@ -122,23 +122,6 @@
             </ul>
         </div>
     </section>
-
-    <script>
-        new Vue({
-                el: '#app',
-                data: { //變數放這
-                    urls: {
-                        '今日運勢': 'con_today_fortune.html',
-                        '星座配對': 'con_pair.html',
-                        '真實星座': 'con_real_constellation.html',
-                        '星盤推算': 'astrolabe.html',
-                        '星座故事': 'con_story.html',
-                        '星座討論區': 'discuss.html',
-                    },
-                    navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
-                },
-            });
-    </script>
              <!-- 討論區 by JC -->
             <section class="discuss">
                 <!-- 控制整個討論區padding的大大容器 -->
@@ -158,19 +141,9 @@
                     </div>
                     <!-- 貓頭鷹分類 -->
                     <div class="owl-carousel owl-theme display">
-                        <div class="item"><label>全部</label></div>
-                        <div class="item"><label>摩羯座</label></div>
-                        <div class="item"><label>水瓶座</label></div>
-                        <div class="item"><label>雙魚座</label></div>
-                        <div class="item"><label>牡羊座</label></div>
-                        <div class="item"><label>金牛座</label></div>
-                        <div class="item"><label>雙子座</label></div>
-                        <div class="item"><label>巨蟹座</label></div>
-                        <div class="item"><label>獅子座</label></div>
-                        <div class="item"><label>處女座</label></div>
-                        <div class="item"><label>天秤座</label></div>
-                        <div class="item"><label>天蠍座</label></div>
-                        <div class="item"><label>射手座</label></div>
+                        <div class="item" v-for="cate in cates">
+                            <label>{{cate}}</label>
+                        </div>
                     </div>
                     <!-- 文章 搜尋bar下排包住左邊和右邊的容器 -->
                     <div class="content">
@@ -210,8 +183,8 @@
                                             </div>
                                         </div>
                                         <div class="line_bottom">
-                                            <img :src="iconLike" >
-                                            <p>999讚</p>
+                                            <img :src="iconLike" class="likes" @click="changeLike" text="我喜歡">
+                                            <p>{{num}}讚</p>
                                             <img :src="iconMessage" >
                                             <p>28回應</p>
                                             <img :src="iconFav" >
@@ -480,7 +453,7 @@
         new Vue({
             el: '#app',
             data: { //變數放這
-                message: 'hello',
+                num: 999,
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
@@ -489,12 +462,25 @@
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
+                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
                 cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
                 imgURL: 'https://picsum.photos/90/90/?random=10',
                 iconLike: 'images/icon/icon_discuss_like.svg',
+                iconLikeClick :'images/icon/icon_discuss_likes.svg',
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
+            },
+            methods: {
+                changeLike(e){
+                    this.$data.num +=1;
+                    // if(e.target.text == "我喜歡"){
+                    // }
+                    // console.log(e.target.text);
+                    // console.log(e);
+                    // console.log(this.$data.iconLike);
+
+                }
             },
         });
         $(document).ready(function(){
