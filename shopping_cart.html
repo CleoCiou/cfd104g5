@@ -155,7 +155,7 @@
                                 {{item.count}}
                                 <button @click="handlePlus(item)">+</button>
                             </div> 
-                            <div class="amount"><span>NT$</span>{{sum}}</div>
+                            <div class="amount"><span>NT$</span>{{sum(index)}}</div>
                             <!-- <div class="operate">
                                 <button @click="handledelete(index)">刪除</button>
                             </div> -->
@@ -255,7 +255,7 @@
                 <div class="cart_info_right">
                     <div class="order_total">
                         <div class="first_price">
-                            <h4>小計：NT$4,000</h4>
+                            <h4>小計：NT${{total}}</h4>
                         </div>
                         <div class="delivery_fee">
                             <h4>運費：NT$60</h4>
@@ -399,7 +399,7 @@
                     price:'2300',
                     count:'1'
                 },
-            ]
+            ],
         },
         methods:{
             handlePlus: function(item){
@@ -415,11 +415,17 @@
                 console.log(this);
                 this.itemList.splice(index,1);
             },
-            
+            sum(idx){
+                return parseInt(this.itemList[idx].price) * parseInt(this.itemList[idx].count)
+            }
         },
         computed:{
-            sum(){
-                return parseInt(this.price) * parseInt(this.count)
+            total() {
+                let subtotal = 0;
+                for (let i = 0; i < this.itemList.length; i++) {
+                    subtotal += this.sum(i);
+                }
+                return subtotal;
             }
         }
 })
