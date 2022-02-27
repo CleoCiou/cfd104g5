@@ -155,7 +155,11 @@ main {
                 width: 80%;
                 padding: 3em;
                     @include mobile {
-                        width: 100%;
+                        width:100%;
+                        border: none;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
                     }
                 /* 熱門最新 */
                 .content_wrap{
@@ -194,11 +198,13 @@ main {
             width: 100%;
             border: 1px solid #CFB886;
             background-color: transparent;
-            backdrop-filter: opacity(80%);
             padding: 2em;
-            border-radius: 5px;
+            border-radius: $borderRadius;
             margin: 1em 0;
             cursor: pointer;
+            @include mobile{
+                // box-sizing: content-box;
+            }
             .line_top{
                 span{
                     color: #000;
@@ -248,7 +254,9 @@ main {
                     margin-right: 0.6em;
                     color: #aaa;
                     font-size: 0.8em;
-                    
+                    @include mobile {
+                        font-size: .6em;
+                    }
                 }
             }
         }
@@ -262,6 +270,7 @@ main {
         left: 0;
         overflow-y: scroll;
         height: 100%;
+        
     }
     .articleHidden{
         display: none;
@@ -288,6 +297,10 @@ main {
         width: 50%;
         margin: auto;
         transform: translateX(50%);
+        @include mobile {
+            width: 100%;
+            transform: translateX(0);
+        }
         img{
             width: 1.8em;
             height: 1.8em;
@@ -320,10 +333,14 @@ main {
         .article_view_content{
             p{
                 line-height: 1.6;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
         }
         .narrow{
             padding: 2% 16.666666%;
+            @include mobile {
+                padding: 2% 1%;
+            }
         }
         /* 功能列-- 愛心回應數分享等等*/
         .article_using{

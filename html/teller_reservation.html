@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解星鏡 Mistro</title>
+    <link rel="stylesheet" href="css/teller_reservation.css">
+    
+</head>
+<body>
+    
+    <!-- 網頁頭 by NJ -->
+    @@include('layout/header.html')
+
+
+
+<!-- 網頁內容 -->
+<main>
+
+    <!-- 預約內容 -->
+    <section class="teller_reservation">
+        <div class="container">
+            <!-- 占卜師照片、介紹 (上半左側)-->
+            <div class="teller_profile">
+                <div class="img_box">
+                    <img src="https://pbs.twimg.com/media/DijasLaVQAAeJgv?format=jpg&name=900x900">
+                </div>
+                <div class="txt_box">
+                    <h3>
+                        Windward
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus mollitia excepturi quam ab, veniam recusandae fugiat modi perferendis quis corrupti ipsam beatae aut nobis accusamus dicta expedita ipsa perspiciatis molestiae?
+                    </p>
+                </div>
+            </div>
+            <!-- 桌機版上半右側 -->
+            <div class="reservation_form">
+                <!-- 預約個人資料表單 -->
+                <div class="reservation_calendar">
+                    <div class="img_box">
+                        <img src="https://picsum.photos/300/200/?random=10">
+                    </div>
+                </div>
+                <div class="teller_form">
+                    <form action="">
+                        <label>
+                            名　　稱
+                            <input type="text" id="name">
+                        </label>
+                        <label>性　　別
+                            <input type="radio" name="gender" value="male"> 男生
+                            <input type="radio" name="gender" value="female"> 女生
+                        </label>
+                        <label>生　　日
+                            <input type="date">
+                        </label>
+                        <label>電　　話
+                            <input type="text">
+                        </label>
+                    </form>
+                    <!-- 表單按鈕 -->
+                    <div class="teller_btn">
+                        <button class="primary_btn">送出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 討論區 -->
+    <section class="teller_board">
+        <div class="container">
+            <div class="txt_box">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam dolorum quam architecto dignissimos voluptatum ipsa.
+                </p>
+            </div>
+            <div class="txt_box">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam dolorum quam architecto dignissimos voluptatum ipsa.
+                </p>
+            </div>
+            <div class="txt_box">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam dolorum quam architecto dignissimos voluptatum ipsa.
+                </p>
+            </div>
+            <div class="txt_box">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam dolorum quam architecto dignissimos voluptatum ipsa.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+<!-- 網頁尾 By NJ -->
+@@include('layout/footer.html')
+
+<script src="js/common.js"></script>
+</body>
+</html>
