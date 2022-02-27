@@ -26,9 +26,7 @@
                 
 				<!-- 抽牌圈 -->
                 <div class="all">
-                    <ul class="cards">
-                        <div class="selected-event"></div>
-                    </ul>
+                    <ul class="cards"></ul>
                 </div>
 
 				<!-- 占卜詳解 -->
@@ -117,15 +115,19 @@
 		// 若選擇抽出來的卡，顯示解析
 		if (card.classList.contains('selected')) {
 			// 加入一點點的動畫畫畫畫畫
-			gsap.set('.all', {perspective: 500});
+			// let rotateCard = (idx > 10) ? 720 : -720;
+			gsap.set('.all', {perspective: 1000});
 			gsap.set('ul', {transformStyle: 'reserve-3d'});
+			gsap.set('li.event.selected', {rotationX: 0, transition: 0})
 			gsap.to('li.event.selected', {
 				duration: 1,
-				rotationX: -900,
+				rotationX: 720,
 				scale: 3,
-				// ease:Back.easeOut,
+				boxShadow: '0 0 5px 0.5em #CFB886',
+				ease: Power1.easeOut,
+
 				// 或是可以改成釘在卡片上面
-				onComplete: () => document.querySelectorAll('.content_box')[0].style.display = 'block',
+				onComplete: showDetail
 			});
 
 			return false;
@@ -164,6 +166,23 @@
 			// 抽出牌後面的牌編號往前補位
 			allCard[i].style.setProperty('--event-index', i-1);
 		}
+	}
+
+	function showDetail() {
+		// document.querySelectorAll('.content_box')[0].style.display = 'block';
+		let selectCard = document.querySelector('li.event.selected');
+		let detailBox = document.createElement('div');
+		detailBox.classList.add('detail-box');
+		detailBox.style.opacity = 0;
+		
+		selectCard.append(detailBox);
+		gsap.from(selectCard, {boxShadow: '0 0 5px 0.5em #CFB886'});
+		gsap.to(selectCard, {
+			repeat: -1,
+			duration: 1,
+			boxShadow: '0 0 5px 0.4em #CFB886',
+			yoyo: true,
+		});
 	}
 </script>
 

@@ -82,6 +82,13 @@ button,
     border: 1px #CFB886 solid;
 }
 
+/* 抽牌結果 */
+.detail-box {
+    width: 100%;
+    height: 100px;
+    background-color: #fa0;
+}
+
 /* 抽牌圈 */
 .all{
     padding-top: 15em;
@@ -101,7 +108,7 @@ ul > li {
     grid-template-areas: "itemoverlap";
     --rotate: calc(360deg / var(--event-count) * var(--event-index));
     transform: rotate(var(--rotate)) translateX(20em) scale(var(--scale, 1));
-    transition: all 250ms ease;
+    transition: all 400ms ease;
 }
 
 ul > li.event {
@@ -133,7 +140,7 @@ ul > li.event > * {
 ul > li.event > img {
     width: 12em;
     height: 8em;
-    aspect-ratio: 1;
+    /* aspect-ratio: 1; */
     object-fit: cover;
 }
 
