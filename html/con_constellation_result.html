@@ -1,0 +1,115 @@
+
+<!-- 拉到最後最大 會跑版一點? -->
+<!-- 圓餅圖flotcontainer固定寬高是否會出事? 改成%數會不見 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/real_constellation_result.css">
+    <script src="../js/vue.js"></script>
+      <!-- 下面引入是圓餅圖用的 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://static.pureexample.com/js/flot/excanvas.min.js"></script>
+    <script src="http://static.pureexample.com/js/flot/jquery.flot.min.js"></script>
+    <script src="http://static.pureexample.com/js/flot/jquery.flot.pie.min.js"></script>
+    <style type="text/css">
+        #flotcontainer {
+            width: 600px;
+            height: 400px;
+            text-align: left;
+        }
+        #legendPlaceholder {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    @@include('layout/header.html')
+    <!-- <div id="legendPlaceholder"></div>
+    <div id="flotcontainer"></div> -->
+  <main>  
+    <div id="app">
+        <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
+        <section class="pagination_nav">
+            <div class="container">
+                <ul>
+                    <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
+                </ul>
+            </div>
+        </section>        
+    </div>
+    <section class="real_constellation real">
+        <!-- 控制padding的容器 -->
+        <div class="container">
+              <h2>真實星座</h2>
+            <p>你的真實星座是:</p>
+          <!-- 包住圖文的容器   -->
+            <div class="answer">
+                <div id="legendPlaceholder"></div>
+                <div id="flotcontainer"></div>
+                
+            
+                <div class="again"><input type="button" value="再測一次" onclick="location.href='con_real_constellation.html'"></div>
+               
+            </div>
+        </div>
+        </section>
+    </main>
+    @@include('layout/footer.html')
+    <script src="css/common.css"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                urls: {
+                    '今日運勢': 'con_today_fortune.html',
+                    '星座配對': 'con_pair.html',
+                    '真實星座': 'back.html',
+                    '星盤推算': 'astrolabe.html',
+                    '星座故事': 'con_story.html',
+                    '星座討論區': 'discuss.html',
+                },
+                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+            }
+        });
+    </script>
+     <script type="text/javascript">
+        $(function () { 
+            var data = [
+                {label: "天秤座", data:10},
+                {label: "天蠍座", data: 20},
+                {label: "水瓶座", data: 30},
+                {label: "巨蟹座", data: 40},
+                {label: "牡羊座", data: 50},
+                {label: "金牛座", data: 60},
+                {label: "射手座", data: 100},
+                {label: "處女座", data: 20},
+                {label: "獅子座", data: 20},
+                {label: "摩羯座", data: 10},
+                {label: "雙子座", data: 30},
+                {label: "雙魚座", data: 20}
+
+            ];
+
+            
+
+        
+            var options = {
+                    series: {
+                        pie: {show: true}
+                    },
+                    legend: {
+                        show: false
+                    }
+                 };
+        
+            $.plot($("#flotcontainer"), data, options);  
+        });
+    </script>
+
+</body>
+</html>

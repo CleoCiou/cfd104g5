@@ -1,5 +1,4 @@
-<!-- 看要不要用https://codepen.io/mburridge/pen/PdJZep改寫 -->
-
+<!-- 圖片是否一開始要先裁好?然後圖片用之前要先解壓縮會比較好 圖片最好用png檔 -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/real_constellation.css">
+    <link rel="stylesheet" href="css/real_constellation_2page.css">
     <script src="../js/vue.js"></script>
+    <script src="/js/con_real_constellation_buy.js"></script>
 </head>
 <body>
     @@include('layout/header.html')
-   <main>
+  <main>
     <div id="app">
         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
         <section class="pagination_nav">
@@ -27,10 +26,27 @@
     </div>
     <h2>真實星座</h2>
         <section class="real_constellation real">
-            <p>水瓶座的獨特思想，雙魚座的多愁善感，獅子座的爽朗大方，天蠍座的幫理又幫親……是不是覺得這些星座特質在你身上或多或少有所呈現？研究星盤太複雜，出生精確時分也很難確證，不如來試試看我們的【真實星座測試】！</p>
-            <input type="button" value="開始測試" onclick="location.href='con_real_constellation_buy.html'">
+           <!-- 控制padding的容器 -->
+            <div class="container">
+                <div class="pic"><img id="initimg" src="https://fakeimg.pl/250x100/"></div>
+                <p>平常喜歡的興趣?</p>
+              <!-- 包住圖文的容器   -->
+                <div class="answer">
+                    <div class="btn third_btn" id="star">
+                        <a href="con_constellation_result.html"><span>踢足球</span></a>
+                        <input type="text" value="images/con_pair.jpg" hidden>
+                    </div>
+                    <div class="btn third_btn" id="moon">
+                        <a href="con_constellation_result.html"><span>看書</span></a>
+                        <input type="text" value="images/full_moon_night_black_dark_sky_astronomy_universe_planet-683587.jpg" hidden>
+                    </div>
+                    
+                    <!-- <input type="button" value="月亮" name="moon" onclick="location.href='con_constellation_go.html'"> -->
+                </div>
+            </div>
+            
         </section>
-    </main>
+    </main> 
     @@include('layout/footer.html')
     <script src="js/common.js"></script>
     <script>
