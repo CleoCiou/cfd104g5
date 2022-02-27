@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/draw_cards2.css">
+    <title>解星鏡 Mistro | 塔羅</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
+</head>
+<body>
+    
+<!-- header -->
+
+<!-- 線上占卜 by NJ -->
+<main>
+    <section class="draw_cards">
+        <div class="container">
+
+    		<!-- 抽牌 -->
+            <div class="cards_box">
+                <h2>抽牌</h2>
+                
+				<!-- 抽牌圈 -->
+                <div class="all">
+                    <ul class="cards"></ul>
+                </div>
+
+                
+				<!-- 占卜詳解 -->
+				<div class="content_box">
+					<div class="lightbox" id="popup">
+						<div class="content">
+							<div class="item">
+                                <!-- 解牌的左邊選單 下面script有加動畫 by JC -->
+                                <a href="draw_cards_old.html">重新抽牌</a>
+                                <a href="teller_mem.html">占卜師總覽</a>
+                                <a href="be_teller.html">體驗占卜師</a>
+                                <a href="shop.html">前往商城</a>
+							</div>
+					    </div>
+				    </div>
+                </div>
+                <!-- END by JC -->
+
+        </div>
+    </section>
+</main>
+
+<!-- footer -->
+
+<script>
+	// 牌數
+	const CARDINDEX = 22;
+	// 抽牌圈
+	const CARDSEL = document.querySelector('.cards');
+	// 預選牌
+	let selectedIndex = 0;
+	// 設定抽牌圈牌數
+	CARDSEL.style.setProperty('--event-count', CARDINDEX);
+
+	init();
+	function init() {
+		// 創造抽牌圈
+		for(let i = 0; i < CARDINDEX; i++) {
+			const EVENTEL = document.createElement('li');
+			EVENTEL.classList.add('event');
+			// 設定牌的旋轉角度
+			EVENTEL.style.setProperty('--event-index', i);
+			// 抽牌放中間
+			EVENTEL.addEventListener('click',selectCard);
+			// 創造牌的背景圖片
+			const IMGEL = document.createElement('img');
+			IMGEL.src = './images/draw_cards/draw_cards_back.jpg';
+			// 將圖片放在牌上
+			EVENTEL.append(IMGEL);
+			// 將牌放進抽牌圈
+			CARDSEL.append(EVENTEL);
+		}
+	}
+
+	function selectCard(e) {
+
+		// 取得選擇的卡片
+		let card = e.target.parentNode;
+		let idx = card.style.getPropertyValue('--event-index');
+
+		// 抽牌圈數量
+		let allCard = document.querySelectorAll('li.event');
+
+		// 若選擇抽出來的卡，顯示解析
+		if (card.classList.contains('selected')) {
+			// 加入一點點的動畫畫畫畫畫
+			// let rotateCard = (idx > 10) ? 720 : -720;
+			gsap.set('.all', {perspective: 1000});
+			gsap.set('ul', {transformStyle: 'reserve-3d'});
+			gsap.set('li.event.selected', {rotationX: 0, transition: 0})
+			gsap.to('li.event.selected', {
+				duration: 1,
+				rotationX: 720,
+				scale: 3,
+				boxShadow: '0 0 5px 0.5em #CFB886',
+				ease: Power1.easeOut,
+
+				// 或是可以改成釘在卡片上面
+				onComplete: showDetail
+			});
+
+			return false;
+		}
+
+		// 若已有選擇卡片，使其復位
+		let selectedCard = document.querySelector('.selected');
+		if (selectedCard) {
+			selectedCard.classList.remove('selected');
+			selectedCard.style.removeProperty('transform');
+
+			// 一圈22張牌
+			card.parentNode.style.setProperty('--event-count', 22);
+			// 取得先前選到牌的編號
+			let selectedIdx = selectedCard.style.getPropertyValue('--event-index');
+			for (let i = (parseInt(selectedIdx)+1); i < 22; i++) {
+				// 抽出牌後面牌的號碼往後歸位
+				allCard[i].style.setProperty('--event-index', i);
+			}
+		}
+
+		// 設定選擇卡片出來的旋轉方向
+		card.classList.add('selected');
+		if (idx > 10) {
+			// 左邊抽牌出來順時針旋轉
+			card.style.transform = 'rotate(360deg)';
+		}
+		else {
+			// 右邊抽牌出來逆時針旋轉
+			card.style.transform = 'none';
+		}
+
+		// 抽一張牌，一圈剩21張牌
+		card.parentNode.style.setProperty('--event-count', 21);
+		for (let i = (parseInt(idx) + 1); i < 22; i++) {
+			// 抽出牌後面的牌編號往前補位
+			allCard[i].style.setProperty('--event-index', i-1);
+		}
+	}
+
+	function showDetail() {
+		document.querySelectorAll('.content_box')[0].style.display = 'block';
+		let selectCard = document.querySelector('li.event.selected');
+		let detailBox = document.createElement('div');
+		detailBox.classList.add('detail-box');
+		detailBox.style.opacity = 0;
+		
+		selectCard.append(detailBox);
+		gsap.from(selectCard, {boxShadow: '0 0 5px 0.5em #CFB886'});
+		gsap.to(selectCard, {
+			repeat: -1,
+			duration: 1,
+			boxShadow: '0 0 5px 0.4em #CFB886',
+			yoyo: true,
+            
+		});
+        //解牌的左邊選單 by JC 
+        gsap.fromTo('.content_box', {
+            autoAlpha: 0,
+        },{
+            autoAlpha: 1,
+            duration: 0.8,
+        })
+        //END by JC
+	}
+</script>
+
+</body>
+</html>
