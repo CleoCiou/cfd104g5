@@ -399,7 +399,7 @@
                     price:'2300',
                     count:'1'
                 },
-            ],
+            ]
         },
         methods:{
             handlePlus: function(item){
@@ -422,7 +422,7 @@
         computed:{
             total() {
                 let subtotal = 0;
-                for (let i = 0; i < this.itemList.length; i++) {
+                for (let i = 0; i < itemList.length; i++) {
                     subtotal += this.sum(i);
                 }
                 return subtotal;
