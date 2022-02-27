@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解星鏡 Mistro</title>
+    <link rel="stylesheet" href="css/product.css">
+    <script src="js/owl.carousel.min.jss"></script>
+    <script src="js/owl.carousel.js"></script>
+
+    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
+</head>
+<body>
+<!-- 產品 -->   
+
+<!-- 網頁頭 by NJ -->
+<!-- <header class="main_header"></header> -->
+@@include('layout/header.html')
+
+<!-- 產品內頁區塊 by ZH -->
+<main>
+    <!-- 產品標題 -->
+    <section class="product_inner_page">
+        <div class="container">
+            <div class="product_inner_box">
+
+                <div class="product_inner_img_left">
+                    <div class="product_inner_img_large">
+                        <img id="large" src="../images/product_inner_page/Constellation/wristband/aries/aries_single_main.png">
+                    </div>
+
+                    <div class="product_inner_img_small">
+                        <img src="images/product_inner_page/Constellation/wristband/aries/aries_single_main.png" class="small"/>
+	                    <img src="images/product_inner_page/Constellation/wristband/aries/aries_single_sec.png" class="small"/>
+	                    <img src="images/product_inner_page/Constellation/wristband/aries/aries_style_main.jpg" class="small"/>
+                    </div>
+                </div>
+
+                <div class="product_inner_txt_right">
+                    <h3>星座手環-牡羊座</h3>
+                    <h4>NT$1,299元</h4>
+                    
+                    <form>
+                        <input class="quantity input_reduce" type=button value="-"><input class="quantity input_value" type=text name=a mount value="1"><input class="quantity input_add" type=button value="+">
+                    </form>
+                    
+                    <div class="buy_box">
+                        <a href="#"><input type="submit" id="submit" value="立即購買" class="primary_btn"></a>
+                        <a href="#"><input type="submit" id="submit" value="加入購物車" class="third_btn"></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="product_detail_txt">
+                <div class="d">
+                    <h4>商品詳情</h4>
+                </div>
+                <p>
+                    ★ 316L 醫療級白鋼<br>
+                    ★ 八心八箭璀璨CZ美鑽<br>
+                    ★ 白鋼珠寶極致工藝之美<br>
+                </p>
+                
+            </div>
+
+
+            <div class="recommended_products">
+                <h4>推薦商品</h4>
+                <div class="recommended_products_img">
+                    <div class="owl-carousel owl-theme">
+                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_aquarius.png" alt="" onclick="pic(0)"></a>
+                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_aries.png" alt="" onclick="pic(1)"></a>
+                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_cancer.png" alt="" onclick="pic(2)"></a>
+                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_capricorn.png" alt="" onclick="pic(3)"></a>
+                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_gemini.png" alt="" onclick="pic(4)"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        
+    </section>
+
+</main>
+
+
+<!-- 網頁尾 By NJ -->
+<!-- <footer class="main_footer"></footer> -->
+@@include('layout/footer.html')
+
+<script src="js/common.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>
