@@ -73,7 +73,30 @@
 
 }
 /* 購物車body */
-.shopping_cart .container .cart_detail .cart_body .product_box {
+.shopping_cart .container .cart_detail .cart_body .cart_body_box{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #CFB886;
+}
+.shopping_cart .container .cart_detail .cart_body .cart_body_box>div{
+    width: 25%;
+    text-align: right;
+}
+.shopping_cart .container .cart_detail .cart_body .cart_card .img_box{
+    padding: 0.5em;
+}
+.shopping_cart .container .cart_detail .cart_body .cart_card .img_box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.shopping_cart .container .cart_detail .cart_body .cart_card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.5em;
+}
+/* .shopping_cart .container .cart_detail .cart_body .product_box {
     display: flex;
     align-items: center;
     padding: 3%;
@@ -96,6 +119,7 @@
 }
 .shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .img_box {
     height: 5em;
+    margin-bottom: 0.5em;
 }
 .shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .img_box img{
     width: 100%;
@@ -123,7 +147,7 @@
     position: absolute;
     right: 0.5em;
     top: 0.5em;
-}
+} */
 /* 填寫資料區 */
 .cart_deliver .container .cart_info_right .confirm_btns{
     text-align: right;
