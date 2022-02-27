@@ -54,80 +54,12 @@
                                 {{item.count}}
                                 <button @click="handlePlus(item)">+</button>
                             </div> 
-                            <div class="amount"><span>NT$</span>{{sum}}</div>
-                            <!-- <div class="operate">
-                                <button @click="handledelete(index)">刪除</button>
-                            </div> -->
+                            <div class="amount"><span>NT$</span>{{sum(index)}}</div>
+                            <div class="operate">
+                                <button @click="handledelete(index)">x</button>
+                            </div>
                         </div>
                     </div>                        
-                    <!-- <div class="cart_body">
-
-                        <div class="product_box">
-                            <div class="item_detail">
-                                <div class="cart_card">
-                                    <div class="img_box">
-                                        <img src="images/shop/Constellation/key_ring/key_ring_leo.jpg">
-                                    </div>
-                                    <div class="txt_box">
-                                        <p>獅子座鑰匙圈</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price">
-                                <p class="cart_price">NT$1,000</p>
-                            </div>
-                            <div class="count">
-                                <button class="btnMinus">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                                <input type="number"
-                                class="cart_quantity" value="2">
-                                <button class="btnPlus">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-                            <div class="amount">
-                                <p>$2,000</p>
-                            </div>
-                            <div class="delete_button">
-                                <button class="remove_btn">
-                                    <i class="fa-solid fa-x"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product_box">
-                            <div class="item_detail">
-                                <div class="cart_card">
-                                    <div class="img_box">
-                                        <img src="images/shop/Constellation/key_ring/key_ring_scorpion.jpg">
-                                    </div>
-                                    <div class="txt_box">
-                                        <p>天蠍座鑰匙圈</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price">
-                                <p>$1,000</p>
-                            </div>
-                            <div class="count">
-                                <button>
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                                <p>2</p>
-                                <button>
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-                            <div class="amount">
-                                <p>$2,000</p>
-                            </div>
-                            <div class="delete_button">
-                                <button class="remove_btn">
-                                    <i class="fa-solid fa-x"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -154,13 +86,13 @@
                 <div class="cart_info_right">
                     <div class="order_total">
                         <div class="first_price">
-                            <h4>小計：NT$4,000</h4>
+                            <h4>小計：NT${{total}}</h4>
                         </div>
                         <div class="delivery_fee">
                             <h4>運費：NT$60</h4>
                         </div>
                         <div class="total_price">
-                            <h4>總計：NT$4,060</h4>
+                            <h4>總計：NT${{total+60}}</h4>
                         </div>
                     </div>
                     <div class="confirm_btns">
@@ -231,35 +163,37 @@
     new Vue({
         el:'#app',
         data:{
+            // subtotal: 0,
             itemList:[
                 {
                     id:'1',
-                    itemName:'優質短袖白T',
-                    imgUrl:'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+                    itemName:'水瓶座鑰匙圈',
+                    imgUrl:'images/shop/Constellation/ring/ring_aquarius.jpg',
                     price:'500',
                     count:'2'
                 },
                 {
                     id:'2',
-                    itemName:'骷髏手短黑T',
-                    imgUrl:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+                    itemName:'巨蟹座項鍊',
+                    imgUrl:'images/shop/Constellation/necklace/necklace_cancer.png',
                     price:'790',
                     count:'3'
                 },
                 {
                     id:'3',
-                    itemName:'超時尚牛仔庫',
-                    imgUrl:'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
+                    itemName:'雙魚座項鍊',
+                    imgUrl:'images/shop/Constellation/necklace/necklace_pisces.png',
                     price:'1200',
                     count:'1'
                 },
                 {
                     id:'4',
-                    itemName:'質感褐色系大衣服',
-                    imgUrl:'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+                    itemName:'雙子座鑰匙圈',
+                    imgUrl:'images/shop/Constellation/ring/ring_gemini.jpg',
                     price:'2300',
                     count:'1'
                 },
+
             ]
         },
         methods:{
@@ -276,11 +210,18 @@
                 console.log(this);
                 this.itemList.splice(index,1);
             },
+            sum(idx){
+                return parseInt(this.itemList[idx].price) * parseInt(this.itemList[idx].count)
+            }
             
         },
         computed:{
-            sum(){
-                return parseInt(this.price) * parseInt(this.count)
+            total() {
+                let subtotal = 0;
+                for(let i = 0; i < this.itemList.length; i++){
+                    subtotal += this.sum(i);
+                }
+                return subtotal;
             }
         }
 })

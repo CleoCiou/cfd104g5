@@ -14,22 +14,21 @@
     <!-- 網頁頭 by NJ -->
     <!-- 網頁頭 by NJ-->
 <header class="main_header">
-
-
+    
     <!-- main logo -->
     <div class="header_all">
         <!-- main logo -->
         <div class="header_img_box">
-            <a href="#" class="logo">
-                <img src="images/index_logo_golden-02.png" alt="mistro logo">
+            <a href="index.html" class="logo">
+                <img src="./images/index_logo_golden-02.png" alt="首頁mistro logo">
             </a>
         </div>
             <!-- icon -->
         <div class="header_bar">
             <div class="header_icon">
-                <a href="/login.html"><p>登入</p></a>
-                <a href="/member.html"><img src="/images/header/header-member-02.png" alt="會員icon"></a>
-                <a href="/shopping_cart.html"><img src="/images/header/header_shopping cart.png" alt="購物車icon"></a>
+                <a href="login.html"><p>登入</p></a>
+                <a href="member.html"><img src="./images/header/header-member-02.png" alt="會員icon"></a>
+                <a href="shopping_cart.html"><img src="./images/header/header_shopping cart.png" alt="購物車icon"></a>
             </div>
         
 
@@ -38,6 +37,7 @@
                 <input id="nav_toggle" type="checkbox">
                 <label for="nav_toggle" class="ham no_style">
                     <div class="ham_origin">
+                        <!-- 漢堡的槓槓 -->
                         <div></div>
                         <div></div>
                         <div></div>
@@ -48,13 +48,13 @@
                     <div class="crystal_ball">
                     </div>
                     <div class="rotate_card">
-                        <a href="/be_teller.html">
+                        <a href="be_teller.html">
                             <div class="menu_card tarot"></div>
                         </a>
-                        <a href="">
+                        <a href="con_today_fortune.html">
                             <div class="menu_card zodiac"></div>
                         </a>
-                        <a href="/shop.html">
+                        <a href="shop.html">
                             <div class="menu_card shop"></div>
                         </a>
                     </div>
@@ -65,37 +65,37 @@
                                 塔羅
                             </a>
                             <ul class="sub_menu">
-                                <li><a href="/be_teller.html">體驗占卜師</a></li>
-                                <li><a href="/online_divination.html">線上占卜</a></li>
-                                <li><a href="/teller_reservation.html">預約占卜師</a></li>
+                                <li><a href="be_teller.html">體驗占卜師</a></li>
+                                <li><a href="online_divination.html">線上占卜</a></li>
+                                <li><a href="teller_reservation.html">預約占卜師</a></li>
                             </ul>
                         </li>
                         <li class="menu_item">
                             <a class="menu_link" href="#">
                                 星座</a>
                             <ul class="sub_menu">
-                                <li><a href="/con_today_fortune.html">每日運勢</a></li>
-                                <li><a href="/con_real_constellation.html">真實星座測驗</a></li>
-                                <li><a href="/con_pair.html">星座配對</a></li>
-                                <li><a href="/discuss.html">討論區</a></li>
+                                <li><a href="con_today_fortune.html">每日運勢</a></li>
+                                <li><a href="con_real_constellation.html">真實星座測驗</a></li>
+                                <li><a href="con_pair.html">星座配對</a></li>
+                                <li><a href="discuss.html">討論區</a></li>
                             </ul>
                         </li>
                         <li class="menu_item">
-                        <a class="menu_link" href="/shop.html">
+                        <a class="menu_link" href="shop.html">
                             商城</a>
                         </li>
                         <li class="menu_item">
                             <a class="menu_link menu_member" href="#">會員專區</a>
                             <ul class="sub_menu">
-                                <li><a href="/member.html">個人資訊</a></li>
-                                <li><a href="/mem_reservation.html">我的預約</a></li>
-                                <li><a href="/mem_orders.html">我的訂單</a></li>
-                                <li><a href="/teller_mem.html">占卜師專區</a></li>
+                                <li><a href="member.html">個人資訊</a></li>
+                                <li><a href="mem_reservation.html">我的預約</a></li>
+                                <li><a href="mem_orders.html">我的訂單</a></li>
+                                <li><a href="teller_mem.html">占卜師專區</a></li>
                             </ul>
                         </li>
                         <li class="menu_item">
-                        <a class="menu_link menu_login" href="/login.html">登入</a>
-                        <a class="menu_link menu_login" href="/login.html">註冊</a>
+                        <a class="menu_link menu_login" href="login.html">登入</a>
+                        <a class="menu_link menu_login" href="login.html">註冊</a>
                         </li>
                     </ul>
                 </nav>
@@ -118,14 +118,14 @@
 
 
 <!-- 網頁內容 -->
-    <main>
+    <main id="app">
         <!-- 購物車流程 -->
         <section class="shopping_circle">
             <div class="container">
                 <ol class="shopping_process">
-                    <li class="item active">確認商品</li>
+                    <li class="item">確認商品</li>
                     <li class="item">填寫資料</li>
-                    <li class="item">訂單確認</li>
+                    <li class="item active">訂單確認</li>
                 </ol>
             </div>
         </section>    
@@ -141,50 +141,21 @@
                         <div class="amount">總計</div>
                     </div>
                     <!-- 購物車body -->
-                    <div class="cart_body">
-                        <div class="product_box">
+                    <div class="cart_body" v-for="(item, index) in itemList" :key="item.id" >
+                        <div class="cart_body_box">
                             <div class="item_detail">
                                 <div class="cart_card">
-                                    <div class="img_box">
-                                        <img src="https://picsum.photos/300/200/?random=10">
-                                    </div>
-                                    <div class="txt_box">
-                                        <p>開運小物</p>
-                                    </div>
+                                    <div class="img_box"><img v-bind:src="item.imgUrl" alt=""></div>
+                                    <div class="txt_box"><p>{{item.itemName}}</p></div>
                                 </div>
                             </div>
-                            <div class="price">
-                                <p>$1,000</p>
-                            </div>
+                            <div class="price"><span>NT$</span>{{item.price}}</div>
                             <div class="count">
-                                <p>2</p>
-                            </div>
-                            <div class="amount">
-                                <p>$2,000</p>
-                            </div>
+                                {{item.count}}
+                            </div> 
+                            <div class="amount"><span>NT$</span>{{sum(index)}}</div>
                         </div>
-                        <div class="product_box">
-                            <div class="item_detail">
-                                <div class="cart_card">
-                                    <div class="img_box">
-                                        <img src="https://picsum.photos/300/200/?random=10">
-                                    </div>
-                                    <div class="txt_box">
-                                        <p>開運小物</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price">
-                                <p>$1,000</p>
-                            </div>
-                            <div class="count">
-                                <p>2</p>
-                            </div>
-                            <div class="amount">
-                                <p>$2,000</p>
-                            </div>
-                        </div>
-                    </div>
+                    </div>        
                 </div>
             </div>
         </section>
@@ -208,13 +179,13 @@
                 <div class="cart_info_right">
                     <div class="order_total">
                         <div class="first_price">
-                            <h4>小計：NT$4,000</h4>
+                            <h4>小計：NT${{total}}</h4>
                         </div>
                         <div class="delivery_fee">
                             <h4>運費：NT$60</h4>
                         </div>
                         <div class="total_price">
-                            <h4>總計：NT$4,060</h4>
+                            <h4>總計：NT${{total+60}}</h4>
                         </div>
                     </div>
                     <div class="confirm_btns">
@@ -281,24 +252,24 @@
     <div class="footer_up">
         
         <a href="#" class="footer_logo">
-            <img src="/images/logo_golden.png" alt="解星鏡logo">
+            <img src="./images/logo_golden.png" alt="解星鏡logo">
         </a>
         
         <div class="footer_nav">
             <ul>
-                <li><a href="/index.html#int">介紹</a></li>
-                <li><a href="/index.html#text">占卜</a></li>
-                <li><a href="/index.html#text">星座</a></li>
-                <li><a href="/index.html#hft">熱門占卜師</a></li>
-                <li><a href="/index.html#hp">主打商品</a></li>
-                <li><a href="#">會員中心</a></li>
+                <li><a href="index.html#int">介紹</a></li>
+                <li><a href="index.html#text">占卜</a></li>
+                <li><a href="index.html#text">星座</a></li>
+                <li><a href="index.html#hft">熱門占卜師</a></li>
+                <li><a href="index.html#hp">主打商品</a></li>
+                <li><a href="member.html">會員中心</a></li>
             </ul>
         </div>
 
         <div class="footer_icon">
-            <a href=""><img src="/images/footer/icon-fb.png" alt=""></a>
-            <a href=""><img src="/images/footer/icon-ig.png" alt=""></a>
-            <a href=""><img src="/images/footer/icon-yt.png" alt=""></a>
+            <a href="#"><img src="./images/footer/icon-fb.png" alt=""></a>
+            <a href="#"><img src="./images/footer/icon-ig.png" alt=""></a>
+            <a href="#"><img src="./images/footer/icon-yt.png" alt=""></a>
         </div>
     </div>
 
@@ -314,7 +285,77 @@
         </div>
     </div>
 </footer>
+<script src="js/vue.js"></script>
 <script src="js/common.js"></script>
+<script>
+    
+    new Vue({
+        el:'#app',
+        data:{
+            // subtotal: 0,
+            itemList:[
+                {
+                    id:'1',
+                    itemName:'水瓶座鑰匙圈',
+                    imgUrl:'images/shop/Constellation/ring/ring_aquarius.jpg',
+                    price:'500',
+                    count:'2'
+                },
+                {
+                    id:'2',
+                    itemName:'巨蟹座項鍊',
+                    imgUrl:'images/shop/Constellation/necklace/necklace_cancer.png',
+                    price:'790',
+                    count:'3'
+                },
+                {
+                    id:'3',
+                    itemName:'雙魚座項鍊',
+                    imgUrl:'images/shop/Constellation/necklace/necklace_pisces.png',
+                    price:'1200',
+                    count:'1'
+                },
+                {
+                    id:'4',
+                    itemName:'雙子座鑰匙圈',
+                    imgUrl:'images/shop/Constellation/ring/ring_gemini.jpg',
+                    price:'2300',
+                    count:'1'
+                },
+
+            ]
+        },
+        methods:{
+            handlePlus: function(item){
+                item.count++;
+            },
+            handleSub: function(item){
+                if(item.count>1){
+                item.count--;                
+                }
+            },
+
+            handledelete: function(index){
+                console.log(this);
+                this.itemList.splice(index,1);
+            },
+            sum(idx){
+                return parseInt(this.itemList[idx].price) * parseInt(this.itemList[idx].count)
+            }
+            
+        },
+        computed:{
+            total() {
+                let subtotal = 0;
+                for(let i = 0; i < this.itemList.length; i++){
+                    subtotal += this.sum(i);
+                }
+                return subtotal;
+            }
+        }
+})
+</script>
+
 
 </body>
 </html>
