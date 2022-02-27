@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <title>解星鏡 Mistro | 星座</title>
-
-    <!-- <link rel="stylesheet" href="css/astrolabe.css"> -->
     <script src="../js/vue.js"></script>
+    <script src="../js/astro_bg.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
     <!-- 網頁頭 by NJ -->
@@ -26,7 +26,7 @@
                 <div class="astrolabe_start_box">
                      <!-- 底圖 -->
                     <div class="img_box start">
-                        <img src="images/constellation/bg_astrolabe.svg" class="astrolabe_bg">
+                        <canvas id="canvas" width="1064" height="1064"></canvas>
                         <!-- 自訂的大按鈕 -->
                         <div class="btn_box">
                             <a href="#"><button class="primary_btn big_style" id="startBtn"><p>開始推算</p></button></a>
@@ -67,24 +67,17 @@
     
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
-    <script>
-        new Vue({
-            el: '#app',
-            data: { //變數放這
-                urls: {
-                    '今日運勢': 'con_today_fortune.html',
-                    '星座配對': 'con_pair.html',
-                    '真實星座': 'con_real_constellation.html',
-                    '星盤推算': 'astrolabe.html',
-                    '星座故事': 'con_story.html',
-                    '星座討論區': 'discuss.html',
-                },
-                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
-            },
-        });
-        
-    </script>
         <script src="js/common.js"></script>
         <script src="js/astrolabe_start.js"></script>
+        <script>
+
+            gsap.to('#canvas',{
+                rotation: 360,
+                duration: 25,
+                repeat: -1,
+                ease: "none"
+            })
+
+        </script>
 </body>
 </html>

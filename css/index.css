@@ -132,6 +132,7 @@
 
     .hot_fortune_teller_icon img{
         border-radius: 50%;
+        width: 2%;
     }
 
 /* 主打商品 開始 */
@@ -167,18 +168,28 @@
 
     .hot_product_icon img{
         border-radius: 50%;
+        width: 25%;
     }
+
+   
 /* ============================= */
  /* 歡迎頁 */
 
+ .welcome_index_box{
+     display: flex;
+     justify-content: center;
+     padding-top: 5em;
+     text-align: center;
+ }
+ .front-end ,.back-end{
+     margin: 3em;
+
+ }
 
 
 
-     
 
-
-
-
+    
 /* 電腦 */
 @media screen and (min-width:768px) {
   

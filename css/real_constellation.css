@@ -72,5 +72,9 @@
         padding: 2% 8.333333%;
         margin-top: 10%;
     }
+    .real_constellation input{
+        margin-top: 5%;
+        box-sizing: border-box;
+    }
 
 }
