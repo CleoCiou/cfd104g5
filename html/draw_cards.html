@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/draw_cards.css">
+    <!-- <link rel="stylesheet" href="./css/draw_cards.css"> -->
     <title>解星鏡 Mistro | 塔羅</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
@@ -23,15 +23,15 @@
 
     		<!-- 抽牌 -->
             <div class="cards_box">
-                <h2>抽牌</h2>
-                
+                <p>請選擇一張牌</p>
+				
 				<!-- 抽牌圈 -->
                 <div class="all">
                     <ul class="cards"></ul>
                 </div>
 
 				<!-- 占卜詳解 -->
-				<div class="content_box">
+				<!-- <div class="content_box">
 					<div class="lightbox" id="popup">
 						<h2>解牌</h2>
 						<div class="content">
@@ -65,8 +65,20 @@
 							<a href=""><button type="button" class="second_btn ">前往商城</button></a>
 						</p>
 					</div>
-				</div>
+				</div> -->
             </div>
+
+			<!-- 占卜詳解 -->
+			<div class="detail_box">
+				<div class="img_box">
+					<div class="item font">
+						<img src="./images/tarot_cards/00The_fool.png">
+					</div>
+					<div class="item back">
+						<img src="./images/draw_cards/draw_cards_back.jpg">
+					</div>
+				</div>
+			</div>
 
         </div>
     </section>
@@ -84,6 +96,11 @@
 	let selectedIndex = 0;
 	// 設定抽牌圈牌數
 	CARDSEL.style.setProperty('--event-count', CARDINDEX);
+	// 抽牌提示
+	let words = document.querySelector('.cards_box > p');
+	let wordsTween;
+	// 解牌提示
+	let clickSelected;
 
 	init();
 	function init() {
@@ -103,6 +120,9 @@
 			// 將牌放進抽牌圈
 			CARDSEL.append(EVENTEL);
 		}
+
+		wordsTween =TweenMax.to(words, {opacity: 0, duration: 2, repeat: -1, yoyo: true});
+		// gsap.to($("ul.cards"), {rotate: 360, duration: 100, repeat: -1})
 	}
 
 	function selectCard(e) {
@@ -111,14 +131,27 @@
 		let card = e.target.parentNode;
 		let idx = card.style.getPropertyValue('--event-index');
 
+		// 關閉抽卡提示
+		wordsTween.kill();
+		words.style.opacity = 0;
+		// words.innerText = '解牌';
+		// words.classList.add('ans');
+
 		// 抽牌圈數量
 		let allCard = document.querySelectorAll('li.event');
 
 		// 若選擇抽出來的卡，顯示解析
 		if (card.classList.contains('selected')) {
+			gsap.to(CARDSEL, {
+				rotate: 10
+			})
+			gsap.to($('ul > li.event:not(.selected)'), {
+				'--scale': 0
+			})
+			gsap.to($('ul > li.event.selected'), {
+				rotate: 260
+			})
 			// 加入一點點的動畫畫畫畫畫
-			// let rotateCard = (idx > 10) ? 720 : -720;
-			gsap.set('.all', {perspective: 1000});
 			gsap.set('ul', {transformStyle: 'reserve-3d'});
 			gsap.set('li.event.selected', {rotationX: 0, transition: 0})
 			gsap.to('li.event.selected', {
@@ -128,14 +161,14 @@
 				boxShadow: '0 0 5px 0.5em #CFB886',
 				ease: Power1.easeOut,
 
-				// 或是可以改成釘在卡片上面
+			// 	// 或是可以改成釘在卡片上面
 				onComplete: showDetail
 			});
 
 			return false;
 		}
 
-		// 若已有選擇卡片，使其復位
+		// 若已有選擇卡片，使其復位，刪除該牌解牌提示特效
 		let selectedCard = document.querySelector('.selected');
 		if (selectedCard) {
 			selectedCard.classList.remove('selected');
@@ -145,7 +178,10 @@
 			card.parentNode.style.setProperty('--event-count', 22);
 			// 取得先前選到牌的編號
 			let selectedIdx = selectedCard.style.getPropertyValue('--event-index');
-			for (let i = (parseInt(selectedIdx)+1); i < 22; i++) {
+			// 移除解牌提示
+			selectedCard.removeAttribute('style');
+			clickSelected.kill(selectedCard);
+			for (let i = (parseInt(selectedIdx)); i < 22; i++) {
 				// 抽出牌後面牌的號碼往後歸位
 				allCard[i].style.setProperty('--event-index', i);
 			}
@@ -168,23 +204,50 @@
 			// 抽出牌後面的牌編號往前補位
 			allCard[i].style.setProperty('--event-index', i-1);
 		}
+
+		// 解牌提示特效
+		clickSelected = TweenMax.to(card, {duration: 1, repeat: -1, boxShadow: '0 0 10px 0.5em #CFB886CC', yoyo: true});
 	}
 
 	function showDetail() {
-		// document.querySelectorAll('.content_box')[0].style.display = 'block';
-		let selectCard = document.querySelector('li.event.selected');
-		let detailBox = document.createElement('div');
-		detailBox.classList.add('detail-box');
-		detailBox.style.opacity = 0;
-		
-		selectCard.append(detailBox);
-		gsap.from(selectCard, {boxShadow: '0 0 5px 0.5em #CFB886'});
-		gsap.to(selectCard, {
-			repeat: -1,
-			duration: 1,
-			boxShadow: '0 0 5px 0.4em #CFB886',
-			yoyo: true,
+		// 取得選擇的卡片
+		let card = document.querySelector('li.event.selected');
+		// 關閉解牌提示特效
+		clickSelected.kill();
+		card.removeAttribute('style');
+
+		// 取得解牌詳解容器，設定位置至抽到的卡
+		// 讓抽到的牌消失: 因為他兩面是一樣的
+		// 容器分正反面，翻過來會有詳解
+		// 顯示容器
+		let detailBox = document.querySelector('.detail_box .img_box');
+		$('.detail_box .img_box').css({
+			width: card.getBoundingClientRect().width,
+			height: card.getBoundingClientRect().height,
+			top: card.getBoundingClientRect().top,
+			left: card.getBoundingClientRect().left,
 		});
+
+		detailBox.parentNode.style.display = 'block';
+		$('ul.cards').css({display: 'none'});
+
+		// 設定轉場動畫讓視覺看起來順暢
+		gsap.fromTo(detailBox, {
+			rotationY: 0,
+			boxShadow: '0 0 20px .5em #CFB88688',
+		}, 
+		{
+			rotationY: 180,
+			translateX: '20vw',
+			boxShadow: '0 0 20px 1em #CFB88688',
+			duration: 1,
+		})
+
+		gsap.to($('.detail_box'), {
+			duration: 1,
+			backgroundColor: '#5555'
+		})
+		
 	}
 </script>
 

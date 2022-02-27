@@ -7,6 +7,7 @@
 @import "page/today_fortune";
 @import "page/login";
 @import "page/astrolabe";
+@import "page/draw_cards";
 
 * {
     font-family: 'Cinzel','Shippori Mincho', serif;
@@ -31,6 +32,7 @@ body {
     }
     background-color: map-get($primary_color, 'bg');
     main {
+        padding-top: 5em;
         > section {
             width: 100%;
             margin: auto;
