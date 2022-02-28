@@ -2537,52 +2537,6 @@ section.login .container .display_none {
   display: none;
 }
 
-@-webkit-keyframes halo {
-  0% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-  25% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  50% {
-    -webkit-box-shadow: 0px 0px 10px 5px #CFB886;
-            box-shadow: 0px 0px 10px 5px #CFB886;
-  }
-  75% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  100% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-}
-
-@keyframes halo {
-  0% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-  25% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  50% {
-    -webkit-box-shadow: 0px 0px 10px 5px #CFB886;
-            box-shadow: 0px 0px 10px 5px #CFB886;
-  }
-  75% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  100% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-}
-
 section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch {
   background-color: #555;
 }
@@ -2749,6 +2703,33 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item textarea {
   width: 95%;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify {
+  padding: 0;
+  margin-top: -1em;
+  border: none;
+  overflow: hidden;
+  height: 0;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul {
+  padding: 0.5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul li {
+  font-size: 0.9em;
+  padding: 0.3em;
+  color: #9999;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul li:before {
+  content: '\01F7CD';
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  font-size: 1.5em;
+  margin-right: 0.5em;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action {
