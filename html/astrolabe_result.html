@@ -25,7 +25,7 @@
                         <!-- 宮位分類欄 有11個該死的宮位 -->
                         <div class="chart_classification">
                             <ul>
-                                <li v-for="chart in charts"><label>{{chart}}</label></li>
+                                <li v-for="chart in charts" @click="changePanel" ><label>{{chart}}</label></li>
                             </ul>
                         </div>
                         
@@ -39,7 +39,8 @@
                                 </div>
                                 <!-- 星盤解讀內文 -->
                                 <div class="analyze_txt">
-                                    <h3>配合、協調才能將合作能量極大化</h3>
+                                    <h3>上升星座 天秤座</h3>
+                                    <h4>－配合、協調才能將合作能量極大化－</h4>
                                     <p>你一生都在追求平衡、打造屬於自己的基地。你們喜歡團隊合作，深信合作能將能量發揮到最大值。
                                         喜歡表現自己的配合與協調，你常常以大局為重，會儘量配合他人，也希望他人能配合自己，共創雙贏，但有時會不如預期而被辜負，把自己的心及執行力給卡住。不過你個性倔強，有苦不訴，面對威脅時，態度會出乎意料地強硬，有野心，但也講究天時與人和，時間或人到齊便容易一飛沖天。<br>
                                         
@@ -64,7 +65,7 @@
                             </div>
                             <!-- 貓頭鷹分類 -->
                             <div class="owl-carousel owl-theme display">
-                                <div class="item" v-for="chart in charts"><label>{{chart}}</label></div>
+                                <div class="item" v-for="chart in charts" ><label>{{chart}}</label></div>
                             </div>
                         </div>
                     </div>
@@ -150,6 +151,12 @@
             el: '#appList',
             data: {
                 charts: ['上升','太陽','月亮','水星','金星','火星','木星','土星','天王','海王','冥王'],
+                list: '',
+            },
+            methods: {
+                changePanel(e){
+                    console.log(e);
+                }
             },
         });
 

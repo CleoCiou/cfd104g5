@@ -183,7 +183,8 @@
                                             </div>
                                         </div>
                                         <div class="line_bottom">
-                                            <img :src="iconLike" class="likes" @click="changeLike" text="我喜歡">
+                                            <img :src="iconLike" class="likes" @click="changeLike">
+                                            
                                             <p>{{num}}讚</p>
                                             <img :src="iconMessage" >
                                             <p>28回應</p>
@@ -465,20 +466,32 @@
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
                 cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
                 imgURL: 'https://picsum.photos/90/90/?random=10',
-                iconLike: 'images/icon/icon_discuss_like.svg',
+                iconLike: './images/icon/icon_discuss_like.svg',
+                // iconLike: {
+                //     url: './images/icon/',
+                //     img: './icon_discuss_like.svg',
+                //     active: 'icon_discuss_likes.svg'
+                // },
                 iconLikeClick :'images/icon/icon_discuss_likes.svg',
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
+                // isChecked: 0,
             },
             methods: {
                 changeLike(e){
-                    this.$data.num +=1;
+                    // if(e.target.src == )
+                        console.log(e.target.src);
+                        console.log(this.$data.iconLike);
+                        this.$data.num +=1;
                     // if(e.target.text == "我喜歡"){
                     // }
                     // console.log(e.target.text);
                     // console.log(e);
                     // console.log(this.$data.iconLike);
+
+                },
+                isChecked(){
 
                 }
             },
