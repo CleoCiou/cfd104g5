@@ -13,7 +13,8 @@
 <body>
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
-    <main id="twinklingStar">
+    <main>
+        <div id="twinklingStar">
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
             @@include('layout/con_page.html')
@@ -62,6 +63,7 @@
                 
             </div>
         </section>
+    </div>
     </main>
     
     <!-- 網頁尾 By NJ -->
@@ -87,9 +89,27 @@
                 rotation: 360,
                 duration: 25,
                 repeat: -1,
-                ease: "none"
-            })
+                ease: "none",
+            });
 
+            for(var i = 0; i < 500; i++) {
+                //get random dimensions
+                var x = Math.random() * 100;
+                var y = Math.random() * 150;
+                var d = Math.random() * 4;
+                var s = Math.random() * 2 + 1.5;
+                //create new element and add to html
+                var star = document.createElement("div");
+                star.classList.add("star");
+                var sky = document.getElementById("twinklingStar");
+                sky.appendChild(star);
+
+                star.style.width = d + "px";
+                star.style.height = d + "px";
+                star.style.top = y + "%";
+                star.style.left = x + "%";
+                star.style.animationDuration = s + "s";
+            }
         </script>
 </body>
 </html>

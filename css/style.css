@@ -1643,7 +1643,7 @@ main .discuss .content {
 main .discuss .content .content_cate {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 75px;
   left: 0;
   text-align: center;
   width: 20%;
@@ -2766,8 +2766,27 @@ section.login .container section.card_box .rotate_3d_box .card_item.card_back::-
   position: absolute;
   width: 2px;
   height: 2px;
-  border-radius: 2px;
+  border-radius: 50%;
   background: white;
+  opacity: 0.8;
+  -webkit-animation-name: twinkle;
+          animation-name: twinkle;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes twinkle {
+  50% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+  }
+}
+
+@keyframes twinkle {
+  50% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+  }
 }
 
 main {
@@ -2964,8 +2983,6 @@ main section.chart .container .astrolabe_chart .parse_box .analyze_bg {
   position: relative;
   border: 1px solid #CFB886;
   padding: 5%;
-  -webkit-backdrop-filter: opacity(30%);
-          backdrop-filter: opacity(30%);
   background-image: url("../images/constellation/bg_astrolabe_card.jpg");
   background-repeat: no-repeat;
   background-size: cover;
