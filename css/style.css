@@ -2500,17 +2500,63 @@ main .forture_dec .container .overall_fortune .overall_fortune_txt {
 
 /*今日運勢 By 阿皓 --- END */
 section.login .container {
+  z-index: 3000;
   position: fixed;
+  height: 100vh;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: #333c;
-  z-index: 100;
+  background-color: #000c;
 }
 
 section.login .container .display_none {
   display: none;
+}
+
+@-webkit-keyframes halo {
+  0% {
+    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
+            box-shadow: 0px 0px 0px 0px #CFB886;
+  }
+  25% {
+    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
+            box-shadow: 0px 0px 5px 2px #CFB886;
+  }
+  50% {
+    -webkit-box-shadow: 0px 0px 10px 5px #CFB886;
+            box-shadow: 0px 0px 10px 5px #CFB886;
+  }
+  75% {
+    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
+            box-shadow: 0px 0px 5px 2px #CFB886;
+  }
+  100% {
+    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
+            box-shadow: 0px 0px 0px 0px #CFB886;
+  }
+}
+
+@keyframes halo {
+  0% {
+    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
+            box-shadow: 0px 0px 0px 0px #CFB886;
+  }
+  25% {
+    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
+            box-shadow: 0px 0px 5px 2px #CFB886;
+  }
+  50% {
+    -webkit-box-shadow: 0px 0px 10px 5px #CFB886;
+            box-shadow: 0px 0px 10px 5px #CFB886;
+  }
+  75% {
+    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
+            box-shadow: 0px 0px 5px 2px #CFB886;
+  }
+  100% {
+    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
+            box-shadow: 0px 0px 0px 0px #CFB886;
+  }
 }
 
 section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch {
@@ -2524,6 +2570,18 @@ section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch:
   color: #555;
 }
 
+section.login .container #reg_log:checked ~ .card_box .switch_box .select_title h3:first-child {
+  color: #555a;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .select_title h3:last-child {
+  color: #CFB886;
+}
+
+section.login .container #reg_log:checked ~ .card_box {
+  max-height: 100%;
+}
+
 section.login .container #reg_log:checked ~ .card_box .rotate_3d_box {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
@@ -2531,17 +2589,35 @@ section.login .container #reg_log:checked ~ .card_box .rotate_3d_box {
 
 section.login .container section.card_box {
   position: absolute;
-  top: 10em;
-  bottom: 10em;
-  width: 20em;
+  top: 5em;
+  bottom: 5em;
+  width: 25em;
   max-width: 90%;
+  max-height: 60%;
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  section.login .container section.card_box {
+    max-height: 50%;
+  }
 }
 
 section.login .container section.card_box .switch_box {
-  margin-top: -5em;
   padding-bottom: 1.5em;
 }
 
@@ -2549,9 +2625,16 @@ section.login .container section.card_box .switch_box .select_title {
   text-align: center;
 }
 
-section.login .container section.card_box .switch_box .select_title span {
+section.login .container section.card_box .switch_box .select_title h3 {
   display: inline-block;
-  padding: 1em 1.5em;
+  padding: 0 2em;
+  color: #CFB886;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+}
+
+section.login .container section.card_box .switch_box .select_title h3:last-child {
+  color: #555a;
 }
 
 section.login .container section.card_box .switch_box .item .switch {
@@ -2598,9 +2681,9 @@ section.login .container section.card_box .rotate_3d_box {
           transform-style: preserve-3d;
   -webkit-transition: all 600ms ease-out;
   transition: all 600ms ease-out;
-  background-color: #000;
+  background-color: #111;
   border: 1px solid #CFB886;
-  border-radius: 1em;
+  border-radius: .5em;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item {
@@ -2612,11 +2695,20 @@ section.login .container section.card_box .rotate_3d_box .card_item {
   margin: auto;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  padding: 3em;
+  padding: 0 2em;
 }
 
-section.login .container section.card_box .rotate_3d_box .card_item .card_content {
-  margin-top: 2em;
+section.login .container section.card_box .rotate_3d_box .card_item.card_font {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item {
@@ -2631,18 +2723,39 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
   background-color: transparent;
 }
 
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item textarea {
+  width: 95%;
+}
+
 section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action {
   text-align: center;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action > * {
-  margin: 1em 0;
+  margin: .5em 0;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item.card_back {
+  overflow-y: scroll;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
-  padding: 1em 3em;
+  padding: 2em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar {
+  width: 30px;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 10px solid transparent;
+  background-clip: content-box;
+  background-color: #CFB886;
 }
 
 #twinklingStar {
