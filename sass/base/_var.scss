@@ -29,7 +29,13 @@ $secondary_color: (
 */
 $accent_color: #d89482;
 
-/*按鈕共用*/
+
+/* --- 線框圓角
+    border-radius: 0.5em;
+*/
+$borderRadius: 0.5em;
+
+/* 按鈕 */
 $bRadius: 0.2em; 
 $letterS: 0.3em;
 $fontSize: 0.9em;

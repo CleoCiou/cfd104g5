@@ -1,5 +1,5 @@
 <?php
-    include('../connectdb.php');
+    include('../php/connectdb.php');
     header('Content-Type: application/json; charset=utf-8');
 
     $msg['login'] = false;

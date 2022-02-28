@@ -34,19 +34,9 @@
                     </div>
                     <!-- 貓頭鷹分類 -->
                     <div class="owl-carousel owl-theme display">
-                        <div class="item"><label>全部</label></div>
-                        <div class="item"><label>摩羯座</label></div>
-                        <div class="item"><label>水瓶座</label></div>
-                        <div class="item"><label>雙魚座</label></div>
-                        <div class="item"><label>牡羊座</label></div>
-                        <div class="item"><label>金牛座</label></div>
-                        <div class="item"><label>雙子座</label></div>
-                        <div class="item"><label>巨蟹座</label></div>
-                        <div class="item"><label>獅子座</label></div>
-                        <div class="item"><label>處女座</label></div>
-                        <div class="item"><label>天秤座</label></div>
-                        <div class="item"><label>天蠍座</label></div>
-                        <div class="item"><label>射手座</label></div>
+                        <div class="item" v-for="cate in cates">
+                            <label>{{cate}}</label>
+                        </div>
                     </div>
                     <!-- 文章 搜尋bar下排包住左邊和右邊的容器 -->
                     <div class="content">
@@ -86,8 +76,9 @@
                                             </div>
                                         </div>
                                         <div class="line_bottom">
-                                            <img :src="iconLike" >
-                                            <p>999讚</p>
+                                            <img :src="iconLike" class="likes" @click="changeLike">
+                                            
+                                            <p>{{num}}讚</p>
                                             <img :src="iconMessage" >
                                             <p>28回應</p>
                                             <img :src="iconFav" >
@@ -107,7 +98,7 @@
                                                 <p>天秤座是一個重視合作關係的星座，可想而知他們的第一順位就是與親密的人面對面相處。他們透過親.....</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <img :src="imgURL">
+                                                
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -182,7 +173,7 @@
                                                 <p>水瓶座真的總會讓旁人驚呼「好怪」嗎？一起來看看身為水瓶座的做人守則，你會對他改觀...........</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <img :src="imgURL">
+                                                
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -221,6 +212,9 @@
                         <h3>巨蟹座的性格分析</h3>
                         <a href="discuss.html">巨蟹座</a>
                         <p>2022/02/21 22:34:07</p>
+                    </div>
+                    <div class="article_view_pic img_box narrow">
+                                                
                     </div>
                     <div class="article_view_content narrow">
                             <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實在令人感到不可思議。巨蟹座的反應並不遲鈍，相反的，他的感覺很敏銳，往往因受到無心人的傷害，暗地裡偷偷的傷心流淚。因為過份慎重考慮的結果。所以會變得過於現實。好惡的感情過於明顯，也應多加注意才好。感情豐富，對事物的感受性強。對外親和謙恭，頗有公眾意識，但是對W內則有強烈的防衛本能，不願私生活受到干擾。大體上是一個溫和內向的人，但是絕不向惡勢力低頭。熱心參加愛家、愛鄉、愛民的團體，自我意識很強，尊敬能夠保護自己立場的人，帶有懷舊的心情，是一個十分傳統的人。</p>
@@ -318,7 +312,7 @@
         new Vue({
             el: '#app',
             data: { //變數放這
-                message: 'hello',
+                num: 999,
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
@@ -327,12 +321,37 @@
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
+                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
                 cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
                 imgURL: 'https://picsum.photos/90/90/?random=10',
-                iconLike: 'images/icon/icon_discuss_like.svg',
+                iconLike: './images/icon/icon_discuss_like.svg',
+                // iconLike: {
+                //     url: './images/icon/',
+                //     img: './icon_discuss_like.svg',
+                //     active: 'icon_discuss_likes.svg'
+                // },
+                iconLikeClick :'images/icon/icon_discuss_likes.svg',
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
+                // isChecked: 0,
+            },
+            methods: {
+                changeLike(e){
+                    // if(e.target.src == )
+                        console.log(e.target.src);
+                        console.log(this.$data.iconLike);
+                        this.$data.num +=1;
+                    // if(e.target.text == "我喜歡"){
+                    // }
+                    // console.log(e.target.text);
+                    // console.log(e);
+                    // console.log(this.$data.iconLike);
+
+                },
+                isChecked(){
+
+                }
             },
         });
         $(document).ready(function(){

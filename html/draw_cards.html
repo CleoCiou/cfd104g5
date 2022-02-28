@@ -29,53 +29,37 @@
                 <div class="all">
                     <ul class="cards"></ul>
                 </div>
-
-				<!-- 占卜詳解 -->
-				<!-- <div class="content_box">
-					<div class="lightbox" id="popup">
-						<h2>解牌</h2>
-						<div class="content">
-							<div class="item">
-								<div class="img_box">
-									<img src="https://picsum.photos/150/250/?random=10" alt="請幫每張圖片加破圖註解">
-								</div>
-								<div class="txt_box">
-									<h3>愚者</h3>
-									<p>愚者塔羅牌意義：旅程<br>
-									它表明您希望尋求未來的機會，但缺乏明確的具體計劃。由於你沒有什麼顧慮，有時這些特質反而會給你帶來意想不到的成功。然而沒有遠見，使你容易產生動搖，當遇到太多障礙的時候往往會失去原有的目標。 當你想要開始諸如學習，搬家或簽署商業協議之類的，追隨你的直覺並付出行動是不錯的方式。</p>
-								</div>
-							</div>
-
-							<div class="products_item">
-								<div class="img_box">
-									<img src="https://picsum.photos/300/250/?random=10" alt="商品圖">
-								</div>
-								<div class="txt_box">
-									<h3>推薦商品</h3>
-									<p>幸運手環
-										Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam veritatis aperiam nulla, perspiciatis excepturi at id ratione consequuntur? Iusto atque eos minima officiis eum deleniti voluptas quibusdam soluta at laboriosam.
-									</p>
-								</div>
-							</div>
-						</div>
-						<p class="button_panel">
-							<a href="draw_cards_old.html"><button type="button" class="second_btn lightbox_close">重新抽牌</button></a>
-							<a href="teller_mem.html"><button type="button" class="second_btn ">占卜師總覽</button></a>
-							<a href="be_teller.html"><button type="button" class="second_btn ">體驗占卜師</button></a>
-							<a href=""><button type="button" class="second_btn ">前往商城</button></a>
-						</p>
-					</div>
-				</div> -->
             </div>
 
 			<!-- 占卜詳解 -->
 			<div class="detail_box">
+				<!-- 抽到的牌 圖片 -->
 				<div class="img_box">
 					<div class="item font">
 						<img src="./images/tarot_cards/00The_fool.png">
 					</div>
 					<div class="item back">
 						<img src="./images/draw_cards/draw_cards_back.jpg">
+					</div>
+				</div>
+
+				<!-- 文字解析 -->
+				<div class="txt_box">
+					<!-- 牌名 -->
+					<div class="item txt_header">
+						<h3>愚者 The Fool</h3>
+					</div>
+					<!-- 解析內容 -->
+					<div class="item txt_content">
+						<p>愚者塔羅牌意義：旅程</p>
+						<p>它表明您希望尋求未來的機會，但缺乏明確的具體計劃。由於你沒有什麼顧慮，有時這些特質反而會給你帶來意想不到的成功。然而沒有遠見，使你容易產生動搖，當遇到太多障礙的時候往往會失去原有的目標。 當你想要開始諸如學習，搬家或簽署商業協議之類的，追隨你的直覺並付出行動是不錯的方式。</p>
+					</div>
+					<!-- 其他連結 -->
+					<div class="item txt_footer action">
+						<a href="online_divination.html"><span class="unselected_btn">重新抽牌</span></a>
+						<a href="teller_mem.html"><span class="unselected_btn">占卜師總攬</span></a>
+						<a href="be_teller.html"></a><span class="unselected_btn">體驗占卜師</span></a>
+						<a href="shop.html"></a><span class="unselected_btn">前往商城</span></a>
 					</div>
 				</div>
 			</div>
@@ -103,6 +87,7 @@
 	let clickSelected;
 
 	init();
+	
 	function init() {
 		// 創造抽牌圈
 		for(let i = 0; i < CARDINDEX; i++) {
@@ -121,8 +106,14 @@
 			CARDSEL.append(EVENTEL);
 		}
 
-		wordsTween =TweenMax.to(words, {opacity: 0, duration: 2, repeat: -1, yoyo: true});
-		// gsap.to($("ul.cards"), {rotate: 360, duration: 100, repeat: -1})
+		// 抽牌提示
+		wordsTween =TweenMax.to(words, {
+			opacity: .3,
+			duration: 2,
+			repeat: -1,
+			ease: Expo.easeNone,
+			yoyo: true
+		});
 	}
 
 	function selectCard(e) {
@@ -134,8 +125,6 @@
 		// 關閉抽卡提示
 		wordsTween.kill();
 		words.style.opacity = 0;
-		// words.innerText = '解牌';
-		// words.classList.add('ans');
 
 		// 抽牌圈數量
 		let allCard = document.querySelectorAll('li.event');
@@ -157,11 +146,14 @@
 			gsap.to('li.event.selected', {
 				duration: 1,
 				rotationX: 720,
+				left: '50%',
+				top: '50%',
+				translateX: '-40%',
+				translateY: '-50%',
 				scale: 3,
 				boxShadow: '0 0 5px 0.5em #CFB886',
 				ease: Power1.easeOut,
 
-			// 	// 或是可以改成釘在卡片上面
 				onComplete: showDetail
 			});
 
@@ -206,7 +198,12 @@
 		}
 
 		// 解牌提示特效
-		clickSelected = TweenMax.to(card, {duration: 1, repeat: -1, boxShadow: '0 0 10px 0.5em #CFB886CC', yoyo: true});
+		clickSelected = TweenMax.to(card, {
+			duration: 1,
+			repeat: -1,
+			boxShadow: '0 0 10px 0.5em #CFB886CC',
+			yoyo: true
+		});
 	}
 
 	function showDetail() {
@@ -231,21 +228,49 @@
 		detailBox.parentNode.style.display = 'block';
 		$('ul.cards').css({display: 'none'});
 
-		// 設定轉場動畫讓視覺看起來順暢
+		// 轉吧轉吧七彩霓虹燈~
+		let cardTop = '0';
+		let cardLeft = '0';
+		let offsetX = '0';
+		
+		// 電腦動畫
+		if (window.screen.width >= 768) {
+			cardTop = '20%';
+			cardLeft = '20%';
+		}
+		// 手機動畫
+		else {
+			cardTop = '16%';
+			cardLeft = '50%';
+			offsetX = '-50%';
+		}
 		gsap.fromTo(detailBox, {
 			rotationY: 0,
 			boxShadow: '0 0 20px .5em #CFB88688',
 		}, 
 		{
-			rotationY: 180,
-			translateX: '20vw',
+			top: cardTop,
+			left: cardLeft,
+			rotationY: -180,
+			translateX: offsetX,
 			boxShadow: '0 0 20px 1em #CFB88688',
-			duration: 1,
+			duration: 1.5,
 		})
 
 		gsap.to($('.detail_box'), {
 			duration: 1,
 			backgroundColor: '#5555'
+		})
+		gsap.fromTo($('.detail_box .txt_box'), {
+			translateX: '-5em',
+			translateY: 0,
+			opacity: 0
+		},
+		{
+			translateX: 0,
+			translateY: '1em',
+			opacity: 1,
+			duration: 1.5,
 		})
 		
 	}
