@@ -26,7 +26,7 @@
                     <!-- 基本資料 -->
                     <div class="info_box">
                         <div class="img_box sticker">
-                            <img src="https://picsum.photos/50/50/?random=10">
+                            <img src="images/icon/user.svg">
                         </div>
                         <div class="txt_box">
                             <span>test123</span>
@@ -75,12 +75,12 @@
                                         <input type="radio" name="identity" id="astrologist">
                                         占卜師
                                     </label>
-                                    <button>成為占卜師</button>
+                                    <button class="third_btn">成為占卜師</button>
                                 </div>
                                 <div class="pwd_box">
                                     <label for="memPwd">密碼</label>
                                     <input type="password" id="memPwd">
-                                    <button @click="changePwd">修改</button>
+                                    <button @click="changePwd" class="third_btn">修改</button>
                                 </div>
                                 <div class="change_pwd_box display_none">
                                     <label for="confirm_pwd">確認密碼</label>
@@ -107,7 +107,7 @@
                         <div class="astrologist_info">
                             <h3>吳恆隼</h3>
                             <div class="img_box">
-                                <img src="https://picsum.photos/50/50/?random=10">
+                                <img src="images/icon/icon_discuss_mine.svg">
                             </div>
                         </div>
                         <span class="reservation_time">2022.02.28 上午</span>
@@ -123,7 +123,7 @@
                         </div>
                         <div class="order_content">
                             <div class="img_box">
-                                <img src="https://picsum.photos/50/50/?random=10">
+                                <img src="images/shop/tarot/lucky_stone/lucky stone_white_crystal.jpg">
                             </div>
                             <div class="txt_box">
                                 <p>開運項鍊 x1</p>
@@ -132,7 +132,7 @@
                         <div class="order_footer">
                             <p class="total">訂單金額: NT$800</p>
                         </div>
-                        <a class="other_order">檢視其他訂單</a>
+                        <a class="other_order" href="mem_orders.html">檢視其他訂單</a>
                     </div>
                 </section>
     
@@ -144,7 +144,7 @@
                         <div class="comment_box">
                             <div class="reservation_info">
                                 <div class="img_box sticker">
-                                    <img src="https://picsum.photos/50/50/?random=10">
+                                    <img src="images/icon/icon_discuss_mine.svg">
                                 </div>
                             </div>
                             <div class="txt_box ast_info">
@@ -158,7 +158,7 @@
                         <div class="comment_box">
                             <div class="reservation_info">
                                 <div class="img_box sticker">
-                                    <img src="https://picsum.photos/50/50/?random=8">
+                                    <img src="images/icon/user.svg">
                                 </div>
                             </div>
                             
@@ -174,7 +174,7 @@
 
                         <div class="active">
                             <input type="text">
-                            <button>發送</button>
+                            <button class="third_btn">發送</button>
                         </div>
 
                     </div>
@@ -185,10 +185,12 @@
                     最新文章留言
                     <ul class="message_box">
                         <li class="article_info" data-newMsg="1">
-                            <span class="artNo">#004</span>
-                            <h4 class="artTitle">
-                                本圖隱藏下個合作提示，明天還有更多提示哦~
-                            </h4>
+                            <a href="discuss.html">
+                                <span class="artNo">#004</span>
+                                <h4 class="artTitle">
+                                    本圖隱藏下個合作提示，明天還有更多提示哦~
+                                </h4>
+                            </a>
                         </li>
                         <li class="article_info" data-newMsg="5">
                             <span class="artNo">#012</span>

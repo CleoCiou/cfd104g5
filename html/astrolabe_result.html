@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>解星鏡 Mistro | 星座</title>
-    <!-- <link rel="stylesheet" href="css/astrolabe.css"> -->
+    <link rel="stylesheet" href="css/shop.css">
     <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
 </head>
 <body>
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
-    <main>
+    <main id="twinklingStar">
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
             @@include('layout/con_page.html')
@@ -24,9 +25,10 @@
                         <!-- 宮位分類欄 有11個該死的宮位 -->
                         <div class="chart_classification">
                             <ul>
-                                <li v-for="chart in charts"><label>{{chart}}</label></li>
+                                <li v-for="chart in charts" @click="changePanel" ><label>{{chart}}</label></li>
                             </ul>
                         </div>
+                        
                         <!-- 左 === 星盤解讀 -->
                         <div class="parse_box card3d">                       
                             <!-- 星盤解讀分析內容的外框 用來包住大標和內文 -->
@@ -37,7 +39,8 @@
                                 </div>
                                 <!-- 星盤解讀內文 -->
                                 <div class="analyze_txt">
-                                    <h3>配合、協調才能將合作能量極大化</h3>
+                                    <h3>上升星座 天秤座</h3>
+                                    <h4>－配合、協調才能將合作能量極大化－</h4>
                                     <p>你一生都在追求平衡、打造屬於自己的基地。你們喜歡團隊合作，深信合作能將能量發揮到最大值。
                                         喜歡表現自己的配合與協調，你常常以大局為重，會儘量配合他人，也希望他人能配合自己，共創雙贏，但有時會不如預期而被辜負，把自己的心及執行力給卡住。不過你個性倔強，有苦不訴，面對威脅時，態度會出乎意料地強硬，有野心，但也講究天時與人和，時間或人到齊便容易一飛沖天。<br>
                                         
@@ -60,6 +63,10 @@
                             <div class="img_box chart_img">
                                 <img src="images/constellation/fakechart.png">
                             </div>
+                            <!-- 貓頭鷹分類 -->
+                            <div class="owl-carousel owl-theme display">
+                                <div class="item" v-for="chart in charts" ><label>{{chart}}</label></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,50 +80,51 @@
                             <h2>主打商品</h2>
                         </div>
                         <!-- 卡品 大容器 -->
-                        <div class="products_cards_wrap">
-                           
-                            <div class="cards_row">
-                                 <!-- 商品卡片 -->
-                                <div class="products_item">
-                                    <div class="img_box">
-                                    <img src="https://fakeimg.pl/500x500/ccc">
-                                    </div>
-                                    <div class="item_txt">
-                                        <h4>Loremipsum</h4>
-                                    </div>
-                                </div>
-                                <!-- 商品卡片 -->
-                                <div class="products_item">
-                                    <div class="img_box">
-                                    <img src="https://fakeimg.pl/500x500/ccc">
-                                    </div>
-                                    <div class="item_txt">
-                                        <h4>Loremipsum</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="cards_row">
-                                <!-- 商品卡片 -->
-                               <div class="products_item">
-                                   <div class="img_box">
-                                   <img src="https://fakeimg.pl/500x500/ccc">
+                        <div class="shop_product_item">
+                            <!-- 產品卡片-->
+                           <a href="#">    
+                               <div class="shop_product_card">
+                                   <div class="shop_product_card_img">
+                                       <img src="images/shop/Constellation/wristband/wristband_libra.png">
                                    </div>
-                                   <div class="item_txt">
-                                       <h4>Loremipsum</h4>
+                                   <div class="shop_product_card_txt">
+                                       <h4>星座手環-天秤座</h4>
+                                       <h4>NT$1,299</h4>
+                                   </div>
+                                   <div class="shop_product_card_icon">
+                                       <img src="images/icon/icon_shop_eye.svg">
                                    </div>
                                </div>
-                               <!-- 商品卡片 -->
-                               <div class="products_item">
-                                   <div class="img_box">
-                                   <img src="https://fakeimg.pl/500x500/ccc">
+                           </a>
+                           <a href="#">    
+                               <div class="shop_product_card">
+                                   <div class="shop_product_card_img">
+                                       <img src="images/shop/Constellation/wristband/wristband_scorpio.png">
                                    </div>
-                                   <div class="item_txt">
-                                       <h4>Loremipsum</h4>
+                                   <div class="shop_product_card_txt">
+                                       <h4>星座手環-天蠍座</h4>
+                                       <h4>NT$1,299</h4>
+                                   </div>
+                                   <div class="shop_product_card_icon">
+                                       <img src="images/icon/icon_shop_eye.svg">
                                    </div>
                                </div>
-                           </div>
-                        </div>
+                           </a>
+                           <a href="#">    
+                               <div class="shop_product_card">
+                                   <div class="shop_product_card_img">
+                                       <img src="images/shop/Constellation/wristband/wristband_sagittarius.png">
+                                   </div>
+                                   <div class="shop_product_card_txt">
+                                       <h4>星座手環-射手座</h4>
+                                       <h4>NT$1,299</h4>
+                                   </div>
+                                   <div class="shop_product_card_icon">
+                                       <img src="images/icon/icon_shop_eye.svg">
+                                   </div>
+                               </div>
+                           </a>
+                       </div>
                     </div>
                 </div>
             </section>
@@ -143,6 +151,12 @@
             el: '#appList',
             data: {
                 charts: ['上升','太陽','月亮','水星','金星','火星','木星','土星','天王','海王','冥王'],
+                list: '',
+            },
+            methods: {
+                changePanel(e){
+                    console.log(e);
+                }
             },
         });
 
@@ -170,7 +184,45 @@
         card.addEventListener("mousemove", handleHover);
         card.addEventListener("mouseleave", resetStyles);
         }
+
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                stagePadding: 10,
+                loop:true,
+                margin:5,
+                nav:false,
+                responsive:{
+                    0:{
+                        items:5
+                    },
+                    767:{
+                        items:8
+                    },
+
+                }
+            });
+        });
+        
+        for(var i = 0; i < 500; i++) {
+                //get random dimensions
+                var x = Math.random() * 100;
+                var y = Math.random() * 250;
+                var d = Math.random() * 4;
+                var s = Math.random() * 2 + 1.5;
+                //create new element and add to html
+                var star = document.createElement("div");
+                star.classList.add("star");
+                var sky = document.getElementById("twinklingStar");
+                sky.appendChild(star);
+
+                star.style.width = d + "px";
+                star.style.height = d + "px";
+                star.style.top = y + "%";
+                star.style.left = x + "%";
+                star.style.animationDuration = s + "s";
+            }
     </script>
     <script src="js/common.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
 </body>
 </html>

@@ -17,7 +17,6 @@ $m : 767px;
 
 main {
     .pagination_nav{
-        margin-top: 5em;
         @include mobile {
             display: none;
         }
@@ -118,7 +117,7 @@ main {
             /* 左欄文章分類 */
             .content_cate{
                 position: sticky;
-                top: 0;
+                top: 75px;
                 left: 0;
                 text-align: center;
                 width: 20%;
@@ -395,6 +394,29 @@ main {
                 span{
                     color: #ccc;
                     font-size: 0.9em;
+                }
+            }
+        }
+        .response_box{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            .user_img_box{
+                width: 15%;
+            }
+            .user_txt_box{
+                align-items: center;
+                width: 70%;
+                textarea{
+                    width: 100%;
+                }
+            }
+            .res_btn_box{
+                width: 15%;
+                text-align: center;
+                .submit_btn{
+                    padding: .3em .5em;
                 }
             }
         }
