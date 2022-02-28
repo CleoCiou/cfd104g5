@@ -35,7 +35,9 @@ section.login {
             }
             ~ .card_box {
                 max-height: 100%;
-                
+                @media screen and (max-width:  768px) {
+                    max-height: 70%;
+                }
                 .rotate_3d_box {
                     transform: rotateY(180deg);
                }
@@ -52,6 +54,7 @@ section.login {
             left: 50%;
             transform: translate(-50%);
             transition: 1s;
+
             @media screen and (max-width:  768px) {
                 max-height: 50%;
             }
@@ -158,7 +161,7 @@ section.login {
                                     width: 95%;
                                 }
 
-                                // 驗證密碼
+                                // 驗證
                                 &.verify {
                                     padding: 0;
                                     margin-top: -1em;
@@ -168,6 +171,7 @@ section.login {
 
                                     ul {
                                         padding: 0.5em;
+
                                         li {
                                             font-size: 0.9em;
                                             padding: 0.3em;
@@ -186,8 +190,10 @@ section.login {
                                     }
                                 }
                             }
-                        }
-                    }
+
+                        } // content_box
+                    } // card_content
+
                     // 登入/註冊按鈕
                     .card_footer {
                         .action {
@@ -201,24 +207,34 @@ section.login {
 
                 // 卡片背面: 註冊
                 .card_item.card_back {
-                    &::-webkit-scrollbar{
-                        width: 30px;
-                    }  
-                    &::-webkit-scrollbar-track{
-                        background-color: transparent;
-                        border-radius: 100px;
-                    }
-                    &::-webkit-scrollbar-thumb{
-                        border-radius: 100px;
-                        border: 10px solid transparent;
-                        background-clip: content-box;
-                        background-color: #CFB886;
-                    }
-                    overflow-y: scroll;
+                    // &::-webkit-scrollbar{
+                    //     width: 30px;
+                    // }  
+                    // &::-webkit-scrollbar-track{
+                    //     background-color: transparent;
+                    //     border-radius: 100px;
+                    // }
+                    // &::-webkit-scrollbar-thumb{
+                    //     border-radius: 100px;
+                    //     border: 10px solid transparent;
+                    //     background-clip: content-box;
+                    //     background-color: #CFB886;
+                    // }
+                    // overflow-y: scroll;
+                    overflow: hidden;
                     transform: rotateY(180deg);
                     padding: 2em;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
                 }
 
+                .mem_info,
+                .astrologist_info {
+                    height: 0;
+                    overflow: hidden;
+                }
             }
 
         } // section.card_box
