@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/constellation_story.css">
     <script src="../js/vue.js"></script>
+    
 </head>
 <body>
-     <!-- 網頁頭 by NJ-->
+    <!-- 網頁頭 by NJ-->
 <header class="main_header">
 
 
@@ -112,80 +112,140 @@
         $(this).siblings('.sub_menu').slideToggle();
     })
 </script>
-  <main>
-   
-
-    <div id="app">
-         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC --> 
-        <section class="pagination_nav">
+    <main>
+        <div id="app">
+            <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
+            <section class="pagination_nav">
+                <div class="container">
+                    <ul>
+                        <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
+                    </ul>
+                </div>
+            </section>        
+        </div>
+        <section class="today_forture" id="water">
+            <!-- 容器 -->
             <div class="container">
-                <ul>
-                    <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
-                </ul>
+                <!-- 左半內容 -->
+                <div class="today">
+                    <h2>今日運勢</h2>
+                    <p>2022年3月2號</p>
+                    <div class="item">
+                        <div class="img_box">
+                            <img src="../images/con_today/today_sagittarius.svg">
+                        </div>
+                        <div class="txt_box" >
+                            射手座
+                        </div>
+                    </div>
+                </div>
+                <!-- 右半內容 -->
+                <div class="all_furtune">
+                    <div class="furtune_time">
+                        <ul>
+                            <li class="unselected_btn"><a href="con_today_fortune.html">今日運勢</a></li>
+                            <li class="unselected_btn"><a href="con_thisweek_fortune.html">本周運勢</a></li>
+                            <li class="unselected_btn"><a href="con_thismonth_fortune.html">本月運勢</a></li>
+                        </ul>
+                    </div>
+                    <!-- 包住右下的內容 -->
+                    <div class="lucky">
+                        <h3>短評:新環境新感覺。</h3>
+                        <div class="lucky_row">
+                            <!-- 幸運數字 -->
+                            <div class="txt_box">
+                                <div class="number unselected_btn">
+                                    幸運數字
+                                </div>
+                                <div class="txt">
+                                    1
+                                </div>
+                            </div>
+                            <!-- 開運方向 -->
+                            <div class="txt_box">
+                                <div class="number unselected_btn">
+                                    開運方向
+                                </div>
+                                <div class="txt">
+                                    東南方向
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lucky_row">
+                             <!-- 幸運顏色 -->
+                            <div class="txt_box">
+                                <div class="number unselected_btn">幸運顏色</div><div class="txt">燻鮭紅</div>
+                            </div>
+                            <!-- 幸運星座 -->
+                            <div class="txt_box">
+                                <div class="number unselected_btn">幸運星座</div><div class="txt">水瓶座</div>
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+                <!-- 最下面運勢指數的部分 -->
             </div>
-        </section>        
-    </div>
-    <section class="change constellation">
-        <div class="container">
-            <div class="item">
-               <div class="unselected_btn">
-                <a href="con_story_water.html">  <p>水瓶座</p>
-                </a>  
-                </div>
-                   
-                <div class="unselected_btn">
-                    <a href="con_story.html"> <p>射手座</p>
-                </a>
-                </div>
-                
-                <div class="unselected_btn">
-                    <p>雙魚座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>牡羊座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>金牛座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>雙子座</p>
-                </div>
-            </div>    
-            <div class="item">
-                <div class="unselected_btn">
-                    <p>摩羯座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>巨蟹座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>獅子座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>天秤座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>天蠍座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>處女座</p>
-                </div>
-            </div> 
-
-
-
-    </section>
-
-        <h2>星座介紹</h2>
-        <h3>水瓶座</h3>
-        <section class="story">
-            <img src="../images/con_story/story_aquarius.jpg"><p>水瓶座位於魔羯座的東方，是個不太明顯的星座。它又叫做寶瓶座。在星座圖上，寶瓶座是一個少年把水瓶扛在肩上。這個少年就是特洛伊王子卡尼米迪斯。
-                　　天神宙斯所領導的奧林帕斯山，經常舉行盛大的宴會，在宴會中負責為眾神斟酒的，向來是青春女神希碧。
-                　　有一次，眾神依舊在奧林匹斯宮殿舉行酒宴，等了許久，還不見希碧來倒酒。
-                　　「怎麼回事?希碧呢?」宙斯問。
-                　　</p>
         </section>
 
+        <section class="forture_dec">
+            <div class="container">
+                <div class="overall_fortune">
+                    <h4>運勢指數</h4>
+                    <div class="overall_fortune_txt">整體運勢★★★★:你幽默的談吐給人家留下好的印象，在心儀對象面前易讓對方加深對你的好感。</div>
+                    <div class="overall_fortune_txt">愛情運勢★★★:對另一半較為大方，很樂意為對方破費購買溫馨別致的禮物，令對方很開心。</div>
+                    <div class="overall_fortune_txt">事業運勢★★★:新計劃的執行宜多加反覆思考和審視，考慮周全可讓後續計劃進行得更順利。</div>
+                    <div class="overall_fortune_txt">財運運勢★★★★:情緒高漲，笑逐顏開的一天，有機會與久未聯繫的老朋友相遇，驚喜不斷。</div>
+                </div>
+            </div>
+        </section>
+        <!-- 最下面內容 -->
+        <section class="change constellation">
+            <div class="container">
+                <div class="item">
+                    <div class="unselected_btn">
+                        <p>水瓶座</p>
+                    </div>
+                    <div class="unselected_btn" id="
+                    sagittarius_btn">
+                        <p>射手座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>雙魚座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>牡羊座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>金牛座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>雙子座</p>
+                    </div>
+                </div>    
+                <div class="item">
+                    <div class="unselected_btn">
+                        <p>摩羯座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>巨蟹座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>獅子座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>天秤座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>天蠍座</p>
+                    </div>
+                    <div class="unselected_btn">
+                        <p>處女座</p>
+                    </div>
+                </div> 
+
+
+
+        </section>
 
     </main>
     <!-- 網頁尾  by NJ-->
@@ -228,12 +288,12 @@
     </div>
 </footer>
     
-  <script src="css/common.css"></script>
-  <script>
-    new Vue({
-        el: '#app',
-        data: { //變數放這
-            urls: {
+    <script src="js/common.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
                     '真實星座': 'con_real_constellation.html',
@@ -241,43 +301,9 @@
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
-            cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
-        }
-    });
-</script>
-<script type="text/javascript">
-    $(function () { 
-        var data = [
-            {label: "天秤座", data:10},
-            {label: "天蠍座", data: 20},
-            {label: "水瓶座", data: 30},
-            {label: "巨蟹座", data: 40},
-            {label: "牡羊座", data: 50},
-            {label: "金牛座", data: 60},
-            {label: "射手座", data: 100},
-            {label: "處女座", data: 20},
-            {label: "獅子座", data: 20},
-            {label: "摩羯座", data: 10},
-            {label: "雙子座", data: 30},
-            {label: "雙魚座", data: 20}
-
-        ];
-
-        
-
-    
-        var options = {
-                series: {
-                    pie: {show: true}
-                },
-                legend: {
-                    show: false
-                }
-             };
-    
-        $.plot($("#flotcontainer"), data, options);  
-    });
-</script>
-
+                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+            }
+        });
+    </script>
 </body>
 </html>

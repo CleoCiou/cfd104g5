@@ -2463,6 +2463,25 @@ main .forture_dec .container .overall_fortune .overall_fortune_txt {
           box-sizing: border-box;
 }
 
+@media screen and (max-width: 767px) {
+  main .change .container .item {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main .change .container .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+  }
+}
+
+main .change .container .item .unselected_btn {
+  margin: auto;
+}
+
 /*今日運勢 By 阿皓 --- END */
 section.login .container {
   position: fixed;

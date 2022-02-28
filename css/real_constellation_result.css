@@ -25,13 +25,16 @@
         justify-content: center; */
         text-align: center;
     }
-    
-    /* #flotcontainer {
+    #flotcontainer {
         width: 600px;
         height: 400px;
         text-align: left;
-    } */
-
+    }
+    #legendPlaceholder {
+        width: 100%;
+    }
+    
+  
 
 }
 
