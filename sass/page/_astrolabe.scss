@@ -18,10 +18,20 @@ $m : 767px;
         position: absolute;
         width: 2px;
         height: 2px;
-        border-radius: 2px;
+        border-radius: 50%;
         background: white;
-      }
+        opacity: 0.8;
+        animation-name: twinkle;
+        animation-iteration-count: infinite;
+    }
 }
+@keyframes twinkle {
+    50% {
+      transform: scale(0.2);
+    }   
+}
+
+
 main{
     /* 星座共用 */
     .astrolabe{
@@ -164,7 +174,7 @@ main{
                         position: relative;
                         border: 1px solid #CFB886;
                         padding: 5%;
-                        backdrop-filter: opacity(30%);
+                        // backdrop-filter: opacity(30%);
                         background-image: url("../images/constellation/bg_astrolabe_card.jpg");
                         background-repeat: no-repeat;
                         background-size: cover;

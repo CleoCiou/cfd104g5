@@ -36,23 +36,31 @@
                             <div class="choose_month">
                                 <select name="month" id="month">
                                     <option value="all">全部</option>
-                                    <option value="">2月</option>
-                                    <option value="">1月</option>
-                                    <option value="">12月</option>
+                                    <option value="">摩羯座</option>
+                                    <option value="">水瓶座</option>
+                                    <option value="">雙魚座</option>
+                                    <option value="">牡羊座</option>
+                                    <option value="">金牛座</option>
+                                    <option value="">巨蟹座</option>
+                                    <option value="">獅子座</option>
+                                    <option value="">處女座</option>
+                                    <option value="">天秤座</option>
+                                    <option value="">天蠍座</option>
+                                    <option value="">射手座</option>
                                 </select>
                             </div>
                             <div class="row">
                                 <!-- 文章卡片 -->
                                 <div class="article_cards">
                                     <div class="line_top">
-                                        <p>巨蟹座</p>
+                                        <p>全部</p>
                                         <p>|</p>
-                                        <p>10小時</p>
+                                        <p>14小時前</p>
                                     </div>
                                     <div class="line_middle">
                                         <div class="line_middle_txt">
-                                            <h3>巨蟹座的性格分析</h3>
-                                            <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實...</p>
+                                            <h3>12星座像什麼「水果」</h3>
+                                            <p>你可曾細心品嘗過水果？是否嘗到水果的各種滋味？還是只憑外表來決........</p>
                                         </div>
                                         <div class="line_middle_pic">
                                             <img :src="imgURL">
@@ -60,21 +68,24 @@
                                     </div>
                                     <div class="line_bottom">
                                         <img :src="iconLike" >
+                                        <p>25讚</p>
                                         <img :src="iconMessage" >
+                                        <p>0回應</p>
                                         <img :src="iconFav" >
+                                        <p>收藏</p>
                                     </div>
                                 </div>
                                 <!-- 文章卡片 -->
                                 <div class="article_cards">
                                     <div class="line_top">
-                                        <p>巨蟹座</p>
+                                        <p>全部</p>
                                         <p>|</p>
-                                        <p>10小時</p>
+                                        <p>2022/02/14</p>
                                     </div>
                                     <div class="line_middle">
                                         <div class="line_middle_txt">
-                                            <h3>巨蟹座的性格分析</h3>
-                                            <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實...</p>
+                                            <h3>射手座你們看了一定會點頭</h3>
+                                            <p>樂觀與憂愁：射手座人的內心不是外表看上去那麼樂觀的，因為喜歡看的..............</p>
                                         </div>
                                         <div class="line_middle_pic">
                                             <img :src="imgURL">
@@ -82,21 +93,24 @@
                                     </div>
                                     <div class="line_bottom">
                                         <img :src="iconLike" >
+                                        <p>19讚</p>
                                         <img :src="iconMessage" >
+                                        <p>7回應</p>
                                         <img :src="iconFav" >
+                                        <p>收藏</p>
                                     </div>
                                 </div>
                                 <!-- 文章卡片 -->
                                 <div class="article_cards">
                                     <div class="line_top">
-                                        <p>巨蟹座</p>
+                                        <p>全部</p>
                                         <p>|</p>
-                                        <p>10小時</p>
+                                        <p>2022/01/31</p>
                                     </div>
                                     <div class="line_middle">
                                         <div class="line_middle_txt">
-                                            <h3>巨蟹座的性格分析</h3>
-                                            <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實...</p>
+                                            <h3>水瓶座的7個特色解析：心軟善良、重視友情</h3>
+                                            <p>水瓶座真的總會讓旁人驚呼「好怪」嗎？一起來看看身為水瓶座的做人守則，你會對他改觀...........</p>
                                         </div>
                                         <div class="line_middle_pic">
                                             <img :src="imgURL">
@@ -104,8 +118,11 @@
                                     </div>
                                     <div class="line_bottom">
                                         <img :src="iconLike" >
+                                        <p>3讚</p>
                                         <img :src="iconMessage" >
+                                        <p>2回應</p>
                                         <img :src="iconFav" >
+                                        <p>收藏</p>
                                     </div>
                                 </div>
                             </div>
@@ -125,10 +142,10 @@
             el: '#app',
             data: { //變數放這
                 imgURL: 'https://picsum.photos/90/90/?random=10',
-                iconLike: 'images/icon_discuss_like.svg',
-                iconMessage: 'images/icon_discuss_message.svg',
-                iconFav: 'images/icon_discuss_favorite.svg',
-                iconClose: 'images/icon_discuss_close.svg',
+                iconLike: './images/icon_discuss_like.svg',
+                iconMessage: './images/icon_discuss_message.svg',
+                iconFav: './images/icon_discuss_favorite.svg',
+                iconClose: './images/icon_discuss_close.svg',
             },
         });
     </script>
