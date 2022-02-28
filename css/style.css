@@ -17,7 +17,10 @@
     color: $accent_color;
     background-color: $accent_color;
 */
-/*按鈕共用*/
+/* --- 線框圓角
+    border-radius: 0.5em;
+*/
+/* 按鈕 */
 header {
   background: #000;
   position: fixed;
@@ -1687,7 +1690,7 @@ main .discuss .content .content_cate li:hover {
 main .discuss .content .content_article {
   border: 1px solid #CFB886;
   background-color: transparent;
-  border-radius: 0.625em;
+  border-radius: 0.5em;
   width: 80%;
   padding: 3em;
   /* 熱門最新 */
@@ -1751,7 +1754,7 @@ main .discuss .article_cards {
   border: 1px solid #CFB886;
   background-color: transparent;
   padding: 2em;
-  border-radius: 0.625em;
+  border-radius: 0.5em;
   margin: 1em 0;
   cursor: pointer;
 }
@@ -2058,7 +2061,7 @@ main .article_writing_board {
   width: 100%;
   border: 1px solid #CFB886;
   padding: 5%;
-  border-radius: 0.625em;
+  border-radius: 0.5em;
   /* 撰寫文章的標題 */
 }
 
@@ -2902,16 +2905,16 @@ main .astrolabe .container .astrolabe_start_box .form_item form {
       -ms-flex-align: start;
           align-items: flex-start;
   background-color: #3a3a3ab0;
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   padding: 2em;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
   -webkit-transition: .5s;
   transition: .5s;
 }
 
 main .astrolabe .container .astrolabe_start_box .form_item form:hover {
-  background-color: #58585865;
+  background-color: #3d3d3dbb;
 }
 
 main .astrolabe .container .astrolabe_start_box .form_item .form_btns {
@@ -3008,7 +3011,7 @@ main section.chart .container .astrolabe_chart .parse_box .analyze_bg {
   background-repeat: no-repeat;
   background-size: cover;
   height: auto;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
   /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
 }
 
@@ -3059,11 +3062,7 @@ main section.chart .container .astrolabe_chart .chart_info .chart_txt {
   margin: auto;
   padding: 2em 3.5em;
   background-color: #3a3a3a;
-  border-radius: 0.2em;
-}
-
-main section.chart .container .astrolabe_chart .chart_info .chart_txt:hover {
-  background-color: #58585865;
+  border-radius: 0.5em;
 }
 
 main section.chart .container .astrolabe_chart .chart_info .chart_txt p {
@@ -3597,7 +3596,7 @@ button.primary_line_btn:active ol {
   font-size: 0.9em;
   border-radius: 0.2em;
   color: #fff;
-  background-color: transparent;
+  background-color: #000;
   border: 1px solid #fff;
   padding: 0.8em 2em;
   cursor: pointer;
@@ -3609,7 +3608,6 @@ button.primary_line_btn:active ol {
 .third_btn:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
-  background-color: transparent;
 }
 
 /* --- 其他按鈕 --- */
@@ -3684,10 +3682,6 @@ a {
   text-decoration: none;
   color: #fff;
   cursor: pointer;
-}
-
-span {
-  color: #d89482;
 }
 
 label:not(.no_style) {

@@ -226,7 +226,7 @@ button.primary_line_btn {
     font-size: $fontSize;
     border-radius: $bRadius;
     color: #fff;
-    background-color: transparent;
+    background-color: map-get($primary_color, 'bg');
     border: 1px solid #fff;
     padding: 0.8em 2em;
     cursor: pointer;
@@ -234,7 +234,6 @@ button.primary_line_btn {
     transition: .5s;
     &:hover{
         transform: translateY(-2px);
-        background-color: transparent;
     }
 }
 /* --- 其他按鈕 --- */
@@ -304,9 +303,6 @@ a {
     cursor: pointer;
 }
 
-span {
-    color: #d89482;
-}
 label:not(.no_style) {
     color: #CFB886;
     padding: 2px 5px;
