@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js" async></script>
+    <link rel="stylesheet" href="css/owl.carousel.css">
     <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
 </head>
 <body>
@@ -24,14 +25,14 @@
             <div class="introduce_box">
                 <!-- 介紹_圖 -->
                 <div class="introduce_img">
-                        <img src="https://picsum.photos/300/450/?random=1">
+                        <img src="images/index/index_black_cat.svg">
                 </div>
                 <!-- 介紹_文 -->
                 <div class="introduce_txt_box">
                     <div class="introduce_txt">
-                        <h3>
-                        區無眼事屋聯管要。走果紅交有遠品明方一立企的接上負有意長電體重叫座的麼為解。態由任不顧時中明利冷員大病有一外應我把示眼臺張去工決來吸此南停百頭況。
-                        </h3>
+                        <h2>Mistro解星鏡</h2>
+                        <h4>解開你心中的各種疑問</h4>
+                        <h3>透過占卜與星座給予你方向與力量,期待每個人都可以受惠這門超越科學的學問,找到屬於自己最好的存在方式。</h3>
                     </div>
                 </div>
             </div>
@@ -55,20 +56,29 @@
     <!-- 線上測驗 -->
     <section class="online_test" id="text">
         <div class="container">
-            <div class="online_test_title">
-                <h1>線上測驗</h1>
-            </div>
-            <div class="online_test_tarot_box">
-                <!-- 線上測驗_塔羅_圖 -->    
-                <div class="online_test_tarot_img">
+            <div class="online_test_box">
+                <div class="owl-carousel owl-theme">
                     <a href="online_divination.html">
-                        <img src="https://picsum.photos/400/400/?random=4">
+                        <div class="test_box">
+                            <div class="test_img">
+                                <img src="../images/index/index_text_tarot.svg">
+                            </div>
+                            <div class="test_txt">
+                                <h2>塔羅牌</h2>
+                            </div>
+                        </div> 
+                    </a>
+                    <a href="con_today_fortune.html">
+                        <div class="test_box">
+                            <div class="test_img">
+                                <img src="images/index/index_text_Constellation.svg">
+                            </div>
+                            <div class="test_txt">
+                                <h2>星座</h2>
+                            </div>
+                        </div> 
                     </a>
                 </div>
-                <!-- 線上測驗_塔羅_文 -->
-                <div class="online_test_tarot_txt">
-                    <h2>塔羅牌</h2>
-                </div>    
             </div>
         </div>
     </section>
@@ -81,47 +91,49 @@
 
             <div class="hot_fortune_teller_box">
                 <!-- 熱門占卜師_卡片 -->
-                <a href="teller_reservation">
+                <a href="teller_reservation.html">
                     <div class="hot_fortune_teller_card">
                         <div class="hot_fortune_teller_img">
-                            <img src="https://picsum.photos/200/250/?random=6">
+                            <img src="images/index/index_hot_fortune_teller_ni.svg">
                         </div>
                         <div class="hot_fortune_teller_txt">
-                            <h3>姓名</h3>
+                            <h3>吳恆準</h3>
                         </div>
                         <div class="hot_fortune_teller_icon">
                             <img src="images/icon/icon_shop_eye.svg">
                         </div>
                     </div>
                 </a>  
-                <a href="#">
+                <a href="teller_reservation.html">
                     <div class="hot_fortune_teller_card">
                         <div class="hot_fortune_teller_img">
-                            <img src="https://picsum.photos/200/250/?random=6">
+                            <img src="images/index/index_hot_fortune_teller_bao.svg">
                         </div>
                         <div class="hot_fortune_teller_txt">
-                            <h3>姓名</h3>
+                            <h3>武材尊</h3>
                         </div>
                         <div class="hot_fortune_teller_icon">
                             <img src="images/icon/icon_shop_eye.svg">
                         </div>
                     </div>
                 </a>  
-                <a href="#">
+                <a href="teller_reservation.html">
                     <div class="hot_fortune_teller_card">
                         <div class="hot_fortune_teller_img">
-                            <img src="https://picsum.photos/200/250/?random=6">
+                            <img src="images/index/index_hot_fortune_teller_lu.svg">
                         </div>
                         <div class="hot_fortune_teller_txt">
-                            <h3>姓名</h3>
+                            <h3>巫亙准</h3>
                         </div>
                         <div class="hot_fortune_teller_icon">
                             <img src="images/icon/icon_shop_eye.svg">
                         </div>
                     </div>
                 </a>  
-                
-                
+            </div>
+            <!-- 占卜師總覽 -->
+            <div class="teller_verview">
+                <a href="teller_mem.html"><input type="submit" id="submit" value="占卜師瀏覽" class="primary_btn"></a>
             </div>
         </div>
     </section>
@@ -135,7 +147,7 @@
                 <a href="product.html">    
                     <div class="hot_product_card">
                         <div class="hot_product_card_img">
-                            <img src="https://picsum.photos/200/200/?random=11">
+                            <img src="images/shop/Constellation/wristband/wristband_aries.png">
                         </div>
                         <div class="hot_product_card_txt">
                             <h4>星座手環-牡羊座</h4>
@@ -146,10 +158,10 @@
                         </div>
                     </div>
                 </a>
-                <a href="#">    
+                <a href="product.html">    
                     <div class="hot_product_card">
                         <div class="hot_product_card_img">
-                            <img src="https://picsum.photos/200/200/?random=11">
+                            <img src="images/shop/Constellation/wristband/wristband_gemini.png">
                         </div>
                         <div class="hot_product_card_txt">
                             <h4>星座手環-雙子座</h4>
@@ -160,14 +172,14 @@
                         </div>
                     </div>
                 </a>
-                <a href="#">    
+                <a href="product.html">    
                     <div class="hot_product_card">
                         <div class="hot_product_card_img">
-                            <img src="https://picsum.photos/200/200/?random=6">
+                            <img src="images/shop/Constellation/wristband/wristband_scorpio.png">
                         </div>
                         <div class="hot_product_card_txt">
                             <h>星座手環-天蠍座</h>
-                            <h4>NT$1,99</h4>
+                            <h4>NT$1,299</h4>
                         </div>
                         <div class="hot_product_icon">
                             <img src="images/icon/icon_shop_eye.svg">
@@ -188,7 +200,8 @@
 @@include('layout/footer.html')
 
 <script src="js/common.js"></script>
-
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/owl.carousel.js"></script>
 
 <!-- 視差滾動 動畫效果 -->
 <script>
@@ -211,7 +224,26 @@
             //透明度
             opacity:0
             
-        })
-</script>
+        });
+
+
+    // 推薦商品 貓頭鷹套件
+
+    $(".owl-carousel").owlCarousel({
+        loop: true, // 循環播放
+        margin: 10, // 外距 10px
+        dots: false,
+        nav: true, // 顯示點點
+        responsive: {
+            0: {
+            items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+            },
+            980: {
+                items: 1 // 螢幕大小為 1000 以上 顯示 5 個項目
+            }
+        }
+    });
+    </script>
+
 </body>
 </html>
