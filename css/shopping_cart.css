@@ -38,11 +38,11 @@
     z-index: 1;
 }
 .shopping_circle .container .shopping_process li.active ~ li{
-    background-color: #a59692;
+    background-color: #3A3A3A;
     z-index: 1;
 }
 .shopping_circle .container .shopping_process li.active ~ .item::before{
-    background-color: #a59692;
+    background-color: #3A3A3A;
     z-index: 1;
 }
 
