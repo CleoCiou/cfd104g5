@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="css/real_constellation_2page.css">
     <script src="../js/vue.js"></script>
     <script src="/js/con_real_constellation_buy.js"></script>
-   
 </head>
 <body>
+    @@include('layout/header.html')
   <main>
     <div id="app">
         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
@@ -29,15 +29,15 @@
            <!-- 控制padding的容器 -->
             <div class="container">
                 <div class="pic"><img id="initimg" src="https://fakeimg.pl/250x100/"></div>
-                <p>去看夜景 喜歡看星星還是月亮</p>
+                <p>平常喜歡的興趣?</p>
               <!-- 包住圖文的容器   -->
                 <div class="answer">
                     <div class="btn third_btn" id="star">
-                        <a href="con_constellation_go.html"><span>星星</span></a>
+                        <a href="con_constellation_result.html"><span>踢足球</span></a>
                         <input type="text" value="images/con_pair.jpg" hidden>
                     </div>
                     <div class="btn third_btn" id="moon">
-                        <a href="con_constellation_go.html"><span>月亮</span></a>
+                        <a href="con_constellation_result.html"><span>看書</span></a>
                         <input type="text" value="images/full_moon_night_black_dark_sky_astronomy_universe_planet-683587.jpg" hidden>
                     </div>
                     
@@ -47,6 +47,7 @@
             
         </section>
     </main> 
+    @@include('layout/footer.html')
     <script src="js/common.js"></script>
     <script>
         new Vue({

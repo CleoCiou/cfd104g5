@@ -7,16 +7,18 @@
         <input type="checkbox" class="display_none" id="reg_log" name="reg_log">
 
         <section class="card_box">
+            <!-- 切換器 -->
             <div class="switch_box">
                 <div class="select_title">
-                    <span class="item">登入</span>
-                    <span class="item">註冊</span>
+                    <h3 class="item">登入</h3>
+                    <h3 class="item">註冊</h3>
                 </div>
                 <div class="item">
                     <label class="switch" for="reg_log"></label>
                 </div>
             </div>
 
+            <!-- 旋轉式卡片 -->
             <div class="rotate_3d_box">
                 <!-- 卡片正面: 登入 -->
                 <div class="card_item card_font">
@@ -29,13 +31,13 @@
                             <!-- 帳號 -->
                             <div class="item account">
                                 <i class="input-icon uil uil-user"></i>
-                                <input type="text" name="memId" id="memId" placeholder="帳號">
+                                <input type="text" name="memId" id="login_memId" placeholder="帳號">
                             </div>
     
                             <!-- 密碼 -->
                             <div class="item password">
                                 <i class="input-icon uil uil-lock-alt"></i>
-                                <input type="password" name="memPwd" id="memPwd" placeholder="密碼">
+                                <input type="password" name="memPwd" id="login_memPwd" placeholder="密碼">
                             </div>
     
                         </div>
@@ -81,10 +83,25 @@
                                 <input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="再次輸入密碼">
                             </div>
 
+                            <!-- 姓名 -->
+                            <div class="item memName">
+                                <i class="input-icon uil uil-user"></i>
+                                <input type="text" name="memName" id="memName" placeholder="請輸入姓名">
+                            </div>
+
+                            <!-- 信箱 -->
+                            <div class="item email">
+                                <i class="uil uil-envelope"></i>
+                                <input type="email" name="email" id="email" placeholder="abc@example.com">
+                            </div>
+
                             <!-- 生日 -->
                             <div class="item birthday">
-                                <i class="uil uil-calender"></i>
-                                <input type="date" name="birthday" id="birthday">
+                                <label for="birthday">
+                                    <label>生日</label>
+                                    <input type="date" name="birthday" id="birthday">
+                                    <i class="uil uil-calender"></i>
+                                </label>
                             </div>
 
                             <!-- 電話 -->
@@ -94,11 +111,25 @@
                             </div>
                             
                             <!-- 身分 -->
-                            <!-- <div class="item identity">
-                                <i class="input-icon uil uil-user"></i>
+                            <div class="item identity">
+                                <i class="uil uil-chat-bubble-user"></i>
                                 <input type="radio">一般會員
                                 <input type="radio">占卜師
-                            </div> -->
+                            </div>
+
+                            <!-- 占卜師介紹 -->
+                            <div class="item introduction">
+                                <i class="uil uil-comment-dots"></i>
+                                <label>請輸入自我介紹</label>
+                                <textarea></textarea>
+                            </div>
+
+                            <!-- 占卜師證照 -->
+                            <div class="item certificate">
+                                <i class="input-icon uil uil-user"></i>
+                                <label>請上傳占卜師證照</label><br>
+                                <input type="file" id="certificate">
+                            </div>
 
                         </div>
                     </div>

@@ -1,0 +1,72 @@
+main .search_box {
+  width: 100%;
+  padding: 2em 0;
+}
+
+main .search_box .search {
+  width: 30%;
+}
+
+main .search_box .secondary_btn {
+  padding: 0.5em 2em;
+}
+
+main .mem_orders .order_list .order_item {
+  border: 1px solid #CFB886;
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+main .mem_orders .order_list .order_item .order_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .mem_orders .order_content .item {
+  padding: 2em;
+}
+
+main .mem_orders .order_content .item .img_box {
+  width: 10em;
+  display: inline-block;
+}
+
+main .mem_orders .order_content .item .txt_box {
+  margin-left: 2em;
+  width: 78%;
+  display: inline-block;
+}
+
+main .mem_orders .order_content .item .txt_box .info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .mem_orders .order_content .item .txt_box .info span {
+  padding: 1em 0;
+}
+
+main .mem_orders .order_item .order_footer {
+  padding: 2em;
+}
+
+main .mem_orders .order_item .order_footer .item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1em 0;
+}
+/*# sourceMappingURL=mem_order_try.css.map */

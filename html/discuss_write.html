@@ -7,7 +7,8 @@
     <title>解星鏡 Mistro | 撰寫文章</title>
 </head>
 <body>
-    <header></header>
+    <!-- 網頁頭 by NJ -->
+    @@include('layout/header.html')  
     <main>
         <section class="discuss discuss_write">
             <div class="container">
@@ -16,10 +17,18 @@
                     <!-- 選擇看板 -->
                     <div class="choose_theme">
                         <select name="theme" id="theme">
-                            <option value="all">全部</option>
+                            <option value="all" selected>全部</option>
                             <option value="">摩羯座</option>
                             <option value="">水瓶座</option>
                             <option value="">雙魚座</option>
+                            <option value="">牡羊座</option>
+                            <option value="">金牛座</option>
+                            <option value="">巨蟹座</option>
+                            <option value="">獅子座</option>
+                            <option value="">處女座</option>
+                            <option value="">天秤座</option>
+                            <option value="">天蠍座</option>
+                            <option value="">射手座</option>
                         </select>
                     </div>
                     
@@ -61,7 +70,8 @@
         </section>
 
     </main>
-    <footer></footer>
+    <!-- 網頁尾 By NJ -->
+    @@include('layout/footer.html')
     <script src="js/common.js"></script>
 </body>
 </html>

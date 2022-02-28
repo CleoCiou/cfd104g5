@@ -71,7 +71,7 @@ body {
 }
 
 .back {
-    background: rgb(58, 39, 39);
+    background: #3A3A3A;
     transform: rotateY(-180deg);
     padding: 0 2em;
 }

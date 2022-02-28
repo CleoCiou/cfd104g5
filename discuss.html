@@ -12,22 +12,21 @@
     <!-- 網頁頭 by NJ -->
     <!-- 網頁頭 by NJ-->
 <header class="main_header">
-
-
+    
     <!-- main logo -->
     <div class="header_all">
         <!-- main logo -->
         <div class="header_img_box">
-            <a href="#" class="logo">
-                <img src="images/index_logo_golden-02.png" alt="mistro logo">
+            <a href="index.html" class="logo">
+                <img src="./images/index_logo_golden-02.png" alt="首頁mistro logo">
             </a>
         </div>
             <!-- icon -->
         <div class="header_bar">
             <div class="header_icon">
-                <a href="/login.html"><p>登入</p></a>
-                <a href="/member.html"><img src="/images/header/header-member-02.png" alt="會員icon"></a>
-                <a href="/shopping_cart.html"><img src="/images/header/header_shopping cart.png" alt="購物車icon"></a>
+                <a href="login.html"><p>登入</p></a>
+                <a href="member.html"><img src="./images/header/header-member-02.png" alt="會員icon"></a>
+                <a href="shopping_cart.html"><img src="./images/header/header_shopping cart.png" alt="購物車icon"></a>
             </div>
         
 
@@ -36,6 +35,7 @@
                 <input id="nav_toggle" type="checkbox">
                 <label for="nav_toggle" class="ham no_style">
                     <div class="ham_origin">
+                        <!-- 漢堡的槓槓 -->
                         <div></div>
                         <div></div>
                         <div></div>
@@ -46,13 +46,13 @@
                     <div class="crystal_ball">
                     </div>
                     <div class="rotate_card">
-                        <a href="/be_teller.html">
+                        <a href="be_teller.html">
                             <div class="menu_card tarot"></div>
                         </a>
-                        <a href="">
+                        <a href="con_today_fortune.html">
                             <div class="menu_card zodiac"></div>
                         </a>
-                        <a href="/shop.html">
+                        <a href="shop.html">
                             <div class="menu_card shop"></div>
                         </a>
                     </div>
@@ -63,37 +63,37 @@
                                 塔羅
                             </a>
                             <ul class="sub_menu">
-                                <li><a href="/be_teller.html">體驗占卜師</a></li>
-                                <li><a href="/online_divination.html">線上占卜</a></li>
-                                <li><a href="/teller_reservation.html">預約占卜師</a></li>
+                                <li><a href="be_teller.html">體驗占卜師</a></li>
+                                <li><a href="online_divination.html">線上占卜</a></li>
+                                <li><a href="teller_reservation.html">預約占卜師</a></li>
                             </ul>
                         </li>
                         <li class="menu_item">
                             <a class="menu_link" href="#">
                                 星座</a>
                             <ul class="sub_menu">
-                                <li><a href="/con_today_fortune.html">每日運勢</a></li>
-                                <li><a href="/con_real_constellation.html">真實星座測驗</a></li>
-                                <li><a href="/con_pair.html">星座配對</a></li>
-                                <li><a href="/discuss.html">討論區</a></li>
+                                <li><a href="con_today_fortune.html">每日運勢</a></li>
+                                <li><a href="con_real_constellation.html">真實星座測驗</a></li>
+                                <li><a href="con_pair.html">星座配對</a></li>
+                                <li><a href="discuss.html">討論區</a></li>
                             </ul>
                         </li>
                         <li class="menu_item">
-                        <a class="menu_link" href="/shop.html">
+                        <a class="menu_link" href="shop.html">
                             商城</a>
                         </li>
                         <li class="menu_item">
                             <a class="menu_link menu_member" href="#">會員專區</a>
                             <ul class="sub_menu">
-                                <li><a href="/member.html">個人資訊</a></li>
-                                <li><a href="/mem_reservation.html">我的預約</a></li>
-                                <li><a href="/mem_orders.html">我的訂單</a></li>
-                                <li><a href="/teller_mem.html">占卜師專區</a></li>
+                                <li><a href="member.html">個人資訊</a></li>
+                                <li><a href="mem_reservation.html">我的預約</a></li>
+                                <li><a href="mem_orders.html">我的訂單</a></li>
+                                <li><a href="teller_mem.html">占卜師專區</a></li>
                             </ul>
                         </li>
                         <li class="menu_item">
-                        <a class="menu_link menu_login" href="/login.html">登入</a>
-                        <a class="menu_link menu_login" href="/login.html">註冊</a>
+                        <a class="menu_link menu_login" href="login.html">登入</a>
+                        <a class="menu_link menu_login" href="login.html">註冊</a>
                         </li>
                     </ul>
                 </nav>
@@ -122,23 +122,6 @@
             </ul>
         </div>
     </section>
-
-    <script>
-        new Vue({
-                el: '#app',
-                data: { //變數放這
-                    urls: {
-                        '今日運勢': 'con_today_fortune.html',
-                        '星座配對': 'con_pair.html',
-                        '真實星座': 'con_real_constellation.html',
-                        '星盤推算': 'astrolabe.html',
-                        '星座故事': 'con_story.html',
-                        '星座討論區': 'discuss.html',
-                    },
-                    navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
-                },
-            });
-    </script>
              <!-- 討論區 by JC -->
             <section class="discuss">
                 <!-- 控制整個討論區padding的大大容器 -->
@@ -158,19 +141,9 @@
                     </div>
                     <!-- 貓頭鷹分類 -->
                     <div class="owl-carousel owl-theme display">
-                        <div class="item"><label>全部</label></div>
-                        <div class="item"><label>摩羯座</label></div>
-                        <div class="item"><label>水瓶座</label></div>
-                        <div class="item"><label>雙魚座</label></div>
-                        <div class="item"><label>牡羊座</label></div>
-                        <div class="item"><label>金牛座</label></div>
-                        <div class="item"><label>雙子座</label></div>
-                        <div class="item"><label>巨蟹座</label></div>
-                        <div class="item"><label>獅子座</label></div>
-                        <div class="item"><label>處女座</label></div>
-                        <div class="item"><label>天秤座</label></div>
-                        <div class="item"><label>天蠍座</label></div>
-                        <div class="item"><label>射手座</label></div>
+                        <div class="item" v-for="cate in cates">
+                            <label>{{cate}}</label>
+                        </div>
                     </div>
                     <!-- 文章 搜尋bar下排包住左邊和右邊的容器 -->
                     <div class="content">
@@ -210,8 +183,9 @@
                                             </div>
                                         </div>
                                         <div class="line_bottom">
-                                            <img :src="iconLike" >
-                                            <p>999讚</p>
+                                            <img :src="iconLike" class="likes" @click="changeLike">
+                                            
+                                            <p>{{num}}讚</p>
                                             <img :src="iconMessage" >
                                             <p>28回應</p>
                                             <img :src="iconFav" >
@@ -227,8 +201,8 @@
                                         </div>
                                         <div class="line_middle">
                                             <div class="line_middle_txt">
-                                                <h3>睡覺是最好的復健</h3>
-                                                <p>你每天晚上都有睡足7~9個鐘頭嗎？根據美國國家睡眠基金會(National .....</p>
+                                                <h3>愛上天秤座怎麼辦？你絕對不能錯過的天秤座全攻略！</h3>
+                                                <p>天秤座是一個重視合作關係的星座，可想而知他們的第一順位就是與親密的人面對面相處。他們透過親.....</p>
                                             </div>
                                             <div class="line_middle_pic">
                                                 <img :src="imgURL">
@@ -236,21 +210,24 @@
                                         </div>
                                         <div class="line_bottom">
                                             <img :src="iconLike" >
+                                            <p>93讚</p>
                                             <img :src="iconMessage" >
+                                            <p>15回應</p>
                                             <img :src="iconFav" >
+                                            <p>收藏</p>
                                         </div>
                                     </div>
                                     <!-- 文章卡片 -->
                                     <div class="article_cards">
                                         <div class="line_top">
-                                            <p>牡羊座</p>
+                                            <p>全部</p>
                                             <p>|</p>
                                             <p>14小時前</p>
                                         </div>
                                         <div class="line_middle">
                                             <div class="line_middle_txt">
-                                                <h3>11點就寢最好！提早1小時睡覺重度憂鬱風險大減</h3>
-                                                <p>睡覺每提早一小時，罹患重度憂鬱症的風險會降低23%..........</p>
+                                                <h3>12星座像什麼「水果」</h3>
+                                                <p>你可曾細心品嘗過水果？是否嘗到水果的各種滋味？還是只憑外表來決........</p>
                                             </div>
                                             <div class="line_middle_pic">
                                                 <img :src="imgURL">
@@ -258,8 +235,11 @@
                                         </div>
                                         <div class="line_bottom">
                                             <img :src="iconLike" >
+                                            <p>25讚</p>
                                             <img :src="iconMessage" >
+                                            <p>0回應</p>
                                             <img :src="iconFav" >
+                                            <p>收藏</p>
                                         </div>
                                     </div>
                                     <!-- 文章卡片 -->
@@ -271,8 +251,8 @@
                                         </div>
                                         <div class="line_middle">
                                             <div class="line_middle_txt">
-                                                <h3>英國研究：晚上10點到11點睡覺對心臟最好</h3>
-                                                <p>英國科學家在「歐洲心臟期刊—數位健康」（..............</p>
+                                                <h3>射手座你們看了一定會點頭</h3>
+                                                <p>樂觀與憂愁：射手座人的內心不是外表看上去那麼樂觀的，因為喜歡看的..............</p>
                                             </div>
                                             <div class="line_middle_pic">
                                                 <img :src="imgURL">
@@ -280,8 +260,11 @@
                                         </div>
                                         <div class="line_bottom">
                                             <img :src="iconLike" >
+                                            <p>19讚</p>
                                             <img :src="iconMessage" >
+                                            <p>7回應</p>
                                             <img :src="iconFav" >
+                                            <p>收藏</p>
                                         </div>
                                     </div>
                                     <!-- 文章卡片 -->
@@ -293,8 +276,8 @@
                                         </div>
                                         <div class="line_middle">
                                             <div class="line_middle_txt">
-                                                <h3>為什麼要睡覺？：睡出健康與學習力、夢出創意的新科學</h3>
-                                                <p>各界推薦《為什麼要睡覺？》是一本充滿使命感命的書...........</p>
+                                                <h3>水瓶座的7個特色解析：心軟善良、重視友情</h3>
+                                                <p>水瓶座真的總會讓旁人驚呼「好怪」嗎？一起來看看身為水瓶座的做人守則，你會對他改觀...........</p>
                                             </div>
                                             <div class="line_middle_pic">
                                                 <img :src="imgURL">
@@ -302,8 +285,11 @@
                                         </div>
                                         <div class="line_bottom">
                                             <img :src="iconLike" >
+                                            <p>3讚</p>
                                             <img :src="iconMessage" >
+                                            <p>2回應</p>
                                             <img :src="iconFav" >
+                                            <p>收藏</p>
                                         </div>
                                     </div>
                                     <!-- 頁籤按鈕 -->
@@ -369,7 +355,7 @@
                                 </div>
                                 <div class="response_card_content">
                                     <p>耶頭香<br>
-                                        巨蟹座gooood<br>
+                                        巨蟹座94棒!!!!!<br>
                                     </p>
                                 </div>
                                 <div class="response_card_time">
@@ -400,6 +386,7 @@
                             
                         </div>
                         <hr class="style">
+                        
                     </div>
                     <!-- 使用者要留言的地方 -->
                     <div class="response_box">
@@ -407,10 +394,10 @@
                             <button class="other_btn">D</button>
                         </div>
                         <div class="user_txt_box">
-                            <textarea  cols="2" rows="1"></textarea>
+                            <textarea  cols="1" rows="1"></textarea>
                         </div>
                         <div class="res_btn_box">
-                            <input type="submit">
+                            <input type="submit" class="submit_btn" value="送出">
                         </div>
                     </div>
                 </div>
@@ -424,24 +411,24 @@
     <div class="footer_up">
         
         <a href="#" class="footer_logo">
-            <img src="/images/logo_golden.png" alt="解星鏡logo">
+            <img src="./images/logo_golden.png" alt="解星鏡logo">
         </a>
         
         <div class="footer_nav">
             <ul>
-                <li><a href="/index.html#int">介紹</a></li>
-                <li><a href="/index.html#text">占卜</a></li>
-                <li><a href="/index.html#text">星座</a></li>
-                <li><a href="/index.html#hft">熱門占卜師</a></li>
-                <li><a href="/index.html#hp">主打商品</a></li>
-                <li><a href="#">會員中心</a></li>
+                <li><a href="index.html#int">介紹</a></li>
+                <li><a href="index.html#text">占卜</a></li>
+                <li><a href="index.html#text">星座</a></li>
+                <li><a href="index.html#hft">熱門占卜師</a></li>
+                <li><a href="index.html#hp">主打商品</a></li>
+                <li><a href="member.html">會員中心</a></li>
             </ul>
         </div>
 
         <div class="footer_icon">
-            <a href=""><img src="/images/footer/icon-fb.png" alt=""></a>
-            <a href=""><img src="/images/footer/icon-ig.png" alt=""></a>
-            <a href=""><img src="/images/footer/icon-yt.png" alt=""></a>
+            <a href="#"><img src="./images/footer/icon-fb.png" alt=""></a>
+            <a href="#"><img src="./images/footer/icon-ig.png" alt=""></a>
+            <a href="#"><img src="./images/footer/icon-yt.png" alt=""></a>
         </div>
     </div>
 
@@ -467,7 +454,7 @@
         new Vue({
             el: '#app',
             data: { //變數放這
-                message: 'hello',
+                num: 999,
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
@@ -476,12 +463,37 @@
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
+                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
                 cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
                 imgURL: 'https://picsum.photos/90/90/?random=10',
-                iconLike: 'images/icon/icon_discuss_like.svg',
+                iconLike: './images/icon/icon_discuss_like.svg',
+                // iconLike: {
+                //     url: './images/icon/',
+                //     img: './icon_discuss_like.svg',
+                //     active: 'icon_discuss_likes.svg'
+                // },
+                iconLikeClick :'images/icon/icon_discuss_likes.svg',
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
+                // isChecked: 0,
+            },
+            methods: {
+                changeLike(e){
+                    // if(e.target.src == )
+                        console.log(e.target.src);
+                        console.log(this.$data.iconLike);
+                        this.$data.num +=1;
+                    // if(e.target.text == "我喜歡"){
+                    // }
+                    // console.log(e.target.text);
+                    // console.log(e);
+                    // console.log(this.$data.iconLike);
+
+                },
+                isChecked(){
+
+                }
             },
         });
         $(document).ready(function(){

@@ -77,7 +77,10 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid #CFB886;
+    position: relative;
 }
+
+
 .shopping_cart .container .cart_detail .cart_body .cart_body_box>div{
     width: 25%;
     text-align: right;
@@ -85,69 +88,23 @@
 .shopping_cart .container .cart_detail .cart_body .cart_card .img_box{
     padding: 0.5em;
 }
-.shopping_cart .container .cart_detail .cart_body .cart_card .img_box img{
+.shopping_cart .container .cart_detail .cart_body .cart_body_box .item_detail .cart_card .img_box img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.shopping_cart .container .cart_detail .cart_body .cart_card{
+.shopping_cart .container .cart_detail .cart_body .cart_body_box .item_detail .cart_card{
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 0.5em;
 }
-/* .shopping_cart .container .cart_detail .cart_body .product_box {
-    display: flex;
-    align-items: center;
-    padding: 3%;
-    border-bottom: 1px solid #CFB886;
-    position: relative;
-    flex-wrap: wrap;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box:last-child{
-    border-bottom: none;
-}
-
-.shopping_cart .container .cart_detail .cart_body .product_box>div{
-    width: 25%;
-    text-align: right;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .img_box {
-    height: 5em;
-    margin-bottom: 0.5em;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .img_box img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card .txt_box p{
-    text-align: center;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .item_detail .cart_card p{
-    word-wrap: break-word;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .count{
-    display: flex;
-    justify-content: right;
-    align-items: center;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .count p{
-    margin: 0.5em;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .count i{
-    font-size: 0.5em;
-}
-.shopping_cart .container .cart_detail .cart_body .product_box .delete_button {
+.shopping_cart .container .cart_detail .cart_body .cart_body_box .operate{
     position: absolute;
     right: 0.5em;
     top: 0.5em;
-} */
+}
+
 /* 填寫資料區 */
 .cart_deliver .container .cart_info_right .confirm_btns{
     text-align: right;

@@ -14,6 +14,7 @@
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
     <main>
+        <div id="twinklingStar">
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
             @@include('layout/con_page.html')
@@ -24,7 +25,7 @@
             <div class="container">
                 <!-- <h1>星盤推算</h1> -->
                 <div class="astrolabe_start_box">
-                     <!-- 底圖 -->
+                    <!-- 底圖 -->
                     <div class="img_box start">
                         <canvas id="canvas" width="1064" height="1064"></canvas>
                         <!-- 自訂的大按鈕 -->
@@ -59,10 +60,10 @@
                     </div>
                     
                 </div>
-                   
+                
             </div>
         </section>
-                
+    </div>
     </main>
     
     <!-- 網頁尾 By NJ -->
@@ -70,14 +71,45 @@
         <script src="js/common.js"></script>
         <script src="js/astrolabe_start.js"></script>
         <script>
-
+            new Vue({
+                el: '#app',
+                data: { //變數放這
+                    urls: {
+                        '今日運勢': 'con_today_fortune.html',
+                        '星座配對': 'con_pair.html',
+                        '真實星座': 'con_real_constellation.html',
+                        '星盤推算': 'astrolabe.html',
+                        '星座故事': 'con_story.html',
+                        '星座討論區': 'discuss.html',
+                    },
+                    navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+                },
+            });
             gsap.to('#canvas',{
                 rotation: 360,
                 duration: 25,
                 repeat: -1,
-                ease: "none"
-            })
+                ease: "none",
+            });
 
+            for(var i = 0; i < 500; i++) {
+                //get random dimensions
+                var x = Math.random() * 100;
+                var y = Math.random() * 150;
+                var d = Math.random() * 4;
+                var s = Math.random() * 2 + 1.5;
+                //create new element and add to html
+                var star = document.createElement("div");
+                star.classList.add("star");
+                var sky = document.getElementById("twinklingStar");
+                sky.appendChild(star);
+
+                star.style.width = d + "px";
+                star.style.height = d + "px";
+                star.style.top = y + "%";
+                star.style.left = x + "%";
+                star.style.animationDuration = s + "s";
+            }
         </script>
 </body>
 </html>

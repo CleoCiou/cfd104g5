@@ -5,23 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <link rel="stylesheet" href="css/today_fortune.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="../js/vue.js"></script>
-
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">  -->
     
-   </style>
-
 </head>
 <body>
-    
-    <!-- 網頁頭 -->
-
-
-    
-    <!-- 今日運勢 -->
-    
+    @@include('layout/header.html')
     <main>
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
@@ -38,8 +27,8 @@
             <div class="container">
                 <!-- 左半內容 -->
                 <div class="today">
-                    <h2>本周運勢</h2>
-                    <p>2022年2月27號~3月5號</p>
+                    <h2>今日運勢</h2>
+                    <p>2022年3月2號</p>
                     <div class="item">
                         <div class="img_box">
                             <img src="https://fakeimg.pl/250x100/">
@@ -60,7 +49,7 @@
                     </div>
                     <!-- 包住右下的內容 -->
                     <div class="lucky">
-                        <h3>短評:能心想事成。</h3>
+                        <h3>短評:新環境新感覺。</h3>
                         <div class="lucky_row">
                             <!-- 幸運數字 -->
                             <div class="txt_box">
@@ -68,7 +57,7 @@
                                     幸運數字
                                 </div>
                                 <div class="txt">
-                                    3
+                                    1
                                 </div>
                             </div>
                             <!-- 開運方向 -->
@@ -77,18 +66,18 @@
                                     開運方向
                                 </div>
                                 <div class="txt">
-                                    西北方向
+                                    東南方向
                                 </div>
                             </div>
                         </div>
                         <div class="lucky_row">
                              <!-- 幸運顏色 -->
                             <div class="txt_box">
-                                <div class="number unselected_btn">幸運顏色</div><div class="txt">香檳金</div>
+                                <div class="number unselected_btn">幸運顏色</div><div class="txt">燻鮭紅</div>
                             </div>
                             <!-- 幸運星座 -->
                             <div class="txt_box">
-                                <div class="number unselected_btn">幸運星座</div><div class="txt">雙魚座</div>
+                                <div class="number unselected_btn">幸運星座</div><div class="txt">水瓶座</div>
                             </div>
                         </div>
                     </div>        
@@ -100,15 +89,17 @@
             <div class="container">
                 <div class="overall_fortune">
                     <h4>運勢指數</h4>
-                    <div class="overall_fortune_txt">整體運勢★★★:平順的運勢，會讓你這一週過得舒適安穩，不用為愛情太過折騰；事業進入平穩期，一切都將有條不紊地進行；財運火候恰好，進帳會比支出多很多。</div>
-                    <div class="overall_fortune_txt">愛情運勢★★★:你對愛情的質量開始有更高的要求，但你不會要求對方配合你的需求，而是通過修正自己的不足，調整相處環境來實現愛情的完美化。這在另一半看來會是相當的難能可貴。</div>
-                    <div class="overall_fortune_txt">事業運勢★★★★:煩心的事務皆成浮雲，這段時間你所走的路將是平坦、舒適的。管理者可以授權給下屬，讓自己偷個閒；一般職員則可以不疾不徐地去完成各項工作。。</div>
-                    <div class="overall_fortune_txt">財運運勢★★★★★:坐收漁利之運。過去的投資、決策到了本週開始見成效，或他人努力卻為你做了嫁衣，像天上掉下來的禮物，讓你開心不已。需提醒的是不要飲酒過量，小心酒後失財。。</div>
+                    <div class="overall_fortune_txt">整體運勢★★★★:你幽默的談吐給人家留下好的印象，在心儀對象面前易讓對方加深對你的好感。</div>
+                    <div class="overall_fortune_txt">愛情運勢★★★:對另一半較為大方，很樂意為對方破費購買溫馨別致的禮物，令對方很開心。</div>
+                    <div class="overall_fortune_txt">事業運勢★★★:新計劃的執行宜多加反覆思考和審視，考慮周全可讓後續計劃進行得更順利。</div>
+                    <div class="overall_fortune_txt">財運運勢★★★★:情緒高漲，笑逐顏開的一天，有機會與久未聯繫的老朋友相遇，驚喜不斷。</div>
                 </div>
             </div>
         </section>
 
     </main>
+    @@include('layout/footer.html')
+    
     <script src="js/common.js"></script>
     <script>
         new Vue({
@@ -126,6 +117,5 @@
             }
         });
     </script>
-    
 </body>
 </html>

@@ -1,4 +1,3 @@
-<!-- p裡面的文字沒有靠左 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,7 @@
     <script src="../js/vue.js"></script>
 </head>
 <body>
+     @@include('layout/header.html')
   <main>
     <div id="app">
         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
@@ -26,17 +26,19 @@
         "><img src="https://fakeimg.pl/250x100/"></section>
 
         <h2>星座介紹</h2>
-        <h3>射手座</h3>
+        <h3>水瓶座</h3>
         <section class="story">
-            <img src="https://fakeimg.pl/250x100/"><p>　射手座又叫人馬座，夏夜的時候，抬頭看南方的天空，人馬座就在天蠍座的東邊。
-                　　希臘神話故事中的射手座，是一個上半身為人形，下半身是馬的怪物，名叫奇龍。
-                　　這種半人半馬的怪獸，被稱為山杜爾族，居住在派利翁山上。他們以狩獵維生，性情非常兇猛。
-                　　奇龍卻與其他的山杜爾族不一樣，他以善良和智慧聞名。因此，在山杜爾族裡，他是一個受尊敬的賢者。他是族中唯一能長生不老的人，但是他最後還是逃不過死神的召喚。</p>
+            <img src="https://fakeimg.pl/250x100/"><p>水瓶座位於魔羯座的東方，是個不太明顯的星座。它又叫做寶瓶座。在星座圖上，寶瓶座是一個少年把水瓶扛在肩上。這個少年就是特洛伊王子卡尼米迪斯。
+                　　天神宙斯所領導的奧林帕斯山，經常舉行盛大的宴會，在宴會中負責為眾神斟酒的，向來是青春女神希碧。
+                　　有一次，眾神依舊在奧林匹斯宮殿舉行酒宴，等了許久，還不見希碧來倒酒。
+                　　「怎麼回事?希碧呢?」宙斯問。
+                　　</p>
         </section>
 
 
     </main>
-  <script src="js/common.js"></script>
+    @@include('layout/footer.html')
+  <script src="css/common.css"></script>
   <script>
     new Vue({
         el: '#app',
