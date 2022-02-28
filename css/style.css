@@ -2762,10 +2762,31 @@ section.login .container section.card_box .rotate_3d_box .card_item.card_back {
       justify-content: space-around;
 }
 
+section.login .container section.card_box .rotate_3d_box .account_info,
+section.login .container section.card_box .rotate_3d_box .mem_info,
+section.login .container section.card_box .rotate_3d_box .astrologist_info {
+  overflow: hidden;
+}
+
 section.login .container section.card_box .rotate_3d_box .mem_info,
 section.login .container section.card_box .rotate_3d_box .astrologist_info {
   height: 0;
-  overflow: hidden;
+}
+
+section.login .container section.card_box .rotate_3d_box #general:checked ~ .identity .general,
+section.login .container section.card_box .rotate_3d_box #general:checked ~ .identity .general_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ .identity .astrologist,
+section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ .identity .astrologist_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box .item.identity i:not(:first-child),
+section.login .container section.card_box .rotate_3d_box .item.identity label {
+  cursor: pointer;
+  color: #888;
 }
 
 #twinklingStar {

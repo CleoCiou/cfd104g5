@@ -150,10 +150,14 @@
                                 </div>
                                 
                                 <!-- 身分 -->
+                                <input type="radio" name="identity" id="general" class="display_none">
+                                <input type="radio" name="identity" id="astrologist" class="display_none">
                                 <div class="item identity">
                                     <i class="uil uil-chat-bubble-user"></i>
-                                    <input type="radio">一般會員
-                                    <input type="radio">占卜師
+                                    <i class="uil uil-golf-ball general"></i>
+                                    <label class="general_txt" for="general">一般會員</label>
+                                    <i class="uil uil-golf-ball astrologist"></i>
+                                    <label class="astrologist" for="astrologist">占卜師</label>
                                 </div>
                             </div>
 
@@ -261,9 +265,37 @@
 
 
         // === 按鈕監控 === //
-        $(".next_step").click({
-            
+        $(".next_step").click((e) => {
+            console.log(e.target);
+            console.log($(".astrologist_info").css('height'));
+            if ($(".account_info").css('height') !== '0px') {
+                gsap.to($(".account_info"), {
+                    height: 0,
+                    duration: .1
+                })
+                gsap.to($(".mem_info"), {
+                    height: 'auto',
+                    opacity: 1,
+                    ease: 
+                    Back.easeOut.config(1.7),
+                    duration: 1
+                })
+            }
+            else if ($(".mem_info").css('height') !== '0px') {
+                gsap.to($(".mem_info"), {
+                    height: 0,
+                    duration: .1
+                })
+                gsap.to($(".astrologist_info"), {
+                    height: 'auto',
+                    opacity: 1,
+                    ease: 
+                    Back.easeOut.config(1.7),
+                    duration: 1
+                })
+            }
         })
+
 
         // === 帳號資訊 === ///
         // === 帳號 === //

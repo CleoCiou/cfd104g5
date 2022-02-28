@@ -207,20 +207,6 @@ section.login {
 
                 // 卡片背面: 註冊
                 .card_item.card_back {
-                    // &::-webkit-scrollbar{
-                    //     width: 30px;
-                    // }  
-                    // &::-webkit-scrollbar-track{
-                    //     background-color: transparent;
-                    //     border-radius: 100px;
-                    // }
-                    // &::-webkit-scrollbar-thumb{
-                    //     border-radius: 100px;
-                    //     border: 10px solid transparent;
-                    //     background-clip: content-box;
-                    //     background-color: #CFB886;
-                    // }
-                    // overflow-y: scroll;
                     overflow: hidden;
                     transform: rotateY(180deg);
                     padding: 2em;
@@ -230,10 +216,34 @@ section.login {
                     justify-content: space-around;
                 }
 
+                .account_info,
+                .mem_info,
+                .astrologist_info {
+                    overflow: hidden;
+                }
                 .mem_info,
                 .astrologist_info {
                     height: 0;
-                    overflow: hidden;
+                }
+
+                #general:checked ~ .identity {
+                    .general,
+                    .general_txt {
+                        color: map-get($primary_color, 'content');
+                    }
+                }
+                #astrologist:checked ~ .identity {
+                    .astrologist,
+                    .astrologist_txt {
+                        color: map-get($primary_color, 'content');
+                    }
+                }
+                .item.identity {
+                    i:not(:first-child),
+                    label{
+                        cursor: pointer;
+                        color: #888;
+                    }
                 }
             }
 
