@@ -66,9 +66,10 @@ header .header_all .header_bar .header_icon {
 }
 
 header .header_all .header_bar .header_icon p {
-  margin-top: 20px;
+  color: #cfb886;
+  margin-top: 1.2rem;
   margin-right: 20px;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 
 header .header_all .header_bar .header_icon img {
@@ -98,13 +99,13 @@ header .ham_menu .ham_origin {
 
 header .ham_menu .ham_origin div {
   height: 0px;
-  border: 1.5px solid #fff;
+  border: 1px solid #cfb886;
   width: 22px;
   display: block;
   position: absolute;
   -webkit-transition: all 300ms cubic-bezier(0.61, 0.01, 0.42, 1);
   transition: all 300ms cubic-bezier(0.61, 0.01, 0.42, 1);
-  background: #fff;
+  background: #cfb886;
 }
 
 header .ham_menu .ham_origin:hover {
@@ -122,7 +123,7 @@ header .ham_menu .ham_origin:hover div:nth-child(3):before {
 }
 
 header .ham_menu .ham_origin:hover div {
-  border: 2px solid #fff;
+  border: 1px solid #cfb886;
   height: 9px;
   border-radius: 50%;
   margin-left: -1px;
@@ -159,7 +160,7 @@ header .ham_menu div:nth-child(3):before {
   -webkit-animation: ball 1.5s linear infinite;
           animation: ball 1.5s linear infinite;
   content: '';
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   display: block;
   position: relative;
   top: 0.25px;
@@ -498,6 +499,7 @@ footer.main_footer {
 }
 
 footer .footer_up {
+  border-top: 1px solid #CFB886;
   padding: 2% 2% 1%;
   display: -webkit-box;
   display: -ms-flexbox;

@@ -28,9 +28,10 @@ header {
         display: flex;
     }
     .header_all .header_bar .header_icon p{
-        margin-top: 20px;
+        color: #cfb886;
+        margin-top: 1.2rem;
         margin-right: 20px;
-        font-size: 1.25rem;
+        font-size: 1.2rem;
     }
     .header_all .header_bar .header_icon img{
         height: 25px;
@@ -55,12 +56,12 @@ header {
     
     .ham_menu .ham_origin div {
         height: 0px;
-        border: 1.5px solid #fff;
+        border: 1px solid #cfb886;
         width: 22px;
         display: block;
         position: absolute;
         transition: all 300ms cubic-bezier(.61, .01, .42, 1);
-        background:#fff;
+        background:#cfb886;
     }
     
     .ham_menu .ham_origin:hover {
@@ -76,7 +77,7 @@ header {
     }
     
     .ham_menu .ham_origin:hover div {
-        border: 2px solid #fff;
+        border: 1px solid #cfb886;
         height: 9px;
         border-radius: 50%;
         margin-left: -1px;
@@ -110,7 +111,7 @@ header {
         opacity: 0;
         animation: ball 1.5s linear infinite;
         content: '';
-        border: 2px solid #fff;
+        border: 1px solid #fff;
         display: block;
         position: relative;
         top: 0.25px;
