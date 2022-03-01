@@ -1,3 +1,6 @@
+h2{
+    padding-bottom: 0.5em;
+}
 .tarotcards{
     padding-bottom: 4em;
 }
@@ -26,7 +29,6 @@
 }
 .row .item{
     width: 50%;
-    
 }
 .row .item .img_box{
     width: 80%;
@@ -94,10 +96,17 @@
     justify-content: space-evenly;
 }
 .test_item .txt_box{
-    margin-top: 50px;
+    width: 60%;
+    padding: 2em;
 }
-.test_item img{
+.test_item .img_box{
+    width: 22%;
+    padding-top: 2em;
+}
+.test_item .img_box img{
+    width: 100%;
     border-radius: 50%;
+    
 }
 .btn_clicked{
     background-color: #CFB886;
@@ -230,6 +239,9 @@
         width: 40%;
         top: 100px;
         left: 100px;
+    }
+    .taboo_item .img_box{
+        padding: 6em 0; 
     }
     
    }
