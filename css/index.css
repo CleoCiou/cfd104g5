@@ -56,7 +56,7 @@
     }
 
 
-/* 視差滾動 鑰匙孔區塊 開始 */
+/* 視差滾動區塊 開始 */
 
     .scroll_keyhole{
         background-image:url(../images/index/sky_bg.jpg);
@@ -205,7 +205,20 @@
    
 /* ============================= */
  /* 歡迎頁 */
+    .welcome_index_logo{
+        text-align: center;
+    }
 
+    .welcome_index_logo img{
+        width: 150px;
+        margin: 0 1em 0 1em;
+    }
+
+    .welcome_index_logo h2{
+        vertical-align: bottom;
+        display: inline-block;
+    }
+    
     .welcome_index_box{
      display: flex;
      justify-content: center;
@@ -213,7 +226,7 @@
      text-align: center;
  }
     .front_end ,.back_end{
-     margin: 3em;
+     margin: 1em 3em 0 2em;
 
  }
     .front_end img, .back_end img{
