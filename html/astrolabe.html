@@ -35,23 +35,23 @@
                         <div class="form_item" >
                             <form action="">
                                 <label>名　　稱 
-                                    <input type="text" id="name">
+                                    <input type="text" id="name" class="input_width">
                                 </label>
                                 <label>性　　別 
                                     <input type="radio" name="gender" value="male"> 男生
                                     <input type="radio" name="gender" value="female"> 女生
                                 </label>
                                 <label for="bir_date">生　　日 
-                                    <input type="date" name="bir_date">
+                                    <input type="date" name="bir_date" class="input_width">
                                 </label>
                                 <label for="bir_time">出生時間 
-                                    <input type="time" name="bir_time">
+                                    <input type="time" name="bir_time" class="input_width">
                                 </label>
                             </form>
                             <!-- 表單的清除和送出按鈕 -->
                             <div class="form_btns">
-                                <input type="reset" id="reset" value="清除" class="third_btn">
-                                <a href="astrolabe_result.html"><input type="submit" id="submit" value="送出" class="secondary_btn"></a>
+                                <input type="reset" id="reset" value="清除" class="third_btn btn_width">
+                                <a href="astrolabe_result.html"><input type="submit" value="送出" class="secondary_btn btn_width"></a>
                             </div>
                         </div>
                     </div>                   
@@ -98,7 +98,7 @@
 
                 star.style.width = d + "px";
                 star.style.height = d + "px";
-                star.style.top = y + "%";
+                star.style.top = y + "vh";
                 star.style.left = x + "%";
                 star.style.animationDuration = s + "s";
             }
