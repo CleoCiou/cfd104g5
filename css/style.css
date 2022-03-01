@@ -2823,6 +2823,10 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
   background-color: transparent;
 }
 
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input[type=date] {
+  width: 80%;
+}
+
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item textarea {
   width: 95%;
 }
@@ -2871,19 +2875,26 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_footer
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item.card_back {
-  overflow: hidden;
+  overflow-y: scroll;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
-  padding: 2em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  padding: 1em 1.5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar {
+  width: 30px;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 10px solid transparent;
+  background-clip: content-box;
+  background-color: #CFB886;
 }
 
 section.login .container section.card_box .rotate_3d_box .account_info,
@@ -3284,6 +3295,7 @@ main .products_cards .products_box .products_cards_wrap .cards_row .products_ite
 main section.draw_cards .container {
   position: relative;
   width: 100%;
+  padding: 0;
   overflow: hidden;
   /* 抽牌圈 */
   /* 抽牌結果 */
@@ -3293,18 +3305,13 @@ main section.draw_cards .container .cards_box {
   z-index: 10;
   position: relative;
   height: 100vh;
+  width: 100%;
   /* 抽牌提示 */
-}
-
-@media screen and (max-width: 768px) {
-  main section.draw_cards .container .cards_box {
-    top: -5em;
-  }
 }
 
 main section.draw_cards .container .cards_box p {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -3446,7 +3453,11 @@ main section.draw_cards .container .detail_box .img_box .item.back {
 main section.draw_cards .container .detail_box .txt_box {
   z-index: 1;
   opacity: 0;
-  padding: 2em 5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   border: 1px solid #CFB886;
   border-radius: .5em;
   display: -webkit-box;
@@ -3460,45 +3471,55 @@ main section.draw_cards .container .detail_box .txt_box {
 
 @media screen and (min-width: 767px) {
   main section.draw_cards .container .detail_box .txt_box {
-    position: absolute;
-    top: 25%;
-    bottom: 10%;
-    right: 15%;
-    left: 40%;
+    width: 40%;
+    padding: 2em 3em 2em 5em;
+  }
+  main section.draw_cards .container .detail_box .txt_box .txt_content {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    padding: 2em 0;
   }
 }
 
 @media screen and (max-width: 768px) {
   main section.draw_cards .container .detail_box .txt_box {
-    position: absolute;
-    top: 10%;
-    left: 2em;
-    right: 2em;
-    padding: 75% 5% 5%;
+    position: fixed;
+    top: 7em;
+    bottom: 3em;
+    left: 1em;
+    right: 1em;
+    -webkit-transform: none;
+            transform: none;
+    padding: 2em 1em;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
-}
-
-main section.draw_cards .container .detail_box .txt_box .txt_content {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  main section.draw_cards .container .detail_box .txt_box .item {
+    margin: .5em;
+  }
 }
 
 main section.draw_cards .container .detail_box .txt_box .action {
-  text-align: center;
-  white-space: nowrap;
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-main section.draw_cards .container .detail_box .txt_box .action span {
-  padding: .5em;
-  font-size: .8em;
+main section.draw_cards .container .detail_box .txt_box .action li {
+  width: calc(100% / 4);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0.5em;
+  line-height: 1em;
+  letter-spacing: normal;
+  font-size: 0.8em;
   cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-  main section.draw_cards .container .detail_box .txt_box .action span {
-    font-size: 0.7em;
-  }
 }
 
 * {
