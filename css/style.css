@@ -2780,6 +2780,7 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input {
+  width: 90%;
   border: none;
   background-color: transparent;
 }
