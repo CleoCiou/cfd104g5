@@ -4,13 +4,12 @@
 @@include('layout/head.html', {
     'title': '商品'
 })
+
 <link rel="stylesheet" href="css/product.css">
  
-
 <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
 </head>
 <body>
-<!-- 產品 -->   
 
 <!-- 網頁頭 by NJ -->
 <!-- <header class="main_header"></header> -->
@@ -22,12 +21,10 @@
     <section class="product_inner_page">
         <div class="container">
             <div class="product_inner_box">
-
                 <div class="product_inner_img_left">
                     <div class="product_inner_img_large">
                         <img id="large" src="../images/product_inner_page/Constellation/wristband/aries/aries_single_main.png">
                     </div>
-
                     <div class="product_inner_img_small">
                         <img src="images/product_inner_page/Constellation/wristband/aries/aries_single_main.png" class="small"/>
 	                    <img src="images/product_inner_page/Constellation/wristband/aries/aries_single_sec.png" class="small"/>
@@ -36,11 +33,16 @@
                 </div>
 
                 <div class="product_inner_txt_right">
-                    <h3>星座手環-牡羊座</h3>
-                    <h4>NT$1,299元</h4>
+                    <h2>星座手環-牡羊座</h2>
+                    <h3>NT$1,299元</h3>
+                    <p>
+                        ★ 316L 醫療級白鋼<br>
+                        ★ 八心八箭璀璨CZ美鑽<br>
+                        ★ 白鋼珠寶極致工藝之美<br>
+                    </p>
                     
                     <form>
-                        <input class="quantity input_reduce" type=button value="-"><input class="quantity input_value" type=text name=a mount value="1"><input class="quantity input_add" type=button value="+">
+                        <input class="quantity input_reduce" type=button value="  -  "><input class="quantity input_value" type=text name=a mount value="1"><input class="quantity input_add" type=button value="  +  ">
                     </form>
                     
                     <div class="buy_box">
@@ -53,32 +55,46 @@
 
             <div class="product_detail_txt">
                 <div class="detail">
-                    <h4>商品詳情</h4>
+                    <h3>商品詳情</h3>
                 </div>
                 <p>
-                    ★ 316L 醫療級白鋼<br>
-                    ★ 八心八箭璀璨CZ美鑽<br>
-                    ★ 白鋼珠寶極致工藝之美<br>
+                    如同守護者般,如影隨形的陪件,
+                    幸運星座項錬,配戴於離心最近的距離,
+                    挑選屬於自己與閨蜜的十二星座,
+                    獻給每一個特別的你。
                 </p>
                 
             </div>
 
-
             <div class="recommended_products">
-                <h4>推薦商品</h4>
+                <h3>推薦商品</h3>
                 <div class="recommended_products_img">
-                    <div class="owl-carousel owl-theme">
-                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_aquarius.png" alt="" onclick="pic(0)"></a>
-                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_aries.png" alt="" onclick="pic(1)"></a>
-                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_cancer.png" alt="" onclick="pic(2)"></a>
-                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_capricorn.png" alt="" onclick="pic(3)"></a>
-                        <a href="#"><img src="images/shop/Constellation/wristband/wristband_gemini.png" alt="" onclick="pic(4)"></a>
+                    <div class="owl-carousel  owl-theme">
+                        <a href="#">
+                            <img src="images/shop/Constellation/wristband/wristband_aquarius.png" alt="" onclick="pic(0)">
+                            <p>星座手環 - 水瓶座</p>
+                        </a>
+                        <a href="#">
+                            <img src="images/shop/Constellation/wristband/wristband_taurus.png" alt="" onclick="pic(1)">
+                            <p>星座手環 - 金牛座</p>
+                        </a>
+                        <a href="#">
+                            <img src="images/shop/Constellation/wristband/wristband_cancer.png" alt="" onclick="pic(2)">
+                            <p>星座手環 - 巨蟹座</p>
+                        </a>
+                        <a href="#">
+                            <img src="images/shop/Constellation/wristband/wristband_capricorn.png" alt="" onclick="pic(3)">
+                            <p>星座手環 - 摩羯座</p>
+                        </a>
+                        <a href="#">
+                            <img src="images/shop/Constellation/wristband/wristband_gemini.png" alt="" onclick="pic(4)">
+                            <p>星座手環 - 雙子座</p>
+                        </a>
                     </div>
                 </div>
 
             </div>
         </div>
-        
         
     </section>
 
@@ -89,9 +105,48 @@
 <!-- <footer class="main_footer"></footer> -->
 @@include('layout/footer.html')
 
-<script src="js/common.js"></script>
-<script src="js/owl.carousel.min.js"></script>
 <script src="js/product.js"></script>
-<script src="js/owl.carousel.js"></script>
+
+<!-- 數量增加減少 -->
+<script>
+    const input_reduce = document.querySelectorAll('.input_reduce');
+const input_value = document.querySelectorAll('.input_value');
+const input_add = document.querySelectorAll('.input_add');
+
+try {
+    input_add[0].onclick = function() {
+        input_value[0].value++;
+        input_value[1].value++;
+    }
+} catch {}
+try {
+    input_add[1].onclick = function() {
+        input_value[0].value++;
+        input_value[1].value++;
+    }
+} catch {}
+input_reduce[0].onclick = function() {
+    if (input_value[0].value > 1) {
+        input_value[0].value--;
+    }
+    try {
+        if (input_value[1].value > 1) {
+            input_value[1].value--;
+        }
+    } catch {}
+}
+input_reduce[1].onclick = function() {
+    try {
+        if (input_value[0].value > 1) {
+            input_value[0].value--;
+        }
+    } catch {}
+    try {
+        if (input_value[1].value > 1) {
+            input_value[1].value--;
+        }
+    } catch {}
+};
+</script>
 </body>
 </html>
