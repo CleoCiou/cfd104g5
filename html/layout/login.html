@@ -139,18 +139,18 @@
                                     <label for="birthday">
                                         <label>生日</label>
                                         <input type="date" name="birthday" id="birthday">
-                                        <i class="uil uil-calender"></i>
+                                        <!-- <i class="uil uil-calender"></i> -->
                                     </label>
                                 </div>
     
                                 <!-- 電話 -->
                                 <div class="item tel">
                                     <i class="uil uil-phone"></i>
-                                    <input type="phone" name="tel" id="tel" placeholder="請輸入手機號碼">
+                                    <input type="tel" name="tel" id="tel" placeholder="請輸入手機號碼">
                                 </div>
                                 
                                 <!-- 身分 -->
-                                <input type="radio" name="identity" id="general" class="display_none">
+                                <input type="radio" name="identity" id="general" class="display_none" checked>
                                 <input type="radio" name="identity" id="astrologist" class="display_none">
                                 <div class="item identity">
                                     <i class="uil uil-chat-bubble-user"></i>
@@ -184,8 +184,8 @@
                     <!-- 登入/忘記密碼 -->
                     <div class="card_footer">
                         <div class="action">
-                            <button class="last_step unselected_btn display_none">上一步</button>
-                            <button class="next_step selected_btn">下一步</button>
+                            <button class="last_step third_btn display_none">上一步</button>
+                            <button class="next_step secondary_btn">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -263,37 +263,52 @@
             }
         }
 
+        // 切換輸入框範圍
+        // 切換(要關閉的, 要開啟的)
+        function switchPanel(closeEl, openEl) {
+            gsap.to(closeEl, {
+                    height: 0,
+                    duration: .1
+            })
+            gsap.to(openEl, {
+                height: 'auto',
+                opacity: 1,
+                ease: Back.easeOut.config(1.7),
+                duration: 1
+            })
+        }
 
         // === 按鈕監控 === //
-        $(".next_step").click((e) => {
-            console.log(e.target);
-            console.log($(".astrologist_info").css('height'));
+        // 下一步
+        $(".next_step").click( (e) => {
             if ($(".account_info").css('height') !== '0px') {
-                gsap.to($(".account_info"), {
-                    height: 0,
-                    duration: .1
-                })
-                gsap.to($(".mem_info"), {
-                    height: 'auto',
-                    opacity: 1,
-                    ease: 
-                    Back.easeOut.config(1.7),
-                    duration: 1
-                })
+                switchPanel($(".account_info"), $(".mem_info"));
+                $(".last_step").css({display: 'inline-block'});
             }
             else if ($(".mem_info").css('height') !== '0px') {
-                gsap.to($(".mem_info"), {
-                    height: 0,
-                    duration: .1
-                })
-                gsap.to($(".astrologist_info"), {
-                    height: 'auto',
-                    opacity: 1,
-                    ease: 
-                    Back.easeOut.config(1.7),
-                    duration: 1
-                })
+                switchPanel($(".mem_info"), $(".astrologist_info"));
+                $(".next_step").text('註冊');
             }
+        })
+        // 上一步
+        $(".last_step").click( (e) => {
+            if ($(".mem_info").css('height') !== '0px') {
+                switchPanel($(".mem_info"), $(".account_info"));
+                $(".last_step").css({display: 'none'});
+                $(".next_step").text('下一步');
+            }
+            else if ($(".astrologist_info").css('height') !== '0px') {
+                switchPanel($(".astrologist_info"), $(".mem_info"));
+                $(".next_step").text('下一步');
+            }
+        })
+
+
+        // === 輸入框監控 === //
+        $("input").focus( (e) => {
+            e.target.parentNode.css({
+                boxShadow: '0 0 5em 0 #fff'
+            });
         })
 
 
