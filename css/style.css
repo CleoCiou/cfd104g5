@@ -2866,10 +2866,6 @@ section.login .container section.card_box .rotate_3d_box .item.identity label {
   color: #888;
 }
 
-#twinklingStar {
-  min-height: 100vh;
-}
-
 #twinklingStar .star {
   position: absolute;
   width: 2px;
@@ -2919,6 +2915,12 @@ main .astrolabe .container .astrolabe_start_box .img_box.start {
   right: 0;
   margin: auto;
   /* 推算按鈕 定位父層在.img_box.start*/
+}
+
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box .img_box.start {
+    margin-top: 2em;
+  }
 }
 
 main .astrolabe .container .astrolabe_start_box .img_box.start #canvas {
@@ -2977,6 +2979,12 @@ main .astrolabe .container .astrolabe_start_box .form_item {
   height: fit-content;
 }
 
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box .form_item {
+    width: 50%;
+  }
+}
+
 main .astrolabe .container .astrolabe_start_box .form_item form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3020,6 +3028,7 @@ main section.chart .container .astrolabe_chart {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-bottom: 2em;
   /* 宮位分類欄 有11個該死的宮位 */
 }
 
