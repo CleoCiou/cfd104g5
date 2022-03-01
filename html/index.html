@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@@include('layout/head.html')
+    @@include('layout/head.html', {
+        'title': '首頁'
+    })
 
 <link rel="stylesheet" href="css/index.css">
 
@@ -55,7 +57,7 @@
                     <a href="online_divination.html">
                         <div class="test_box">
                             <div class="test_img">
-                                <img src="../images/index/index_text_tarot.svg">
+                                <img src="images/index/index_text_tarot.svg">
                             </div>
                             <div class="test_txt">
                                 <h2>塔羅牌</h2>
@@ -88,7 +90,7 @@
                 <a href="teller_reservation.html">
                     <div class="hot_fortune_teller_card">
                         <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller_ni.svg">
+                            <img src="images/index/index_hot_fortune_teller.svg">
                         </div>
                         <div class="hot_fortune_teller_txt">
                             <h3>吳恆準</h3>
@@ -101,7 +103,7 @@
                 <a href="teller_reservation.html">
                     <div class="hot_fortune_teller_card">
                         <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller_bao.svg">
+                            <img src="images/index/index_hot_fortune_teller_girl.svg">
                         </div>
                         <div class="hot_fortune_teller_txt">
                             <h3>武材尊</h3>
@@ -114,7 +116,7 @@
                 <a href="teller_reservation.html">
                     <div class="hot_fortune_teller_card">
                         <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller_lu.svg">
+                            <img src="images/index/index_hot_fortune_teller_sex_girl.svg">
                         </div>
                         <div class="hot_fortune_teller_txt">
                             <h3>巫亙准</h3>
@@ -193,32 +195,28 @@
 <!-- <footer class="main_footer"></footer> -->
 @@include('layout/footer.html')
 
-<script src="js/common.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/owl.carousel.js"></script>
-
 <!-- 視差滾動 動畫效果 -->
 <script>
-    gsap.to('.scroll_keyhole_img', {
-            scrollTrigger: {
-                // 需要視差滾動的class
-               trigger: '.scroll_keyhole_img',
-                // 開始於頂部中心
-               start:"top center",
-               // 結束於y軸後200
-               end: "200",
-               // 打開滾動前後效果一致
-               scrub: true, 
-            // markers: true, // 顯示參考線
-            },
-            //放大幾倍
-            scale: 3,
-            //持續時間
-            duration: 6,
-            //透明度
-            opacity:0
+    // gsap.to('.scroll_keyhole_img', {
+    //         scrollTrigger: {
+    //             // 需要視差滾動的class
+    //            trigger: '.scroll_keyhole_img',
+    //             // 開始於頂部中心
+    //            start:"top center",
+    //            // 結束於y軸後200
+    //            end: "200",
+    //            // 打開滾動前後效果一致
+    //            scrub: true, 
+    //         // markers: true, // 顯示參考線
+    //         },
+    //         //放大幾倍
+    //         scale: 3,
+    //         //持續時間
+    //         duration: 6,
+    //         //透明度
+    //         opacity:0
             
-        });
+    //     });
 
 
     // 推薦商品 貓頭鷹套件
