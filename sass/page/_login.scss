@@ -202,9 +202,16 @@ section.login {
                             > * {
                                 margin: .5em 0;
                             }
+                            .forgot_pwd {
+                                color: #8888;
+                                
+                                &:hover {
+                                    color: map-get($primary_color, 'content');
+                                }
+                            }
                         }
                     }
-                }
+                } // card_item
 
                 // 卡片背面: 註冊
                 .card_item.card_back {
