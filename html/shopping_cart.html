@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/shopping_cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>解星鏡 Mistro</title>
+    <title>解星鏡 Mistro | 確認商品</title>
     
 </head>
 <body>
@@ -89,10 +89,10 @@
                             <h4>小計：NT${{total}}</h4>
                         </div>
                         <div class="delivery_fee">
-                            <h4>運費：NT$60</h4>
+                            <h4>運費：NT${{fee}}</h4>
                         </div>
                         <div class="total_price">
-                            <h4>總計：NT${{total+60}}</h4>
+                            <h4>總計：NT${{total+fee}}</h4>
                         </div>
                     </div>
                     <div class="confirm_btns">
@@ -114,7 +114,7 @@
                             </div>
                         </a>
                         <div class="txt_box">
-                            <p>水瓶座鑰匙圈</p>
+                            <p>水瓶座戒指</p>
                         </div>
                     </div>
                     <div class="item">
@@ -124,7 +124,7 @@
                             </div>
                         </a>
                         <div class="txt_box">
-                            <p>雙子座鑰匙圈</p>
+                            <p>雙子座戒指</p>
                         </div>
                     </div>
                     <div class="item">
@@ -163,11 +163,10 @@
     new Vue({
         el:'#app',
         data:{
-            // subtotal: 0,
             itemList:[
                 {
                     id:'1',
-                    itemName:'水瓶座鑰匙圈',
+                    itemName:'水瓶座戒指',
                     imgUrl:'images/shop/Constellation/ring/ring_aquarius.jpg',
                     price:'500',
                     count:'2'
@@ -188,7 +187,7 @@
                 },
                 {
                     id:'4',
-                    itemName:'雙子座鑰匙圈',
+                    itemName:'雙子座戒指',
                     imgUrl:'images/shop/Constellation/ring/ring_gemini.jpg',
                     price:'2300',
                     count:'1'
@@ -222,6 +221,16 @@
                     subtotal += this.sum(i);
                 }
                 return subtotal;
+            },
+            fee(){
+                let deliFee = 0;
+                if(this.itemList.length == 0){
+                    deliFee = 0;
+                    alert('購物車空空的喔趕快花錢喔')
+                }else{
+                    deliFee = 60
+                }
+                return deliFee;
             }
         }
 })

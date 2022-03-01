@@ -8,3 +8,5 @@ node_modules
 *.scss.map
 # html
 *.html
+!*/*.html
+!*/*/*.html

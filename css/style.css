@@ -2614,52 +2614,6 @@ section.login .container .display_none {
   display: none;
 }
 
-@-webkit-keyframes halo {
-  0% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-  25% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  50% {
-    -webkit-box-shadow: 0px 0px 10px 5px #CFB886;
-            box-shadow: 0px 0px 10px 5px #CFB886;
-  }
-  75% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  100% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-}
-
-@keyframes halo {
-  0% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-  25% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  50% {
-    -webkit-box-shadow: 0px 0px 10px 5px #CFB886;
-            box-shadow: 0px 0px 10px 5px #CFB886;
-  }
-  75% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  100% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-}
-
 section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch {
   background-color: #555;
 }
@@ -2681,6 +2635,12 @@ section.login .container #reg_log:checked ~ .card_box .switch_box .select_title 
 
 section.login .container #reg_log:checked ~ .card_box {
   max-height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  section.login .container #reg_log:checked ~ .card_box {
+    max-height: 70%;
+  }
 }
 
 section.login .container #reg_log:checked ~ .card_box .rotate_3d_box {
@@ -2828,6 +2788,33 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
   width: 95%;
 }
 
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify {
+  padding: 0;
+  margin-top: -1em;
+  border: none;
+  overflow: hidden;
+  height: 0;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul {
+  padding: 0.5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul li {
+  font-size: 0.9em;
+  padding: 0.3em;
+  color: #9999;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul li:before {
+  content: '\01F7CD';
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  font-size: 1.5em;
+  margin-right: 0.5em;
+}
+
 section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action {
   text-align: center;
 }
@@ -2837,26 +2824,46 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_footer
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item.card_back {
-  overflow-y: scroll;
+  overflow: hidden;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar {
-  width: 30px;
+section.login .container section.card_box .rotate_3d_box .account_info,
+section.login .container section.card_box .rotate_3d_box .mem_info,
+section.login .container section.card_box .rotate_3d_box .astrologist_info {
+  overflow: hidden;
 }
 
-section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 100px;
+section.login .container section.card_box .rotate_3d_box .mem_info,
+section.login .container section.card_box .rotate_3d_box .astrologist_info {
+  height: 0;
 }
 
-section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-thumb {
-  border-radius: 100px;
-  border: 10px solid transparent;
-  background-clip: content-box;
-  background-color: #CFB886;
+section.login .container section.card_box .rotate_3d_box #general:checked ~ .identity .general,
+section.login .container section.card_box .rotate_3d_box #general:checked ~ .identity .general_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ .identity .astrologist,
+section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ .identity .astrologist_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box .item.identity i:not(:first-child),
+section.login .container section.card_box .rotate_3d_box .item.identity label {
+  cursor: pointer;
+  color: #888;
 }
 
 #twinklingStar {
