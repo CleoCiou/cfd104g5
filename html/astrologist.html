@@ -4,7 +4,8 @@
 @@include('layout/head.html', {
     'title': '占卜師專區'
 })
-
+<!-- <link rel="stylesheet" href="css/schedule.css"> -->
+<script src="js/schedule.js"></script>
 <body>
 
 @@include('layout/header.html')
@@ -65,7 +66,7 @@
                                         <h4>王曉明</h4>
                                     </div>
                                     <div class="img_box sticker">
-                                        <img src="https://picsum.photos/50/50/?random=7">
+                                        <img src="images/icon/icon_discuss_mine.svg">
                                     </div>
                                     <div class="txt_box">
                                         <span>歷史預約次數</span>
@@ -88,7 +89,7 @@
                                         <h4>王曉明</h4>
                                     </div>
                                     <div class="img_box sticker">
-                                        <img src="https://picsum.photos/50/50/?random=7">
+                                        <img src="images/icon/icon_discuss_mine.svg">
                                     </div>
                                     <div class="txt_box">
                                         <span>歷史預約次數</span>
@@ -110,47 +111,33 @@
                 <!-- 行事曆 -->
                 <section class="item calendar">
                     我的行事曆
-                    <div id='external-events'>
-                        <div id='calendar-container'>
-                            <div id='calendar'></div>
-                        </div>
-                        <p>試試將休假直接拖曳至行事曆中...</p>
-                        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                            <div class='fc-event-main'>全天</div>
-                        </div>
-                        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                            <div class='fc-event-main'>上午</div>
-                        </div>
-                        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                            <div class='fc-event-main'>下午</div>
-                        </div>
-                        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                            <div class='fc-event-main'>晚上</div>
-                        </div>
-                    </div>
-                    
+                    <div id="schedule"></div>
                 </section>
     
                 <!-- 我的評論 -->
                 <section class="item ast_comment">
                     我的評論
-                    <div class="action ast_hidden">
-                        <button class="selected_btn active_star" @click="changeStar">全部</button>
-                        <button class="selected_btn star_btn" @click="changeStar">全部</button>
-                        <button class="unselected_btn star_btn" @click="changeStar">五星</button>
-                        <button class="unselected_btn star_btn" @click="changeStar">四星</button>
-                        <button class="unselected_btn star_btn" @click="changeStar">三星</button>
-                        <button class="unselected_btn star_btn" @click="changeStar">二星</button>
-                        <button class="unselected_btn star_btn" @click="changeStar">一星</button>
+                    <div class="comments">
+
+                        <div class="action ast_hidden">
+                            <button class="selected_btn active_star" @click="changeStar">全部</button>
+                            <button class="selected_btn star_btn" @click="changeStar">全部</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">五星</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">四星</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">三星</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">二星</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">一星</button>
+                        </div>
+                        <ul class="ast_comment_list">
+                            <li class="txt_box ast_comment" v-for="i in 3">
+                                <p>
+                                    <span>★★★</span>
+                                    真的是當天一時興起訂了的那種，居然聽到運勢總論說到可能需要出國走走來豐富最近平淡的生活，我聽到的當下真的嚇呆了。
+                                </p>
+                            </li>
+                        </ul>
+
                     </div>
-                    <ul class="ast_comment_list">
-                        <li class="txt_box ast_comment" v-for="i in 6">
-                            <p>
-                                <span>★★★</span>
-                                真的是當天一時興起訂了的那種，居然聽到運勢總論說到可能需要出國走走來豐富最近平淡的生活，我聽到的當下真的嚇呆了。
-                            </p>
-                        </li>
-                    </ul>
                 </section>
     
             </section>
@@ -165,44 +152,47 @@
 <link rel="stylesheet" href="./node_modules/fullcalendar/main.css">
 <script src='./node_modules/fullcalendar/main.js'></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var Calendar = FullCalendar.Calendar;
-        var Draggable = FullCalendar.Draggable;
+    $(function() {
+        createCalendar();
+    })
+    // document.addEventListener('DOMContentLoaded', function() {
+        // var Calendar = FullCalendar.Calendar;
+        // var Draggable = FullCalendar.Draggable;
 
-        var containerEl = document.getElementById('external-events');
-        var calendarEl = document.getElementById('calendar');
-        var checkbox = document.getElementById('drop-remove');
+        // var containerEl = document.getElementById('external-events');
+        // var calendarEl = document.getElementById('calendar');
+        // var checkbox = document.getElementById('drop-remove');
 
-        // initialize the external events
-        // -----------------------------------------------------------------
+        // // initialize the external events
+        // // -----------------------------------------------------------------
 
-        new Draggable(containerEl, {
-            itemSelector: '.fc-event',
-            eventData: function(eventEl) {
-            return {
-                title: eventEl.innerText
-            };
-            }
-        });
+        // new Draggable(containerEl, {
+        //     itemSelector: '.fc-event',
+        //     eventData: function(eventEl) {
+        //     return {
+        //         title: eventEl.innerText
+        //     };
+        //     }
+        // });
 
-        // initialize the calendar
-        // -----------------------------------------------------------------
+        // // initialize the calendar
+        // // -----------------------------------------------------------------
 
-        var calendar = new Calendar(calendarEl, {
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar
-            drop: function(info) {
-                // nothing...
-            }
-        });
+        // var calendar = new Calendar(calendarEl, {
+        //     headerToolbar: {
+        //         left: 'prev,next today',
+        //         center: 'title',
+        //         right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        //     },
+        //     editable: true,
+        //     droppable: true, // this allows things to be dropped onto the calendar
+        //     drop: function(info) {
+        //         // nothing...
+        //     }
+        // });
 
-        calendar.render();
-    });
+        // calendar.render();
+    // });
     
     // ==========================================
     new Vue({
