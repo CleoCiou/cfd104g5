@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/tarot_book.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>解星鏡 Mistro | 塔羅</title>
-    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
-</head>
+@@include('layout/head.html', {
+    'title': '解星鏡 Mistro | 塔羅'
+})
+<link rel="stylesheet" href="css/tarot_book.css">
+
 <body>
     
 <!-- 網頁頭 -->
 <!-- 內容由 common.js 新增 by PIN -->
-<header class="main_header"></header>
+@@include('layout/header.html')
 
 
 <!-- 網頁內容 -->
@@ -216,9 +212,8 @@
 
 <!-- 網頁尾 -->
 <!-- 內容由 common.js 新增 by PIN -->
-<footer class="main_footer"></footer>
+@@include('layout/footer.html')
 
-<script src="js/common.js"></script>
 <script>
     let pages = document.getElementsByClassName('page');
     let menu = document.querySelectorAll('.tarot_book_menu');

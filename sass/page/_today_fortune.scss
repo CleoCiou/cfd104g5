@@ -24,22 +24,19 @@ main{
         
         .container{
             display: flex;
+            padding: 2% 8.333333%;
             @include mobile{
                 flex-direction: column;
+            }
+            // 左半側邊攔
+            .sidebar{
+                width: 20%;
+                text-align: center;
             }
             .overall_fortune{
 
             }
-            .today{
-                width: 50%;
-                @include mobile{
-                    width: 100%;
-                }
-                // h2{
-                //     @include mobile{
-                //         width: 100%;
-                //     }
-                }
+      
             }
 
             .overall_fortune_txt{
@@ -48,107 +45,123 @@ main{
                     box-sizing: border-box;
                 }
             }
-            // 包住右邊的區塊
-            .all_furtune{
-                width: 50%;
-                
+            
+            // 包住左邊的區塊
+            .today{
+                width: 80%;
+                display: flex;
+                flex-direction: column;
                 @include mobile{
-                    
-                    width: 100%;
-                    // display: flex;
-                    // flex-wrap: wrap;
+                     width: 100%;
                 }
-                .furtune_time{
-                    width: 100%;
-                    ul{
-                        display: flex;
-                        @include mobile{
-                            display: flex;
-                            flex-direction: column;
-                        }
-                        li{ 
-                            @include desktop{
-                                width: 33%;
-                                padding: 2%;
-                                box-sizing: border-box;
-                            }
-                        }
-                    } 
-                }
-                li.unselected_btn{
-                    @include mobile{
-                        width: 100%;
-                    }
-                }
-                //包住右下的區塊
-                .lucky{
-                    width: 100%;
-                    
+                .today_box{
                     display: flex;
-                    flex-direction: column;
-                    @include mobile{
-                        width: 100%; 
-                    }
-                    .lucky_row{
-                        display: flex;
+                    p{
+                        text-align: center;   
                         @include mobile{
-                            display: block;
+                            text-align: center;  
+                        } 
+                    }
+                    .con_item{
+                        width: 50%;
+                        margin: auto;
+                        @include mobile{
+                            width: 100%;
+                            margin: auto;
                         }
-                        .txt_box{
-                            width: 50%;
-                            display: flex;
-                            @include mobile{
+                        .img_box{
+                            text-align: center; 
+                            img{
                                 width: 100%;
                             }
-                            .number{
-                                flex-grow: 1;
-                                @include mobile{
-                                    width: 50%;
+                        }
+                        .txt_box{
+                            text-align: center;
+    
+                        }
+                    }
+                    // 包住右邊的區塊
+                    .all_furtune{
+                        width: 50%;
+                
+                    @include mobile{
+                        
+                        width: 100%;
+                        // display: flex;
+                        // flex-wrap: wrap;
+                    }
+                    .furtune_time{
+                        width: 100%;
+                        ul{
+                            display: flex;
+                            @include mobile{
+                                display: flex;
+                                flex-direction: column;
+                            }
+                            li{ 
+                                @include desktop{
+                                    width: 33%;
+                                    padding: 2%;
+                                    box-sizing: border-box;
                                 }
                             }
-                            .txt{
-                                width: 30%;
-                                // flex-grow: 1;
-                                align-self: center;
-                                text-align: center;
+                        } 
+                    }
+                    li.unselected_btn{
+                        @include mobile{
+                            width: 100%;
+                        }
+                    }
+                    //包住右下的區塊
+                    .lucky{
+                        width: 100%;
+                        
+                        display: flex;
+                        flex-direction: column;
+                        @include mobile{
+                            width: 100%; 
+                        }
+                        h3{
+                          
+                            margin-top: 1.3em;
+                        }
+                        .lucky_row{
+                            display: flex;
+                            margin: 2.5em 0;
+                            @include mobile{
+                                display: block;
+                            }
+                            .txt_box{
+                                width: 50%;
+                                display: flex;
+                                
                                 @include mobile{
+                                    width: 100%;
+                                }
+                                .number{
+                                    flex-grow: 1;
+                                    border: 1px solid #CFB886;
+                                    padding: 1em;
                                     width: 50%;
+                                    
+                                    @include mobile{
+                                        width: 50%;
+                                    }
+                                }
+                                .txt{
+                                    width: 30%;
+                                    flex-grow: 1;
+                                    align-self: center;
+                                    text-align: center;
+                                    @include mobile{
+                                        width: 50%;
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-            // 包住左邊的區塊
-            .today{
-                width: 50%;
-                @include mobile{
-                     width: 100%;
-                }
-                p{
-                    text-align: center;   
-                    @include mobile{
-                        text-align: center;  
-                    } 
-                }
-                .item{
-                    width: 50%;
-                    margin: auto;
-                    @include mobile{
-                        width: 100%;
-                        margin: auto;
-                    }
-                    .img_box{
-                        text-align: center; 
-                        img{
-                            
-                        }
-                    }
-                    .txt_box{
-                        text-align: center;
-
-                    }
-                }
             }
         }
         /*下面的區塊*/

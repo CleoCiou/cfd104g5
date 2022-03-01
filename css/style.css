@@ -2390,6 +2390,7 @@ main .today_forture .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 2% 8.333333%;
 }
 
 @media screen and (max-width: 767px) {
@@ -2401,14 +2402,9 @@ main .today_forture .container {
   }
 }
 
-main .today_forture .container .today {
-  width: 50%;
-}
-
-@media screen and (max-width: 767px) {
-  main .today_forture .container .today {
-    width: 100%;
-  }
+main .today_forture .container .sidebar {
+  width: 20%;
+  text-align: center;
 }
 
 @media screen and (max-width: 767px) {
@@ -2419,28 +2415,85 @@ main .today_forture .container .today {
   }
 }
 
-main .today_forture .all_furtune {
-  width: 50%;
+main .today_forture .today {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .all_furtune {
+  main .today_forture .today {
     width: 100%;
   }
 }
 
-main .today_forture .all_furtune .furtune_time {
+main .today_forture .today .today_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .today_forture .today .today_box p {
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .today .today_box p {
+    text-align: center;
+  }
+}
+
+main .today_forture .today .today_box .con_item {
+  width: 50%;
+  margin: auto;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .today .today_box .con_item {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+main .today_forture .today .today_box .con_item .img_box {
+  text-align: center;
+}
+
+main .today_forture .today .today_box .con_item .img_box img {
   width: 100%;
 }
 
-main .today_forture .all_furtune .furtune_time ul {
+main .today_forture .today .today_box .con_item .txt_box {
+  text-align: center;
+}
+
+main .today_forture .today .today_box .all_furtune {
+  width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  main .today_forture .today .today_box .all_furtune {
+    width: 100%;
+  }
+}
+
+main .today_forture .today .today_box .all_furtune .furtune_time {
+  width: 100%;
+}
+
+main .today_forture .today .today_box .all_furtune .furtune_time ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .all_furtune .furtune_time ul {
+  main .today_forture .today .today_box .all_furtune .furtune_time ul {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2452,7 +2505,7 @@ main .today_forture .all_furtune .furtune_time ul {
 }
 
 @media screen and (min-width: 768px) {
-  main .today_forture .all_furtune .furtune_time ul li {
+  main .today_forture .today .today_box .all_furtune .furtune_time ul li {
     width: 33%;
     padding: 2%;
     -webkit-box-sizing: border-box;
@@ -2461,12 +2514,12 @@ main .today_forture .all_furtune .furtune_time ul {
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .all_furtune li.unselected_btn {
+  main .today_forture .today .today_box .all_furtune li.unselected_btn {
     width: 100%;
   }
 }
 
-main .today_forture .all_furtune .lucky {
+main .today_forture .today .today_box .all_furtune .lucky {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2478,24 +2531,29 @@ main .today_forture .all_furtune .lucky {
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .all_furtune .lucky {
+  main .today_forture .today .today_box .all_furtune .lucky {
     width: 100%;
   }
 }
 
-main .today_forture .all_furtune .lucky .lucky_row {
+main .today_forture .today .today_box .all_furtune .lucky h3 {
+  margin-top: 1.3em;
+}
+
+main .today_forture .today .today_box .all_furtune .lucky .lucky_row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 2.5em 0;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .all_furtune .lucky .lucky_row {
+  main .today_forture .today .today_box .all_furtune .lucky .lucky_row {
     display: block;
   }
 }
 
-main .today_forture .all_furtune .lucky .lucky_row .txt_box {
+main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box {
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2503,25 +2561,31 @@ main .today_forture .all_furtune .lucky .lucky_row .txt_box {
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .all_furtune .lucky .lucky_row .txt_box {
+  main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box {
     width: 100%;
   }
 }
 
-main .today_forture .all_furtune .lucky .lucky_row .txt_box .number {
+main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box .number {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  border: 1px solid #CFB886;
+  padding: 1em;
+  width: 50%;
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .all_furtune .lucky .lucky_row .txt_box .number {
+  main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box .number {
     width: 50%;
   }
 }
 
-main .today_forture .all_furtune .lucky .lucky_row .txt_box .txt {
+main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box .txt {
   width: 30%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -2529,49 +2593,9 @@ main .today_forture .all_furtune .lucky .lucky_row .txt_box .txt {
 }
 
 @media screen and (max-width: 767px) {
-  main .today_forture .all_furtune .lucky .lucky_row .txt_box .txt {
+  main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box .txt {
     width: 50%;
   }
-}
-
-main .today_forture .today {
-  width: 50%;
-}
-
-@media screen and (max-width: 767px) {
-  main .today_forture .today {
-    width: 100%;
-  }
-}
-
-main .today_forture .today p {
-  text-align: center;
-}
-
-@media screen and (max-width: 767px) {
-  main .today_forture .today p {
-    text-align: center;
-  }
-}
-
-main .today_forture .today .item {
-  width: 50%;
-  margin: auto;
-}
-
-@media screen and (max-width: 767px) {
-  main .today_forture .today .item {
-    width: 100%;
-    margin: auto;
-  }
-}
-
-main .today_forture .today .item .img_box {
-  text-align: center;
-}
-
-main .today_forture .today .item .txt_box {
-  text-align: center;
 }
 
 main .forture_dec .container .overall_fortune .overall_fortune_txt {
@@ -2867,10 +2891,6 @@ section.login .container section.card_box .rotate_3d_box .item.identity label {
   color: #888;
 }
 
-#twinklingStar {
-  min-height: 100vh;
-}
-
 #twinklingStar .star {
   position: absolute;
   width: 2px;
@@ -2920,6 +2940,12 @@ main .astrolabe .container .astrolabe_start_box .img_box.start {
   right: 0;
   margin: auto;
   /* 推算按鈕 定位父層在.img_box.start*/
+}
+
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box .img_box.start {
+    margin-top: 2em;
+  }
 }
 
 main .astrolabe .container .astrolabe_start_box .img_box.start #canvas {
@@ -2978,6 +3004,12 @@ main .astrolabe .container .astrolabe_start_box .form_item {
   height: fit-content;
 }
 
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box .form_item {
+    width: 50%;
+  }
+}
+
 main .astrolabe .container .astrolabe_start_box .form_item form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3021,6 +3053,7 @@ main section.chart .container .astrolabe_chart {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-bottom: 2em;
   /* 宮位分類欄 有11個該死的宮位 */
 }
 

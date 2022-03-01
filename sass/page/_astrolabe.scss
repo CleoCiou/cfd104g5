@@ -12,8 +12,8 @@ $m : 767px;
     }
 }
 
+
 #twinklingStar{
-    min-height: 100vh;
     .star {
         position: absolute;
         width: 2px;
@@ -33,9 +33,9 @@ $m : 767px;
 
 
 main{
+
     /* 星座共用 */
     .astrolabe{
-        
         .container{
             .img_box{
                 img{
@@ -56,6 +56,9 @@ main{
                     left: 0;
                     right: 0;
                     margin: auto;
+                        @include mobile{
+                            margin-top: 2em;
+                        }
                     /* 推算按鈕 定位父層在.img_box.start*/
                     #canvas{
                         width: 100%;
@@ -96,6 +99,9 @@ main{
                     transform: translate(50%, -50%);
                     z-index: 2;
                     height: fit-content;
+                    @include mobile{
+                        width: 50%;
+                    }
                     form{
                         display: flex;
                         flex-direction: column;
@@ -129,6 +135,7 @@ main{
             }
             .astrolabe_chart{
                 display: flex;
+                padding-bottom: 2em;
                 @include mobile{
                     display: flex;
                     flex-direction: column-reverse;

@@ -1,8 +1,9 @@
-.book {
+.tarot_book .book {
   transition: opacity 0.4s 0.2s;
+  perspective: 250vw;
 }
 
-.page {
+.tarot_book .page {
   width: 40vw;
   height: 40vw;
   /* background-color: #111111; */
@@ -11,13 +12,10 @@
   background: left top no-repeat;
   background-size: cover;
 }
-.page:nth-child(even) {
+.tarot_book  .page:nth-child(even) {
   clear: both;
 }
-.book {
-  perspective: 250vw;
-}
-.book .pages {
+.tarot_book .book .pages {
   width: 80vw;
   height: 40vw;
   position: relative;
@@ -26,7 +24,7 @@
   border-radius: 4px;
   /*box-shadow: 0 0 0 1px #e3dfd8;*/
 }
-.book .page {
+.tarot_book .book .page {
   float: none;
   clear: none;
   margin: 0;
@@ -42,7 +40,7 @@
   user-select: none;
   background-color: #f0f0f0;
 }
-.book .page:before {
+.tarot_book  .book .page:before {
   content: '';
   position: absolute;
   top: 0;
@@ -54,7 +52,7 @@
   z-index: 2;
   padding: 1em;
 }
-.book .page:nth-child(odd) {
+.tarot_book .book .page:nth-child(odd) {
   pointer-events: all;
   transform: rotateY(0deg);
   right: 0;
@@ -62,19 +60,19 @@
   background-image: linear-gradient(to right, rgba(0,0,0,.15) 0%, rgba(0,0,0,0) 10%);
   padding: 1em;
 }
-.book .page:nth-child(odd):hover {
+.tarot_book .book .page:nth-child(odd):hover {
   transform: rotateY(-15deg);
   padding: 1em;
 }
-.book .page:nth-child(odd):hover:before {
+.tarot_book .book .page:nth-child(odd):hover:before {
   background: rgba(0, 0, 0, 0.03);
   padding: 1em;
 }
-.book .page:nth-child(odd):before {
+.tarot_book .book .page:nth-child(odd):before {
   background: rgba(0, 0, 0, 0);
   padding: 1em;
 }
-.book .page:nth-child(even) {
+.tarot_book .book .page:nth-child(even) {
   pointer-events: none;
   transform: rotateY(180deg);
   transform-origin: 100% 0;
@@ -85,82 +83,61 @@
   padding: 1em;
 
 }
-.book .page:nth-child(even):before {
+.tarot_book .book .page:nth-child(even):before {
   background: rgba(0, 0, 0, 0.2);
   padding: 1em;
 }
-.book .page.grabbing {
+.tarot_book .book .page.grabbing {
   transition: none;
   padding: 1em;
 
 }
-.book .page.flipped:nth-child(odd) {
+.tarot_book .book .page.flipped:nth-child(odd) {
   pointer-events: none;
   transform: rotateY(-180deg);
   padding: 1em;
 }
-.book .page.flipped:nth-child(odd):before {
+.tarot_book .book .page.flipped:nth-child(odd):before {
   background: rgba(0, 0, 0, 0.2);
   padding: 1em;
 }
-.book .page.flipped:nth-child(even) {
+.tarot_book .book .page.flipped:nth-child(even) {
   pointer-events: all;
   transform: rotateY(0deg);
   padding: 1em;
 }
-.book .page.flipped:nth-child(even):hover {
+.tarot_book .book .page.flipped:nth-child(even):hover {
   transform: rotateY(15deg);
   padding: 1em;
 
 }
-.book .page.flipped:nth-child(even):hover:before {
+.tarot_book .book .page.flipped:nth-child(even):hover:before {
   background: rgba(0, 0, 0, 0.03);
   padding: 1em;
 }
-.book .page.flipped:nth-child(even):before {
+.tarot_book .book .page.flipped:nth-child(even):before {
   background: rgba(0, 0, 0, 0);
   padding: 1em;
 
 }
-*,
-* :before,
-*:after {
-  box-sizing: border-box;
-  padding: 1em;
-}
-html,
-body {
-  background: #333;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2em 0;
-  line-height: 1.5em;
-}
-.page:nth-child(odd){
+
+.tarot_book  .page:nth-child(odd){
   background-position: right top;
   padding: 1em;
 }
 
-.other_btn{
+.tarot_book  .other_btn{
   position: fixed;
   top: 50%;
-  left: -15%;
+  left: 100%;
 }
-.txt_box p{
+.tarot_book .txt_box p{
   color: #000;
 }
-.first_page {
+.tarot_book .first_page {
   width: 90%;
 }
-.first_page img{
+.tarot_book .first_page img{
   width: 100%;
 }
 

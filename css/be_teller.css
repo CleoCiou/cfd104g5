@@ -1,3 +1,7 @@
+.tarotcards{
+    padding-bottom: 4em;
+}
+
 .tarotcards .book_item{
     position: relative;
 }
@@ -6,12 +10,6 @@
 }
 .tarotcards .book_item .img_box img{
     width: 100%;
-}
-.tarotcards .book_item .txt_box {
-    position: absolute;
-    width: 40%;
-    top: 100px;
-    left: 100px;
 }
 .tarotcards .book_item .txt_box p{
     font-size: 3em;
@@ -25,7 +23,6 @@
 }
 .row{
     display: flex;
-    margin: auto;
 }
 .row .item{
     width: 50%;
@@ -36,10 +33,10 @@
 }
 .row .item .img_box img{
     width: 100%;
+    border-radius: 0.5em;
 }
 .row_down{
     display: flex;
-    text-align: center;
 }
 .row_down .four{
     display: flex;
@@ -54,15 +51,23 @@
 }
 .row_down .four .item .img_box img{
     width: 80%;
+    border-radius: 0.5em;
 }
 .row_down .item .img_box{
     width: 100%;
 }
 .row_down .item .img_box img{
     width: 80%;
+    border-radius: 0.5em;
 }
 .row_down .item{
     width: 40%;
+}
+.taboo h3{
+    padding: 0.8em 0;
+}
+.taboo h4{
+    padding: 0.8em 0;
 }
 .taboo_item{
     display: flex;
@@ -142,10 +147,22 @@
 
 /* 手機專用 */
 @media screen and (max-width:768px) {
-    .tarotcards .book_item .box_a{
-        width: 10%;
+    .tarotcards .book_item .img_box{
+        position: relative;
+        width: 100%;
     }
-    
+    .tarotcards .book_item .txt_box {
+          width: 100%;
+    }
+    .tarotcards .book_item .txt_box p{
+        position: absolute;
+        top: 100px;
+        left: 40px;
+        font-size: 1.2em;
+    }
+    .tarotcards .book_item .txt_box span{
+        font-size: 0.5em;
+    }
     .row{
         display: block;
         flex-wrap: wrap;
@@ -208,6 +225,12 @@
     
    }
 @media screen and (min-width:1200px) {
+    .tarotcards .book_item .txt_box {
+        position: absolute;
+        width: 40%;
+        top: 100px;
+        left: 100px;
+    }
     
    }
    
