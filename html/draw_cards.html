@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @@include('layout/head.html', {
-	'title': '解星鏡 Mistro | 塔羅'
+	'title': '塔羅'
 })
 <body>
     
@@ -48,10 +48,10 @@
 					</div>
 					<!-- 其他連結 -->
 					<div class="item txt_footer action">
-						<a href="online_divination.html"><span class="unselected_btn">重新抽牌</span></a>
-						<a href="teller_mem.html"><span class="unselected_btn">占卜師總攬</span></a>
-						<a href="be_teller.html"></a><span class="unselected_btn">體驗占卜師</span></a>
-						<a href="shop.html"></a><span class="unselected_btn">前往商城</span></a>
+						<li class="unselected_btn"><a href="online_divination.html">重新抽牌</a></li>
+						<li class="unselected_btn"><a href="teller_mem.html">占卜師總覽</a></li>
+						<li class="unselected_btn"><a href="be_tellers.html">體驗占卜師</a></li>
+						<li class="unselected_btn"><a href="shop.html">前往商城</a></li>
 					</div>
 				</div>
 			</div>
@@ -140,7 +140,7 @@
 				rotationX: 720,
 				left: '50%',
 				top: '50%',
-				translateX: '-40%',
+				translateX: '-50%',
 				translateY: '-50%',
 				scale: 3,
 				boxShadow: '0 0 5px 0.5em #CFB886',
@@ -209,7 +209,7 @@
 		// 讓抽到的牌消失: 因為他兩面是一樣的
 		// 容器分正反面，翻過來會有詳解
 		// 顯示容器
-		let detailBox = document.querySelector('.detail_box .img_box');
+		let detailImgBox = document.querySelector('.detail_box .img_box');
 		$('.detail_box .img_box').css({
 			width: card.getBoundingClientRect().width,
 			height: card.getBoundingClientRect().height,
@@ -217,10 +217,11 @@
 			left: card.getBoundingClientRect().left,
 		});
 
-		detailBox.parentNode.style.display = 'block';
+		detailImgBox.parentNode.style.display = 'block';
 		$('ul.cards').css({display: 'none'});
 
 		// 轉吧轉吧七彩霓虹燈~
+		// 解析 --圖片
 		let cardTop = '0';
 		let cardLeft = '0';
 		let offsetX = '0';
@@ -232,11 +233,11 @@
 		}
 		// 手機動畫
 		else {
-			cardTop = '16%';
+			cardTop = '20%';
 			cardLeft = '50%';
 			offsetX = '-50%';
 		}
-		gsap.fromTo(detailBox, {
+		gsap.fromTo(detailImgBox, {
 			rotationY: 0,
 			boxShadow: '0 0 20px .5em #CFB88688',
 		}, 
@@ -249,18 +250,28 @@
 			duration: 1.5,
 		})
 
+		// 解析 --文字
+		let detailOffsetX = '0';
+		let detailOffsetY = '0';
+
+		// 電腦動畫
+		if (window.screen.width >= 768) {
+			detailOffsetX = '20%';
+			detailOffsetY = '20%';
+		}
+
 		gsap.to($('.detail_box'), {
 			duration: 1,
 			backgroundColor: '#5555'
 		})
 		gsap.fromTo($('.detail_box .txt_box'), {
-			translateX: '-5em',
-			translateY: 0,
+			translateX: '0',
+			translateY: '0',
 			opacity: 0
 		},
 		{
-			translateX: 0,
-			translateY: '1em',
+			translateX: detailOffsetX,
+			translateY: detailOffsetY,
 			opacity: 1,
 			duration: 1.5,
 		})

@@ -137,7 +137,6 @@
                                     <label for="birthday">
                                         <label>生日</label>
                                         <input type="date" name="birthday" id="birthday">
-                                        <!-- <i class="uil uil-calender"></i> -->
                                     </label>
                                 </div>
     
@@ -277,6 +276,12 @@
         }
 
         // === 按鈕監控 === //
+        // 註冊 | 登入
+        $(".secondary_btn").click( (e) => {
+            if (e.target.innerText === '登入'|| e.target.innerText === '註冊') {
+                window.location.href = 'index.html';
+            }
+        })
         // 下一步
         $(".next_step").click( (e) => {
             if ($(".account_info").css('height') !== '0px') {

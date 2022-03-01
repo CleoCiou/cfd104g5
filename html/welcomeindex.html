@@ -16,65 +16,88 @@
 <header class="main_header"></header>
 
 <!-- 首頁區塊 by ZH -->
-<main>
+<main class="sky" id="twinklingStar">
 
     <section class="welcome_index">
         <div class="welcome_index_logo">
             <img src="../images/index_logo_golden-02.png">
             <h2>解星鏡</h2>
+            <h4>CFD-104 G5</h4>
         </div>
         <div class="welcome_index_box">
-            <a href="index.html">
-                <div class="front_end">
-                    <img src="../images/index/welcomeindex_front_end.svg">
-                    <div class="welcome_index_txt">
-                        <h2>前台</h2>
-                    </div>
+            
+            <div class="front_end welcome_item">
+                <a href="index.html">
+                <img src="../images/index/welcomeindex_front_end.svg">
+                <div class="welcome_index_txt">
+                    <h2>前台</h2>
                 </div>
-            </a>
-            <a href="back.html">
-                <div class="back_end">
-                    <img src="../images/index/welcomeindex_back_end.svg">
-                    <div class="welcome_index_txt">
-                        <h2>後台</h2>
-                    </div>
+                </a>
+            </div>
+
+            <div class="back_end welcome_item">
+                <a href="back.html">
+                <img src="../images/index/welcomeindex_back_end.svg">
+                <div class="welcome_index_txt">
+                    <h2>後台</h2>
                 </div>
-            </a>
+                </a>
+            </div>
+
         </div>
-    </section>
+    </section> 
+    <footer class="welcome_footer">
+        <p>本網站為緯育TibaMe_前端設計工程師班第73期第五組學員專題成果作品，本平台僅供學習、展示之用。<br>若有牴觸有關著作權，或有第三人主張侵害智慧財產權等情事，若有侵權疑慮，請私訊<a href="https://www.tibame.com/goodjob/frontend">[TibaMe-前端設計工程師養成班]</a>，後續由專人協助處理。<br></p>
+        <span>Copyright © 2022 ft. All rights reserved.</span>
+    </footer>
 
 </main>
 
 
-<!-- 網頁尾 -->
-<!-- 內容由 common.js 新增 by PIN -->
-<footer class="main_footer"></footer>
-
-<script src="js/common.js"></script>
 
 
-<!-- 視差滾動 動畫效果 -->
 <script>
-    gsap.to('.scroll_keyhole_img', {
-            scrollTrigger: {
+
+    for(var i = 0; i < 250; i++) {
+        //get random dimensions
+        var x = Math.random() * 99;
+        var y = Math.random() * 99;
+        var d = Math.random() * 4;
+        var s = Math.random() * 2 + 1.5;
+        //create new element and add to html
+        var star = document.createElement("div");
+        star.classList.add("star");
+        var sky = document.getElementById("twinklingStar");
+        sky.appendChild(star);
+
+        star.style.width = d + "px";
+        star.style.height = d + "px";
+        star.style.top = y + "vh";
+        star.style.left = x + "%";
+        star.style.animationDuration = s + "s";
+    }
+
+    //視差滾動 動畫效果
+    //gsap.to('.scroll_keyhole_img', {
+            //scrollTrigger: {
                 // 需要視差滾動的class
-               trigger: '.scroll_keyhole_img',
+               //trigger: '.scroll_keyhole_img',
                 // 開始於頂部中心
-               start:"top center",
+               //start:"top center",
                // 結束於y軸後200
-               end: "200",
+               //end: "200",
                // 打開滾動前後效果一致
-               scrub: true, 
+               //scrub: true, 
             // markers: true, // 顯示參考線
-            },
+            //},
             //放大幾倍
-            scale: 4,
+            //scale: 4,
             //持續時間
-            duration: 6,
+            //duration: 6,
             //透明度
-            opacity:0
+            //opacity:0
             
-        })
+        //})
 </script>
 </body>
 </html>

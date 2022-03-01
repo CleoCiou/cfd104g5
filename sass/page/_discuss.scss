@@ -202,6 +202,10 @@ main {
             border-radius: $borderRadius;
             margin: 1em 0;
             cursor: pointer;
+            &:hover{
+                box-shadow: 0 0 15px 2px #cfb88688;
+                border: 1px solid #000;
+            }
             @include mobile{
                 // box-sizing: content-box;
             }
@@ -235,7 +239,6 @@ main {
                 .line_middle_pic{
                     width: 8em;
                     height: auto;
-                    object-fit: cover;
                     img{
                         width: 100%;
                         border-radius: 10px;
@@ -509,42 +512,70 @@ main {
         display: flex;
         justify-content: space-between;
         position: relative;
-        .mine_cate{
-            width: 20%;
-            position: sticky;
-            top: 0;
-            left: 0;
-            text-align: center;
-            .mine_img_box{
+        @include mobile{
+            flex-direction: column;
+        }
+            .mine_cate{
+                width: 100%;
                 text-align: center;
-                img{
-                    border-radius: $circle;
+                @include desktop{
+                    width: 20%;
+                    position: sticky;
+                    top: 0;
+                    left: 0;
+                }
+                .mine_img_box{
+                    text-align: center;
                     width: 8em;
                     height: 8em;
-                    margin-bottom: 2em;
-                    border: 1px solid #CFB886;
-                }
-            }
-            .mine_list{
-                ul{
-                    margin-top: 1em;
-                    li:not(.no_style){
-                        text-align: left;
-                        padding: 1.5em 1em 1.5em;
-                        border-bottom: #CFB886 1px solid;
-                        cursor: pointer;
-                    }
-                    li:not(.no_style):hover{
-                        background-color: #3a3a3a;
-                    }
-                    li.no_style{
-                        margin-top: 2em;
+                    margin: 1.5em auto;
+                    img{
+                        border-radius: $circle;
+                        width: 100%;
+                        margin-bottom: 2em;
+                        border: 1px solid #CFB886;
                     }
                 }
+                .mine_list{
+                    ul{
+                        margin-top: 1em;
+                        @include mobile{
+                            display: flex;
+                            justify-content: space-around;
+                        }
+                        li:not(.no_style){
+                            text-align: left;
+                            padding: 1.5em 1em 1.5em;
+                            border-bottom: #CFB886 1px solid;
+                            cursor: pointer;
+                            @include mobile{
+                                margin: 1.5em 0;
+                                width: 10em;
+                                text-align: center;
+                                padding: 1.2em 1em;
+                                border-radius: $bRadius;
+                                border: #CFB886 1px solid;
+                            }
+                        }
+                        li:not(.no_style):hover{
+                            background-color: #3a3a3a;
+                        }
+                        li.no_style{
+                            margin-top: 2em;
+                            @include mobile{
+                               display: none;
+                            }
+                        }
+                    }
+                }
             }
-        }
+        
         .content_article{
             width: 80%;
+            @include mobile{
+                margin-top: 2em;
+                width: 100%;
+            }
         }
     }
     
