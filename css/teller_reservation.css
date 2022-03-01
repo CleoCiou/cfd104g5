@@ -1,6 +1,3 @@
-.teller_reservation{
-    padding:20px 0px;
-}
 .teller_reservation .container .teller_profile{
     padding: 2em 0;
 }
@@ -44,8 +41,14 @@
 }
 .teller_board .txt_box{
     border: 1px solid #CFB886;
-    padding: 2em;
+    border-radius: 0.5em;
     margin-bottom: 1%;
+}
+.teller_board .txt_box h4{
+    padding: 0.25em;
+}
+.teller_board .txt_box p{
+    padding: 0em 1em 1em;
 }
 
 .reservation_form .teller_form form label{
