@@ -655,7 +655,7 @@ main section.member .container section.item > * {
   width: 100%;
   outline: 1px solid #CFB886;
   padding: .5em;
-  border-radius: .5em;
+  border-radius: 0.5em;
 }
 
 main section.member .container .logo {
@@ -997,7 +997,7 @@ main section.member .container .main_astrologist .comment .comment_list .prev_co
 main section.member .container .main_member .comment .comment_list.view_old,
 main section.member .container .main_astrologist .comment .comment_list.view_old {
   position: fixed;
-  top: 2em;
+  top: 6em;
   bottom: 2em;
   left: 10em;
   right: 10em;
@@ -1005,8 +1005,10 @@ main section.member .container .main_astrologist .comment .comment_list.view_old
   height: auto;
   background: #111;
   border: 8px solid #fff;
+  -webkit-box-shadow: 0 0 3em 1px #CFB886;
+          box-shadow: 0 0 3em 1px #CFB886;
   z-index: 5;
-  border-radius: 1em;
+  border-radius: 0.5em;
   padding: 2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1049,7 +1051,7 @@ main section.member .container .main_astrologist .comment .comment_box {
 
 main section.member .container .main_member .comment .comment_box .txt_box,
 main section.member .container .main_astrologist .comment .comment_box .txt_box {
-  border-radius: .5em;
+  border-radius: 0.5em;
   padding: 1em;
   position: relative;
 }
@@ -1174,7 +1176,7 @@ main section.member .container .main_astrologist .message .message_box .article_
   position: relative;
   padding: .8em;
   background-color: #5558;
-  border-radius: .5em;
+  border-radius: 0.5em;
   cursor: pointer;
 }
 
@@ -1346,7 +1348,7 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
   margin: 0.5em;
   padding: .8em;
   background-color: #5558;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
 }
 
 @media screen and (max-width: 767px) {
@@ -1382,7 +1384,7 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_rig
   margin: 0.5em;
   width: 50%;
   border: 1px solid #CFB886;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
 }
 
 @media screen and (max-width: 767px) {
@@ -1406,7 +1408,7 @@ main section.member .container .login_box {
           transform: translate(-50%, -50%);
   padding: 3em;
   outline: 1px solid #CFB886;
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
 
 main section.member .container .login_box .login_info .item {
@@ -1424,7 +1426,7 @@ main section.member .container .sign_up_box {
 main section.member .container .sign_up_box .sign_up_info .item {
   margin-bottom: .5em;
   padding: 1em;
-  border-radius: 1em;
+  border-radius: 0.5em;
   width: 100%;
 }
 
@@ -1479,7 +1481,7 @@ main section.member .container .reservation_box .reservation_list .reservation_c
   margin: 1em;
   padding: 2em 1em;
   outline: 1px solid #fff;
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
 
 @media screen and (max-width: 767px) {
@@ -1871,6 +1873,18 @@ main .discuss .article_cards .line_bottom p {
 @media screen and (max-width: 767px) {
   main .discuss .article_cards .line_bottom p {
     font-size: .6em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .discuss_mine .article_mine_board {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
