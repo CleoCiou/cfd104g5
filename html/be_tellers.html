@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/be_teller.css">
-    <title>解星鏡 Mistro | 塔羅</title>
-    
-    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
-</head>
+@@include('layout/head.html', {
+    'title': '解星鏡 Mistro | 塔羅'
+})
+<link rel="stylesheet" href="css/be_teller.css">
+
 <body>
     
 <!-- 網頁頭 -->
@@ -256,7 +250,7 @@
 
             <!-- 跳頁按鈕 -->
             <div class="change_page_item">
-                    <a href="be_teller.html"><button class="second_btn">再來一次</button></a>
+                    <a href="be_tellers.html"><button class="second_btn">再來一次</button></a>
                     <a href="online_divination.html"><button class="second_btn">線上占卜</button></a>
                     <a href="shop.html"><button class="second_btn">推薦商品</button></a>
                 </div>    
@@ -273,8 +267,7 @@
 <!-- 內容由 common.js 新增 by PIN -->
 @@include('layout/footer.html')
 
-<!-- <script src="js/common.js"></script> -->
-<script src="/js/jquery.min.js"></script>
+
 <!-- <script>
     $('.answer').click(function () {
       $(this).toggleClass("btn_clicked");
