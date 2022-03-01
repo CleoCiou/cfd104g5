@@ -22,12 +22,11 @@
 */
 /* 按鈕 */
 header {
-  background: #000;
+  z-index: 2000;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 2000;
   /* Nav Style */
   /* .menu-item{
             position: relative;
@@ -41,14 +40,18 @@ header .header_img_box img {
 }
 
 header .header_all {
+  z-index: 2000;
+  position: relative;
+  width: 100%;
+  padding: 5px 20px;
+  border-bottom: 1px solid #cfb886;
+  background: #000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 5px 20px;
-  border-bottom: 1px solid #cfb886;
 }
 
 header .header_all .header_bar {
@@ -102,7 +105,7 @@ header .ham_menu .ham_origin {
 
 header .ham_menu .ham_origin div {
   height: 0px;
-  border: 1px solid #cfb886;
+  border: 0.5px solid #cfb886;
   width: 22px;
   display: block;
   position: absolute;
@@ -334,9 +337,9 @@ header .menu {
   position: fixed;
   width: 100%;
   right: 0;
-  top: 75px;
+  top: 0;
   bottom: 0;
-  padding: 30px;
+  padding-top: 6em;
   background: #000;
   /* 用 translate 把選單藏到畫面右邊去 */
   -webkit-transform: translateX(100%);
@@ -453,11 +456,8 @@ header .menu .rotate_card .shop {
 }
 
 @media screen and (max-width: 768px) {
-  header .menu {
-    top: 75px;
-  }
-  header .menu li:hover > .sub_menu {
-    display: block;
+  header .header_bar .header_icon .pc_login {
+    display: none;
   }
   header .sub_menu_check:checked ~ ul {
     display: block;
@@ -2780,6 +2780,7 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input {
+  width: 90%;
   border: none;
   background-color: transparent;
 }
