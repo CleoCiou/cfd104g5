@@ -1,13 +1,17 @@
 // [O] 詳解 -- 22.2.28
 // [O] .detail_box .img_box .face -> .font (命名錯誤) -- 22.2.28
-// [ ] 加 border-radius .5em
 // [O] 手機板-解牌圖片放中間，解析放下面 -- 22.2.28
+// [ ] 加 border-radius .5em
+// [O] 解析度影響略為跑版
+// [ ] 進來展牌動畫
+// [ ] 洗牌
 
 main {
     section.draw_cards {
         .container {
             position: relative;
             width: 100%;
+            padding: 0;
             overflow: hidden;
 
             /* 抽牌圈 */
@@ -15,14 +19,16 @@ main {
                 z-index: 10;
                 position: relative;
                 height: 100vh;
+                width: 100%;
+                
                 @media screen and (max-width: 768px) {
-                    top: -5em;
+                    // top: -5em;
                 }
 
                 /* 抽牌提示 */
                 p {
                     position: absolute;
-                    top: 45%;
+                    top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                     font-size: 1.5em;
@@ -112,7 +118,6 @@ main {
                 bottom: 0;
                 left: 0;
                 right: 0;
-                // background-color: #fa0;
                 
                 /* 圖片 */
                 .img_box {
@@ -149,42 +154,63 @@ main {
                 .txt_box {
                     z-index: 1;
                     opacity: 0;
-                    padding: 2em 5em;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
                     border: 1px solid map-get($primary_color, 'content');
                     border-radius: .5em;
-                    // background-color: #0a0;
-                    @media screen and (min-width: 767px) {
-                        position: absolute;
-                        top: 25%;
-                        bottom: 10%;
-                        right: 15%;
-                        left: 40%;
-                    }
-                    @media screen and (max-width: 768px) {
-                        position: absolute;
-                        top: 10%;
-                        left: 2em;
-                        right: 2em;
-                        padding: 75% 5% 5%;
-                    }
-                    
+
                     display: flex;
                     flex-direction: column;
 
-                    .txt_content {
-                        flex-grow: 1;
+                    @media screen and (min-width: 767px) {
+                        width: 40%;
+                        padding: 2em 3em 2em 5em;
+
+                        .txt_content {
+                            flex-grow: 1;
+                            padding: 2em 0;
+                        }
                     }
+                    @media screen and (max-width: 768px) {
+                        position: fixed;
+                        top: 7em;
+                        bottom: 3em;
+                        left: 1em;
+                        right: 1em;
+                        transform: none;
+                        padding: 2em 1em;
+
+                        justify-content: flex-end;
+
+                        .item {
+                            margin: .5em;
+                        }
+                    }
+                    
                     .action {
-                        text-align: center;
-                        white-space: nowrap;
-                        span {
-                            padding: .5em;
-                            font-size: .8em;
+                        margin-top: 1em;
+
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        li {
+                            width: calc(100% / 4);
+                            flex-grow: 1;
+                            padding: 0.5em;
+                            line-height: 1em;
+                            letter-spacing: normal;
+                            font-size: 0.8em;
+                            
                             cursor: pointer;
+
                             @media screen and (max-width: 768px) {
+                                // padding: 0.3em;
                                 // display: block;
                                 // margin: 1em 0;
-                                font-size: 0.7em;
+                                // font-size: 0.7em;
                             }
                         }
                     }

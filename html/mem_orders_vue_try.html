@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('layout/head.html', {
+    'title': '訂單管理'
+})
+
+<body>
+    
+<!-- header -->
+@@include('layout/header.html')
+
+<main>
+    <!-- 搜尋及篩選 -->
+    <section class="query_orders">
+        <div class="container">
+            
+            <h2>訂單管理</h2>
+            
+
+            <!-- 訂單分頁頁籤: 已下單/待出貨/運送中/已到店 -->
+
+            <div id="app" class="status_box order_status">
+                
+                <div class="action_bar">
+                    <!-- 訂單狀態 -->
+                    <div class="status_btn">
+                        <status_btn v-for="item in status" :status_item="item"></status_btn>
+                    </div>    
+    
+                    <!-- 搜尋 -->
+                    <input type="search" class="search">
+                    <button class="secondary_btn">搜尋</button>
+                </div>
+
+                <order_container></order_container>
+                <order_container></order_container>
+            </div>
+        </div>
+    </section>   
+
+    <script>
+        Vue.component('status_btn', {
+            template: `<button :class="myClass" @click="changeStatus"> {{status_item}} </button>`,
+            props: ['status_item'],
+            data() {
+                return {
+                    myClass: 'unselected_btn'
+                };
+            },
+            methods: {
+                changeStatus: function() {
+                    this.myClass = (this.myClass === 'unselected_btn') ? 'selected_btn' : 'unselected_btn';
+                }
+            }
+        })
+        
+        
+        Vue.component('order_container',{
+            template: `
+                <section class="mem_orders">
+                    <div class="container">
+
+                        <div class="order_box">
+                            <!-- 訂單清單 -->
+                            <ul class="order_list">
+
+                                <!-- 訂單 -->
+                                <li class="order_item">
+                                    <!-- 訂單項目頭 -->
+                                    <div class="order_header">
+                                        <!-- 訂單編號 -->
+                                        <div class="order_no">#001</div>
+                                        <!-- 訂單狀態 -->
+                                        <div class="status">已下單</div>
+                                    </div>
+
+                                    <!-- 訂單項目內容 -->
+                                    <div class="order_content">
+                                        <!-- 訂單項目清單 -->
+                                        <ul class="detail_list">
+                                            <!-- 訂單項目 -->
+                                            <li class="detail_item">
+                                                <div class="item">
+                                                    <!-- 商品圖片 -->
+                                                    <div class="img_box">
+                                                        <img src="images/shop/tarot/wristband/wristband_death.jpg">
+                                                    </div>
+
+                                                    <!-- 商品資訊 -->
+                                                    <div class="txt_box">
+                                                        <div class="txt info">
+                                                            <!-- 品名 -->
+                                                            <span>星座手鍊-雙魚</span>
+                                                            <!-- 單價 -->
+                                                            <span>NT$400</span>
+                                                        </div>  
+                                                    
+                                                        <div class="txt subtotal">
+                                                            <!-- 數量 -->
+                                                            <span>x1</span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- 訂單項目尾 -->
+                                    <div class="order_footer">
+                                        <div class="item">
+                                            <!-- 購買項目數量 -->
+                                            <span class="order_mount">共2商品</span>
+                                            <!-- 總計 -->
+                                            <span class="total">訂單金額NT$1,200</span>
+                                        </div>
+
+                                        <div class="item">
+                                            <!-- 訂單時間 -->
+                                            <span class="order_time">2022/02/20 09:00</span>
+                                            <button class="third_btn">取消</button>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </div>
+                </section>
+            `,
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                // content: 'booking',
+                status: {
+                    booking: '已下單',
+                    shipping: '待出貨',
+                    transport: '運送中',
+                    arrive: '已到店'
+                }
+            },
+        });
+    </script>
+            
+</main>
+
+<!-- footer -->
+@@include('layout/footer.html')
+
+</body>
+</html>
