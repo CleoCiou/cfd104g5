@@ -17,14 +17,16 @@
     color: $accent_color;
     background-color: $accent_color;
 */
-/*按鈕共用*/
+/* --- 線框圓角
+    border-radius: 0.5em;
+*/
+/* 按鈕 */
 header {
-  background: #000;
+  z-index: 2000;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 2000;
   /* Nav Style */
   /* .menu-item{
             position: relative;
@@ -38,14 +40,18 @@ header .header_img_box img {
 }
 
 header .header_all {
+  z-index: 2000;
+  position: relative;
+  width: 100%;
+  padding: 5px 20px;
+  border-bottom: 1px solid #cfb886;
+  background: #000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 5px 20px;
-  border-bottom: 1px solid #cfb886;
 }
 
 header .header_all .header_bar {
@@ -99,7 +105,7 @@ header .ham_menu .ham_origin {
 
 header .ham_menu .ham_origin div {
   height: 0px;
-  border: 1px solid #cfb886;
+  border: 0.5px solid #cfb886;
   width: 22px;
   display: block;
   position: absolute;
@@ -331,9 +337,9 @@ header .menu {
   position: fixed;
   width: 100%;
   right: 0;
-  top: 75px;
+  top: 0;
   bottom: 0;
-  padding: 30px;
+  padding-top: 6em;
   background: #000;
   /* 用 translate 把選單藏到畫面右邊去 */
   -webkit-transform: translateX(100%);
@@ -450,11 +456,8 @@ header .menu .rotate_card .shop {
 }
 
 @media screen and (max-width: 768px) {
-  header .menu {
-    top: 75px;
-  }
-  header .menu li:hover > .sub_menu {
-    display: block;
+  header .header_bar .header_icon .pc_login {
+    display: none;
   }
   header .sub_menu_check:checked ~ ul {
     display: block;
@@ -495,12 +498,11 @@ header .menu .rotate_card .shop {
 footer.main_footer {
   z-index: 1000;
   position: relative;
-  background-color: #000;
+  background-color: #3a3a3a;
 }
 
-footer .footer_up {
-  border-top: 1px solid #CFB886;
-  padding: 2% 2% 1%;
+footer.main_footer .footer_up {
+  padding: 3em 2% 1.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -509,71 +511,15 @@ footer .footer_up {
           justify-content: space-between;
 }
 
-footer .footer_logo {
+footer.main_footer .footer_up .footer_logo {
   width: 150px;
 }
 
-footer .footer_logo img {
+footer.main_footer .footer_up .footer_logo img {
   width: 150px;
 }
 
-@media (max-width: 992px) {
-  footer .footer_nav {
-    display: none;
-  }
-  footer p {
-    font-size: 0.8rem;
-  }
-  footer .footer_txt_box {
-    margin: 5% 6%;
-    text-align: center;
-  }
-}
-
-@media (min-width: 992px) {
-  footer .footer_nav {
-    /* width: 100%; */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    margin-top: 30px;
-  }
-  footer .footer_nav ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    padding: 0 20px;
-    width: 100%;
-  }
-  footer .footer_nav li {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  footer .footer_nav li a {
-    padding: 0 10px;
-    font-size: 1.2rem;
-    letter-spacing: 0.1rem;
-    line-height: 1.5;
-    color: #CFB886;
-  }
-  footer .footer_txt_box {
-    margin: 2% 18%;
-    text-align: center;
-  }
-}
-
-footer .footer_icon {
+footer.main_footer .footer_up .footer_icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -587,14 +533,105 @@ footer .footer_icon {
   width: 180px;
 }
 
-footer .footer_icon img {
+footer.main_footer .footer_up .footer_icon img {
   width: 60px;
 }
 
-footer p {
-  font-size: 1rem;
+footer.main_footer .footer_down .footer_txt_box p {
+  font-size: 0.5rem;
   line-height: 1.5;
-  color: #fff;
+  color: #999;
+  padding: 1em 0;
+}
+
+footer.main_footer .footer_down .footer_txt_box p a {
+  color: #CFB886;
+}
+
+@media (max-width: 992px) {
+  footer.main_footer .footer_nav {
+    display: none;
+  }
+  footer.main_footer p {
+    font-size: 0.5rem;
+  }
+  footer.main_footer .footer_txt_box {
+    margin: 5% 6%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  footer.main_footer .footer_nav {
+    /* width: 100%; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  footer.main_footer .footer_nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 0 20px;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  footer.main_footer .footer_nav li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 1.5em 1em;
+    position: relative;
+    top: 0;
+    left: 0;
+    -webkit-transition: 0.45s;
+    transition: 0.45s;
+  }
+  footer.main_footer .footer_nav li::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: -.5em;
+    width: 0.2em;
+    height: 1.1em;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    background: #CFB886;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+    opacity: 1;
+  }
+  footer.main_footer .footer_nav li:hover::before {
+    left: calc(100% + 1em);
+    opacity: 0;
+  }
+  footer.main_footer .footer_nav li a {
+    padding: 0 10px;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.5;
+    color: #ddd;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+  }
+  footer.main_footer .footer_nav li a:hover {
+    color: #CFB886;
+  }
+  footer.main_footer .footer_txt_box {
+    margin: 2% 18%;
+    text-align: center;
+  }
 }
 
 main section.member .container .img_box img {
@@ -1487,7 +1524,7 @@ main {
 }
 
 main .pagination_nav .container {
-  padding: 2% 8.33333%;
+  padding: 1em 8.33333%;
 }
 
 main .pagination_nav .container ul {
@@ -1539,7 +1576,7 @@ main .discuss img {
 }
 
 main .discuss .container {
-  padding: 2% 8.33333%;
+  padding: 1em 8.33333%;
   width: 100%;
   margin: auto;
 }
@@ -1687,7 +1724,7 @@ main .discuss .content .content_cate li:hover {
 main .discuss .content .content_article {
   border: 1px solid #CFB886;
   background-color: transparent;
-  border-radius: 0.625em;
+  border-radius: 0.5em;
   width: 80%;
   padding: 3em;
   /* 熱門最新 */
@@ -1751,7 +1788,7 @@ main .discuss .article_cards {
   border: 1px solid #CFB886;
   background-color: transparent;
   padding: 2em;
-  border-radius: 0.625em;
+  border-radius: 0.5em;
   margin: 1em 0;
   cursor: pointer;
 }
@@ -1791,7 +1828,15 @@ main .discuss .article_cards .line_middle .line_middle_txt p {
   color: #fff;
 }
 
+main .discuss .article_cards .line_middle .line_middle_pic {
+  width: 8em;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 main .discuss .article_cards .line_middle .line_middle_pic img {
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -1860,12 +1905,13 @@ main #articleView::-webkit-scrollbar-thumb, main #write_content textarea::-webki
 }
 
 main #articleView {
-  background-color: #3A3A3A;
+  background-color: #333333;
   padding: 1em;
   width: 50%;
   margin: auto;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
+  /* 文章裡的照片 */
   /* 功能列-- 愛心回應數分享等等*/
   /* 留言回應區塊 */
 }
@@ -1878,7 +1924,7 @@ main #articleView {
   }
 }
 
-main #articleView img {
+main #articleView .article_icon_box img, main #articleView .article_using img {
   width: 1.8em;
   height: 1.8em;
   cursor: pointer;
@@ -1902,6 +1948,13 @@ main #articleView .author span {
   margin-left: 1em;
 }
 
+main #articleView .author img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
 main #articleView .article_view_title {
   margin: 1.5em 0;
 }
@@ -1917,9 +1970,15 @@ main #articleView .article_view_title P {
   display: inline;
 }
 
+main #articleView .article_view_pic.img_box img {
+  width: 100%;
+  height: auto;
+}
+
 main #articleView .article_view_content p {
   line-height: 1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 1.5em;
 }
 
 main #articleView .narrow {
@@ -1980,7 +2039,7 @@ main #articleView .article_response .response_card .other_btn {
   height: 2.2em;
 }
 
-main #articleView .article_response .response_card .card_pic {
+main #articleView .article_response .response_card .card_author {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
@@ -1992,11 +2051,7 @@ main #articleView .article_response .response_card .card_txt {
           flex-grow: 1;
 }
 
-main #articleView .article_response .response_card .row {
-  margin: 0.3em;
-}
-
-main #articleView .article_response .response_card .row .response_author {
+main #articleView .article_response .response_card .card_txt .response_author {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2008,13 +2063,25 @@ main #articleView .article_response .response_card .row .response_author {
           justify-content: space-between;
 }
 
-main #articleView .article_response .response_card .row .response_card_content {
+main #articleView .article_response .response_card .card_txt .response_card_content {
   margin: 1em 0;
 }
 
 main #articleView .article_response .response_card span {
   color: #ccc;
   font-size: 0.9em;
+}
+
+main #articleView .article_response .response_card .card_author {
+  margin: 0.3em 1.5em 0 0;
+  width: 3em;
+  height: 3em;
+}
+
+main #articleView .article_response .response_card .card_author img {
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
 }
 
 main #articleView .response_box {
@@ -2032,6 +2099,14 @@ main #articleView .response_box {
 
 main #articleView .response_box .user_img_box {
   width: 15%;
+  width: 3.5em;
+  height: 3.5em;
+}
+
+main #articleView .response_box .user_img_box img {
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
 }
 
 main #articleView .response_box .user_txt_box {
@@ -2058,7 +2133,7 @@ main .article_writing_board {
   width: 100%;
   border: 1px solid #CFB886;
   padding: 5%;
-  border-radius: 0.625em;
+  border-radius: 0.5em;
   /* 撰寫文章的標題 */
 }
 
@@ -2130,21 +2205,26 @@ main .article_mine_board .mine_cate .mine_img_box img {
   width: 8em;
   height: 8em;
   margin-bottom: 2em;
+  border: 1px solid #CFB886;
 }
 
 main .article_mine_board .mine_cate .mine_list ul {
   margin-top: 1em;
 }
 
-main .article_mine_board .mine_cate .mine_list ul li {
+main .article_mine_board .mine_cate .mine_list ul li:not(.no_style) {
   text-align: left;
   padding: 1.5em 1em 1.5em;
   border-bottom: #CFB886 1px solid;
   cursor: pointer;
 }
 
-main .article_mine_board .mine_cate .mine_list ul li:hover {
+main .article_mine_board .mine_cate .mine_list ul li:not(.no_style):hover {
   background-color: #3a3a3a;
+}
+
+main .article_mine_board .mine_cate .mine_list ul li.no_style {
+  margin-top: 2em;
 }
 
 main .article_mine_board .content_article {
@@ -2500,6 +2580,25 @@ main .forture_dec .container .overall_fortune .overall_fortune_txt {
           box-sizing: border-box;
 }
 
+@media screen and (max-width: 767px) {
+  main .change .container .item {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main .change .container .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+  }
+}
+
+main .change .container .item .unselected_btn {
+  margin: auto;
+}
+
 /*今日運勢 By 阿皓 --- END */
 section.login .container {
   z-index: 3000;
@@ -2513,52 +2612,6 @@ section.login .container {
 
 section.login .container .display_none {
   display: none;
-}
-
-@-webkit-keyframes halo {
-  0% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-  25% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  50% {
-    -webkit-box-shadow: 0px 0px 10px 5px #CFB886;
-            box-shadow: 0px 0px 10px 5px #CFB886;
-  }
-  75% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  100% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-}
-
-@keyframes halo {
-  0% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
-  25% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  50% {
-    -webkit-box-shadow: 0px 0px 10px 5px #CFB886;
-            box-shadow: 0px 0px 10px 5px #CFB886;
-  }
-  75% {
-    -webkit-box-shadow: 0px 0px 5px 2px #CFB886;
-            box-shadow: 0px 0px 5px 2px #CFB886;
-  }
-  100% {
-    -webkit-box-shadow: 0px 0px 0px 0px #CFB886;
-            box-shadow: 0px 0px 0px 0px #CFB886;
-  }
 }
 
 section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch {
@@ -2582,6 +2635,12 @@ section.login .container #reg_log:checked ~ .card_box .switch_box .select_title 
 
 section.login .container #reg_log:checked ~ .card_box {
   max-height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  section.login .container #reg_log:checked ~ .card_box {
+    max-height: 70%;
+  }
 }
 
 section.login .container #reg_log:checked ~ .card_box .rotate_3d_box {
@@ -2721,12 +2780,40 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input {
+  width: 90%;
   border: none;
   background-color: transparent;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item textarea {
   width: 95%;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify {
+  padding: 0;
+  margin-top: -1em;
+  border: none;
+  overflow: hidden;
+  height: 0;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul {
+  padding: 0.5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul li {
+  font-size: 0.9em;
+  padding: 0.3em;
+  color: #9999;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul li:before {
+  content: '\01F7CD';
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  font-size: 1.5em;
+  margin-right: 0.5em;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action {
@@ -2738,30 +2825,50 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_footer
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item.card_back {
-  overflow-y: scroll;
+  overflow: hidden;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar {
-  width: 30px;
+section.login .container section.card_box .rotate_3d_box .account_info,
+section.login .container section.card_box .rotate_3d_box .mem_info,
+section.login .container section.card_box .rotate_3d_box .astrologist_info {
+  overflow: hidden;
 }
 
-section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 100px;
+section.login .container section.card_box .rotate_3d_box .mem_info,
+section.login .container section.card_box .rotate_3d_box .astrologist_info {
+  height: 0;
 }
 
-section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-thumb {
-  border-radius: 100px;
-  border: 10px solid transparent;
-  background-clip: content-box;
-  background-color: #CFB886;
+section.login .container section.card_box .rotate_3d_box #general:checked ~ .identity .general,
+section.login .container section.card_box .rotate_3d_box #general:checked ~ .identity .general_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ .identity .astrologist,
+section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ .identity .astrologist_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box .item.identity i:not(:first-child),
+section.login .container section.card_box .rotate_3d_box .item.identity label {
+  cursor: pointer;
+  color: #888;
 }
 
 #twinklingStar {
-  height: 100%;
+  min-height: 100vh;
 }
 
 #twinklingStar .star {
@@ -2883,16 +2990,16 @@ main .astrolabe .container .astrolabe_start_box .form_item form {
       -ms-flex-align: start;
           align-items: flex-start;
   background-color: #3a3a3ab0;
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   padding: 2em;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
   -webkit-transition: .5s;
   transition: .5s;
 }
 
 main .astrolabe .container .astrolabe_start_box .form_item form:hover {
-  background-color: #58585865;
+  background-color: #3d3d3dbb;
 }
 
 main .astrolabe .container .astrolabe_start_box .form_item .form_btns {
@@ -2989,7 +3096,7 @@ main section.chart .container .astrolabe_chart .parse_box .analyze_bg {
   background-repeat: no-repeat;
   background-size: cover;
   height: auto;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
   /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
 }
 
@@ -3040,11 +3147,7 @@ main section.chart .container .astrolabe_chart .chart_info .chart_txt {
   margin: auto;
   padding: 2em 3.5em;
   background-color: #3a3a3a;
-  border-radius: 0.2em;
-}
-
-main section.chart .container .astrolabe_chart .chart_info .chart_txt:hover {
-  background-color: #58585865;
+  border-radius: 0.5em;
 }
 
 main section.chart .container .astrolabe_chart .chart_info .chart_txt p {
@@ -3350,37 +3453,43 @@ main section.draw_cards .container .detail_box .txt_box .action span {
   color: #CFB886;
 }
 
-body {
+html {
+  height: 100%;
+}
+
+html body {
+  height: 100%;
   background-color: #000;
 }
 
-body::-webkit-scrollbar {
+html body::-webkit-scrollbar {
   width: 30px;
 }
 
-body::-webkit-scrollbar-track {
+html body::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 100px;
 }
 
-body::-webkit-scrollbar-thumb {
+html body::-webkit-scrollbar-thumb {
   border-radius: 100px;
   border: 10px solid transparent;
   background-clip: content-box;
   background-color: #CFB886;
 }
 
-body main {
-  padding-top: 5em;
+html body main {
+  padding-top: 6em;
+  padding-bottom: 6em;
 }
 
-body main > section {
+html body main > section {
   width: 100%;
   margin: auto;
   position: relative;
 }
 
-body main > section > .container {
+html body main > section > .container {
   width: 100%;
   padding: 0 8.333333%;
   margin: auto;
@@ -3578,7 +3687,7 @@ button.primary_line_btn:active ol {
   font-size: 0.9em;
   border-radius: 0.2em;
   color: #fff;
-  background-color: transparent;
+  background-color: #000;
   border: 1px solid #fff;
   padding: 0.8em 2em;
   cursor: pointer;
@@ -3590,7 +3699,6 @@ button.primary_line_btn:active ol {
 .third_btn:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
-  background-color: transparent;
 }
 
 /* --- 其他按鈕 --- */
@@ -3665,10 +3773,6 @@ a {
   text-decoration: none;
   color: #fff;
   cursor: pointer;
-}
-
-span {
-  color: #d89482;
 }
 
 label:not(.no_style) {

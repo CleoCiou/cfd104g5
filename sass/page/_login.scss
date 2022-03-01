@@ -13,14 +13,6 @@ section.login {
             display: none;
         }
 
-        @keyframes halo {
-              0% {box-shadow: 0px 0px 0px 0px map-get($primary_color, 'content');}
-             25% {box-shadow: 0px 0px 5px 2px map-get($primary_color, 'content');}
-             50% {box-shadow: 0px 0px 10px 5px map-get($primary_color, 'content');}
-             75% {box-shadow: 0px 0px 5px 2px map-get($primary_color, 'content');}
-            100% {box-shadow: 0px 0px 0px 0px map-get($primary_color, 'content');}
-        }
-
         // 切換器
         #reg_log:checked {
             ~ .card_box .switch_box {
@@ -43,7 +35,9 @@ section.login {
             }
             ~ .card_box {
                 max-height: 100%;
-                
+                @media screen and (max-width:  768px) {
+                    max-height: 70%;
+                }
                 .rotate_3d_box {
                     transform: rotateY(180deg);
                }
@@ -60,6 +54,7 @@ section.login {
             left: 50%;
             transform: translate(-50%);
             transition: 1s;
+
             @media screen and (max-width:  768px) {
                 max-height: 50%;
             }
@@ -150,7 +145,6 @@ section.login {
 
                     // 卡片內容(輸入區)
                     .card_content {
-                        // margin-top: 2em;
                         .content_box {
                             .item {
                                 border: 1px solid map-get($primary_color, 'content');
@@ -159,6 +153,7 @@ section.login {
                                 border-radius: .5em;
 
                                 input {
+                                    width: 90%;
                                     border: none;
                                     background-color: transparent;
                                 }
@@ -166,9 +161,40 @@ section.login {
                                 textarea {
                                     width: 95%;
                                 }
+
+                                // 驗證
+                                &.verify {
+                                    padding: 0;
+                                    margin-top: -1em;
+                                    border: none;
+                                    overflow: hidden;
+                                    height: 0;
+
+                                    ul {
+                                        padding: 0.5em;
+
+                                        li {
+                                            font-size: 0.9em;
+                                            padding: 0.3em;
+                                            color: #9999;
+
+                                            &:before {
+                                                content: '\01F7CD';
+                                                height: 20px;
+                                                width: 20px;
+                                                display: inline-block;
+                                                font-size: 1.5em;
+                                                margin-right: 0.5em;
+                                            }
+                                        }
+
+                                    }
+                                }
                             }
-                        }
-                    }
+
+                        } // content_box
+                    } // card_content
+
                     // 登入/註冊按鈕
                     .card_footer {
                         .action {
@@ -182,24 +208,44 @@ section.login {
 
                 // 卡片背面: 註冊
                 .card_item.card_back {
-                    &::-webkit-scrollbar{
-                        width: 30px;
-                    }  
-                    &::-webkit-scrollbar-track{
-                        background-color: transparent;
-                        border-radius: 100px;
-                    }
-                    &::-webkit-scrollbar-thumb{
-                        border-radius: 100px;
-                        border: 10px solid transparent;
-                        background-clip: content-box;
-                        background-color: #CFB886;
-                    }
-                    overflow-y: scroll;
+                    overflow: hidden;
                     transform: rotateY(180deg);
                     padding: 2em;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
                 }
 
+                .account_info,
+                .mem_info,
+                .astrologist_info {
+                    overflow: hidden;
+                }
+                .mem_info,
+                .astrologist_info {
+                    height: 0;
+                }
+
+                #general:checked ~ .identity {
+                    .general,
+                    .general_txt {
+                        color: map-get($primary_color, 'content');
+                    }
+                }
+                #astrologist:checked ~ .identity {
+                    .astrologist,
+                    .astrologist_txt {
+                        color: map-get($primary_color, 'content');
+                    }
+                }
+                .item.identity {
+                    i:not(:first-child),
+                    label{
+                        cursor: pointer;
+                        color: #888;
+                    }
+                }
             }
 
         } // section.card_box

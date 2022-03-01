@@ -162,6 +162,25 @@ main{
                 }
             }
         }
+        // 最下面內容
+        .change{
+            .container{
+                .item{
+                    @include mobile{
+                        width: 100%;
+                    }
+                    
+                    @include  desktop{
+                        display: flex;
+                        width: 100%;
+                    }
+                    .unselected_btn{
+                        margin: auto;
+                    }
+                }
+            }
+            
+        }
 }
 
 /*今日運勢 By 阿皓 --- END */

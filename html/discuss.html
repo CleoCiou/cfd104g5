@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>解星鏡 Mistro | 星座</title>
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
 
-</head>
+    @@include('layout/head.html', {
+        'title': '星座討論區'
+    })
+    
+    <script src="js/lightbox.js"></script>
+
 <body>    
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')    
@@ -72,7 +71,7 @@
                                                 <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實...</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <img :src="imgURL">
+                                                <img :src="con_cancer" alt="巨蟹座照片">         
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -98,7 +97,7 @@
                                                 <p>天秤座是一個重視合作關係的星座，可想而知他們的第一順位就是與親密的人面對面相處。他們透過親.....</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <img :src="imgURL">
+                                                
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -173,7 +172,7 @@
                                                 <p>水瓶座真的總會讓旁人驚呼「好怪」嗎？一起來看看身為水瓶座的做人守則，你會對他改觀...........</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <img :src="imgURL">
+                                                
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -204,14 +203,17 @@
                     <div class="article_icon_box">
                         <img :src="iconClose" id="close">
                     </div>
-                    <div class="author narrow">
-                        <button class="other_btn">T</button>
+                    <div class="author img_box narrow">
+                        <img :src="author_hat_img" alt="會員頭像">
                         <span>test123456</span>
                     </div>
                     <div class="article_view_title narrow">
                         <h3>巨蟹座的性格分析</h3>
                         <a href="discuss.html">巨蟹座</a>
                         <p>2022/02/21 22:34:07</p>
+                    </div>
+                    <div class="article_view_pic img_box narrow">
+                        <img :src="con_cancer" alt="巨蟹座照片">                   
                     </div>
                     <div class="article_view_content narrow">
                             <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實在令人感到不可思議。巨蟹座的反應並不遲鈍，相反的，他的感覺很敏銳，往往因受到無心人的傷害，暗地裡偷偷的傷心流淚。因為過份慎重考慮的結果。所以會變得過於現實。好惡的感情過於明顯，也應多加注意才好。感情豐富，對事物的感受性強。對外親和謙恭，頗有公眾意識，但是對W內則有強烈的防衛本能，不願私生活受到干擾。大體上是一個溫和內向的人，但是絕不向惡勢力低頭。熱心參加愛家、愛鄉、愛民的團體，自我意識很強，尊敬能夠保護自己立場的人，帶有懷舊的心情，是一個十分傳統的人。</p>
@@ -239,10 +241,10 @@
                         </div>
                         <!-- 留言卡片 -->
                         <div class="response_card">
-                            <div class="row card_pic">
-                                <button class="other_btn">A</button>
+                            <div class="card_author img_box">
+                                <img :src="author_hat_img" alt="會員頭像">
                             </div>
-                            <div class="row card_txt">
+                            <div class="card_txt">
                                 <div class="response_author">
                                     <span>Apple_555</span>
                                 </div>
@@ -259,10 +261,10 @@
                         <hr class="style">
                         <!-- 留言卡片 -->
                         <div class="response_card">
-                            <div class="row card_pic">
-                                <button class="other_btn">8</button>
+                            <div class="card_author img_box">
+                                <img src="images/black_cat_wizard.svg" alt="會員頭像">
                             </div>
-                            <div class="row card_txt">
+                            <div class="card_txt">
                                 <div class="response_author">
                                     <span>888sleep888</span>
                                 </div>
@@ -284,7 +286,7 @@
                     <!-- 使用者要留言的地方 -->
                     <div class="response_box">
                         <div class="user_img_box">
-                            <button class="other_btn">D</button>
+                            <img :src="author_hat_img" alt="會員頭像">
                         </div>
                         <div class="user_txt_box">
                             <textarea  cols="1" rows="1"></textarea>
@@ -299,12 +301,6 @@
     </main>
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
-
-    <script src="../js/vue.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/lightbox.js"></script>
     <script>
         new Vue({
             el: '#app',
@@ -331,6 +327,9 @@
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
+                con_cancer: 'images/constellation/discuss_con_cancer.jpg',
+                author_img: 'images/black_cat.svg',
+                author_hat_img: 'images/black_cat_wizard.svg',
                 // isChecked: 0,
             },
             methods: {

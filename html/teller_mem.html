@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/teller_mem.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    <title>解星鏡 Mistro | 預約占卜師</title>
-    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
-</head>
+@@include('layout/head.html', {
+    'title': '解星鏡 Mistro | 占卜師總覽'
+})
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script src="js/teller_mem.js"></script>
+<link rel="stylesheet" href="css/teller_mem.css">
 <body>
 
     <!-- 網頁頭 by NJ -->
@@ -22,22 +18,22 @@
         <div class="container">
           <div class="item_box">
             <div class="item a">
-              <img src="https://picsum.photos/250/300/?random=10">
+              <img src="images/teller_mem/teller_subway.jpeg">
             </div>
             <div class="item b">
-              <img src="https://picsum.photos/250/300/?random=11">
+              <img src="images/teller_mem/teller_suit.jpeg">
             </div>
             <div class="item c">
-              <img src="https://picsum.photos/250/300/?random=12">
+              <img src="images/teller_mem/teller_hat.jpeg">
             </div>
             <div class="item d">
-              <img src="https://picsum.photos/250/300/?random=13">
+              <img src="images/teller_mem/teller_work.jpeg">
             </div>
             <div class="item e">
-              <img src="https://picsum.photos/250/300/?random=14">
+              <img src="images/teller_mem/teller_jeans.jpeg">
             </div>
             <div class="item f">
-              <img src="https://picsum.photos/250/300/?random=15">
+              <img src="images/teller_mem/teller_dress.jpeg">
             </div>
           </div>
         </div>
@@ -50,8 +46,8 @@
             <h2>吳恆準</h2>
             <p>4.8 <i class="fa-solid fa-star"></i></p>
             <br>
-            <button class="next_teller secondary_btn"><</button>
-            <button class="prev_teller secondary_btn">></button>
+            <button class="next_teller other_btn"><</button>
+            <button class="prev_teller other_btn">></button>
           </div>
           <div class="txt_box">
             <p>大家好，我是吳恆準老師。遇到困難不要害怕。老師一定會幫你想辦法。讓老師帶你走出絕望找到希望!!!</p>
@@ -67,66 +63,66 @@
         <div class="row">
           <div class="item">
             <div class="img_box">
-              <img src="https://picsum.photos/300/400/?random=10">
+              <img src="images/teller_mem/teller_hat.jpeg">
             </div>
             <div class="txt_box">
-              董董老師
+              Keanu Reeves
             </div>
           </div>
           <div class="item">
             <div class="img_box">
-              <img src="https://picsum.photos/400/500/?random=10">
+              <img src="images/teller_mem/teller_suit.jpeg">
             </div>
             <div class="txt_box">
-              董董老師
+              Johnny Depp
             </div>
           </div>
           <div class="item">
             <div class="img_box">
-              <img src="https://picsum.photos/300/400/?random=10">
+              <img src="images/teller_mem/teller_jeans.jpeg">
             </div>
             <div class="txt_box">
-              董董老師
+              Jake Gyllenhaal
             </div>
           </div>
           <div class="item">
             <div class="img_box">
-              <img src="https://picsum.photos/300/400/?random=10">
+              <img src="images/teller_mem/teller_dress.jpeg">
             </div>
             <div class="txt_box">
-              董董老師
+              Tom Hiddleston
             </div>
           </div>
           <div class="item">
             <div class="img_box">
-              <img src="https://picsum.photos/300/400/?random=10">
+              <img src="images/teller_mem/teller_subway.jpeg">
             </div>
             <div class="txt_box">
-              董董老師
+              Kubozuka Yosuke
             </div>
           </div>
           <div class="item">
             <div class="img_box">
-              <img src="https://picsum.photos/300/400/?random=10">
+              <img src="images/teller_mem/teller_trousers.jpeg">
             </div>
             <div class="txt_box">
-              董董老師
+              Tsuneta Daiki
             </div>
           </div>
           <div class="item">
             <div class="img_box">
-              <img src="https://picsum.photos/300/400/?random=10">
+              <img src="images/teller_mem/teller_gentleman.jpeg">
             </div>
             <div class="txt_box">
-              董董老師
+              Joe Odagiri
             </div>
           </div>
           <div class="item">
             <div class="img_box">
-              <img src="https://picsum.photos/300/400/?random=10">
+              <img src="images/teller_mem/teller_work.jpeg">
             </div>
             <div class="txt_box">
-              董董老師
+              Takenouchi Yutaka
             </div>
           </div>
         </div>
@@ -136,9 +132,5 @@
 </main>
 <!-- 網頁尾 By NJ -->
 @@include('layout/footer.html')
-
-<script src="js/common.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/teller_mem.js"></script>
 </body>
 </html>
