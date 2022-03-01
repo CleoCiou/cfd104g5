@@ -1,10 +1,13 @@
 <!-- icon -->
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+<script src="js/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
 
 <section class="login">
     <div class="container">
 
-        <input type="checkbox" class="display_none" id="reg_log" name="reg_log">
+        <input type="checkbox" class="display_none" id="reg_log" name="reg_log" checked>
 
         <section class="card_box">
             <!-- 切換器 -->
@@ -29,13 +32,13 @@
                     <div class="card_content">
                         <div class="content_box">
                             <!-- 帳號 -->
-                            <div class="item account">
+                            <div class="item login_account">
                                 <i class="input-icon uil uil-user"></i>
                                 <input type="text" name="memId" id="login_memId" placeholder="帳號">
                             </div>
     
                             <!-- 密碼 -->
-                            <div class="item password">
+                            <div class="item login_password">
                                 <i class="input-icon uil uil-lock-alt"></i>
                                 <input type="password" name="memPwd" id="login_memPwd" placeholder="密碼">
                             </div>
@@ -64,71 +67,115 @@
                     <!-- 帳號密碼輸入框 -->
                     <div class="card_content">
                         <div class="content_box">
-                            
-                            <!-- 帳號 -->
-                            <div class="item account">
-                                <i class="input-icon uil uil-user"></i>
-                                <input type="text" name="memId" id="memId" placeholder="請輸入帳號">
-                            </div>
+
+                            <!-- 帳號資訊 -->
+                            <div class="account_info">
+                                <!-- 帳號 -->
+                                <div class="item account">
+                                    <i class="input-icon uil uil-user"></i>
+                                    <input type="text" name="memId" id="memId" placeholder="請輸入帳號" autocomplete="off">
+                                </div>
     
-                            <!-- 密碼 -->
-                            <div class="item password">
-                                <i class="input-icon uil uil-lock-alt"></i>
-                                <input type="password" name="memPwd" id="memPwd" placeholder="請輸入密碼">
+                                <!-- 驗證 -->
+                                <div class="item verify">
+                                    <ul>
+                                        <li>帳號不可為空</li>
+                                    </ul>
+                                </div>
+        
+                                <!-- 密碼 -->
+                                <div class="item password">
+                                    <i class="input-icon uil uil-lock-alt"></i>
+                                    <input type="password" name="memPwd" id="memPwd" placeholder="請輸入密碼">
+                                </div>
+    
+                                <!-- 驗證 -->
+                                <div class="item verify">
+                                    <ul>
+                                        <li>請輸入6位以上密碼</li>
+                                        <li>一個大寫英文字母</li>
+                                        <li>一個小寫英文字母</li>
+                                        <li>一個數字</li>
+                                    </ul>
+                                </div>
+    
+                                <!-- 確認密碼 -->
+                                <div class="item confirm_pwd">
+                                    <i class="input-icon uil uil-lock-alt"></i>
+                                    <input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="再次輸入密碼">
+                                </div>
+    
+                                <!-- 驗證 -->
+                                <div class="item verify">
+                                    <ul>
+                                        <li>與確認密碼不符</li>
+                                    </ul>
+                                </div>
                             </div>
 
-                            <!-- 確認密碼 -->
-                            <div class="item confirm_pwd">
-                                <i class="input-icon uil uil-lock-alt"></i>
-                                <input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="再次輸入密碼">
+                            <!-- 基本資訊 -->
+                            <div class="mem_info">
+                                <!-- 姓名 -->
+                                <div class="item memName">
+                                    <i class="input-icon uil uil-user"></i>
+                                    <input type="text" name="memName" id="memName" placeholder="請輸入姓名" autocomplete="off">
+                                </div>
+    
+                                <!-- 驗證 -->
+                                <div class="item verify">
+                                    <ul>
+                                        <li>姓名不可為空</li>
+                                    </ul>
+                                </div>
+    
+                                <!-- 信箱 -->
+                                <div class="item email">
+                                    <i class="uil uil-envelope"></i>
+                                    <input type="email" name="email" id="email" placeholder="abc@example.com">
+                                </div>
+    
+                                <!-- 生日 -->
+                                <div class="item birthday">
+                                    <label for="birthday">
+                                        <label>生日</label>
+                                        <input type="date" name="birthday" id="birthday">
+                                        <!-- <i class="uil uil-calender"></i> -->
+                                    </label>
+                                </div>
+    
+                                <!-- 電話 -->
+                                <div class="item tel">
+                                    <i class="uil uil-phone"></i>
+                                    <input type="tel" name="tel" id="tel" placeholder="請輸入手機號碼">
+                                </div>
+                                
+                                <!-- 身分 -->
+                                <input type="radio" name="identity" id="general" class="display_none" checked>
+                                <input type="radio" name="identity" id="astrologist" class="display_none">
+                                <div class="item identity">
+                                    <i class="uil uil-chat-bubble-user"></i>
+                                    <i class="uil uil-golf-ball general"></i>
+                                    <label class="general_txt" for="general">一般會員</label>
+                                    <i class="uil uil-golf-ball astrologist"></i>
+                                    <label class="astrologist" for="astrologist">占卜師</label>
+                                </div>
                             </div>
 
-                            <!-- 姓名 -->
-                            <div class="item memName">
-                                <i class="input-icon uil uil-user"></i>
-                                <input type="text" name="memName" id="memName" placeholder="請輸入姓名">
-                            </div>
-
-                            <!-- 信箱 -->
-                            <div class="item email">
-                                <i class="uil uil-envelope"></i>
-                                <input type="email" name="email" id="email" placeholder="abc@example.com">
-                            </div>
-
-                            <!-- 生日 -->
-                            <div class="item birthday">
-                                <label for="birthday">
-                                    <label>生日</label>
-                                    <input type="date" name="birthday" id="birthday">
-                                    <i class="uil uil-calender"></i>
-                                </label>
-                            </div>
-
-                            <!-- 電話 -->
-                            <div class="item tel">
-                                <i class="uil uil-phone"></i>
-                                <input type="phone" name="tel" id="tel" placeholder="請輸入手機號碼">
-                            </div>
-                            
-                            <!-- 身分 -->
-                            <div class="item identity">
-                                <i class="uil uil-chat-bubble-user"></i>
-                                <input type="radio">一般會員
-                                <input type="radio">占卜師
-                            </div>
-
-                            <!-- 占卜師介紹 -->
-                            <div class="item introduction">
-                                <i class="uil uil-comment-dots"></i>
-                                <label>請輸入自我介紹</label>
-                                <textarea></textarea>
-                            </div>
-
-                            <!-- 占卜師證照 -->
-                            <div class="item certificate">
-                                <i class="input-icon uil uil-user"></i>
-                                <label>請上傳占卜師證照</label><br>
-                                <input type="file" id="certificate">
+                            <!-- 占卜師資訊 -->
+                            <div class="astrologist_info">
+                                <!-- 占卜師介紹 -->
+                                <div class="item introduction">
+                                    <i class="uil uil-comment-dots"></i>
+                                    <label>請輸入自我介紹</label>
+                                    <textarea></textarea>
+                                </div>
+    
+                                <!-- 占卜師證照 -->
+                                <div class="item certificate">
+                                    <i class="input-icon uil uil-user"></i>
+                                    <label>請上傳占卜師證照</label><br>
+                                    <input type="file" id="certificate">
+                                </div>
                             </div>
 
                         </div>
@@ -137,7 +184,8 @@
                     <!-- 登入/忘記密碼 -->
                     <div class="card_footer">
                         <div class="action">
-                            <button class="secondary_btn">註冊</button>
+                            <button class="last_step third_btn display_none">上一步</button>
+                            <button class="next_step secondary_btn">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -147,3 +195,193 @@
 
     </div>
 </section>
+
+<script>
+    $(function() {
+        // 驗證輸入欄位
+        // 驗證(元素, 條件, 正確訊息, 錯誤訊息)
+        function verify(el, condition, msg, errMsg) {
+            if (condition) {
+                checkCorrect(el);
+                el.text(msg);
+            }
+            else {
+                checkError(el);
+                el.text(errMsg);
+            }
+        }
+
+        // 驗證正確動畫
+        function checkCorrect(el) {
+            gsap.to(el, {
+                color: '#CFB886',
+                duration: .5,
+                // textShadow: '#fffa 1px 0 10px'
+            })
+        }
+
+        // 驗證錯誤動畫
+        function checkError(el) {
+            gsap.to(el, {
+                color: '#9999',
+                duration: .5,
+                // textShadow: 'none'
+            })
+        }
+
+        // 開啟驗證框
+        function openVerify(el) {
+            gsap.to(el, {
+                height: 'auto',
+                duration: .5
+            })
+        }
+
+        // 收起驗證框
+        function closeVerify(el) {
+            gsap.to(el, {
+                height: 0,
+                duration: .5
+            })
+        }
+
+        // 確認再次輸入是否與密碼一致
+        function checkPwd() {
+            if ($("#confirm_pwd").val() === $("#memPwd").val()) {
+                gsap.to($(".item.confirm_pwd + .verify ul li:nth-child(1)"), {
+                    color: '#CFB886',
+                    duration: .3
+                })
+                $(".item.confirm_pwd + .verify ul li:nth-child(1)").text('密碼一致');
+            }
+            else {
+                gsap.to($(".item.confirm_pwd + .verify ul li:nth-child(1)"), {
+                    color: '#9999',
+                    duration: .3
+                })
+                $(".item.confirm_pwd + .verify ul li:nth-child(1)").text('密碼不符');
+            }
+        }
+
+        // 切換輸入框範圍
+        // 切換(要關閉的, 要開啟的)
+        function switchPanel(closeEl, openEl) {
+            gsap.to(closeEl, {
+                    height: 0,
+                    duration: .1
+            })
+            gsap.to(openEl, {
+                height: 'auto',
+                opacity: 1,
+                ease: Back.easeOut.config(1.7),
+                duration: 1
+            })
+        }
+
+        // === 按鈕監控 === //
+        // 下一步
+        $(".next_step").click( (e) => {
+            if ($(".account_info").css('height') !== '0px') {
+                switchPanel($(".account_info"), $(".mem_info"));
+                $(".last_step").css({display: 'inline-block'});
+            }
+            else if ($(".mem_info").css('height') !== '0px') {
+                switchPanel($(".mem_info"), $(".astrologist_info"));
+                $(".next_step").text('註冊');
+            }
+        })
+        // 上一步
+        $(".last_step").click( (e) => {
+            if ($(".mem_info").css('height') !== '0px') {
+                switchPanel($(".mem_info"), $(".account_info"));
+                $(".last_step").css({display: 'none'});
+                $(".next_step").text('下一步');
+            }
+            else if ($(".astrologist_info").css('height') !== '0px') {
+                switchPanel($(".astrologist_info"), $(".mem_info"));
+                $(".next_step").text('下一步');
+            }
+        })
+
+
+        // === 輸入框監控 === //
+        $("input").focus( (e) => {
+            e.target.parentNode.css({
+                boxShadow: '0 0 5em 0 #fff'
+            });
+        })
+
+
+        // === 帳號資訊 === ///
+        // === 帳號 === //
+        // 開啟驗證框
+        $("#memId").focus( () => {
+            openVerify($(".item.account + .verify"));
+        });
+        // 輸入時驗證
+        $("#memId").keyup( () => {
+            let el = $(".item.account + .verify ul li:nth-child(1)");
+            verify(el, $("#memId").val().length > 0, '帳號可使用', '帳號不可為空');
+        });
+        // 收起驗證框
+        $("#memId").focusout( () => {
+            closeVerify($(".item.account + .verify"));
+        })
+
+
+        // === 密碼 === //
+        // 開啟驗證框
+        $("#memPwd").focus( () => {
+            openVerify($(".item.password + .verify"));
+        });
+        // 輸入時驗證密碼
+        $("#memPwd").keyup( () => {
+            let reg = '';
+            let el = '';
+
+            // 長度檢查
+            el = $(".item.password + .verify ul li:nth-child(1)");
+            verify(el, $("#memPwd").val().length > 5);
+
+            // 大寫檢查
+            el = $(".item.password + .verify ul li:nth-child(2)");
+            reg = /[A-Z]/;
+            verify(el, reg.test($("#memPwd").val()));
+
+            // 小寫檢查
+            el = $(".item.password + .verify ul li:nth-child(3)");
+            reg = /[a-z]/;
+            verify(el, reg.test($("#memPwd").val()));
+
+            // 數字檢查
+            el = $(".item.password + .verify ul li:nth-child(4)");
+            reg = /[0-9]/;
+            verify(el, reg.test($("#memPwd").val()));
+
+            // 檢查再次輸入是否一致
+            checkPwd();
+        });
+        // 收起密碼驗證框
+        $("#memPwd").focusout( () => {
+            closeVerify($(".item.password + .verify"));
+        })
+
+        
+        // === 確認密碼 === //
+        $("#confirm_pwd").focus( () => {
+            openVerify($(".item.confirm_pwd + .verify"));
+        });
+        // 輸入時驗證
+        $("#confirm_pwd").keyup(checkPwd);
+        
+        // 收起驗證框
+        $("#confirm_pwd").focusout( () => {
+            closeVerify($(".item.confirm_pwd + .verify"));
+        })
+
+
+        // === 基本資訊 === //    
+
+    })
+
+</script>
