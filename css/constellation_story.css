@@ -34,12 +34,12 @@
         display: block;
         
     }
-    .story{
+    main .story{
         text-align: center;
         padding: 2% 8.333333%;
         box-sizing: border-box;
     }
-    p{
+    main .story p{
         padding: 2% 8.333333%;
         box-sizing: border-box;
     }
