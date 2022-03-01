@@ -15,8 +15,10 @@
     color: map-get($primary_color, 'content');
 }
 
-
-body {
+html{
+    height: 100%;
+    body {
+    height: 100%;
     &::-webkit-scrollbar{
         width: 30px;
     }  
@@ -32,7 +34,8 @@ body {
     }
     background-color: map-get($primary_color, 'bg');
     main {
-        padding-top: 5em;
+        padding-top: 6em;
+        padding-bottom: 5.5em;
         > section {
             width: 100%;
             margin: auto;
@@ -45,6 +48,8 @@ body {
         }
     }
 }
+}
+
 
 
 

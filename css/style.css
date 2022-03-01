@@ -498,12 +498,11 @@ header .menu .rotate_card .shop {
 footer.main_footer {
   z-index: 1000;
   position: relative;
-  background-color: #000;
+  background-color: #3a3a3a;
 }
 
-footer .footer_up {
-  border-top: 1px solid #CFB886;
-  padding: 2% 2% 1%;
+footer.main_footer .footer_up {
+  padding: 3em 2% 1.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -512,71 +511,15 @@ footer .footer_up {
           justify-content: space-between;
 }
 
-footer .footer_logo {
+footer.main_footer .footer_up .footer_logo {
   width: 150px;
 }
 
-footer .footer_logo img {
+footer.main_footer .footer_up .footer_logo img {
   width: 150px;
 }
 
-@media (max-width: 992px) {
-  footer .footer_nav {
-    display: none;
-  }
-  footer p {
-    font-size: 0.8rem;
-  }
-  footer .footer_txt_box {
-    margin: 5% 6%;
-    text-align: center;
-  }
-}
-
-@media (min-width: 992px) {
-  footer .footer_nav {
-    /* width: 100%; */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    margin-top: 30px;
-  }
-  footer .footer_nav ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    padding: 0 20px;
-    width: 100%;
-  }
-  footer .footer_nav li {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  footer .footer_nav li a {
-    padding: 0 10px;
-    font-size: 1.2rem;
-    letter-spacing: 0.1rem;
-    line-height: 1.5;
-    color: #CFB886;
-  }
-  footer .footer_txt_box {
-    margin: 2% 18%;
-    text-align: center;
-  }
-}
-
-footer .footer_icon {
+footer.main_footer .footer_up .footer_icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -590,14 +533,105 @@ footer .footer_icon {
   width: 180px;
 }
 
-footer .footer_icon img {
+footer.main_footer .footer_up .footer_icon img {
   width: 60px;
 }
 
-footer p {
-  font-size: 1rem;
+footer.main_footer .footer_down .footer_txt_box p {
+  font-size: 0.5rem;
   line-height: 1.5;
-  color: #fff;
+  color: #999;
+  padding: 1em 0;
+}
+
+footer.main_footer .footer_down .footer_txt_box p a {
+  color: #CFB886;
+}
+
+@media (max-width: 992px) {
+  footer.main_footer .footer_nav {
+    display: none;
+  }
+  footer.main_footer p {
+    font-size: 0.5rem;
+  }
+  footer.main_footer .footer_txt_box {
+    margin: 5% 6%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  footer.main_footer .footer_nav {
+    /* width: 100%; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  footer.main_footer .footer_nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 0 20px;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  footer.main_footer .footer_nav li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 1.5em 1em;
+    position: relative;
+    top: 0;
+    left: 0;
+    -webkit-transition: 0.45s;
+    transition: 0.45s;
+  }
+  footer.main_footer .footer_nav li::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: -.5em;
+    width: 0.2em;
+    height: 1.1em;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    background: #CFB886;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+    opacity: 1;
+  }
+  footer.main_footer .footer_nav li:hover::before {
+    left: calc(100% + 1em);
+    opacity: 0;
+  }
+  footer.main_footer .footer_nav li a {
+    padding: 0 10px;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.5;
+    color: #ddd;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+  }
+  footer.main_footer .footer_nav li a:hover {
+    color: #CFB886;
+  }
+  footer.main_footer .footer_txt_box {
+    margin: 2% 18%;
+    text-align: center;
+  }
 }
 
 main section.member .container .img_box img {
@@ -1490,7 +1524,7 @@ main {
 }
 
 main .pagination_nav .container {
-  padding: 2% 8.33333%;
+  padding: 1em 8.33333%;
 }
 
 main .pagination_nav .container ul {
@@ -1542,7 +1576,7 @@ main .discuss img {
 }
 
 main .discuss .container {
-  padding: 2% 8.33333%;
+  padding: 1em 8.33333%;
   width: 100%;
   margin: auto;
 }
@@ -1794,7 +1828,15 @@ main .discuss .article_cards .line_middle .line_middle_txt p {
   color: #fff;
 }
 
+main .discuss .article_cards .line_middle .line_middle_pic {
+  width: 8em;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 main .discuss .article_cards .line_middle .line_middle_pic img {
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -1863,12 +1905,13 @@ main #articleView::-webkit-scrollbar-thumb, main #write_content textarea::-webki
 }
 
 main #articleView {
-  background-color: #3A3A3A;
+  background-color: #333333;
   padding: 1em;
   width: 50%;
   margin: auto;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
+  /* 文章裡的照片 */
   /* 功能列-- 愛心回應數分享等等*/
   /* 留言回應區塊 */
 }
@@ -1881,7 +1924,7 @@ main #articleView {
   }
 }
 
-main #articleView img {
+main #articleView .article_icon_box img, main #articleView .article_using img {
   width: 1.8em;
   height: 1.8em;
   cursor: pointer;
@@ -1905,6 +1948,13 @@ main #articleView .author span {
   margin-left: 1em;
 }
 
+main #articleView .author img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
 main #articleView .article_view_title {
   margin: 1.5em 0;
 }
@@ -1920,9 +1970,15 @@ main #articleView .article_view_title P {
   display: inline;
 }
 
+main #articleView .article_view_pic.img_box img {
+  width: 100%;
+  height: auto;
+}
+
 main #articleView .article_view_content p {
   line-height: 1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 1.5em;
 }
 
 main #articleView .narrow {
@@ -1983,7 +2039,7 @@ main #articleView .article_response .response_card .other_btn {
   height: 2.2em;
 }
 
-main #articleView .article_response .response_card .card_pic {
+main #articleView .article_response .response_card .card_author {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
@@ -1995,11 +2051,7 @@ main #articleView .article_response .response_card .card_txt {
           flex-grow: 1;
 }
 
-main #articleView .article_response .response_card .row {
-  margin: 0.3em;
-}
-
-main #articleView .article_response .response_card .row .response_author {
+main #articleView .article_response .response_card .card_txt .response_author {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2011,13 +2063,25 @@ main #articleView .article_response .response_card .row .response_author {
           justify-content: space-between;
 }
 
-main #articleView .article_response .response_card .row .response_card_content {
+main #articleView .article_response .response_card .card_txt .response_card_content {
   margin: 1em 0;
 }
 
 main #articleView .article_response .response_card span {
   color: #ccc;
   font-size: 0.9em;
+}
+
+main #articleView .article_response .response_card .card_author {
+  margin: 0.3em 1.5em 0 0;
+  width: 3em;
+  height: 3em;
+}
+
+main #articleView .article_response .response_card .card_author img {
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
 }
 
 main #articleView .response_box {
@@ -2035,6 +2099,14 @@ main #articleView .response_box {
 
 main #articleView .response_box .user_img_box {
   width: 15%;
+  width: 3.5em;
+  height: 3.5em;
+}
+
+main #articleView .response_box .user_img_box img {
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
 }
 
 main #articleView .response_box .user_txt_box {
@@ -2133,21 +2205,26 @@ main .article_mine_board .mine_cate .mine_img_box img {
   width: 8em;
   height: 8em;
   margin-bottom: 2em;
+  border: 1px solid #CFB886;
 }
 
 main .article_mine_board .mine_cate .mine_list ul {
   margin-top: 1em;
 }
 
-main .article_mine_board .mine_cate .mine_list ul li {
+main .article_mine_board .mine_cate .mine_list ul li:not(.no_style) {
   text-align: left;
   padding: 1.5em 1em 1.5em;
   border-bottom: #CFB886 1px solid;
   cursor: pointer;
 }
 
-main .article_mine_board .mine_cate .mine_list ul li:hover {
+main .article_mine_board .mine_cate .mine_list ul li:not(.no_style):hover {
   background-color: #3a3a3a;
+}
+
+main .article_mine_board .mine_cate .mine_list ul li.no_style {
+  margin-top: 2em;
 }
 
 main .article_mine_board .content_article {
@@ -2783,7 +2860,7 @@ section.login .container section.card_box .rotate_3d_box .card_item.card_back::-
 }
 
 #twinklingStar {
-  height: 100%;
+  min-height: 100vh;
 }
 
 #twinklingStar .star {
@@ -3368,37 +3445,43 @@ main section.draw_cards .container .detail_box .txt_box .action span {
   color: #CFB886;
 }
 
-body {
+html {
+  height: 100%;
+}
+
+html body {
+  height: 100%;
   background-color: #000;
 }
 
-body::-webkit-scrollbar {
+html body::-webkit-scrollbar {
   width: 30px;
 }
 
-body::-webkit-scrollbar-track {
+html body::-webkit-scrollbar-track {
   background-color: transparent;
   border-radius: 100px;
 }
 
-body::-webkit-scrollbar-thumb {
+html body::-webkit-scrollbar-thumb {
   border-radius: 100px;
   border: 10px solid transparent;
   background-clip: content-box;
   background-color: #CFB886;
 }
 
-body main {
-  padding-top: 5em;
+html body main {
+  padding-top: 6em;
+  padding-bottom: 5.5em;
 }
 
-body main > section {
+html body main > section {
   width: 100%;
   margin: auto;
   position: relative;
 }
 
-body main > section > .container {
+html body main > section > .container {
   width: 100%;
   padding: 0 8.333333%;
   margin: auto;
