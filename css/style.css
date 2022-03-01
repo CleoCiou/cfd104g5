@@ -3777,6 +3777,79 @@ main section.query_orders .mem_orders .order_list .order_item .order_footer .ite
   padding: 1em 0;
 }
 
+.sky {
+  height: 100vh;
+}
+
+.sky .welcome_index {
+  margin: -6em 0;
+}
+
+.sky .welcome_index .welcome_index_logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1em;
+}
+
+.sky .welcome_index .welcome_index_logo img {
+  width: 6em;
+  margin: auto;
+}
+
+.sky .welcome_index .welcome_index_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .welcome_index_box {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.sky .welcome_index .welcome_index_box .welcome_item {
+  width: 25%;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .welcome_index_box .welcome_item {
+    width: 70%;
+  }
+}
+
+.sky .welcome_footer {
+  margin: 8em 1.5em 0;
+  text-align: left;
+}
+
+.sky .welcome_footer p {
+  color: #999;
+  font-size: .8em;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_footer p {
+    font-size: .7em;
+  }
+}
+
+.sky .welcome_footer span {
+  color: #CFB886;
+  font-size: .6em;
+}
+
 * {
   font-family: 'Cinzel','Shippori Mincho', serif;
   -webkit-box-sizing: border-box;

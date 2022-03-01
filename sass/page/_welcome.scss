@@ -1,0 +1,44 @@
+// 歡迎頁
+.sky{
+    height: 100vh;  
+    .welcome_index{
+        margin: -6em 0;
+        .welcome_index_logo{
+            display: flex;
+            flex-direction: column;
+            margin-top: 1em;
+            img{
+                width: 6em;
+                margin: auto;
+            }
+        }
+        .welcome_index_box{
+            display: flex;
+                @include mobile{
+                    align-items: center;
+                    flex-direction: column;
+                }
+            .welcome_item{
+                width: 25%;
+                @include mobile{
+                    width: 70%;
+                }
+            }
+        }
+    }
+    .welcome_footer{
+        margin: 8em 1.5em 0;
+        text-align: left;
+        p{
+            color: #999;
+            font-size: .8em;
+            @include mobile{
+                font-size: .7em;
+            }
+        }
+        span{
+            color: #CFB886;
+            font-size: .6em;
+        }
+    }
+}
