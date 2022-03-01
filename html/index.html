@@ -6,7 +6,7 @@
     })
 
 <link rel="stylesheet" href="css/index.css">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 <body>
     
 <!-- 網頁頭 by NJ -->
@@ -183,6 +183,11 @@
                     </div>
                 </a>
             </div>
+
+            <!--商品總覽 -->
+            <div class="product_overview">
+                <a href="shop.html"><input type="submit" id="submit" value="商品瀏覽" class="primary_btn"></a>
+            </div>
         </div>
     </section>
 
@@ -197,26 +202,26 @@
 
 <!-- 視差滾動 動畫效果 -->
 <script>
-    // gsap.to('.scroll_keyhole_img', {
-    //         scrollTrigger: {
-    //             // 需要視差滾動的class
-    //            trigger: '.scroll_keyhole_img',
-    //             // 開始於頂部中心
-    //            start:"top center",
-    //            // 結束於y軸後200
-    //            end: "200",
-    //            // 打開滾動前後效果一致
-    //            scrub: true, 
-    //         // markers: true, // 顯示參考線
-    //         },
-    //         //放大幾倍
-    //         scale: 3,
-    //         //持續時間
-    //         duration: 6,
-    //         //透明度
-    //         opacity:0
+    gsap.to('.scroll_keyhole_img', {
+            scrollTrigger: {
+                // 需要視差滾動的class
+               trigger: '.scroll_keyhole_img',
+                // 開始於頂部中心
+               start:"top center",
+               // 結束於y軸後200
+               end: "200",
+               // 打開滾動前後效果一致
+               scrub: true, 
+            // markers: true, // 顯示參考線
+            },
+            //放大幾倍
+            scale: 3,
+            //持續時間
+            duration: 6,
+            //透明度
+            opacity:0
             
-    //     });
+        });
 
 
     // 推薦商品 貓頭鷹套件

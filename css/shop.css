@@ -68,6 +68,7 @@
         padding: 3em ;
         margin: 1em;
         border-radius: 200px;
+        overflow: hidden;
     
     }
     /* 產品卡片碰到後發亮 */
@@ -95,6 +96,14 @@
         width: 25%;
     }
 
+    .shop_product_card_icon{
+        position: relative;
+        bottom: -100px;
+        transition:bottom 1s ;
+    }
+    .shop_product_card:hover .shop_product_card_icon{
+        bottom: -10px;
+    }
    
 
     
