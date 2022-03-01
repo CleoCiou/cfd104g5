@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/teller_mem.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    <title>解星鏡 Mistro | 占卜師總覽</title>
-    <!-- 瀏覽器頁籤圖示由 common.js 插入 by PIN -->
-</head>
+@@include('layout/head.html', {
+    'title': '解星鏡 Mistro | 占卜師總覽'
+})
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script src="js/teller_mem.js"></script>
+<link rel="stylesheet" href="css/teller_mem.css">
 <body>
 
     <!-- 網頁頭 by NJ -->
@@ -136,9 +132,5 @@
 </main>
 <!-- 網頁尾 By NJ -->
 @@include('layout/footer.html')
-
-<script src="js/common.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/teller_mem.js"></script>
 </body>
 </html>
