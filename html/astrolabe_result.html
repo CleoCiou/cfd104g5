@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>解星鏡 Mistro | 星座</title>
-    <link rel="stylesheet" href="css/shop.css">
-    <script src="../js/vue.js"></script>
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-</head>
+
+@@include('layout/head.html', {
+    'title': '推算結果'
+})
+<link rel="stylesheet" href="css/shop.css">
+
 <body>
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
@@ -203,24 +200,24 @@
             });
         });
         
-        for(var i = 0; i < 500; i++) {
-                //get random dimensions
-                var x = Math.random() * 100;
-                var y = Math.random() * 250;
-                var d = Math.random() * 4;
-                var s = Math.random() * 2 + 1.5;
-                //create new element and add to html
-                var star = document.createElement("div");
-                star.classList.add("star");
-                var sky = document.getElementById("twinklingStar");
-                sky.appendChild(star);
+        // for(var i = 0; i < 500; i++) {
+        //         //get random dimensions
+        //         var x = Math.random() * 100;
+        //         var y = Math.random() * 250;
+        //         var d = Math.random() * 4;
+        //         var s = Math.random() * 2 + 1.5;
+        //         //create new element and add to html
+        //         var star = document.createElement("div");
+        //         star.classList.add("star");
+        //         var sky = document.getElementById("twinklingStar");
+        //         sky.appendChild(star);
 
-                star.style.width = d + "px";
-                star.style.height = d + "px";
-                star.style.top = y + "%";
-                star.style.left = x + "%";
-                star.style.animationDuration = s + "s";
-            }
+        //         star.style.width = d + "px";
+        //         star.style.height = d + "px";
+        //         star.style.top = y + "%";
+        //         star.style.left = x + "%";
+        //         star.style.animationDuration = s + "s";
+        //     }
     </script>
     <script src="js/common.js"></script>
     <script src="js/owl.carousel.min.js"></script>
