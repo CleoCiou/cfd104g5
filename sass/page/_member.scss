@@ -34,7 +34,7 @@ main {
             section.item {
                 padding: .5em;
                 margin-bottom: 1em;
-                > * {
+                > *:not(.txt_box) {
                     height: 100%;
                     width: 100%;
                     outline: 1px solid map-get($primary_color, 'content');
@@ -147,6 +147,21 @@ main {
                 // 目前預約
                 .reservation {
                     width: 35%;
+
+                    .txt_box {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+
+                        .more {
+                            cursor: pointer;
+                            color: #888;
+                        }
+                        .more:hover {
+                            color: map-get($primary_color, 'content');
+                            text-shadow: #fff 0 1px 2em;
+                        }
+                    }
 
                     .reservation_box {
                         display: flex;
@@ -264,6 +279,11 @@ main {
                             text-align: center;
                             border-top: 1px solid #5558;
                             padding-top: .7em;
+                            color: #888
+                        }
+                        .other_order:hover {
+                            color:  map-get($primary_color, 'content');
+                            text-shadow: #fff 0 1px 2em;
                         }
                     }
                 }
@@ -281,11 +301,12 @@ main {
                             top: 0.5em;
                             left: 50%;
                             transform: translateX(-50%);
-                            color: #aaa5;
+                            color: #888;
                             cursor: pointer;
                         }
                         .prev_comment:hover {
-                            color: #888;
+                            color: map-get($primary_color, 'content');
+                            text-shadow: #fff 0 1px 2em;
                         }
                     }
                     .comment_list.view_old {
@@ -528,7 +549,9 @@ main {
                             }
                             .quiz_row{
                                 display: flex;
+                                flex-wrap: wrap;
                                 align-items: center;
+
                                 @include mobile{
                                     width: 100%;     
                                     flex-direction: column;
@@ -537,11 +560,13 @@ main {
                             }
                             
                             .quiz_cards{
-                                width: 50%;
+                                width: calc(50% - 1em);
                                 margin: 0.5em;
                                 padding: .8em;
                                 background-color: #5558;
                                 border-radius: $borderRadius;
+                                cursor: pointer;
+
                                 @include mobile{
                                     width: 100%;                        
                                 }
