@@ -673,7 +673,7 @@ main section.member .container section.item {
   margin-bottom: 1em;
 }
 
-main section.member .container section.item > * {
+main section.member .container section.item > *:not(.txt_box) {
   height: 100%;
   width: 100%;
   outline: 1px solid #CFB886;
@@ -831,6 +831,30 @@ main section.member .container .main_astrologist .reservation {
   width: 35%;
 }
 
+main section.member .container .main_member .reservation .txt_box,
+main section.member .container .main_astrologist .reservation .txt_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .reservation .txt_box .more,
+main section.member .container .main_astrologist .reservation .txt_box .more {
+  cursor: pointer;
+  color: #888;
+}
+
+main section.member .container .main_member .reservation .txt_box .more:hover,
+main section.member .container .main_astrologist .reservation .txt_box .more:hover {
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
+}
+
 main section.member .container .main_member .reservation .reservation_box,
 main section.member .container .main_astrologist .reservation .reservation_box {
   display: -webkit-box;
@@ -986,6 +1010,13 @@ main section.member .container .main_astrologist .orders .orders_box .other_orde
   text-align: center;
   border-top: 1px solid #5558;
   padding-top: .7em;
+  color: #888;
+}
+
+main section.member .container .main_member .orders .orders_box .other_order:hover,
+main section.member .container .main_astrologist .orders .orders_box .other_order:hover {
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
 }
 
 main section.member .container .main_member .comment,
@@ -1008,13 +1039,14 @@ main section.member .container .main_astrologist .comment .comment_list .prev_co
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  color: #aaa5;
+  color: #888;
   cursor: pointer;
 }
 
 main section.member .container .main_member .comment .comment_list .prev_comment:hover,
 main section.member .container .main_astrologist .comment .comment_list .prev_comment:hover {
-  color: #888;
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
 }
 
 main section.member .container .main_member .comment .comment_list.view_old,
@@ -1348,6 +1380,8 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1367,11 +1401,12 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
 
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
-  width: 50%;
+  width: calc(50% - 1em);
   margin: 0.5em;
   padding: .8em;
   background-color: #5558;
   border-radius: 0.5em;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
