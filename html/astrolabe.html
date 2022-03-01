@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <title>解星鏡 Mistro | 星座</title>
-    <script src="../js/vue.js"></script>
+
+    @@include('layout/head.html', {
+        'title': '星座命盤'
+    })
     <script src="../js/astro_bg.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="js/astrolabe_start.js"></script>
 </head>
 <body>
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
     <main>
-        <div id="twinklingStar">
+        <div id="twinklingStar"></div>
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
             @@include('layout/con_page.html')
@@ -57,19 +54,14 @@
                                 <a href="astrolabe_result.html"><input type="submit" id="submit" value="送出" class="secondary_btn"></a>
                             </div>
                         </div>
-                    </div>
-                    
+                    </div>                   
                 </div>
-                
-            </div>
         </section>
     </div>
     </main>
     
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
-        <script src="js/common.js"></script>
-        <script src="js/astrolabe_start.js"></script>
         <script>
             new Vue({
                 el: '#app',
@@ -95,7 +87,7 @@
             for(var i = 0; i < 500; i++) {
                 //get random dimensions
                 var x = Math.random() * 100;
-                var y = Math.random() * 150;
+                var y = Math.random() * 100;
                 var d = Math.random() * 4;
                 var s = Math.random() * 2 + 1.5;
                 //create new element and add to html
