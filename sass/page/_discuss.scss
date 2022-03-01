@@ -264,6 +264,16 @@ main {
                 }
             }
         }
+        .discuss_mine{
+            .article_mine_board{
+                @include mobile{
+                    display: flex;
+                    flex-direction: column;
+                }
+
+            }
+
+        }
     }
     /*瀏覽文章燈箱 by JC */
     .articleShow{

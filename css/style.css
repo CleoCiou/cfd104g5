@@ -383,7 +383,7 @@ header .menu .crystal_ball {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: url(/images/header/giphy.gif);
+  background-image: url("../images/header/giphy.gif");
   background-position: center;
   background-size: 180%;
   margin: auto;
@@ -425,7 +425,7 @@ header .menu .rotate_card .tarot {
   left: 15%;
   -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
-  background-image: url(/images/header/card_back_tarot.svg);
+  background-image: url("../images/header/card_back_tarot.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -437,7 +437,7 @@ header .menu .rotate_card .zodiac {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  background-image: url(/images/header/card_back_zodiac.svg);
+  background-image: url("../images/header/card_back_zodiac.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -449,7 +449,7 @@ header .menu .rotate_card .shop {
   top: -30px;
   -webkit-transform: rotate(-30deg);
   transform: rotate(-30deg);
-  background-image: url(/images/header/card_back_shop.svg);
+  background-image: url("../images/header/card_back_shop.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1874,6 +1874,18 @@ main .discuss .article_cards .line_bottom p {
   }
 }
 
+@media screen and (max-width: 767px) {
+  main .discuss .discuss_mine .article_mine_board {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 main .articleShow {
   display: block;
   z-index: 2500;
@@ -2846,6 +2858,14 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_footer
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action > * {
   margin: .5em 0;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action .forgot_pwd {
+  color: #8888;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action .forgot_pwd:hover {
+  color: #CFB886;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item.card_back {

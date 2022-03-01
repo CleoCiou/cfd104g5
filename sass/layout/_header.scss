@@ -269,7 +269,7 @@ header {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background-image: url(/images/header/giphy.gif);
+            background-image: url('../images/header/giphy.gif');
             background-position: center;
             background-size: 180%;
             margin: auto;
@@ -311,7 +311,7 @@ header {
             -o-transform:rotate(30deg);
             -ms-transform:rotate(30deg);
             transform:rotate(30deg);
-            background-image: url(/images/header/card_back_tarot.svg);
+            background-image: url('../images/header/card_back_tarot.svg');
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -321,7 +321,7 @@ header {
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background-image: url(/images/header/card_back_zodiac.svg);
+            background-image: url('../images/header/card_back_zodiac.svg');
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -335,7 +335,7 @@ header {
             -o-transform:rotate(-30deg);
             -ms-transform:rotate(-30deg);
             transform:rotate(-30deg);
-            background-image: url(/images/header/card_back_shop.svg);
+            background-image: url('../images/header/card_back_shop.svg');
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;

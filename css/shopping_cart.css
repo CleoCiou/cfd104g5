@@ -125,7 +125,6 @@
 /* 底部推薦商品 */
 .cart_bottom{
     margin-top: 2em;
-    border-top: 2px dotted #CFB886;
 }
 .cart_bottom .container .item_box{
     display: flex;
