@@ -9,31 +9,32 @@
     <link rel="stylesheet" href="/css/real_constellation_result.css">
     <style> 
         #flotcontainer {
-           width: 600px;
-           height: 400px;
+           width: 500px;
+           height: 300px;
            text-align: left;
+           
+          
        }
-       
+       .answer{
+        width: 500px;
+           height: 300px;
+           margin: 0 auto;
+       }
+       .container{
+           display: flex;
+           /* justify-content: center;
+           flex-direction: column;
+           align-items: center; */
+           justify-content: flex-start;
+           flex-wrap: wrap;
+       }
+       h3{
+           text-align: left;
+           width: 100%;
+           padding-left: 25px;
+       }
        </style> 
-<!-- <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="/css/real_constellation_result.css">
-    <script src="../js/vue.js"></script>
-      
- 
-<style> 
- #flotcontainer {
-    width: 600px;
-    height: 400px;
-    text-align: left;
-}
 
-</style> 
-</head> -->
 <body>
     @@include('layout/header.html')
     <main>  
@@ -48,10 +49,11 @@
             </section>        
         </div>
         <section class="real_constellation real">
+               
             <!-- 控制padding的容器 -->
             <div class="container">
-                <h2>真實星座</h2>
-                <p>你的真實星座是:</p>
+                <!-- <h2>真實星座</h2> -->
+                <h3>你的真實星座是:</h3> 
                 <!-- 包住圖文的容器   -->
                 <div class="answer">
                     <div id="legendPlaceholder"></div>
@@ -71,7 +73,7 @@
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
-                    '真實星座': 'con_real_constellation.html.html',
+                    '真實星座': 'con_real_constellation.html',
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
