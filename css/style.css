@@ -496,142 +496,165 @@ header .menu .rotate_card .shop {
 }
 
 footer.main_footer {
+  width: 100%;
   z-index: 1000;
   position: relative;
   background-color: #3a3a3a;
 }
 
-footer.main_footer .footer_up {
-  padding: 3em 2% 1.5em;
+footer.main_footer .footer_container {
+  padding: 0 8.333333%;
+}
+
+footer.main_footer .footer_container .footer_info {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-footer.main_footer .footer_up .footer_logo {
-  width: 150px;
-}
-
-footer.main_footer .footer_up .footer_logo img {
-  width: 150px;
-}
-
-footer.main_footer .footer_up .footer_icon {
+footer.main_footer .footer_container .footer_info .footer_up {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 30px;
-  width: 180px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-footer.main_footer .footer_up .footer_icon img {
-  width: 60px;
+@media screen and (max-width: 991px) {
+  footer.main_footer .footer_container .footer_info .footer_up .footer_nav {
+    height: 0;
+    overflow: hidden;
+  }
 }
 
-footer.main_footer .footer_down .footer_txt_box p {
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1.5em 1em;
+  position: relative;
+  top: 0;
+  left: 0;
+  -webkit-transition: 0.45s;
+  transition: 0.45s;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: -.5em;
+  width: 0.2em;
+  height: 1.1em;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: #CFB886;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  opacity: 1;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li:hover::before {
+  left: calc(100% + 1em);
+  opacity: 0;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li a {
+  padding: 0 10px;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #ddd;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li a:hover {
+  color: #CFB886;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_icon img {
+  width: 3em;
+}
+
+footer.main_footer .footer_container .footer_info .footer_logo {
+  width: 6.5em;
+  margin: 1.5em auto .5em;
+}
+
+footer.main_footer .footer_container .footer_info .footer_logo img {
+  width: 100%;
+}
+
+footer.main_footer .footer_container .footer_down .footer_txt_box {
+  text-align: center;
+}
+
+@media screen and (max-width: 991px) {
+  footer.main_footer .footer_container .footer_down .footer_txt_box {
+    text-align: center;
+  }
+}
+
+footer.main_footer .footer_container .footer_down .footer_txt_box p {
   font-size: 0.5rem;
   line-height: 1.5;
   color: #999;
   padding: 1em 0;
 }
 
-footer.main_footer .footer_down .footer_txt_box p a {
+@media screen and (max-width: 991px) {
+  footer.main_footer .footer_container .footer_down .footer_txt_box p {
+    font-size: .8em;
+  }
+}
+
+footer.main_footer .footer_container .footer_down .footer_txt_box p a {
   color: #CFB886;
-}
-
-@media (max-width: 992px) {
-  footer.main_footer .footer_nav {
-    display: none;
-  }
-  footer.main_footer p {
-    font-size: 0.5rem;
-  }
-  footer.main_footer .footer_txt_box {
-    margin: 5% 6%;
-    text-align: center;
-  }
-}
-
-@media (min-width: 992px) {
-  footer.main_footer .footer_nav {
-    /* width: 100%; */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  footer.main_footer .footer_nav ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    padding: 0 20px;
-    width: 100%;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-  footer.main_footer .footer_nav li {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    margin: 1.5em 1em;
-    position: relative;
-    top: 0;
-    left: 0;
-    -webkit-transition: 0.45s;
-    transition: 0.45s;
-  }
-  footer.main_footer .footer_nav li::before {
-    position: absolute;
-    content: "";
-    top: 50%;
-    left: -.5em;
-    width: 0.2em;
-    height: 1.1em;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-    background: #CFB886;
-    -webkit-transition: 0.6s;
-    transition: 0.6s;
-    opacity: 1;
-  }
-  footer.main_footer .footer_nav li:hover::before {
-    left: calc(100% + 1em);
-    opacity: 0;
-  }
-  footer.main_footer .footer_nav li a {
-    padding: 0 10px;
-    font-size: 1rem;
-    letter-spacing: 0.1rem;
-    line-height: 1.5;
-    color: #ddd;
-    -webkit-transition: 0.6s;
-    transition: 0.6s;
-  }
-  footer.main_footer .footer_nav li a:hover {
-    color: #CFB886;
-  }
-  footer.main_footer .footer_txt_box {
-    margin: 2% 18%;
-    text-align: center;
-  }
 }
 
 main section.member .container .img_box img {
@@ -650,12 +673,12 @@ main section.member .container section.item {
   margin-bottom: 1em;
 }
 
-main section.member .container section.item > * {
+main section.member .container section.item > *:not(.txt_box) {
   height: 100%;
   width: 100%;
   outline: 1px solid #CFB886;
   padding: .5em;
-  border-radius: .5em;
+  border-radius: 0.5em;
 }
 
 main section.member .container .logo {
@@ -760,7 +783,7 @@ main section.member .container .main_astrologist .mem_info .info_box .ast_action
 main section.member .container .main_member .mem_info .info_box .update_intro,
 main section.member .container .main_astrologist .mem_info .info_box .update_intro {
   width: 90%;
-  color: #555;
+  color: #aaa;
   height: 10em;
   padding: 1em;
 }
@@ -806,6 +829,30 @@ main section.member .container .main_astrologist .mem_info .detail_info .confirm
 main section.member .container .main_member .reservation,
 main section.member .container .main_astrologist .reservation {
   width: 35%;
+}
+
+main section.member .container .main_member .reservation .txt_box,
+main section.member .container .main_astrologist .reservation .txt_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .reservation .txt_box .more,
+main section.member .container .main_astrologist .reservation .txt_box .more {
+  cursor: pointer;
+  color: #888;
+}
+
+main section.member .container .main_member .reservation .txt_box .more:hover,
+main section.member .container .main_astrologist .reservation .txt_box .more:hover {
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
 }
 
 main section.member .container .main_member .reservation .reservation_box,
@@ -963,6 +1010,13 @@ main section.member .container .main_astrologist .orders .orders_box .other_orde
   text-align: center;
   border-top: 1px solid #5558;
   padding-top: .7em;
+  color: #888;
+}
+
+main section.member .container .main_member .orders .orders_box .other_order:hover,
+main section.member .container .main_astrologist .orders .orders_box .other_order:hover {
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
 }
 
 main section.member .container .main_member .comment,
@@ -985,19 +1039,20 @@ main section.member .container .main_astrologist .comment .comment_list .prev_co
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  color: #aaa5;
+  color: #888;
   cursor: pointer;
 }
 
 main section.member .container .main_member .comment .comment_list .prev_comment:hover,
 main section.member .container .main_astrologist .comment .comment_list .prev_comment:hover {
-  color: #888;
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
 }
 
 main section.member .container .main_member .comment .comment_list.view_old,
 main section.member .container .main_astrologist .comment .comment_list.view_old {
   position: fixed;
-  top: 2em;
+  top: 6em;
   bottom: 2em;
   left: 10em;
   right: 10em;
@@ -1005,8 +1060,10 @@ main section.member .container .main_astrologist .comment .comment_list.view_old
   height: auto;
   background: #111;
   border: 8px solid #fff;
+  -webkit-box-shadow: 0 0 3em 1px #CFB886;
+          box-shadow: 0 0 3em 1px #CFB886;
   z-index: 5;
-  border-radius: 1em;
+  border-radius: 0.5em;
   padding: 2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1049,7 +1106,7 @@ main section.member .container .main_astrologist .comment .comment_box {
 
 main section.member .container .main_member .comment .comment_box .txt_box,
 main section.member .container .main_astrologist .comment .comment_box .txt_box {
-  border-radius: .5em;
+  border-radius: 0.5em;
   padding: 1em;
   position: relative;
 }
@@ -1167,6 +1224,7 @@ main section.member .container .main_astrologist .message .message_box {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 1em;
+  overflow: hidden;
 }
 
 main section.member .container .main_member .message .message_box .article_info,
@@ -1174,13 +1232,13 @@ main section.member .container .main_astrologist .message .message_box .article_
   position: relative;
   padding: .8em;
   background-color: #5558;
-  border-radius: .5em;
+  border-radius: 0.5em;
   cursor: pointer;
 }
 
 main section.member .container .main_member .message .message_box .article_info:hover,
 main section.member .container .main_astrologist .message .message_box .article_info:hover {
-  background-color: #5555;
+  background-color: #555;
 }
 
 main section.member .container .main_member .message .message_box .article_info:not(:first-child),
@@ -1204,9 +1262,21 @@ main section.member .container .main_astrologist .message .message_box .article_
   border-radius: 50%;
 }
 
+main section.member .container .main_member .item.calendar,
+main section.member .container .main_astrologist .item.calendar {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  main section.member .container .main_member .item.calendar,
+  main section.member .container .main_astrologist .item.calendar {
+    width: 100%;
+  }
+}
+
 main section.member .container .main_member .item.ast_comment,
 main section.member .container .main_astrologist .item.ast_comment {
-  width: 100%;
+  width: 50%;
 }
 
 main section.member .container .main_member .item.ast_comment > *,
@@ -1216,14 +1286,29 @@ main section.member .container .main_astrologist .item.ast_comment > * {
   font-size: 0;
 }
 
+main section.member .container .main_member .item.ast_comment > * button,
+main section.member .container .main_astrologist .item.ast_comment > * button {
+  padding: .5em 1em;
+}
+
 @media screen and (min-width: 767px) {
   main section.member .container .main_member .item.ast_comment .active_star,
   main section.member .container .main_astrologist .item.ast_comment .active_star {
     display: none;
   }
+  main section.member .container .main_member .item.ast_comment .ast_hidden,
+  main section.member .container .main_astrologist .item.ast_comment .ast_hidden {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  main section.member .container .main_member .item.ast_comment,
+  main section.member .container .main_astrologist .item.ast_comment {
+    width: 100%;
+  }
   main section.member .container .main_member .item.ast_comment .ast_hidden,
   main section.member .container .main_astrologist .item.ast_comment .ast_hidden {
     height: 4rem;
@@ -1309,6 +1394,8 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box {
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box {
   width: 50%;
+  -webkit-perspective: 800px;
+          perspective: 800px;
 }
 
 @media screen and (max-width: 767px) {
@@ -1323,6 +1410,8 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1332,21 +1421,21 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
   main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row,
   main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row {
     width: 100%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin: .2em;
   }
 }
 
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
-  width: 50%;
+  width: calc(50% - 1em);
   margin: 0.5em;
   padding: .8em;
   background-color: #5558;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateY(10deg) rotateX(10deg) rotateZ(0deg);
+          transform: rotateY(10deg) rotateX(10deg) rotateZ(0deg);
 }
 
 @media screen and (max-width: 767px) {
@@ -1382,7 +1471,7 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_rig
   margin: 0.5em;
   width: 50%;
   border: 1px solid #CFB886;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
 }
 
 @media screen and (max-width: 767px) {
@@ -1406,7 +1495,7 @@ main section.member .container .login_box {
           transform: translate(-50%, -50%);
   padding: 3em;
   outline: 1px solid #CFB886;
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
 
 main section.member .container .login_box .login_info .item {
@@ -1424,7 +1513,7 @@ main section.member .container .sign_up_box {
 main section.member .container .sign_up_box .sign_up_info .item {
   margin-bottom: .5em;
   padding: 1em;
-  border-radius: 1em;
+  border-radius: 0.5em;
   width: 100%;
 }
 
@@ -1479,7 +1568,7 @@ main section.member .container .reservation_box .reservation_list .reservation_c
   margin: 1em;
   padding: 2em 1em;
   outline: 1px solid #fff;
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
 
 @media screen and (max-width: 767px) {
@@ -1507,6 +1596,11 @@ main section.member .container .reservation_box .reservation_list .reservation_c
 
 main section.member .container .reservation_box .reservation_list .reservation_card .card_footer {
   text-align: center;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .card_footer button {
+  padding: 0.3em 1.5em;
+  margin: 0.3em;
 }
 
 /* === 星座頁籤 by JC === */
@@ -1793,6 +1887,12 @@ main .discuss .article_cards {
   cursor: pointer;
 }
 
+main .discuss .article_cards:hover {
+  -webkit-box-shadow: 0 0 15px 2px #cfb88688;
+          box-shadow: 0 0 15px 2px #cfb88688;
+  border: 1px solid #000;
+}
+
 main .discuss .article_cards .line_top span {
   color: #000;
   background-color: #d89482;
@@ -1831,8 +1931,6 @@ main .discuss .article_cards .line_middle .line_middle_txt p {
 main .discuss .article_cards .line_middle .line_middle_pic {
   width: 8em;
   height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 main .discuss .article_cards .line_middle .line_middle_pic img {
@@ -2199,23 +2297,40 @@ main .article_mine_board {
   position: relative;
 }
 
+@media screen and (max-width: 767px) {
+  main .article_mine_board {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 main .article_mine_board .mine_cate {
-  width: 20%;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  left: 0;
+  width: 100%;
   text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main .article_mine_board .mine_cate {
+    width: 20%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
 }
 
 main .article_mine_board .mine_cate .mine_img_box {
   text-align: center;
+  width: 8em;
+  height: 8em;
+  margin: 1.5em auto;
 }
 
 main .article_mine_board .mine_cate .mine_img_box img {
   border-radius: 50%;
-  width: 8em;
-  height: 8em;
+  width: 100%;
   margin-bottom: 2em;
   border: 1px solid #CFB886;
 }
@@ -2224,11 +2339,32 @@ main .article_mine_board .mine_cate .mine_list ul {
   margin-top: 1em;
 }
 
+@media screen and (max-width: 767px) {
+  main .article_mine_board .mine_cate .mine_list ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
 main .article_mine_board .mine_cate .mine_list ul li:not(.no_style) {
   text-align: left;
   padding: 1.5em 1em 1.5em;
   border-bottom: #CFB886 1px solid;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_mine_board .mine_cate .mine_list ul li:not(.no_style) {
+    margin: 1.5em 0;
+    width: 10em;
+    text-align: center;
+    padding: 1.2em 1em;
+    border-radius: 0.2em;
+    border: #CFB886 1px solid;
+  }
 }
 
 main .article_mine_board .mine_cate .mine_list ul li:not(.no_style):hover {
@@ -2239,8 +2375,21 @@ main .article_mine_board .mine_cate .mine_list ul li.no_style {
   margin-top: 2em;
 }
 
+@media screen and (max-width: 767px) {
+  main .article_mine_board .mine_cate .mine_list ul li.no_style {
+    display: none;
+  }
+}
+
 main .article_mine_board .content_article {
   width: 80%;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_mine_board .content_article {
+    margin-top: 2em;
+    width: 100%;
+  }
 }
 
 body section.back {
@@ -2887,6 +3036,10 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
   background-color: transparent;
 }
 
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input[type=date] {
+  width: 80%;
+}
+
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item textarea {
   width: 95%;
 }
@@ -2935,19 +3088,26 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_footer
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item.card_back {
-  overflow: hidden;
+  overflow-y: scroll;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
-  padding: 2em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  padding: 1em 1.5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar {
+  width: 30px;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 10px solid transparent;
+  background-clip: content-box;
+  background-color: #CFB886;
 }
 
 section.login .container section.card_box .rotate_3d_box .account_info,
@@ -3019,6 +3179,12 @@ main .astrolabe .container .astrolabe_start_box {
   /* 填寫表單 */
 }
 
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box {
+    height: 350px;
+  }
+}
+
 main .astrolabe .container .astrolabe_start_box .img_box.start {
   width: 45%;
   position: relative;
@@ -3030,7 +3196,9 @@ main .astrolabe .container .astrolabe_start_box .img_box.start {
 
 @media screen and (max-width: 767px) {
   main .astrolabe .container .astrolabe_start_box .img_box.start {
-    margin-top: 2em;
+    margin-top: 4em;
+    margin-bottom: -1.5em;
+    width: 80%;
   }
 }
 
@@ -3092,7 +3260,7 @@ main .astrolabe .container .astrolabe_start_box .form_item {
 
 @media screen and (max-width: 767px) {
   main .astrolabe .container .astrolabe_start_box .form_item {
-    width: 50%;
+    width: 100%;
   }
 }
 
@@ -3118,6 +3286,12 @@ main .astrolabe .container .astrolabe_start_box .form_item form {
 
 main .astrolabe .container .astrolabe_start_box .form_item form:hover {
   background-color: #3d3d3dbb;
+}
+
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box .form_item form .input_width {
+    width: 100%;
+  }
 }
 
 main .astrolabe .container .astrolabe_start_box .form_item .form_btns {
@@ -3348,6 +3522,7 @@ main .products_cards .products_box .products_cards_wrap .cards_row .products_ite
 main section.draw_cards .container {
   position: relative;
   width: 100%;
+  padding: 0;
   overflow: hidden;
   /* 抽牌圈 */
   /* 抽牌結果 */
@@ -3357,18 +3532,13 @@ main section.draw_cards .container .cards_box {
   z-index: 10;
   position: relative;
   height: 100vh;
+  width: 100%;
   /* 抽牌提示 */
-}
-
-@media screen and (max-width: 768px) {
-  main section.draw_cards .container .cards_box {
-    top: -5em;
-  }
 }
 
 main section.draw_cards .container .cards_box p {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -3510,7 +3680,11 @@ main section.draw_cards .container .detail_box .img_box .item.back {
 main section.draw_cards .container .detail_box .txt_box {
   z-index: 1;
   opacity: 0;
-  padding: 2em 5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   border: 1px solid #CFB886;
   border-radius: .5em;
   display: -webkit-box;
@@ -3524,45 +3698,453 @@ main section.draw_cards .container .detail_box .txt_box {
 
 @media screen and (min-width: 767px) {
   main section.draw_cards .container .detail_box .txt_box {
-    position: absolute;
-    top: 25%;
-    bottom: 10%;
-    right: 15%;
-    left: 40%;
+    width: 40%;
+    padding: 2em 3em 2em 5em;
+  }
+  main section.draw_cards .container .detail_box .txt_box .txt_content {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    padding: 2em 0;
   }
 }
 
 @media screen and (max-width: 768px) {
   main section.draw_cards .container .detail_box .txt_box {
-    position: absolute;
-    top: 10%;
-    left: 2em;
-    right: 2em;
-    padding: 75% 5% 5%;
+    position: fixed;
+    top: 7em;
+    bottom: 3em;
+    left: 1em;
+    right: 1em;
+    -webkit-transform: none;
+            transform: none;
+    padding: 2em 1em;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  main section.draw_cards .container .detail_box .txt_box .item {
+    margin: .5em;
   }
 }
 
-main section.draw_cards .container .detail_box .txt_box .txt_content {
+main section.draw_cards .container .detail_box .txt_box .action {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.draw_cards .container .detail_box .txt_box .action li {
+  width: calc(100% / 4);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0.5em;
+  line-height: 1em;
+  letter-spacing: normal;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+main section.query_orders .action_bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .action_bar {
+    -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+  }
+  main section.query_orders .action_bar .status_btn {
+    margin-top: 1em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  main section.query_orders .action_bar .status_btn button {
+    width: calc(100% / 4);
+    padding: 0 .5em;
+  }
+}
+
+main section.query_orders .action_bar .search {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0 2em;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .action_bar .search {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .action_bar button.secondary_btn {
+    padding: .3em;
+    margin-left: 1em;
+  }
+}
+
+main section.query_orders .mem_orders .order_list .order_item {
+  margin: 1em 0;
+  padding: 1em;
+  border: 1px solid #CFB886;
+  border-radius: 0.5em;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 1em;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content {
+  padding: 1em;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .mem_orders .order_list .order_item .order_content .item {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .img_box {
+  width: 20%;
+  display: inline-block;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .img_box img {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .mem_orders .order_list .order_item .order_content .item .img_box {
+    width: 80%;
+  }
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box {
+  padding-left: 2em;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-main section.draw_cards .container .detail_box .txt_box .action {
-  text-align: center;
-  white-space: nowrap;
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box .info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-main section.draw_cards .container .detail_box .txt_box .action span {
-  padding: .5em;
-  font-size: .8em;
-  cursor: pointer;
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box .info span {
+  padding: 1em 0;
 }
 
 @media screen and (max-width: 768px) {
-  main section.draw_cards .container .detail_box .txt_box .action span {
-    font-size: 0.7em;
+  main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box {
+    width: 100%;
+    padding-left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
+  main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box .info {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_footer {
+  padding: 0 1em;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_footer .item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em 0;
+}
+
+main section.member .container section.main_astrologist {
+  /* calendar footer */
+}
+
+main section.member .container section.main_astrologist #schedule {
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main section.member .container section.main_astrologist #calendarContain {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
+  padding: 0 1px;
+  padding-bottom: 1px;
+}
+
+main section.member .container section.main_astrologist #calendarHeader {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px 0;
+}
+
+main section.member .container section.main_astrologist #schedule .month {
+  color: #CFB886;
+  font-size: 30px;
+}
+
+main section.member .container section.main_astrologist #schedule .lastmonth {
+  font-size: 16px;
+  color: #CFB886;
+  cursor: pointer;
+}
+
+main section.member .container section.main_astrologist #schedule .nextmonth {
+  font-size: 16px;
+  color: #CFB886;
+  cursor: pointer;
+}
+
+main section.member .container section.main_astrologist #schedule .lastmonth:after,
+main section.member .container section.main_astrologist #schedule .nextmonth:after {
+  border-bottom: 1px solid #68433780;
+  content: '';
+  display: block;
+  width: 0%;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+main section.member .container section.main_astrologist #schedule .lastmonth:hover:after,
+main section.member .container section.main_astrologist #schedule .nextmonth:hover:after {
+  width: 100%;
+}
+
+main section.member .container section.main_astrologist #schedule .week {
+  width: 100%;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section.member .container section.main_astrologist #schedule #week0 {
+  height: 30px;
+  line-height: 12px;
+  background-color: #5558;
+  color: #CFB886;
+  font-size: 24px;
+}
+
+main section.member .container section.main_astrologist #schedule .day {
+  width: calc(100% / 7);
+  border: 1px solid #5558;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-top: 5px;
+  position: relative;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section.member .container section.main_astrologist #schedule .day p {
+  color: #CFB886;
+}
+
+main section.member .container section.main_astrologist #schedule .week:not(#week0) .day:not(:empty):hover {
+  -webkit-box-shadow: 0 0 3px 2px #CFB886;
+          box-shadow: 0 0 3px 2px #CFB886;
+  cursor: pointer;
+}
+
+main section.member .container section.main_astrologist #schedule .week:not(#week0) .day:not(:empty):active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+main section.member .container section.main_astrologist #schedule #week5 .day0 {
+  border-bottom-left-radius: 5px;
+}
+
+main section.member .container section.main_astrologist #schedule #week5 .day6 {
+  border-bottom-right-radius: 5px;
+}
+
+main section.member .container section.main_astrologist #schedule .calendarFooter {
+  padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod {
+  line-height: 30px;
+  color: #684337;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod span {
+  padding-right: 20px;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod span:before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod span:nth-child(2):before {
+  background-color: #CFB886;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod span:nth-child(3):before {
+  background-color: #7799d5;
+}
+
+.sky {
+  height: 100vh;
+}
+
+.sky .welcome_index {
+  margin: -6em 0;
+}
+
+.sky .welcome_index .welcome_index_logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1em;
+}
+
+.sky .welcome_index .welcome_index_logo img {
+  width: 6em;
+  margin: auto;
+}
+
+.sky .welcome_index .welcome_index_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .welcome_index_box {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.sky .welcome_index .welcome_index_box .welcome_item {
+  width: 25%;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .welcome_index_box .welcome_item {
+    width: 70%;
+  }
+}
+
+.sky .welcome_footer {
+  margin: 8em 1.5em 0;
+  text-align: left;
+}
+
+.sky .welcome_footer p {
+  color: #999;
+  font-size: .8em;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_footer p {
+    font-size: .7em;
+  }
+}
+
+.sky .welcome_footer span {
+  color: #CFB886;
+  font-size: .6em;
 }
 
 * {

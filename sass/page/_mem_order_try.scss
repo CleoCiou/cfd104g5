@@ -1,0 +1,129 @@
+main{
+    section.query_orders {
+        .action_bar {
+            // padding: 2em 0;
+            
+            display: flex;
+            flex-wrap: wrap;
+
+            @media screen and (max-width: 768px) {
+                flex-wrap: wrap-reverse;
+
+                .status_btn {
+                    margin-top: 1em;
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    button {
+                        width: calc(100% / 4);
+                        padding: 0 .5em;
+                    }
+                }
+            }
+
+            .search {
+                flex-grow: 1;
+                margin: 0 2em;
+
+                @media screen and (max-width: 768px) {
+                    flex-grow: 1;
+                    margin: 0;
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                button.secondary_btn {
+                    padding: .3em;
+                    margin-left: 1em;
+                }
+            }
+        }
+        
+        .mem_orders{
+            .order_list{
+                .order_item{
+                    margin: 1em 0;
+                    padding: 1em;
+                    border: 1px solid #CFB886;
+                    border-radius: $borderRadius;
+
+                    .order_header{
+                        display: flex;
+                        justify-content: space-between;
+                    padding: 0 1em;
+                    }
+
+                    .order_content{
+                        padding: 1em;
+
+                        .item{
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            @media screen and (max-width: 768px) {
+                                justify-content: center;
+                            }
+
+                            .img_box{
+                                width: 20%;
+                                display: inline-block;
+                                border-radius: $borderRadius;
+                                overflow: hidden;
+
+                                img {
+                                    width: 100%;
+                                }
+
+                                @media screen and (max-width: 768px) {
+                                    width: 80%;
+                                }
+
+                            }
+                            .txt_box{
+                                padding-left: 2em;
+                                flex-grow: 1;
+
+                                .info{
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+
+
+                                    span{
+                                        padding:1em 0;
+                                    }
+                                }
+
+                                @media screen and (max-width: 768px) {
+                                    width: 100%;
+                                    padding-left: 0;
+                                    display: flex;
+                                    flex-wrap: wrap;
+
+                                    .info {
+                                        flex-grow: 1;
+                                    }
+                                }
+                            }
+                        }
+                    } // order_content
+
+                    .order_footer{
+                        padding: 0 1em;
+
+                        .item{
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 1em 0;
+                        }
+                    }
+                    
+                } // order_item
+                    
+            } // order_list
+        } // mem_orders
+
+    }
+}

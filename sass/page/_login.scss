@@ -156,6 +156,9 @@ section.login {
                                     width: 90%;
                                     border: none;
                                     background-color: transparent;
+                                    &[type=date] {
+                                        width: 80%;
+                                    }
                                 }
 
                                 textarea {
@@ -215,13 +218,23 @@ section.login {
 
                 // 卡片背面: 註冊
                 .card_item.card_back {
-                    overflow: hidden;
+                    overflow-y: scroll;
                     transform: rotateY(180deg);
-                    padding: 2em;
+                    padding: 1em 1.5em;
 
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
+                    &::-webkit-scrollbar{
+                        width: 30px;
+                    }  
+                    &::-webkit-scrollbar-track{
+                        background-color: transparent;
+                        border-radius: 100px;
+                    }
+                    &::-webkit-scrollbar-thumb{
+                        border-radius: 100px;
+                        border: 10px solid transparent;
+                        background-clip: content-box;
+                        background-color: #CFB886;
+                    }
                 }
 
                 .account_info,
