@@ -27,18 +27,18 @@
 /* 月曆 */
 :root {
     --dark-body: #4d4c5a;
-    --dark-main: #141529;
-    --dark-second: #79788c;
+    --dark-main: #000;
+    --dark-second: #f3f8fe;
     --dark-hover: #323048;
-    --dark-text: #f8fbff;
+    --dark-text: #CFB886;
 
     --light-body: #f3f8fe;
-    --light-main: #fdfdfd;
-    --light-second: #c3c2c8;
+    --light-main: #3A3A3A;
+    --light-second: #CFB886;
     --light-hover: #edf0f5;
-    --light-text: #151426;
+    --light-text: #CFB886;
 
-    --blue: #0000ff;
+    --pink: #d89482;
     --white: #fff;
 
     --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -62,30 +62,17 @@
     --color-txt: var(--light-text);
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100vh;
-    display: grid;
-    place-items: center;
-    font-family: var(--font-family);
-    background-color: var(--bg-body);
-}
-
-.calendar {
+.teller_reservation .container .reservation_form .calendar {
     height: max-content;
-    width: max-content;
     background-color: var(--bg-main);
     border-radius: 30px;
-    padding: 20px;
     position: relative;
     overflow: hidden;
-    /* transform: scale(1.25); */
+    margin: 0 -2em;
+}
+
+.dark main .teller_reservation .container .reservation_form .calendar{
+    border: 1px solid #CFB886;
 }
 
 .light .calendar {
@@ -105,6 +92,14 @@ body {
 .calendar-body {
     padding: 10px;
 }
+
+.light main .teller_reservation .container .reservation_form .calendar .calendar-body .calendar-day-hover{
+    color: #fff;
+}
+
+/* .light main .teller_reservation .container .reservation_form .calendar .calendar-head{
+    color: #fff;
+} */
 
 .calendar-week-day {
     height: 50px;
@@ -127,8 +122,8 @@ body {
 }
 
 .calendar-days div {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,7 +200,7 @@ body {
 
 .calendar-days div.curr-date,
 .calendar-days div.curr-date:hover {
-    background-color: var(--blue);
+    background-color: var(--pink);
     color: var(--white);
     border-radius: 50%;
 }
@@ -220,8 +215,16 @@ body {
     cursor: pointer;
 }
 
+.light .month-picker{
+    color: #fff;
+}
+
+.light .year-picker span pre,.light .year-picker span{
+    color: #fff;
+}
+
 .month-picker:hover {
-    background-color: var(--color-hover);
+    background-color: #aaa;
 }
 
 .year-picker {
@@ -240,7 +243,7 @@ body {
 }
 
 .year-change:hover {
-    background-color: var(--color-hover);
+    background-color:  #aaa;
 }
 
 .calendar-footer {
@@ -291,7 +294,7 @@ body {
     top: 0;
     left: 0;
     background-color: var(--bg-main);
-    padding: 20px;
+    /* padding: 20px; */
     grid-template-columns: repeat(3, auto);
     gap: 5px;
     display: grid;
@@ -335,9 +338,15 @@ body {
         opacity: 1;
     }
 }
+
 .teller_reservation .teller_form p{
     color: #CFB886;
 }
+
+.teller_reservation .teller_form{
+    margin-top: 1em;
+}
+
 .teller_reservation .teller_btn{
     padding-top: 5px;
     text-align: right;
@@ -348,7 +357,7 @@ body {
     margin-bottom: 1%;
 }
 .teller_board .txt_box h4{
-    padding: 0.25em;
+    padding: 0.5em;
 }
 .teller_board .txt_box p{
     padding: 0em 1em 1em;
@@ -371,10 +380,11 @@ body {
     }
     .teller_reservation .container .reservation_form{
         display: flex;
+        padding-top: 2em;
         width: 50%;
         flex-wrap: wrap;
         flex-direction: column;
-        padding: 2em 4em;
+        padding: 0em 2em;
     }
     .teller_form label{
         display: flex;
