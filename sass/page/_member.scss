@@ -436,9 +436,11 @@ main {
                             background-color: #5558;
                             border-radius: $borderRadius;
                             cursor: pointer;
+                            // transition: .5s;
                         }
                         .article_info:hover {
                             background-color: #555;
+                            // box-shadow: 0 0 50em 1px #CFB886;
                         }
                         .article_info:not(:first-child) {
                             margin-top: .5em;

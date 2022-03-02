@@ -74,7 +74,7 @@ header .header_all .header_bar .header_icon {
 header .header_all .header_bar .header_icon p {
   color: #cfb886;
   margin-top: 1.2rem;
-  margin-right: 20px;
+  margin-right: 1em;
   font-size: 1.2rem;
 }
 
@@ -2832,7 +2832,6 @@ main .change .container .item .unselected_btn {
 }
 
 .img_box {
-  text-align: center;
   width: 100%;
 }
 
@@ -3749,6 +3748,15 @@ main section.draw_cards .container .detail_box .txt_box .action li {
   cursor: pointer;
 }
 
+main section.query_orders .container > .action {
+  width: 100%;
+  text-align: center;
+}
+
+main section.query_orders .container > .action button {
+  margin: 0 1em;
+}
+
 main section.query_orders .action_bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4075,14 +4083,16 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
 }
 
 .sky {
-  height: 100vh;
+  height: 99vh;
+  padding: 0;
 }
 
 .sky .welcome_index {
-  margin: -6em 0;
+  height: 100%;
 }
 
-.sky .welcome_index .welcome_index_logo {
+.sky .welcome_index .container {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4090,22 +4100,45 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 1em;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.sky .welcome_index .welcome_index_logo img {
+.sky .welcome_index .container .welcome_index_logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sky .welcome_index .container .welcome_index_logo img {
   width: 6em;
   margin: auto;
 }
 
-.sky .welcome_index .welcome_index_box {
+.sky .welcome_index .container .welcome_index_box {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media screen and (max-width: 767px) {
-  .sky .welcome_index .welcome_index_box {
+  .sky .welcome_index .container .welcome_index_box {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -4116,33 +4149,35 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
   }
 }
 
-.sky .welcome_index .welcome_index_box .welcome_item {
-  width: 25%;
+.sky .welcome_index .container .welcome_index_box .welcome_item {
+  width: 35%;
+  padding: 5em;
+  height: 100%;
+  position: relative;
 }
 
 @media screen and (max-width: 767px) {
-  .sky .welcome_index .welcome_index_box .welcome_item {
+  .sky .welcome_index .container .welcome_index_box .welcome_item {
     width: 70%;
   }
 }
 
-.sky .welcome_footer {
-  margin: 8em 1.5em 0;
+.sky .welcome_index .container .welcome_footer {
   text-align: left;
 }
 
-.sky .welcome_footer p {
+.sky .welcome_index .container .welcome_footer p {
   color: #999;
   font-size: .8em;
 }
 
 @media screen and (max-width: 767px) {
-  .sky .welcome_footer p {
+  .sky .welcome_index .container .welcome_footer p {
     font-size: .7em;
   }
 }
 
-.sky .welcome_footer span {
+.sky .welcome_index .container .welcome_footer span {
   color: #CFB886;
   font-size: .6em;
 }

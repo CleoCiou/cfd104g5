@@ -97,6 +97,8 @@
   transform: rotateY(-180deg);
   padding: 1em;
 }
+
+
 .tarot_book .book .page.flipped:nth-child(odd):before {
   background: rgba(0, 0, 0, 0.2);
   padding: 1em;
@@ -126,16 +128,24 @@
   padding: 1em;
 }
 
-.tarot_book  .other_btn{
+.tarot_book  .to_content{
   position: fixed;
   top: 50%;
   left: 100%;
 }
+.tarot_book  .last_page{
+  position: fixed;
+  top: 30%;
+  left: 100%;
+}
+
+
 .tarot_book .txt_box p{
   color: #000;
 }
 .tarot_book .first_page {
   width: 90%;
+
 }
 .tarot_book .first_page img{
   width: 100%;
@@ -149,4 +159,33 @@ main .tarot_book .container .book .pages .page .tarot_book_menu.active {
 }
 main .tarot_book .container .book .pages .page .tarot_book_menu.active li:hover {
     color: #fa0;
+}
+
+
+
+.tarot_book .book .page:nth-child(1) {
+  background-image: url("../images/be_teller/tarot_books3.svg");
+  background-size: cover;
+}
+.tarot_book .book .page .img_box{
+    width: 30%;
+}
+.tarot_book .book .page .img_box img{
+    width: 100%;
+}
+
+.tarot_book_intro .tarot_box{
+  position: absolute;
+  width: 35vw;
+  height: 40vw;
+  border: 1px solid #CFB886;
+  border-radius: 0.5em;
+  text-align: center;
+  padding: 1.5em;
+}
+.tarot_book_intro .tarot_box .img_box{
+  padding: 0.5em 0;
+}
+.tarot_book_intro h2{
+  position: relative;
 }
