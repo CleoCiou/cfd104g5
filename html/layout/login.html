@@ -5,7 +5,7 @@
 <section class="login">
     <div class="container">
 
-        <input type="checkbox" class="display_none" id="reg_log" name="reg_log">
+        <input type="checkbox" class="display_none" id="reg_log" name="reg_log" checked>
 
         <section class="card_box">
             <!-- 切換器 -->
@@ -106,13 +106,26 @@
                                 <!-- 驗證 -->
                                 <div class="item verify">
                                     <ul>
-                                        <li>與確認密碼不符</li>
+                                        <li>密碼不可為空</li>
                                     </ul>
                                 </div>
                             </div>
 
                             <!-- 基本資訊 -->
                             <div class="mem_info">
+                                <!-- 大頭貼 -->
+                                <div class="item memImage">
+                                    
+                                    <label for="memImage">
+                                        <div class="img_box">
+                                            <img src="images/icon/icon_discuss_mine.svg" alt="預設大頭貼">
+                                        </div>
+                                        <span>上傳大頭貼</span>
+                                    </label>
+
+                                    <input type="file" name="memImage" id="memImage" class="display_none">
+                                </div>
+
                                 <!-- 姓名 -->
                                 <div class="item memName">
                                     <i class="input-icon uil uil-user"></i>
@@ -244,7 +257,7 @@
 
         // 確認再次輸入是否與密碼一致
         function checkPwd() {
-            if ($("#confirm_pwd").val() === $("#memPwd").val()) {
+            if ($("#confirm_pwd").val() === $("#memPwd").val() && $("#confirm_pwd)").val() !== '') {
                 gsap.to($(".item.confirm_pwd + .verify ul li:nth-child(1)"), {
                     color: '#CFB886',
                     duration: .3
@@ -256,7 +269,8 @@
                     color: '#9999',
                     duration: .3
                 })
-                $(".item.confirm_pwd + .verify ul li:nth-child(1)").text('密碼不符');
+                errMsg = ($("#memPwd").val() === '') ? '密碼不可為空' : '密碼不符';
+                $(".item.confirm_pwd + .verify ul li:nth-child(1)").text(errMsg);
             }
         }
 
@@ -279,7 +293,7 @@
         // 註冊 | 登入
         $(".secondary_btn").click( (e) => {
             if (e.target.innerText === '登入'|| e.target.innerText === '註冊') {
-                window.location.href = 'index.html';
+                window.location.href = 'homepage.html';
             }
         })
         // 下一步
@@ -287,6 +301,7 @@
             if ($(".account_info").css('height') !== '0px') {
                 switchPanel($(".account_info"), $(".mem_info"));
                 $(".last_step").css({display: 'inline-block'});
+                $(".next_step").text('註冊');
             }
             else if ($(".mem_info").css('height') !== '0px') {
                 switchPanel($(".mem_info"), $(".astrologist_info"));
@@ -309,9 +324,35 @@
 
         // === 輸入框監控 === //
         $("input").focus( (e) => {
-            $(this).parent().css({
-                boxShadow: '0 0 5em 0 #fff'
-            });
+            e.target.parentNode.style.boxShadow = "0 0 1em 0 #CFB88655";
+        })
+        $("input").focusout( (e) => {
+            e.target.parentNode.removeAttribute('style');
+        })
+
+        // 成為占卜師需多填占卜師資料
+        $("input[type=radio][name=identity]").change( (e) => {
+            if (e.target.id === 'astrologist') {
+                $(".next_step").text('下一步');
+            }
+            else {
+                $(".next_step").text('註冊');
+            }
+            // 動
+            gsap.fromTo($(".next_step"), {
+                translateY: '-1em',
+                backgroundColor: '#ffe09c'
+            },
+            {
+                translateY: 0,
+                duration: .8,
+                backgroundColor: '#CFB886',
+                repeat: 1,
+                ease: Power0.easeNone,
+                onComplete: () => {
+                    $(".next_step").removeAttr('style');
+                }
+            })
         })
 
 

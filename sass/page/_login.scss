@@ -165,6 +165,34 @@ section.login {
                                     width: 95%;
                                 }
 
+                                // 大頭貼
+                                &.memImage {
+                                    label {
+                                        cursor: pointer;
+                                        display: block;
+                                        padding: 1em 0 .5em;
+
+                                        .img_box {
+                                            width: 7em;
+                                            height: 7em;
+                                            padding: 1em;
+                                            border-radius: 50%;
+                                            border: 1px solid map-get($primary_color, 'content');
+                                            overflow: hidden;
+                                            margin: auto;
+                                            img {
+                                                width: 100%;
+                                            }
+                                        }
+
+                                        span {
+                                            width: 100%;
+                                            text-align: center;
+                                            display: inline-block;
+                                        }
+                                    }
+                                }
+
                                 // 驗證
                                 &.verify {
                                     padding: 0;
