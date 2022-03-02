@@ -19,7 +19,6 @@ h2{
     color: #CFB886;
 }
 .tarotcards .book_item .txt_box span{
-    margin: 3em 0;
     color: #fff;
     line-height: 2;
     display: block;
@@ -29,9 +28,11 @@ h2{
 }
 .row .item{
     width: 50%;
+    text-align: center;
 }
 .row .item .img_box{
-    width: 80%;
+    width: 80%; 
+    margin: auto;
 }
 .row .item .img_box img{
     width: 100%;
@@ -47,6 +48,7 @@ h2{
 }
 .row_down .four .item{
     width: 50%;
+    text-align: center;
 }
 .row_down .four .item .img_box{
     width: 100%;
@@ -64,9 +66,14 @@ h2{
 }
 .row_down .item{
     width: 40%;
+    text-align: center;
 }
+/* .taboo_box{
+    border: #CFB886 1px solid;
+} */
 .taboo h3{
     padding: 0.8em 0;
+    /* text-align: center; */
 }
 .taboo h4{
     padding: 0.8em 0;
@@ -82,6 +89,7 @@ h2{
     box-sizing: border-box;
 }
 .taboo_item .img_box{
+    padding: 6em 0; 
     width: 30%;
 }
 .taboo_item .img_box img{
@@ -90,6 +98,7 @@ h2{
 .taboo_item li{
     color: seashell;
     height: 40px;
+    line-height: 2;
 }
 .test_item{
     display: flex;
@@ -150,10 +159,6 @@ h2{
 }
 
 
-
-
-
-
 /* 手機專用 */
 @media screen and (max-width:768px) {
     .tarotcards .book_item .img_box{
@@ -162,15 +167,17 @@ h2{
     }
     .tarotcards .book_item .txt_box {
           width: 100%;
+          text-align: center;
     }
     .tarotcards .book_item .txt_box p{
         position: absolute;
-        top: 100px;
+        top: 80px;
         left: 40px;
         font-size: 1.2em;
     }
     .tarotcards .book_item .txt_box span{
         font-size: 0.5em;
+        text-align: left;
     }
     .row{
         display: block;
@@ -211,7 +218,8 @@ h2{
         padding: auto 10%;
     }
     .taboo_item .img_box{
-        width: 90%;
+        width: 100%;
+        padding: 1em 0; 
     }
     .taboo_item .img_box img{
         width: 100%;
@@ -231,7 +239,15 @@ h2{
     }
    }
 @media screen and (min-width:992px) {
-    
+    .tarotcards .book_item .txt_box {
+        position: absolute;
+        width: 45%;
+        top: 75px;
+        left: 70px;
+    }
+    .tarotcards .book_item .txt_box span{
+        margin: 1em 0;
+    }
    }
 @media screen and (min-width:1200px) {
     .tarotcards .book_item .txt_box {
@@ -240,8 +256,8 @@ h2{
         top: 100px;
         left: 100px;
     }
-    .taboo_item .img_box{
-        padding: 6em 0; 
+    .tarotcards .book_item .txt_box span{
+        margin: 3em 0;
     }
     
    }

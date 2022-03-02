@@ -1,246 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+@@include('layout/head.html',{
+    'title':'商城'
+})
 
-    @@include('layout/head.html', {
-        'title': '首頁'
-    })
+<!-- <link rel="stylesheet" href="css/index.css"> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CSSRulePlugin.min.js"></script> -->
 
-<link rel="stylesheet" href="css/index.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
 <body>
     
-<!-- 網頁頭 by NJ -->
-<!-- <header class="main_header"></header> -->
-@@include('layout/header.html')
+<!-- 首頁 -->
+<!-- 網頁頭 -->
+<header class="main_header"></header>
 
 <!-- 首頁區塊 by ZH -->
-<main>
-    <!-- 介紹 -->
-    <section class="introduce" id="int">
-        <div class="container">
-            <div class="introduce_box">
-                <!-- 介紹_圖 -->
-                <div class="introduce_img">
-                        <img src="images/index/index_black_cat.svg">
-                </div>
-                <!-- 介紹_文 -->
-                <div class="introduce_txt_box">
-                    <div class="introduce_txt">
-                        <h2>Mistro解星鏡</h2>
-                        <h4>解開你心中的各種疑問</h4>
-                        <h3>透過占卜與星座給予你方向與力量,期待每個人都可以受惠這門超越科學的學問,找到屬於自己最好的存在方式。</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<main class="sky" id="twinklingStar">
 
-    <!-- 視差滾動 鑰匙孔 -->
-    <section class="scroll_keyhole" id="scroll">
-        <!-- 視差滾動 鑰匙孔_文 -->
-        <div class="scroll_keyhole_txt">
-            <h2>
-                準備好進入占卜的世界嗎?
-            </h2>
-        </div>
-        <!-- 視差滾動 鑰匙孔_圖 -->
-        <div class="scroll_keyhole_img">
-            <img src="images/index/keyhole.svg">
-        </div>
-    </section>
-
-    <!-- 線上測驗 -->
-    <section class="online_test" id="text">
-        <div class="container">
-            <div class="online_test_box">
-                <div class="owl-carousel owl-theme">
-                    <a href="online_divination.html">
-                        <div class="test_box">
-                            <div class="test_img">
-                                <img src="images/index/index_text_tarot.svg">
-                            </div>
-                            <div class="test_txt">
-                                <h2>塔羅牌</h2>
-                            </div>
-                        </div> 
-                    </a>
-                    <a href="con_today_fortune.html">
-                        <div class="test_box">
-                            <div class="test_img">
-                                <img src="images/index/index_text_Constellation.svg">
-                            </div>
-                            <div class="test_txt">
-                                <h2>星座</h2>
-                            </div>
-                        </div> 
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 熱門占卜師 -->
-    <section class="hot_fortune_teller" id="hft">
+    <section class="welcome_index">
         <div class="container">
 
-            <h1>熱門占卜師</h1>  
-
-            <div class="hot_fortune_teller_box">
-                <!-- 熱門占卜師_卡片 -->
-                <a href="teller_reservation.html">
-                    <div class="hot_fortune_teller_card">
-                        <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller.svg">
-                        </div>
-                        <div class="hot_fortune_teller_txt">
-                            <h3>吳恆準</h3>
-                        </div>
-                        <div class="hot_fortune_teller_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>  
-                <a href="teller_reservation.html">
-                    <div class="hot_fortune_teller_card">
-                        <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller_girl.svg">
-                        </div>
-                        <div class="hot_fortune_teller_txt">
-                            <h3>武材尊</h3>
-                        </div>
-                        <div class="hot_fortune_teller_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>  
-                <a href="teller_reservation.html">
-                    <div class="hot_fortune_teller_card">
-                        <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller_sex_girl.svg">
-                        </div>
-                        <div class="hot_fortune_teller_txt">
-                            <h3>巫亙准</h3>
-                        </div>
-                        <div class="hot_fortune_teller_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>  
+            <div class="welcome_index_logo">
+                <img src="../images/index_logo_golden-02.png">
+                <h2>解星鏡</h2>
+                <h4>CFD-104 G5</h4>
             </div>
-            <!-- 占卜師總覽 -->
-            <div class="teller_verview">
-                <a href="teller_mem.html"><input type="submit" id="submit" value="占卜師瀏覽" class="primary_btn"></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 主打商品 -->
-    <section class="hot_product" id="hp">
-        <div class="container">
-            <h1>主打商品</h1>
-            <!-- 主打商品_卡片 -->
-            <div class="hot_product_box">
-                <a href="product.html">    
-                    <div class="hot_product_card">
-                        <div class="hot_product_card_img">
-                            <img src="images/shop/Constellation/wristband/wristband_aries.png">
-                        </div>
-                        <div class="hot_product_card_txt">
-                            <h4>星座手環-牡羊座</h4>
-                            <h4>NT$1,299</h4>
-                        </div>
-                        <div class="hot_product_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>
-                <a href="product.html">    
-                    <div class="hot_product_card">
-                        <div class="hot_product_card_img">
-                            <img src="images/shop/Constellation/wristband/wristband_gemini.png">
-                        </div>
-                        <div class="hot_product_card_txt">
-                            <h4>星座手環-雙子座</h4>
-                            <h4>NT$1,289</h4>
-                        </div>
-                        <div class="hot_product_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>
-                <a href="product.html">    
-                    <div class="hot_product_card">
-                        <div class="hot_product_card_img">
-                            <img src="images/shop/Constellation/wristband/wristband_scorpio.png">
-                        </div>
-                        <div class="hot_product_card_txt">
-                            <h>星座手環-天蠍座</h>
-                            <h4>NT$1,299</h4>
-                        </div>
-                        <div class="hot_product_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!--商品總覽 -->
-            <div class="product_overview">
-                <a href="shop.html"><input type="submit" id="submit" value="商品瀏覽" class="primary_btn"></a>
-            </div>
-        </div>
-    </section>
-
     
+            <div class="welcome_index_box">
+                <div class="front_end welcome_item">
+                    <a href="homepage.html">
+                        <img src="../images/index/welcomeindex_front_end.svg">
+                        <div class="welcome_index_txt">
+                            <h2>前台</h2>
+                        </div>
+                    </a>
+                </div>
+    
+                <div class="back_end welcome_item">
+                    <a href="back.html">
+                        <img src="../images/index/welcomeindex_back_end.svg">
+                        <div class="welcome_index_txt">
+                            <h2>後台</h2>
+                        </div>
+                    </a>
+                </div>
+    
+            </div>
+    
+            <div class="welcome_footer">
+                <p>本網站為緯育TibaMe_前端設計工程師班第73期第五組學員專題成果作品，本平台僅供學習、展示之用。<br>若有牴觸有關著作權，或有第三人主張侵害智慧財產權等情事，若有侵權疑慮，請私訊<a href="https://www.tibame.com/goodjob/frontend">[TibaMe-前端設計工程師養成班]</a>，後續由專人協助處理。<br></p>
+                <span>Copyright © 2022 ft. All rights reserved.</span>
+            </div>
+
+        </div>
+    </section> 
 
 </main>
 
 
-<!-- 網頁尾 By NJ -->
-<!-- <footer class="main_footer"></footer> -->
-@@include('layout/footer.html')
 
-<!-- 視差滾動 動畫效果 -->
+
 <script>
-    gsap.to('.scroll_keyhole_img', {
-            scrollTrigger: {
-                // 需要視差滾動的class
-               trigger: '.scroll_keyhole_img',
-                // 開始於頂部中心
-               start:"top center",
-               // 結束於y軸後200
-               end: "200",
-               // 打開滾動前後效果一致
-               scrub: true, 
-            // markers: true, // 顯示參考線
-            },
-            //放大幾倍
-            scale: 3,
-            //持續時間
-            duration: 6,
-            //透明度
-            opacity:0
-            
-        });
 
+    for(var i = 0; i < 250; i++) {
+        //get random dimensions
+        var x = Math.random() * 100;
+        var y = Math.random() * 90;
+        var d = Math.random() * 4;
+        var s = Math.random() * 2 + 1.5;
+        //create new element and add to html
+        var star = document.createElement("div");
+        star.classList.add("star");
+        var sky = document.getElementById("twinklingStar");
+        sky.appendChild(star);
 
-    // 推薦商品 貓頭鷹套件
+        star.style.width = d + "px";
+        star.style.height = d + "px";
+        star.style.top = y + "%";
+        star.style.left = x + "%";
+        star.style.animationDuration = s + "s";
+    }
 
-    $(".owl-carousel").owlCarousel({
-        loop: true, // 循環播放
-        margin: 10, // 外距 10px
-        dots: false,
-        nav: true, // 顯示點點
-        responsive: {
-            0: {
-            items: 1 // 螢幕大小為 0~600 顯示 1 個項目
-            },
-            980: {
-                items: 1 // 螢幕大小為 1000 以上 顯示 5 個項目
-            }
-        }
-    });
-    </script>
+    var tl = new TimelineMax();
+    // var rule = CSSRulePlugin.getRule(".front_end"); // 必須與 CSS 檔案中的選擇器一致
+    tl.fromTo( $(".front_end"), {
+        background: 'radial-gradient(40% 50% at 50% 55%, #CFB88690 0%, transparent 80%)',
+    },
+    {
+        duration: 2,
+        background: 'radial-gradient(40% 50% at 50% 40%, #CFB88690 0%, transparent 80%)',
+        repeat: -1,
+        yoyo: true
+    } );
 
+    tl.fromTo( $(".back_end"), {
+        background: 'radial-gradient(40% 50% at 50% 55%, #CFB88690 0%, transparent 80%)',
+    },
+    {
+        duration: 2,
+        background: 'radial-gradient(40% 50% at 50% 40%, #CFB88690 0%, transparent 80%)',
+        repeat: -1,
+        yoyo: true
+    } );
+</script>
 </body>
 </html>

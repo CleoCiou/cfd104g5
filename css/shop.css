@@ -14,10 +14,7 @@
 
     /* 商城 by ZH  手機*/
 /* ============================= */
-    /* 商城標題推下來*/
-    main .shop_title{
-        padding: 10%;
-    }
+    
 
     main .shop_category_box{
         padding: 5%;
@@ -71,12 +68,7 @@
         overflow: hidden;
     
     }
-    /* 產品卡片碰到後發亮 */
-    .shop_product_card:hover{
-        Box-shadow: 1px 1px 12px 1px  #CFB886,
-        1px 1px 2px 1px  #CFB886 inset;
-
-    }
+    
     
 
     /* 主打商品圖字icon上下間隔隔開 */
@@ -96,33 +88,13 @@
         width: 25%;
     }
 
-    .shop_product_card_icon{
-        position: relative;
-        bottom: -100px;
-        transition:bottom 1s ;
+    .shop_title h1{
+        padding-bottom: 1em;
     }
-    .shop_product_card:hover .shop_product_card_icon{
-        bottom: -10px;
-    }
-   
-
-    
-
-    
-
-    
-
-   
-        
-
-    
 
 
 
     
-
-
-
 
      
 
@@ -151,6 +123,23 @@
         
         .shop_product_item{
             display: flex;
+        }
+
+        /* 產品卡片碰到後發亮 */
+        .shop_product_card:hover{
+            Box-shadow: 1px 1px 12px 1px  #CFB886,
+            1px 1px 2px 1px  #CFB886 inset;
+
+        }
+
+         /* 眼睛動畫 */
+        .shop_product_card_icon{
+            position: relative;
+            bottom: -130px;
+            transition:bottom 0.8s ;
+        }
+        .shop_product_card:hover .shop_product_card_icon{
+            bottom: -10px;
         }
 
         

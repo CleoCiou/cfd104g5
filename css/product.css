@@ -1,44 +1,179 @@
 /* 產品內頁 by ZH  手機*/
 /* ============================= */
+  /* 產品 */
 
+  .product_inner_page{
+    padding-top: 1em;
+  }
 
-main .product_inner_page .product_inner_img_large img{
-  width: 100%;
-}
-
-.product_inner_img_small img{
-  width: 30%;
+  .product_inner_img_large img{
+    width:100%;
+  }
   
-}
+  .product_inner_img_small img{
+    width: 100%;
+    
+  }
+
+  .product_inner_img_small a{
+    width: 30%;
+    
+  }
+
+  .product_inner_img_large{
+    width: 100%;
+    text-align: center;
+  }
+
+  .product_inner_img_small{
+    /* max-width: 350px; */
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5em;
+  }
+
+  .product_inner_img{
+    width: 100%;
+  }
+
+  main .product_inner_page .product_inner_txt_right form{
+    padding: 1em;
+
+  }
+
+  .product_inner_txt_right{
+    max-width: 350px;
+  }
+
+  .product_inner_txt_right{
+    padding-top:1em;
+  }
+
+  .product_inner_txt_right p{
+    padding:1em 0 1em 0;
+  }
+
+  .product_detail_txt{
+    padding: 3em 0 3em 0;
+  }
+
+  .detail{
+    padding-bottom: 0.5em;
+  }
+
+  .recommended_products h3{
+    padding-bottom: 1em;
+  }
+
+  .recommended_products_img{
+    text-align: center;
+    
+  }
+
+  .recommended_products_img p{
+    padding-top: 0.5em;
+  }
+
+  .recommended_products_img img{
+    border-radius: 0.5em;
+  }
+
+  
+  
+
+
+      
+
+  
+  
+
+  
+
+
+  
+  
+  
+
+  
 
 
 
-.product_inner_txt_right{
-  width: 100%;
-}
 
 /* 電腦 */
 @media screen and (min-width:768px) {
 
-  .product_inner_box{
-    width: 50%;
-    display: flex;
-  }
-  .product_inner_txt_right{
+    .product_inner_img_large img{
+      /* width: 350px; */
+    }
+
+    .product_inner_img_small img{
+      /* width: 110px; */
+    }
+
+    .product_inner_img_large{
+      width: 100%;
+      text-align: center;
+    }
+
+    .product_inner_img_left{
+       width: 50%;
+       max-width: 350px;
+    }
+
+    .product_inner_txt_right{
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0px 40px;
     
-  }
+    }
 
-  .buy_box{
-    display: flex;
-  }
+    .product_inner_txt_right p{
+      padding:1.5em 0 1.5em 0;
+    }
+
+    .product_inner_box{
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .buy_box{
+      display: flex;
+      padding-top: 0.5em;
+    
+    }
+
+    .product_inner_txt_right .buy_box a{
+      margin:0 0.5em 0 0;
+    }
+
+    .product_inner_txt_right form input{
+      padding: 0.5em;
+    }
+    
+
+    .input_reduce:hover, .input_add:hover{
+      color: black;
+      background-color: #CFB886;
+      
+    }
+
+    
+
+    
+
+    
+    
+
+
+    
+    
+
   
-  .recommended_products_img{
-    display: flex;
-  }
-
-  .recommended_products_img img{
-    width: 10%;
-  }
+  
+  
 
 
   

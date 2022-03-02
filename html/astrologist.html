@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('layout/head.html', {
+    'title': '占卜師專區'
+})
+<!-- <link rel="stylesheet" href="css/schedule.css"> -->
+<script src="js/schedule.js"></script>
+<body>
+
+@@include('layout/header.html')
+
+<!-- 網頁內容 by PIN -->
+<main>
+    <!-- 占卜師專區 -->
+    <section id="app" class="member">
+        <div class="container">
+
+            <!-- 占卜師專區主頁 -->
+            <section class="main_astrologist">
+                
+                <!-- 個人資訊 -->
+                <section class="item mem_info">
+                    我的介紹
+                    <!-- 基本資料 -->
+                    <div class="info_box">
+                        <div class="img_box ast_sticker">
+                            <img src="../images/icon/user.svg">
+                        </div>
+                        <div class="txt_box">
+                            
+                            <h3 class="ast_name">
+                                吳恆隼
+                                <span class="ast_star">★★★★</span>
+                            </h3>
+                            <p class="introduce">
+                                占卜與詳細解析很消耗牌師精力的唷!!!<br>
+                                麻煩多多支持體諒與尊重占卜師的專業價值~~<br> 
+                                我們為您付出時間、專業知識、建議<br>
+                                事件結果還請自行決擇<br>
+                                請勿議價或惡意負評，謝謝您!!<br>
+                            </p>
+                            <textarea class="update_intro invisible"></textarea>
+                        </div>
+                        <div class="action_box ast_action">
+                            <button @click="updateIntro" class="third_btn">更新介紹</button>
+                            <a href="member.html"><button class="secondary_btn">會員專區</button></a>
+                        </div>
+
+                    </div>
+                </section>
+    
+                <!-- 審核預約 -->
+                <section class="item ast_reservation">
+                    審核預約
+                    <div class="reservation_box">
+
+                        <ul class="reservation_list">
+                            <li class="reservation_card active">
+                                <div class="item card_header">
+                                    <p>預約日期</p>
+                                    <span>2022.02.28</span>
+                                    <span>上午</span>
+                                </div>
+                                <div class="item card_content">
+                                    <div class="txt_box">
+                                        <h4>王曉明</h4>
+                                    </div>
+                                    <div class="img_box sticker">
+                                        <img src="images/icon/icon_discuss_mine.svg">
+                                    </div>
+                                    <div class="txt_box">
+                                        <span>歷史預約次數</span>
+                                        <p>9</p>
+                                    </div>
+                                </div>
+                                <div class="item card_footer">
+                                    <button class="unselected_btn">接受</button>
+                                    <button class="selected_btn">拒絕</button>
+                                </div>
+                            </li>
+                            <li class="reservation_card" v-for="i in 8">
+                                <div class="item card_header">
+                                    <p>預約日期</p>
+                                    <span>2022.02.28</span>
+                                    <span>上午</span>
+                                </div>
+                                <div class="item card_content">
+                                    <div class="txt_box">
+                                        <h4>王曉明</h4>
+                                    </div>
+                                    <div class="img_box sticker">
+                                        <img src="images/icon/icon_discuss_mine.svg">
+                                    </div>
+                                    <div class="txt_box">
+                                        <span>歷史預約次數</span>
+                                        <p>{{i}}</p>
+                                    </div>
+                                </div>
+                                <div class="item card_footer">
+                                    <button class="unselected_btn">接受</button>
+                                    <button class="selected_btn">拒絕</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div @click="carsoul_last" class="change_page last_page gray">←</div>
+                        <div @click="carsoul_next" class="change_page next_page">→</div>
+                    </div>
+                </section>
+    
+                <!-- 行事曆 -->
+                <section class="item calendar">
+                    我的行事曆
+                    <div id="schedule"></div>
+                </section>
+    
+                <!-- 我的評論 -->
+                <section class="item ast_comment">
+                    我的評論
+                    <div class="comments">
+
+                        <div class="action ast_hidden">
+                            <button class="selected_btn active_star" @click="changeStar">全部</button>
+                            <button class="selected_btn star_btn" @click="changeStar">全部</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">五星</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">四星</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">三星</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">二星</button>
+                            <button class="unselected_btn star_btn" @click="changeStar">一星</button>
+                        </div>
+                        <ul class="ast_comment_list">
+                            <li class="txt_box ast_comment" v-for="i in 3">
+                                <p>
+                                    <span>★★★</span>
+                                    真的是當天一時興起訂了的那種，居然聽到運勢總論說到可能需要出國走走來豐富最近平淡的生活，我聽到的當下真的嚇呆了。
+                                </p>
+                            </li>
+                        </ul>
+
+                    </div>
+                </section>
+    
+            </section>
+            
+        </div>
+    </section>
+
+</main>
+
+@@include('layout/footer.html')
+
+<link rel="stylesheet" href="./node_modules/fullcalendar/main.css">
+<script src='./node_modules/fullcalendar/main.js'></script>
+<script>
+    $(function() {
+        createCalendar();
+    })
+    // document.addEventListener('DOMContentLoaded', function() {
+        // var Calendar = FullCalendar.Calendar;
+        // var Draggable = FullCalendar.Draggable;
+
+        // var containerEl = document.getElementById('external-events');
+        // var calendarEl = document.getElementById('calendar');
+        // var checkbox = document.getElementById('drop-remove');
+
+        // // initialize the external events
+        // // -----------------------------------------------------------------
+
+        // new Draggable(containerEl, {
+        //     itemSelector: '.fc-event',
+        //     eventData: function(eventEl) {
+        //     return {
+        //         title: eventEl.innerText
+        //     };
+        //     }
+        // });
+
+        // // initialize the calendar
+        // // -----------------------------------------------------------------
+
+        // var calendar = new Calendar(calendarEl, {
+        //     headerToolbar: {
+        //         left: 'prev,next today',
+        //         center: 'title',
+        //         right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        //     },
+        //     editable: true,
+        //     droppable: true, // this allows things to be dropped onto the calendar
+        //     drop: function(info) {
+        //         // nothing...
+        //     }
+        // });
+
+        // calendar.render();
+    // });
+    
+    // ==========================================
+    new Vue({
+        el: '#app',
+        data: {
+            // intro: '',
+        },
+        methods: {
+            updateIntro(e) {
+                let intro = document.querySelectorAll('.introduce')[0];
+                let textarea = intro.nextElementSibling;
+                
+                if (e.target.innerText === '更新介紹') {
+                    e.target.innerText = '儲存';
+                    textarea.value = intro.innerText;
+                }
+                else {
+                    e.target.innerText = '更新介紹';
+                    intro.innerText = textarea.value;
+                }
+                intro.classList.toggle('invisible');
+                textarea.classList.toggle('invisible');
+            },
+            changeStar(e) {
+                if (e.target.classList.contains('active_star')) {
+                    let parent = e.target.parentNode;
+                    parent.classList.toggle('ast_hidden');
+                    e.target.classList.toggle('display_none');
+                }
+                else {
+                    let allStarBtn = document.querySelectorAll('.star_btn');
+                    for (let i = 0; i < allStarBtn.length; i++) {
+                        allStarBtn[i].classList.replace('selected_btn', 'unselected_btn');
+                    }
+                    e.target.classList.replace('unselected_btn', 'selected_btn');
+                    let activeStar = document.querySelectorAll('.active_star')[0];
+                    activeStar.textContent = e.target.textContent;
+                    activeStar.classList.toggle('display_none');
+                    activeStar.parentNode.classList.toggle('ast_hidden');
+                }
+            },
+            carsoul_last(e) {
+            },
+            carsoul_next(e) {
+                console.log(e.target);
+                let reservation_card = document.querySelectorAll('.reservation_card');
+                console.log(reservation_card);
+                let activeCard = document.querySelectorAll('.reservation_card.active')[0];
+                console.log(activeCard);
+                let i = Array.from(reservation_card).indexOf(activeCard);
+                let moveList = document.querySelectorAll('.reservation_list')[0];
+                console.log(moveList);
+                moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
+            }
+        },
+        computed: {
+            
+        }
+    });
+</script>
+</body>
+</html>
