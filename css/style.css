@@ -783,7 +783,7 @@ main section.member .container .main_astrologist .mem_info .info_box .ast_action
 main section.member .container .main_member .mem_info .info_box .update_intro,
 main section.member .container .main_astrologist .mem_info .info_box .update_intro {
   width: 90%;
-  color: #555;
+  color: #aaa;
   height: 10em;
   padding: 1em;
 }
@@ -3851,6 +3851,7 @@ main section.member .container section.main_astrologist {
 }
 
 main section.member .container section.main_astrologist #schedule {
+  padding: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3861,8 +3862,6 @@ main section.member .container section.main_astrologist #schedule {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100%;
-  height: 100%;
 }
 
 main section.member .container section.main_astrologist #calendarContain {
@@ -3871,6 +3870,8 @@ main section.member .container section.main_astrologist #calendarContain {
   text-align: left;
   overflow: hidden;
   width: 100%;
+  padding: 0 1px;
+  padding-bottom: 1px;
 }
 
 main section.member .container section.main_astrologist #calendarHeader {
@@ -3945,6 +3946,10 @@ main section.member .container section.main_astrologist #schedule .day {
   position: relative;
   -webkit-transition: .3s;
   transition: .3s;
+}
+
+main section.member .container section.main_astrologist #schedule .day p {
+  color: #CFB886;
 }
 
 main section.member .container section.main_astrologist #schedule .week:not(#week0) .day:not(:empty):hover {
