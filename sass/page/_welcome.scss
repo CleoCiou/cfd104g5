@@ -29,6 +29,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 text-align: center;
+                justify-content: center;
                 @include mobile{
                     align-items: center;
                     flex-direction: column;
@@ -36,7 +37,7 @@
 
 
                 .welcome_item{
-                    width: 50%;
+                    width: 35%;
                     padding: 5em;
                     // width: 25%;
                     height: 100%;

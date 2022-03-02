@@ -4133,6 +4133,9 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media screen and (max-width: 767px) {
@@ -4148,7 +4151,7 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
 }
 
 .sky .welcome_index .container .welcome_index_box .welcome_item {
-  width: 50%;
+  width: 35%;
   padding: 5em;
   height: 100%;
   position: relative;
