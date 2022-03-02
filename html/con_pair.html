@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/constellation_pair.css">
-    <script src="../js/vue.js"></script>
-    <script src="/js/con_pair.js"></script>
-</head> -->
+@@include('layout/head.html', {
+    'title': '星座配對'
+})
+<link rel="stylesheet" href="css/constellation_pair.css">
+<script src="js/con_pair.js"></script>
 <body>
-    @@include('layout/head.html', {
-        'title': '星座配對'
-    })
-    <link rel="stylesheet" href="css/constellation_pair.css">
-    <script src="/js/con_pair.js"></script>
+    @@include('layout/header.html')
    <main>           
         <section class="constellation constellation_pair" id="app">
                     <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->

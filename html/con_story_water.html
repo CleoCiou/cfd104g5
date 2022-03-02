@@ -1,3 +1,4 @@
+<!-- p裡面的文字沒有靠左 -->
 <!DOCTYPE html>
 <html lang="en">
     @@include('layout/head.html', {
@@ -5,22 +6,49 @@
     })
     <link rel="stylesheet" href="css/constellation_story.css">
 <!-- <head>
- 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/constellation_story.css">
-    <script src="../js/vue.js"></script>
-</head> -->
-<body>
-     @@include('layout/header.html')
-  <main>
-   
+    <link rel="stylesheet" href="css/constellation_story.css">-->
+    <!-- <script src="../js/vue.js"></script> -->
+    <style>
+        main .story{
+            display: flex;
+            flex-wrap: no-wrap;
+            
+            
+        }
+        .content_cate ul{
+            width: 100px;
+            display: flex;
+            justify-content: wrap;
+            padding-top: 5px;
+        }
+        .content_cate ul li {
+            padding: 0px 20px 10px;
+            display: inline-block;
+        }
+        main .story .sagit{
+            width: 30%;
+        }
+        .sagit img{
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+        }
+        .story p{
+            width: 70%;
+        }
 
+    </style>
+</head> 
+<body>
+    @@include('layout/header.html')
+  <main>
     <div id="app">
-         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC --> 
+        <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
         <section class="pagination_nav">
             <div class="container">
                 <ul>
@@ -28,20 +56,18 @@
                 </ul>
             </div>
         </section>        
-    </div>
-    <section class="change constellation">
+    
+    <!-- <section class="change constellation">
         <div class="container">
             <div class="item">
-               <div class="unselected_btn">
-                <a href="con_story_water.html">  <p>水瓶座</p>
-                </a>  
-                </div>
-                   
-                <div class="unselected_btn">
-                    <a href="con_story.html"> <p>射手座</p>
-                </a>
+               <a href="con_story_water.html"> <div class="unselected_btn">
+                    <p>水瓶座</p>
+                </a>   
                 </div>
                 
+                <div class="unselected_btn">
+                    <p>射手座</p>
+                </div>
                 <div class="unselected_btn">
                     <p>雙魚座</p>
                 </div>
@@ -78,23 +104,32 @@
 
 
 
-    </section>
+    </section> -->
 
-        <h2>星座介紹</h2>
-        <h3>水瓶座</h3>
+        <h2>星座故事:<span>水瓶座</span></h2>
+        
         <section class="story">
-            <div class="water_box" style="width: 100%;"><img src="/images/con_story/story-aquarius.svg"></div><p>水瓶座位於魔羯座的東方，是個不太明顯的星座。它又叫做寶瓶座。在星座圖上，寶瓶座是一個少年把水瓶扛在肩上。這個少年就是特洛伊王子卡尼米迪斯。
-                　　天神宙斯所領導的奧林帕斯山，經常舉行盛大的宴會，在宴會中負責為眾神斟酒的，向來是青春女神希碧。
-                　　有一次，眾神依舊在奧林匹斯宮殿舉行酒宴，等了許久，還不見希碧來倒酒。
-                　　「怎麼回事?希碧呢?」宙斯問。
-                　　</p>
+                 <!-- 左邊分類欄 -->
+                 <div class="content_cate">
+                    <ul>
+                        <li v-for="(url, cate) in cates"><a :href="url">{{cate}}</a></li>
+                    </ul>
+                 </div>
+                <div class="sagit"><img src="images/con_story/story-aquarius.svg" alt=""></div>　
+                <div class="txt_box">
+                    <p>
+                        水瓶座位於魔羯座的東方，是個不太明顯的星座。它又叫做寶瓶座。在星座圖上，寶瓶座是一個少年把水瓶扛在肩上。這個少年就是特洛伊王子卡尼米迪斯。
+                    　　天神宙斯所領導的奧林帕斯山，經常舉行盛大的宴會，在宴會中負責為眾神斟酒的，向來是青春女神希碧。
+                    　　有一次，眾神依舊在奧林匹斯宮殿舉行酒宴，等了許久，還不見希碧來倒酒。
+                    　　「怎麼回事?希碧呢?」宙斯問。
+                    </p>
+                </div>
         </section>
-
+</div>
 
     </main>
     @@include('layout/footer.html')
-    
-  <script src="css/common.css"></script>
+  <!-- <script src="js/common.js"></script> -->
   <script>
     new Vue({
         el: '#app',
@@ -106,44 +141,27 @@
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
+                
+
                 },
-            cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+            cates:{
+                    '射手座':'con_story.html',
+                    '水瓶座':'con_story_water.html',
+                    '雙魚座':'con_story_water.html',
+                    '牡羊座':'con_story_water.html',
+                    '金牛座':'con_story_water.html',
+                    '雙子座':'con_story_water.html',
+                    '巨蟹座':'con_story_water.html',
+                    '獅子座':'con_story_water.html',
+                    '處女座':'con_story_water.html',
+                    '天秤座':'con_story_water.html',
+                    '天蠍座':'con_story_water.html',
+                    '摩羯座':'con_story_water.html',
+                    
+            }
         }
     });
 </script>
-<script type="text/javascript">
-    $(function () { 
-        var data = [
-            {label: "天秤座", data:10},
-            {label: "天蠍座", data: 20},
-            {label: "水瓶座", data: 30},
-            {label: "巨蟹座", data: 40},
-            {label: "牡羊座", data: 50},
-            {label: "金牛座", data: 60},
-            {label: "射手座", data: 100},
-            {label: "處女座", data: 20},
-            {label: "獅子座", data: 20},
-            {label: "摩羯座", data: 10},
-            {label: "雙子座", data: 30},
-            {label: "雙魚座", data: 20}
-
-        ];
-
-        
-
-    
-        var options = {
-                series: {
-                    pie: {show: true}
-                },
-                legend: {
-                    show: false
-                }
-             };
-    
-        $.plot($("#flotcontainer"), data, options);  
-    });
-</script>
-
 </body>
 </html>
+
