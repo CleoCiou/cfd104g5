@@ -11,9 +11,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/constellation_story.css">
+    <link rel="stylesheet" href="css/constellation_story.css">-->
     <script src="../js/vue.js"></script>
-</head> -->
+    <style>
+        main .story{
+            display: flex;
+            flex-wrap: no-wrap;
+            
+            
+        }
+        .content_cate ul{
+            width: 100px;
+            display: flex;
+            justify-content: wrap;
+            padding-top: 5px;
+        }
+        .content_cate ul li {
+            padding: 0px 20px 10px;
+            display: inline-block;
+        }
+        main .story .sagit{
+            width: 30%;
+        }
+        .sagit img{
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+        }
+        .story p{
+            width: 70%;
+        }
+
+    </style>
+</head> 
 <body>
     @@include('layout/header.html')
   <main>
@@ -26,8 +56,8 @@
                 </ul>
             </div>
         </section>        
-    </div>
-    <section class="change constellation">
+    
+    <!-- <section class="change constellation">
         <div class="container">
             <div class="item">
                <a href="con_story_water.html"> <div class="unselected_btn">
@@ -74,17 +104,26 @@
 
 
 
-    </section>
+    </section> -->
 
-        <h2>星座介紹</h2>
-        <h3>射手座</h3>
+        <h2>星座故事:<span>射手座</span></h2>
+        
         <section class="story">
-            <img src="/images/con_story/story_sagit.jpg"><p>　射手座又叫人馬座，夏夜的時候，抬頭看南方的天空，人馬座就在天蠍座的東邊。
+                 <!-- 左邊分類欄 -->
+                 <div class="content_cate">
+                    <ul>
+                        <li v-for="(url, cate) in cates"><a :href="url">{{cate}}</a></li>
+                    </ul>
+                 </div>
+                <div class="sagit"><img src="/images/con_story/story-sagit.svg" alt=""></div>　
+                <p>
+                    射手座又叫人馬座，夏夜的時候，抬頭看南方的天空，人馬座就在天蠍座的東邊。
                 　　希臘神話故事中的射手座，是一個上半身為人形，下半身是馬的怪物，名叫奇龍。
                 　　這種半人半馬的怪獸，被稱為山杜爾族，居住在派利翁山上。他們以狩獵維生，性情非常兇猛。
-                　　奇龍卻與其他的山杜爾族不一樣，他以善良和智慧聞名。因此，在山杜爾族裡，他是一個受尊敬的賢者。他是族中唯一能長生不老的人，但是他最後還是逃不過死神的召喚。</p>
+                　　奇龍卻與其他的山杜爾族不一樣，他以善良和智慧聞名。因此，在山杜爾族裡，他是一個受尊敬的賢者。他是族中唯一能長生不老的人，但是他最後還是逃不過死神的召喚。
+                </p>
         </section>
-
+</div>
 
     </main>
     @@include('layout/footer.html')
@@ -100,8 +139,24 @@
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
+                
+
                 },
-            cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+            cates:{
+                    '射手座':'con_story.html',
+                    '水瓶座':'con_story_water.html',
+                    '雙魚座':'con_story_water.html',
+                    '牡羊座':'con_story_water.html',
+                    '金牛座':'con_story_water.html',
+                    '雙子座':'con_story_water.html',
+                    '巨蟹座':'con_story_water.html',
+                    '獅子座':'con_story_water.html',
+                    '處女座':'con_story_water.html',
+                    '天秤座':'con_story_water.html',
+                    '天蠍座':'con_story_water.html',
+                    '摩羯座':'con_story_water.html',
+                    
+            }
         }
     });
 </script>

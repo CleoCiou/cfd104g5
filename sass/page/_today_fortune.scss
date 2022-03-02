@@ -5,155 +5,186 @@
 // $d=768px
 // @mixin=宣告  @include=引用
 /* 如果要顯示在CSS的註解 要用斜線星 跟星斜線把內容標註 */
-    
 
-@mixin  desktop{
+
+@mixin desktop {
     @media screen and (min-width:768px) {
         @content;
 
-    }   
+    }
 }
-@mixin  mobile{
+
+@mixin mobile {
     @media screen and (max-width:767px) {
         @content;
-    }   
+    }
 }
+
 /*今日運勢 By 阿皓*/
-main{
-    .today_forture{
-        
-        .container{
+main {
+    .today_forture {
+
+        .container {
             display: flex;
             padding: 2% 8.333333%;
-            @include mobile{
+
+            @include mobile {
                 flex-direction: column;
             }
+
             // 左半側邊攔
-            .sidebar{
+            .sidebar {
                 width: 20%;
                 text-align: center;
             }
-            .overall_fortune{
 
+            .overall_fortune {}
+
+        }
+
+        .overall_fortune_txt {
+            @include mobile {
+                padding: 2% 8.333333%;
+                box-sizing: border-box;
             }
-      
+        }
+
+        // 包住左邊的區塊
+        .today {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+
+            @include mobile {
+                width: 100%;
             }
 
-            .overall_fortune_txt{
-                @include mobile{
-                    padding: 2% 8.333333%;
-                    box-sizing: border-box;
-                }
-            }
-            
-            // 包住左邊的區塊
-            .today{
-                width: 80%;
+            .today_box {
                 display: flex;
-                flex-direction: column;
-                @include mobile{
-                     width: 100%;
+
+                p {
+                    text-align: center;
+
+                    @include mobile {
+                        text-align: center;
+                    }
                 }
-                .today_box{
-                    display: flex;
-                    p{
-                        text-align: center;   
-                        @include mobile{
-                            text-align: center;  
-                        } 
-                    }
-                    .con_item{
-                        width: 50%;
+
+                .con_item {
+                    width: 50%;
+                    margin: auto;
+
+                    @include mobile {
+                        width: 100%;
                         margin: auto;
-                        @include mobile{
-                            width: 100%;
-                            margin: auto;
-                        }
-                        .img_box{
-                            text-align: center; 
-                            img{
-                                width: 100%;
-                            }
-                        }
-                        .txt_box{
-                            text-align: center;
-    
+                    }
+
+                    .img_box {
+                        text-align: center;
+                        width: 100%;
+
+                        img {
+                            width: 20%;
                         }
                     }
-                    // 包住右邊的區塊
-                    .all_furtune{
-                        width: 50%;
-                
-                    @include mobile{
-                        
+
+                    .txt_box {
+                        text-align: center;
+
+                    }
+                }
+
+                // 包住右邊的區塊
+                .all_furtune {
+                    width: 50%;
+
+                    @include mobile {
+
                         width: 100%;
                         // display: flex;
                         // flex-wrap: wrap;
                     }
-                    .furtune_time{
+
+                    .furtune_time {
                         width: 100%;
-                        ul{
+
+                        ul {
                             display: flex;
-                            @include mobile{
+
+                            @include mobile {
                                 display: flex;
                                 flex-direction: column;
                             }
-                            li{ 
-                                @include desktop{
+
+                            li {
+                                @include desktop {
                                     width: 33%;
                                     padding: 2%;
                                     box-sizing: border-box;
                                 }
                             }
-                        } 
+                        }
                     }
-                    li.unselected_btn{
-                        @include mobile{
+
+                    li.unselected_btn {
+                        @include mobile {
                             width: 100%;
                         }
                     }
+
                     //包住右下的區塊
-                    .lucky{
+                    .lucky {
                         width: 100%;
-                        
                         display: flex;
                         flex-direction: column;
-                        @include mobile{
-                            width: 100%; 
+
+                        @include mobile {
+                            width: 100%;
                         }
-                        h3{
-                          
+
+                        h3 {
+                            font-size: 18px;
                             margin-top: 1.3em;
                         }
-                        .lucky_row{
+
+                        .lucky_row {
                             display: flex;
                             margin: 2.5em 0;
-                            @include mobile{
+
+                            @include mobile {
                                 display: block;
                             }
-                            .txt_box{
+
+                            .txt_box {
                                 width: 50%;
                                 display: flex;
-                                
-                                @include mobile{
+
+                                @include mobile {
                                     width: 100%;
                                 }
-                                .number{
-                                    flex-grow: 1;
-                                    border: 1px solid #CFB886;
-                                    padding: 1em;
-                                    width: 50%;
-                                    
-                                    @include mobile{
+
+                                .number {
+                                    color: #fff;
+                                    letter-spacing: 0.3em;
+                                    background-color: transparent;
+                                    border: 1px #CFB886 solid;
+                                    text-align: center;
+                                    line-height: 40px;
+                                    padding: 0.5em 3em;
+                                    cursor: pointer;
+
+                                    @include mobile {
                                         width: 50%;
                                     }
                                 }
-                                .txt{
+
+                                .txt {
                                     width: 30%;
                                     flex-grow: 1;
                                     align-self: center;
                                     text-align: center;
-                                    @include mobile{
+
+                                    @include mobile {
                                         width: 50%;
                                     }
                                 }
@@ -162,38 +193,98 @@ main{
                     }
                 }
             }
-            }
         }
-        /*下面的區塊*/
-        .forture_dec{
-            .container{
-                .overall_fortune{
-                    .overall_fortune_txt{
-                        padding: 2% 8.333333%;
-                        box-sizing: border-box;
-                    }
+    }
+
+    /*下面的區塊*/
+    .forture_dec {
+        padding-top: 60px;
+
+        .container {
+            .overall_fortune {
+                h4 {
+                    border-bottom: 1px solid #CFB886;
+                    padding-bottom: 10px;
+
+                }
+
+                .overall_fortune_txt {
+                    padding: 3% 8.333333% 2.5% 0%;
+                    box-sizing: border-box;
                 }
             }
         }
-        // 最下面內容
-        .change{
-            .container{
-                .item{
-                    @include mobile{
-                        width: 100%;
-                    }
-                    
-                    @include  desktop{
-                        display: flex;
-                        width: 100%;
-                    }
-                    .unselected_btn{
-                        margin: auto;
-                    }
+    }
+
+    // 最下面內容
+    .change {
+        .container {
+            .item {
+                @include mobile {
+                    width: 100%;
+                }
+
+                @include desktop {
+                    display: flex;
+                    width: 100%;
+                }
+
+                .unselected_btn {
+                    margin: auto;
                 }
             }
-            
         }
+
+    }
+}
+
+.today {
+    padding-left: 3%;
+
+    .txt_box {
+        text-align: center;
+        font-size: 12px;
+        color: #ffff;
+    }
+}
+
+.txt {
+    font-size: 20px;
+    color: #CFB886;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.number {
+    color: #fff;
+    letter-spacing: 0.3em;
+    background-color: transparent;
+    border: 1px #CFB886 solid;
+    text-align: center;
+    line-height: 40px;
+    padding: 0.5em 3em;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.furtune_time {
+    margin-bottom: 30px;
+}
+
+.img_box {
+    text-align: center;
+    width: 100%;
+
+    img {
+        width: 70%;
+    }
+}
+
+main .forture_dec .container .overall_fortune .overall_fortune_txt {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 /*今日運勢 By 阿皓 --- END */

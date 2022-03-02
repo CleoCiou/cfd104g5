@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<!-- <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="css/constellation_pair.css">
     <script src="../js/vue.js"></script>
     <script src="/js/con_pair.js"></script>
-</head>
+</head> -->
 <body>
-    @@include('layout/header.html')
+    @@include('layout/head.html', {
+        'title': '星座配對'
+    })
+    <link rel="stylesheet" href="css/constellation_pair.css">
+    <script src="/js/con_pair.js"></script>
    <main>           
         <section class="constellation constellation_pair" id="app">
                     <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
@@ -18,7 +22,7 @@
             <!-- 控制padding的容器 -->
             <div class="container">
                 <!-- 包住男生星座選單和女生星座選單的容器 -->
-            <h1>星座配對指數</h1>
+            <h2>星座配對指數</h2>
                 <div class="img_box">
                     <img src="images/con_pair.jpg">
                 </div>
@@ -54,7 +58,7 @@
                                 <input type="button" value="星座配對" class="third_btn" id="pair_btn"></input>
                         </div>
                     </div>
-        </section>
+        
                
         <section id = "result" class ="constellationpair result">
             <p>{{boy}}男生跟{{girl}}女生配對</p>
@@ -64,10 +68,11 @@
             <p>親情配對指數：★★★</p>
             <p>符合要求，自得其樂的一對情侶!!射手座自由而又獨立的人生觀和水瓶座非常相近，水瓶座最討厭癡纏型的伴侶，對你就是正中下懷了，你們都不喜歡無變化的生活，生活圈子又廣泛，如果要你們吃力地浪費時間去照顧伴侶，你寧願放棄他。</p>
         </section>            
+      </section>
     </div>
 </main>
 @@include('layout/footer.html')
-    <script src="js/common.js"></script>
+    <!-- <script src="js/common.js"></script> -->
     <script>
         new Vue({
             el: '#app',

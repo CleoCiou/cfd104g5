@@ -2474,10 +2474,11 @@ main .today_forture .today .today_box .con_item {
 
 main .today_forture .today .today_box .con_item .img_box {
   text-align: center;
+  width: 100%;
 }
 
 main .today_forture .today .today_box .con_item .img_box img {
-  width: 100%;
+  width: 20%;
 }
 
 main .today_forture .today .today_box .con_item .txt_box {
@@ -2549,6 +2550,7 @@ main .today_forture .today .today_box .all_furtune .lucky {
 }
 
 main .today_forture .today .today_box .all_furtune .lucky h3 {
+  font-size: 18px;
   margin-top: 1.3em;
 }
 
@@ -2579,12 +2581,14 @@ main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box {
 }
 
 main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box .number {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  border: 1px solid #CFB886;
-  padding: 1em;
-  width: 50%;
+  color: #fff;
+  letter-spacing: 0.3em;
+  background-color: transparent;
+  border: 1px #CFB886 solid;
+  text-align: center;
+  line-height: 40px;
+  padding: 0.5em 3em;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
@@ -2610,8 +2614,17 @@ main .today_forture .today .today_box .all_furtune .lucky .lucky_row .txt_box .t
   }
 }
 
+main .forture_dec {
+  padding-top: 60px;
+}
+
+main .forture_dec .container .overall_fortune h4 {
+  border-bottom: 1px solid #CFB886;
+  padding-bottom: 10px;
+}
+
 main .forture_dec .container .overall_fortune .overall_fortune_txt {
-  padding: 2% 8.333333%;
+  padding: 3% 8.333333% 2.5% 0%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -2633,6 +2646,59 @@ main .forture_dec .container .overall_fortune .overall_fortune_txt {
 
 main .change .container .item .unselected_btn {
   margin: auto;
+}
+
+.today {
+  padding-left: 3%;
+}
+
+.today .txt_box {
+  text-align: center;
+  font-size: 12px;
+  color: #ffff;
+}
+
+.txt {
+  font-size: 20px;
+  color: #CFB886;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.number {
+  color: #fff;
+  letter-spacing: 0.3em;
+  background-color: transparent;
+  border: 1px #CFB886 solid;
+  text-align: center;
+  line-height: 40px;
+  padding: 0.5em 3em;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.furtune_time {
+  margin-bottom: 30px;
+}
+
+.img_box {
+  text-align: center;
+  width: 100%;
+}
+
+.img_box img {
+  width: 70%;
+}
+
+main .forture_dec .container .overall_fortune .overall_fortune_txt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  text-align: left;
 }
 
 /*今日運勢 By 阿皓 --- END */
