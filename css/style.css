@@ -2287,6 +2287,28 @@ main .article_writing_board .write_bottom {
           align-items: center;
 }
 
+@media screen and (max-width: 767px) {
+  main .article_writing_board .write_bottom {
+    margin: .8em;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .article_writing_board .write_bottom .write_using_btn .file_insert_btn {
+    margin: .8em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .article_writing_board .write_bottom .write_using_btn a {
+    margin: .8em;
+  }
+}
+
 main .article_mine_board {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4092,6 +4114,18 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
   height: 100%;
 }
 
+@media screen and (max-width: 767px) {
+  .sky .welcome_index {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .sky .welcome_index .container {
   height: 100%;
   display: -webkit-box;
@@ -4101,8 +4135,6 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 
 .sky .welcome_index .container .welcome_index_logo {
@@ -4138,18 +4170,6 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
           justify-content: center;
 }
 
-@media screen and (max-width: 767px) {
-  .sky .welcome_index .container .welcome_index_box {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-}
-
 .sky .welcome_index .container .welcome_index_box .welcome_item {
   width: 35%;
   padding: 5em;
@@ -4159,12 +4179,27 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
 
 @media screen and (max-width: 767px) {
   .sky .welcome_index .container .welcome_index_box .welcome_item {
-    width: 70%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 60%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .container .welcome_index_box .welcome_item {
+    width: 100%;
   }
 }
 
 .sky .welcome_index .container .welcome_footer {
   text-align: left;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .container .welcome_footer {
+    margin-top: 3em;
+  }
 }
 
 .sky .welcome_index .container .welcome_footer p {
