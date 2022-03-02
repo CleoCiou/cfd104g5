@@ -33,7 +33,7 @@ body {
 }
 @media screen and (max-width: 768px) {
 .card {
-    width: 80%;
+    width: 60%;
 }
 }
 
@@ -60,7 +60,8 @@ body {
     padding: 2rem;
     background-color: #000000;
     background-image: url("../images/draw_cards/card_back.jpg");
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     overflow: hidden;
 }
 .card:hover .front {

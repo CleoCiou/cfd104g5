@@ -7,6 +7,12 @@ main .search_box .search {
   width: 30%;
 }
 
+@media screen and (max-width: 768px) {
+  main .search_box .search {
+    width: 60%;
+  }
+}
+
 main .search_box .secondary_btn {
   padding: 0.5em 2em;
 }
@@ -69,4 +75,4 @@ main .mem_orders .order_item .order_footer .item {
           justify-content: space-between;
   padding: 1em 0;
 }
-/*# sourceMappingURL=mem_order_try.css.map */
+/*# sourceMappingURL=mem_orders.css.map */
