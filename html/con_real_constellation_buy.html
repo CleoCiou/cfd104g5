@@ -7,17 +7,38 @@
     })
     <link rel="stylesheet" href="css/real_constellation_2page.css">
     <script src="/js/con_real_constellation_buy.js"></script>
-<!-- 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/real_constellation_2page.css">
-    <script src="../js/vue.js"></script>
-    <script src="/js/con_real_constellation_buy.js"></script>
-   
-</head> -->
+    <style>
+        .real{
+            padding: 2% 0 0;
+        }
+        .real_constellation .wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .real_constellation .wrapper .pic{
+            width: 18%;
+            margin-bottom: 10px;
+
+        }
+        .real_constellation .wrapper p{
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .real_constellation .wrapper .pic{
+            width: 18%;
+        }
+        .real_constellation p{
+            text-align: center; 
+        }
+        .answer{
+            display: flex;
+            margin: 20px 0 ;
+        }
+        .answer .third_btn{
+            margin: 0 10px;
+        }
+    </style>
 <body>
     @@include('layout/header.html')
   <main>
@@ -31,25 +52,25 @@
             </div>
         </section>        
     </div>
-    <h2>真實星座</h2>
-        <section class="real_constellation real">
+    <!-- <h2>真實星座</h2> -->
+        <section class="real_constellation">
            <!-- 控制padding的容器 -->
-            <div class="container">
-                <div class="pic"><img id="initimg" src="/images/con_real/real_init.png"></div>
-                <p>去看夜景 喜歡看星星還是月亮</p>
+            <div class="wrapper">
+                <div class="pic"><img id="initimg" src="./images/con_real/real_init.svg"></div>
+                <p>看夜景喜歡看星星還是月亮</p>
               <!-- 包住圖文的容器   -->
                 <div class="answer">
                     <div class="btn third_btn" id="star">
-                        <a href="con_constellation_go.html"><span>星星</span></a>
-                        <input type="text" value="/images/con_real/real_star.jpg" hidden>
+                        <a href="con_constellation_save.html"><span>星星</span></a>
+                        <input type="text" value="/images/con_real/real_star.svg" hidden>
                     </div>
                     <div class="btn third_btn" id="moon">
-                        <a href="con_constellation_go.html"><span>月亮</span></a>
-                        <input type="text" value="/images/con_real/real_moon.jpg" hidden>
+                        <a href="con_constellation_save.html"><span>月亮</span></a>
+                        <input type="text" value="/images/con_real/real_moon.svg" hidden>
                     </div>
-                    
-                    <!-- <input type="button" value="月亮" name="moon" onclick="location.href='con_constellation_go.html'"> -->
                 </div>
+                
+                
             </div>
             
         </section>

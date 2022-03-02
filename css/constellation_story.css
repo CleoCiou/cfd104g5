@@ -47,13 +47,13 @@
 
 
 @media screen and (min-width:768px) {
-    main .pagination_nav .container ul{
+    /* main .pagination_nav .container ul{
         padding: 2% 8.333333%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-    }  
+    }   */
     main h2{
         /* text-align: center; */
         padding: 2% 8.333333%;
@@ -90,6 +90,9 @@
         display: flex;
         box-sizing: border-box;
         
+    }
+    main .story .sagit{
+        width: 100%;
     }
     main .story p{
         /* padding: 2% 8.333333%; */
