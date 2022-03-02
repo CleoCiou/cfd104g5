@@ -3683,6 +3683,15 @@ main section.draw_cards .container .detail_box .txt_box .action li {
   cursor: pointer;
 }
 
+main section.query_orders .container > .action {
+  width: 100%;
+  text-align: center;
+}
+
+main section.query_orders .container > .action button {
+  margin: 0 1em;
+}
+
 main section.query_orders .action_bar {
   display: -webkit-box;
   display: -ms-flexbox;
