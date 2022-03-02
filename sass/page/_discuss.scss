@@ -506,6 +506,22 @@ main {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            @include mobile{
+                margin: .8em;
+                flex-direction: column;
+            }
+            .write_using_btn{
+                @include mobile{
+                    .file_insert_btn{
+                        margin: .8em;
+                    }
+                }
+                a{
+                    @include mobile{
+                    margin: .8em;
+                    }
+                }
+            }
         }
     }
     .article_mine_board{
