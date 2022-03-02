@@ -4,16 +4,9 @@
             /* 0~767px */
 
 
-    /* ul{
-        width: 100%;
-        display: flex;
-        list-style:none;
-        flex-wrap: wrap;
+    h2{
+        text-align: center;
     }
-    ul div{
-        width: 33.33%;
-        list-style: none;
-    }  */
     html{
         font-size: 14px;
     } 
@@ -38,6 +31,15 @@
     }
     main #result{
         display: none;
+    }
+    main .container .pair .constellation_male{
+        margin: auto;
+        margin-left: 30%
+        ;
+        box-sizing: border-box;
+    }
+    main .container .pair{
+        margin: auto;
     }
 
 }
