@@ -2854,6 +2854,7 @@ main .change .container .item .unselected_btn {
 }
 
 .img_box {
+  text-align: center;
   width: 100%;
 }
 
@@ -3063,6 +3064,32 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item textarea {
   width: 95%;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label {
+  cursor: pointer;
+  display: block;
+  padding: 1em 0 .5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label .img_box {
+  width: 7em;
+  height: 7em;
+  padding: 1em;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+  overflow: hidden;
+  margin: auto;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label .img_box img {
+  width: 100%;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label span {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify {
