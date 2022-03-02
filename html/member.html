@@ -33,6 +33,7 @@
                         </div>
                         <div class="action_box">
                             <button @click="showDetailInfo" class="third_btn">修改資料</button>
+                            <a href="astrologist.html"><button class="secondary_btn">占卜師專區</button></a>
                             <button class="third_btn display_none">取消</button>
                         </div>
 
@@ -99,7 +100,11 @@
     
                 <!-- 目前預約 -->
                 <section class="item reservation">
-                    我的預約
+                    
+                    <div class="txt_box">
+                        <span>我的預約</span>
+                        <span class="more">更多預約 ></span>
+                    </div>
                     <div class="reservation_box">
                         <p>預約成功</p>
                         <div class="astrologist_info">
@@ -240,10 +245,7 @@
                                         11 正義
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- 第二排 -->
-                            <div class="quiz_row">
+                                
                                 <!-- 測驗卡片 -->
                                 <div class="quiz_cards">
                                     <div class="quiz_cate">

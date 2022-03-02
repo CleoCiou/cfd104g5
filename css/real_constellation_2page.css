@@ -56,13 +56,13 @@
 }
 
 @media screen and (min-width:768px) {
-    main .pagination_nav .container ul{
+    /* main .pagination_nav .container ul{
         padding: 2% 8.333333%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-    }  
+    }   */
     h2{
         text-align: center;
     }
@@ -111,6 +111,12 @@
         
         margin-right: 3%;
         box-sizing: border-box;
+    }
+    main .real_constellation .container .pic{
+        width: 100%;
+    }
+    main .real_constellation .container .pic img{
+        width: 20%;
     }
 
 }
