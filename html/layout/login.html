@@ -1,6 +1,6 @@
 <!-- icon -->
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
-<script src="js/login.js"></script>
+
 
 <section class="login">
     <div class="container">
@@ -73,10 +73,11 @@
                                     <i class="input-icon uil uil-user"></i>
                                     <input type="text" name="memId" id="memId" placeholder="請輸入帳號" autocomplete="off">
                                 </div>
+    
                                 <!-- 驗證 -->
                                 <div class="item verify">
                                     <ul>
-                                        <li>帳號為必填欄位</li>
+                                        <li>帳號不可為空</li>
                                     </ul>
                                 </div>
         
@@ -85,6 +86,7 @@
                                     <i class="input-icon uil uil-lock-alt"></i>
                                     <input type="password" name="memPwd" id="memPwd" placeholder="請輸入密碼">
                                 </div>
+    
                                 <!-- 驗證 -->
                                 <div class="item verify">
                                     <ul>
@@ -100,10 +102,11 @@
                                     <i class="input-icon uil uil-lock-alt"></i>
                                     <input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="再次輸入密碼">
                                 </div>
+    
                                 <!-- 驗證 -->
                                 <div class="item verify">
                                     <ul>
-                                        <li>密碼為必填欄位</li>
+                                        <li>密碼不可為空</li>
                                     </ul>
                                 </div>
                             </div>
@@ -128,6 +131,7 @@
                                     <i class="input-icon uil uil-user"></i>
                                     <input type="text" name="memName" id="memName" placeholder="請輸入姓名" autocomplete="off">
                                 </div>
+    
                                 <!-- 驗證 -->
                                 <div class="item verify">
                                     <ul>
@@ -139,16 +143,6 @@
                                 <div class="item email">
                                     <i class="uil uil-envelope"></i>
                                     <input type="email" name="email" id="email" placeholder="abc@example.com">
-                                </div>
-                                <!-- 驗證 -->
-                                <div class="item verify">
-                                    <ul>
-                                        <ul>
-                                            <li>包含一個 @ </li>
-                                            <li>一個大寫英文字母</li>
-                                            <li>一個小寫英文字母</li>
-                                            <li>一個數字</li>
-                                        </ul>
                                 </div>
     
                                 <!-- 生日 -->
@@ -211,3 +205,227 @@
 
     </div>
 </section>
+
+<script>
+    $(function() {
+        // 驗證輸入欄位
+        // 驗證(元素, 條件, 正確訊息, 錯誤訊息)
+        function verify(el, condition, msg, errMsg) {
+            if (condition) {
+                checkCorrect(el);
+                el.text(msg);
+            }
+            else {
+                checkError(el);
+                el.text(errMsg);
+            }
+        }
+
+        // 驗證正確動畫
+        function checkCorrect(el) {
+            gsap.to(el, {
+                color: '#CFB886',
+                duration: .5,
+                // textShadow: '#fffa 1px 0 10px'
+            })
+        }
+
+        // 驗證錯誤動畫
+        function checkError(el) {
+            gsap.to(el, {
+                color: '#9999',
+                duration: .5,
+                // textShadow: 'none'
+            })
+        }
+
+        // 開啟驗證框
+        function openVerify(el) {
+            gsap.to(el, {
+                height: 'auto',
+                duration: .5
+            })
+        }
+
+        // 收起驗證框
+        function closeVerify(el) {
+            gsap.to(el, {
+                height: 0,
+                duration: .5
+            })
+        }
+
+        // 確認再次輸入是否與密碼一致
+        function checkPwd() {
+            if ($("#confirm_pwd").val() === $("#memPwd").val() && $("#confirm_pwd)").val() !== '') {
+                gsap.to($(".item.confirm_pwd + .verify ul li:nth-child(1)"), {
+                    color: '#CFB886',
+                    duration: .3
+                })
+                $(".item.confirm_pwd + .verify ul li:nth-child(1)").text('密碼一致');
+            }
+            else {
+                gsap.to($(".item.confirm_pwd + .verify ul li:nth-child(1)"), {
+                    color: '#9999',
+                    duration: .3
+                })
+                errMsg = ($("#memPwd").val() === '') ? '密碼不可為空' : '密碼不符';
+                $(".item.confirm_pwd + .verify ul li:nth-child(1)").text(errMsg);
+            }
+        }
+
+        // 切換輸入框範圍
+        // 切換(要關閉的, 要開啟的)
+        function switchPanel(closeEl, openEl) {
+            gsap.to(closeEl, {
+                    height: 0,
+                    duration: .1
+            })
+            gsap.to(openEl, {
+                height: 'auto',
+                opacity: 1,
+                ease: Back.easeOut.config(1.7),
+                duration: 1
+            })
+        }
+
+        // === 按鈕監控 === //
+        // 註冊 | 登入
+        $(".secondary_btn").click( (e) => {
+            if (e.target.innerText === '登入'|| e.target.innerText === '註冊') {
+                window.location.href = 'homepage.html';
+            }
+        })
+        // 下一步
+        $(".next_step").click( (e) => {
+            if ($(".account_info").css('height') !== '0px') {
+                switchPanel($(".account_info"), $(".mem_info"));
+                $(".last_step").css({display: 'inline-block'});
+                $(".next_step").text('註冊');
+            }
+            else if ($(".mem_info").css('height') !== '0px') {
+                switchPanel($(".mem_info"), $(".astrologist_info"));
+                $(".next_step").text('註冊');
+            }
+        })
+        // 上一步
+        $(".last_step").click( (e) => {
+            if ($(".mem_info").css('height') !== '0px') {
+                switchPanel($(".mem_info"), $(".account_info"));
+                $(".last_step").css({display: 'none'});
+                $(".next_step").text('下一步');
+            }
+            else if ($(".astrologist_info").css('height') !== '0px') {
+                switchPanel($(".astrologist_info"), $(".mem_info"));
+                $(".next_step").text('下一步');
+            }
+        })
+
+
+        // === 輸入框監控 === //
+        $("input").focus( (e) => {
+            e.target.parentNode.style.boxShadow = "0 0 1em 0 #CFB88655";
+        })
+        $("input").focusout( (e) => {
+            e.target.parentNode.removeAttribute('style');
+        })
+
+        // 成為占卜師需多填占卜師資料
+        $("input[type=radio][name=identity]").change( (e) => {
+            if (e.target.id === 'astrologist') {
+                $(".next_step").text('下一步');
+            }
+            else {
+                $(".next_step").text('註冊');
+            }
+            // 動
+            gsap.fromTo($(".next_step"), {
+                translateY: '-1em',
+                backgroundColor: '#ffe09c'
+            },
+            {
+                translateY: 0,
+                duration: .8,
+                backgroundColor: '#CFB886',
+                repeat: 1,
+                ease: Power0.easeNone,
+                onComplete: () => {
+                    $(".next_step").removeAttr('style');
+                }
+            })
+        })
+
+
+        // === 帳號資訊 === ///
+        // === 帳號 === //
+        // 開啟驗證框
+        $("#memId").focus( () => {
+            openVerify($(".item.account + .verify"));
+        });
+        // 輸入時驗證
+        $("#memId").keyup( () => {
+            let el = $(".item.account + .verify ul li:nth-child(1)");
+            verify(el, $("#memId").val().length > 0, '帳號可使用', '帳號不可為空');
+        });
+        // 收起驗證框
+        $("#memId").focusout( () => {
+            closeVerify($(".item.account + .verify"));
+        })
+
+
+        // === 密碼 === //
+        // 開啟驗證框
+        $("#memPwd").focus( () => {
+            openVerify($(".item.password + .verify"));
+        });
+        // 輸入時驗證密碼
+        $("#memPwd").keyup( () => {
+            let reg = '';
+            let el = '';
+
+            // 長度檢查
+            el = $(".item.password + .verify ul li:nth-child(1)");
+            verify(el, $("#memPwd").val().length > 5);
+
+            // 大寫檢查
+            el = $(".item.password + .verify ul li:nth-child(2)");
+            reg = /[A-Z]/;
+            verify(el, reg.test($("#memPwd").val()));
+
+            // 小寫檢查
+            el = $(".item.password + .verify ul li:nth-child(3)");
+            reg = /[a-z]/;
+            verify(el, reg.test($("#memPwd").val()));
+
+            // 數字檢查
+            el = $(".item.password + .verify ul li:nth-child(4)");
+            reg = /[0-9]/;
+            verify(el, reg.test($("#memPwd").val()));
+
+            // 檢查再次輸入是否一致
+            checkPwd();
+        });
+        // 收起密碼驗證框
+        $("#memPwd").focusout( () => {
+            closeVerify($(".item.password + .verify"));
+        })
+
+        
+        // === 確認密碼 === //
+        $("#confirm_pwd").focus( () => {
+            openVerify($(".item.confirm_pwd + .verify"));
+        });
+        // 輸入時驗證
+        $("#confirm_pwd").keyup(checkPwd);
+        
+        // 收起驗證框
+        $("#confirm_pwd").focusout( () => {
+            closeVerify($(".item.confirm_pwd + .verify"));
+        })
+
+
+        // === 基本資訊 === //    
+
+    })
+
+</script>
