@@ -14,6 +14,9 @@ h2{
 .tarotcards .book_item .img_box img{
     width: 100%;
 }
+.tarotcards .book_item .txt_box{
+    text-align: left;
+}
 .tarotcards .book_item .txt_box p{
     font-size: 3em;
     color: #CFB886;
@@ -22,6 +25,9 @@ h2{
     color: #fff;
     line-height: 2;
     display: block;
+}
+.tarotcards .book_item .txt_box .secondary_btn{
+    letter-spacing: 0.05em;
 }
 .row{
     display: flex;
@@ -82,7 +88,7 @@ h2{
     display: flex;
     justify-content: space-around;
     padding: auto 10%;
-    margin:40px 0;
+    margin: 1em 0;
 }
 .taboo_item .txt_box{
     padding: 4em 0; 
@@ -129,20 +135,17 @@ h2{
     text-align: center;
     margin:auto;
 }
-.change_page_item .primary_btn{
-    margin: 20px;
-}
-.second_btn :hover {
+.change_page_item .second_btn :hover {
     background-color: #CFB886;
     color: #000;
     cursor: pointer;
 }
 
-.second_btn  {
+.change_page_item .second_btn  {
     color: #CFB886;
     background-color: transparent;
     border: 1px #CFB886 solid;
-    margin: 1em;
+    margin:5em 1em 0;
     padding:0.5em 1em;
     border-radius: 10px;
     cursor: pointer;
@@ -178,6 +181,9 @@ h2{
     .tarotcards .book_item .txt_box span{
         font-size: 0.5em;
         text-align: left;
+    }
+    .tarotcards .book_item .txt_box .secondary_btn{
+        margin-top: 1.5em;
     }
     .row{
         display: block;
