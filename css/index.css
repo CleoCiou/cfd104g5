@@ -273,9 +273,9 @@
 /* 電腦 */
 @media screen and (min-width:768px) {
   
-        /* html{
+        html{
             font-size: 14px;
-        } */
+        }
         /* 介紹 */
         .introduce_box{
             display: flex;
