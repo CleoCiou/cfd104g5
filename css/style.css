@@ -2832,6 +2832,7 @@ main .change .container .item .unselected_btn {
 }
 
 .img_box {
+  text-align: center;
   width: 100%;
 }
 
@@ -4180,6 +4181,82 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
 .sky .welcome_index .container .welcome_footer span {
   color: #CFB886;
   font-size: .6em;
+}
+
+main section.shop_banner .container .banner_box img {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shop_banner .container .banner_box img {
+    height: 25em;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+main section.shopping_item .container h1 {
+  padding: 0.25em 0em;
+}
+
+main section.shopping_item .container .product_box .row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.shopping_item .container .product_box .row .item {
+  width: 46%;
+  padding: 0.5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: 10em;
+  margin: 2%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item {
+    width: 21%;
+  }
+}
+
+main section.shopping_item .container .product_box .row .item .img_box {
+  border-radius: 50%;
+}
+
+main section.shopping_item .container .product_box .row .item .img_box img {
+  padding: 1em;
+  width: 100%;
+  border-radius: 50%;
+}
+
+main section.shopping_item .container .product_box .row .item .icon_box {
+  width: 30%;
+  padding-top: 0.5em;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item .icon_box img {
+    position: relative;
+    bottom: -50px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item:hover .icon_box img {
+    bottom: 0.25em;
+    -webkit-transition: 0.8s;
+    transition: 0.8s;
+  }
+}
+
+main section.shopping_item .container .product_box .row .item:hover {
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 * {
