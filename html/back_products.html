@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+@@include('layout/head.html', {
+    'title': '後台管理'
+})
+        
+
+<body>
+    <section id="app" class="back container">
+        
+        @@include('back/nav.html')
+        
+
+        <!-- 管理內容區 -->
+        <div class="contain">
+            <!-- 登出 -->
+            <header>
+                <div class="burger"></div>
+                <button class="third_btn">登出</button>
+            </header>
+
+            <!-- 管理內容 -->
+            <main>
+                <div class="container">
+                    <!-- 表格上方操作列 -->
+                    <div class="action_box top">
+                        <button class="secondary_btn" @click="displaynone=false">新增</button>
+                        <button class="secondary_btn" @click="displaynone=false">修改</button>
+                        <button class="secondary_btn">下架</button>
+                        <div>
+                            顯示
+                            <select class="row_limit">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="all">all</option>
+                            </select>
+                            筆
+                        </div>
+                    </div>
+                    
+                    <!-- 資料內容 -->
+                    <div class="table_wrapper">
+                        <table>
+                            <tr>
+                                <th scope="col"><input type="checkbox"></th>
+                                <th scope="col" v-for="col in colName">{{col}}</th>
+                            </tr>
+                            <tr v-for="(row, index) in queryResult">
+                                <td><input type="checkbox"></td>
+                                <td v-for="(col, colName) in row">
+                                    <label v-if="colName!=='detail'" :class="colName">{{ col }}</label>
+                                    <button v-else class="detail_btn" @click="getDetail(index)">查看/編輯</button>
+                                </td>
+                            </tr>
+                            <tr v-if="!queryResult">
+                                <td><input type="checkbox"></td>
+                                <td :colspan="Object.keys(colName).length">查無資料</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- 彈出視窗 -->
+                    <div :class="popup">
+                        <div class="content_box">
+                            <!-- 商品名稱 -->
+                            <div class="info_box prodName">
+                                <label for="adminName">商品名稱</label>
+                                <input type="text" :value="detail.prodName">
+                            </div>
+                            <!-- 商品類別 -->
+                            <div class="info_box cateType">
+                                <label>類別</label>
+                                <select>
+                                    <option>塔羅</option>
+                                    <option>星座</option>
+                                </select>
+                            </div>
+                            <!-- 商品項目 -->
+                            <div class="info_box catename">
+                                <label>品項</label>
+                                <select>
+                                    <option>項鍊</option>
+                                    <option>手鍊</option>
+                                    <option>幸運石</option>
+                                </select>
+                            </div>
+                            <!-- 商品描述 -->
+                            <div class="info_box prodIntro">
+                                <label>商品描述</label>
+                                <textarea id="prodIntro"></textarea>
+                            </div>
+                            <!-- 商品圖片 -->
+                            <div class="info_box prodImage">
+                                <label class="prod_img_box" for="prodImage">
+                                    <img aria-placeholder="請選擇圖片">
+                                </label>
+                                <input type="file" id="prodImage" class="displaynone">
+                            </div>
+                            <!-- 儲存/取消 -->
+                            <div class="info_box action_box">
+                                <div class="action">
+                                    <button class="third_btn" @click="displaynone=true">取消</button>
+                                    <button class="secondary_btn" @click="displaynone=true">儲存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+            
+        </div>
+    </section>
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        new Vue({
+            el: '#app',
+            data: {
+                colName: [
+                    '商品名稱',
+                    '項目類別',
+                    '項目',
+                    '單價',
+                    '商品圖片',
+                    '商品介紹',
+                    '商品狀態'
+                ],
+                queryResult: '',
+                displaynone: true,
+                detail: {}
+            },
+            mounted() {
+                this.getCol();
+            },
+            methods: {
+                // 依選擇項目取得資料表
+                getCol() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/back_getCol.php',
+                        data: {
+                            table: 'product',
+                            joinTable: 'product_category',
+                            joinOn: 'prodCateNo',
+                            queryCol: 'prodName, cateType, cateName, price, prodImage, prodIntro, status'
+                        },
+                        success: function(data) {
+                            thisVue.queryResult = data.msg;
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                
+                // 解構欄位
+                // deconstructRow(row, idx) {
+                //     let {memName, memId, identity, status, ...detail} = row;
+                //     return {memName, memId, identity, detail, status};
+                // },
+
+                // 取得商品詳細資訊
+                getDetail(idx) {
+                    this.displaynone = false;
+                    this.detail = this.queryResult[idx];
+                    // console.log(this.detail);
+                }
+            },
+            computed: {
+                popup() {
+                    return {
+                        popup: true,
+                        display_none: this.displaynone
+                    }
+                }
+            }
+        });
+    });
+</script>

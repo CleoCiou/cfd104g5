@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+@@include('layout/head.html', {
+    'title': '後台管理'
+})
+        
+
+<body>
+    <section id="app" class="back container">
+        
+        @@include('back/nav.html')
+        
+
+        <!-- 管理內容區 -->
+        <div class="contain">
+            <!-- 登出 -->
+            <header>
+                <div class="burger"></div>
+                <button class="third_btn">登出</button>
+            </header>
+
+            <!-- 管理內容 -->
+            <main>
+                <div class="container">
+                    <!-- 表格上方操作列 -->
+                    <div class="action_box top">
+                        <button class="secondary_btn" @click="displaynone=false">新增</button>
+                        <button class="secondary_btn">修改</button>
+                        <button class="secondary_btn">停權</button>
+                        <div>
+                            顯示
+                            <select class="row_limit">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="all">all</option>
+                            </select>
+                            筆
+                        </div>
+                    </div>
+                    
+                    <!-- 資料內容 -->
+                    <div class="table_wrapper">
+                        <table>
+                            <tr>
+                                <th scope="col"><input type="checkbox"></th>
+                                <th scope="col" v-for="col in colName">{{col}}</th>
+                            </tr>
+                            <tr v-for="row in queryResult">
+                                <td><input type="checkbox"></td>
+                                <td :class="index" v-for="(col, index) in row">{{col}}</td>
+                            </tr>
+                            <tr v-if="!queryResult">
+                                <td><input type="checkbox"></td>
+                                <td :colspan="Object.keys(colName).length">查無資料</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- 彈出視窗 -->
+                    <div :class="popup">
+                        <div class="content_box">
+                            <!-- 管理者姓名 -->
+                            <div class="info_box adminName">
+                                <label for="adminName">姓名</label>
+                                <input type="text">
+                            </div>
+                            <!-- 管理者帳號 -->
+                            <div class="info_box adminId">
+                                <label for="adminId">帳號</label>
+                                <input type="text">
+                            </div>
+                            
+                            <!-- 管理者密碼預設 帳號+123 -->
+
+                            <!-- 儲存/取消 -->
+                            <div class="info_box action_box">
+                                <div class="action">
+                                    <button class="third_btn" @click="displaynone=true">取消</button>
+                                    <button class="secondary_btn" @click="displaynone=true">新增</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+            
+        </div>
+    </section>
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        new Vue({
+            el: '#app',
+            data: {
+                colName: [
+                    '管理員姓名',
+                    '管理員帳號',
+                    '管理員狀態'
+                ],
+                queryResult: '',
+                displaynone: true,
+                
+            },
+            mounted() {
+                this.getCol();
+            },
+            methods: {
+                // 依選擇項目取得資料表
+                getCol() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/back_getCol.php',
+                        data: {
+                            table: 'admin',
+                            queryCol: 'adminName, adminId, status'
+                        },
+                        success: function(data) {
+                            thisVue.queryResult = data.msg;
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                }
+            },
+            computed: {
+                popup() {
+                    return {
+                        popup: true,
+                        display_none: this.displaynone
+                    }
+                }
+            }
+        });
+    });
+</script>
