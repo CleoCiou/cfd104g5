@@ -78,9 +78,9 @@ header .header_all .header_bar .header_icon {
 
 header .header_all .header_bar .header_icon p {
   color: #cfb886;
-  margin-top: 1.2rem;
+  margin-top: 1.25em;
   margin-right: 1em;
-  font-size: 1.2rem;
+  font-size: 1.1em;
 }
 
 header .header_all .header_bar .header_icon img {
@@ -470,9 +470,14 @@ header .menu .rotate_card .shop {
   header .menu .sub_menu {
     position: relative;
     top: 100%;
+    margin-top: 10px;
+  }
+  header .menu .sub_menu > li {
+    background-color: #222;
+    border: 0.5px solid #000;
   }
   header .menu .sub_menu li {
-    margin-top: 10px;
+    padding: 1em 0;
   }
   header .menu_item .menu_login {
     margin: 20px;
@@ -497,6 +502,12 @@ header .menu .rotate_card .shop {
   }
   header .menu .crystal_ball {
     display: none;
+  }
+  header .click_btn {
+    color: #CFB886;
+  }
+  header .click_sub_menu {
+    border-bottom: 1px solid #CFB886;
   }
 }
 
@@ -2427,155 +2438,6 @@ main .article_mine_board .content_article {
   }
 }
 
-body section.back {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-body section.back .img_box img {
-  width: 100%;
-  display: block;
-}
-
-body section.back .selected_btn,
-body section.back .unselected_btn {
-  padding: .5em 1em;
-}
-
-body section.back .link_panel {
-  z-index: 5;
-  width: 15em;
-}
-
-body section.back .link_panel .logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 0.5em 0;
-}
-
-body section.back .link_panel .logo .img_box {
-  width: 3em;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-body section.back .link_panel .logo .txt_box {
-  margin-left: 1em;
-  padding: 0.5em 0;
-}
-
-body section.back .link_panel .link_list li {
-  width: 100%;
-  padding: .5em 2em;
-  text-align: center;
-}
-
-body section.back .link_panel .link_list li a {
-  display: block;
-}
-
-body section.back .contain {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  position: relative;
-  min-height: 100vh;
-  background-color: #5558;
-}
-
-body section.back .contain header {
-  position: fixed;
-  right: 0;
-  left: 0;
-  height: 4em;
-  background-color: #0003;
-}
-
-body section.back .contain header button {
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: 1em;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-body section.back .contain main .container {
-  padding: 5em 3em;
-}
-
-body section.back .contain main .container .action {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 1em;
-}
-
-body section.back .contain main .container .action > *:not(:first-child) {
-  padding-left: .5em;
-}
-
-body section.back .contain main .container table tr {
-  border: 1px solid #CFB886;
-}
-
-body section.back .contain main .container table tr th,
-body section.back .contain main .container table tr td {
-  text-align: center;
-  border: 1px solid #CFB886;
-  padding: .5em 1em;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-}
-
-body section.back .contain main .container table tr th {
-  position: relative;
-  background-color: #CFB886;
-  color: #000;
-  cursor: pointer;
-}
-
-body section.back .contain main .container table tr th:not(:first-child):before {
-  content: '';
-  position: absolute;
-  right: .3em;
-  top: 30%;
-  width: 0;
-  height: 0;
-  border-left: .2em solid transparent;
-  border-right: .2em solid transparent;
-  border-bottom: .3em solid black;
-}
-
-body section.back .contain main .container table tr th:not(:first-child):after {
-  content: '';
-  position: absolute;
-  right: .3em;
-  bottom: 30%;
-  width: 0;
-  height: 0;
-  border-left: .2em solid transparent;
-  border-right: .2em solid transparent;
-  border-top: .3em solid black;
-}
-
-body section.back .contain main button {
-  padding: .5em 1em;
-}
-
 /* 如果要顯示在CSS的註解 要用斜線星 跟星斜線把內容標註 */
 /*今日運勢 By 阿皓*/
 main {
@@ -3079,6 +2941,32 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
   width: 95%;
 }
 
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label {
+  cursor: pointer;
+  display: block;
+  padding: 1em 0 .5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label .img_box {
+  width: 7em;
+  height: 7em;
+  padding: 1em;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+  overflow: hidden;
+  margin: auto;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label .img_box img {
+  width: 100%;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label span {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify {
   padding: 0;
   margin-top: -1em;
@@ -3170,6 +3058,222 @@ section.login .container section.card_box .rotate_3d_box .item.identity i:not(:f
 section.login .container section.card_box .rotate_3d_box .item.identity label {
   cursor: pointer;
   color: #888;
+}
+
+body {
+  min-height: 100vh;
+}
+
+body section.back {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body section.back .img_box img {
+  width: 100%;
+  display: block;
+}
+
+body section.back .selected_btn,
+body section.back .unselected_btn {
+  padding: .5em 1em;
+}
+
+body section.back .third_btn {
+  background: transparent;
+  border: 1px solid #CFB886;
+}
+
+body section.back .detail_btn {
+  padding: 0.3em;
+  background: transparent;
+  border: 1px solid #CFB886;
+  cursor: pointer;
+  border-radius: 0.5em;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+body section.back .detail_btn:hover {
+  background: #CFB886;
+  color: #000;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+body section.back .display_none {
+  display: none;
+}
+
+body section.back .link_panel {
+  position: relative;
+  z-index: 2001;
+  width: 15em;
+}
+
+body section.back .link_panel .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5em 0;
+}
+
+body section.back .link_panel .logo .img_box {
+  width: 3em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+body section.back .link_panel .logo .txt_box {
+  margin-left: 1em;
+  padding: 0.5em 0;
+}
+
+body section.back .link_panel .link_list li {
+  width: 100%;
+  padding: .5em 2em;
+  text-align: center;
+}
+
+body section.back .link_panel .link_list li a {
+  display: block;
+}
+
+body section.back .contain {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: relative;
+  min-height: 100vh;
+  background-color: #5558;
+}
+
+body section.back .contain header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  height: 4em;
+  background-color: #0003;
+}
+
+body section.back .contain header button {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+body section.back .contain main .container {
+  position: relative;
+  padding: 5em 3em;
+}
+
+body section.back .contain main .container .action_box.top {
+  margin-bottom: 1em;
+}
+
+body section.back .contain main .container .action_box.top > * {
+  display: inline-block;
+}
+
+body section.back .contain main .container .action_box.top .secondary_btn {
+  padding: 0.5em;
+  margin-right: 1em;
+}
+
+body section.back .contain main .container .action_box.top .row_limit > option {
+  text-align: center;
+}
+
+body section.back .contain main .container .popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+body section.back .contain main .container .popup .content_box {
+  padding: 3em 5em 2em;
+  border-radius: 0.5em;
+  background-color: #555e;
+  -webkit-box-shadow: #fff8 0 0 5px 5px;
+          box-shadow: #fff8 0 0 5px 5px;
+}
+
+body section.back .contain main .container .popup .content_box .info_box:not(:first-child) {
+  margin-top: 1em;
+}
+
+body section.back .contain main .container .popup .content_box .action_box .action {
+  text-align: center;
+}
+
+body section.back .contain main .container .popup .content_box .action_box .action button {
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+body section.back .contain main .container .table_wrapper {
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  overflow: hidden;
+  display: inline-block;
+}
+
+body section.back .contain main .container .table_wrapper table tr {
+  border: 1px solid #CFB886;
+}
+
+body section.back .contain main .container .table_wrapper table tr th,
+body section.back .contain main .container .table_wrapper table tr td {
+  text-align: center;
+  border: 1px solid #CFB886;
+  padding: .5em 1em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+body section.back .contain main .container .table_wrapper table tr th {
+  position: relative;
+  background-color: #CFB886;
+  color: #000;
+  cursor: pointer;
+}
+
+body section.back .contain main .container .table_wrapper table tr th:not(:first-child):before {
+  content: '';
+  position: absolute;
+  right: .3em;
+  top: 30%;
+  width: 0;
+  height: 0;
+  border-left: .2em solid transparent;
+  border-right: .2em solid transparent;
+  border-bottom: .3em solid black;
+}
+
+body section.back .contain main .container .table_wrapper table tr th:not(:first-child):after {
+  content: '';
+  position: absolute;
+  right: .3em;
+  bottom: 30%;
+  width: 0;
+  height: 0;
+  border-left: .2em solid transparent;
+  border-right: .2em solid transparent;
+  border-top: .3em solid black;
 }
 
 #twinklingStar .star {
@@ -4243,6 +4347,82 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
 .sky .welcome_index .container .welcome_footer span {
   color: #CFB886;
   font-size: .6em;
+}
+
+main section.shop_banner .container .banner_box img {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shop_banner .container .banner_box img {
+    height: 25em;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+main section.shopping_item .container h1 {
+  padding: 0.25em 0em;
+}
+
+main section.shopping_item .container .product_box .row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.shopping_item .container .product_box .row .item {
+  width: 46%;
+  padding: 0.5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: 10em;
+  margin: 2%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item {
+    width: 21%;
+  }
+}
+
+main section.shopping_item .container .product_box .row .item .img_box {
+  border-radius: 50%;
+}
+
+main section.shopping_item .container .product_box .row .item .img_box img {
+  padding: 1em;
+  width: 100%;
+  border-radius: 50%;
+}
+
+main section.shopping_item .container .product_box .row .item .icon_box {
+  width: 30%;
+  padding-top: 0.5em;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item .icon_box img {
+    position: relative;
+    bottom: -50px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item:hover .icon_box img {
+    bottom: 0.25em;
+    -webkit-transition: 0.8s;
+    transition: 0.8s;
+  }
+}
+
+main section.shopping_item .container .product_box .row .item:hover {
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 * {

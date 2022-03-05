@@ -1,0 +1,78 @@
+main{
+    // banner
+    section.shop_banner{
+        .container{
+            .banner_box{
+                img{
+                    width: 100%;
+                    // padding: 1em 0;
+                    @include desktop{
+                        height: 25em;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+    //商品導覽列
+    //商品區
+    section.shopping_item{
+        .container{
+            h1{
+                padding: 0.25em 0em;
+            }
+            .product_box{
+                .row{
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    .item{
+                        width: 46%;
+                        padding:0.5em 1em;
+                        border: 1px solid #CFB886;
+                        border-radius: 10em;
+                        margin: 2%;
+                        text-align: center;
+                        @include desktop{
+                            width: 21%;
+                        }
+                        .img_box{
+                            border-radius: 50%;
+                            img{
+                                padding: 1em;
+                                width: 100%;
+                                border-radius: 50%;
+                            }
+                        }
+                        .icon_box{
+                            width: 30%;
+                            padding-top: 0.5em;
+                            margin: 0 auto;
+                            overflow: hidden;
+                            img{
+                                @include desktop{
+                                    position: relative;
+                                    bottom: -50px;
+                                }
+                            }
+                        }
+                    }
+                    .item:hover{
+                        .icon_box{
+                            img{
+                                @include desktop{
+                                    bottom: 0.25em;
+                                    transition: 0.8s;
+                                }
+                            }
+                        }
+                    }
+                    .item:hover{
+                        Box-shadow: 1px 1px 12px 1px  #CFB886,
+                                    1px 1px 2px 1px  #CFB886 inset;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -35,9 +35,9 @@ header {
     }
     .header_all .header_bar .header_icon p{
         color: #cfb886;
-        margin-top: 1.2rem;
+        margin-top: 1.25em;
         margin-right: 1em;
-        font-size: 1.2rem;
+        font-size: 1.1em;
     }
     .header_all .header_bar .header_icon img{
         height: 25px;
@@ -361,21 +361,27 @@ header {
             display: block;
         }
         .menu .sub_menu{
-        position: relative;
-        top: 100%;
+            position: relative;
+            top: 100%;
+            margin-top: 10px;
+        }
+        .menu .sub_menu >li{
+            // border-top:1px solid #CFB886;
+            background-color:#222 ;
+            border:0.5px solid #000 ;
         }
         .menu .sub_menu li{
-        margin-top: 10px;
+            padding: 1em 0 ;
         }
         .menu_item .menu_login{
-        margin: 20px;
-        display: inline-block;
+            margin: 20px;
+            display: inline-block;
         }
         .menu_item .menu_member{
-        display: block;
+            display: block;
         }
         .menu_link {
-        display: block;
+            display: block;
         }
         .header_all .header_bar .header_icon p{
             margin-top: 23px;
@@ -386,11 +392,16 @@ header {
             margin-top: 23px;
         }
         .menu .rotate_card{
-        display: none;
+            display: none;
         }
         .menu .crystal_ball{
-        display: none;
+            display: none;
         }
-        
+        .click_btn{
+            color: #CFB886;
+        }
+        .click_sub_menu{
+            border-bottom:1px solid #CFB886;
+        }
     }
 }
