@@ -4,7 +4,7 @@
     @@include('layout/head.html', {
         'title': '星座故事'
     })
-    <link rel="stylesheet" href="/css/constellation_story.css">
+    <link rel="stylesheet" href="css/constellation_story.css">
 <!-- <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/constellation_story.css">-->
-    <script src="../js/vue.js"></script>
+    <!-- <script src="../js/vue.js"></script> -->
     <style>
         main .story{
             display: flex;
@@ -115,7 +115,7 @@
                         <li v-for="(url, cate) in cates"><a :href="url">{{cate}}</a></li>
                     </ul>
                  </div>
-                <div class="sagit"><img src="/images/con_story/story-sagit.svg" alt=""></div>　
+                <div class="sagit"><img src="images/con_story/story-sagit.svg" alt=""></div>　
                 <p>
                     射手座又叫人馬座，夏夜的時候，抬頭看南方的天空，人馬座就在天蠍座的東邊。
                 　　希臘神話故事中的射手座，是一個上半身為人形，下半身是馬的怪物，名叫奇龍。
@@ -127,7 +127,7 @@
 
     </main>
     @@include('layout/footer.html')
-  <script src="js/common.js"></script>
+  <!-- <script src="js/common.js"></script> -->
   <script>
     new Vue({
         el: '#app',

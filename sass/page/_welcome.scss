@@ -6,12 +6,15 @@
     .welcome_index{
         height: 100%;
         // margin: -6em 0;
+        @include mobile{
+            align-items: center;
+            flex-direction: column;
+        }
 
         .container {
             height: 100%;
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
 
             .welcome_index_logo{
                 display: flex;
@@ -30,21 +33,18 @@
                 flex-wrap: wrap;
                 text-align: center;
                 justify-content: center;
-                @include mobile{
-                    align-items: center;
-                    flex-direction: column;
-                }
+                
 
 
                 .welcome_item{
                     width: 35%;
                     padding: 5em;
-                    // width: 25%;
                     height: 100%;
-                    // background: #CFB886;
-                    // background: radial-gradient(ellipse at center, #CFB886 0%, #000 70%);
                     position: relative;
-    
+                    @include mobile{
+                        align-items: center;
+                        height: 60%;
+                    }
                     // &:before {
                         // content: '';
                         // width: 20vw;
@@ -67,7 +67,7 @@
                     // }
     
                     @include mobile{
-                        width: 70%;
+                        width: 100%;
                     }
                 }
             } // welcome_index_box
@@ -75,6 +75,9 @@
             .welcome_footer{
                 // margin: 8em 1.5em 0;
                 text-align: left;
+                @include mobile{
+                    margin-top: 3em;
+                }
                 p{
                     color: #999;
                     font-size: .8em;
