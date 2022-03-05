@@ -21,6 +21,11 @@
     border-radius: 0.5em;
 */
 /* 按鈕 */
+.nav_animation {
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+
 header {
   z-index: 2000;
   position: fixed;
@@ -1863,6 +1868,14 @@ main .discuss .content .content_article .content_wrap .content_label .select_lab
   color: #000;
 }
 
+main .discuss .content .content_article .content_wrap .label_hidden {
+  display: none;
+}
+
+main .discuss .content .content_article .content_wrap .label_show {
+  display: block;
+}
+
 main .discuss .content .content_article .content_pages {
   text-align: right;
 }
@@ -2854,6 +2867,7 @@ main .change .container .item .unselected_btn {
 }
 
 .img_box {
+  text-align: center;
   width: 100%;
 }
 
@@ -3197,6 +3211,7 @@ main .astrolabe .container .img_box img {
 
 main .astrolabe .container .astrolabe_start_box {
   position: relative;
+  margin-top: 2em;
   /* 填寫表單 */
 }
 
@@ -3387,8 +3402,12 @@ main section.chart .container .astrolabe_chart .chart_classification ul li label
   border-bottom: 1px solid #d89482;
 }
 
+main section.chart .container .astrolabe_chart .chart_classification .li_active {
+  background-color: #fff;
+}
+
 main section.chart .container .astrolabe_chart .parse_box {
-  width: 60%;
+  width: 50%;
   margin-top: 2em;
   position: relative;
   display: -webkit-box;
@@ -3435,8 +3454,16 @@ main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_t
   letter-spacing: 1px;
 }
 
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .hiddenPanel {
+  display: none;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .showPanel {
+  display: block;
+}
+
 main section.chart .container .astrolabe_chart .chart_info {
-  width: 33%;
+  width: 43%;
   margin: 0 2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3469,7 +3496,8 @@ main section.chart .container .astrolabe_chart .chart_info .chart_txt p {
 }
 
 main section.chart .container .astrolabe_chart .chart_info .chart_img {
-  width: 100%;
+  width: 70%;
+  margin: auto;
 }
 
 @media screen and (max-width: 767px) {
