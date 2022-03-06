@@ -10,8 +10,7 @@
 <body>
     <section id="app" class="back container">
         
-        @@include('back/nav.html')
-        
+        <my-nav></my-nav>
 
         <!-- 管理內容區 -->
         <div class="contain">
@@ -25,21 +24,8 @@
             <main>
                 <div class="container">
                     <!-- 表格上方操作列 -->
-                    <div class="action_box top">
-                        <button class="secondary_btn" @click="displaynone=false">新增</button>
-                        <button class="secondary_btn">修改</button>
-                        <button class="secondary_btn">停權</button>
-                        <div>
-                            顯示
-                            <select class="row_limit">
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="all">all</option>
-                            </select>
-                            筆
-                        </div>
-                    </div>
+                    <top-action-bar :action-btn="actionBtn"></top-action-bar>
+                    
                     
                     <!-- 資料內容 -->
                     <div class="table_wrapper">
@@ -92,20 +78,24 @@
     </section>
 </body>
 </html>
-
+<script src="js/back_component.js"></script>
 <script>
     $(document).ready(function() {
         new Vue({
             el: '#app',
             data: {
+                // 資料表顯示欄位名稱
                 colName: [
                     '管理員姓名',
                     '管理員帳號',
                     '管理員狀態'
                 ],
+                // 後端回傳查詢結果
                 queryResult: '',
+                // popup視窗開關class
                 displaynone: true,
-                
+                // 表格上方操作列按鈕
+                actionBtn: ['新增', '修改', '停權']
             },
             mounted() {
                 this.getCol();
