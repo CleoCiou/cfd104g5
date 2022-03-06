@@ -209,10 +209,10 @@ main {
             border-radius: $borderRadius;
             margin: 1em 0;
             cursor: pointer;
-            &:hover{
-                box-shadow: 0 0 15px 2px #cfb88688;
-                border: 1px solid #000;
-            }
+            // &:hover{
+            //     box-shadow: 0 0 15px 2px #cfb88688;
+            //     border: 1px solid #000;
+            // }
             @include mobile{
                 // box-sizing: content-box;
             }
@@ -258,6 +258,39 @@ main {
             .line_bottom{
                 display: flex;
                 align-items: center;
+                
+                .using_btn {
+                    display: flex;
+                    align-items: center;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    padding: 0px;
+                    line-height: 30px;
+                    color: rgba(0, 0, 0, 0.5);
+                    .active{
+                        fill: #d89482;
+                        stroke: #d89482;
+                        stroke-width:1px;
+                    }
+                    svg{
+                        width: 25px;
+                        stroke: #cfb886;
+                        stroke-width:1px;
+                        fill: none;
+                        padding-right: 2px;
+                        &:hover{
+                            stroke: #d89482;
+                            stroke-width:1px;
+                            fill: #d89482;
+                        }
+                    }
+                    .fav_animation {
+                        transition: fill 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+                        object-fit: cover;
+                        display: inline-block;
+                    }
+                }
                 img{
                     margin-right: 0.3em;
                     width: 1.5em;
@@ -266,6 +299,7 @@ main {
                 }
                 p{
                     margin-right: 0.6em;
+                    text-align: center;
                     color: #aaa;
                     font-size: 0.8em;
                     @include mobile {
@@ -319,6 +353,7 @@ main {
         background-color: #333333;
         padding: 1em;
         width: 50%;
+        min-height: 100%;
         margin: auto;
         transform: translateX(50%);
         @include mobile {
@@ -447,34 +482,43 @@ main {
                 }
             }
         }
-        .response_box{
-            display: flex;
+    }
+    /* 使用者要留言的地方 */
+    .response_box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        position: sticky;
+        left: 0;
+        bottom: -20px;
+        width: 100%;
+        background-color: #585858;
+        padding: 0.5em 0.2em;
+        border-top-left-radius: .5em;
+        border-top-right-radius: .5em;
+        .user_img_box{
+            width: 15%;
+            width: 3.5em;
+            height: 3.5em;
+            img{
+                width: 100%;
+                border-radius: $circle;
+                border: 1px solid #CFB886;
+            }
+        }
+        .user_txt_box{
             align-items: center;
-            justify-content: space-between;
+            width: 70%;
+            textarea{
+                width: 100%;
+            }
+        }
+        .res_btn_box{
+            width: 15%;
             text-align: center;
-            .user_img_box{
-                width: 15%;
-                width: 3.5em;
-                height: 3.5em;
-                img{
-                    width: 100%;
-                    border-radius: $circle;
-                    border: 1px solid #CFB886;
-                }
-            }
-            .user_txt_box{
-                align-items: center;
-                width: 70%;
-                textarea{
-                    width: 100%;
-                }
-            }
-            .res_btn_box{
-                width: 15%;
-                text-align: center;
-                .submit_btn{
-                    padding: .3em .5em;
-                }
+            .submit_btn{
+                padding: .3em .5em;
             }
         }
     }
@@ -531,6 +575,7 @@ main {
             }
         }
     }
+    /* 我的文章 */
     .article_mine_board{
         display: flex;
         justify-content: space-between;
@@ -599,6 +644,16 @@ main {
                 margin-top: 2em;
                 width: 100%;
             }
+            .choose_month{
+                display: flex;
+                #article_mine_month{
+                    margin-left: 2em;
+                    width: 100px;
+                }
+            }
+        }
+        .content_hidden{
+            display: none;
         }
     }
     

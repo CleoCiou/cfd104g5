@@ -1624,7 +1624,9 @@ main {
   /* 討論區 by JC */
   /*瀏覽文章燈箱 by JC */
   /*美美的scroll bar*/
+  /* 使用者要留言的地方 */
   /* 撰寫文章頁 */
+  /* 我的文章 */
 }
 
 @media screen and (max-width: 767px) {
@@ -1911,12 +1913,6 @@ main .discuss .article_cards {
   cursor: pointer;
 }
 
-main .discuss .article_cards:hover {
-  -webkit-box-shadow: 0 0 15px 2px #cfb88688;
-          box-shadow: 0 0 15px 2px #cfb88688;
-  border: 1px solid #000;
-}
-
 main .discuss .article_cards .line_top span {
   color: #000;
   background-color: #d89482;
@@ -1977,6 +1973,49 @@ main .discuss .article_cards .line_bottom {
           align-items: center;
 }
 
+main .discuss .article_cards .line_bottom .using_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0px;
+  line-height: 30px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+main .discuss .article_cards .line_bottom .using_btn .active {
+  fill: #d89482;
+  stroke: #d89482;
+  stroke-width: 1px;
+}
+
+main .discuss .article_cards .line_bottom .using_btn svg {
+  width: 25px;
+  stroke: #cfb886;
+  stroke-width: 1px;
+  fill: none;
+  padding-right: 2px;
+}
+
+main .discuss .article_cards .line_bottom .using_btn svg:hover {
+  stroke: #d89482;
+  stroke-width: 1px;
+  fill: #d89482;
+}
+
+main .discuss .article_cards .line_bottom .using_btn .fav_animation {
+  -webkit-transition: fill 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transition: fill 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: inline-block;
+}
+
 main .discuss .article_cards .line_bottom img {
   margin-right: 0.3em;
   width: 1.5em;
@@ -1986,6 +2025,7 @@ main .discuss .article_cards .line_bottom img {
 
 main .discuss .article_cards .line_bottom p {
   margin-right: 0.6em;
+  text-align: center;
   color: #aaa;
   font-size: 0.8em;
 }
@@ -2042,6 +2082,7 @@ main #articleView {
   background-color: #333333;
   padding: 1em;
   width: 50%;
+  min-height: 100%;
   margin: auto;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
@@ -2218,7 +2259,7 @@ main #articleView .article_response .response_card .card_author img {
   border: 1px solid #CFB886;
 }
 
-main #articleView .response_box {
+main .response_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2229,37 +2270,46 @@ main #articleView .response_box {
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  bottom: -20px;
+  width: 100%;
+  background-color: #585858;
+  padding: 0.5em 0.2em;
+  border-top-left-radius: .5em;
+  border-top-right-radius: .5em;
 }
 
-main #articleView .response_box .user_img_box {
+main .response_box .user_img_box {
   width: 15%;
   width: 3.5em;
   height: 3.5em;
 }
 
-main #articleView .response_box .user_img_box img {
+main .response_box .user_img_box img {
   width: 100%;
   border-radius: 50%;
   border: 1px solid #CFB886;
 }
 
-main #articleView .response_box .user_txt_box {
+main .response_box .user_txt_box {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   width: 70%;
 }
 
-main #articleView .response_box .user_txt_box textarea {
+main .response_box .user_txt_box textarea {
   width: 100%;
 }
 
-main #articleView .response_box .res_btn_box {
+main .response_box .res_btn_box {
   width: 15%;
   text-align: center;
 }
 
-main #articleView .response_box .res_btn_box .submit_btn {
+main .response_box .res_btn_box .submit_btn {
   padding: .3em .5em;
 }
 
@@ -2436,6 +2486,21 @@ main .article_mine_board .content_article {
     margin-top: 2em;
     width: 100%;
   }
+}
+
+main .article_mine_board .content_article .choose_month {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .article_mine_board .content_article .choose_month #article_mine_month {
+  margin-left: 2em;
+  width: 100px;
+}
+
+main .article_mine_board .content_hidden {
+  display: none;
 }
 
 /* 如果要顯示在CSS的註解 要用斜線星 跟星斜線把內容標註 */
@@ -3470,7 +3535,7 @@ main section.chart .container .astrolabe_chart {
 }
 
 main section.chart .container .astrolabe_chart .chart_classification {
-  width: 7%;
+  width: 10%;
 }
 
 @media screen and (max-width: 767px) {
@@ -3511,12 +3576,15 @@ main section.chart .container .astrolabe_chart .chart_classification .li_active 
 }
 
 main section.chart .container .astrolabe_chart .parse_box {
-  width: 50%;
+  width: 55%;
   margin-top: 2em;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media screen and (max-width: 767px) {
@@ -3567,7 +3635,7 @@ main section.chart .container .astrolabe_chart .parse_box .analyze_bg .showPanel
 }
 
 main section.chart .container .astrolabe_chart .chart_info {
-  width: 43%;
+  width: 35%;
   margin: 0 2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3623,53 +3691,70 @@ main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display
   }
 }
 
-main .products_cards .products_box .products_title_wrap {
+main .products_cards .products_content .products_title_wrap {
   width: 100%;
   text-align: left;
   margin: 5em 0 2em;
 }
 
-main .products_cards .products_box .products_cards_wrap {
+main .products_cards .products_content .product_box .row {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-@media screen and (max-width: 767px) {
-  main .products_cards .products_box .products_cards_wrap {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+main .products_cards .products_content .product_box .row .item {
+  width: 46%;
+  padding: 0.5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: 10em;
+  margin: 2%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main .products_cards .products_content .product_box .row .item {
+    width: 21%;
   }
 }
 
-main .products_cards .products_box .products_cards_wrap .cards_row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+main .products_cards .products_content .product_box .row .item .img_box {
+  border-radius: 50%;
 }
 
-main .products_cards .products_box .products_cards_wrap .cards_row .products_item {
-  width: 50%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 1em 1em 0;
-}
-
-@media screen and (max-width: 767px) {
-  main .products_cards .products_box .products_cards_wrap .cards_row .products_item {
-    width: 50%;
-  }
-}
-
-main .products_cards .products_box .products_cards_wrap .cards_row .products_item .img_box img {
+main .products_cards .products_content .product_box .row .item .img_box img {
+  padding: 1em;
   width: 100%;
+  border-radius: 50%;
+}
+
+main .products_cards .products_content .product_box .row .item .icon_box {
+  width: 30%;
+  padding-top: 0.5em;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  main .products_cards .products_content .product_box .row .item .icon_box img {
+    position: relative;
+    bottom: -50px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main .products_cards .products_content .product_box .row .item:hover .icon_box img {
+    bottom: 0.25em;
+    -webkit-transition: 0.8s;
+    transition: 0.8s;
+  }
+}
+
+main .products_cards .products_content .product_box .row .item:hover {
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 main section.draw_cards .container {
@@ -4422,7 +4507,7 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 * {

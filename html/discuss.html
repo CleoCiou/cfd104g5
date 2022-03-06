@@ -53,8 +53,7 @@
 
                                 <!-- 熱門 & 最新的兩個標籤 -->
                                 <div class="content_label">
-                                    <label class="select_label" @click="isChecked = !isChecked">熱門</label>
-                                    <label @click="isChecked =! isChecked">最新</label>
+                                    <label v-for="(label,index) in labels" :key="index" @click="isChecked = index" :class="{select_label: isChecked == index}">{{label}}</label>
                                 </div>
                                 <!-- 放文章的地方 -->
                                 <div class="row" :class="{'label_hidden' : isChecked}">
@@ -75,13 +74,25 @@
                                             </div>
                                         </div>
                                         <div class="line_bottom">
-                                            <img :src="iconLike" class="likes" @click="num += 1" v-show="isChecked == 0">
-                                            <img :src="iconLikeClick" class="likes" v-show="isChecked == 1" @click="num -= 1">
-                                            <p>{{num}}讚</p>
-                                            <img :src="iconMessage" >
+                                            <!-- 愛心 -->
+                                            <button class="using_btn"  @click="activeIndex =!activeIndex;changeLike()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: activeIndex == 1}">
+                                                    <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z" fill-rule="evenodd">
+                                                    </path>
+                                                </svg>
+                                                <p>{{num}}讚</p>
+                                            </button>
+                                            
+                                            <!-- 留言 -->
+                                            <img :src="iconMessage">
                                             <p>28回應</p>
-                                            <img :src="iconFav" >
-                                            <p>收藏</p>
+                                            <!-- 收藏 -->
+                                            <button class="using_btn" @click="favIndex =!favIndex">
+                                                <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: favIndex == 1}">
+                                                    <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+                                                </svg>
+                                                <p>收藏</p>
+                                            </button>
                                         </div>
                                     </div>
                                     <!-- 文章卡片 -->
@@ -101,12 +112,25 @@
                                             </div>
                                         </div>
                                         <div class="line_bottom">
-                                            <img :src="iconLike" >
-                                            <p>93讚</p>
-                                            <img :src="iconMessage" >
-                                            <p>15回應</p>
-                                            <img :src="iconFav" >
-                                            <p>收藏</p>
+                                            <!-- 愛心 -->
+                                            <button class="using_btn"  @click="activeIndex =!activeIndex;changeLike()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: activeIndex == 1}">
+                                                    <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z" fill-rule="evenodd">
+                                                    </path>
+                                                </svg>
+                                                <p>{{num}}讚</p>
+                                            </button>
+                                            
+                                            <!-- 留言 -->
+                                            <img :src="iconMessage">
+                                            <p>3回應</p>
+                                            <!-- 收藏 -->
+                                            <button class="using_btn" @click="favIndex =!favIndex">
+                                                <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: favIndex == 1}">
+                                                    <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+                                                </svg>
+                                                <p>收藏</p>
+                                            </button>
                                         </div>
                                     </div>
                                     <!-- 文章卡片 -->
@@ -356,7 +380,6 @@
                             <p>巨蟹座有活躍型與消極型的兩種型態。活躍型者具有堅強的意志力與耐力，對於人生的生活門徑非常的熟練，而且喜愛活動，能趕得上時代潮流，對於摩登流行的任何事物都感到興趣。消極型的人，顯得容易自足、沒精打彩、行為懶散，不願意做任何邁向成功所必需的努力，喜歡逆來順受，很固執也很依戀於他所已經擁有的，這兩種型態是早期所受的訓練與教化有關。</p>
                             <p>巨蟹座的人很敏感，往往因別人的惡意批評非難而感到傷心。對過去的一切均懷念而且多情善感，很少拋棄舊日的伙伴與昔日的友情。喜歡收藏古老藝術品或書籍，也喜歡回憶往時趣事。通常擁有良好的記憶力。</p>
                     </div>
-                </div>
                     <!-- 功能列-- 愛心回應數分享等等 -->
                     <div class="article_using narrow">
                         <!-- 左 -->
@@ -418,20 +441,21 @@
                         <hr class="style">
                         
                     </div>
-                    <!-- 使用者要留言的地方 -->
-                    <div class="response_box">
-                        <div class="user_img_box">
-                            <img :src="author_hat_img" alt="會員頭像">
-                        </div>
-                        <div class="user_txt_box">
-                            <textarea  cols="1" rows="1"></textarea>
-                        </div>
-                        <div class="res_btn_box">
-                            <input type="submit" class="submit_btn" value="送出">
-                        </div>
+                </div>
+                <!-- 使用者要留言的地方 -->
+                <div class="response_box">
+                    <div class="user_img_box">
+                        <img :src="author_hat_img" alt="會員頭像">
+                    </div>
+                    <div class="user_txt_box">
+                        <textarea  cols="1" rows="1"></textarea>
+                    </div>
+                    <div class="res_btn_box">
+                        <input type="submit" class="submit_btn" value="送出">
                     </div>
                 </div>
             </section>
+            
         </div>
     </main>
     <!-- 網頁尾 By NJ -->
@@ -452,12 +476,8 @@
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
                 // cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
                 cates: ['全部','塔羅版','星座版'],
+                labels: ['熱門','最新'],
                 iconLike: './images/icon/icon_discuss_like.svg',
-                // iconLike: {
-                //     url: './images/icon/',
-                //     img: './icon_discuss_like.svg',
-                //     active: 'icon_discuss_likes.svg'
-                // },
                 iconLikeClick :'images/icon/icon_discuss_likes.svg',
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
@@ -468,15 +488,16 @@
                 author_img: 'images/black_cat.svg',
                 author_hat_img: 'images/black_cat_wizard.svg',
                 isChecked: 0,
+                activeIndex: 0,
+                favIndex: 0,
             },
             methods: {
-                changeLike(e){
-                    // if(e.target.title == '喜歡'){
-                        console.log(e.target.title);
-                        console.log(this.$data.iconLike);
+                changeLike(){
+                    if(this.$data.activeIndex == 0){
+                        this.$data.num -=1;
+                    }else{
                         this.$data.num +=1;
-                        
-                    // }
+                    }
                 },
             },
         });
@@ -488,10 +509,10 @@
                 nav:false,
                 responsive:{
                     0:{
-                        items:5
+                        items:3
                     },
                     767:{
-                        items:8
+                        items:3
                     },
 
                 }

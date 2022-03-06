@@ -154,7 +154,7 @@ main{
                 }
                 /* 宮位分類欄 有11個該死的宮位 */
                 .chart_classification{
-                    width: 7%;
+                    width: 10%;
                     @include mobile{
                         display: none;
                     }
@@ -183,11 +183,11 @@ main{
 
                 }
                 .parse_box{
-                    width: 50%;
+                    width: 55%;
                     margin-top: 2em;
                     position: relative;
                     display: flex;
-                    
+                    justify-content: center;
                     @include mobile{
                         width:100%
                     }
@@ -230,7 +230,7 @@ main{
                     }
                 }
                 .chart_info{
-                    width: 43%;
+                    width: 35%;
                     margin: 0 2em;
                     display: flex;
                     flex-direction: column;
@@ -268,39 +268,64 @@ main{
         }
     }
     .products_cards{
-        .products_box{
+        .products_content{
             .products_title_wrap{
                 width: 100%;
                 text-align: left;
                 margin: 5em 0 2em;
             }
-            .products_cards_wrap{
-                width: 100%;
-                display: flex;
-                align-items: center;
-                @include mobile{
-                    flex-direction: column;
-                }
-                .cards_row{
+            .product_box{
+                .row{
+                    width: 100%;
                     display: flex;
-                    
-                    .products_item{
-                        width: 50%;
-                        align-items: center;
-                        margin: 0 1em 1em 0;
-                        @include mobile{
-                            width: 50%;
+                    flex-wrap: wrap;
+                    .item{
+                        width: 46%;
+                        padding:0.5em 1em;
+                        border: 1px solid #CFB886;
+                        border-radius: 10em;
+                        margin: 2%;
+                        text-align: center;
+                        @include desktop{
+                            width: 21%;
                         }
                         .img_box{
+                            border-radius: 50%;
                             img{
+                                padding: 1em;
                                 width: 100%;
+                                border-radius: 50%;
+                            }
+                        }
+                        .icon_box{
+                            width: 30%;
+                            padding-top: 0.5em;
+                            margin: 0 auto;
+                            overflow: hidden;
+                            img{
+                                @include desktop{
+                                    position: relative;
+                                    bottom: -50px;
+                                }
                             }
                         }
                     }
+                    .item:hover{
+                        .icon_box{
+                            img{
+                                @include desktop{
+                                    bottom: 0.25em;
+                                    transition: 0.8s;
+                                }
+                            }
+                        }
+                    }
+                    .item:hover{
+                        Box-shadow: 1px 1px 12px 1px  #CFB886,
+                                    1px 1px 2px 1px  #CFB886 inset;
+                    }
                 }
-                
             }
         }
-        
     }
 }
