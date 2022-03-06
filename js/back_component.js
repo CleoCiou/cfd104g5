@@ -1,4 +1,4 @@
-// 側邊站內連結
+// === 側邊站內連結
 Vue.component('my-nav',{
     template: `
         <!-- 管理選項bar -->
@@ -36,7 +36,7 @@ Vue.component('my-nav',{
     }
 });
 
-// 表格上方操作列
+// === 表格上方操作列
 Vue.component('top-action-bar', {
     template: `
         <!-- 表格上方操作列 -->
@@ -55,4 +55,40 @@ Vue.component('top-action-bar', {
         </div>
     `,
     props: ['actionBtn'],
+})
+
+// === 表格
+Vue.component('my-table', {
+    template: `
+        <!-- 資料內容 -->
+        <div class="table_wrapper">
+            <table>
+                <tr>
+                    <th scope="col"><input type="checkbox"></th>
+                    <th scope="col" v-for="col in colName">{{col}}</th>
+                </tr>
+                <tr v-for="(row, index) in queryResult">
+                    <td><input type="checkbox"></td>
+                    <td v-for="(col, colName) in deconstructRow(row, index)">
+                        <label v-if="colName!=='detail'" :class="colName">{{ col }}</label>
+                        <button v-else class="detail_btn" @click="getDetail(index)">查看/編輯</button>
+                    </td>
+                </tr>
+                <tr v-if="!queryResult">
+                    <td><input type="checkbox"></td>
+                    <td :colspan="Object.keys(colName).length">查無資料</td>
+                </tr>
+            </table>
+        </div>
+    `,
+    props: ['queryResult', 'colName', 'deconstructResult'],
+    methods: {
+        deconstructRow(row, index) {
+            this.$emit('deconstruct-row', row, index);
+            return deconstructResult;
+        },
+        getDetail(index) {
+            this.$emit('get-detail', index);
+        }
+    }
 })

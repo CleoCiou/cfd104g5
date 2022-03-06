@@ -28,25 +28,7 @@
                     <top-action-bar :action-btn="actionBtn"></top-action-bar>
                     
                     <!-- 資料內容 -->
-                    <div class="table_wrapper">
-                        <table>
-                            <tr>
-                                <th scope="col"><input type="checkbox"></th>
-                                <th scope="col" v-for="col in colName">{{col}}</th>
-                            </tr>
-                            <tr v-for="(row, index) in queryResult">
-                                <td><input type="checkbox"></td>
-                                <td v-for="(col, colName) in deconstructRow(row, index)">
-                                    <label v-if="colName!=='detail'" :class="colName">{{ col }}</label>
-                                    <button v-else class="detail_btn" @click="getDetail(index)">查看/編輯</button>
-                                </td>
-                            </tr>
-                            <tr v-if="!queryResult">
-                                <td><input type="checkbox"></td>
-                                <td :colspan="Object.keys(colName).length">查無資料</td>
-                            </tr>
-                        </table>
-                    </div>
+                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
 
                     <!-- 彈出視窗 -->
                     <div :class="popup">
@@ -72,7 +54,8 @@
                                 <input type="date" :value="detail.birthday">
                             </div>
                             <!-- 會員地址 -->
-                            <div class="info_box address">                               <label for="address">地址</label>
+                            <div class="info_box address">
+                                <label for="address">地址</label>
                                 <input type="text" :value="detail.address">
                             </div>
                             <!-- 會員卡號 -->
@@ -113,6 +96,8 @@
                 ],
                 // 後端回傳查詢結果
                 queryResult: '',
+                // 解構結果
+                deconstructResult: {},
                 // 結果解構後詳細內容會縮為一個按鈕，點擊跳popup視窗
                 detail: {},
                 // popup視窗開關class
@@ -146,14 +131,13 @@
                 // 解構欄位
                 deconstructRow(row, idx) {
                     let {memName, memId, identity, status, ...detail} = row;
-                    return {memName, memId, identity, detail, status};
+                    deconstructResult = {memName, memId, identity, detail, status};
                 },
 
-                // 取得會員詳細資訊
+                // 取得詳細資訊
                 getDetail(idx) {
                     this.displaynone = false;
                     this.detail = this.queryResult[idx];
-                    console.log(this.detail);
                 }
             },
             computed: {
