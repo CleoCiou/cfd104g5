@@ -5,146 +5,157 @@
     'title': '推算結果'
 })
 <link rel="stylesheet" href="css/shop.css">
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- <script src="js/change_category.js"></script> -->
 <body>
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
-    <main id="twinklingStar">
+    <main>
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
             @@include('layout/con_page.html')
         </div>
 
-            <!-- 星座命盤結果 by JC -->
-            <section class="astrolabe chart" id="appList"> 
-                <div class="container">
-                    <div class="astrolabe_chart">
-                        <!-- 宮位分類欄 有11個該死的宮位 -->
-                        <div class="chart_classification">
-                            <ul>
-                                <li v-for="chart in charts" @click="changePanel" ><label>{{chart}}</label></li>
-                            </ul>
+        <!-- 星座命盤結果 by JC -->
+        <section class="astrolabe chart" id="appList"> 
+            <div class="container">
+                <div class="astrolabe_chart">
+                    <!-- 宮位分類欄 有11個該死的宮位 -->
+                    <div class="chart_classification">
+                        <ul>
+                            <li v-for="(chart,index) in charts" @click="isChanged = !isChanged"><label>{{chart}}</label></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 左 === 星盤解讀 -->
+                    <div class="parse_box card3d">                       
+                        <!-- 星盤解讀分析內容的外框 用來包住大標和內文 -->
+                        <div class="analyze_bg">
+                            <!-- 星盤解讀大標題 -->
+                            <div class="analyze_title">
+                                <h2>Analysis</h2>
+                            </div>
+                            <!-- 星盤解讀內文 -->
+                            <div class="analyze_txt" :class="{'hiddenPanel' : isChanged}">
+                                <h3>上升星座 天秤座</h3>
+                                <h4>－配合、協調才能將合作能量極大化－</h4>
+                                <p>你一生都在追求平衡、打造屬於自己的基地。你們喜歡團隊合作，深信合作能將能量發揮到最大值。
+                                    喜歡表現自己的配合與協調，你常常以大局為重，會儘量配合他人，也希望他人能配合自己，共創雙贏，但有時會不如預期而被辜負，把自己的心及執行力給卡住。不過你個性倔強，有苦不訴，面對威脅時，態度會出乎意料地強硬，有野心，但也講究天時與人和，時間或人到齊便容易一飛沖天。<br>
+                                    
+                                    你也是個工作狂，常常接下好多任務，為了趕緊睡個好覺而一股腦兒拚命工作，結果反而忙到沒時間睡覺，身體也常因此搞壞了。<br>
+                                    
+                                    你很需要朋友、夥伴、或另一半，因為喜歡有「能商量的人」，通常你在外不會訴說的事情，會說給心目中重要的自己人聽。<br>
+                                    
+                                    另外你也很擅長「冷暴力」，對於討厭的人，寧可「冷冷對待」也無法激烈，因為那樣太歇斯底里、太不優雅了。
+                                </p>
+                            </div>
+                            <div class="analyze_txt hiddenPanel" :class="{'showPanel' : isChanged}">
+                                <h3>太陽星座 水瓶座</h3>
+                                <h4>－求新求變，好奇心強－</h4>
+                                <p>你的性格高尚，溫和而堅實，你善良的心相信人類是互助的，而且你常常過份地寬宏大量，過於自我犧牲地對待朋友。你不喜歡看到別人受苦，因此你願意為任何人解決困難。先天上你非常具理性，你瞭解人類內心的本性，同時擁有高度的容忍力，你能夠忍受人性的弱點，並轉化成為犯錯是人生成長的必經過程。你自己的個性通常是均衡而健全的。<br>
+                                你富於研究精神，喜愛新鮮的事物，自己常常可以成為發明家或科學家。由於你獨特的觀察力，與理論的建構能力，常常出現所謂的天才人物，並能成為一位出色的人類行為研究者。<br>
+                                你堅信將來一定會有大同世界的來臨，當此一事實將來到時，甚至發動革命以達成目的，你個人的方法並非純粹地像理想主義者般只說不做，你的手段合乎實際。你的缺點也許就是過份的溫和，但有時候，劇烈的行動是必須的，雖然對不傾向暴力極端的水瓶座而言，這是難以接受的事實。<br>
+                                你不易受環境的影響，你只依賴自己心智與精神上的能力，為自己盡最大的努力。你的心地是開闊的，如果想獲得最合理解釋及判斷的話，你是最合適不過的人選。你除了明白自己的處境外，更能看出深藏在每一件事物背後的情勢。
+                                </p>
+                            </div>
                         </div>
-                        
-                        <!-- 左 === 星盤解讀 -->
-                        <div class="parse_box card3d">                       
-                            <!-- 星盤解讀分析內容的外框 用來包住大標和內文 -->
-                            <div class="analyze_bg">
-                                <!-- 星盤解讀大標題 -->
-                                <div class="analyze_title">
-                                    <h2>Analysis</h2>
-                                </div>
-                                <!-- 星盤解讀內文 -->
-                                <div class="analyze_txt">
-                                    <h3>上升星座 天秤座</h3>
-                                    <h4>－配合、協調才能將合作能量極大化－</h4>
-                                    <p>你一生都在追求平衡、打造屬於自己的基地。你們喜歡團隊合作，深信合作能將能量發揮到最大值。
-                                        喜歡表現自己的配合與協調，你常常以大局為重，會儘量配合他人，也希望他人能配合自己，共創雙贏，但有時會不如預期而被辜負，把自己的心及執行力給卡住。不過你個性倔強，有苦不訴，面對威脅時，態度會出乎意料地強硬，有野心，但也講究天時與人和，時間或人到齊便容易一飛沖天。<br>
-                                        
-                                        你也是個工作狂，常常接下好多任務，為了趕緊睡個好覺而一股腦兒拚命工作，結果反而忙到沒時間睡覺，身體也常因此搞壞了。<br>
-                                        
-                                        你很需要朋友、夥伴、或另一半，因為喜歡有「能商量的人」，通常你在外不會訴說的事情，會說給心目中重要的自己人聽。<br>
-                                        
-                                        另外你也很擅長「冷暴力」，對於討厭的人，寧可「冷冷對待」也無法激烈，因為那樣太歇斯底里、太不優雅了。</p>
-                                </div>
-                            </div>
-                        </div>    
-                        <!-- 右 === 個資+命盤 -->     
-                        <div class="chart_info">
-                            <!-- 個人資訊 -->
-                            <div class="chart_txt">
-                                <p>男 | 小陳</p>
-                                <p>1998年10月10日 15:30</p>
-                            </div>
-                            <!-- 命盤圖 -->
-                            <div class="img_box chart_img">
-                                <img src="images/constellation/fakechart.png">
-                            </div>
-                            <!-- 貓頭鷹分類 -->
-                            <div class="owl-carousel owl-theme display">
-                                <div class="item" v-for="chart in charts" ><label>{{chart}}</label></div>
-                            </div>
+                    </div>    
+                    <!-- 右 === 個資+命盤 -->     
+                    <div class="chart_info">
+                        <!-- 個人資訊 -->
+                        <div class="chart_txt">
+                            <p>男 | 小陳</p>
+                            <p>1998年10月10日 15:30</p>
+                        </div>
+                        <!-- 命盤圖 -->
+                        <div class="img_box chart_img">
+                            <img src="images/constellation/fakechart.png">
+                        </div>
+                        <!-- 貓頭鷹分類 -->
+                        <div class="owl-carousel owl-theme display">
+                            <div class="item chart_list" v-for="(chart,index) in charts" @click="isChanged = !isChanged"><label>{{chart}}</label></div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- 主打商品卡片 by JC -->
-            <section class="products_cards">
-                <div class="container">
-                    <div class="products_box">
-                        <!-- 左欄標題和底圖 大容器 -->
-                        <div class="products_title_wrap">
-                            <h2>主打商品</h2>
-                        </div>
-                        <!-- 卡品 大容器 -->
-                        <div class="shop_product_item">
-                            <!-- 產品卡片-->
-                               
-                               <div class="shop_product_card">
-                                    <a href="shop.html">
-                                    <div class="shop_product_card_img">
-                                        <img src="images/shop/Constellation/wristband/wristband_libra.png">
-                                    </div>
-                                    <div class="shop_product_card_txt">
-                                        <h4>星座手環-天秤座</h4>
-                                        <h4>NT$1,299</h4>
-                                    </div>
-                                    <div class="shop_product_card_icon">
-                                        <img src="images/icon/icon_shop_eye.svg">
-                                    </div>
-                                    </a>
-                               </div>
-                           
-  
-                               <div class="shop_product_card">
-                                    <a href="shop.html">
-                                        <div class="shop_product_card_img">
-                                            <img src="images/shop/Constellation/wristband/wristband_scorpio.png">
-                                        </div>
-                                        <div class="shop_product_card_txt">
-                                            <h4>星座手環-天蠍座</h4>
-                                            <h4>NT$1,299</h4>
-                                        </div>
-                                        <div class="shop_product_card_icon">
-                                            <img src="images/icon/icon_shop_eye.svg">
-                                        </div>
-                                    </a>
-                               </div>
+            </div>
+        </section>
+        <!-- 主打商品卡片 by JC -->
+        <section class="products_cards">
+            <div class="container">
+                <div class="products_box">
+                    <!-- 左欄標題和底圖 大容器 -->
+                    <div class="products_title_wrap">
+                        <h2>主打商品</h2>
+                    </div>
+                    <!-- 卡品 大容器 -->
+                    <div class="shop_product_item">
+                        <!-- 產品卡片-->
+                            
+                            <div class="shop_product_card">
+                                <a href="shop.html">
+                                <div class="shop_product_card_img">
+                                    <img src="images/shop/Constellation/wristband/wristband_libra.png">
+                                </div>
+                                <div class="shop_product_card_txt">
+                                    <h4>星座手環-天秤座</h4>
+                                    <h4>NT$1,299</h4>
+                                </div>
+                                <div class="shop_product_card_icon">
+                                    <img src="images/icon/icon_shop_eye.svg">
+                                </div>
+                                </a>
+                            </div>
+                        
 
-   
-                               <div class="shop_product_card">
-                                    <a href="shop.html">
-                                        <div class="shop_product_card_img">
-                                            <img src="images/shop/Constellation/wristband/wristband_sagittarius.png">
-                                        </div>
-                                        <div class="shop_product_card_txt">
-                                            <h4>星座手環-射手座</h4>
-                                            <h4>NT$1,299</h4>
-                                        </div>
-                                        <div class="shop_product_card_icon">
-                                            <img src="images/icon/icon_shop_eye.svg">
-                                        </div>
-                                    </a>
-                               </div>
-                               <div class="shop_product_card">
+                            <div class="shop_product_card">
                                 <a href="shop.html">
                                     <div class="shop_product_card_img">
-                                        <img src="images/shop/Constellation/wristband/wristband_gemini.png">
+                                        <img src="images/shop/Constellation/wristband/wristband_scorpio.png">
                                     </div>
                                     <div class="shop_product_card_txt">
-                                        <h4>星座手環-雙子座</h4>
+                                        <h4>星座手環-天蠍座</h4>
                                         <h4>NT$1,299</h4>
                                     </div>
                                     <div class="shop_product_card_icon">
                                         <img src="images/icon/icon_shop_eye.svg">
                                     </div>
                                 </a>
-                           </div>
+                            </div>
 
-                       </div>
+
+                            <div class="shop_product_card">
+                                <a href="shop.html">
+                                    <div class="shop_product_card_img">
+                                        <img src="images/shop/Constellation/wristband/wristband_sagittarius.png">
+                                    </div>
+                                    <div class="shop_product_card_txt">
+                                        <h4>星座手環-射手座</h4>
+                                        <h4>NT$1,299</h4>
+                                    </div>
+                                    <div class="shop_product_card_icon">
+                                        <img src="images/icon/icon_shop_eye.svg">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="shop_product_card">
+                            <a href="shop.html">
+                                <div class="shop_product_card_img">
+                                    <img src="images/shop/Constellation/wristband/wristband_gemini.png">
+                                </div>
+                                <div class="shop_product_card_txt">
+                                    <h4>星座手環-雙子座</h4>
+                                    <h4>NT$1,299</h4>
+                                </div>
+                                <div class="shop_product_card_icon">
+                                    <img src="images/icon/icon_shop_eye.svg">
+                                </div>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
             
     </main>
     <!-- 網頁尾 By NJ -->
@@ -169,10 +180,20 @@
             data: {
                 charts: ['上升','太陽','月亮','水星','金星','火星','木星','土星','天王','海王','冥王'],
                 list: '',
+                isChanged: false,
+                num: 0,
             },
             methods: {
                 changePanel(e){
-                    console.log(e);
+                    console.log(e.target.innerText);
+                    if(e.target.innerText !== "上升"){
+                        console.log(1+1);
+                    }else{
+                        console.log(0);
+                    }
+                },
+                tab(index) {
+                  this.num = index;
                 }
             },
         });

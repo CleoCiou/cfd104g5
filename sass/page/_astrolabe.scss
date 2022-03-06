@@ -50,6 +50,7 @@ main{
         .container{
             .astrolabe_start_box{
                 position: relative;
+                margin-top: 2em;
                 @include mobile{
                     height: 350px;
                 }
@@ -176,10 +177,13 @@ main{
                             }
                         }
                     }
-                
+                    .li_active{
+                       background-color: #fff;     
+                    }
+
                 }
                 .parse_box{
-                    width: 60%;
+                    width: 50%;
                     margin-top: 2em;
                     position: relative;
                     display: flex;
@@ -217,10 +221,16 @@ main{
                                 letter-spacing: 1px;
                             }
                         }
+                        .hiddenPanel{
+                            display: none;
+                        }
+                        .showPanel{
+                            display: block;
+                        }
                     }
                 }
                 .chart_info{
-                    width: 33%;
+                    width: 43%;
                     margin: 0 2em;
                     display: flex;
                     flex-direction: column;
@@ -240,7 +250,8 @@ main{
                         }
                     }
                     .chart_img{
-                        width: 100%;
+                        width: 70%;
+                        margin: auto;
                         @include mobile{
                             margin: 2em auto;
                         }

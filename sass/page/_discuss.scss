@@ -179,6 +179,13 @@ main {
                             color: #000;
                         }
                     }
+                    
+                    .label_hidden{
+                        display: none;
+                    }
+                    .label_show{
+                        display: block;
+                    }
                 }
                 .content_pages{
                     text-align: right;
