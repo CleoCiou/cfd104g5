@@ -3300,6 +3300,7 @@ body section.back .contain main .container .table_wrapper table tr {
 body section.back .contain main .container .table_wrapper table tr th,
 body section.back .contain main .container .table_wrapper table tr td {
   text-align: center;
+  vertical-align: middle;
   border: 1px solid #CFB886;
   padding: .5em 1em;
   -ms-flex-negative: 0;
@@ -3335,6 +3336,20 @@ body section.back .contain main .container .table_wrapper table tr th:not(:first
   border-left: .2em solid transparent;
   border-right: .2em solid transparent;
   border-top: .3em solid black;
+}
+
+body section.back .contain main .container .table_wrapper table tr .status {
+  display: block;
+  margin: auto;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #CFB886;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+body section.back .contain main .container .table_wrapper table tr .status.active {
+  background-color: #CFB886;
 }
 
 #twinklingStar .star {

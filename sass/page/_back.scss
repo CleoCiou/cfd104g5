@@ -157,6 +157,7 @@ body {
                                 th,
                                 td {
                                     text-align: center;
+                                    vertical-align: middle;
                                     border: 1px solid map-get($primary_color ,'content');
                                     padding: .5em 1em;
                                     flex-shrink: 0;
@@ -188,6 +189,19 @@ body {
                                     border-left: .2em solid transparent;
                                     border-right: .2em solid transparent;
                                     border-top: .3em solid black;
+                                }
+                                .status {
+                                    display: block;
+                                    margin: auto;
+                                    width: 1em;
+                                    height: 1em;
+                                    border: 1px solid map-get($primary_color, 'content');
+                                    border-radius: 50%;
+                                    cursor: pointer;
+                                    
+                                    &.active {
+                                        background-color: #CFB886;
+                                    }
                                 }
                             }
                         }
