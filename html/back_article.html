@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+@@include('layout/head.html', {
+    'title': '後台管理'
+})
+        
+
+<body>
+    <section id="app" class="back container">
+        
+        <my-nav></my-nav>
+
+        <!-- 管理內容區 -->
+        <div class="contain">
+            <!-- 登出 -->
+            <header>
+                <div class="burger"></div>
+                <button class="third_btn">登出</button>
+            </header>
+
+            <!-- 管理內容 -->
+            <main>
+                <div class="container">
+                    <!-- 表格上方操作列 -->
+                    <top-action-bar :action-btn="actionBtn"></top-action-bar>
+                    
+                    
+                    <!-- 資料內容 -->
+                    <!-- 資料內容 -->
+                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
+
+                    <!-- 彈出視窗 -->
+                    <div :class="popup">
+                        <div class="content_box">
+                            <!-- 管理者姓名 -->
+                            <div class="info_box adminName">
+                                <label for="adminName">姓名</label>
+                                <input type="text">
+                            </div>
+                            <!-- 管理者帳號 -->
+                            <div class="info_box adminId">
+                                <label for="adminId">帳號</label>
+                                <input type="text">
+                            </div>
+                            
+                            <!-- 管理者密碼預設 帳號+123 -->
+
+                            <!-- 儲存/取消 -->
+                            <div class="info_box action_box">
+                                <div class="action">
+                                    <button class="third_btn" @click="displaynone=true">取消</button>
+                                    <button class="secondary_btn" @click="displaynone=true">新增</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+            
+        </div>
+    </section>
+</body>
+</html>
+<script src="js/back_component.js"></script>
+<script>
+    $(document).ready(function() {
+        new Vue({
+            el: '#app',
+            data: {
+                // 資料表顯示欄位名稱
+                colName: [
+                    '文章編號',
+                    '文章主題',
+                    '發文時間',
+                    '文章主旨',
+                    '文章狀態',
+                ],
+                // 後端回傳查詢結果
+                queryResult: '',
+                // 解構結果
+                deconstructResult: {},
+                // 結果解構後詳細內容會縮為一個按鈕，點擊跳popup視窗
+                detail: {},
+                // popup視窗開關class
+                displaynone: true,
+                // 表格上方操作列按鈕
+                actionBtn: ['新增', '修改', '停權']
+            },
+            mounted() {
+                this.getCol();
+            },
+            methods: {
+                // 依選擇項目取得資料表
+                getCol() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/back_getCol.php',
+                        data: {
+                            table: 'article',
+                            queryCol: 'artNo, artTime, title, status'
+                        },
+                        success: function(data) {
+                            thisVue.queryResult = data.msg;
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                // 解構欄位
+                deconstructRow(row, idx) {
+                    // 不解構
+                    deconstructResult = this.queryResult[idx];
+                },
+                // 取得詳細資訊
+                getDetail(idx) {
+                    this.displaynone = false;
+                    this.detail = this.queryResult[idx];
+                }
+
+            },
+            computed: {
+                popup() {
+                    return {
+                        popup: true,
+                        display_none: this.displaynone
+                    }
+                }
+            }
+        });
+    });
+</script>

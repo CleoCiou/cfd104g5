@@ -53,8 +53,7 @@
 
                                 <!-- 熱門 & 最新的兩個標籤 -->
                                 <div class="content_label">
-                                    <label class="select_label" @click="isChecked = !isChecked">熱門</label>
-                                    <label @click="isChecked =! isChecked">最新</label>
+                                    <label v-for="(label,index) in labels" :key="index" @click="isChecked = index" :class="{select_label: isChecked == index}">{{label}}</label>
                                 </div>
                                 <!-- 放文章的地方 -->
                                 <div class="row" :class="{'label_hidden' : isChecked}">
@@ -71,13 +70,13 @@
                                                 <p>{{articleTxt[index].content}}</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <img :src="con_cancer" alt="巨蟹座照片">         
+                                                <img :src="articleTxt[index].img" alt="巨蟹座照片">         
                                             </div>
                                         </div>
                                         <div class="line_bottom">
                                             <!-- 愛心 -->
-                                            <button class="using_btn"  @click="activeIndex =! activeIndex; changeLike()" >
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: activeIndex== 1}">
+                                            <button class="using_btn"  @click="articleTxt[index].activeIndex =! articleTxt[index].activeIndex; changeLike(index)" >
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: articleTxt[index].activeIndex == 1}">
                                                     <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z" fill-rule="evenodd">
                                                     </path>
                                                 </svg>
@@ -88,8 +87,8 @@
                                             <img :src="iconMessage">
                                             <p>28回應</p>
                                             <!-- 收藏 -->
-                                            <button class="using_btn" @click="favIndex =!favIndex">
-                                                <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: favIndex == 1}">
+                                            <button class="using_btn" @click="articleTxt[index].favIndex =! articleTxt[index].favIndex">
+                                                <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: articleTxt[index].favIndex == 1}">
                                                     <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
                                                 </svg>
                                                 <p>收藏</p>
@@ -226,53 +225,61 @@
                     '星座討論區': 'discuss.html',
                 },
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
-                // cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
-                cates: ['全部','塔羅版','星座版'],
+                cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
+                labels: ['熱門','最新'],
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
-                con_cancer: 'images/constellation/discuss_con_cancer.jpg',
-                con_fruit: 'images/constellation/discuss_fruit.jpg',
-                con_ast: 'images/constellation/discuss_astronomy.jpg',
                 author_img: 'images/black_cat.svg',
                 author_hat_img: 'images/black_cat_wizard.svg',
                 isChecked: 0,
-                activeIndex: 0,
-                favIndex: 0,
                 articleTxt:[
-                    {
+                    {   
+                        index: 0,
+                        activeIndex: 0,
                         theme: "星座版",
                         time: "1小時",
                         title: "巨蟹座的性格分析",
                         content: "巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實...",
+                        img: 'images/constellation/discuss_con_cancer.jpg',
                         likes: 999,
+                        favIndex: 0,
                     },
                     {
+                        index: 1,
+                        activeIndex: 0,
                         theme: "塔羅版",
                         time: "2小時",
                         title: "塔羅測驗分析",
-                        content: "...",
+                        content: "Vue好難好難好難好難好難好難好難好難好難好難好難好難好難好難好難好難好難好難",
+                        img: 'images/constellation/discuss_fruit.jpg',
                         likes: 34,
+                        favIndex: 0,
+                    },
+                    {
+                        index: 2,
+                        activeIndex: 0,
+                        theme: "塔羅版",
+                        time: "9小時",
+                        title: "測試嗚嗚嗚嗚嗚",
+                        content: "Vue好難好難好難好難好難好難好難好難好難好難好難好難好難好難好難好難好難好難",
+                        img: 'images/constellation/discuss_astronomy.jpg',
+                        likes: 77,
+                        favIndex: 0,
                     },
                 ],
             },
             methods: {
-                changeLike(){
-                    if(this.$data.activeIndex[index] == 0){
-                        this.$data.articleTxt[index].likes -=1;
-                    }else{
-                        this.$data.articleTxt[index].likes +=1;
+                changeLike(index){
+                    // console.log(index);
+                    // console.log(this.$data.articleTxt[index].activeIndex);
+                    // console.log(this.$data.articleTxt[index].likes);
+                    if(this.$data.articleTxt[index].activeIndex == 0){
+                        this.$data.articleTxt[index].likes -= 1;
+                    }else if(this.$data.articleTxt[index].activeIndex == 1){
+                        this.$data.articleTxt[index].likes += 1;
                     }
                 },
             },
-            watch:{
-                test:{
-                    handler(newValue){
-                    console.log(likes);
-                    },
-                    
-                }
-                
-            }
         });
         $(document).ready(function(){
             $('.owl-carousel').owlCarousel({

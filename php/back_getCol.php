@@ -1,5 +1,5 @@
 <?php
-    include('../php/connectdb.php');
+    include('connectdb.php');
     header('Content-Type: application/json; charset=utf-8');
     
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
