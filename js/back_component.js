@@ -41,7 +41,7 @@ Vue.component('top-action-bar', {
     template: `
         <!-- 表格上方操作列 -->
         <div class="action_box top">
-            <button class="secondary_btn" v-for="btn in actionBtn">{{ btn }}</button>
+            <button class="secondary_btn" v-for="btn in actionBtn" @click="updateDb">{{ btn }}</button>
             <div>
                 顯示
                 <select class="row_limit">
@@ -55,6 +55,11 @@ Vue.component('top-action-bar', {
         </div>
     `,
     props: ['actionBtn'],
+    methods: {
+        updateDb(e) {
+            this.$emit('update-db', e.target);
+        }
+    }
 })
 
 // === 表格
@@ -64,8 +69,10 @@ Vue.component('my-table', {
         <div class="table_wrapper">
             <table>
                 <tr>
-                    <th scope="col"><input type="checkbox"></th>
-                    <th scope="col" v-for="col in colName">{{col}}</th>
+                    <th scope="col">
+                        <input type="checkbox" @change="checkAll">
+                    </th>
+                    <th scope="col" v-for="col in colName">{{ col }}</th>
                 </tr>
                 <tr v-for="(row, index) in queryResult">
                     <td><input type="checkbox"></td>
@@ -83,12 +90,20 @@ Vue.component('my-table', {
     `,
     props: ['queryResult', 'colName', 'deconstructResult'],
     methods: {
+        // 資料解構
         deconstructRow(row, index) {
             this.$emit('deconstruct-row', row, index);
             return deconstructResult;
         },
+        // 取得收在按鈕中的詳細資料，開啟popup視窗
         getDetail(index) {
             this.$emit('get-detail', index);
+        },
+        // 一鍵全選
+        checkAll(e) {
+            $('table > tr > td > input[type=checkbox]').prop("checked", e.target.checked);
         }
     }
 })
+
+// === popup視窗驗證

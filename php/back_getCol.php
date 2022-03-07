@@ -25,6 +25,13 @@
             $sql = "$sql join $joinSql";
         }
         
+        // 如果有WHERE
+        if (isset($_POST['condition'])) {
+            $where = $_POST['condition'];
+            $sql = "$sql where $where";
+            $msg['sql'] = $sql;
+        }
+
         try {
             $result = $pdo -> query($sql);
             $count = $result->rowCount();
