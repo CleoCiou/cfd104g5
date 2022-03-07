@@ -24,10 +24,8 @@
             <main>
                 <div class="container">
                     <!-- 表格上方操作列 -->
-                    <top-action-bar :action-btn="actionBtn"></top-action-bar>
+                    <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
                     
-                    
-                    <!-- 資料內容 -->
                     <!-- 資料內容 -->
                     <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
 
@@ -37,12 +35,12 @@
                             <!-- 管理者姓名 -->
                             <div class="info_box adminName">
                                 <label for="adminName">姓名</label>
-                                <input type="text">
+                                <input v-model="newName" type="text">
                             </div>
                             <!-- 管理者帳號 -->
                             <div class="info_box adminId">
                                 <label for="adminId">帳號</label>
-                                <input type="text">
+                                <input v-model="newId" type="text">
                             </div>
                             
                             <!-- 管理者密碼預設 帳號+123 -->
@@ -51,7 +49,7 @@
                             <div class="info_box action_box">
                                 <div class="action">
                                     <button class="third_btn" @click="displaynone=true">取消</button>
-                                    <button class="secondary_btn" @click="displaynone=true">新增</button>
+                                    <button class="secondary_btn" @click="insertData">新增</button>
                                 </div>
                             </div>
                         </div>
@@ -85,29 +83,42 @@
                 // popup視窗開關class
                 displaynone: true,
                 // 表格上方操作列按鈕
-                actionBtn: ['新增', '修改', '停權']
+                actionBtn: ['新增', '修改', '停權'],
+                // 新增使用者姓名
+                newName: '',
+                // 新增使用者id
+                newId: ''
             },
             mounted() {
                 this.getCol();
             },
             methods: {
                 // 依選擇項目取得資料表
-                getCol() {
+                getCol(update = true, where) {
                     let thisVue = this;
+                    let result;
                     $.ajax({
                         type: 'POST',
                         url: 'php/back_getCol.php',
                         data: {
                             table: 'admin',
-                            queryCol: 'adminName, adminId, status'
+                            queryCol: 'adminName, adminId, status',
+                            condition: where
                         },
+                        async: false,
                         success: function(data) {
-                            thisVue.queryResult = data.msg;
+                            result = data.msg;
+                            console.log(data.msg);
+                            console.log(data.sql);
+                            if(update) {
+                                thisVue.queryResult = data.msg;
+                            }
                         },
                         error: function() {
                             console.log('ajax error');
                         }
                     });
+                    return result;
                 },
                 // 解構欄位
                 deconstructRow(row, idx) {
@@ -118,8 +129,54 @@
                 getDetail(idx) {
                     this.displaynone = false;
                     this.detail = this.queryResult[idx];
+                },
+                // 表格上方操作列按鈕
+                // 新增
+                updateDb(btnEl) {
+                    if (btnEl.innerText === '新增') {
+                        this.displaynone = false;
+                    }
+                },
+                insertData() {
+                    let name = this.newName;
+                    let id = this.newId;
+                    // 檢查欄位是否已填
+                    if (!name || !id) {
+                        this.resetInput('帳號及姓名皆為必填欄位');
+                        return;
+                    }
+                    // 檢查帳號是否重複
+                    let where = `adminId = '${id}'`;
+                    if (this.getCol(false, where)) {
+                        this.resetInput('帳號已存在');
+                        return;
+                    }
+                    
+                    // 新增資料
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/insert.php',
+                        data: {
+                            table: 'admin',
+                            insertValue: `'${id}', '${name}', default, default`
+                        },
+                        success: function(data) {
+                            thisVue.resetInput('新增成功');
+                            thisVue.getCol();
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                    
+                },
+                // 清空輸入框
+                resetInput(msg = false) {
+                    if(msg) alert(msg);
+                    this.newId = '';
+                    this.newName = '';
                 }
-
             },
             computed: {
                 popup() {
