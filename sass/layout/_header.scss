@@ -356,7 +356,9 @@ header {
         // .menu li:hover > .sub_menu{
         //     display: block;
         // }
-    
+        .menu_list {
+            padding-top: 2em;
+        }
         .sub_menu_check:checked ~ ul{
             display: block;
         }
@@ -382,6 +384,7 @@ header {
         }
         .menu_link {
             display: block;
+            font-size: 1.25rem;
         }
         .header_all .header_bar .header_icon p{
             margin-top: 23px;

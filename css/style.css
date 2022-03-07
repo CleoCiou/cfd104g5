@@ -464,6 +464,9 @@ header .menu .rotate_card .shop {
   header .header_bar .header_icon .pc_login {
     display: none;
   }
+  header .menu_list {
+    padding-top: 2em;
+  }
   header .sub_menu_check:checked ~ ul {
     display: block;
   }
@@ -488,6 +491,7 @@ header .menu .rotate_card .shop {
   }
   header .menu_link {
     display: block;
+    font-size: 1.25rem;
   }
   header .header_all .header_bar .header_icon p {
     margin-top: 23px;
@@ -4422,7 +4426,7 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 * {
