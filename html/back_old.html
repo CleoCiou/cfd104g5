@@ -82,9 +82,6 @@
 </body>
 </html>
 
-<script src="js/common.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/vue.js"></script>
 <script>
     $(document).ready(function() {
 
@@ -93,15 +90,17 @@
         // ==================================================
         // 資料表名稱:{
         //     table: '左側欄顯示的選項名稱',
+        //     addBtn: '新增按鈕名稱',
         //     showCol: {
         //         資料表欄位名稱: '顯示在content的欄位名稱'
         //     }
         // }
         // ==================================================
-        const MANAGEITEM = {
+        const manageItem = {
             // 帳號管理
             admin: {
                 tableName: '帳號管理',
+                addBtn: '新增網站管理員',
                 showCol: {
                     adminId: '管理者帳號',
                     adminName: '管理者姓名',
@@ -112,6 +111,7 @@
             // 會員管理
             members: {
                 tableName: '會員管理',
+                addBtn: null,
                 showCol: {
                     memId: '會員帳號',
                     memName: '會員姓名',
@@ -125,6 +125,7 @@
             // 預約管理
             appointment: {
                 tableName: '預約管理',
+                addBtn: null,
                 showCol: {
                     memNo: '預約人',
                     astNo: '預約占卜師',
@@ -137,6 +138,7 @@
             // 訂單管理
             orders: {
                 tableName: '訂單管理',
+                addBtn: null,
                 showCol: {
                     memNo: '訂購者',
                     orderDate: '下單日期',
@@ -150,6 +152,7 @@
             // 商品管理
             product: {
                 tableName: '商品管理',
+                addBtn: '新增商品',
                 showCol: {
                     prodNo: '商品編號',
                     prodCateNo: '商品類別',
@@ -161,6 +164,7 @@
             // 占卜師審核
             astrologist: {
                 tableName: '審核占卜師',
+                addBtn: null,
                 showCol: {
                     astNo: '占卜師編號',
                     memNo: '會員編號',
@@ -169,20 +173,10 @@
                 }
             },
 
-            // 占卜師審核
-            astrologist: {
-                tableName: '審核占卜師',
-                showCol: {
-                    astNo: '占卜師編號',
-                    memNo: '會員編號',
-                    certificate: '證照',
-                    status: '狀態'
-                }
-            },
-            
             // 貼文檢舉審核
             article: {
                 tableName: '審核貼文',
+                addBtn: null,
                 showCol: {
                     artNo: '文章編號',
                     memNo: '發文者',
@@ -197,8 +191,9 @@
             el: '#app',
             data: {
                 // 管理欄位
-                manageItem: MANAGEITEM,
+                manageItem: manageItem,
                 selectCol: {},
+                selectIndex: -1,
                 queryResult: {}
             },
             methods: {

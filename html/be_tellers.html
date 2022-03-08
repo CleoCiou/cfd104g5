@@ -252,7 +252,7 @@
                     <a href="be_tellers.html"><button class="second_btn">再來一次</button></a>
                     <a href="online_divination.html"><button class="second_btn">線上占卜</button></a>
                     <a href="teller_mem.html"><button class="second_btn">預約占卜師</button></a>
-                    <a href="shop.html"><button class="second_btn">推薦商品</button></a>
+                    <a href="shop.html"><button class="second_btn">商城</button></a>
                 </div>    
             </div>
 
@@ -267,21 +267,24 @@
 <!-- 內容由 common.js 新增 by PIN -->
 @@include('layout/footer.html')
 
-
-<!-- <script>
-    $('.answer').click(function () {
-      $(this).toggleClass("btn_clicked");
-    });
-</script> -->
 <script>
-    $( ".third_btn" ).click(function() {
-    $( this ).toggleClass( "btn_clicked" );
-  });
+  $(document).ready(function (){
+        $(".third_btn").each(function(index){
+            $(this).click(function(){  //點選觸發事件
+                $(".third_btn").removeClass("btn_clicked");  //刪除當前元素的樣式
+                $(".third_btn").eq(index).addClass("btn_clicked");  //添加當前元素的樣式
+            });
+        });
+    });
 </script>
 <script>
-    $( ".third_btn" ).click(function() {
-    $( "#second_subject" ).css('display', 'flex')  
-  });
+    $( ".third_btn" ).click(function(){
+        let nextQ = $(this).parents('.test_item').next('.test_item')[0];
+        if (nextQ) {
+            // console.log($(this).parents('.test_item').next('.test_item')[0].classList);
+            nextQ.classList.remove('other');
+        }
+    });
 </script>
 </body>
 </html>

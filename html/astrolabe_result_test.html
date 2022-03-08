@@ -1,149 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&amp;family=Shippori+Mincho:wght@400;500;600;700;800&amp;display=swap">
-    
-    <!-- 瀏覽器頁籤 -->
-    <link rel="shortcut icon" href="images/logo_ico_square.ico">
-    <title>解星鏡 Mistro | 推算結果</title>
-
-    <!-- css -->
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
-
-    
-<!-- jquery -->
-<script src="js/jquery.min.js"></script>
-
-<!-- vue -->
-<script src="js/vue.min.js"></script>
-
-<!-- owl.carousel -->
-<script src="js/owl.carousel.min.js"></script>
-
-<!-- gsap -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-
-<!-- font_awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<!-- 自訂義 -->
-<script src="js/header.js"></script>
-</head>
-
+@@include('layout/head.html', {
+    'title': '推算結果'
+})
 <link rel="stylesheet" href="css/shop.css">
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <body>
     <!-- 網頁頭 by NJ -->
-    <!-- 網頁頭 by NJ-->
-<header class="main_header">
-    
-    <input id="nav_toggle" type="checkbox">
-    <!-- main logo -->
-    <div class="header_all">
-        <!-- main logo -->
-        <div class="header_img_box">
-            <a href="homepage.html" class="logo">
-                <img src="./images/index_logo_golden-02.png" alt="首頁mistro logo">
-            </a>
-        </div>
-            <!-- icon -->
-        <div class="header_bar">
-            <div class="header_icon">
-                <a href="test.html" class="pc_login"><p>登入</p></a>
-                <a href="member.html" class="pc_login"><img src="./images/header/header_icon_member.svg" alt="會員icon"></a>
-                <a href="shopping_cart.html"><img src="./images/header/header_icon_shooping_cart.svg" alt="購物車icon"></a>
-            </div>
-        
-
-            <!-- 漢堡 -->
-            <div class="ham_menu">
-                <label for="nav_toggle" class="ham no_style">
-                    <div class="ham_origin">
-                        <!-- 漢堡的槓槓 -->
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </label>
-            </div>
-
-  
-        </div>
-    </div>
-
-    <!-- 電腦選單 -->
-    <nav class="menu">
-        <div class="crystal_ball">
-        </div>
-        <div class="rotate_card">
-            <a href="be_tellers.html">
-                <div class="menu_card tarot"></div>
-            </a>
-            <a href="con_today_fortune.html">
-                <div class="menu_card zodiac"></div>
-            </a>
-            <a href="shop.html">
-                <div class="menu_card shop"></div>
-            </a>
-        </div>
-        <!-- 手機選單 -->
-        <ul class="menu_list">
-            <li class="menu_item">
-                <a class="menu_link">塔羅</a>
-                <ul class="sub_menu">
-                    <li><a href="be_tellers.html">體驗占卜師</a></li>
-                    <li><a href="online_divination.html">線上占卜</a></li>
-                    <li><a href="teller_reservation.html">預約占卜師</a></li>
-                </ul>
-            </li>
-            <li class="menu_item">
-                <a class="menu_link">星座</a>
-                <ul class="sub_menu">
-                    <li><a href="con_today_fortune.html">今日運勢</a></li>
-                    <li><a href="con_pair.html">星座配對</a></li>
-                    <li><a href="con_real_constellation.html">真實星座</a></li>
-                    <li><a href="astrolabe.html">星盤推算</a></li>
-                    <li><a href="con_story.html">星座故事</a></li>
-                    <li><a href="discuss.html">星座討論區</a></li>
-                </ul>
-            </li>
-            <li class="menu_item">
-                <a class="menu_link" href="shop.html">商城</a>
-            </li>
-            <li class="menu_item">
-                <a class="menu_link menu_member" href="#">會員專區</a>
-                <ul class="sub_menu">
-                    <li><a href="member.html">個人資訊</a></li>
-                    <li><a href="mem_orders.html">我的訂單</a></li>
-                    <li><a href="teller_mem.html">占卜師專區</a></li>
-                </ul>
-            </li>
-            <li class="menu_item">
-                <a class="menu_link menu_login" href="test.html">登入</a>
-                <a class="menu_link menu_login" href="test.html">註冊</a>
-            </li>
-        </ul>
-    </nav>
-
-</header>
+    @@include('layout/header.html')
     <main id="twinklingStar">
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
-                <section class="pagination_nav">
-        <div class="container">
-            <ul>
-                <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
-            </ul>
-        </div>
-    </section>
+            @@include('layout/con_page.html')
         </div>
 
             <!-- 星座命盤結果 by JC -->
@@ -153,7 +22,7 @@
                         <!-- 宮位分類欄 有11個該死的宮位 -->
                         <div class="chart_classification">
                             <ul>
-                                <li v-for="chart in charts" @click="changePanel" ><label>{{chart}}</label></li>
+                                <li v-for="(chart,index) in charts" :class="{ active: index == num }" @click="tab(index)"><label>{{chart}}</label></li>
                             </ul>
                         </div>
                         
@@ -166,17 +35,10 @@
                                     <h2>Analysis</h2>
                                 </div>
                                 <!-- 星盤解讀內文 -->
-                                <div class="analyze_txt">
-                                    <h3>上升星座 天秤座</h3>
-                                    <h4>－配合、協調才能將合作能量極大化－</h4>
-                                    <p>你一生都在追求平衡、打造屬於自己的基地。你們喜歡團隊合作，深信合作能將能量發揮到最大值。
-                                        喜歡表現自己的配合與協調，你常常以大局為重，會儘量配合他人，也希望他人能配合自己，共創雙贏，但有時會不如預期而被辜負，把自己的心及執行力給卡住。不過你個性倔強，有苦不訴，面對威脅時，態度會出乎意料地強硬，有野心，但也講究天時與人和，時間或人到齊便容易一飛沖天。<br>
-                                        
-                                        你也是個工作狂，常常接下好多任務，為了趕緊睡個好覺而一股腦兒拚命工作，結果反而忙到沒時間睡覺，身體也常因此搞壞了。<br>
-                                        
-                                        你很需要朋友、夥伴、或另一半，因為喜歡有「能商量的人」，通常你在外不會訴說的事情，會說給心目中重要的自己人聽。<br>
-                                        
-                                        另外你也很擅長「冷暴力」，對於討厭的人，寧可「冷冷對待」也無法激烈，因為那樣太歇斯底里、太不優雅了。</p>
+                                <div class="analyze_txt" v-for="(conTxt,index) in conTxts" v-show="index == num">
+                                    <h3>{{conTxt.zodiac}}星座 {{conTxt.conName}}</h3>
+                                    <!-- <h4>－配合、協調才能將合作能量極大化－</h4> -->
+                                    <p>{{conTxt.conAnalyze}}</p>
                                 </div>
                             </div>
                         </div>    
@@ -193,7 +55,7 @@
                             </div>
                             <!-- 貓頭鷹分類 -->
                             <div class="owl-carousel owl-theme display">
-                                <div class="item" v-for="chart in charts" ><label>{{chart}}</label></div>
+                                <div class="item chart_list" v-for="chart in charts" ><label>{{chart}}</label></div>
                             </div>
                         </div>
                     </div>
@@ -279,52 +141,7 @@
             
     </main>
     <!-- 網頁尾 By NJ -->
-    <!-- 網頁尾  by NJ-->
-<footer class="main_footer">
-    <div class="footer_container">
-        <div class="footer_info">
-            <!-- LOGO -->
-            <div class="footer_logo img_box">
-                <a href="homepage.html">
-                    <img src="./images/logo_white.svg" alt="解星鏡logo">
-                </a>
-            </div>
-            <div class="footer_up">
-                <div class="footer_nav">
-                    <ul>
-                        <li><a href="be_tellers.html">塔羅介紹</a></li>
-                        <li><a href="online_divination.html">線上占卜</a></li>
-                        <li><a href="con_today_fortune.html">星座運勢</a></li>
-                        <li><a href="teller_mem.html">預約占卜師</a></li>
-                        <li><a href="shop.html">商城</a></li>
-                        <li><a href="member.html">會員中心</a></li>
-                    </ul>
-                </div>
-                <div class="footer_icon">
-                    <a href="#"><img src="./images/footer/icon-fb.png" alt="facebook icon"></a>
-                    <a href="#"><img src="./images/footer/icon-ig.png" alt="instagram icon"></a>
-                    <a href="#"><img src="./images/footer/icon-yt.png" alt="youtube icon"></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer_down">
-            <div class="footer_txt_box">
-                <p>
-                    本網站為緯育TibaMe_前端設計工程師班第73期第五組學員專題成果作品，本平台僅供學習、展示之用。<br>若有牴觸有關著作權，或有第三人主張侵害智慧財產權等情事，若有侵權疑慮，請私訊
-                    <a href="https://www.tibame.com/goodjob/frontend">[TibaMe-前端設計工程師養成班]</a>，後續由專人協助處理。
-                    <br>
-                    <br>
-                    Copyright © 2022 ft. All rights reserved.
-                </p>
-            </div>
-        </div>
-        
-    </div>
-    
-    
-
-    
-</footer>
+    @@include('layout/footer.html')
     <script>
         new Vue({
             el: '#app',
@@ -339,17 +156,26 @@
                 },
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
             },
+            
         });
         new Vue({
             el: '#appList',
             data: {
+                conTxts: [],
                 charts: ['上升','太陽','月亮','水星','金星','火星','木星','土星','天王','海王','冥王'],
                 list: '',
+                num: 0,
+
             },
             methods: {
-                changePanel(e){
-                    console.log(e);
+                tab(index){
+                    this.num == index;
                 }
+            },
+            mounted() {
+                fetch('./js/constellation_detail.json')
+                .then(res => res.json())
+                .then(res => this.conTxts = res)
             },
         });
 
