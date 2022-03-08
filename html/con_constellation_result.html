@@ -1,130 +1,115 @@
-
-<!-- 拉到最後最大 會跑版一點? -->
-<!-- 圓餅圖flotcontainer固定寬高是否會出事? 改成%數會不見 -->
 <!DOCTYPE html>
 <html lang="en">
-    @@include('layout/head.html', {
-        'title': '星座測驗'
-    })
-    <link rel="stylesheet" href="css/real_constellation_result.css">
-    <style> 
-        #flotcontainer {
-           width: 500px;
-           height: 300px;
-           text-align: left;
-           
-          
-       }
-       .answer{
-        width: 500px;
-           height: 300px;
-           margin: 0 auto;
-       }
-       .container{
-           display: flex;
-           /* justify-content: center;
-           flex-direction: column;
-           align-items: center; */
-           justify-content: flex-start;
-           flex-wrap: wrap;
-       }
-       h3{
-           text-align: left;
-           width: 100%;
-           padding-left: 25px;
-       }
-       </style> 
+
+@@include('layout/head.html', {
+'title': '性格測驗'
+})
+<link rel="stylesheet" href="../css/real_constellation_2page.css">
 
 <body>
+    <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
-    <main>  
+    <main>
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
-            <section class="pagination_nav">
-                <div class="container">
-                    <ul>
-                        <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
-                    </ul>
-                </div>
-            </section>        
-        </div>
-        <section class="real_constellation real">
-               
-            <!-- 控制padding的容器 -->
-            <div class="container">
-                <!-- <h2>真實星座</h2> -->
-                <h3>你的真實星座是:</h3> 
-                <!-- 包住圖文的容器   -->
-                <div class="answer">
-                    <div id="legendPlaceholder"></div>
-                    <div id="flotcontainer"></div>
-                <div class="again" style="text-align: center;"><input type="button" value="再測一次" onclick="location.href='con_real_constellation.html'"></div>
-               
-            </div>
-        </div>
-        </section>
-    </main>
-    @@include('layout/footer.html')
-    <!-- <script src="css/common.css"></script> -->
-    
+            @@include('layout/con_page.html')
 
-        
+
+
+
+            <section class="result_owl">
+                <div class="container">
+                    <div class="item">
+                        <div class="img_box" id=owl><img src="../images/con_real/owl-removebg-preview.svg" alt="">
+                        </div>
+                        <h2>你的測驗結果為:貓頭鷹分析型(Compliance)的人
+                            <div class="txt_box">
+
+                                <p> 工作風格的主要行為為很少有面部表情； 動作緩慢；使用精確的語言、注意特殊細節；辦公室裏掛有圖表、統計表等。
+                                    具備高分析型特質的人往往會堅定提出明確的證據，有理才能走遍天下。具備高分析型特質的人往往會堅定提出明確的證據，有理才能走遍天下；關注細節、完美主義、高標準，想得多但做得少，做事前一定要先想個計劃。
+                                </p>
+                            </div>
+                    </div>
+
+                    <div class="one"> <a href="./con_real_constellation.html"><span class="third_btn">再測一次</span></a>
+                    </div>
+            </section>
+    </main>
+    <!-- 網頁尾 By NJ -->
+    @@include('layout/footer.html')
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+
+                num: 999,
+                urls: {
+                    '今日運勢': 'con_today_fortune.html',
+                    '星座配對': 'con_pair.html',
+                    '性格測驗': 'con_real_constellation.html',
+                    '星盤推算': 'astrolabe.html',
+                    '星座故事': 'con_story.html',
+                    '星座討論區': 'discuss.html',
+                },
+                navs: ['今日運勢', '星座配對', '性格測驗', '星盤推算', '星座故事', '星座討論區'],
+                cates: ['全部', '摩羯座', '水瓶座', '雙魚座', '牡羊座', '金牛座', '雙子座', '巨蟹座', '獅子座', '處女座', '天秤座', '天蠍座', '射手座'],
+                iconLike: './images/icon/icon_discuss_like.svg',
+                // iconLike: {
+                //     url: './images/icon/',
+                //     img: './icon_discuss_like.svg',
+                //     active: 'icon_discuss_likes.svg'
+                // },
+                iconLikeClick: 'images/icon/icon_discuss_likes.svg',
+                iconMessage: 'images/icon/icon_discuss_message.svg',
+                iconFav: 'images/icon/icon_discuss_favorite.svg',
+                iconClose: 'images/icon/icon_discuss_close.svg',
+                con_cancer: 'images/constellation/discuss_con_cancer.jpg',
+                con_fruit: 'images/constellation/discuss_fruit.jpg',
+                con_ast: 'images/constellation/discuss_astronomy.jpg',
+                author_img: 'images/black_cat.svg',
+                author_hat_img: 'images/black_cat_wizard.svg',
+                // isChecked: 0,
+                activetab: '1'
+            },
+            methods: {
+                changeLike(e) {
+                    // if(e.target.src == )
+                    console.log(e.target.src);
+                    console.log(this.$data.iconLike);
+                    this.$data.num += 1;
+                    // if(e.target.text == "我喜歡"){
+                    // }
+                    // console.log(e.target.text);
+                    // console.log(e);
+                    // console.log(this.$data.iconLike);
+
+                },
+                isChecked() {
+
+                }
+            },
+        });
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                stagePadding: 10,
+                loop: true,
+                margin: 5,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 5
+                    },
+                    767: {
+                        items: 8
+                    },
+
+                }
+            });
+        });
+    </script>
+
 
 </body>
+
 </html>
-<!-- 下面引入是圓餅圖用的 -->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
-   
-<script src="http://static.pureexample.com/js/flot/excanvas.min.js"></script>
-<script src="http://static.pureexample.com/js/flot/jquery.flot.min.js"></script>
-<script src="http://static.pureexample.com/js/flot/jquery.flot.pie.min.js"></script>
-
-<script>
-    new Vue({
-        el: '#app',
-        data: { //變數放這
-            urls: {
-                '今日運勢': 'con_today_fortune.html',
-                '星座配對': 'con_pair.html',
-                '真實星座': 'con_real_constellation.html',
-                '星盤推算': 'astrolabe.html',
-                '星座故事': 'con_story.html',
-                '星座討論區': 'discuss.html',
-            },
-            cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
-        }
-    });
-</script>
-<script type="text/javascript">
-    $(function () { 
-        var data = [
-            {label: "天秤座", data:10},
-            {label: "天蠍座", data: 20},
-            {label: "水瓶座", data: 30},
-            {label: "巨蟹座", data: 40},
-            {label: "牡羊座", data: 50},
-            {label: "金牛座", data: 60},
-            {label: "射手座", data: 100},
-            {label: "處女座", data: 20},
-            {label: "獅子座", data: 20},
-            {label: "摩羯座", data: 10},
-            {label: "雙子座", data: 30},
-            {label: "雙魚座", data: 20}
-
-        ];
-
-        
-
-    
-        var options = {
-                series: {
-                    pie: {show: true}
-                },
-                legend: {
-                    show: false
-                }
-             };
-    
-        $.plot($("#flotcontainer"), data, options);  
-    });
-</script>

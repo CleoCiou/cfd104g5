@@ -1,167 +1,157 @@
-<!-- p裡面的文字沒有靠左 -->
 <!DOCTYPE html>
 <html lang="en">
-    @@include('layout/head.html', {
-        'title': '星座故事'
-    })
-    <link rel="stylesheet" href="css/constellation_story.css">
-<!-- <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/constellation_story.css">-->
-    <!-- <script src="../js/vue.js"></script> -->
-    <style>
-        main .story{
-            display: flex;
-            flex-wrap: no-wrap;
-            
-            
-        }
-        .content_cate ul{
-            width: 100px;
-            display: flex;
-            justify-content: wrap;
-            padding-top: 5px;
-        }
-        .content_cate ul li {
-            padding: 0px 20px 10px;
-            display: inline-block;
-        }
-        main .story .sagit{
-            width: 30%;
-        }
-        .sagit img{
-            width: 100%;
-            height: 100%;
-            vertical-align: top;
-        }
-        .story p{
-            width: 70%;
-        }
 
-    </style>
-</head> 
+@@include('layout/head.html', {
+'title': '星座故事'
+})
 <body>
+    <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
-  <main>
-    <div id="app">
-        <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
-        <section class="pagination_nav">
-            <div class="container">
-                <ul>
-                    <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
-                </ul>
-            </div>
-        </section>        
-    
-    <!-- <section class="change constellation">
-        <div class="container">
-            <div class="item">
-               <a href="con_story_water.html"> <div class="unselected_btn">
-                    <p>水瓶座</p>
-                </a>   
-                </div>
-                
-                <div class="unselected_btn">
-                    <p>射手座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>雙魚座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>牡羊座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>金牛座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>雙子座</p>
-                </div>
-            </div>    
-            <div class="item">
-                <div class="unselected_btn">
-                    <p>摩羯座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>巨蟹座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>獅子座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>天秤座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>天蠍座</p>
-                </div>
-                <div class="unselected_btn">
-                    <p>處女座</p>
-                </div>
-            </div> 
+    <main>
+        <div id="app">
+            <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
+            @@include('layout/con_page.html')
+            <!-- 討論區 by JC -->
+            <section class="discuss">
+                <!-- 控制整個討論區padding的大大容器 -->
+                <div class="container">
+                          
+                    <div class="content">
+                        
+                        <!-- 左邊分類欄 -->
+                        <div class="content_cate">
+                            <li v-for="(url, cate) in cates"><a :href="url"><label class="category">
+                                {{cate}}</a>
+                        </label></li>
+                        </div>
+
+                        <!-- 右邊內容欄 -->
+                        <div class="content_article">
+                            <div class="content_wrap">
+                                
+                                <h2>星座故事</h2>
+                                <!-- 請從這裡開始寫~~~~~~~~~~~~~ -->
+                               <div class="story_box">
+                                 <div class="img_box">
+                                     <img src="../images/con_story/story-aquarius.svg" alt="">
+                                    
+
+                                 </div>
+
+                                 <div class="txt_box">
+                                    <p>水瓶座位於魔羯座的東方，是個不太明顯的星座。它又叫做寶瓶座。在星座圖上，寶瓶座是一個少年把水瓶扛在肩上。這個少年就是特洛伊王子卡尼米迪斯。天神宙斯所領導的奧林帕斯山，經常舉行盛大的宴會，在宴會中負責為眾神斟酒的，向來是青春女神希碧。有一次，眾神依舊在奧林匹斯宮殿舉行酒宴，等了許久，還不見希碧來倒酒。「怎麼回事?希碧呢?」宙斯問。</p>
+                                     
+                                </div>
+                               </div> 
+
+                               
 
 
 
-    </section> -->
 
-        <h2>星座故事:<span>水瓶座</span></h2>
+
+
+
+
+                                      
+                                    </div>
+                                </div>
+                                       
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           
+          
+        </div>
         
-        <section class="story">
-                 <!-- 左邊分類欄 -->
-                 <div class="content_cate">
-                    <ul>
-                        <li v-for="(url, cate) in cates"><a :href="url">{{cate}}</a></li>
-                    </ul>
-                 </div>
-                <div class="sagit"><img src="images/con_story/story-aquarius.svg" alt=""></div>　
-                <div class="txt_box">
-                    <p>
-                        水瓶座位於魔羯座的東方，是個不太明顯的星座。它又叫做寶瓶座。在星座圖上，寶瓶座是一個少年把水瓶扛在肩上。這個少年就是特洛伊王子卡尼米迪斯。
-                    　　天神宙斯所領導的奧林帕斯山，經常舉行盛大的宴會，在宴會中負責為眾神斟酒的，向來是青春女神希碧。
-                    　　有一次，眾神依舊在奧林匹斯宮殿舉行酒宴，等了許久，還不見希碧來倒酒。
-                    　　「怎麼回事?希碧呢?」宙斯問。
-                    </p>
-                </div>
-        </section>
-</div>
-
     </main>
+    <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
-  <!-- <script src="js/common.js"></script> -->
-  <script>
-    new Vue({
-        el: '#app',
-        data: { //變數放這
-            urls: {
+    <script>
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                num: 999,
+                urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
-                    '真實星座': 'con_real_constellation.html',
+                    '性格測驗': 'con_real_constellation.html',
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
-                
+                },
+                navs: ['今日運勢', '星座配對', '性格測驗', '星盤推算', '星座故事', '星座討論區'],
+                cates: {
+                    '射手座': 'con_story.html',
+                    '水瓶座': 'con_story_water.html',
+                    '雙魚座': 'con_story.html',
+                    '牡羊座': 'con_story.html',
+                    '金牛座': 'con_story.html',
+                    '雙子座': 'con_story.html',
+                    '巨蟹座': 'con_story.html',
+                    '獅子座': 'con_story.html',
+                    '處女座': 'con_story.html',
+                    '天秤座': 'con_story.html',
+                    '天蠍座': 'con_story.html',
+                    '摩羯座': 'con_story.html',
 
                 },
-            cates:{
-                    '射手座':'con_story.html',
-                    '水瓶座':'con_story_water.html',
-                    '雙魚座':'con_story_water.html',
-                    '牡羊座':'con_story_water.html',
-                    '金牛座':'con_story_water.html',
-                    '雙子座':'con_story_water.html',
-                    '巨蟹座':'con_story_water.html',
-                    '獅子座':'con_story_water.html',
-                    '處女座':'con_story_water.html',
-                    '天秤座':'con_story_water.html',
-                    '天蠍座':'con_story_water.html',
-                    '摩羯座':'con_story_water.html',
-                    
-            }
-        }
-    });
-</script>
-</body>
-</html>
+                iconLike: './images/icon/icon_discuss_like.svg',
+                // iconLike: {
+                //     url: './images/icon/',
+                //     img: './icon_discuss_like.svg',
+                //     active: 'icon_discuss_likes.svg'
+                // },
+                iconLikeClick: 'images/icon/icon_discuss_likes.svg',
+                iconMessage: 'images/icon/icon_discuss_message.svg',
+                iconFav: 'images/icon/icon_discuss_favorite.svg',
+                iconClose: 'images/icon/icon_discuss_close.svg',
+                con_cancer: 'images/constellation/discuss_con_cancer.jpg',
+                con_fruit: 'images/constellation/discuss_fruit.jpg',
+                con_ast: 'images/constellation/discuss_astronomy.jpg',
+                author_img: 'images/black_cat.svg',
+                author_hat_img: 'images/black_cat_wizard.svg',
+                // isChecked: 0,
+            },
+            methods: {
+                changeLike(e) {
+                    // if(e.target.src == )
+                    console.log(e.target.src);
+                    console.log(this.$data.iconLike);
+                    this.$data.num += 1;
+                    // if(e.target.text == "我喜歡"){
+                    // }
+                    // console.log(e.target.text);
+                    // console.log(e);
+                    // console.log(this.$data.iconLike);
 
+                },
+                isChecked() {
+
+                }
+            },
+        });
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                stagePadding: 10,
+                loop: true,
+                margin: 5,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 5
+                    },
+                    767: {
+                        items: 8
+                    },
+
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
