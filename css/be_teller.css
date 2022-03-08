@@ -100,6 +100,7 @@ h2{
 }
 .taboo_item .img_box img{
     width: 100%;
+    border-radius: 0.5em;
 }
 .taboo_item li{
     color: seashell;

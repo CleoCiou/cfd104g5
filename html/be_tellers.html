@@ -267,21 +267,24 @@
 <!-- 內容由 common.js 新增 by PIN -->
 @@include('layout/footer.html')
 
-
-<!-- <script>
-    $('.answer').click(function () {
-      $(this).toggleClass("btn_clicked");
-    });
-</script> -->
 <script>
-    $( ".third_btn" ).click(function() {
-    $( this ).toggleClass( "btn_clicked" );
-  });
+  $(document).ready(function (){
+        $(".third_btn").each(function(index){
+            $(this).click(function(){  //點選觸發事件
+                $(".third_btn").removeClass("btn_clicked");  //刪除當前元素的樣式
+                $(".third_btn").eq(index).addClass("btn_clicked");  //添加當前元素的樣式
+            });
+        });
+    });
 </script>
 <script>
-    $( ".third_btn" ).click(function() {
-    $( "#second_subject" ).css('display', 'flex')  
-  });
+    $( ".third_btn" ).click(function(){
+        let nextQ = $(this).parents('.test_item').next('.test_item')[0];
+        if (nextQ) {
+            // console.log($(this).parents('.test_item').next('.test_item')[0].classList);
+            nextQ.classList.remove('other');
+        }
+    });
 </script>
 </body>
 </html>
