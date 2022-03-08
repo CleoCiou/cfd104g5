@@ -4829,19 +4829,11 @@ main section.shopping_item .container .product_box .row .item:hover {
   }
 }
 
-html {
-  overflow-y: hidden;
-}
-
-html main {
-  margin-top: -4.5em;
-}
-
-html main .daily .daily_btn_box {
+main .daily .daily_btn_box {
   text-align: right;
 }
 
-html main .daily .dc_box {
+main .daily .dc_box {
   position: relative;
   width: 80%;
   display: -webkit-box;
@@ -4851,7 +4843,7 @@ html main .daily .dc_box {
 }
 
 @media screen and (max-width: 767px) {
-  html main .daily .dc_box {
+  main .daily .dc_box {
     width: 100%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -4860,7 +4852,7 @@ html main .daily .dc_box {
   }
 }
 
-html main .daily .dc_box .daily_card {
+main .daily .dc_box .daily_card {
   width: 33.333333%;
   background-color: grey;
   border-radius: .5em;
@@ -4883,23 +4875,23 @@ html main .daily .dc_box .daily_card {
 }
 
 @media screen and (max-width: 767px) {
-  html main .daily .dc_box .daily_card {
+  main .daily .dc_box .daily_card {
     width: 100%;
     margin: auto;
   }
 }
 
-html main .daily .dc_box .daily_card:hover {
+main .daily .dc_box .daily_card:hover {
   -webkit-box-shadow: 0px 0px 30px 10px #cfb886dc;
           box-shadow: 0px 0px 30px 10px #cfb886dc;
 }
 
-html main .daily .dc_box .daily_card:active {
+main .daily .dc_box .daily_card:active {
   -webkit-transform: scale(0.9) rotate(10deg);
           transform: scale(0.9) rotate(10deg);
 }
 
-html main .daily .dc_box .daily_card img {
+main .daily .dc_box .daily_card img {
   width: 100%;
 }
 
