@@ -4244,20 +4244,77 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
   font-size: .6em;
 }
 
-main section.shop_banner .container .banner_box img {
-  width: 100%;
+@media screen and (max-width: 767px) {
+  main section.shop_banner .container {
+    padding: 0;
+  }
+}
+
+main section.shop_banner .container .slider {
+  position: relative;
+}
+
+main section.shop_banner .container .slider .prebtn {
+  position: absolute;
+  top: 50%;
+}
+
+main section.shop_banner .container .slider .nextbtn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+main section.shop_banner .container .slider .slider_box {
+  height: 15em;
+  position: relative;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
-  main section.shop_banner .container .banner_box img {
-    height: 25em;
-    -o-object-fit: cover;
-       object-fit: cover;
+  main section.shop_banner .container .slider .slider_box {
+    height: 22em;
   }
+}
+
+main section.shop_banner .container .slider .slider_box .slider_item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+main section.shop_banner .container .slider .slider_box .slider_item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main section.shop_banner .container .slider .slider_box .slider_item:not(:first-child) {
+  opacity: 0;
 }
 
 main section.shopping_item .container h1 {
   padding: 0.25em 0em;
+}
+
+main section.shopping_item .container .product_search {
+  text-align: center;
+}
+
+main section.shopping_item .container .product_nav {
+  margin: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media screen and (max-width: 767px) {
+  main section.shopping_item .container .product_nav {
+    display: none;
+  }
 }
 
 main section.shopping_item .container .product_box .row {
@@ -4304,20 +4361,110 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 @media screen and (min-width: 768px) {
   main section.shopping_item .container .product_box .row .item .icon_box img {
     position: relative;
-    bottom: -50px;
+    bottom: -10em;
   }
 }
 
 @media screen and (min-width: 768px) {
   main section.shopping_item .container .product_box .row .item:hover .icon_box img {
-    bottom: 0.25em;
-    -webkit-transition: 0.8s;
-    transition: 0.8s;
+    bottom: 0em;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
   }
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
   Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+@-webkit-keyframes showRight {
+  0% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes showRight {
+  0% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes hideRight {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -100%;
+    opacity: 0;
+  }
+}
+
+@keyframes hideRight {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -100%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes showLeft {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes showLeft {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes hideLeft {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes hideLeft {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
 }
 
 * {
