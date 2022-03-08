@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('layout/head.html', {
+    'title': '商城'
+})
+<body>
+<!-- 網頁頭 by NJ -->
+@@include('layout/header.html')
+
+
+
+<!-- 網頁內容 -->
+<main>
+    <!-- 商城banner -->
+    <section class="shop_banner">
+        <div class="container">
+            <div class="slider">
+                <div class="slider_box">
+                    <div class="slider_item">
+                        <a href="product.html"><img src="images/shop/bannerthr.jpeg"></a>
+                    </div>
+                    <div class="slider_item">
+                        <a href="product.html"><img src="images/shop/banner.jpeg"></a>
+                    </div>
+                    <div class="slider_item">
+                        <a href="product.html"><img src="images/shop/bannersec.jpeg"></a>
+                    </div>
+                </div>
+                <div class="prebtn">
+                    <button class="other_btn" onclick="handlePrev()"><</button>
+                </div>
+                <div class="nextbtn">
+                    <button class="other_btn" onclick="handleNext()">></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 商品區 -->
+    <section class="shopping_item">
+        <div class="container">
+            <!-- 商城標題 -->
+            <h1>商城</h1>
+            <!-- 商城導覽列 -->
+            <div class="product_search">
+                <label for="">商品分類：</label>
+                <select name="" id="">
+                    <option>
+                        <a href="#">-- 星座 --</a>
+                    </option>
+                    <option>
+                        <a href="#">手環</a>
+                    </option>  
+                    <option>
+                        <a href="#">項鍊</a>
+                    </option>  
+                    <option>
+                        <a href="#">戒指</a>
+                    </option>   
+                    <option>
+                        <a href="#">鑰匙圈</a>
+                    </option>
+                    <option>
+                        <a href="#">-- 塔羅牌 --</a>
+                    </option>
+                    <option>
+                        <a href="#">手環</a>
+                    </option>  
+                    <option>
+                        <a href="#">項鍊</a>
+                    </option>  
+                    <option>
+                        <a href="#">幸運石</a>
+                    </option>        
+                </select>
+            </div>
+            <div class="product_nav">
+                <div class="item">
+                    <button class="unselected_btn" id="product_navbtn">手環</button>
+                </div>
+                <div class="item">
+                    <button class="unselected_btn" id="product_navbtn">項鍊</button>
+                </div>
+                <div class="item">
+                    <button class="unselected_btn" id="product_navbtn">戒指</button>
+                </div>
+                <div class="item">
+                    <button class="unselected_btn" id="product_navbtn">鑰匙圈</button>
+                </div>
+                <div class="item">
+                    <button class="unselected_btn" id="product_navbtn">幸運石</button>
+                </div>
+            </div>
+
+
+            <!-- 商品 -->
+            <div class="product_box">
+                <div class="row">
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>牡羊座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_taurus.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>金牛座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_box">
+                            <a href="product.html"><img src="images/shop/Constellation/wristband/wristband_aries.png" /></a>
+                        </div>
+                        <div class="txt_box">
+                            <h4>獅子座手環</h4>
+                            <p>NT$1,200</p>
+                        </div>
+                        <div class="icon_box">
+                            <a href="product.html"><img src="images/icon/icon_shop_eye.svg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- 網頁尾 By NJ -->
+@@include('layout/footer.html')
+<script src="js/shop.js"></script>
+</body>
+</html>

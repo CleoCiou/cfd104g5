@@ -11,7 +11,6 @@
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
     <main>
-        <div id="twinklingStar"></div>
         <div id="app">
             <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
             @@include('layout/con_page.html')
@@ -32,7 +31,7 @@
                     </div>
                     <!-- 星盤資料表單 -->
                     <div class="start_hidden" id="formItem">
-                        <div class="form_item" >
+                        <div class="form_item" id="form_box">
                             <form action="">
                                 <label>名　　稱 
                                     <input type="text" id="name" class="input_width">
@@ -77,12 +76,6 @@
                     },
                     navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
                 },
-            });
-            gsap.to('#canvas',{
-                rotation: 360,
-                duration: 25,
-                repeat: -1,
-                ease: "none",
             });
 
             // for(var i = 0; i < 500; i++) {

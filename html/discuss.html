@@ -53,15 +53,14 @@
 
                                 <!-- 熱門 & 最新的兩個標籤 -->
                                 <div class="content_label">
-                                    <label class="select_label">熱門</label>
-                                    <label>最新</label>
+                                    <label v-for="(label,index) in labels" :key="index" @click="isChecked = index" :class="{select_label: isChecked == index}">{{label}}</label>
                                 </div>
                                 <!-- 放文章的地方 -->
-                                <div class="row">
+                                <div class="row" :class="{'label_hidden' : isChecked}">
                                     <!-- 文章卡片 -->
                                     <div class="article_cards">
                                         <div class="line_top">
-                                            <p>巨蟹座</p>
+                                            <p>星座版</p>
                                             <p>|</p>
                                             <p>10小時</p>
                                         </div>
@@ -75,19 +74,31 @@
                                             </div>
                                         </div>
                                         <div class="line_bottom">
-                                            <img :src="iconLike" class="likes" @click="changeLike">
+                                            <!-- 愛心 -->
+                                            <button class="using_btn"  @click="activeIndex =!activeIndex;changeLike()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: activeIndex == 1}">
+                                                    <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z" fill-rule="evenodd">
+                                                    </path>
+                                                </svg>
+                                                <p>{{num}}讚</p>
+                                            </button>
                                             
-                                            <p>{{num}}讚</p>
-                                            <img :src="iconMessage" >
+                                            <!-- 留言 -->
+                                            <img :src="iconMessage">
                                             <p>28回應</p>
-                                            <img :src="iconFav" >
-                                            <p>收藏</p>
+                                            <!-- 收藏 -->
+                                            <button class="using_btn" @click="favIndex =!favIndex">
+                                                <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: favIndex == 1}">
+                                                    <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+                                                </svg>
+                                                <p>收藏</p>
+                                            </button>
                                         </div>
                                     </div>
                                     <!-- 文章卡片 -->
                                     <div class="article_cards">
                                         <div class="line_top">
-                                            <p>天秤座</p>
+                                            <p>星座版</p>
                                             <p>|</p>
                                             <p>39分鐘前</p>
                                         </div>
@@ -101,12 +112,25 @@
                                             </div>
                                         </div>
                                         <div class="line_bottom">
-                                            <img :src="iconLike" >
-                                            <p>93讚</p>
-                                            <img :src="iconMessage" >
-                                            <p>15回應</p>
-                                            <img :src="iconFav" >
-                                            <p>收藏</p>
+                                            <!-- 愛心 -->
+                                            <button class="using_btn"  @click="activeIndex =!activeIndex;changeLike()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: activeIndex == 1}">
+                                                    <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z" fill-rule="evenodd">
+                                                    </path>
+                                                </svg>
+                                                <p>{{num}}讚</p>
+                                            </button>
+                                            
+                                            <!-- 留言 -->
+                                            <img :src="iconMessage">
+                                            <p>3回應</p>
+                                            <!-- 收藏 -->
+                                            <button class="using_btn" @click="favIndex =!favIndex">
+                                                <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: favIndex == 1}">
+                                                    <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+                                                </svg>
+                                                <p>收藏</p>
+                                            </button>
                                         </div>
                                     </div>
                                     <!-- 文章卡片 -->
@@ -192,6 +216,141 @@
                                         <span>&#10230;</span>
                                     </div>
                                 </div>
+                                <div class="row label_hidden" :class="{'label_show' : isChecked}">
+                                    <!-- 文章卡片 -->
+                                    <div class="article_cards">
+                                        <div class="line_top">
+                                            <p>全部</p>
+                                            <p>|</p>
+                                            <p>1分鐘前</p>
+                                        </div>
+                                        <div class="line_middle">
+                                            <div class="line_middle_txt">
+                                                <h3>十二星座的隱藏性格</h3>
+                                                <p>...</p>
+                                            </div>
+                                            <div class="line_middle_pic">
+                                                <img :src="con_cancer" alt="巨蟹座照片">         
+                                            </div>
+                                        </div>
+                                        <div class="line_bottom">
+                                            <img :src="iconLike" class="likes" @click="changeLike" v-if="isChecked == 0">
+                                            <img :src="iconLikeClick" class="likes" v-else-if="isChecked == 1">
+                                            <p>{{num}}讚</p>
+                                            <img :src="iconMessage" >
+                                            <p>28回應</p>
+                                            <img :src="iconFav" >
+                                            <p>收藏</p>
+                                        </div>
+                                    </div>
+                                    <!-- 文章卡片 -->
+                                    <div class="article_cards">
+                                        <div class="line_top">
+                                            <p>雙子座</p>
+                                            <p>|</p>
+                                            <p>12分鐘前</p>
+                                        </div>
+                                        <div class="line_middle">
+                                            <div class="line_middle_txt">
+                                                <h3>愛上天秤座怎麼辦？你絕對不能錯過的天秤座全攻略！</h3>
+                                                <p>天秤座是一個重視合作關係的星座，可想而知他們的第一順位就是與親密的人面對面相處。他們透過親.....</p>
+                                            </div>
+                                            <div class="line_middle_pic">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="line_bottom">
+                                            <img :src="iconLike" >
+                                            <p>93讚</p>
+                                            <img :src="iconMessage" >
+                                            <p>15回應</p>
+                                            <img :src="iconFav" >
+                                            <p>收藏</p>
+                                        </div>
+                                    </div>
+                                    <!-- 文章卡片 -->
+                                    <div class="article_cards">
+                                        <div class="line_top">
+                                            <p>天秤座</p>
+                                            <p>|</p>
+                                            <p>1小時前</p>
+                                        </div>
+                                        <div class="line_middle">
+                                            <div class="line_middle_txt">
+                                                <h3>12星座像什麼「水果」</h3>
+                                                <p>你可曾細心品嘗過水果？是否嘗到水果的各種滋味？還是只憑外表來決........</p>
+                                            </div>
+                                            <div class="line_middle_pic">
+                                                <img :src="con_fruit">
+                                            </div>
+                                        </div>
+                                        <div class="line_bottom">
+                                            <img :src="iconLike" >
+                                            <p>25讚</p>
+                                            <img :src="iconMessage" >
+                                            <p>0回應</p>
+                                            <img :src="iconFav" >
+                                            <p>收藏</p>
+                                        </div>
+                                    </div>
+                                    <!-- 文章卡片 -->
+                                    <div class="article_cards">
+                                        <div class="line_top">
+                                            <p>金牛座</p>
+                                            <p>|</p>
+                                            <p>17小時前</p>
+                                        </div>
+                                        <div class="line_middle">
+                                            <div class="line_middle_txt">
+                                                <h3>射手座你們看了一定會點頭</h3>
+                                                <p>樂觀與憂愁：射手座人的內心不是外表看上去那麼樂觀的，因為喜歡看的..............</p>
+                                            </div>
+                                            <div class="line_middle_pic">
+                                                <img :src="con_ast">
+                                            </div>
+                                        </div>
+                                        <div class="line_bottom">
+                                            <img :src="iconLike" >
+                                            <p>19讚</p>
+                                            <img :src="iconMessage" >
+                                            <p>7回應</p>
+                                            <img :src="iconFav" >
+                                            <p>收藏</p>
+                                        </div>
+                                    </div>
+                                    <!-- 文章卡片 -->
+                                    <div class="article_cards">
+                                        <div class="line_top">
+                                            <p>處女座</p>
+                                            <p>|</p>
+                                            <p>2022/03/02</p>
+                                        </div>
+                                        <div class="line_middle">
+                                            <div class="line_middle_txt">
+                                                <h3>水瓶座的7個特色解析：心軟善良、重視友情</h3>
+                                                <p>水瓶座真的總會讓旁人驚呼「好怪」嗎？一起來看看身為水瓶座的做人守則，你會對他改觀...........</p>
+                                            </div>
+                                            <div class="line_middle_pic">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="line_bottom">
+                                            <img :src="iconLike" >
+                                            <p>3讚</p>
+                                            <img :src="iconMessage" >
+                                            <p>2回應</p>
+                                            <img :src="iconFav" >
+                                            <p>收藏</p>
+                                        </div>
+                                    </div>
+                                    <!-- 頁籤按鈕 -->
+                                    <div class="content_pages">
+                                        <button class="other_btn">1</button>
+                                        <button class="other_btn">2</button>
+                                        <button class="other_btn">3</button>
+                                        <span>&#10230;</span>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
                     </div>
@@ -221,7 +380,6 @@
                             <p>巨蟹座有活躍型與消極型的兩種型態。活躍型者具有堅強的意志力與耐力，對於人生的生活門徑非常的熟練，而且喜愛活動，能趕得上時代潮流，對於摩登流行的任何事物都感到興趣。消極型的人，顯得容易自足、沒精打彩、行為懶散，不願意做任何邁向成功所必需的努力，喜歡逆來順受，很固執也很依戀於他所已經擁有的，這兩種型態是早期所受的訓練與教化有關。</p>
                             <p>巨蟹座的人很敏感，往往因別人的惡意批評非難而感到傷心。對過去的一切均懷念而且多情善感，很少拋棄舊日的伙伴與昔日的友情。喜歡收藏古老藝術品或書籍，也喜歡回憶往時趣事。通常擁有良好的記憶力。</p>
                     </div>
-                </div>
                     <!-- 功能列-- 愛心回應數分享等等 -->
                     <div class="article_using narrow">
                         <!-- 左 -->
@@ -283,20 +441,21 @@
                         <hr class="style">
                         
                     </div>
-                    <!-- 使用者要留言的地方 -->
-                    <div class="response_box">
-                        <div class="user_img_box">
-                            <img :src="author_hat_img" alt="會員頭像">
-                        </div>
-                        <div class="user_txt_box">
-                            <textarea  cols="1" rows="1"></textarea>
-                        </div>
-                        <div class="res_btn_box">
-                            <input type="submit" class="submit_btn" value="送出">
-                        </div>
+                </div>
+                <!-- 使用者要留言的地方 -->
+                <div class="response_box">
+                    <div class="user_img_box">
+                        <img :src="author_hat_img" alt="會員頭像">
+                    </div>
+                    <div class="user_txt_box">
+                        <textarea  cols="1" rows="1"></textarea>
+                    </div>
+                    <div class="res_btn_box">
+                        <input type="submit" class="submit_btn" value="送出">
                     </div>
                 </div>
             </section>
+            
         </div>
     </main>
     <!-- 網頁尾 By NJ -->
@@ -315,13 +474,10 @@
                     '星座討論區': 'discuss.html',
                 },
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
-                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
+                // cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座'],
+                cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
+                labels: ['熱門','最新'],
                 iconLike: './images/icon/icon_discuss_like.svg',
-                // iconLike: {
-                //     url: './images/icon/',
-                //     img: './icon_discuss_like.svg',
-                //     active: 'icon_discuss_likes.svg'
-                // },
                 iconLikeClick :'images/icon/icon_discuss_likes.svg',
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
@@ -331,24 +487,18 @@
                 con_ast: 'images/constellation/discuss_astronomy.jpg',
                 author_img: 'images/black_cat.svg',
                 author_hat_img: 'images/black_cat_wizard.svg',
-                // isChecked: 0,
+                isChecked: 0,
+                activeIndex: 0,
+                favIndex: 0,
             },
             methods: {
-                changeLike(e){
-                    // if(e.target.src == )
-                        console.log(e.target.src);
-                        console.log(this.$data.iconLike);
+                changeLike(){
+                    if(this.$data.activeIndex == 0){
+                        this.$data.num -=1;
+                    }else{
                         this.$data.num +=1;
-                    // if(e.target.text == "我喜歡"){
-                    // }
-                    // console.log(e.target.text);
-                    // console.log(e);
-                    // console.log(this.$data.iconLike);
-
+                    }
                 },
-                isChecked(){
-
-                }
             },
         });
         $(document).ready(function(){
@@ -359,10 +509,10 @@
                 nav:false,
                 responsive:{
                     0:{
-                        items:5
+                        items:3
                     },
                     767:{
-                        items:8
+                        items:3
                     },
 
                 }
