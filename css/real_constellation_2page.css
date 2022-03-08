@@ -5,30 +5,14 @@
     main .pagination_nav{
         display: none;
     }
-    h2{
-        text-align: center;
-    }
-    ul{
-        width: 100%;
-        display: flex;
-        list-style:none;
-        flex-wrap: wrap;
-    }
-    ul div{
-        width: 33.33%;
-        list-style: none;
-    } 
-    html{
-        font-size: 14px;
-    } 
-
-    .real{
+    
+    main .real{
         width: 100%;
         padding: 8.333333%;
         box-sizing: border-box;
         text-align: center;
     } 
-    .real_constellation button{
+    main .real_constellation button{
         margin: auto;
         box-sizing: border-box;
         padding: 2% 8.333333%;
@@ -38,6 +22,11 @@
         display: block;
         width: 100%;
         margin-bottom: 10%;
+        
+    }
+    .real_constellation .container .pic .abgne-effect-20140110-1 img {
+        padding-top: 15%;
+        box-sizing: border-box;
     }
     .real_constellation .container p{
         margin: 30% 0%;
@@ -52,33 +41,177 @@
         margin-right: 3%;
         box-sizing: border-box;
     }
+    .real_constellation .wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .real_constellation .wrapper .pic{
+        width: 18%;
+        margin-bottom: 10px;
+
+    }
+    .real_constellation .wrapper p{
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .real_constellation .container p{
+        margin: 0%;
+        padding: 10% 0% 10% 0%;
+    }
+    .real_constellation .wrapper .pic{
+        width: 18%;
+    }
+  
+    .real_constellation .container .pic{
+        width: 50%;
+        margin: auto;
+    }
+    .real_constellation p{
+        text-align: center; 
+    }
+    .real_constellation .wrapper .answer{
+        display: flex;
+        /* margin: 20px 0 ; */
+        margin: 5% 0 ;
+    }
+    .real_constellation .wrapper .answer .third_btn{
+        margin: 0 10px;
+        margin-right: 3%;
+        box-sizing: border-box;
+        /* margin: 0 10%; */
+    }
+     /* 圖文放大效果 */
+    /* .real_constellation .container .pic .abgne-effect-20140110-1 {
+        overflow: hidden;
+        width: 225px;
+        padding: 5px;
+        display: inline-block;
+    } */
+    .real_constellation .container .pic .abgne-effect-20140110-1 img {
+        border: none;
+        vertical-align: middle;
+        -webkit-transition: -webkit-transform 0.5s linear;
+        -moz-transition: -moz-transform 0.5s linear;
+        -o-transition: -o-transform 0.5s linear;
+        transition: transform 0.5s linear;
+    }
+    /* .real_constellation .wrapper .pic .abgne-effect-20140110-1 h3 {
+        margin: 0;
+    } */
+    .real_constellation .container .pic .abgne-effect-20140110-1 .link {
+ 
+        overflow: hidden;
+        display: block;
+        -webkit-transition: border-color 0.5s linear;
+        -moz-transition: border-color 0.5s linear;
+        -o-transition: border-color 0.5s linear;
+        transition: border-color 0.5s linear;
+    }
+    .real_constellation .container .pic .abgne-effect-20140110-1 h3 a {
+        color: #000;
+        display: block;
+        text-decoration: none;
+    /* margin: 10px 15px 8px 5px; */
+    }
+    /* .real_constellation .wrapper .pic .abgne-effect-20140110-1 .content {
+    margin: 10px 0 0 5px;
+    } */
+   .real_constellation .container .pic .abgne-effect-20140110-1:nth-child(1):hover img {
+        -webkit-transform: scale(1.2) rotate(-5deg);
+        -moz-transform: scale(1.2) rotate(-5deg);
+        -o-transform: scale(1.2) rotate(-5deg);
+        transform: scale(1.2) rotate(-5deg);
+   }
+   .abgne-effect-20140110-1:hover .link {
+        border-color: #437ea1;
+   }
+
+   /* 結果雄的部分 */
+    .result_bear .container .img_box{
+        width: 100%;
+   }
+    .result_bear .container .img_box img{
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+   }
+    .result_bear .container .item .txt_box{
+        margin: auto;
+    
+    }
+    .result_bear .container .item .txt_box p{
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        text-align: left;
+    }
+    .result_bear .container .one{
+        text-align: center;
+        padding: 2% 0%;
+        box-sizing: border-box;
+    }
+    .result_bear .container .item h2{
+        text-align: center;
+        padding: 5% 0%;
+        box-sizing: border-box;
+
+    }
+    .result_bear .container .item .img_box{
+        opacity: 0.5;
+        transform:all 1s ease-in-out;
+        
+    }
+    .result_bear .container .item .img_box:hover{
+        opacity: 1;
+        transform:all 1s ease-in-out;
+        
+    }
+
+    /* 結果鷹的部分 */
+
+    .result_owl .container .img_box{
+        width: 100%;
+   }
+    .result_owl .container .img_box img{
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+   }
+    .result_owl .container .item .txt_box{
+        margin: auto;
+    
+    }
+    .result_owl .container .item .txt_box p{
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+        text-align: left;
+    }
+    .result_owl .container .one{
+        text-align: center;
+        padding: 2% 0%;
+        box-sizing: border-box;
+    }
+    .result_owl .container .item h2{
+        text-align: center;
+        padding: 5% 0%;
+        box-sizing: border-box;
+
+    }
+    .result_owl .container .item .img_box{
+        opacity: 0.5;
+        transform:all 1s ease-in-out;
+        
+    }
+    .result_owl .container .item .img_box:hover{
+        opacity: 1;
+        transform:all 1s ease-in-out;
+        
+    }
 
 }
-
+  
 @media screen and (min-width:768px) {
-    /* main .pagination_nav .container ul{
-        padding: 2% 8.333333%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-    }   */
-    h2{
-        text-align: center;
-    }
-    ul{
-        width: 100%;
-        display: flex;
-        list-style:none;
-        flex-wrap: wrap;
-    }
-    ul div{
-        width: 33.33%;
-        list-style: none;
-    } 
-    html{
-        font-size: 14px;
-    } 
+     
     .real{
         width: 100%;
         padding: 8.333333%;
@@ -86,11 +219,11 @@
         text-align: center;
     } 
     .real_constellation img{
-     display: block;
-     text-align: center;
-     margin: auto;
-     padding: 2% 0%;
-     box-sizing: border-box;
+        display: block;
+        text-align: center;
+        margin: auto;
+        padding: 2% 0%;
+        box-sizing: border-box;
     }
     .real_constellation button{
         margin: auto;
@@ -107,16 +240,175 @@
         justify-content: center;
         /* margin-top: 5%; */
     }
-    .real_constellation .container .answer .btn:nth-child(1){
-        
-        margin-right: 3%;
-        box-sizing: border-box;
-    }
+    
     main .real_constellation .container .pic{
         width: 100%;
-    }aaaaaa
+    }
     main .real_constellation .container .pic img{
         width: 20%;
     }
+    .real_constellation .wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .real_constellation .wrapper .pic{
+        width: 18%;
+        margin-bottom: 10px;
 
+    }
+    .real_constellation .container p{
+        /* font-size: 24px; */
+        margin-bottom: 10px;
+        margin: auto;
+     
+        padding-top: 1.5%;
+        padding-bottom: 2%;
+    }
+    .real_constellation .wrapper .pic{
+        width: 18%;
+        margin: auto;
+    }
+    .real_constellation p{
+        text-align: center; 
+    }
+    .real_constellation .wrapper .answer{
+        display: flex;
+        margin: 20px 0 ;
+    }
+    .real_constellation .container .answer .third_btn{
+        margin: 0 10px;
+    }
+    
+    /* 圖文放大效果 */
+    /* .real_constellation .container .pic .abgne-effect-20140110-1 {
+        overflow: hidden;
+        width: 225px;
+        padding: 5px;
+        display: inline-block;
+    } */
+    .real_constellation .container .pic .abgne-effect-20140110-1 img {
+        border: none;
+        vertical-align: middle;
+        -webkit-transition: -webkit-transform 0.5s linear;
+        -moz-transition: -moz-transform 0.5s linear;
+        -o-transition: -o-transform 0.5s linear;
+        transition: transform 0.5s linear;
+    }
+    .real_constellation .container .pic .abgne-effect-20140110-1 h3 {
+        margin: 0;
+    }
+    .real_constellation .container .pic .abgne-effect-20140110-1 .link {
+ 
+       overflow: hidden;
+       display: block;
+       -webkit-transition: border-color 0.5s linear;
+       -moz-transition: border-color 0.5s linear;
+       -o-transition: border-color 0.5s linear;
+       transition: border-color 0.5s linear;
+    }
+    .real_constellation .container .pic .abgne-effect-20140110-1 h3 a {
+       color: #000;
+       display: block;
+       text-decoration: none;
+       margin: 10px 15px 8px 5px;
+    }
+    .real_constellation .container.wrapper .pic .abgne-effect-20140110-1 .content {
+       margin: 10px 0 0 5px;
+    }
+    .real_constellation .container .pic .abgne-effect-20140110-1:nth-child(1):hover img {
+       -webkit-transform: scale(1.2) rotate(-5deg);
+       -moz-transform: scale(1.2) rotate(-5deg);
+       -o-transform: scale(1.2) rotate(-5deg);
+       transform: scale(1.2) rotate(-5deg);
+    }
+    .abgne-effect-20140110-1:hover .link { 
+       border-color: #437ea1;
+    }
+    /* 雄的結果 */
+    .result_bear .container .img_box{
+        width: 100%;
+    }
+    .result_bear .container .img_box img{
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+    }
+    .result_bear .container .item{
+        display: flex;
+        padding: 0% 8.333333%;
+        box-sizing: border-box;
+        /* flex-direction: column; */
+    }
+    .result_bear .container .item .txt_box{
+        margin: auto;
+        
+    }
+    .result_bear .container .one{
+        text-align: center;
+    }
+    .result_bear .container .item h2{
+        padding: 5% 0%;
+        box-sizing: border-box;
+
+    }
+    .result_bear .container .item .img_box{
+        opacity: 0.5;
+        transform:all 1s ease-in-out;
+        
+    }
+    .result_bear .container .item .img_box:hover{
+        opacity: 1;
+        transform:all 1s ease-in-out;
+        
+    }
+    /* 貓頭鷹結果 */
+    .result_owl .container .img_box{
+        width: 50%;
+    }
+    .result_owl .container .img_box img{
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+    }
+    .result_owl .container .item{
+        padding: 0% 8.333333%;
+        width: 100%;
+        display: flex;
+        box-sizing: border-box;
+        /* flex-direction: column; */
+    }
+    .result_owl .container .item .txt_box{
+        width: 100%;
+        /* margin: auto; */
+        
+    }
+    .result_owl .container .one{
+        text-align: center;
+    }
+    .result_owl .container .item h2{
+        padding: 5% 0%;
+        box-sizing: border-box;
+        margin: auto;
+
+    }
+    .result_owl .container .item p{
+        padding: 10% 0%;
+        padding-top: 0%;
+        box-sizing: border-box;
+
+    }
+    .result_owl .container .item .img_box{
+        opacity: 0.5;
+        transform:all 1s ease-in-out;
+        
+    }
+    .result_owl .container .item .img_box:hover{
+        opacity: 1;
+        transform:all 1s ease-in-out;
+        
+    }
+    
+    
+ 
 }

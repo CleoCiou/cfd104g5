@@ -27,7 +27,7 @@
                     <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
                     
                     <!-- 資料內容 -->
-                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
+                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail" @change-status="changeStatus"></my-table>
 
                     <!-- 彈出視窗 -->
                     <div :class="popup">
@@ -108,8 +108,6 @@
                         async: false,
                         success: function(data) {
                             result = data.msg;
-                            console.log(data.msg);
-                            console.log(data.sql);
                             if(update) {
                                 thisVue.queryResult = data.msg;
                             }
@@ -131,7 +129,7 @@
                     this.detail = this.queryResult[idx];
                 },
                 // 表格上方操作列按鈕
-                // 新增
+                // 更新資料(點擊的按鈕元素)
                 updateDb(btnEl) {
                     if (btnEl.innerText === '新增') {
                         this.displaynone = false;
@@ -171,11 +169,37 @@
                     });
                     
                 },
-                // 清空輸入框
+                // 清空輸入框(若傳入訊息alert)
                 resetInput(msg = false) {
                     if(msg) alert(msg);
                     this.newId = '';
                     this.newName = '';
+                },
+                // 更新狀態(需更新的資料, 更新為此狀態)
+                changeStatus(queryResult, status) {
+                    let {adminId, adminName} = queryResult;
+                    let statusText = '';
+                    if (status) statusText = '一般';
+                    else statusText = '停權';
+
+                    // 更新資料
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/update.php',
+                        data: {
+                            table: 'admin',
+                            updateValue: `status = '${statusText}'`,
+                            where: `adminId = '${adminId}'`
+                        },
+                        success: function(data) {
+                            alert(`成功將 ${adminName} 的權限設為 ${statusText}`)
+                            thisVue.getCol();
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
                 }
             },
             computed: {

@@ -70,15 +70,16 @@ Vue.component('my-table', {
             <table>
                 <tr>
                     <th scope="col">
-                        <input type="checkbox" @change="checkAll">
+                        <input class="check_all" type="checkbox" @change="checkAll">
                     </th>
                     <th scope="col" v-for="col in colName">{{ col }}</th>
                 </tr>
                 <tr v-for="(row, index) in queryResult">
-                    <td><input type="checkbox"></td>
+                    <td><input class="check_col" type="checkbox" @change="checkAll"></td>
                     <td v-for="(col, colName) in deconstructRow(row, index)">
-                        <label v-if="colName!=='detail'" :class="colName">{{ col }}</label>
-                        <button v-else class="detail_btn" @click="getDetail(index)">查看/編輯</button>
+                        <label v-if=" colName !== 'detail' && colName !== 'status' " :class="colName">{{ col }}</label>
+                        <button v-else-if=" colName === 'detail' " class="detail_btn" @click="getDetail(index)">查看/編輯</button>
+                        <span v-else-if=" colName === 'status' " :class="active(col)" @click="changeStatus($event, index)"></span>
                     </td>
                 </tr>
                 <tr v-if="!queryResult">
@@ -101,7 +102,25 @@ Vue.component('my-table', {
         },
         // 一鍵全選
         checkAll(e) {
-            $('table > tr > td > input[type=checkbox]').prop("checked", e.target.checked);
+            if (e.target.classList.contains('check_all')) {
+                $('.check_col').prop("checked", e.target.checked);
+            }
+        },
+        // 若狀態為 '一般',加上 active 的 class
+        active(col) {
+            let status = true
+            let active = true;
+            if (col !== '一般') active = false;
+            return { status, active }
+        },
+        // 點擊更新狀態欄
+        changeStatus(e, idx) {
+            e.target.classList.toggle('active');
+            let status = e.target.classList.contains('active');
+
+            // this.queryResult[idx] - 更動的資料
+            // status - 更新後的狀態
+            this.$emit('change-status', this.queryResult[idx], status);
         }
     }
 })

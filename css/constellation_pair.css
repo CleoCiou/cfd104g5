@@ -4,12 +4,10 @@
             /* 0~767px */
 
 
-    h2{
+    main .constellation .container h2{
         text-align: center;
     }
-    html{
-        font-size: 14px;
-    } 
+   
     main .result p{
         padding: 2% 8.333333%;
         box-sizing: border-box;
@@ -26,6 +24,8 @@
         /* margin-bottom: 10%;
         box-sizing: border-box; */
         width: 80%;
+        padding: 10%;
+        box-sizing: border-box;
         /* height: 10%; */
         
     }
@@ -40,6 +40,10 @@
     }
     main .container .pair{
         margin: auto;
+    }
+    main .container .pair .third_btn{
+        margin: 5%;
+        box-sizing: border-box;
     }
 
 }
@@ -60,9 +64,7 @@
         width: 33.33%;
         list-style: none;
     }  */
-    html{
-        font-size: 14px;
-    } 
+    
     main .result p{
         padding: 2% 8.333333%;
         box-sizing: border-box;
