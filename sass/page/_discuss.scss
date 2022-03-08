@@ -328,7 +328,6 @@ main {
         left: 0;
         overflow-y: scroll;
         height: 100%;
-        
     }
     .articleHidden{
         display: none;
@@ -519,6 +518,51 @@ main {
             }
         }
     }
+    /* 文章檢舉 */
+    .noticeShow{
+        display: block;
+        z-index: 2501;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%,-50%);
+        @include desktop(){
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+    }
+    .article_notice{
+        margin: auto;
+        border: 1px solid #cfb886;
+        background-color: #00000080;
+        backdrop-filter: blur(10px);
+        padding: 0.5em;
+        border-radius: $borderRadius;
+
+        @include mobile{
+            width: 100%;
+            transform: translateX(0);
+        }
+        .container{
+            padding: $padding;
+            .form_notice{
+                
+                display: flex;
+                flex-direction: column;
+                padding: .5em 0;
+                .notice_btn_box{
+                    display: flex;
+                    text-align: right;
+                    align-items: flex-end;
+                }
+            }
+        }
+        
+    }
+
+
     /* 撰寫文章頁 */
     .article_writing_board{
         width: 100%;
