@@ -13,12 +13,13 @@
         $table = $_POST['table'];
         $value = $_POST['updateValue'];
         $sql = "update $table set $value";
-        // $msg['sql'] = $sql;
+        $msg['sql'] = $sql;
 
+        // 如果有更新條件
         if (isset($_POST['where'])) {
             $where = $_POST['where'];
             $sql = "$sql where $where";
-            // $msg['sql'] = $sql;
+            $msg['sql'] = $sql;
         }
         
         try {
