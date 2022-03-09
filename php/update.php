@@ -26,7 +26,7 @@
             $count = $result->rowCount();
             
             if ($count > 0) {
-                $msg['msg'] = '更新成功';
+                $msg['msg'] = true;
             }
             else {
                 $msg['msg'] = '更新失敗';

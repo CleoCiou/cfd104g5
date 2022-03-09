@@ -131,8 +131,20 @@ body {
                             .info_box:not(:first-child) {
                                 margin-top: 1em;
                             }
+                            .info_box {
+                                .img_box {
+                                    width: 8em;
+                                    display: block;
+                                    margin: auto;
+                                    border-radius: 50%;
+                                    border: 1px solid map-get($primary_color, 'content');
+                                    
+                                    img {
+                                        width: 100%;
+                                    }
+                                }
+                            }
                             .action_box {
-                                .action {
                                     // margin: auto;
                                     text-align: center;
 
