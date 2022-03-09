@@ -78,21 +78,21 @@
     tl.from('.owl_card', 
         {
             duration: 2, 
-            y: 25, 
+            y: 20, 
             yoyo: true, 
             repeat: -1,
         });
     tl.from('.t_card', 
         {
             duration: 2, 
-            y: 25, 
+            y: 20, 
             yoyo: true, 
             repeat: -1
         });
     tl.from('.lion_card', 
         {
             duration: 2, 
-            y: 25, 
+            y: 20, 
             yoyo: true, 
             repeat: -1
         });
@@ -102,14 +102,14 @@
     cards.forEach(function(card){
         card.addEventListener('mouseenter', function(){
             tl.pause();
-            TweenLite.fromTo(this, 2, 
-            {
-                rotation: -30,
-            },
-            {
-                rotation: 0,
-                ease: Elastic. easeOut.config( 5, 0.2),
-            });
+            // TweenLite.fromTo(this, 2, 
+            // {
+            //     rotation: -30,
+            // },
+            // {
+            //     rotation: 0,
+            //     ease: Elastic. easeOut.config( 5, 0.2),
+            // });
         });
         card.addEventListener('mouseleave', function(){
             tl.resume();
@@ -122,7 +122,11 @@
             // });
         });
         card.addEventListener('click', function(){
-            alert('hi')
+            alert('hi');
+            tl.pause();
+            TweenLite.to(this, 1,{
+                rotation: 0,
+            })
         })
     })
         

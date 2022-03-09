@@ -328,6 +328,7 @@ main {
         left: 0;
         overflow-y: scroll;
         height: 100%;
+        transform: translate(-50%,-50%);
     }
     .articleHidden{
         display: none;
@@ -349,6 +350,7 @@ main {
     }
 
     #articleView{
+        display: none;
         background-color: #333333;
         width: 50%;
         min-height: 100%;
