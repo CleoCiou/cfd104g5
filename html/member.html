@@ -224,9 +224,9 @@
                         <div class="quiz_left_box">
 
                             <!-- 第一排 -->
-                            <div class="quiz_row">
+                            <div class="quiz_row box">
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards">
+                                <div class="quiz_cards draggable" draggable="true" id="quiz_cards1">
                                     <div class="quiz_cate">
                                         <h3>愛情</h3>
                                         <p>這三個月會有正緣嗎?</p>
@@ -236,7 +236,7 @@
                                     </div>
                                 </div>
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards">
+                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards2">
                                     <div class="quiz_cate">
                                         <h3>工作</h3>
                                         <p>心中默念問題</p>
@@ -247,7 +247,7 @@
                                 </div>
                                 
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards">
+                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards3">
                                     <div class="quiz_cate">
                                         <h3>健康</h3>
                                         <p>心中默念問題</p>
@@ -258,7 +258,7 @@
                                 </div>
                             
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards">
+                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards4">
                                     
                                     <div class="quiz_cate">
                                         <h3>愛情</h3>
@@ -274,7 +274,7 @@
 
                          <!-- 右欄拖曳用的容器 -->
                         <div class="quiz_right_box">
-                            <div class="quiz_view">
+                            <div class="quiz_view box">
                                 將卡片拖曳至方框內，以便檢視測驗紀錄
                             </div>
                         </div>
@@ -322,6 +322,34 @@
         computed: {
             
         }
+    });
+</script>
+<!-- drag and drop -->
+<script>
+    var dropTarget = document.querySelector(".quiz_box")
+    var draggables = document.querySelectorAll('.draggable')
+    // const containers =document.querySelector('.quiz_right_box')
+
+    for(let i = 0; i < draggables.length; i++){
+        draggables[i].addEventListener("dragstart", function(e){
+            e.dataTransfer.setData("srcId", e.target.id);
+        });
+    }
+    dropTarget.addEventListener("dragover", function(e){
+        e.preventDefault();
+    });
+    dropTarget.addEventListener("drop", function (e) {
+        e.preventDefault();
+        let target = e.target;
+        let srcId = e.dataTransfer.getData("srcId");
+
+        let droppable = target.classList.contains("box");
+        // console.log(target);找box在哪
+
+        if (droppable){
+            target.appendChild(document.getElementById(srcId));
+        }
+        
     });
 </script>
 </body>
