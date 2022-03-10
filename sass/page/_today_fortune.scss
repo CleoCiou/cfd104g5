@@ -1,290 +1,415 @@
-// 星座運勢 by hao
+/* === 星座頁籤 by JC === */
+$padding: 1em 8.333333%;
+$borderRadius: 0.5em;
+$circle: 50%;
+$d : 768px;
+$m : 767px;
 
-// 也可以設變數
-// ex:
-// $d=768px
-// @mixin=宣告  @include=引用
-/* 如果要顯示在CSS的註解 要用斜線星 跟星斜線把內容標註 */
-
-
-@mixin desktop {
-    @media screen and (min-width:768px) {
+@mixin desktop{
+    @media screen and (min-width:$d){
         @content;
-
     }
 }
-
-@mixin mobile {
-    @media screen and (max-width:767px) {
+@mixin mobile{
+    @media screen and (max-width:$m){
         @content;
     }
 }
 
-/*今日運勢 By 阿皓*/
 main {
-    .today_forture {
-
-        .container {
-            display: flex;
-            padding: 2% 8.333333%;
-
-            @include mobile {
-                flex-direction: column;
-            }
-
-            // 左半側邊攔
-            .sidebar {
-                width: 20%;
-                text-align: center;
-            }
-
-            .overall_fortune {}
-
+    .pagination_nav{
+        @include mobile {
+            display: none;
         }
-
-        .overall_fortune_txt {
-            @include mobile {
-                padding: 2% 8.333333%;
-                box-sizing: border-box;
-            }
-        }
-
-        // 包住左邊的區塊
-        .today {
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-
-            @include mobile {
-                width: 100%;
-            }
-
-            .today_box {
+        .container{ 
+            padding: $padding;
+            ul{
                 display: flex;
-
-                p {
-                    text-align: center;
-
-                    @include mobile {
-                        text-align: center;
-                    }
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                li{
+                    margin: 1em;
                 }
-
-                .con_item {
-                    width: 50%;
-                    margin: auto;
-
-                    @include mobile {
-                        width: 100%;
-                        margin: auto;
-                    }
-
-                    .img_box {
-                        text-align: center;
-                        width: 100%;
-
-                        img {
-                            width: 20%;
-                        }
-                    }
-
-                    .txt_box {
-                        text-align: center;
-
-                    }
-                }
-
-                // 包住右邊的區塊
-                .all_furtune {
-                    width: 50%;
-
-                    @include mobile {
-
-                        width: 100%;
-                        // display: flex;
-                        // flex-wrap: wrap;
-                    }
-
-                    .furtune_time {
-                        width: 100%;
-
-                        ul {
-                            display: flex;
-
-                            @include mobile {
-                                display: flex;
-                                flex-direction: column;
-                            }
-
-                            li {
-                                @include desktop {
-                                    width: 33%;
-                                    padding: 2%;
-                                    box-sizing: border-box;
-                                }
-                            }
-                        }
-                    }
-
-                    li.unselected_btn {
-                        @include mobile {
-                            width: 100%;
-                        }
-                    }
-
-                    //包住右下的區塊
-                    .lucky {
-                        width: 100%;
-                        display: flex;
-                        flex-direction: column;
-
-                        @include mobile {
-                            width: 100%;
-                        }
-
-                        h3 {
-                            font-size: 18px;
-                            margin-top: 1.3em;
-                        }
-
-                        .lucky_row {
-                            display: flex;
-                            margin: 2.5em 0;
-
-                            @include mobile {
-                                display: block;
-                            }
-
-                            .txt_box {
-                                width: 50%;
-                                display: flex;
-
-                                @include mobile {
-                                    width: 100%;
-                                }
-
-                                .number {
-                                    color: #fff;
-                                    letter-spacing: 0.3em;
-                                    background-color: transparent;
-                                    border: 1px #CFB886 solid;
-                                    text-align: center;
-                                    line-height: 40px;
-                                    padding: 0.5em 3em;
-                                    cursor: pointer;
-
-                                    @include mobile {
-                                        width: 50%;
-                                    }
-                                }
-
-                                .txt {
-                                    width: 30%;
-                                    flex-grow: 1;
-                                    align-self: center;
-                                    text-align: center;
-
-                                    @include mobile {
-                                        width: 50%;
-                                    }
-                                }
-                            }
-                        }
-                    }
+            }
+            label{
+                margin: .9em;
+                padding: .5em 1em;
+                border: 1px solid #CFB886;
+                border-radius: .5em;
+                cursor: pointer;
+                &:hover{
+                    background-color: map-get($primary_color, 'content' );
+                    color: map-get($primary_color, 'bg' );
+                    transition: .3s;
                 }
             }
         }
     }
-
-    /*下面的區塊*/
-    .forture_dec {
-        padding-top: 60px;
-
-        .container {
-            .overall_fortune {
-                h4 {
-                    border-bottom: 1px solid #CFB886;
-                    padding-bottom: 10px;
-
-                }
-
-                .overall_fortune_txt {
-                    padding: 3% 8.333333% 2.5% 0%;
-                    box-sizing: border-box;
-                }
+    /* 討論區 by JC */
+    .discuss{
+        img{
+            vertical-align: top;
+        }
+        .owl-carousel {
+            @include desktop {
+                display: none;
             }
         }
-    }
-
-    // 最下面內容
-    .change {
-        .container {
-            .item {
-                @include mobile {
-                    width: 100%;
-                }
-
-                @include desktop {
-                    display: flex;
-                    width: 100%;
-                }
-
-                .unselected_btn {
-                    margin: auto;
-                }
-            }
+        .container{
+            padding: $padding;
+            width: 100%;
+            margin: auto;
         }
-
     }
 }
-
-.today {
-    padding-left: 3%;
-
-    .txt_box {
-        text-align: center;
-        font-size: 12px;
-        color: #ffff;
-    }
-}
-
-.txt {
-    font-size: 20px;
-    color: #CFB886;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.number {
-    color: #fff;
-    letter-spacing: 0.3em;
-    background-color: transparent;
-    border: 1px #CFB886 solid;
-    text-align: center;
-    line-height: 40px;
-    padding: 0.5em 3em;
-    cursor: pointer;
-    margin: 10px 0;
-}
-
-.furtune_time {
-    margin-bottom: 30px;
-}
-
-.img_box {
-    text-align: center;
+.content{
     width: 100%;
+    display: flex;
+    align-items: flex-start;
+    /* 左欄文章分類 */
+    .content_cate{
+        position: sticky;
+        top: 75px;
+        left: 0;
+        text-align: center;
+        width: 20%;
+        @include mobile {
+            width: 0;
+        }
+        li{
+            align-items: center;
+            width: 50%;
+            margin: 0.3em 0;
+            border-bottom: 1px solid #CFB886;
+            cursor: pointer;
+            .category{
+                cursor: pointer;
+                padding-bottom: 0.5em;
+            }
+        }
+        li:hover{
+            background-color: #3A3A3A;
+            transition: .5s;
+        }
+        ul{
+            @include mobile {
+                display: none;
+            }
+        }
+        
+    }
+}
+// 請從這裡開始寫!!!!!!!!!!!!!!!!!!!!!!!!!!不要動上面的東西
 
-    img {
-        width: 70%;
+
+/* 有共用的就用同一個class名稱 ex: */
+/* .container{
+    width: 100%;
+    padding: 8.333333%;
+    box-sizing: border-box;
+    
+} 
+
+
+/* 最大寬度768以上不顯示 所以這裡是手機 */
+    /* 0~767px */
+/* 手機板不顯示頁籤 */
+@media screen and (max-width:767px) {
+    
+    main .discuss .container .content .content_article .content_wrap .today h2{
+        width: 100%;
+        text-align: center;
+    }
+    main .discuss .container .content .content_article .content_wrap .today p{
+        width: 100%;
+        text-align: center;
+    }
+    main .discuss .container .content_article .content_wrap .today .numbers p:nth-child(odd){
+        color: #CFB886;
+    }
+    // .container{
+    //     display: flex;
+    // }
+    main .forture_dec .container .overall_fortune h4{
+        width: 100%;
+        text-align: center;
+    }
+    main .forture_dec .container .overall_fortune .overall_fortune_txt{
+        text-align: center;
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+    }
+    main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt{
+        // padding: 2% 0%;
+        box-sizing: border-box;
+
+    }
+    main .discuss .container .content_article .content_wrap .today .overall_fortune h4{
+        padding: 2% 0%;
+        margin-top: 5%;
+        // text-align: center;
+        box-sizing: border-box;
+    }
+    main .discuss .container .content .content_cate li{
+        display: none;
+    } 
+
+}
+
+    /* === 星座頁籤 by JC === */
+$padding: 1em 8.333333%;
+$borderRadius: 0.5em;
+$circle: 50%;
+$d : 768px;
+$m : 767px;
+
+@mixin desktop{
+    @media screen and (min-width:$d){
+        @content;
+    }
+}
+@mixin mobile{
+    @media screen and (max-width:$m){
+        @content;
     }
 }
 
-main .forture_dec .container .overall_fortune .overall_fortune_txt {
+main {
+    .pagination_nav{
+        @include mobile {
+            display: none;
+        }
+        .container{ 
+            padding: $padding;
+            ul{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                li{
+                    margin: 1em;
+                }
+            }
+            label{
+                margin: .9em;
+                padding: .5em 1em;
+                border: 1px solid #CFB886;
+                border-radius: .5em;
+                cursor: pointer;
+                &:hover{
+                    background-color: map-get($primary_color, 'content' );
+                    color: map-get($primary_color, 'bg' );
+                    transition: .3s;
+                }
+            }
+        }
+    }
+    /* 討論區 by JC */
+    .discuss{
+        img{
+            vertical-align: top;
+        }
+        .owl-carousel {
+            @include desktop {
+                display: none;
+            }
+        }
+        .container{
+            padding: $padding;
+            width: 100%;
+            margin: auto;
+        }
+    }
+}
+.content{
+    width: 100%;
     display: flex;
-    justify-content: flex-start;
-    text-align: left;
+    align-items: flex-start;
+    /* 左欄文章分類 */
+    .content_cate{
+        position: sticky;
+        top: 75px;
+        left: 0;
+        text-align: center;
+        width: 20%;
+        @include mobile {
+            width: 0;
+        }
+        li{
+            align-items: center;
+            width: 50%;
+            margin: 0.3em 0;
+            border-bottom: 1px solid #CFB886;
+            cursor: pointer;
+            .category{
+                cursor: pointer;
+                padding-bottom: 0.5em;
+            }
+        }
+        li:hover{
+            background-color: #3A3A3A;
+            transition: .5s;
+        }
+        ul{
+            @include mobile {
+                display: none;
+            }
+        }
+        
+    }
+}
+// 請從這裡開始寫!!!!!!!!!!!!!!!!!!!!!!!!!!不要動上面的東西
+
+
+/* 有共用的就用同一個class名稱 ex: */
+/* .container{
+    width: 100%;
+    padding: 8.333333%;
+    box-sizing: border-box;
+    
+} 
+
+
+/* 最大寬度768以上不顯示 所以這裡是手機 */
+    /* 0~767px */
+/* 手機板不顯示頁籤 */
+@media screen and (max-width:767px) {
+    
+    main .discuss .container .content .content_article .content_wrap .today h2{
+        width: 100%;
+        text-align: center;
+    }
+    main .discuss .container .content .content_article .content_wrap .today p{
+        width: 100%;
+        text-align: center;
+    }
+    main .discuss .container .content_article .content_wrap .today .numbers p:nth-child(odd){
+        color: #CFB886;
+    }
+    // .container{
+    //     display: flex;
+    // }
+    main .forture_dec .container .overall_fortune h4{
+        width: 100%;
+        text-align: center;
+    }
+    main .forture_dec .container .overall_fortune .overall_fortune_txt{
+        text-align: center;
+        padding: 2% 8.333333%;
+        box-sizing: border-box;
+    }
+    main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt{
+        // padding: 2% 0%;
+        box-sizing: border-box;
+
+    }
+    main .discuss .container .content_article .content_wrap .today .overall_fortune h4{
+        padding: 2% 0%;
+        margin-top: 5%;
+        // text-align: center;
+        box-sizing: border-box;
+    }
+    main .discuss .container .content .content_cate li{
+        display: none;
+    } 
+
 }
 
-/*今日運勢 By 阿皓 --- END */
+
+
+
+
+
+
+/* 這裡是桌機 */
+@media screen and (min-width:768px) {
+    main .today_fortune .container .content_cate{
+       width: 20%;
+       padding-left: 30px;
+    }
+    main .today_fortune .container .content_cate ul{
+        
+    }
+    main .today_fortune .container .today .numbers .txt_box{
+    }
+    
+    main .discuss .container .content .today{
+        width: 95%;
+    }
+    main .discuss .container .content .today .item{
+        display: flex;
+        width: 100%;
+    }
+    main .discuss .container .content .today .item .pic{
+        width: 50%;
+        
+    }
+    main .discuss .container .content .today .item .pic img{
+        width: 100%;
+    }
+    // .todays_box{
+    //     display: flex;
+    //     width: 100%;
+    // }
+    
+    main .discuss .container .content .today{
+        width: 95%;
+    }
+    main .discuss .container .content .today .item{
+        display: flex;
+        width: 100%;
+    }
+    main .discuss .container .content .today .item .pic{
+        width: 50%;
+        
+    }
+    main .discuss .container .content .today .item .pic img{
+        width: 100%;
+    }
+    main .discuss .container .content .numbers .txt_box{
+        /* height: 100%;
+        display: flex; */
+        width: 100%;
+        text-align: center;
+        margin: auto;
+        text-align: center;
+    }
+    main .discuss .container .content .numbers .txt_box p{
+        flex-grow: 1;
+        text-align: center;
+        padding: 3.5% 0%;
+    }
+    main .discuss .container .content .numbers{
+        width: 50%;
+    margin: auto;
+    }
+    main .discuss .container .content_article .content_wrap .today .item .pic .txt_box p{
+        text-align: center;
+    }
+    main .discuss .container .content_article .content_wrap .today .numbers p:nth-child(odd){
+        // border: 1px solid white;
+        color: #CFB886;
+    }
+    main .forture_dec .container .overall_fortune h4{
+        padding: 2%;
+        box-sizing: border-box;
+    }
+    main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt{
+        // padding: 2% 0%;
+        box-sizing: border-box;
+
+    }
+    
+}
+    
+
+
+
+
+
+
+
+
+    
+

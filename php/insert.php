@@ -13,7 +13,7 @@
         $table = $_POST['table'];
         $value = $_POST['insertValue'];
         $sql = "insert into $table values($value)";
-        // $msg['sql'] = $sql;
+        $msg['sql'] = $sql;
         
         try {
             $result = $pdo -> query($sql);

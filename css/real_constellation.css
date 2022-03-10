@@ -1,42 +1,50 @@
 @media screen and (max-width:767px) {
-     /* 最大寬度768以上不顯示 所以這裡是手機 */
-        /* 0~767px */
+
+    /* 最大寬度768以上不顯示 所以這裡是手機 */
+    /* 0~767px */
     /* 手機板不顯示頁籤 */
-    main .pagination_nav{
+    main .pagination_nav {
         display: none;
     }
-    h2{
+
+    main .real_constellation h2 {
         text-align: center;
+        padding: 10% 0%;
     }
-    ul{
+
+    main .pagination_nav .container ul {
         width: 100%;
         display: flex;
-        list-style:none;
+        list-style: none;
         flex-wrap: wrap;
     }
-    ul div{
-        width: 33.33%;
-        list-style: none;
-    } 
-    html{
-        font-size: 14px;
-    } 
-    .real{
+    main .real {
         width: 100%;
         padding: 8.333333%;
         box-sizing: border-box;
         text-align: center;
-    } 
-    .real_constellation button{
+    }
+
+    main .real_constellation button {
         margin: auto;
         box-sizing: border-box;
         padding: 2% 8.333333%;
         margin-top: 10%;
     }
 
+    main .real_constellation p {
+        text-align: left;
+    }
+
+    main .real_constellation input {
+        margin-top: 10%;
+        box-sizing: border-box;
+    }
+
 }
 
 @media screen and (min-width:768px) {
+
     /* main .pagination_nav .container ul{
         padding: 2% 8.333333%;
         display: flex;
@@ -44,39 +52,39 @@
         justify-content: center;
         flex-wrap: wrap;
     }   */
-    h2{
-        text-align: center;
+    main .real_constellation h2 {
+        padding: 0% 8.333333%;
+        padding: 2% 0%;
+        text-align: left;
     }
-    ul{
+
+    main .pagination_nav .container ul {
         width: 100%;
         display: flex;
-        list-style:none;
+        list-style: none;
         flex-wrap: wrap;
     }
-    ul div{
-        width: 33.33%;
-        list-style: none;
-    } 
-    html{
-        font-size: 14px;
-    } 
-    .real{
+
+    main .real {
         width: 100%;
-        padding: 8.333333%;
+        padding: 2% 8.333333%;
         box-sizing: border-box;
         text-align: center;
-    } 
-    .real_constellation button{
+    }
+
+    main .real_constellation button {
         margin: auto;
         box-sizing: border-box;
         padding: 2% 8.333333%;
         margin-top: 10%;
     }
-    .real_constellation input{
+
+    main .real_constellation input {
         margin-top: 5%;
         box-sizing: border-box;
     }
-    main .real_constellation p{
+
+    main .real_constellation p {
         text-align: left;
     }
 

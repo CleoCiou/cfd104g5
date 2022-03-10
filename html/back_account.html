@@ -99,7 +99,7 @@
                     let result;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/back_getCol.php',
+                        url: 'php/select.php',
                         data: {
                             table: 'admin',
                             queryCol: 'adminName, adminId, status',
@@ -167,7 +167,6 @@
                             console.log('ajax error');
                         }
                     });
-                    
                 },
                 // 清空輸入框(若傳入訊息alert)
                 resetInput(msg = false) {
@@ -193,7 +192,7 @@
                             where: `adminId = '${adminId}'`
                         },
                         success: function(data) {
-                            alert(`成功將 ${adminName} 的權限設為 ${statusText}`)
+                            alert(`已將 ${adminName} 的權限設為 ${statusText}`)
                             thisVue.getCol();
                         },
                         error: function() {

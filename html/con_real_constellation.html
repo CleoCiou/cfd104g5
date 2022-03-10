@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
     @@include('layout/head.html', {
-        'title': '星座測驗'
+        'title': '性格測驗'
     })
     <link rel="stylesheet" href="css/real_constellation.css">
 <body>
     @@include('layout/header.html')
    <main>
-    <div id="app">
+          <div id="app">
         <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
         <section class="pagination_nav">
             <div class="container">
@@ -19,11 +19,14 @@
                 </ul>
             </div>
         </section>        
+    
     </div>
-    <h2>真實星座</h2>
+                                
         <section class="real_constellation real">
-            <p>水瓶座的獨特思想，雙魚座的多愁善感，獅子座的爽朗大方，天蠍座的幫理又幫親……是不是覺得這些星座特質在你身上或多或少有所呈現？研究星盤太複雜，出生精確時分也很難確證，不如來試試看我們的【真實星座測試】！</p>
-            <input type="button" value="開始測試" onclick="location.href='con_real_constellation_buy.html'">
+            <h2>性格測驗</h2>
+            <p>廣受企業採用的DISC人際風格性格理論，是1920年由美國心理學家馬斯頓(Dr. Marston)研究古希臘的性格學說，探究人類行為模式所發展而成，是一種關於人類行為語言的測驗，以藉此了解每個人屬於何種類型。對於個人及組織，此測驗所提供的幫助：
+            此份測驗，用來幫助自我暸解個體的優勢、在工作中應注意的事項以及一些個體傾向等，例如，如何影響他人、對團隊的貢獻是什麼、什麼時候處於應激狀態，能使個體更加清楚地瞭解自己的個性特徵，企業也可以有針對性地考察應聘個體是否具有對企業、對職位來說十分關鍵的人格特徵，以此作為篩選人員的標準之一。</p>
+            <input class="third_btn" type="button" value="開始測試" onclick="location.href='con_real_constellation_buy.html'">
         </section>
     </main>
     <!-- @@include('layout/footer.html') -->
@@ -35,7 +38,7 @@
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
-                    '真實星座': 'con_real_constellation.html',
+                    '性格測驗': 'con_real_constellation.html',
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',

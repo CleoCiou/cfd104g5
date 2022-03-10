@@ -1,82 +1,245 @@
-<!-- 圖片是否一開始要先裁好?然後圖片用之前要先解壓縮會比較好 圖片最好用png檔 -->
-
 <!DOCTYPE html>
 <html lang="en">
-    @@include('layout/head.html', {
-        'title': '星座測驗'
-    })
-    <link rel="stylesheet" href="css/real_constellation_2page.css">
-    <script src="js/con_real_constellation_buy.js"></script>
-    <style>
-        .real{
-            padding: 2% 0 0;
-        }
-        .real_constellation .wrapper{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .real_constellation .wrapper .pic{
-            width: 18%;
-            margin-bottom: 10px;
+@@include('layout/head.html', {
+'title': '性格測驗'
+})
+<link rel="stylesheet" href="../css/real_constellation_2page.css">
+<script src="../js/con_real_constellation_buy.js"></script>
 
-        }
-        .real_constellation .wrapper p{
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .real_constellation .wrapper .pic{
-            width: 18%;
-        }
-        .real_constellation p{
-            text-align: center; 
-        }
-        .answer{
-            display: flex;
-            margin: 20px 0 ;
-        }
-        .answer .third_btn{
-            margin: 0 10px;
-        }
-    </style>
+
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js'
+        integrity='sha512-pSyYzOKCLD2xoGM1GwkeHbdXgMRVsSqQaaUoHskx/HF09POwvow2VfVEdARIYwdeFLbu+2FCOTRYuiyeGxXkEg=='
+        crossorigin='anonymous'></script> -->
+
 <body>
     @@include('layout/header.html')
-  <main>
-    <div id="app">
-        <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
-        <section class="pagination_nav">
+    <main>
+        <div id="app">
+            <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
+            <section class="pagination_nav">
+                <div class="container">
+                    <ul>
+                        <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <!-- <h2>真實星座</h2> -->
+        <div id="tab">
+            <component :is='content' @this-tab="showTab"></component>
+        </div>
+
+        <!-- @this-result="showresult" -->
+        <script>
+            // wrapper
+            Vue.component('Q1', {
+                template: `
+        <section class="real_constellation">    
             <div class="container">
-                <ul>
-                    <li v-for="(url, nav) in urls"><a :href="url"><label>{{nav}}</label></a></li>
-                </ul>
-            </div>
-        </section>        
-    </div>
-    <!-- <h2>真實星座</h2> -->
-        <section class="real_constellation">
-           <!-- 控制padding的容器 -->
-            <div class="wrapper">
-                <div class="pic"><img id="initimg" src="./images/con_real/real_init.svg"></div>
+                <div class="pic">         
+                    <div class="abgne-effect-20140110-1">
+                      
+                       <img id="initimg" src="./images/con_real/real_init_question.svg" alt="">
+                   
+                      
+                       <!-- <a href="#" title="title">Title</a> -->
+                    </div>
+                </div>
                 <p>看夜景喜歡看星星還是月亮</p>
               <!-- 包住圖文的容器   -->
                 <div class="answer">
                     <div class="btn third_btn" id="star">
-                        <a href="con_constellation_save.html"><span>星星</span></a>
+                       <span @click="myTab" @mouseover="changeImg">星星</span>
                         <input type="text" value="images/con_real/real_star.svg" hidden>
                     </div>
                     <div class="btn third_btn" id="moon">
-                        <a href="con_constellation_save.html"><span>月亮</span></a>
+                        <span @click="myTab" @mouseover="changeImg">月亮</span>
                         <input type="text" value="images/con_real/real_moon.svg" hidden>
                     </div>
                 </div>
                 
                 
             </div>
-            
         </section>
-    </main> 
+            `
+                ,
+
+                data() {
+                    return {
+                        nextTabs: 'Q2'
+                    }
+                },
+                methods: {
+                    myTab() {
+                        this.$emit('this-tab', this.nextTabs)
+                    },
+                    changeImg(e) {
+                        doFirst();
+                        console.log(e.target);
+                    }
+
+                }
+            })
+
+            Vue.component('Q2', {
+                template: `
+            <section class="real_constellation">    
+            <div class="container">
+                <div class="pic">         
+                    <div class="abgne-effect-20140110-1">
+                       <a class="link" href="#" title="title">
+                       <img id="initimg" src="./images/con_real/real_init_question.svg" alt="">
+                       </a>
+                      
+                       <!-- <a href="#" title="title">Title</a> -->
+                    </div>
+                </div>
+                <p>你平常的興趣是什麼 </p>
+              <!-- 包住圖文的容器   -->
+                <div class="answer">
+                    <div class="btn third_btn" id="star">
+                       <span @click="myTab"  @mouseover="changeImg">踢足球</span>
+                        <input type="text" value="images/con_real/real_footer.svg" hidden>
+                    </div>
+                    <div class="btn third_btn" id="moon">
+                        <span @click="myTab"  @mouseover="changeImg">閱讀書</span>
+                        <input type="text" value="images/con_real/real_read.svg" hidden>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+            `
+
+                ,
+                data() {
+                    return {
+                        // 你平常的興趣是什麼 踢足球 看書
+                        nextTabs: 'Q3'
+                    }
+                },
+                methods: {
+                    myTab() {
+                        this.$emit('this-tab', this.nextTabs)
+                    },
+                    changeImg(e) {
+                        doFirst();
+                        console.log(e.target);
+                    }
+
+                },
+
+
+
+            })
+
+            Vue.component('Q3', {
+                template: `
+            <section class="real_constellation">    
+            <div class="container">
+                <div class="pic">         
+                    <div class="abgne-effect-20140110-1">
+                       <a class="link" href="#" title="title">
+                       <img id="initimg" src="./images/con_real/real_init_question.svg" alt="">
+                       </a>
+                      
+                       <!-- <a href="#" title="title">Title</a> -->
+                    </div>
+                </div>
+                <p>睡不著時會喝咖啡嗎 </p>
+              <!-- 包住圖文的容器   -->
+                <div class="answer">
+                    <div class="btn third_btn" id="star">
+                       <span @click="myTab"  @mouseover="changeImg"> 會唷,會喝咖啡</span>
+                        <input type="text" value="images/con_real/real_coffee.svg" hidden>
+                    </div>
+                    <div class="btn third_btn" id="moon">
+                        <a href="con_constellation_result.html"><span @click=""  @mouseover="changeImg">不會,會喝牛奶</span></a>
+                        <input type="text" value="images/con_real/real_milk.svg" hidden>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+            `
+                ,
+                data() {
+
+                    return {
+                        nextTabs: 'Q4'
+                        // ,
+                        // nextResult:'result'
+                    }
+                },
+                methods: {
+                    myTab() {
+                        this.$emit('this-tab', this.nextTabs)
+                    },
+                    changeImg(e) {
+                        doFirst();
+                        console.log(e.target);
+                    }
+
+                }
+
+            })
+
+            Vue.component('Q4', {
+                template: `
+            <section class="result_bear">
+                <div class="container">
+                  <div class="item">  
+                    <div class="img_box" id="owl" @mouseover="doFirst"><img src="../images/con_real/bear-removebg-preview.svg" alt="">
+                    </div>
+                    <h2>你的測驗結果為:無尾熊穩健型(Steadiness)的人
+                    <div class="txt_box">
+                          
+                          <p> 工作風格的主要行為為面部表情和藹可親；說話慢條斯理，聲音輕柔；使用讚同式、鼓勵式的語言；辦公室裏擺有家人的照片。 穩健型這類的人具有高度的耐心，他敦厚隨和，行事冷靜自持；生活講求律規但也隨緣從容，面對困境，都能泰然自若；他們同時也沉默、馬虎、無主見，需要力量型的人給於指導但不要施加壓力，因不擅於做決定；他們往往無攻擊性，是很好的聆聽者，由於人際關係好（和事佬），所以朋友很多，不愛生氣，當你們看法不同時，應先處理個人情緒而非討論事實。 </p>
+                    </div>
+                  </div>  
+
+                    <div class="one"> <a href="./con_real_constellation.html"><span class="third_btn">再測一次</span></a>  </div> 
+            </section>
+            `
+                ,
+                data() {
+                    return {
+                        nextTabs: 'result'
+                    }
+                },
+                methods: {
+                    myTab() {
+                        this.$emit('this-tab', this.nextTabs)
+                    },
+
+
+                }
+
+            })
+
+         
+
+
+
+
+            new Vue({
+                el: '#tab',
+                data: {
+                    content: 'Q1'
+                },
+                methods: {
+                    showTab(tab) {
+                        this.content = tab
+                    }
+                },
+
+
+            })
+        </script>
+    </main>
     @@include('layout/footer.html')
-    <!-- <script src="js/common.js"></script> -->
     <script>
         new Vue({
             el: '#app',
@@ -84,14 +247,17 @@
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
-                    '真實星座': 'con_real_constellation.html',
+                    '性格測驗': 'con_real_constellation.html',
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
-                cates: ['全部','摩羯座','水瓶座','雙魚座','牡羊座','金牛座','雙子座','巨蟹座','獅子座','處女座','天秤座','天蠍座','射手座']
+                cates: ['全部', '摩羯座', '水瓶座', '雙魚座', '牡羊座', '金牛座', '雙子座', '巨蟹座', '獅子座', '處女座', '天秤座', '天蠍座', '射手座']
             }
         });
+
     </script>
+
 </body>
+
 </html>

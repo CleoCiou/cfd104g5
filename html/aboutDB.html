@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- head -->
+    @@include('layout/head.html', {
+        'title': '資料庫串接說明'
+    })
+            
+    <body>
+        <!-- header -->
+        @@include('layout/header.html')
+        
+        <main>
+            <section class="aboutDB">
+                <div class="container">
+                    <h2>第一章: 我要幹嘛?</h2>
+                    <h3>JS</h3>
+                    <div class="info_box">
+                        <div class="article">
+                            <label>會員帳號</label>
+                            <input type="text" id="artNo_js">
+                        </div>
+                    </div>
+
+                    <h3>JQuery</h3>
+                    <div class="info_box">
+                        <div class="article">
+                            <label>會員帳號</label>
+                            <input type="text" id="artNo_jquery">
+                        </div>
+                    </div>
+
+                    <h3>Vue</h3>
+                    <div class="info_box_vue" id="app">
+                        <label>會員帳號</label>
+                        <!-- vue雙向綁定的寫法(使用者輸入/更改時，資料同時變動) -->
+                        <!-- 觀察 F12 的 VUE -->
+                        <input type="text" v-model="artNo_vue">
+                    </div>
+
+                    <hr>
+
+                    <h2>第二章 我要很多!</h2>
+                    <h3>JS</h3>
+                    <div class="info_box_js"></div>
+
+                    <h3>JQuery</h3>
+                    <div class="info_box_jquery">σ ﾟ∀ ﾟ) ﾟ∀ﾟ)σ</div>
+
+                    <h3>Vue</h3>
+                    <div class="info_box_vue" id="app2">
+                        <div class="card" v-for="row in queryResult">
+                            <span>{{ row.artNo }}</span>
+                            <span>{{ row.topicName }}</span>
+                            <p>{{ row.title }}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- footer -->
+        @@include('layout/footer.html')
+
+    </body>
+</html>
+
+<script>
+    // =============== 前情提要 =============== //
+    // ***** 開外層的 html! ***** //
+    // ***** 開外層的 html!! ***** //
+    // ***** 開外層的 html!!! ***** //
+
+    // ***** 用 IIS 開! ***** //
+    // ***** 用 IIS 開!! ***** //
+    // ***** 用 IIS 開!!! ***** //
+
+    // ***** 開著 F12 Console! ***** //
+    // ***** 開著 F12 Console!! ***** //
+    // ***** 開著 F12 Console!!! ***** //
+
+    // ***** 阿阿阿阿阿 ***** //
+    // ***** 沒惹 ***** //
+    // ***** σ ﾟ∀ ﾟ) ﾟ∀ﾟ)σ ***** //
+
+
+    // =============== 第一章: 我要幹嘛? =============== //
+    // 例如: 想顯示文章列表
+    // ================================================ //
+    // 1. 我在哪? -> 要顯示在哪一個區塊(div, class, id...)裡?
+    //    例如: 文章的編號想放在 id="artNo" 的 input 裡
+    // *** 就是要這麼詳細 ***
+    // *** 一次做一點點，先求有，再求好 *** //
+
+    // 寫法:
+    let artNo;
+    // # js
+    // 取得被放的元素(input id="artNo")
+    artNo = document.getElementById('artNo_js');
+    // 把值("123")放進去
+    artNo.value = "123";
+
+    // # jquery
+    // 取得被放的元素(input id="artNo")
+    // "#abc" -> id="abc"
+    // ".zzz" -> class="zzz"
+    artNo = $("#artNo_jquery");
+    // 把值("123")放進去
+    artNo.val("123");
+
+    // # vue
+    new Vue({
+        // component是另一個故事了，本章先不討論
+        // 可以自己決定 #app 的位置，但是只有他和他的小孩才可以使用new Vue裡面的東東
+        // 或是加 let，那是另一個故事了，本章還是先不討論
+        el: '#app',
+        // 放資料的地方
+        data: {
+            // 預設變數: 預設值；
+            // 可以觀察到在html標籤中用 v-model="artNo_vue" 呼叫它，它就跟 id="artNo" 的 input 綁在一起了
+            // 使用者修改 input，它會改，它改，input 的值就會改 (可以修改 F12 Vue 裡面的值觀察)
+            // 若是 methods 或其他和 data 同層的地方要使用 data 裡面的變數要加 this，例如: this.artNo_vue
+            artNo_vue: "123"
+        },
+        // 以下(mounted, methods) 請先往下看完 3. 何時要再回來
+        mounted() {
+            this.getArtNo_vue();
+        },
+        methods: {
+            getArtNo_vue() {
+                // 在 ajax 中的 this 會是 ajax 的物件
+                // 所以先把 vue 的 this 存起來
+                let thisVue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/select.php',
+                    data: {
+                        // 要查詢的資料表
+                        table: 'article',
+                        // 要 join 的資料表 (如果沒有就不用打)
+                        joinTable: 'article_topic',
+                        // 要查詢的欄位
+                        queryCol: 'artNo, topicName, title',
+                        // join 的條件 (如果沒有join就不用打)
+                        joinOn: 'topicNo',
+                        // condition: 'artNo = 1',
+                        // other: 'limit 1'
+                    },
+                    success: function(data) {
+                        if (data.msg !== false){
+                            thisVue.artNo_vue = data.msg[0].artNo;
+                        }
+                    },
+                    error: function() {
+                        console.log('ajax error');
+                    }
+                });
+            }
+        }
+    })
+
+    // 回到問題: 文章的編號想放在 id="artNo" 的 input 裡 
+    //       => 文章的編號放想放在 artNo.value
+
+    // 新的問題:文章的編號??? 我是誰???
+    // 皮卡丘(X
+
+    // 2. 我是誰? -> 文章的編號從哪裡來?
+    //    想從 g5資料庫 的 article資料表 撈出所有的
+    //    文章編號(artNo)、文章主題名稱(article_topic.topicName)和文章主旨(title) 資料
+    //    文章主題名稱是從 article_topic 資料表來的，所以會用到 join
+    // *** 就是要這麼詳細 ***
+    // *** 一次做一點點，先求有，再求好 *** //
+
+    // 寫法(我習慣用 function 包):
+    // 取得所有文章標號 (註明這是做啥用的 function，不然等等就忘了)
+    function getArtNo() {
+        // 在頁面不跳轉的情況下與後端資料庫建立連線，取得資料庫中的資料
+        $.ajax({
+            // 使用 GET 或 POST 型態
+            // GET 的參數會顯示在網址列，POST 不會 (目前 PHP 內全部寫 POST)
+            type: 'POST',
+            // 要連接的 php
+            url: 'php/select.php',
+            
+            // 要傳給 php 的資料
+            // 依目前情境 SQL 會長成這樣:
+            // SELECT artNo, topicName, title 
+            // FROM article 
+            // JOIN article_topic ON (article.topicNo = article_topic.topicNo)
+            data: {
+                // 要查詢的資料表
+                table: 'article',
+                // 要 join 的資料表 (如果沒有就不用打)
+                joinTable: 'article_topic',
+                // 要查詢的欄位
+                queryCol: 'artNo, topicName, title',
+                // join 的條件 (如果沒有join就不用打)
+                joinOn: 'topicNo',
+                // where 條件 (如果沒有就不用打)
+                // condition: 'artNo = 1',
+                // other，例如: order by、limit.. (如果沒有就不用打)
+                // other: 'limit 1'
+
+                // SQL 帶入以上變數後會變成:
+                // SELECT ${queryCol}
+                // FROM ${table}
+                // JOIN ${joinTable} ON (${table}.${joinOn} = ${joinTable}.${joinOn}
+            },
+            success: function(data) {
+                // 取得資料用 data.msg
+                // 如查詢到資料會回傳資料
+                // 如符合比數為 0 筆，會回傳 false
+                console.log(data.msg);
+                // data.sql 可以看到 php 組合後的 sql 語法
+                console.log(data.sql);
+                
+                // 回傳值(data.msg)可能有很多筆 或 沒找到資料回傳false
+                // 如果 不為false，就是如果有找到資料
+                if (data.msg !== false){
+                    // 回到我在哪?
+                    // 文章的編號放想放在 id="artNo" 的 input 裡
+                    // 因為我只有一個input，所以先放一筆，先確認我可以正確取、放值
+                    // 取回傳值的第一筆 data.msg[0]
+                    // 觀察 console 中的值，可以知道文章編號是 artNo
+                    // 因此文章的編號就是 data.msg[0].artNo
+                    // # js (就是把剛剛的 "123" 改成抓到的文章編號)
+                    document.getElementById('artNo_js').value = data.msg[0].artNo;
+                    // 所以改成 data.msg[1]，照理說就可以看到第二筆資料
+                    // # jquery (就是把剛剛的 "123" 改成抓到的文章編號)
+                    $('#artNo_jquery').val(data.msg[1].artNo);
+
+                    // 如果你跟我一起寫，你會發現你的畫面根本沒動
+                    // 哈哈哈，笑你 (X
+                    // 新的問題: 何時要?
+                }
+
+            },
+            error: function() {
+                console.log('ajax error');
+            }
+        });
+    }
+
+    // 像剛剛的 getArtNo 是一個 function，沒有呼叫它它就不會動
+    // 那要什麼時候叫它?
+
+    // 3. 何時要? -> 按了按鈕才要 或 網頁讀完就要 或 mouseover 的時候要等等..
+    //    例如: 我現在想要網頁 loading 完就可以看到文章列表
+    // # js
+    // window.addEventListener('load', getArtNo); // 會跟第二章打架，先註解
+    // # vue 
+    // 我一般掛在mounted，詳細嚕回去上面看
+    
+    // 對，3.只有這樣不要懷疑
+
+    // =============== 第二章: 我要很多! =============== //
+    // 例如: 想顯示文章列表，全部都要，剛剛只有一個編號不夠
+    // ================================================ //
+    // step1: 我在哪?
+    // 先想想再打開看
+    {
+    // 我要把 文章編號、主題類別名稱、文章標題 放到 class="card" 的 div 裡
+    // 文章編號會是 span，class="artNo"
+    // 主題類別名稱會是 span，class="topicName"
+    // 文章標題會是 p，class="title"
+    // *** 就 是 要 如 此 清 楚 詳 細 明 白 *** //
+    }
+    
+    // 但是我有很多個所以我需要動態產生
+    // 新的問題: 怎麼產生?
+    // 關鍵字: 很多 => 迴圈用好用滿
+
+    // 老問題: 我要幹嘛? 我在哪? 我是誰?
+    // 先想想再打開看
+    {
+    // 我要新增卡片，放在 div class="info_box" 裡，我是原本的我(data.msg)
+    }
+
+    // # js
+    // 取得文章列表
+    function getArticleList() {
+        $.ajax({
+            type: 'POST',
+            url: 'php/select.php',
+            data: {
+                // 要查詢的資料表
+                table: 'article',
+                // 要 join 的資料表 (如果沒有就不用打)
+                joinTable: 'article_topic',
+                // 要查詢的欄位
+                queryCol: 'artNo, topicName, title',
+                // join 的條件 (如果沒有join就不用打)
+                joinOn: 'topicNo',
+                // condition: 'artNo = 1',
+                // other: 'limit 1'
+            },
+            success: function(data) {
+                if (data.msg !== false){
+                    // 原本的那個，太少，不要
+                    // document.getElementById('artNo_js').value = data.msg[0].artNo;
+
+                    // 很多! -> 迴圈
+                    for (let i = 0; i < data.msg.length; i++) {
+                        // 產生可用 createElement, appendChild 等等
+                        // 創造卡片
+                        let card = document.createElement('div');
+                        card.classList.add('card');
+                        // 創造文章編號
+                        let artNo = document.createElement('span');
+                        artNo.classList.add('artNo');
+                        artNo.innerText = data.msg[i].artNo;
+                        // 創造文章主題名稱
+                        let topicName = document.createElement('span');
+                        topicName.classList.add('topicName');
+                        topicName.innerText = data.msg[i].topicName;
+                        // 創造文章標題
+                        let title = document.createElement('p');
+                        title.classList.add('title');
+                        title.innerText = data.msg[i].title;
+                        // 把子項目放進 card 裡
+                        card.appendChild(artNo);
+                        card.appendChild(topicName);
+                        card.appendChild(title);
+                        // 把卡片放進資訊盒裡
+                        document.querySelector('.info_box_js').appendChild(card);
+                    }
+                }
+            },
+            error: function() {
+                console.log('ajax error');
+            }
+        });
+    }
+    // 何時要?
+    window.addEventListener('load', getArticleList);
+
+    // # jquery
+    // 和 js 大同小異，好懶，跳過
+
+    // # vue
+    new Vue({
+        el: '#app2',
+        data: {
+            // 查詢結果(就是data.msg)
+            queryResult: {}
+        },
+        // 以下(mounted, methods) 請先往下看完 3. 何時要再回來
+        mounted() {
+            this.getArtNo_vue();
+        },
+        methods: {
+            getArtNo_vue() {
+                let thisVue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/select.php',
+                    data: {
+                        // 要查詢的資料表
+                        table: 'article',
+                        // 要 join 的資料表 (如果沒有就不用打)
+                        joinTable: 'article_topic',
+                        // 要查詢的欄位
+                        queryCol: 'artNo, topicName, title',
+                        // join 的條件 (如果沒有join就不用打)
+                        joinOn: 'topicNo',
+                        // condition: 'artNo = 1',
+                        // other: 'limit 1'
+                    },
+                    success: function(data) {
+                        if (data.msg !== false){
+                            // 很多! -> 迴圈寫在 html 標籤上
+                            thisVue.queryResult = data.msg;
+                        }
+                    },
+                    error: function() {
+                        console.log('ajax error');
+                    }
+                });
+            }
+        }
+    })
+</script>
