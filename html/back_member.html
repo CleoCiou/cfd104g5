@@ -8,7 +8,7 @@
         
 
 <body>
-    <section id="app" class="back container"  @click="closePopup">
+    <section id="app" class="back container">
         
         <my-nav></my-nav>
         
@@ -28,52 +28,46 @@
                     <top-action-bar :action-btn="actionBtn"></top-action-bar>
                     
                     <!-- 資料內容 -->
-                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail" @change-status="changeStatus"></my-table>
+                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
 
                     <!-- 彈出視窗 -->
                     <div :class="popup">
                         <div class="content_box">
-                            <!-- 會員大頭貼 -->
-                            <div class="info_box sticker">
-                                <input type="file" name="memImage" id="memImage" class="display_none">
-                                <label for="memImage" class="img_box">
-                                    <img src="images/icon/icon_discuss_mine.svg" alt="大頭貼">
-                                </label>
-                            </div>
+                            <!-- 會員帳號 -->
                             <div class="info_box memId">
                                 <label for="memId">帳號</label>
                                 <label>{{ detail.memId }}</label>
                             </div>
                             <!-- 會員姓名 -->
                             <div class="info_box memName">
-                                <label for="memName">姓名</label>
-                                <input type="text" id="memName" :value="detail.memName">
+                                <label for="adminName">姓名</label>
+                                <input type="text" :value="detail.memName">
                             </div>
                             <!-- 會員信箱 -->
                             <div class="info_box email">
                                 <label for="email">信箱</label>
-                                <input type="email" id="email" :value="detail.email">
+                                <input type="email" :value="detail.email">
                             </div>
                             <!-- 會員生日 -->
                             <div class="info_box birthday">
                                 <label for="birthday">生日</label>
-                                <input type="date" id="birthday" :value="detail.birthday">
+                                <input type="date" :value="detail.birthday">
                             </div>
                             <!-- 會員地址 -->
                             <div class="info_box address">
                                 <label for="address">地址</label>
-                                <input type="text" id="address" :value="detail.address">
+                                <input type="text" :value="detail.address">
                             </div>
                             <!-- 會員卡號 -->
                             <div class="info_box creditNum">
                                 <label for="creditNum">卡號</label>
-                                <input type="text" id="creditNum" :value="detail.creditNum">
+                                <input type="text" :value="detail.creditNum">
                             </div>
                             <!-- 儲存/取消 -->
                             <div class="info_box action_box">
                                 <div class="action">
                                     <button class="third_btn" @click="displaynone=true">取消</button>
-                                    <button class="secondary_btn" @click="updateDb(detail.memId)">儲存</button>
+                                    <button class="secondary_btn" @click="displaynone=true">儲存</button>
                                 </div>
                             </div>
                         </div>
@@ -116,111 +110,34 @@
             },
             methods: {
                 // 依選擇項目取得資料表
-                getCol(update = true, where) {
+                getCol() {
                     let thisVue = this;
-                    let result;
                     $.ajax({
                         type: 'POST',
                         url: 'php/back_getCol.php',
                         data: {
                             table: 'members',
-                            queryCol: 'memId, memName, identity, sex, email, phoneNum, birthday, address, creditNum, memImage, status',
-                            condition: where
+                            queryCol: 'memId, memName, identity, sex, email, phoneNum, birthday, address, creditNum, memImage, status'
                         },
-                        async: false,
                         success: function(data) {
-                            result = data.msg;
-                            if(update) {
-                                thisVue.queryResult = data.msg;
-                            }
+                            thisVue.queryResult = data.msg;
                         },
                         error: function() {
                             console.log('ajax error');
                         }
                     });
-                    return result;
                 },
+                
                 // 解構欄位
                 deconstructRow(row, idx) {
                     let {memName, memId, identity, status, ...detail} = row;
                     deconstructResult = {memName, memId, identity, detail, status};
                 },
+
                 // 取得詳細資訊
                 getDetail(idx) {
                     this.displaynone = false;
                     this.detail = this.queryResult[idx];
-                },
-                // popup視窗儲存，更新資料庫
-                updateDb(memId) {
-                    let info = $(".info_box > input");
-                    // 建立更新清單 update{ 欄位名稱: 值 }
-                    let update = [];
-                    info.each( idx => {
-                        let col = info[idx].id;
-                        let data = info[idx].value;
-                        update.push(`${col}='${data}'`);
-                    })
-
-                    // 更新資料
-                    let thisVue = this;
-                    $.ajax({
-                        type: 'POST',
-                        url: 'php/update.php',
-                        data: {
-                            table: 'members',
-                            updateValue: update.join(','),
-                            where: `memId = '${memId}'`
-                        },
-                        success: function(data) {
-                            if (data.msg === true) {
-                                thisVue.displaynone = true;
-                                alert(`已更新 ${memId} 的會員資料`);
-                                thisVue.getCol();
-                            }
-                            else {
-                                console.log(data.msg);
-                            }
-                        },
-                        error: function() {
-                            console.log('ajax error');
-                        }
-                    });
-                },
-                // 更新狀態(需更新的資料, 更新為此狀態)
-                changeStatus(queryResult, status) {
-                    let {memId, memName} = queryResult;
-                    let statusText = '';
-                    if (status) statusText = '一般';
-                    else statusText = '停權';
-
-                    // 更新資料
-                    let thisVue = this;
-                    $.ajax({
-                        type: 'POST',
-                        url: 'php/update.php',
-                        data: {
-                            table: 'members',
-                            updateValue: `status = '${statusText}'`,
-                            where: `memId = '${memId}'`
-                        },
-                        success: function(data) {
-                            if (data.msg === true) {
-                                alert(`已將 ${memName} 的權限設為 ${statusText}`);
-                                thisVue.getCol();
-                            }
-                            else {
-                                console.log(data.msg);
-                            }
-                        },
-                        error: function() {
-                            console.log('ajax error');
-                        }
-                    });
-                },
-                closePopup(e) {
-                    if (!this.displaynone && e.target.tagName !== 'BUTTON') {
-                        if ($(".popup").find(e.target).length === 0) this.displaynone = true;
-                    }
                 }
             },
             computed: {

@@ -1942,10 +1942,20 @@ main .discuss .article_cards .line_middle {
           justify-content: space-between;
 }
 
+main .discuss .article_cards .line_middle .line_middle_txt {
+  width: 80%;
+}
+
 main .discuss .article_cards .line_middle .line_middle_txt h3 {
   color: #CFB886;
   font-weight: 500;
   margin: 0.3em 0;
+}
+
+main .discuss .article_cards .line_middle .line_middle_txt .words_limit {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 main .discuss .article_cards .line_middle .line_middle_txt p {
@@ -2060,6 +2070,8 @@ main .articleShow {
   left: 0;
   overflow-y: scroll;
   height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 main .articleHidden {
@@ -3438,11 +3450,23 @@ body section.back .contain main .container .popup .content_box .info_box:not(:fi
   margin-top: 1em;
 }
 
-body section.back .contain main .container .popup .content_box .action_box .action {
+body section.back .contain main .container .popup .content_box .info_box .img_box {
+  width: 8em;
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
+body section.back .contain main .container .popup .content_box .info_box .img_box img {
+  width: 100%;
+}
+
+body section.back .contain main .container .popup .content_box .action_box {
   text-align: center;
 }
 
-body section.back .contain main .container .popup .content_box .action_box .action button {
+body section.back .contain main .container .popup .content_box .action_box button {
   padding: 0.5em;
   margin: 0.5em;
 }
@@ -4884,11 +4908,6 @@ main .daily .dc_box .daily_card {
 main .daily .dc_box .daily_card:hover {
   -webkit-box-shadow: 0px 0px 30px 10px #cfb886dc;
           box-shadow: 0px 0px 30px 10px #cfb886dc;
-}
-
-main .daily .dc_box .daily_card:active {
-  -webkit-transform: scale(0.9) rotate(10deg);
-          transform: scale(0.9) rotate(10deg);
 }
 
 main .daily .dc_box .daily_card img {
