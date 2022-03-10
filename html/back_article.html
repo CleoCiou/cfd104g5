@@ -73,8 +73,8 @@
                 // 資料表顯示欄位名稱
                 colName: [
                     '文章編號',
-                    '文章主題',
                     '發文時間',
+                    '文章類別',
                     '文章主旨',
                     '文章狀態',
                 ],
@@ -87,7 +87,7 @@
                 // popup視窗開關class
                 displaynone: true,
                 // 表格上方操作列按鈕
-                actionBtn: ['新增', '修改', '停權']
+                actionBtn: ['停權']
             },
             mounted() {
                 this.getCol();
@@ -101,10 +101,13 @@
                         url: 'php/back_getCol.php',
                         data: {
                             table: 'article',
-                            queryCol: 'artNo, artTime, title, status'
+                            joinTable: 'article_topic',
+                            joinOn: 'topicNo',
+                            queryCol: 'artNo, artTime, topicName, title, status'
                         },
                         success: function(data) {
                             thisVue.queryResult = data.msg;
+                            console.log($msg);
                         },
                         error: function() {
                             console.log('ajax error');

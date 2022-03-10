@@ -1,0 +1,184 @@
+/* === 星座頁籤 by JC === */
+$padding: 1em 8.333333%;
+$borderRadius: 0.5em;
+$circle: 50%;
+$d : 768px;
+$m : 767px;
+
+@mixin desktop{
+    @media screen and (min-width:$d){
+        @content;
+    }
+}
+@mixin mobile{
+    @media screen and (max-width:$m){
+        @content;
+    }
+}
+
+main {
+    .pagination_nav{
+        @include mobile {
+            display: none;
+        }
+        .container{ 
+            padding: $padding;
+            ul{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                li{
+                    margin: 1em;
+                }
+            }
+            label{
+                margin: .9em;
+                padding: .5em 1em;
+                border: 1px solid #CFB886;
+                border-radius: .5em;
+                cursor: pointer;
+                &:hover{
+                    background-color: map-get($primary_color, 'content' );
+                    color: map-get($primary_color, 'bg' );
+                    transition: .3s;
+                }
+            }
+        }
+    }
+    /* 討論區 by JC */
+    .discuss{
+        img{
+            vertical-align: top;
+        }
+        .owl-carousel {
+            @include desktop {
+                display: none;
+            }
+        }
+        .container{
+            padding: $padding;
+            width: 100%;
+            margin: auto;
+        }
+    }
+}
+.content{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    /* 左欄文章分類 */
+    .content_cate{
+        position: sticky;
+        top: 75px;
+        left: 0;
+        text-align: center;
+        width: 20%;
+        @include mobile {
+            width: 0;
+        }
+        li{
+            align-items: center;
+            width: 50%;
+            margin: 0.3em 0;
+            border-bottom: 1px solid #CFB886;
+            cursor: pointer;
+            .category{
+                cursor: pointer;
+                padding-bottom: 0.5em;
+            }
+        }
+        li:hover{
+            background-color: #3A3A3A;
+            transition: .5s;
+        }
+        ul{
+            @include mobile {
+                display: none;
+            }
+        }
+        
+    }
+}
+// 請從這裡開始寫!!!!!!!!!!!!!!!!!!!!!!!!!!不要動上面的東西
+/* 最大寬度768以上不顯示 所以這裡是手機 */
+    /* 0~767px */
+/* 手機板不顯示頁籤 */
+@media screen and (max-width:767px) {
+    main .discuss .container .content .content_article h2{
+        padding: 2%;
+        box-sizing: border-box;
+    }
+    main .discuss .container .content .content_article .content_wrap .img_box img{
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+        vertical-align:bottom;
+    }
+    main .discuss .container .content .content_article .content_wrap p{
+        padding: 2% 0%;
+        box-sizing: border-box;
+    }
+    main .discuss .container .content .content_article .content_wrap .txt_box{
+        padding: 10% 20%;
+        box-sizing: border-box;
+    }   
+    main .discuss .container .content .content_article .content_wrap h2{
+        text-align: center;
+    }
+
+
+
+
+
+}
+
+/* 這裡是桌機 */
+@media screen and (min-width:768px) {
+    main .discuss .container .content .content_article .content_wrap .img_box{
+        width: 100%;
+    }
+    main .discuss .container .content .content_article .content_wrap .img_box img{
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+        vertical-align:bottom;
+    }
+    main .discuss .container .content .content_article .content_wrap p{
+        // padding: 2%;
+        box-sizing: border-box;
+    }
+    // main .discuss .container .content .content_article .content_wrap{
+    //     display: flex;
+    // }
+    main .discuss .container .content .content_article .content_wrap .txt_box{
+        margin: auto;
+        width: 50%;
+        text-align: left;
+        ;}
+    main .discuss .container .content .content_article .content_wrap .img_box{
+        width: 50%;
+        margin: auto;
+       
+    
+    }
+    main .discuss .container .content .content_article .content_wrap .img_box img{
+        width: 100%;
+       
+       
+    
+    }
+    
+    main .discuss .container .content .content_article .content_wrap .img_box h2{
+        margin-left: 20%;
+        margin-bottom: 5%;
+
+    }
+    main .discuss .container .content .content_article .content_wrap .story_box{
+        display: flex;
+    }
+    
+
+
+
+}

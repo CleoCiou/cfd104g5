@@ -60,17 +60,17 @@
                                     <!-- 文章卡片 -->
                                     <div class="article_cards">
                                         <div class="line_top">
-                                            <p>星座版</p>
+                                            <p>塔羅秘笈</p>
                                             <p>|</p>
                                             <p>10小時</p>
                                         </div>
                                         <div class="line_middle">
                                             <div class="line_middle_txt">
-                                                <h3>巨蟹座的性格分析</h3>
-                                                <p>巨蟹座的性格可用一句話來表示「充滿母愛」。只要有他的場面，就會變得很和諧，實...</p>
+                                                <h3>塔羅攻略: 從偉特系牌圖透析塔羅奧祕</h3>
+                                                <p>透過塔羅權威教學始祖的帶領，透析塔羅的神祕意境，引發你...不只可當入門者的聖經...</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <img :src="con_cancer" alt="巨蟹座照片">         
+                                                <!-- <img :src="con_cancer" alt="巨蟹座照片">          -->
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -98,14 +98,15 @@
                                     <!-- 文章卡片 -->
                                     <div class="article_cards">
                                         <div class="line_top">
-                                            <p>星座版</p>
+                                            <p>愛情診療室</p>
                                             <p>|</p>
                                             <p>39分鐘前</p>
                                         </div>
                                         <div class="line_middle">
                                             <div class="line_middle_txt">
-                                                <h3>愛上天秤座怎麼辦？你絕對不能錯過的天秤座全攻略！</h3>
-                                                <p>天秤座是一個重視合作關係的星座，可想而知他們的第一順位就是與親密的人面對面相處。他們透過親.....</p>
+                                                <h3>愛情來了卻擦身而過？</h3>
+                                                <p>
+                                                    年復一年的過去，很想要知道自己會有戀情嗎？但是當愛情來臨時，妳能不能順利的掌握住愛情.....</p>
                                             </div>
                                             <div class="line_middle_pic">
                                                 
@@ -136,17 +137,17 @@
                                     <!-- 文章卡片 -->
                                     <div class="article_cards">
                                         <div class="line_top">
-                                            <p>全部</p>
+                                            <p>愛情診療室</p>
                                             <p>|</p>
                                             <p>14小時前</p>
                                         </div>
                                         <div class="line_middle">
                                             <div class="line_middle_txt">
-                                                <h3>12星座像什麼「水果」</h3>
-                                                <p>你可曾細心品嘗過水果？是否嘗到水果的各種滋味？還是只憑外表來決........</p>
+                                                <h3>該如何挽救失去的愛情</h3>
+                                                <p>人都是情緒化的動物，總是在衝動的時候傷害自己最愛的人。如果愛的人承........</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <img :src="con_fruit">
+                                                <img :src="con_help">
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -161,14 +162,14 @@
                                     <!-- 文章卡片 -->
                                     <div class="article_cards">
                                         <div class="line_top">
-                                            <p>射手座</p>
+                                            <p>占卜專區</p>
                                             <p>|</p>
                                             <p>9小時前</p>
                                         </div>
                                         <div class="line_middle">
                                             <div class="line_middle_txt">
-                                                <h3>射手座你們看了一定會點頭</h3>
-                                                <p>樂觀與憂愁：射手座人的內心不是外表看上去那麼樂觀的，因為喜歡看的..............</p>
+                                                <h3>好想賺大錢！1分鐘測出你2022年的「財運關鍵字」</h3>
+                                                <p>《塔羅預視2022：善待自己，啟動轉念重生的契機！》在大環境的局勢振盪之下，真的很難讓人有......</p>
                                             </div>
                                             <div class="line_middle_pic">
                                                 <img :src="con_ast">
@@ -186,7 +187,7 @@
                                     <!-- 文章卡片 -->
                                     <div class="article_cards">
                                         <div class="line_top">
-                                            <p>水瓶座</p>
+                                            <p>塔羅牌陣</p>
                                             <p>|</p>
                                             <p>21分鐘前</p>
                                         </div>
@@ -389,7 +390,7 @@
                         <!-- 右 -->
                         <img src="images/icon/icon_discuss_favorite.svg" alt="收藏">
                         <img src="images/icon/icon_discuss_share.svg" alt="分享">
-                        <img src="images/icon/icon_discuss_opt.svg" alt="選項">
+                        <img src="images/icon/icon_discuss_notice.svg" alt="檢舉" id="notice_btn">
                     </div>
                     <!-- 留言回應區塊  -->
                     <div class="article_response narrow">
@@ -455,7 +456,61 @@
                     </div>
                 </div>
             </section>
-            
+            <!-- 檢舉燈箱 by JC -->
+            <section class="article_notice articleHidden" id="notice_board">
+                <div class="container">
+                    <h3>檢舉文章</h3>
+                    <h4>檢舉這篇文章的原因?</h4>
+                    <form action="" class="form_notice">
+                        <label>
+                            <input type="radio" name="notice">
+                            中傷、歧視、挑釁或謾罵他人
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            惡意洗板、重複張貼
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            包含色情、露點、性騷擾或血
+                            腥恐怖等讓人不舒服之內容
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            暴力、傷害他人或傷害動物的
+                            內容
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            文章發表在不適當的看板
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            文章內容空泛或明顯無意義內容
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            文章意圖號召他人按愛心，且無實質社會價值
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            包含未成年裸露、色情內容
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            未經當事人同意散佈私密色情影音內容
+                        </label>
+                        <label>
+                            <input type="radio" name="notice">
+                            其他原因
+                        </label>
+                    </form>
+                    <div class="notice_btn_box">
+                        <button class="third_btn" id="close_notice">取消</button>
+                        <a href="#"><button type="submit" class="secondary_btn">完成</button></a>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
     <!-- 網頁尾 By NJ -->
@@ -483,7 +538,7 @@
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
                 con_cancer: 'images/constellation/discuss_con_cancer.jpg',
-                con_fruit: 'images/constellation/discuss_fruit.jpg',
+                con_help: 'images/constellation/discuss_help.jpg',
                 con_ast: 'images/constellation/discuss_astronomy.jpg',
                 author_img: 'images/black_cat.svg',
                 author_hat_img: 'images/black_cat_wizard.svg',
