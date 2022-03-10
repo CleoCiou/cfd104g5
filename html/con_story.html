@@ -18,12 +18,38 @@
                           
                     <div class="content">
                         
-                        <!-- 左邊分類欄 -->
+                        <div class="owl-carousel owl-theme display">
+                            <div class="item" v-for="(url, cate) in cates">
+                                <a :href="url"> <label>{{cate}}</label></a>
+                            </div>
+                        </div> 
+
                         <div class="content_cate">
+                            <ul>
+                                <li v-for="(url, cate) in cates"><span class="category"><a :href="url">{{cate}}</a></span></li>
+                            </ul>
+                        </div>
+                        <!-- 左邊分類欄
+
+                       
+
+                        <div class="content_cate owl-carousel owl-theme display">
+                            
+                            <label v-for="(url, cate) in cates" class="item">
+                                <a :href="url">
+                                    {{cate}}
+                                </a>
+                            </label>
+            
+                        </div>
+                      
+                        如果用vue還是出事 用HTML改 
+
+                        <!-- <div class="content_cate owl-carousel owl-theme display">
                             <li v-for="(url, cate) in cates"><a :href="url"><label class="category">
                                 {{cate}}</a>
                         </label></li>
-                        </div>
+                        </div> -->
 
                         <!-- 右邊內容欄 -->
                         <div class="content_article">
@@ -33,7 +59,7 @@
                                 <!-- 請從這裡開始寫~~~~~~~~~~~~~ -->
                                <div class="story_box">
                                  <div class="img_box">
-                                     <img src="../images/con_story/story-sagit.svg" alt="">
+                                     <img src="./images/con_story/story-sagit.svg" alt="">
                                     
 
                                  </div>

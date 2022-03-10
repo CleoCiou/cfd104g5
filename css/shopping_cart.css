@@ -22,13 +22,13 @@
 }
 .shopping_circle .container .shopping_process .active{
     background-color: #DFAF47; 
-    transform: scale(1.4);
+    /* transform: scale(1.4); */
     z-index: 4;
 }
 .shopping_circle .container .shopping_process .item:not(:first-child)::before{
     content: '';
     position: absolute;
-    height: 0.3em;
+    height: 0.1em;
     background-color: #DFAF47;
     width: 3em;
     top: 0;
@@ -37,6 +37,17 @@
     margin: auto;
     z-index: 1;
 }
+.countbtn{
+    border-radius: 50%;
+    background-color: #CFB886;
+    display:inline-block;
+    padding: 1.5px 10px;
+    white-space: nowrap;
+}
+/* .shopping_circle .container .shopping_process>li:first-child:after{
+    content: '確認商品';
+    color: white;
+} */
 .shopping_circle .container .shopping_process li.active ~ li{
     background-color: #3A3A3A;
     z-index: 1;
@@ -108,10 +119,6 @@
 }
 
 /* 填寫資料區 */
-.cart_deliver .container .cart_info_right .confirm_btns{
-    text-align: right;
-    padding-top: 1em;
-}
 .cart_deliver .container .customer_info .customer_form{
     display: flex;
     margin-bottom: 1em;
@@ -122,6 +129,13 @@
 .cart_deliver .container .customer_info .pay_way{
     margin-bottom: 1em;
 }
+.cart_deliver .container .cart_info_right{
+    margin: 1em 0;
+}
+.confirm_btn .container .confirm_btns{
+    text-align: right;
+}
+
 /* 底部推薦商品 */
 .cart_bottom{
     margin-top: 2em;
@@ -169,26 +183,14 @@
     /* 填寫資料區 */
     .cart_deliver .container{
         display: flex;
+        justify-content: space-between;
+        width: 90%;
+    }
+    .confirm_btn .container{
         width: 90%;
     }
     .cart_deliver .container .customer_info{
         width: 50%;
-        border-bottom: none;
-    }
-    .cart_deliver .container .cart_info_right {
-        width: 50%;
-    }
-    .cart_bottom .container .item_box .item{
-        width: 25%;
-    }
-    .cart_info_right .order_total{
-        text-align: justify;
-    }
-    .customer_info .customer_confirm{
-        text-align: center;
-    }
-    .cart_bottom .container .item_box .item .img_box{
-        height: 15em;
     }
     .cart_deliver .container .customer_info .customer_form form label{
         display: flex;
@@ -196,5 +198,12 @@
     }
     .cart_deliver .container .customer_info .customer_form form label p{
         margin:0 1em;
+    }
+    /* 底部商品區 */
+    .cart_bottom .container .item_box .item{
+        width: 25%;
+    }
+    .cart_bottom .container .item_box .item .img_box{
+        height: 15em;
     }
 }

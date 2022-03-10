@@ -2095,6 +2095,7 @@ main #articleView::-webkit-scrollbar-thumb, main #write_content textarea::-webki
 }
 
 main #articleView {
+  display: none;
   background-color: #333333;
   width: 50%;
   min-height: 100%;
@@ -2733,14 +2734,14 @@ main .discuss .container {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt p {
+    text-align: left;
+  }
   main .discuss .container .content_article .content_wrap .today .overall_fortune h4 {
     padding: 2% 0%;
     margin-top: 5%;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-  }
-  main .discuss .container .content .content_cate li {
-    display: none;
   }
 }
 
@@ -4737,6 +4738,12 @@ main section.shopping_item .container .product_box .row .item .img_box img {
   border-radius: 50%;
 }
 
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item .img_box img {
+    padding: 1.5em;
+  }
+}
+
 main section.shopping_item .container .product_box .row .item .icon_box {
   width: 30%;
   padding-top: 0.5em;
@@ -5060,6 +5067,10 @@ main .discuss .container {
   main .discuss .container .content .content_article .content_wrap h2 {
     text-align: center;
   }
+  main .discuss .container .content {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 /* 這裡是桌機 */
@@ -5098,6 +5109,9 @@ main .discuss .container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  main .discuss .container .content_cate ul li a {
+    color: #CFB886;
   }
 }
 
@@ -5373,6 +5387,18 @@ button.primary_line_btn:active ol {
 .other_btn:hover {
   color: #eed7a4;
   border: 1px solid #eed7a4;
+}
+
+.count_btn {
+  color: #000;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: 1px solid #ffffff00;
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 /* ===== 文字 ===== */
