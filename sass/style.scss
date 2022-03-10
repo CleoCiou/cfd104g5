@@ -12,6 +12,7 @@
 @import "page/calendar";
 @import "page/welcome";
 @import "page/new_shop";
+@import "page/daily_divination";
 @import "page/con_story";
 
 * {
@@ -263,6 +264,18 @@ button.primary_line_btn {
         color: #eed7a4;
         border: 1px solid #eed7a4;
     }
+}
+.count_btn{
+    color: #000;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: 1px solid #ffffff00;
+    // background-color: transparent;
+    display:inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 /* ===== 文字 ===== */

@@ -15,7 +15,6 @@
         $sql = "select $queryCol FROM $table";
         $msg['sql'] = $sql;
 
-
         // 如果有JOIN
         if (isset($_POST['joinTable']) && isset($_POST['joinOn'])) {
             $joinTable = $_POST['joinTable'];
