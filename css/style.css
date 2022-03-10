@@ -2658,14 +2658,14 @@ main .discuss .container {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt p {
+    text-align: left;
+  }
   main .discuss .container .content_article .content_wrap .today .overall_fortune h4 {
     padding: 2% 0%;
     margin-top: 5%;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-  }
-  main .discuss .container .content .content_cate li {
-    display: none;
   }
 }
 
@@ -4673,8 +4673,7 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
-<<<<<<< HEAD
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
@@ -4765,9 +4764,6 @@ main section.shopping_item .container .product_box .row .item:hover {
     left: 100%;
     opacity: 0;
   }
-=======
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
->>>>>>> 1c8c7c8a9ec188fb983d2f328c584757b8302d1c
 }
 
 /* === 星座頁籤 by JC === */
@@ -4916,6 +4912,10 @@ main .discuss .container {
   main .discuss .container .content .content_article .content_wrap h2 {
     text-align: center;
   }
+  main .discuss .container .content {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 /* 這裡是桌機 */
@@ -4954,6 +4954,9 @@ main .discuss .container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  main .discuss .container .content_cate ul li a {
+    color: #CFB886;
   }
 }
 
