@@ -6,8 +6,8 @@
 <body>
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')    
-    <main>
-        <section class="discuss discuss_mine" id="app">
+    <main id="app">
+        <section class="discuss discuss_mine">
             <div class="container">
                 <!-- 撰寫文章區 by JC -->
                 <div class="article_mine_board">
@@ -26,7 +26,7 @@
                                 <ul>
                                     <li id="myFav">我的收藏</li>
                                     <li id="myPost">我發表過的文章</li>
-                                    <li class="no_style"><a href="discuss.html"><button class="secondary_btn">回星座討論區</button></a></li>
+                                    <li class="no_style"><a :href=backUrl><button class="secondary_btn">回星座討論區</button></a></li>
                                 </ul>
                             </div>
                             
@@ -40,93 +40,42 @@
                                 <h3>我的收藏</h3>
                                 <select name="month" id="article_mine_month">
                                     <option selected disabled>選擇看板</option>
-                                    <option value="all">全部</option>
-                                    <option>塔羅版</option>
-                                    <option>星座版</option>
+                                    <option v-for="cate in cates">{{cate}}</option>
                                 </select>
                             </div>
                             <div class="row">
                                 <!-- 文章卡片 -->
-                                <div class="article_cards">
+                                <div class="article_cards" v-for="(card,index) in article">
                                     <div class="line_top">
-                                        <p>星座版</p>
+                                        <p>{{article[index].topicName}}</p>
                                         <p>|</p>
-                                        <p>14小時前</p>
+                                        <p>{{article[index].artTime}}</p>
                                     </div>
-                                    <div class="line_middle">
+                                    <div class="line_middle" @click="getIndex(index);showBoard =! showBoard">
                                         <div class="line_middle_txt">
-                                            <h3>12星座像什麼「水果」</h3>
-                                            <p>你可曾細心品嘗過水果？是否嘗到水果的各種滋味？還是只憑外表來決........</p>
+                                            <h3>{{article[index].title}}</h3>
+                                            <p class="words_limit">{{article[index].content}}</p>
                                         </div>
                                         <div class="line_middle_pic">
-                                            <img src="images/constellation/discuss_fruit.jpg" alt="文章圖片">
+                                            <img :src="article[index].artImage">         
                                         </div>
                                     </div>
                                     <div class="line_bottom">
-                                        <img src="images/icon/icon_discuss_like.svg" >
-                                        <p>25讚</p>
-                                        <img src="images/icon/icon_discuss_message.svg" >
-                                        <p>0回應</p>
-                                        <button class="using_btn">
-                                            <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation active">
-                                                <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+                                        <!-- 愛心 -->
+                                        <button class="using_btn"  @click="article[index].activeIndex =! article[index].activeIndex; changeLike(index)" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: article[index].activeIndex == 1}">
+                                                <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z" fill-rule="evenodd">
+                                                </path>
                                             </svg>
-                                            <p>收藏</p>
+                                            <p>{{article[index].likes}}讚</p>
                                         </button>
-                                    </div>
-                                </div>
-                                <!-- 文章卡片 -->
-                                <div class="article_cards">
-                                    <div class="line_top">
-                                        <p>星座版</p>
-                                        <p>|</p>
-                                        <p>14小時前</p>
-                                    </div>
-                                    <div class="line_middle">
-                                        <div class="line_middle_txt">
-                                            <h3>天蠍座愛情面前完美暖心，友情面前脆弱不堪一擊</h3>
-                                            <p>天蠍座是一個不管愛情還是對友情都不怕困難願意付出的人，戀愛時能給別人安全感，友情需要別人........</p>
-                                        </div>
-                                        <div class="line_middle_pic">
-                                            <img src="images/constellation/discuss_friends.jpg" alt="文章圖片">
-                                        </div>
-                                    </div>
-                                    <div class="line_bottom">
-                                        <img src="images/icon/icon_discuss_like.svg" >
-                                        <p>25讚</p>
-                                        <img src="images/icon/icon_discuss_message.svg" >
-                                        <p>0回應</p>
-                                        <button class="using_btn">
-                                            <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation active">
-                                                <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
-                                            </svg>
-                                            <p>收藏</p>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- 文章卡片 -->
-                                <div class="article_cards">
-                                    <div class="line_top">
-                                        <p>雙魚座</p>
-                                        <p>|</p>
-                                        <p>14小時前</p>
-                                    </div>
-                                    <div class="line_middle">
-                                        <div class="line_middle_txt">
-                                            <h3>跟雙魚座在個性上最合得來的星座</h3>
-                                            <p>與雙魚座感情最合得來星座，星座和占卜都屬於神祕學，星座的浪漫之處就在於它是太陽........</p>
-                                        </div>
-                                        <div class="line_middle_pic">
-                                            <img src="images/constellation/discuss_constellation_sky.jpg" alt="文章圖片">
-                                        </div>
-                                    </div>
-                                    <div class="line_bottom">
-                                        <img src="images/icon/icon_discuss_like.svg" >
-                                        <p>25讚</p>
-                                        <img src="images/icon/icon_discuss_message.svg" >
-                                        <p>0回應</p>
-                                        <button class="using_btn">
-                                            <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation active">
+                                        
+                                        <!-- 留言 -->
+                                        <img :src="iconMessage">
+                                        <p>28回應</p>
+                                        <!-- 收藏 -->
+                                        <button class="using_btn" @click="article[index].favIndex =! article[index].favIndex">
+                                            <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: article[index].favIndex == 1}">
                                                 <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
                                             </svg>
                                             <p>收藏</p>
@@ -185,6 +134,81 @@
             </div>
         </section>
 
+        <!-- 文章瀏覽燈箱 by JC -->
+        <section id="articleView" v-if="showBoard == 1" :class="{articleShow: showBoard == 1 }">
+            <div class="container">
+                <div class="article_icon_box" @click="showBoard =! showBoard">
+                    <img :src="iconClose" id="close">
+                </div>
+                <div class="author img_box narrow">
+                    <img :src="author_hat_img" alt="會員頭像">
+                    <span>{{getTitle.memNo}}</span>
+                </div>
+                <div class="article_view_title narrow">
+                    <h3>{{getTitle.title}}</h3>
+                    <a href="discuss.html">{{getTitle.topicName}}</a>
+                    <p>{{getTitle.artTime}}</p>
+                </div>
+                <div class="article_view_pic img_box narrow">
+                    <img :src="getTitle.artImage" alt="文章圖片">                   
+                </div>
+                <div class="article_view_content narrow">
+                        <p>{{getTitle.content}}</p>
+                </div>
+                <!-- 功能列-- 愛心回應數分享等等 -->
+                <div class="article_using narrow">
+                    <!-- 左 -->
+                    <img src="images/icon/icon_discuss_likes.svg" alt="按喜歡的數量">
+                    <p>{{getTitle.likes}}</p>
+                    <span>| 28 回應</span>
+                    <!-- 右 -->
+                    <img src="images/icon/icon_discuss_favorite.svg" alt="收藏">
+                    <img src="images/icon/icon_discuss_share.svg" alt="分享">
+                    <img src="images/icon/icon_discuss_notice.svg" alt="檢舉" @click="showNotice =! showNotice">
+                </div>
+
+                <!-- 留言回應區塊  -->
+                <div class="article_response narrow">
+                    <div class="response_head">
+                        <h4>文章回應</h4>
+                    </div>
+
+                    <!-- 留言卡片 -->
+                    <div class="response" v-for="(msg,index) in message">
+                        <hr class="style">
+                        <div class="response_card">
+                            <div class="card_author img_box">
+                                <img :src="author_hat_img" alt="會員頭像">
+                            </div>
+                            <div class="card_txt">
+                                <div class="response_author">
+                                    <span>{{message[index].memId}}</span>
+                                </div>
+                                <div class="response_card_content">
+                                    <p>{{message[index].content}}</p>
+                                </div>
+                                <div class="response_card_time">
+                                    <span>{{message[index].msgTime}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 使用者要留言的地方 -->
+            <div class="response_box">
+                <div class="user_img_box">
+                    <img :src="author_hat_img" alt="會員頭像">
+                </div>
+                <div class="user_txt_box">
+                    <textarea  cols="1" rows="1"></textarea>
+                </div>
+                <div class="res_btn_box">
+                    <input type="submit" class="submit_btn" value="送出">
+                </div>
+            </div>
+        </section>
+
     </main>
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
@@ -192,7 +216,55 @@
         new Vue({
             el: '#app',
             data: { //變數放這
+                cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
+                backUrl: 'discuss_ajax.html',
+                iconMessage: './images/icon/icon_discuss_message.svg',
+                iconClose: './images/icon/icon_discuss_close.svg',
+                author_hat_img: './images/black_cat_wizard.svg',
+                isChecked: 0,
+                showBoard: 0,
+                showNotice: 0,
+                article: [],
+                getTitle: {}
+            },
+            mounted() {
+                this.getCol();
+            },
+            methods: {
+                changeLike(index){
+                    if(this.$data.article[index].activeIndex == 0){
+                        this.$data.article[index].likes -= 1;
+                    }else if(this.$data.article[index].activeIndex == 1){
+                        this.$data.article[index].likes += 1;
+                    }
+                },
+                getIndex(index){
+                    this.getTitle = this.article[index];
+                },
+                getCol() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/select.php',
+                        data: {
+                            table: 'article',
+                            joinTable: 'article_topic',
+                            joinOn: 'topicNo',
+                            queryCol: 'artNo, memNo, artTime, topicName, title, content, likes, artFavs, artImage, activeIndex, favIndex',
+                        },
+                        success: function(data) {
+                            // console.log(data.msg);
+                            // thisVue.article = data.msg;
+                            if (data.msg !== false){
+                                thisVue.article = data.msg;
+                            }
 
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
             },
         });
         let myFavBoard = document.getElementById('myFavBoard');
