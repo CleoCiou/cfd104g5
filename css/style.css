@@ -3769,7 +3769,7 @@ main .products_cards .products_content .product_box .row .item .icon_box {
 }
 
 main .products_cards .products_content .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 main section.draw_cards .container {
@@ -4556,6 +4556,12 @@ main section.shopping_item .container .product_box .row .item .img_box img {
   border-radius: 50%;
 }
 
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item .img_box img {
+    padding: 1.5em;
+  }
+}
+
 main section.shopping_item .container .product_box .row .item .icon_box {
   width: 30%;
   padding-top: 0.5em;
@@ -4579,7 +4585,6 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
-<<<<<<< HEAD
   Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
   -webkit-transition: 0.6s;
   transition: 0.6s;
@@ -4671,9 +4676,6 @@ main section.shopping_item .container .product_box .row .item:hover {
     left: 100%;
     opacity: 0;
   }
-=======
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
->>>>>>> 1c8c7c8a9ec188fb983d2f328c584757b8302d1c
 }
 
 * {
@@ -4948,6 +4950,18 @@ button.primary_line_btn:active ol {
 .other_btn:hover {
   color: #eed7a4;
   border: 1px solid #eed7a4;
+}
+
+.count_btn {
+  color: #000;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: 1px solid #ffffff00;
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 /* ===== 文字 ===== */

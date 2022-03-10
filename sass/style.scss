@@ -263,6 +263,18 @@ button.primary_line_btn {
         border: 1px solid #eed7a4;
     }
 }
+.count_btn{
+    color: #000;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: 1px solid #ffffff00;
+    // background-color: transparent;
+    display:inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    white-space: nowrap;
+    cursor: pointer;
+}
 
 /* ===== 文字 ===== */
 /*==== 手機板字體大小一定要加這個html ====*/

@@ -17,9 +17,9 @@
         <section class="shopping_circle">
             <div class="container">
                 <ol class="shopping_process">
-                    <li class="item active">確認商品</li>
-                    <li class="item">填寫資料</li>
-                    <li class="item">訂單確認</li>
+                    <li class="item active">Step 1</li>
+                    <li class="item">Step 2</li>
+                    <li class="item">Step 3</li>
                 </ol>
             </div>
         </section>
@@ -45,13 +45,13 @@
                             </div>
                             <div class="price"><span>NT$</span>{{item.price}}</div>
                             <div class="count">
-                                <button @click="handleSub(item)">-</button>
+                                <button @click="handleSub(item)" class="count_btn">-</button>
                                 {{item.count}}
-                                <button @click="handlePlus(item)">+</button>
+                                <button @click="handlePlus(item)" class="count_btn">+</button>
                             </div> 
                             <div class="amount"><span>NT$</span>{{sum(index)}}</div>
                             <div class="operate">
-                                <button @click="handledelete(index)">x</button>
+                                <button @click="handledelete(index)" class="count_btn">x</button>
                             </div>
                         </div>
                     </div>                        
@@ -80,23 +80,23 @@
                 </div>                    
                 <div class="cart_info_right">
                     <div class="order_total">
-                        <div class="first_price">
                             <h4>小計：NT${{total}}</h4>
-                        </div>
-                        <div class="delivery_fee">
                             <h4>運費：NT${{fee}}</h4>
-                        </div>
-                        <div class="total_price">
                             <h4>總計：NT${{total+fee}}</h4>
-                        </div>
-                    </div>
-                    <div class="confirm_btns">
-                        <a href=""><button class="third_btn">繼續購物</button></a>
-                        <a href="shopping_info.html"><button class="primary_btn">下一步</button></a>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- 按鈕 -->
+        <section class="confirm_btn">
+            <div class="container">
+                <div class="confirm_btns">
+                    <a href=""><button class="third_btn">繼續購物</button></a>
+                    <a href="shopping_info.html"><button class="primary_btn">下一步</button></a>
+                </div>
+            </div>
+        </section>
+
 
         <!-- 底部推薦商品 -->
         <section class="cart_bottom">
