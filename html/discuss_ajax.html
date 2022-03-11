@@ -140,55 +140,33 @@
                         <img src="images/icon/icon_discuss_share.svg" alt="分享">
                         <img src="images/icon/icon_discuss_notice.svg" alt="檢舉" @click="showNotice =! showNotice">
                     </div>
+
                     <!-- 留言回應區塊  -->
                     <div class="article_response narrow">
                         <div class="response_head">
                             <h4>文章回應</h4>
+                        </div>
+
+                        <!-- 留言卡片 -->
+                        <div class="response" v-for="(msg,index) in message">
                             <hr class="style">
-                        </div>
-                        <!-- 留言卡片 -->
-                        <div class="response_card">
-                            <div class="card_author img_box">
-                                <img :src="author_hat_img" alt="會員頭像">
-                            </div>
-                            <div class="card_txt">
-                                <div class="response_author">
-                                    <span>Apple_555</span>
+                            <div class="response_card">
+                                <div class="card_author img_box">
+                                    <img :src="author_hat_img" alt="會員頭像">
                                 </div>
-                                <div class="response_card_content">
-                                    <p>耶頭香<br>
-                                        巨蟹座94棒!!!!!<br>
-                                    </p>
-                                </div>
-                                <div class="response_card_time">
-                                    <span>32分鐘前</span>
+                                <div class="card_txt">
+                                    <div class="response_author">
+                                        <span>{{message[index].memId}}</span>
+                                    </div>
+                                    <div class="response_card_content">
+                                        <p>{{message[index].content}}</p>
+                                    </div>
+                                    <div class="response_card_time">
+                                        <span>{{message[index].msgTime}}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <hr class="style">
-                        <!-- 留言卡片 -->
-                        <div class="response_card">
-                            <div class="card_author img_box">
-                                <img src="images/black_cat_wizard.svg" alt="會員頭像">
-                            </div>
-                            <div class="card_txt">
-                                <div class="response_author">
-                                    <span>888sleep888</span>
-                                </div>
-                                <div class="response_card_content">
-                                    <p>哈哈哈哈哈哈<br>
-                                        寫得很符合<br>
-                                        剛好有巨蟹好閨密 一模一樣<br>
-                                    </p>
-                                </div>
-                                <div class="response_card_time">
-                                    <span>5分鐘前</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <hr class="style">
-                        
                     </div>
                 </div>
                 <!-- 使用者要留言的地方 -->
@@ -285,8 +263,15 @@
                 isChecked: 0,
                 showBoard: 0,
                 showNotice: 0,
+                message: [
+                    {
+                        memId: "test00000",
+                        msgTime: "2022/03/10 11:21:23",
+                        content: "測試嗚嗚嗚 有成功嗎嗚嗚",
+                    }
+                ],
                 article: [],
-                getTitle: ''
+                getTitle: {}
             },
             mounted() {
                 this.getCol();
@@ -311,13 +296,12 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/back_getCol.php',
+                        url: 'php/select.php',
                         data: {
                             table: 'article',
                             joinTable: 'article_topic',
                             joinOn: 'topicNo',
                             queryCol: 'artNo, memNo, artTime, topicName, title, content, likes, artFavs, artImage, activeIndex, favIndex',
-                            // condition: '',
                         },
                         success: function(data) {
                             // console.log(data.msg);
