@@ -1,6 +1,7 @@
 <?php
     session_start();
     $msg = [
+        'userNo' => $_SESSION['userNo'],
         'userId' => $_SESSION['userId'],
         'userName' => $_SESSION['userName'],
         'identity' => $_SESSION['identity'],

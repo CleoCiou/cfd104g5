@@ -26,6 +26,7 @@
 
                 // 登入成功
                 $msg['msg'] = true;
+                $_SESSION['userNo'] = $row['memNo'];
                 $_SESSION['userId'] = $row['memId'];
                 $_SESSION['userName'] = $row['memName'];
                 $_SESSION['identity'] = $row['identity'];

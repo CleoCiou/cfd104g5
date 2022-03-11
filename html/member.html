@@ -176,36 +176,26 @@
                     </div>
                 </section>
     
-                <!-- 最近的留言 -->
+                <!-- 最近留言的文章 -->
                 <section class="item message">
-                    最新文章留言
+                    最近留言的文章
                     <ul class="message_box">
-                        <li class="article_info" data-newMsg="1">
+                        <li v-for="(info, index) in newComments" class="article_info" :data-newMsg="newComments[index].count">
+                            <a :href="commentHref(index)">
+                                <span class="artNo"># {{ info.artNo }}</span>
+                                <h4 class="artTitle">
+                                    {{ info.title }}
+                                </h4>
+                            </a>
+                        </li>
+                        <!-- <li class="article_info" data-newMsg="1">
                             <a href="discuss.html">
                                 <span class="artNo">#004</span>
                                 <h4 class="artTitle">
                                     本圖隱藏下個合作提示，明天還有更多提示哦~
                                 </h4>
                             </a>
-                        </li>
-                        <li class="article_info" data-newMsg="5">
-                            <span class="artNo">#012</span>
-                            <h4 class="artTitle">
-                                哇噢！新手必學超簡易畫畫技巧！
-                            </h4>
-                        </li>
-                        <li class="article_info" data-newMsg="N">
-                            <span class="artNo">#033</span>
-                            <h4 class="artTitle">
-                                抽屜也能養魚？！
-                            </h4>
-                        </li>
-                        <li class="article_info" data-newMsg="3">
-                            <span class="artNo">#120</span>
-                            <h4 class="artTitle">
-                                最近很火的自制豆腐做法
-                            </h4>
-                        </li>
+                        </li> -->
                     </ul>
                 </section>
                 
@@ -219,7 +209,17 @@
                             <!-- 第一排 -->
                             <div class="quiz_row box">
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true" id="quiz_cards1">
+                                <div class="quiz_cards draggable" draggable="true" v-for="log in divinationLogs">
+                                    <div class="quiz_cate">
+                                        <h3>{{ log.typeName }}</h3>
+                                        <p>{{ log.title }}</p>
+                                    </div>
+                                    <div class="quiz_result">
+                                        {{ log.tarNo }} {{ log.tarName }}
+                                    </div>
+                                </div>
+                                <!-- 測驗卡片 -->
+                                <!-- <div class="quiz_cards draggable" draggable="true" id="quiz_cards1">
                                     <div class="quiz_cate">
                                         <h3>愛情</h3>
                                         <p>這三個月會有正緣嗎?</p>
@@ -227,9 +227,9 @@
                                     <div class="quiz_result">
                                         17 星星
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards2">
+                                <!-- <div class="quiz_cards draggable" draggable="true"  id="quiz_cards2">
                                     <div class="quiz_cate">
                                         <h3>工作</h3>
                                         <p>心中默念問題</p>
@@ -237,10 +237,10 @@
                                     <div class="quiz_result">
                                         11 正義
                                     </div>
-                                </div>
+                                </div> -->
                                 
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards3">
+                                <!-- <div class="quiz_cards draggable" draggable="true"  id="quiz_cards3">
                                     <div class="quiz_cate">
                                         <h3>健康</h3>
                                         <p>心中默念問題</p>
@@ -248,10 +248,10 @@
                                     <div class="quiz_result">
                                         14 節制
                                     </div>
-                                </div>
+                                </div> -->
                             
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards4">
+                                <!-- <div class="quiz_cards draggable" draggable="true"  id="quiz_cards4">
                                     
                                     <div class="quiz_cate">
                                         <h3>愛情</h3>
@@ -260,7 +260,7 @@
                                     <div class="quiz_result">
                                         10 命運之輪
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                         </div>
@@ -286,9 +286,10 @@
 @@include('layout/footer.html')
 
 <script>
-    // === getSessionData.php
+    // ===== getSessionData.php
     // getSessionData()
     // $msg = [
+    //     'userNo' => $_SESSION['userNo'],
     //     'userId' => $_SESSION['userId'],
     //     'userName' => $_SESSION['userName'],
     //     'identity' => $_SESSION['identity'],
@@ -296,12 +297,20 @@
     //     'email' => $_SESSION['email'],
     //     'creditNum' => $_SESSION['creditNum'],
     // ];
-    // ===
+    // ===== END
     
     new Vue({
         el: '#app',
         data: {
-            userData: getSessionData()
+            userData: getSessionData(),
+            newComments: {},
+            divinationLogs: {}
+        },
+        mounted() {
+            // 取得最近留言文章
+            this.getNewComments();
+            // 取得最近占卜紀錄
+            this.getDivinationLog();
         },
         methods: {
             showDetailInfo(e) {
@@ -322,10 +331,56 @@
                 let comment_list = e.target.parentNode;
                 comment_list.classList.toggle('view_old');
                 document.body.classList.toggle('overflow_hidden');
+            },
+            // 會員最近留言過的文章，最多四個
+            // 若該文章有新留言，取得文章編號、文章主旨、新留言數
+            getNewComments() {
+                let thisVue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/back_getCol.php',
+                    data: {
+                        // 查詢的資料表
+                        table: 'newComments',
+                        no: this.userData.userNo,
+                    },
+                    async: false,
+                    success: function(data) {
+                        data = JSON.parse(data);
+                        thisVue.newComments = data.msg;
+                    },
+                    error: function() {
+                        console.log('ajax error');
+                    }
+                });
+            },
+            // 點擊跳轉至文章頁面，附上點擊文章編號在網址列
+            commentHref(idx) {
+                return `discuss.html?no=${this.newComments[idx].artNo}`;
+            },
+            // 取得會員最近占卜項目，最多四個
+            getDivinationLog() {
+                let thisVue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/back_getCol.php',
+                    data: {
+                        // 查詢的資料表
+                        table: 'divinationLog',
+                        no: this.userData.userNo,
+                    },
+                    async: false,
+                    success: function(data) {
+                        data = JSON.parse(data);
+                        thisVue.divinationLogs = data.msg;
+                    },
+                    error: function() {
+                        console.log('ajax error');
+                    }
+                });
             }
         },
         computed: {
-            
         }
     });
 </script>
