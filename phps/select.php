@@ -39,7 +39,7 @@
         $queryCol = $_POST['queryCol'];
         // sql 查詢語法
         $sql = "select $queryCol FROM $table";
-        $msg['sql'] = $sql;a
+        $msg['sql'] = $sql;
 
         // 如果有JOIN
         if (isset($_POST['joinTable']) && isset($_POST['joinOn'])) {
