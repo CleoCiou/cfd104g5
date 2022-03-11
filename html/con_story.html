@@ -181,7 +181,7 @@
         });
     </script>
 
-    <script>
+    <!-- <script>
         let xhr = new XMLHttpRequest();
                     //2.建立請求事件的監聽
                     xhr.onreadystatechange = function () {
@@ -205,6 +205,31 @@
 
                     //5.傳送url請求,需要傳入引數
                     xhr.send(`mem_id=${mem_id.value}`);
+    </script> -->
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url:'php/story_test.php',
+                type:"POST",
+                success(res){
+                    console.log(res);
+                }
+                let story_p = $('.txt_box p')
+                console.log(story_p);
+                
+
+
+
+            })
+                
+
+
+
+
+        })
+
+
+
     </script>
 
 </body>
