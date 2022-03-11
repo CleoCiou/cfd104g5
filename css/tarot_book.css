@@ -179,9 +179,12 @@
 	}
 	.tarot_book_intro .tarot_box .img_box{
 		padding: 0.5em 0;
+		width: 70%;
+		margin: auto;
 	}
 	.tarot_book_intro h2{
 		position: relative;
+		margin-top: 0.5em;
 	}
 	.owl-carousel{
 		display: none;
