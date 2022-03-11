@@ -9,7 +9,7 @@ function checkLogin() {
 
     $.ajax({
         type: 'POST',
-        url: 'php/check_login.php',
+        url: 'phps/check_login.php',
         data: {
             // 查詢的資料表
             id,

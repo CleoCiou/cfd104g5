@@ -7,7 +7,7 @@ function getSessionData() {
     
     $.ajax({
         type: 'POST',
-        url: 'php/getSessionData.php',
+        url: 'phps/getSessionData.php',
         async: false,
         success: function(data) {
             sessionData = JSON.parse(data);

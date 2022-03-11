@@ -99,7 +99,7 @@
                     let result;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/back_getCol.php',
+                        url: 'phps/back_getCol.php',
                         data: {
                             table: 'admin',
                         },
@@ -154,7 +154,7 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/insert.php',
+                        url: 'phps/insert.php',
                         data: {
                             table: 'admin',
                             insertValue: `'${id}', '${name}', default, default`
@@ -185,7 +185,7 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/update.php',
+                        url: 'phps/update.php',
                         data: {
                             table: 'admin',
                             updateValue: `status = '${statusText}'`,
