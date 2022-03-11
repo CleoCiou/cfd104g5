@@ -6,15 +6,9 @@
 
 <body>
     <!-- 網頁頭 by NJ -->
-<<<<<<< HEAD
-    @@include('layout/header.html')
-    <main>
-        <section class="discuss discuss_mine" id="app">
-=======
     @@include('layout/header.html')    
     <main id="app">
         <section class="discuss discuss_mine">
->>>>>>> fc21a56493bbc98933e110f56907e2d02a853bae
             <div class="container">
                 <!-- 撰寫文章區 by JC -->
                 <div class="article_mine_board">
@@ -33,12 +27,7 @@
                                 <ul>
                                     <li id="myFav">我的收藏</li>
                                     <li id="myPost">我發表過的文章</li>
-<<<<<<< HEAD
-                                    <li class="no_style"><a href="discuss.html"><button
-                                                class="secondary_btn">回星座討論區</button></a></li>
-=======
                                     <li class="no_style"><a :href=backUrl><button class="secondary_btn">回星座討論區</button></a></li>
->>>>>>> fc21a56493bbc98933e110f56907e2d02a853bae
                                 </ul>
                             </div>
 
@@ -50,7 +39,7 @@
                             <!-- 時間篩選的選單 -->
                             <div class="choose_month">
                                 <h3>我的收藏</h3>
-                                <select name="month" id="article_mine_month">
+                                <select name="topic" id="article_mine_month">
                                     <option selected disabled>選擇看板</option>
                                     <option v-for="cate in cates">{{cate}}</option>
                                 </select>
@@ -73,89 +62,14 @@
                                         </div>
                                     </div>
                                     <div class="line_bottom">
-<<<<<<< HEAD
-                                        <img src="images/icon/icon_discuss_like.svg">
-                                        <p>25讚</p>
-                                        <img src="images/icon/icon_discuss_message.svg">
-                                        <p>0回應</p>
-                                        <button class="using_btn">
-                                            <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true"
-                                                class="origin fav_animation active">
-                                                <path
-                                                    d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z">
-=======
                                         <!-- 愛心 -->
                                         <button class="using_btn"  @click="article[index].activeIndex =! article[index].activeIndex; changeLike(index)" >
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: article[index].activeIndex == 1}">
                                                 <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z" fill-rule="evenodd">
->>>>>>> fc21a56493bbc98933e110f56907e2d02a853bae
                                                 </path>
                                             </svg>
                                             <p>{{article[index].likes}}讚</p>
                                         </button>
-<<<<<<< HEAD
-                                    </div>
-                                </div>
-                                <!-- 文章卡片 -->
-                                <div class="article_cards">
-                                    <div class="line_top">
-                                        <p>星座版</p>
-                                        <p>|</p>
-                                        <p>14小時前</p>
-                                    </div>
-                                    <div class="line_middle">
-                                        <div class="line_middle_txt">
-                                            <h3>天蠍座愛情面前完美暖心，友情面前脆弱不堪一擊</h3>
-                                            <p>天蠍座是一個不管愛情還是對友情都不怕困難願意付出的人，戀愛時能給別人安全感，友情需要別人........</p>
-                                        </div>
-                                        <div class="line_middle_pic">
-                                            <img src="images/constellation/discuss_friends.jpg" alt="文章圖片">
-                                        </div>
-                                    </div>
-                                    <div class="line_bottom">
-                                        <img src="images/icon/icon_discuss_like.svg">
-                                        <p>25讚</p>
-                                        <img src="images/icon/icon_discuss_message.svg">
-                                        <p>0回應</p>
-                                        <button class="using_btn">
-                                            <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true"
-                                                class="origin fav_animation active">
-                                                <path
-                                                    d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z">
-                                                </path>
-                                            </svg>
-                                            <p>收藏</p>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- 文章卡片 -->
-                                <div class="article_cards">
-                                    <div class="line_top">
-                                        <p>雙魚座</p>
-                                        <p>|</p>
-                                        <p>14小時前</p>
-                                    </div>
-                                    <div class="line_middle">
-                                        <div class="line_middle_txt">
-                                            <h3>跟雙魚座在個性上最合得來的星座</h3>
-                                            <p>與雙魚座感情最合得來星座，星座和占卜都屬於神祕學，星座的浪漫之處就在於它是太陽........</p>
-                                        </div>
-                                        <div class="line_middle_pic">
-                                            <img src="images/constellation/discuss_constellation_sky.jpg" alt="文章圖片">
-                                        </div>
-                                    </div>
-                                    <div class="line_bottom">
-                                        <img src="images/icon/icon_discuss_like.svg">
-                                        <p>25讚</p>
-                                        <img src="images/icon/icon_discuss_message.svg">
-                                        <p>0回應</p>
-                                        <button class="using_btn">
-                                            <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true"
-                                                class="origin fav_animation active">
-                                                <path
-                                                    d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z">
-                                                </path>
-=======
                                         
                                         <!-- 留言 -->
                                         <img :src="iconMessage">
@@ -164,7 +78,6 @@
                                         <button class="using_btn" @click="article[index].favIndex =! article[index].favIndex">
                                             <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: article[index].favIndex == 1}">
                                                 <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
->>>>>>> fc21a56493bbc98933e110f56907e2d02a853bae
                                             </svg>
                                             <p>收藏</p>
                                         </button>
@@ -180,11 +93,9 @@
                             <!-- 時間篩選的選單 -->
                             <div class="choose_month">
                                 <h3>我發表過的文章</h3>
-                                <select name="month" id="article_mine_month">
+                                <select name="topic" id="article_mine_month">
                                     <option selected disabled>選擇看板</option>
-                                    <option value="all">全部</option>
-                                    <option>塔羅版</option>
-                                    <option>星座版</option>
+                                    <option v-for="cate in cates">{{cate}}</option>
                                 </select>
                             </div>
                             <div class="row">
@@ -299,13 +210,13 @@
 
     </main>
     <!-- 網頁尾 By NJ -->
-    @@include('layout/footer.html'
+    @@include('layout/footer.html')
     <script>
         new Vue({
             el: '#app',
             data: { //變數放這
                 cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
-                backUrl: 'discuss_ajax.html',
+                backUrl: 'discuss.html',
                 iconMessage: './images/icon/icon_discuss_message.svg',
                 iconClose: './images/icon/icon_discuss_close.svg',
                 author_hat_img: './images/black_cat_wizard.svg',
@@ -333,7 +244,7 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/select.php',
+                        url: 'phps/select.php',
                         data: {
                             table: 'article',
                             joinTable: 'article_topic',
@@ -374,7 +285,7 @@
             }
         })
     </script>
-    <script>
+    <!-- <script>
 
         $(document).ready(function(){
             代表londing完之後執行
@@ -403,7 +314,7 @@
                 }
             })
         })
-    </script>
+    </script> -->
 
 </body>
 

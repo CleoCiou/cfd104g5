@@ -133,7 +133,7 @@
                 let thisVue = this;
                 $.ajax({
                     type: 'POST',
-                    url: 'php/select.php',
+                    url: 'phps/select.php',
                     data: {
                         // 要查詢的資料表
                         table: 'article',
@@ -182,7 +182,7 @@
             // GET 的參數會顯示在網址列，POST 不會 (目前 PHP 內全部寫 POST)
             type: 'POST',
             // 要連接的 php
-            url: 'php/select.php',
+            url: 'phps/select.php',
             
             // 要傳給 php 的資料
             // 依目前情境 SQL 會長成這樣:
@@ -284,7 +284,7 @@
     function getArticleList() {
         $.ajax({
             type: 'POST',
-            url: 'php/select.php',
+            url: 'phps/select.php',
             data: {
                 // 要查詢的資料表
                 table: 'article',
@@ -356,7 +356,7 @@
                 let thisVue = this;
                 $.ajax({
                     type: 'POST',
-                    url: 'php/select.php',
+                    url: 'phps/select.php',
                     data: {
                         // 要查詢的資料表
                         table: 'article',
