@@ -114,12 +114,13 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/select.php',
+                        url: 'php/back_getCol.php',
                         data: {
-                            table: 'members',
-                            queryCol: 'memId, memName, identity, sex, email, phoneNum, birthday, address, creditNum, memImage, status'
+                            table: 'members'
                         },
                         success: function(data) {
+                            data = JSON.parse(data);
+                            // console.log(data.msg);
                             thisVue.queryResult = data.msg;
                         },
                         error: function() {

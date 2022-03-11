@@ -120,14 +120,12 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/select.php',
+                        url: 'php/back_getCol.php',
                         data: {
                             table: 'product',
-                            joinTable: 'product_category',
-                            joinOn: 'prodCateNo',
-                            queryCol: 'prodName, cateType, cateName, price, prodImage, prodIntro, status'
                         },
                         success: function(data) {
+                            data = JSON.parse(data);
                             thisVue.queryResult = data.msg;
                         },
                         error: function() {
@@ -138,8 +136,10 @@
                 
                 // 解構欄位
                 deconstructRow(row, idx) {
+                    let {prodName, cateType, cateName, price, prodIntro, status, ...detail} = row;
+                    deconstructResult = {prodName, cateType, cateName, price, detail, prodIntro, status};
                     // 不解構
-                    deconstructResult = this.queryResult[idx];
+                    // deconstructResult = this.queryResult[idx];
                 },
 
                 // 取得詳細資訊

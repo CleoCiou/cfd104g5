@@ -94,20 +94,20 @@
             },
             methods: {
                 // 依選擇項目取得資料表
-                getCol(update = true, where) {
+                getCol(update = true) {
                     let thisVue = this;
                     let result;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/select.php',
+                        url: 'php/back_getCol.php',
                         data: {
                             table: 'admin',
-                            queryCol: 'adminName, adminId, status',
-                            condition: where
                         },
                         async: false,
                         success: function(data) {
+                            data = JSON.parse(data);
                             result = data.msg;
+                            // console.log(result);
                             if(update) {
                                 thisVue.queryResult = data.msg;
                             }
