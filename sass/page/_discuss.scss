@@ -234,14 +234,21 @@ main {
                 display: flex;
                 justify-content: space-between;
                 .line_middle_txt{
+                    width: 80%;
                     h3{
                         color: #CFB886;
                         font-weight: 500;
                         margin: 0.3em 0;
                     }
+                    .words_limit{
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
                     p{
                         color: #fff;
                     }
+
                 }
                 .line_middle_pic{
                     width: 8em;
@@ -350,7 +357,6 @@ main {
     }
 
     #articleView{
-        display: none;
         background-color: #333333;
         width: 50%;
         min-height: 100%;

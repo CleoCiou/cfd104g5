@@ -126,8 +126,15 @@ main {
     main .discuss .container .content .content_article .content_wrap h2{
         text-align: center;
     }
-
-
+    main .discuss .container .content{
+        flex-wrap: wrap;
+    }
+    // main .discuss .container .content .content_cate{
+    //     display: none;
+    // }
+    // main .discuss .container .content .owl-theme{
+    //     width: 10%;
+    // }
 
 
 
@@ -177,7 +184,9 @@ main {
     main .discuss .container .content .content_article .content_wrap .story_box{
         display: flex;
     }
-    
+    main .discuss .container .content_cate ul li a{
+        color: #CFB886;
+    }
 
 
 

@@ -1444,6 +1444,12 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
   }
 }
 
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .draggable,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .draggable {
+  cursor: move;
+  background-color: #5558;
+}
+
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
   width: calc(50% - 1em);
@@ -1490,7 +1496,7 @@ main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_bo
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
   margin: 0.5em;
   width: 50%;
-  border: 1px solid #CFB886;
+  border: 2px dashed #888;
   border-radius: 0.5em;
 }
 
@@ -1505,6 +1511,54 @@ main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_bo
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view {
   text-align: center;
   padding: 8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .draggable,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .draggable {
+  cursor: move;
+  background-color: #5558;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards {
+  width: calc(100% - 1em);
+  margin: 0.5em;
+  padding: .8em;
+  background-color: #5558;
+  border-radius: 0.5em;
+  cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateY(10deg) rotateX(10deg) rotateZ(0deg);
+          transform: rotateY(10deg) rotateX(10deg) rotateZ(0deg);
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_head,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_head P,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_head P {
+  color: #aaa;
+  font-size: 0.8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_result,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_result {
+  margin: 1em 0 0.5em;
 }
 
 main section.member .container .login_box {
@@ -1942,10 +1996,20 @@ main .discuss .article_cards .line_middle {
           justify-content: space-between;
 }
 
+main .discuss .article_cards .line_middle .line_middle_txt {
+  width: 80%;
+}
+
 main .discuss .article_cards .line_middle .line_middle_txt h3 {
   color: #CFB886;
   font-weight: 500;
   margin: 0.3em 0;
+}
+
+main .discuss .article_cards .line_middle .line_middle_txt .words_limit {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 main .discuss .article_cards .line_middle .line_middle_txt p {
@@ -2060,6 +2124,8 @@ main .articleShow {
   left: 0;
   overflow-y: scroll;
   height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 main .articleHidden {
@@ -2721,14 +2787,14 @@ main .discuss .container {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt p {
+    text-align: left;
+  }
   main .discuss .container .content_article .content_wrap .today .overall_fortune h4 {
     padding: 2% 0%;
     margin-top: 5%;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-  }
-  main .discuss .container .content .content_cate li {
-    display: none;
   }
 }
 
@@ -3438,11 +3504,23 @@ body section.back .contain main .container .popup .content_box .info_box:not(:fi
   margin-top: 1em;
 }
 
-body section.back .contain main .container .popup .content_box .action_box .action {
+body section.back .contain main .container .popup .content_box .info_box .img_box {
+  width: 8em;
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
+body section.back .contain main .container .popup .content_box .info_box .img_box img {
+  width: 100%;
+}
+
+body section.back .contain main .container .popup .content_box .action_box {
   text-align: center;
 }
 
-body section.back .contain main .container .popup .content_box .action_box .action button {
+body section.back .contain main .container .popup .content_box .action_box button {
   padding: 0.5em;
   margin: 0.5em;
 }
@@ -3926,7 +4004,7 @@ main .products_cards .products_content .product_box .row .item .icon_box {
 }
 
 main .products_cards .products_content .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 main section.draw_cards .container {
@@ -4746,7 +4824,7 @@ main section.shopping_item .container .product_box .row .item:hover {
   Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 =======
   Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
->>>>>>> a3906aed386e46d205bafe02fff3e19732ade545
+>>>>>>> ca3a778562da60513dcf212e9863d5db2c810571
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
@@ -4837,8 +4915,6 @@ main section.shopping_item .container .product_box .row .item:hover {
     left: 100%;
     opacity: 0;
   }
-<<<<<<< HEAD
-=======
 }
 
 main .daily .daily_btn_box {
@@ -4896,11 +4972,6 @@ main .daily .dc_box .daily_card {
 main .daily .dc_box .daily_card:hover {
   -webkit-box-shadow: 0px 0px 30px 10px #cfb886dc;
           box-shadow: 0px 0px 30px 10px #cfb886dc;
-}
-
-main .daily .dc_box .daily_card:active {
-  -webkit-transform: scale(0.9) rotate(10deg);
-          transform: scale(0.9) rotate(10deg);
 }
 
 main .daily .dc_box .daily_card img {
@@ -5053,6 +5124,10 @@ main .discuss .container {
   main .discuss .container .content .content_article .content_wrap h2 {
     text-align: center;
   }
+  main .discuss .container .content {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 /* 這裡是桌機 */
@@ -5092,7 +5167,12 @@ main .discuss .container {
     display: -ms-flexbox;
     display: flex;
   }
->>>>>>> a3906aed386e46d205bafe02fff3e19732ade545
+<<<<<<< HEAD
+=======
+  main .discuss .container .content_cate ul li a {
+    color: #CFB886;
+  }
+>>>>>>> ca3a778562da60513dcf212e9863d5db2c810571
 }
 
 * {
