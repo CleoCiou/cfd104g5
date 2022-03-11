@@ -4742,11 +4742,7 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
-<<<<<<< HEAD
   Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
-=======
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
->>>>>>> a3906aed386e46d205bafe02fff3e19732ade545
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
@@ -4837,8 +4833,6 @@ main section.shopping_item .container .product_box .row .item:hover {
     left: 100%;
     opacity: 0;
   }
-<<<<<<< HEAD
-=======
 }
 
 main .daily .daily_btn_box {
@@ -5092,7 +5086,6 @@ main .discuss .container {
     display: -ms-flexbox;
     display: flex;
   }
->>>>>>> a3906aed386e46d205bafe02fff3e19732ade545
 }
 
 * {
