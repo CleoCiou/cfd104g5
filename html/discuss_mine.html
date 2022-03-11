@@ -38,7 +38,7 @@
                             <!-- 時間篩選的選單 -->
                             <div class="choose_month">
                                 <h3>我的收藏</h3>
-                                <select name="month" id="article_mine_month">
+                                <select name="topic" id="article_mine_month">
                                     <option selected disabled>選擇看板</option>
                                     <option v-for="cate in cates">{{cate}}</option>
                                 </select>
@@ -92,11 +92,9 @@
                             <!-- 時間篩選的選單 -->
                             <div class="choose_month">
                                 <h3>我發表過的文章</h3>
-                                <select name="month" id="article_mine_month">
+                                <select name="topic" id="article_mine_month">
                                     <option selected disabled>選擇看板</option>
-                                    <option value="all">全部</option>
-                                    <option>塔羅版</option>
-                                    <option>星座版</option>
+                                    <option v-for="cate in cates">{{cate}}</option>
                                 </select>
                             </div>
                             <div class="row">
@@ -217,7 +215,7 @@
             el: '#app',
             data: { //變數放這
                 cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
-                backUrl: 'discuss_ajax.html',
+                backUrl: 'discuss.html',
                 iconMessage: './images/icon/icon_discuss_message.svg',
                 iconClose: './images/icon/icon_discuss_close.svg',
                 author_hat_img: './images/black_cat_wizard.svg',
@@ -245,7 +243,7 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'php/select.php',
+                        url: 'phps/select.php',
                         data: {
                             table: 'article',
                             joinTable: 'article_topic',
