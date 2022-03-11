@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow:hidden;">
     
 @@include('layout/head.html',{
-    'title':'歡迎頁'
+    'title':'全方位線上占卜共享平台'
 })
 
-<!-- <link rel="stylesheet" href="css/index.css"> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CSSRulePlugin.min.js"></script> -->
-
-
 <body>
-    
-<!-- 首頁 -->
-<!-- 網頁頭 -->
-<header class="main_header"></header>
-
-<!-- 首頁區塊 by ZH -->
+<!-- 歡迎頁 by ZH 修改 by JC -->
 <main class="sky" id="twinklingStar">
 
     <section class="welcome_index">
@@ -62,28 +53,44 @@
 
 
 <script>
+    //先訂顯示的寬高為視窗的寬高
+    var screenWidth = $(window).width();
+    var screenHeight = $(window).height();
+    //要生幾顆星星
+    var count = 200;
 
-    for(var i = 0; i < 250; i++) {
-        //get random dimensions
-        var x = Math.random() * 100;
-        var y = Math.random() * 90;
-        var d = Math.random() * 4;
-        var s = Math.random() * 2 + 1.5;
-        //create new element and add to html
+    //很多所以迴圈!
+    for (loop = 0; loop<count; loop++){
+        //製造放星星的div
         var star = document.createElement("div");
-        star.classList.add("star");
-        var sky = document.getElementById("twinklingStar");
-        sky.appendChild(star);
-
-        star.style.width = d + "px";
-        star.style.height = d + "px";
-        star.style.top = y + "%";
-        star.style.left = x + "%";
-        star.style.animationDuration = s + "s";
+        //加css給他 不然太赤裸
+        $(star).addClass('dot');
+        $('#twinklingStar').append(star);
+        
+        //星星要加動畫
+        $(star).addClass('twinkle');
+        $(star).css({
+            "animation-duration":genRanNum(1, 10)+"s", 
+        })
+        
+        //每個星星的大小是不規則的
+        var ranWH = genRanNum(1, 3)
+        //星星的位置和大小
+        $(star).css({
+            'top':genRanNum(0, screenHeight),
+            'left':genRanNum(0, screenWidth),
+            "width":ranWH,
+            "height":ranWH
+        })
+    }
+    //設一個放亂數計算的函式
+    function genRanNum(_n1, _n2){
+    var ranNum = Math.round((Math.random() * _n2) + _n1);
+    return ranNum;
     }
 
+
     var tl = new TimelineMax();
-    // var rule = CSSRulePlugin.getRule(".front_end"); // 必須與 CSS 檔案中的選擇器一致
     tl.fromTo( $(".front_end"), {
         background: 'radial-gradient(40% 50% at 50% 55%, #CFB88690 0%, transparent 80%)',
     },
