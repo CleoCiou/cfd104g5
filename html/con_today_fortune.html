@@ -18,6 +18,12 @@
                 <div class="container">
                           
                     <div class="content">
+
+                        <div class="owl-carousel owl-theme display">
+                            <div class="item" v-for="(url, cate) in cates">
+                                <a :href="url"> <label>{{cate}}</label></a>
+                            </div>
+                        </div> 
                         
                         <!-- 左邊分類欄 -->
                         <div class="content_cate">

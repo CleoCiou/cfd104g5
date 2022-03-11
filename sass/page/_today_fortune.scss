@@ -145,15 +145,18 @@ main {
         box-sizing: border-box;
 
     }
+    main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt p{
+        text-align: left;
+    }
     main .discuss .container .content_article .content_wrap .today .overall_fortune h4{
         padding: 2% 0%;
         margin-top: 5%;
         // text-align: center;
         box-sizing: border-box;
     }
-    main .discuss .container .content .content_cate li{
-        display: none;
-    } 
+    // main .discuss .container .content .content_cate li{
+    //     display: none;
+    // } 
 
 }
 

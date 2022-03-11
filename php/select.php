@@ -25,8 +25,10 @@
 
         // 如果沒有傳 資料表 或 需要的資料欄位 回傳錯誤
         // 在 ajax 中 console.log(data.msg)，可看見 '資料表或欄位未設定' 提示字
+        // isset是檢測裡面是否有
         if (!isset($_POST['table']) || !isset($_POST['queryCol'])) {
             $msg['msg'] = '資料表或欄位未設定';
+            // ['msg']這是物件陣列法抓值的方法
             echo json_encode($msg);
             return;
         }
@@ -37,7 +39,7 @@
         $queryCol = $_POST['queryCol'];
         // sql 查詢語法
         $sql = "select $queryCol FROM $table";
-        $msg['sql'] = $sql;
+        $msg['sql'] = $sql;a
 
         // 如果有JOIN
         if (isset($_POST['joinTable']) && isset($_POST['joinOn'])) {

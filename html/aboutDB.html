@@ -106,6 +106,7 @@
     artNo = $("#artNo_jquery");
     // 把值("123")放進去
     artNo.val("123");
+    console.log(artNo);
 
     // # vue
     new Vue({
@@ -148,6 +149,7 @@
                     success: function(data) {
                         if (data.msg !== false){
                             thisVue.artNo_vue = data.msg[0].artNo;
+                            alert( data.msg[0].artNo)
                         }
                     },
                     error: function() {
@@ -207,12 +209,13 @@
                 // JOIN ${joinTable} ON (${table}.${joinOn} = ${joinTable}.${joinOn}
             },
             success: function(data) {
+                console.log(data)
                 // 取得資料用 data.msg
                 // 如查詢到資料會回傳資料
                 // 如符合比數為 0 筆，會回傳 false
-                console.log(data.msg);
+                // console.log(data.msg);
                 // data.sql 可以看到 php 組合後的 sql 語法
-                console.log(data.sql);
+                // console.log(data.sql);
                 
                 // 回傳值(data.msg)可能有很多筆 或 沒找到資料回傳false
                 // 如果 不為false，就是如果有找到資料
@@ -275,7 +278,7 @@
     {
     // 我要新增卡片，放在 div class="info_box" 裡，我是原本的我(data.msg)
     }
-
+    
     // # js
     // 取得文章列表
     function getArticleList() {
