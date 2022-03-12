@@ -27,35 +27,36 @@
                 <div class="introduce_txt_box">
                     <div class="introduce_txt">
                         <h2>Mistro解星鏡</h2>
-                        <h4>解開你心中的各種疑問</h4>
-                        <h3>透過占卜與星座給予你方向與力量,期待每個人都可以受惠這門超越科學的學問,找到屬於自己最好的存在方式。</h3>
+                        <h3>透過占卜與星座給予你方向與力量,找到屬於自己最好的存在方式。</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 視差滾動 鑰匙孔 -->
-    <section class="scroll_keyhole" id="scroll">
-        <!-- 視差滾動 鑰匙孔_文 -->
-        <div class="scroll_keyhole_txt">
+    <!-- 視差滾動 圈圈 -->
+    <section class="scroll_circle" id="scroll">
+        <!-- 視差滾動 圈圈_文 -->
+        <div class="scroll_circle_txt">
             <h2>
                 準備好進入占卜的世界嗎?
             </h2>
         </div>
-        <!-- 視差滾動 鑰匙孔_圖 -->
-        <div class="scroll_keyhole_img">
-            <img src="images/index/index_black_bg.svg">
+        <!-- 視差滾動 圈圈_圖 -->
+        <div class="scroll_circle_img">
+            <div class="scroll_circle_big">
+                <img src="images/index/index_black_bg.svg">
+            </div>
+            <div class="planets">
+                <img src="images/index/index_planet.png" alt="">
+                <img src="images/index/index_full_moon.png" alt="">
+                 <img src="images/index/index_moon.png" alt="">
+                <img src="images/index/index_universe.png" alt="">
+            </div>
         </div>
 
-        <div class="planets">
-            <img src="../images/index/index_planet.png" alt="">
-            <img src="../images/index/index_full_moon.png" alt="">
-            <img src="../images/index/index_moon.png" alt="">
-            <img src="../images/index/index_universe.png" alt="">
-            
-        </div>
         
+
     </section>
 
     <!-- 線上測驗 -->
@@ -198,6 +199,8 @@
                 <a href="shop.html"><input type="submit" id="submit" value="商品瀏覽" class="primary_btn"></a>
             </div>
         </div>
+
+    
     </section>
 
     
@@ -211,10 +214,10 @@
 
 <!-- 視差滾動 動畫效果 -->
 <script>
-    gsap.to('.scroll_keyhole_img', {
+    gsap.to('.scroll_circle_big', {
             scrollTrigger: {
                 // 需要視差滾動的class
-               trigger: '.scroll_keyhole_img',
+               trigger: '.scroll_circle_big',
                 // 開始於頂部中心
                start:"top center",
                // 結束於y軸後200
