@@ -20,7 +20,7 @@
     $where = '';
     // 條件的值
     $data = null;
-    // 一般查詢
+    // 單純的查詢(最多一個join)
     $general = true;
 
     switch ($table) {
@@ -28,7 +28,8 @@
         // 會員專區: 最新留言文章
         // 1. 最多四筆
         // 2. 文章編號、文章主旨、新留言數
-        case 'newComments':
+        // 3. 照留言時間順序
+        case 'newMessages':
             $no = $_REQUEST['no'];
             $sql =
                 "select A.artNo, count(msgTime) as count, title
@@ -51,6 +52,10 @@
 
             break;
 
+        // 線上占卜紀錄
+        // 1. 最多四筆
+        // 2. 類別名稱、測驗題目名稱、塔羅牌編號、解析、塔羅牌名稱
+        // 3. 照測驗時間順序
         case 'divinationLog':
             $no = $_REQUEST['no'];
             $sql = 
@@ -64,6 +69,42 @@
                 order by divTime desc
                 limit 4";
             $general = false;
+            break;
+
+        // 我的預約
+        // 1. 先顯示1筆，最多抓4筆
+        // 2. 預約狀態、占卜師名稱、預約日期、預約時段、占卜師照片
+        // 3. 照預約時間排序
+        case 'myAppointment':
+            $no = $_REQUEST['no'];
+            $sql =
+                "select APP.appointNo, APP.status, memName, memImage, APP.astNo, appointDate, appointTime, content, star
+                from appointment APP
+                join astrologist AST on (APP.astNo = AST.astNo)
+                join members M on (AST.memNo = M.memNo)
+                left join comment C on (APP.appointNo = C.appointNo)
+                where APP.memNo = $no
+                order by appointDate asc";
+                // limit 4";
+                $general = false;
+            break;
+
+        // 已完成的預約評論
+        // 1. 先顯示最新1筆，看更多沒有限制筆數
+        // 2. 占卜師照片、占卜師名稱、占卜師編號、預約日期、預約時段、評論內容、平論等級
+        // 3. 照評論時間排序
+        // case 'myComments':
+        //     $no = $_REQUEST['no'];
+        //     $sql =
+        //         "select memImage, memName, APP.astNo, appointDate, appointTime, content, star
+        //         from comment C
+        //         join appointment APP on (C.appointNo = APP.appointNo)
+        //         join astrologist AST on (APP.astNo = AST.astNo)
+        //         join members M on (AST.memNo = M.memNo)
+        //         where APP.memNo = $no
+        //         order by commTime asc";
+        //         $general = false;
+        //     break;
 
         // === 後台 === //
         case 'admin':
@@ -80,6 +121,12 @@
             $col = 'prodName, cateType, cateName, price, prodImage1, prodImage2, prodImage3, prodIntro, status';
             $joinTable = 'product_category';
             $joinOn = 'prodCateNo';
+            break;
+
+        case 'astrologist':
+            $col = "memName, memId, introduction, certificate, $table.status";
+            $joinTable = 'members';
+            $joinOn = 'memNo';
             break;
     }
 

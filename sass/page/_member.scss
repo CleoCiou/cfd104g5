@@ -27,6 +27,8 @@ main {
             // 大頭貼定寬 
             .img_box.sticker {
                 width: 4em;
+                height: 4em;
+                object-fit: cover;
                 border-radius: 50%;
                 overflow: hidden;
             }
@@ -103,6 +105,7 @@ main {
                         // 占卜師專區
                         .ast_sticker {
                             width: 10em;
+                            height: 10em;
                             border-radius: 50%;
                             overflow: hidden;
                         }
@@ -164,27 +167,29 @@ main {
                     }
 
                     .reservation_box {
-                        display: flex;
-                        flex-direction: column;
-                        flex-wrap: wrap;
-                        justify-content: center;
-                        padding: 1em;
-
-                        .astrologist_info {
+                        .info {
                             display: flex;
+                            flex-direction: column;
                             flex-wrap: wrap;
-                            justify-content: space-between;
-
-                            .img_box {
-                                width: 7em;
-                                margin-right: 2em;
-                                border-radius: 50%;
-                                overflow: hidden;
+                            justify-content: center;
+                            padding: 1em;
+    
+                            .astrologist_info {
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: space-between;
+    
+                                .img_box {
+                                    width: 7em;
+                                    margin-right: 2em;
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                }
                             }
-                        }
-                        
-                        .reservation_time {
-                            font-size: 1.3em;
+                            
+                            .reservation_time {
+                                font-size: 1.3em;
+                            }
                         }
                     }
                 }
