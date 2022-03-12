@@ -586,8 +586,23 @@ main {
             display: flex;
             align-items: center;
             margin: 0.5em 0;
+            .author{
+                display: flex;
+                align-items: center;
+                text-align: center;
+                margin-right: 1em;
+                img{
+                    width: 5em;
+                    height: 5em;
+                    border-radius: $circle;
+                    border: 1px solid #CFB886;
+                }
+            }
             .writer_detail_box{
-                margin-left: 0.5em;
+                .getTime{
+                    font-size: 0.8em;
+                    color: #aaa;
+                }
             }
         }
         /* 撰寫文章的標題 */

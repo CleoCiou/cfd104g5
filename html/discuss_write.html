@@ -13,32 +13,32 @@
                 <div class="article_writing_board">
                     <!-- 選擇看板 -->
                     <div class="choose_theme">
-                        <select name="topic" id="article_mine_month">
+                        <select name="topic" id="article_mine_month" v-model="topic">
                             <option selected disabled>選擇看板</option>
-                            <option v-for="cate in cates">{{cate}}</option>
+                            <option v-for="cate in cates" >{{cate}}</option>
                         </select>
                     </div>
                     
                     <div class="write_head">
-                        <div class="writer_id_box">
-                            <button class="other_btn">T</button>
+                        <div class="author img_box">
+                            <img :src="author_hat_img" alt="會員頭像">
                         </div>
                         <div class="writer_detail_box">
-                            <p>Test123</p>
-                            <p>2022/3/2 16:53:23</p>
+                            <p>{{members[0].memId}}</p>
+                            <p class="getTime">{{getYear}} / {{getMonth}} / {{getDate}}</p>
                         </div>
                     </div>
                     <form action="">
                         <!-- 文章標題 -->
                         <div class="write_title">
                             <label>標題
-                            <input type="text" name="title" id="write_txt_title" maxlength="20">
+                            <input type="text" name="title" id="write_txt_title" maxlength="20" v-model="title">
                             </label>
                         </div>
                         <!-- 寫內容的地方 -->
                         <div class="write_content" id="write_content">
                             <label>內容
-                            <textarea name="content" rows="12" placeholder="請輸入文章內容..."></textarea>
+                            <textarea name="content" rows="12" placeholder="請輸入文章內容..." v-model="content"></textarea>
                             </label>
                         </div>
                         <!-- 最下面 選圖片 清除 發布 -->
@@ -48,7 +48,7 @@
                             </div>
                             <div class="write_using_btn">
                                 <a href="discuss.html"><button class="third_btn">取消</button></a>
-                                <a href="discuss.html"><button class="third_btn">發佈</button></a>
+                                <a href="discuss.html"><button class="third_btn" @click="insertData">發佈</button></a>
                                 
                             </div>
                         </div>
@@ -65,9 +65,104 @@
             el: '#app',
             data: { //變數放這
                 cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
+                author_hat_img: 'images/black_cat_wizard.svg',
+                members: [],
+                getYear: new Date().getFullYear(),
+                getMonth: new Date().getMonth()+1,
+                getDate: new Date().getDate(),
+                topic: '',
+                title: '',
+                content: '',
+                reses: '',
             },
+            mounted() {
+                // let memId;
+                // fetch('phps/try_fetchApi.php', 
+                // { 
+                //     method: 'POST', 
+                //     body:encodeURI(JSON.stringify({
+                //         memId: 'memId',
+                //     })),
+                //     headers: {
+                //         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+                //     }
+                // } 
+                // )
+                // // .then((res) => {
+                // //     console.log(res);
+                // // })
+                // .then((res) => {
+                //     return res.json();
+                // })
+                // .catch((error) => {
+                //     console.log(`Error: ${error}`);
+                // });
+                this.getMemId();
+            },
+            methods: {
+                getMemId() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/try_fetchApi.php',
+                        success: function(data) {
+                            console.log(data);
+                            console.log(thisVue.members);
+                            if (data !== false){
+                                let members;
+                                thisVue.members = data;
+                            }
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                insertData() {
+                    let topic = this.topicName;
+                    let title = this.title;
+                    let content = this.content;
+                    // 檢查欄位是否已填
+                    // if (!topic) {
+                    //     this.resetInput('請選擇看板名稱');
+                    //     return;
+                    // }
+                    // if(!title){
+                    //     this.resetInput('請輸入標題');
+                    //     return;
+                    // }
+                    // if(!content){
+                    //     this.resetInput('請輸入內容');
+                    //     return;
+                    // }
+                    // 新增資料
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/insert.php',
+                        data: {
+                            table: 'article',
+                            queryCol: 'title , content',
+                            insertValue: `'${title}', '${content}'`
+                        },
+                        success: function(data) {
+                            console.log(sql);
+                            console.log(data.msg);
+                            thisVue.resetInput('成功發表文章!');
+                            thisVue.insertData();
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                resetInput(msg = false) {
+                    if(msg) alert(msg);
+                    console.log(msg);
+                },
 
-
+            },
+            
         })
     </script>
 </body>
