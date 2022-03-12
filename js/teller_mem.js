@@ -19,19 +19,6 @@ function rotate(e) {
   });
 }
 
-
-// 串接資料庫
-
-// let tellerRow;
-
-// tellerRow = $("#teller_row");
-
-// tellerRow.val("123");
-// console.log(tellerRow);
-
-
-
-
 function getTeller() {
     $.ajax({
         type: 'POST',
@@ -40,7 +27,6 @@ function getTeller() {
 
             table: 'members',
 
-            // queryCol: 'memName, identity, memImage',
             queryCol: 'memName ,identity,memImage',
 
             condition: "identity = '占卜師'",
@@ -64,7 +50,8 @@ function getTeller() {
                                     </div>
                                     `;
                 }
-                $('#tellerMem').html(tellerMems)
+                tellerMems += `</div>`
+                $('#tellerMem').append(tellerMems)
             }
         },
         error: function() {
