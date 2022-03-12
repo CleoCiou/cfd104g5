@@ -9,29 +9,21 @@ function checkLogin() {
 
     $.ajax({
         type: 'POST',
-        url: 'php/select.php',
+        url: 'phps/check_login.php',
         data: {
             // 查詢的資料表
-            table: 'members',
-            // 查詢的欄位
-            queryCol: 'memId, memName, identity, sex, email, phoneNum, birthday, address, creditNum, memImage, status',
-            // 查詢的條件
-            condition: `memId = '${id}' and memPwd = '${pwd}'`
+            id,
+            pwd
         },
         async: false,
         success: function(data) {
-            let loginInfo = data.msg[0];
-            if (loginInfo) {
-                // data.msg 找到的話回傳物件
-                // data.msg 找不到的話會回傳 false
-                // data.sql 查看自己的sql語法
-                if (loginInfo.status === '停權')
-                    alert('您的帳號已被停權');
-                else    
-                    alert('登入成功');
+            data = JSON.parse(data);
+            if (data.msg === true) {
+                alert('登入成功');
+                window.location.href = 'index.html';
             }
             else {
-                alert('帳號或密碼錯誤');
+                alert(data.msg);
             }
         },
         error: function() {
