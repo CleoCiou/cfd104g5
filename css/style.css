@@ -4004,8 +4004,7 @@ main .products_cards .products_content .product_box .row .item .icon_box {
 }
 
 main .products_cards .products_content .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886,
- 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 main section.draw_cards .container {
@@ -4573,12 +4572,60 @@ main section.member .container section.main_astrologist #schedule .timePeriod sp
 }
 
 .sky {
-  height: 99vh;
+  height: 100vh;
   padding: 0;
 }
 
+.sky .dot {
+  position: absolute;
+  background-color: white;
+  width: 5px;
+  height: 5px;
+  opacity: .8;
+  -webkit-filter: blur(0.1px);
+          filter: blur(0.1px);
+  border-radius: 50%;
+}
+
+@-webkit-keyframes twinkleAnm {
+  0% {
+    opacity: .2;
+  }
+  25% {
+    opacity: .2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+@keyframes twinkleAnm {
+  0% {
+    opacity: .2;
+  }
+  25% {
+    opacity: .2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+.sky .twinkle {
+  -webkit-animation-name: twinkleAnm;
+          animation-name: twinkleAnm;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
 .sky .welcome_index {
-  height: 100%;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 767px) {
@@ -4821,8 +4868,7 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886,
- 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
@@ -5165,12 +5211,9 @@ main .discuss .container {
     display: -ms-flexbox;
     display: flex;
   }
-<<<<<<< HEAD
-=======
   main .discuss .container .content_cate ul li a {
     color: #CFB886;
   }
->>>>>>> ca3a778562da60513dcf212e9863d5db2c810571
 }
 
 * {

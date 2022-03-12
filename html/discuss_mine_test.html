@@ -39,10 +39,11 @@
                             <!-- 時間篩選的選單 -->
                             <div class="choose_month">
                                 <h3>我的收藏</h3>
-                                <select name="topic" id="article_mine_month">
+                                <select name="month" id="article_mine_month">
                                     <option selected disabled>選擇看板</option>
                                     <option v-for="cate in cates">{{cate}}</option>
                                 </select>
+                                
                             </div>
                             <div class="row">
                                 <!-- 文章卡片 -->
@@ -93,9 +94,11 @@
                             <!-- 時間篩選的選單 -->
                             <div class="choose_month">
                                 <h3>我發表過的文章</h3>
-                                <select name="topic" id="article_mine_month">
+                                <select name="month" id="article_mine_month">
                                     <option selected disabled>選擇看板</option>
-                                    <option v-for="cate in cates">{{cate}}</option>
+                                    <option value="all">全部</option>
+                                    <option>塔羅版</option>
+                                    <option>星座版</option>
                                 </select>
                             </div>
                             <div class="row">
@@ -216,7 +219,7 @@
             el: '#app',
             data: { //變數放這
                 cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
-                backUrl: 'discuss.html',
+                backUrl: 'discuss_ajax.html',
                 iconMessage: './images/icon/icon_discuss_message.svg',
                 iconClose: './images/icon/icon_discuss_close.svg',
                 author_hat_img: './images/black_cat_wizard.svg',
@@ -229,42 +232,42 @@
             mounted() {
                 this.getCol();
             },
-            methods: {
-                changeLike(index){
-                    if(this.$data.article[index].activeIndex == 0){
-                        this.$data.article[index].likes -= 1;
-                    }else if(this.$data.article[index].activeIndex == 1){
-                        this.$data.article[index].likes += 1;
-                    }
-                },
-                getIndex(index){
-                    this.getTitle = this.article[index];
-                },
-                getCol() {
-                    let thisVue = this;
-                    $.ajax({
-                        type: 'POST',
-                        url: 'phps/select.php',
-                        data: {
-                            table: 'article',
-                            joinTable: 'article_topic',
-                            joinOn: 'topicNo',
-                            queryCol: 'artNo, memNo, artTime, topicName, title, content, likes, artFavs, artImage, activeIndex, favIndex',
-                        },
-                        success: function(data) {
-                            // console.log(data.msg);
-                            // thisVue.article = data.msg;
-                            if (data.msg !== false){
-                                thisVue.article = data.msg;
-                            }
+            // methods: {
+            //     changeLike(index){
+            //         if(this.$data.article[index].activeIndex == 0){
+            //             this.$data.article[index].likes -= 1;
+            //         }else if(this.$data.article[index].activeIndex == 1){
+            //             this.$data.article[index].likes += 1;
+            //         }
+            //     },
+            //     getIndex(index){
+            //         this.getTitle = this.article[index];
+            //     },
+            //     getCol() {
+            //         let thisVue = this;
+            //         $.ajax({
+            //             type: 'POST',
+            //             url: 'php/select.php',
+            //             data: {
+            //                 table: 'article',
+            //                 joinTable: 'article_topic',
+            //                 joinOn: 'topicNo',
+            //                 queryCol: 'artNo, memNo, artTime, topicName, title, content, likes, artFavs, artImage, activeIndex, favIndex',
+            //             },
+            //             success: function(data) {
+            //                 // console.log(data.msg);
+            //                 // thisVue.article = data.msg;
+            //                 if (data.msg !== false){
+            //                     thisVue.article = data.msg;
+            //                 }
 
-                        },
-                        error: function() {
-                            console.log('ajax error');
-                        }
-                    });
-                },
-            },
+            //             },
+            //             error: function() {
+            //                 console.log('ajax error');
+            //             }
+            //         });
+            //     },
+            // },
 
 
         });
@@ -285,36 +288,36 @@
             }
         })
     </script>
-    <!-- <script>
+    <script>
 
-        $(document).ready(function(){
-            代表londing完之後執行
-            $.ajax({
-                url:'php/discuss_mine.php',
-                type:"POST",
-                success(res){
-                    console.log(res[0].memNo);
-                    for(let i=0; i< res.length; i++){
-                        // console.log(res[i].artTime);
-                    }
+        // $(document).ready(function(){
+        //     // 代表londing完之後執行 
+        //     $.ajax({
+        //         url:'php/discuss_mine.php',
+        //         type:"POST",
+        //         success(res){
+        //             console.log(res[0].memNo);
+        //             for(let i=0; i< res.length; i++){
+        //                 console.log(res[i].artTime);
+        //             }
                     
 
-                    let time = $('.article_cards .line_top p:last-child')
-                    let title = $('.line_middle_txt h3')
-                    let content = $('.line_middle_txt p')
-                    // console.log(content);
+        //             let time = $('.article_cards .line_top p:last-child')
+        //             let title = $('.line_middle_txt h3')
+        //             let content = $('.line_middle_txt p')
+        //             console.log(content);
                     
 
-                    // console.log(title);
-                    for(let i=0; i<2; i++){
-                        time[i].innerText = res[i].artTime
-                        title[i].innerText = res[i].title
-                        content[i].innerText = res[i].content
-                    }
-                }
-            })
-        })
-    </script> -->
+        //             console.log(title);
+        //             for(let i=0; i<2; i++){
+        //                 time[i].innerText = res[i].artTime
+        //                 title[i].innerText = res[i].title
+        //                 content[i].innerText = res[i].content
+        //             }
+        //         }
+        //     })
+        // })
+    </script>
 
 </body>
 
