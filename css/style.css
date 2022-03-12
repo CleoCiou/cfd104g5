@@ -2464,8 +2464,27 @@ main .article_writing_board .write_head {
   margin: 0.5em 0;
 }
 
-main .article_writing_board .write_head .writer_detail_box {
-  margin-left: 0.5em;
+main .article_writing_board .write_head .author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-right: 1em;
+}
+
+main .article_writing_board .write_head .author img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
+main .article_writing_board .write_head .writer_detail_box .getTime {
+  font-size: 0.8em;
+  color: #aaa;
 }
 
 main .article_writing_board .write_title #write_txt_title {
