@@ -19,3 +19,23 @@ function getSessionData() {
     
     return sessionData;
 }
+
+// 登出，刪除session資料
+function logout() {
+    $.ajax({
+        type: 'POST',
+        url: 'phps/check_login.php',
+        data: {
+            logout: true,
+        },
+        async: false,
+        success: function(data) {
+            sessionData = JSON.parse(data);
+        },
+        error: function() {
+            console.log('ajax error');
+        }
+    });
+    
+    location.reload();
+}

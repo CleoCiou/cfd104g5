@@ -1,3 +1,4 @@
+<script src="js/header.js"></script>
 <!-- 網頁頭 by NJ-->
 <header class="main_header" id="mainHeader">
     
@@ -10,11 +11,14 @@
                 <img src="./images/index_logo_golden-02.png" alt="首頁mistro logo">
             </a>
         </div>
-            <!-- icon -->
+        <!-- icon -->
         <div class="header_bar">
             <div class="header_icon">
-                <a href="test.html" class="pc_login"><p>登入</p></a>
-                <a href="member.html" class="pc_login"><img src="./images/header/header_icon_member.svg" alt="會員icon"></a>
+                <a class="pc_login"><p>登入</p></a>
+                <!-- <a href="member.html" class="pc_login"> -->
+                <a href="member.html">
+                    <img src="./images/header/header_icon_member.svg" alt="會員icon">
+                </a>
                 <a href="shopping_cart.html"><img src="./images/header/header_icon_shooping_cart.svg" alt="購物車icon"></a>
             </div>
         
@@ -83,10 +87,12 @@
                 </ul>
             </li>
             <li class="menu_item">
-                <a class="menu_link menu_login" href="test.html">登入</a>
-                <a class="menu_link menu_login" href="test.html">註冊</a>
+                <a class="menu_link menu_login">登入</a>
+                <a class="menu_link menu_login">註冊</a>
+                <!-- <a class="menu_link menu_login" href="test.html">登入</a>
+                <a class="menu_link menu_login" href="test.html">註冊</a> -->
             </li>
         </ul>
     </nav>
-
+    @@include('login.html')
 </header>
