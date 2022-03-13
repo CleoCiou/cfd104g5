@@ -684,6 +684,9 @@ main section.member .container .img_box img {
 
 main section.member .container .img_box.sticker {
   width: 4em;
+  height: 4em;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -790,6 +793,7 @@ main section.member .container .main_astrologist .mem_info .info_box .txt_box .a
 main section.member .container .main_member .mem_info .info_box .ast_sticker,
 main section.member .container .main_astrologist .mem_info .info_box .ast_sticker {
   width: 10em;
+  height: 10em;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -875,8 +879,8 @@ main section.member .container .main_astrologist .reservation .txt_box .more:hov
   text-shadow: #fff 0 1px 2em;
 }
 
-main section.member .container .main_member .reservation .reservation_box,
-main section.member .container .main_astrologist .reservation .reservation_box {
+main section.member .container .main_member .reservation .reservation_box .info,
+main section.member .container .main_astrologist .reservation .reservation_box .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -892,8 +896,8 @@ main section.member .container .main_astrologist .reservation .reservation_box {
   padding: 1em;
 }
 
-main section.member .container .main_member .reservation .reservation_box .astrologist_info,
-main section.member .container .main_astrologist .reservation .reservation_box .astrologist_info {
+main section.member .container .main_member .reservation .reservation_box .info .astrologist_info,
+main section.member .container .main_astrologist .reservation .reservation_box .info .astrologist_info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -904,16 +908,16 @@ main section.member .container .main_astrologist .reservation .reservation_box .
           justify-content: space-between;
 }
 
-main section.member .container .main_member .reservation .reservation_box .astrologist_info .img_box,
-main section.member .container .main_astrologist .reservation .reservation_box .astrologist_info .img_box {
+main section.member .container .main_member .reservation .reservation_box .info .astrologist_info .img_box,
+main section.member .container .main_astrologist .reservation .reservation_box .info .astrologist_info .img_box {
   width: 7em;
   margin-right: 2em;
   border-radius: 50%;
   overflow: hidden;
 }
 
-main section.member .container .main_member .reservation .reservation_box .reservation_time,
-main section.member .container .main_astrologist .reservation .reservation_box .reservation_time {
+main section.member .container .main_member .reservation .reservation_box .info .reservation_time,
+main section.member .container .main_astrologist .reservation .reservation_box .info .reservation_time {
   font-size: 1.3em;
 }
 
