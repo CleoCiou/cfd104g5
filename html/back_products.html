@@ -25,7 +25,7 @@
             <main>
                 <div class="container">
                     <!-- 表格上方操作列 -->
-                    <top-action-bar :action-btn="actionBtn"></top-action-bar>
+                    <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
                     
                     <!-- 資料內容 -->
                     <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
@@ -41,7 +41,7 @@
                             <!-- 商品類別 -->
                             <div class="info_box cateType">
                                 <label>類別</label>
-                                <select>
+                                <select :value="detail.cateType">
                                     <option>塔羅</option>
                                     <option>星座</option>
                                 </select>
@@ -49,7 +49,7 @@
                             <!-- 商品項目 -->
                             <div class="info_box catename">
                                 <label>品項</label>
-                                <select>
+                                <select :value="detail.cateName">
                                     <option>項鍊</option>
                                     <option>手鍊</option>
                                     <option>幸運石</option>
@@ -58,14 +58,34 @@
                             <!-- 商品描述 -->
                             <div class="info_box prodIntro">
                                 <label>商品描述</label>
-                                <textarea id="prodIntro"></textarea>
+                                <textarea id="prodIntro">{{ detail.prodIntro }}</textarea>
+                            </div>
+                            <!-- 商品單價 -->
+                            <div class="info_box price">
+                                <label>商品單價</label>
+                                <input type="text" :value="detail.price">
                             </div>
                             <!-- 商品圖片 -->
                             <div class="info_box prodImage">
+                                <span>商品圖片(三張)</span>
                                 <label class="prod_img_box" for="prodImage">
-                                    <img aria-placeholder="請選擇圖片">
+                                    <div class="img_box">
+                                        <img :src="imgSrc('product', detail.prodImage1)" alt="請上傳商品圖片1">
+                                    </div>
                                 </label>
-                                <input type="file" id="prodImage" class="displaynone">
+                                <!-- <label class="prod_img_box" for="prodImage">
+                                    <div class="img_box">
+                                        <img :src="imgSrc('product', detail.prodImage2)" alt="請上傳商品圖片2">
+                                    </div>
+                                </label>
+                                <label class="prod_img_box" for="prodImage">
+                                    <div class="img_box">
+                                        <img :src="imgSrc('product', detail.prodImage3)" alt="請上傳商品圖片3">
+                                    </div>
+                                </label> -->
+
+                                <input type="file" id="prodImage" class="display_none">
+                                
                             </div>
                             <!-- 儲存/取消 -->
                             <div class="info_box action_box">
@@ -96,8 +116,8 @@
                     '項目類別',
                     '項目',
                     '單價',
-                    '商品圖片',
                     '商品介紹',
+                    '詳細資訊',
                     '商品狀態'
                 ],
                 // 後端回傳查詢結果
@@ -137,7 +157,7 @@
                 // 解構欄位
                 deconstructRow(row, idx) {
                     let {prodName, cateType, cateName, price, prodIntro, status, ...detail} = row;
-                    deconstructResult = {prodName, cateType, cateName, price, detail, prodIntro, status};
+                    deconstructResult = {prodName, cateType, cateName, price, prodIntro, detail, status};
                     // 不解構
                     // deconstructResult = this.queryResult[idx];
                 },
@@ -146,6 +166,27 @@
                 getDetail(idx) {
                     this.displaynone = false;
                     this.detail = this.queryResult[idx];
+                },
+
+                // 表格上方操作列按鈕
+                // 更新資料(點擊的按鈕元素)
+                updateDb(btnEl) {
+                    if (btnEl.innerText === '新增') {
+                        this.displaynone = false;
+                        this.detail = {};
+                    }
+                },
+                imgSrc(folder, image) {
+                    switch (folder) {
+                        case 'member':
+                            folder = 'teller_mem';
+                            break;
+                        case 'product':
+                            folder = 'shop';
+                            break;
+                    }
+                    let path = `images/${folder}`;
+                    return `${path}/${image}`;
                 }
             },
             computed: {

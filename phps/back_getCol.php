@@ -125,6 +125,10 @@
             $col = "memName, memId, introduction, certificate, $table.status";
             $joinTable = 'members';
             $joinOn = 'memNo';
+            if (isset($_REQUEST['no'])) {
+                $no = $_REQUEST['no'];
+                $where = "astrologist.memNo = $no";
+            }
             break;
     }
 

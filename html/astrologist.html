@@ -25,26 +25,24 @@
                     <!-- 基本資料 -->
                     <div class="info_box">
                         <div class="img_box ast_sticker">
-                            <img src="images/icon/user.svg">
+                            <img :src="imgSrc('member', userData.sticker)">
                         </div>
                         <div class="txt_box">
                             
                             <h3 class="ast_name">
-                                吳恆隼
+                                {{ userData.userName }}
                                 <span class="ast_star">★★★★</span>
                             </h3>
                             <p class="introduce">
-                                占卜與詳細解析很消耗牌師精力的唷!!!<br>
-                                麻煩多多支持體諒與尊重占卜師的專業價值~~<br> 
-                                我們為您付出時間、專業知識、建議<br>
-                                事件結果還請自行決擇<br>
-                                請勿議價或惡意負評，謝謝您!!<br>
+                                {{ astrologistInfo.introduction }}
                             </p>
                             <textarea class="update_intro invisible"></textarea>
                         </div>
                         <div class="action_box ast_action">
                             <button @click="updateIntro" class="third_btn">更新介紹</button>
-                            <a href="member.html"><button class="secondary_btn">會員專區</button></a>
+                            <a href="member.html">
+                                <button class="secondary_btn">會員專區</button>
+                            </a>
                         </div>
 
                     </div>
@@ -156,52 +154,48 @@
     $(function() {
         createCalendar();
     })
-    // document.addEventListener('DOMContentLoaded', function() {
-        // var Calendar = FullCalendar.Calendar;
-        // var Draggable = FullCalendar.Draggable;
-
-        // var containerEl = document.getElementById('external-events');
-        // var calendarEl = document.getElementById('calendar');
-        // var checkbox = document.getElementById('drop-remove');
-
-        // // initialize the external events
-        // // -----------------------------------------------------------------
-
-        // new Draggable(containerEl, {
-        //     itemSelector: '.fc-event',
-        //     eventData: function(eventEl) {
-        //     return {
-        //         title: eventEl.innerText
-        //     };
-        //     }
-        // });
-
-        // // initialize the calendar
-        // // -----------------------------------------------------------------
-
-        // var calendar = new Calendar(calendarEl, {
-        //     headerToolbar: {
-        //         left: 'prev,next today',
-        //         center: 'title',
-        //         right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        //     },
-        //     editable: true,
-        //     droppable: true, // this allows things to be dropped onto the calendar
-        //     drop: function(info) {
-        //         // nothing...
-        //     }
-        // });
-
-        // calendar.render();
-    // });
-    
-    // ==========================================
     new Vue({
         el: '#app',
         data: {
-            // intro: '',
+            userData: getSessionData(),
+            astrologistInfo: []
+        },
+        mounted() {
+            this.loadInfo()
         },
         methods: {
+            loadInfo() {
+                let thisVue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/back_getCol.php',
+                    data: {
+                        // 查詢的資料表
+                        table: 'astrologist',
+                        no: thisVue.userData.userNo
+                    },
+                    async: false,
+                    success: function(data) {
+                        data = JSON.parse(data);
+                        thisVue.astrologistInfo = data.msg[0];
+                    },
+                    error: function() {
+                        console.log('ajax error');
+                    }
+                });
+            },
+            imgSrc(folder, image) {
+                switch (folder) {
+                    case 'member':
+                        folder = 'teller_mem';
+                        break;
+                    case 'product':
+                        folder = 'shop';
+                        break;
+                }
+                let path = `images/${folder}`;
+                return `${path}/${image}`;
+            },
             updateIntro(e) {
                 let intro = document.querySelectorAll('.introduce')[0];
                 let textarea = intro.nextElementSibling;
