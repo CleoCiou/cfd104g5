@@ -2,7 +2,8 @@
     include('connectdb.php');
     
     session_start();
-    
+    $msg['msg'] = false;
+
     // 登入帳號密碼檢查
     if (isset($_REQUEST['id']) && isset($_REQUEST['pwd'])) {
         $data=[$_REQUEST['id'], $_REQUEST['pwd']];
@@ -44,6 +45,10 @@
         catch (PDOException $e){
             $msg['msg'] = $e -> getMessage();
         }    
+    }
+    // 登出
+    else if (isset($_REQUEST['logout'])) {
+        if ($_REQUEST['logout']) session_destroy();
     }
 
     echo json_encode($msg);

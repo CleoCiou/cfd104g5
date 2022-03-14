@@ -73,7 +73,7 @@
 
         // 我的預約
         // 1. 先顯示1筆，最多抓4筆
-        // 2. 預約狀態、占卜師名稱、預約日期、預約時段、占卜師照片
+        // 2. 預約狀態、占卜師名稱、占卜師名稱、占卜師編號、預約日期、預約時段、占卜師照片、評論內容、平論等級
         // 3. 照預約時間排序
         case 'myAppointment':
             $no = $_REQUEST['no'];
@@ -85,26 +85,24 @@
                 left join comment C on (APP.appointNo = C.appointNo)
                 where APP.memNo = $no
                 order by appointDate asc";
-                // limit 4";
-                $general = false;
+            $general = false;
             break;
-
-        // 已完成的預約評論
-        // 1. 先顯示最新1筆，看更多沒有限制筆數
-        // 2. 占卜師照片、占卜師名稱、占卜師編號、預約日期、預約時段、評論內容、平論等級
-        // 3. 照評論時間排序
-        // case 'myComments':
-        //     $no = $_REQUEST['no'];
-        //     $sql =
-        //         "select memImage, memName, APP.astNo, appointDate, appointTime, content, star
-        //         from comment C
-        //         join appointment APP on (C.appointNo = APP.appointNo)
-        //         join astrologist AST on (APP.astNo = AST.astNo)
-        //         join members M on (AST.memNo = M.memNo)
-        //         where APP.memNo = $no
-        //         order by commTime asc";
-        //         $general = false;
-        //     break;
+        
+        // 我的訂單
+        // 1. 僅顯示最近一筆的第一個項目
+        // 2. 商品圖片、商品名稱、訂購數量、訂單金額、訂單狀態
+        case 'latestOrder':
+            $no = $_REQUEST['no'];
+            $sql =
+                "select prodImage1 prodImage, prodName, count(mount) totalMount, FORMAT(totalPrice, 'C') totalPrice, O.status
+                from orders O
+                join order_item OI on (O.orderNo = OI.orderNo)
+                join product P on (OI.prodNo = P.prodNo)
+                where O.memNo = $no
+                order by orderTime asc
+                limit 1;";
+            $general = false;
+            break;
 
         // === 後台 === //
         case 'admin':

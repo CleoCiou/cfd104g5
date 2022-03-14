@@ -28,7 +28,7 @@
                     <top-action-bar :action-btn="actionBtn"></top-action-bar>
                     
                     <!-- 資料內容 -->
-                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
+                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail" @change-status="changeStatus"></my-table>
 
                     <!-- 彈出視窗 -->
                     <div :class="popup">
@@ -139,6 +139,32 @@
                 getDetail(idx) {
                     this.displaynone = false;
                     this.detail = this.queryResult[idx];
+                },
+                // 更新狀態(需更新的資料, 更新為此狀態)
+                changeStatus(queryResult, status) {
+                    let {memId, memName} = queryResult;
+                    let statusText = '';
+                    if (status) statusText = '一般';
+                    else statusText = '停權';
+
+                    // 更新資料
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/update.php',
+                        data: {
+                            table: 'members',
+                            updateValue: `status = '${statusText}'`,
+                            where: `memId = '${memId}'`
+                        },
+                        success: function(data) {
+                            alert(`已將 ${memName} 的權限設為 ${statusText}`)
+                            thisVue.getCol();
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
                 }
             },
             computed: {

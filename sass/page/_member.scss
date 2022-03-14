@@ -167,6 +167,7 @@ main {
                     }
 
                     .reservation_box {
+                        padding-top: 1.8em;
                         .info {
                             display: flex;
                             flex-direction: column;
@@ -178,12 +179,24 @@ main {
                                 display: flex;
                                 flex-wrap: wrap;
                                 justify-content: space-between;
-    
+                                .txt_box {
+                                    width: 50%;
+                                    align-items: center;
+                                    > * {
+                                        width: 100%;
+                                    }
+                                }
+
                                 .img_box {
-                                    width: 7em;
-                                    margin-right: 2em;
+                                    width: 8em;
+                                    height: 8em;
+                                    margin-right: 1em;
                                     border-radius: 50%;
                                     overflow: hidden;
+                                    img {
+                                        width: 100%;
+                                        object-fit: cover;
+                                    }
                                 }
                             }
                             
@@ -313,6 +326,19 @@ main {
                             color: map-get($primary_color, 'content');
                             text-shadow: #fff 0 1px 2em;
                         }
+                        .active {
+                            width: 100%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            padding: .5em;
+                            margin-top: 0.5em;
+                            
+                            .new_comment {
+                                height: 3em;
+                                flex-grow: 1;
+                                margin-right: 1em;
+                            }
+                        }
                     }
                     .comment_list.view_old {
                         position: fixed;
@@ -413,17 +439,7 @@ main {
                             border-color:  map-get($primary_color, 'content') transparent transparent transparent;
                         }
                     }
-                    .active {
-                        display: flex;
-                        flex-wrap: wrap;
-                        padding: .5em;
-
-                        input {
-                            flex-grow: 1;
-                            margin-right: 1em;
-                        }
-                    }
-                }
+                } // comment
 
                 // 最近的留言
                 .message {
