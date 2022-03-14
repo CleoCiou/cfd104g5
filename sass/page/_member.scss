@@ -27,6 +27,8 @@ main {
             // 大頭貼定寬 
             .img_box.sticker {
                 width: 4em;
+                height: 4em;
+                object-fit: cover;
                 border-radius: 50%;
                 overflow: hidden;
             }
@@ -103,6 +105,7 @@ main {
                         // 占卜師專區
                         .ast_sticker {
                             width: 10em;
+                            height: 10em;
                             border-radius: 50%;
                             overflow: hidden;
                         }
@@ -164,27 +167,42 @@ main {
                     }
 
                     .reservation_box {
-                        display: flex;
-                        flex-direction: column;
-                        flex-wrap: wrap;
-                        justify-content: center;
-                        padding: 1em;
-
-                        .astrologist_info {
+                        padding-top: 1.8em;
+                        .info {
                             display: flex;
+                            flex-direction: column;
                             flex-wrap: wrap;
-                            justify-content: space-between;
+                            justify-content: center;
+                            padding: 1em;
+    
+                            .astrologist_info {
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: space-between;
+                                .txt_box {
+                                    width: 50%;
+                                    align-items: center;
+                                    > * {
+                                        width: 100%;
+                                    }
+                                }
 
-                            .img_box {
-                                width: 7em;
-                                margin-right: 2em;
-                                border-radius: 50%;
-                                overflow: hidden;
+                                .img_box {
+                                    width: 8em;
+                                    height: 8em;
+                                    margin-right: 1em;
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                    img {
+                                        width: 100%;
+                                        object-fit: cover;
+                                    }
+                                }
                             }
-                        }
-                        
-                        .reservation_time {
-                            font-size: 1.3em;
+                            
+                            .reservation_time {
+                                font-size: 1.3em;
+                            }
                         }
                     }
                 }
@@ -308,6 +326,19 @@ main {
                             color: map-get($primary_color, 'content');
                             text-shadow: #fff 0 1px 2em;
                         }
+                        .active {
+                            width: 100%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            padding: .5em;
+                            margin-top: 0.5em;
+                            
+                            .new_comment {
+                                height: 3em;
+                                flex-grow: 1;
+                                margin-right: 1em;
+                            }
+                        }
                     }
                     .comment_list.view_old {
                         position: fixed;
@@ -408,17 +439,7 @@ main {
                             border-color:  map-get($primary_color, 'content') transparent transparent transparent;
                         }
                     }
-                    .active {
-                        display: flex;
-                        flex-wrap: wrap;
-                        padding: .5em;
-
-                        input {
-                            flex-grow: 1;
-                            margin-right: 1em;
-                        }
-                    }
-                }
+                } // comment
 
                 // 最近的留言
                 .message {
