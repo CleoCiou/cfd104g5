@@ -1,0 +1,5656 @@
+@charset "UTF-8";
+/* --- 主色 
+    標題顏色
+    color: map-get($primary_color, 'title');
+    背景顏色
+    background-color: map-get($primary_color, 'bg');
+    內文顏色
+    color: map-get($primary_color, 'content');
+*/
+/* --- 輔色
+    背景顏色
+    background-color: map-get($secondary_color, 'bg');
+    內文顏色
+    color: map-get($secondary_color, 'content');
+*/
+/* --- 強調色
+    color: $accent_color;
+    background-color: $accent_color;
+*/
+/* --- 線框圓角
+    border-radius: 0.5em;
+*/
+/* 按鈕 */
+.nav_animation {
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+
+header {
+  z-index: 2000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* Nav Style */
+  /* .menu-item{
+            position: relative;
+        } */
+  /* 手機專用 */
+}
+
+header .header_img_box img {
+  height: 60px;
+  display: inline-block;
+}
+
+header .header_all {
+  z-index: 2000;
+  position: relative;
+  width: 100%;
+  padding: 5px 20px;
+  border-bottom: 1px solid #cfb886;
+  background: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header .header_all .header_bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .header_all .header_bar .header_icon {
+  width: 100%;
+  /* margin-right: 15px; */
+  text-align: center;
+  line-height: 2em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .header_all .header_bar .header_icon p {
+  color: #cfb886;
+  margin-top: 1.25em;
+  margin-right: 1em;
+  font-size: 1.1em;
+}
+
+header .header_all .header_bar .header_icon img {
+  height: 25px;
+  margin-top: 20px;
+  margin-right: 20px;
+  text-align: center;
+  line-height: 2em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .ham_menu .ham_origin {
+  position: relative;
+  /* left: 90%; */
+  width: 30px;
+  height: 30px;
+  -webkit-transition: all 300ms cubic-bezier(0.61, 0.01, 0.42, 1);
+  transition: all 300ms cubic-bezier(0.61, 0.01, 0.42, 1);
+  cursor: pointer;
+  background: transparent;
+  border: 0px;
+  margin-top: 23px;
+}
+
+header .ham_menu .ham_origin div {
+  height: 0px;
+  border: 0.5px solid #cfb886;
+  width: 22px;
+  display: block;
+  position: absolute;
+  -webkit-transition: all 300ms cubic-bezier(0.61, 0.01, 0.42, 1);
+  transition: all 300ms cubic-bezier(0.61, 0.01, 0.42, 1);
+  background: #cfb886;
+}
+
+header .ham_menu .ham_origin:hover {
+  -webkit-transition-delay: 100ms;
+          transition-delay: 100ms;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+header .ham_menu .ham_origin:hover div:nth-child(3):before {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #F26451;
+}
+
+header .ham_menu .ham_origin:hover div {
+  border: 1px solid #cfb886;
+  height: 9px;
+  border-radius: 50%;
+  margin-left: -1px;
+  margin-top: 2px;
+  -webkit-animation: atom 300ms linear 1;
+          animation: atom 300ms linear 1;
+  width: 25px;
+  top: 0px;
+  background: transparent;
+}
+
+header #nav_toggle {
+  display: none;
+}
+
+header .ham_menu .ham_origin:focus {
+  outline: 0px;
+}
+
+header .ham_menu div:nth-child(1) {
+  top: 0px;
+}
+
+header .ham_menu div:nth-child(2) {
+  top: 8px;
+}
+
+header .ham_menu div:nth-child(3) {
+  top: 16px;
+}
+
+header .ham_menu div:nth-child(3):before {
+  opacity: 0;
+  -webkit-animation: ball 1.5s linear infinite;
+          animation: ball 1.5s linear infinite;
+  content: '';
+  border: 1px solid #fff;
+  display: block;
+  position: relative;
+  top: 0.25px;
+}
+
+header .ham_menu .ham_origin:hover div:nth-child(1) {
+  -webkit-transform: rotate(-33deg);
+          transform: rotate(-33deg);
+}
+
+header .ham_menu .ham_origin:hover div:nth-child(2) {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+header .ham_menu .ham_origin:hover div:nth-child(3) {
+  -webkit-transform: rotate(33deg);
+          transform: rotate(33deg);
+}
+
+header .ham_menu .ham_origin:hover div:nth-child(3):before {
+  opacity: 1;
+  -webkit-transition: opacity 600ms cubic-bezier(0.61, 0.01, 0.42, 1);
+  transition: opacity 600ms cubic-bezier(0.61, 0.01, 0.42, 1);
+}
+
+header .ham_menu .ham_origin:active:hover div:nth-child(3):before,
+header .ham_menu .ham_origin:active div:nth-child(3):before,
+header .ham_menu .ham_origin:active div:nth-child(2) {
+  opacity: 0;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+header .ham_menu .ham_origin:active div {
+  border: 1.5px solid #fff;
+  height: 0px;
+  border-radius: 0%;
+  margin-left: -1px;
+  margin-top: 6px;
+  -webkit-animation: division 300ms linear 1;
+          animation: division 300ms linear 1;
+  width: 25px;
+  top: 0px;
+}
+
+header .ham_menu .ham_origin:active div:nth-child(2) {
+  width: 0px;
+}
+
+header .ham_menu .ham_origin:active div:nth-child(3) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+header .ham_menu .ham_origin:active div:nth-child(1) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+@-webkit-keyframes atom {
+  0% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@keyframes atom {
+  0% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes division {
+  0% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@keyframes division {
+  0% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes ball {
+  0% {
+    left: -20%;
+    top: 10%;
+  }
+  10% {
+    left: 10%;
+    top: -35%;
+  }
+  25% {
+    left: 45%;
+    top: -50%;
+  }
+  40% {
+    left: 80%;
+    top: -20%;
+  }
+  50% {
+    left: 98%;
+    top: 18%;
+  }
+  60% {
+    left: 80%;
+    top: 50%;
+  }
+  75% {
+    left: 45%;
+    top: 80%;
+  }
+  90% {
+    left: 0%;
+    top: 60%;
+  }
+  100% {
+    left: -20%;
+    top: 10%;
+  }
+}
+
+@keyframes ball {
+  0% {
+    left: -20%;
+    top: 10%;
+  }
+  10% {
+    left: 10%;
+    top: -35%;
+  }
+  25% {
+    left: 45%;
+    top: -50%;
+  }
+  40% {
+    left: 80%;
+    top: -20%;
+  }
+  50% {
+    left: 98%;
+    top: 18%;
+  }
+  60% {
+    left: 80%;
+    top: 50%;
+  }
+  75% {
+    left: 45%;
+    top: 80%;
+  }
+  90% {
+    left: 0%;
+    top: 60%;
+  }
+  100% {
+    left: -20%;
+    top: 10%;
+  }
+}
+
+header .menu {
+  position: fixed;
+  width: 100%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding-top: 6em;
+  background: #000;
+  /* 用 translate 把選單藏到畫面右邊去 */
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  text-align: center;
+  z-index: 1500;
+}
+
+header #nav_toggle:checked ~ .menu {
+  -webkit-transform: none;
+          transform: none;
+}
+
+header .menu_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1500;
+}
+
+header .menu_item + .menu_item {
+  margin-top: 35px;
+}
+
+header .menu_link {
+  text-decoration: none;
+  color: white;
+  display: none;
+}
+
+header .sub_menu {
+  display: none;
+}
+
+header .menu .crystal_ball {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url("../images/header/giphy.gif");
+  background-position: center;
+  background-size: 180%;
+  margin: auto;
+}
+
+header .menu_item {
+  position: relative;
+  z-index: 25;
+  margin: auto;
+}
+
+header .menu .rotate_card {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  z-index: 1500;
+}
+
+header .menu .rotate_card .menu_card {
+  width: 150px;
+  height: 220px;
+  background-color: black;
+  /* border: 2px solid #F26451; */
+  display: inline-block;
+  position: absolute;
+  /* left: 50%;
+            transform: translateX(-50%); */
+}
+
+header .menu .rotate_card .menu_card:hover {
+  -webkit-box-shadow: 0px 0px 20px 3px #cfb886dc;
+          box-shadow: 0px 0px 20px 3px #cfb886dc;
+}
+
+header .menu .rotate_card .tarot {
+  position: absolute;
+  top: -30px;
+  left: 15%;
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+  background-image: url("../images/header/card_back_tarot.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+header .menu .rotate_card .zodiac {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-image: url("../images/header/card_back_zodiac.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+header .menu .rotate_card .shop {
+  position: absolute;
+  right: 15%;
+  top: -30px;
+  -webkit-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+  background-image: url("../images/header/card_back_shop.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  header .header_bar .header_icon .pc_login {
+    display: none;
+  }
+  header .menu_list {
+    padding-top: 2em;
+  }
+  header .sub_menu_check:checked ~ ul {
+    display: block;
+  }
+  header .menu .sub_menu {
+    position: relative;
+    top: 100%;
+    margin-top: 10px;
+  }
+  header .menu .sub_menu > li {
+    background-color: #222;
+    border: 0.5px solid #000;
+  }
+  header .menu .sub_menu li {
+    padding: 1em 0;
+  }
+  header .menu_item .menu_login {
+    margin: 20px;
+    display: inline-block;
+  }
+  header .menu_item .menu_member {
+    display: block;
+  }
+  header .menu_link {
+    display: block;
+    font-size: 1.25rem;
+  }
+  header .header_all .header_bar .header_icon p {
+    margin-top: 23px;
+    font-size: 1rem;
+  }
+  header .header_all .header_bar .header_icon img {
+    height: 20px;
+    margin-top: 23px;
+  }
+  header .menu .rotate_card {
+    display: none;
+  }
+  header .menu .crystal_ball {
+    display: none;
+  }
+  header .click_btn {
+    color: #CFB886;
+  }
+  header .click_sub_menu {
+    border-bottom: 1px solid #CFB886;
+  }
+}
+
+footer.main_footer {
+  width: 100%;
+  z-index: 1000;
+  position: relative;
+  background-color: #3a3a3a;
+}
+
+footer.main_footer .footer_container {
+  padding: 0 8.333333%;
+}
+
+footer.main_footer .footer_container .footer_info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 991px) {
+  footer.main_footer .footer_container .footer_info .footer_up .footer_nav {
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1.5em 1em;
+  position: relative;
+  top: 0;
+  left: 0;
+  -webkit-transition: 0.45s;
+  transition: 0.45s;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: -.5em;
+  width: 0.2em;
+  height: 1.1em;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: #CFB886;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  opacity: 1;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li:hover::before {
+  left: calc(100% + 1em);
+  opacity: 0;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li a {
+  padding: 0 10px;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #ddd;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_nav li a:hover {
+  color: #CFB886;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+}
+
+footer.main_footer .footer_container .footer_info .footer_up .footer_icon img {
+  width: 3em;
+}
+
+footer.main_footer .footer_container .footer_info .footer_logo {
+  width: 6.5em;
+  margin: 1.5em auto .5em;
+}
+
+footer.main_footer .footer_container .footer_info .footer_logo img {
+  width: 100%;
+}
+
+footer.main_footer .footer_container .footer_down .footer_txt_box {
+  text-align: center;
+}
+
+@media screen and (max-width: 991px) {
+  footer.main_footer .footer_container .footer_down .footer_txt_box {
+    text-align: center;
+  }
+}
+
+footer.main_footer .footer_container .footer_down .footer_txt_box p {
+  font-size: 0.5rem;
+  line-height: 1.5;
+  color: #999;
+  padding: 1em 0;
+}
+
+@media screen and (max-width: 991px) {
+  footer.main_footer .footer_container .footer_down .footer_txt_box p {
+    font-size: .8em;
+  }
+}
+
+footer.main_footer .footer_container .footer_down .footer_txt_box p a {
+  color: #CFB886;
+}
+
+main section.member .container .img_box img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+main section.member .container .img_box.sticker {
+  width: 4em;
+  height: 4em;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+main section.member .container section.item {
+  padding: .5em;
+  margin-bottom: 1em;
+}
+
+main section.member .container section.item > *:not(.txt_box) {
+  height: 100%;
+  width: 100%;
+  outline: 1px solid #CFB886;
+  padding: .5em;
+  border-radius: 0.5em;
+}
+
+main section.member .container .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 1em;
+}
+
+main section.member .container .logo .img_box {
+  margin-right: 1em;
+}
+
+main section.member .container .display_none {
+  display: none;
+}
+
+main section.member .container .invisible {
+  height: 0;
+  overflow: hidden;
+  font-size: 0;
+  padding: 0;
+  border: none;
+}
+
+main section.member .container .main_member,
+main section.member .container .main_astrologist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .mem_info,
+main section.member .container .main_astrologist .mem_info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .mem_info .info_box,
+main section.member .container .main_astrologist .mem_info .info_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em;
+}
+
+main section.member .container .main_member .mem_info .info_box .txt_box,
+main section.member .container .main_astrologist .mem_info .info_box .txt_box {
+  margin-left: 1.5em;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main section.member .container .main_member .mem_info .info_box .txt_box .ast_star,
+main section.member .container .main_astrologist .mem_info .info_box .txt_box .ast_star {
+  font-size: .5em;
+  vertical-align: middle;
+}
+
+main section.member .container .main_member .mem_info .info_box .ast_sticker,
+main section.member .container .main_astrologist .mem_info .info_box .ast_sticker {
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+main section.member .container .main_member .mem_info .info_box .ast_action,
+main section.member .container .main_astrologist .mem_info .info_box .ast_action {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+main section.member .container .main_member .mem_info .info_box .update_intro,
+main section.member .container .main_astrologist .mem_info .info_box .update_intro {
+  width: 90%;
+  color: #aaa;
+  height: 10em;
+  padding: 1em;
+}
+
+main section.member .container .main_member .mem_info .detail_info,
+main section.member .container .main_astrologist .mem_info .detail_info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.member .container .main_member .mem_info .detail_info .item,
+main section.member .container .main_astrologist .mem_info .detail_info .item {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  main section.member .container .main_member .mem_info .detail_info .item,
+  main section.member .container .main_astrologist .mem_info .detail_info .item {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .mem_info .detail_info .item > [class*='_box'],
+main section.member .container .main_astrologist .mem_info .detail_info .item > [class*='_box'] {
+  padding: .3em 0;
+}
+
+main section.member .container .main_member .mem_info .detail_info .confirm_list,
+main section.member .container .main_astrologist .mem_info .detail_info .confirm_list {
+  padding: .5em;
+}
+
+main section.member .container .main_member .mem_info .detail_info .confirm_list li,
+main section.member .container .main_astrologist .mem_info .detail_info .confirm_list li {
+  color: #aaa;
+  line-height: 1.2;
+}
+
+main section.member .container .main_member .reservation,
+main section.member .container .main_astrologist .reservation {
+  width: 35%;
+}
+
+main section.member .container .main_member .reservation .txt_box,
+main section.member .container .main_astrologist .reservation .txt_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .reservation .txt_box .more,
+main section.member .container .main_astrologist .reservation .txt_box .more {
+  cursor: pointer;
+  color: #888;
+}
+
+main section.member .container .main_member .reservation .txt_box .more:hover,
+main section.member .container .main_astrologist .reservation .txt_box .more:hover {
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
+}
+
+main section.member .container .main_member .reservation .reservation_box .info,
+main section.member .container .main_astrologist .reservation .reservation_box .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1em;
+}
+
+main section.member .container .main_member .reservation .reservation_box .info .astrologist_info,
+main section.member .container .main_astrologist .reservation .reservation_box .info .astrologist_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .reservation .reservation_box .info .astrologist_info .img_box,
+main section.member .container .main_astrologist .reservation .reservation_box .info .astrologist_info .img_box {
+  width: 7em;
+  margin-right: 2em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+main section.member .container .main_member .reservation .reservation_box .info .reservation_time,
+main section.member .container .main_astrologist .reservation .reservation_box .info .reservation_time {
+  font-size: 1.3em;
+}
+
+main section.member .container .main_member .ast_reservation,
+main section.member .container .main_astrologist .ast_reservation {
+  width: 100%;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box,
+main section.member .container .main_astrologist .ast_reservation .reservation_box {
+  padding-right: 3em;
+  position: relative;
+  overflow: hidden;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .reservation_list,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .reservation_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  position: relative;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .reservation_list .reservation_card,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .reservation_list .reservation_card {
+  width: 15em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  outline: none;
+  background-color: #5558;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .change_page,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .change_page {
+  display: block;
+  position: absolute;
+  padding: .3em;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #CFB886;
+  bottom: .3em;
+  cursor: pointer;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .next_page,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .next_page {
+  right: .3em;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .last_page,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .last_page {
+  left: 0.3em;
+}
+
+main section.member .container .main_member .ast_reservation .reservation_box .gray,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .gray {
+  background-color: #555;
+}
+
+main section.member .container .main_member .calendar,
+main section.member .container .main_astrologist .calendar {
+  width: 100%;
+}
+
+main section.member .container .main_member .calendar .fc-h-event,
+main section.member .container .main_astrologist .calendar .fc-h-event {
+  background-color: #5558;
+  padding: .5em;
+  border: none;
+  margin: 0.5em;
+}
+
+main section.member .container .main_member .orders,
+main section.member .container .main_astrologist .orders {
+  width: 65%;
+}
+
+main section.member .container .main_member .orders .orders_box > *,
+main section.member .container .main_astrologist .orders .orders_box > * {
+  padding: .5em;
+}
+
+main section.member .container .main_member .orders .orders_box .order_header,
+main section.member .container .main_astrologist .orders .orders_box .order_header {
+  text-align: right;
+}
+
+main section.member .container .main_member .orders .orders_box .order_content > *,
+main section.member .container .main_astrologist .orders .orders_box .order_content > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+main section.member .container .main_member .orders .orders_box .order_content .img_box,
+main section.member .container .main_astrologist .orders .orders_box .order_content .img_box {
+  width: 5em;
+  margin-right: 1em;
+}
+
+main section.member .container .main_member .orders .orders_box .order_footer .total,
+main section.member .container .main_astrologist .orders .orders_box .order_footer .total {
+  text-align: right;
+  font-size: 1.125rem;
+}
+
+main section.member .container .main_member .orders .orders_box .other_order,
+main section.member .container .main_astrologist .orders .orders_box .other_order {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #5558;
+  padding-top: .7em;
+  color: #888;
+}
+
+main section.member .container .main_member .orders .orders_box .other_order:hover,
+main section.member .container .main_astrologist .orders .orders_box .other_order:hover {
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
+}
+
+main section.member .container .main_member .comment,
+main section.member .container .main_astrologist .comment {
+  width: 50%;
+}
+
+main section.member .container .main_member .comment .comment_list,
+main section.member .container .main_astrologist .comment .comment_list {
+  position: relative;
+  padding-top: 1em;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+main section.member .container .main_member .comment .comment_list .prev_comment,
+main section.member .container .main_astrologist .comment .comment_list .prev_comment {
+  position: absolute;
+  top: 0.5em;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #888;
+  cursor: pointer;
+}
+
+main section.member .container .main_member .comment .comment_list .prev_comment:hover,
+main section.member .container .main_astrologist .comment .comment_list .prev_comment:hover {
+  color: #CFB886;
+  text-shadow: #fff 0 1px 2em;
+}
+
+main section.member .container .main_member .comment .comment_list.view_old,
+main section.member .container .main_astrologist .comment .comment_list.view_old {
+  position: fixed;
+  top: 6em;
+  bottom: 2em;
+  left: 10em;
+  right: 10em;
+  width: auto;
+  height: auto;
+  background: #111;
+  border: 8px solid #fff;
+  -webkit-box-shadow: 0 0 3em 1px #CFB886;
+          box-shadow: 0 0 3em 1px #CFB886;
+  z-index: 5;
+  border-radius: 0.5em;
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+  main section.member .container .main_member .comment .comment_list.view_old,
+  main section.member .container .main_astrologist .comment .comment_list.view_old {
+    left: 1em;
+    right: 1em;
+  }
+}
+
+main section.member .container .main_member .comment .comment_list.view_old .prev_comment,
+main section.member .container .main_astrologist .comment .comment_list.view_old .prev_comment {
+  position: absolute;
+  width: 95%;
+  text-align: right;
+  top: 1em;
+}
+
+main section.member .container .main_member .comment .comment_box,
+main section.member .container .main_astrologist .comment .comment_box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 1em 0;
+}
+
+main section.member .container .main_member .comment .comment_box .txt_box,
+main section.member .container .main_astrologist .comment .comment_box .txt_box {
+  border-radius: 0.5em;
+  padding: 1em;
+  position: relative;
+}
+
+main section.member .container .main_member .comment .comment_box .reservation_info,
+main section.member .container .main_astrologist .comment .comment_box .reservation_info {
+  padding: 0.5em;
+}
+
+main section.member .container .main_member .comment .comment_box .reservation_info .img_box,
+main section.member .container .main_astrologist .comment .comment_box .reservation_info .img_box {
+  margin: auto;
+}
+
+main section.member .container .main_member .comment .comment_box .reservation_info .txt_box,
+main section.member .container .main_astrologist .comment .comment_box .reservation_info .txt_box {
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+main section.member .container .main_member .comment .comment_box .reservation_time,
+main section.member .container .main_astrologist .comment .comment_box .reservation_time {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-left: 0.5em;
+  color: #ccc;
+  font-size: 0.8em;
+}
+
+main section.member .container .main_member .comment .comment_box:nth-child(odd) .txt_box,
+main section.member .container .main_astrologist .comment .comment_box:nth-child(odd) .txt_box {
+  margin-left: 1em;
+  background-color: #333;
+}
+
+main section.member .container .main_member .comment .comment_box:nth-child(odd) .txt_box:after,
+main section.member .container .main_astrologist .comment .comment_box:nth-child(odd) .txt_box:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  -webkit-transform: translateX(-90%);
+          transform: translateX(-90%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 1em 1em 0;
+  border-color: transparent #333 transparent transparent;
+}
+
+main section.member .container .main_member .comment .comment_box:nth-child(even),
+main section.member .container .main_astrologist .comment .comment_box:nth-child(even) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+main section.member .container .main_member .comment .comment_box:nth-child(even) .txt_box,
+main section.member .container .main_astrologist .comment .comment_box:nth-child(even) .txt_box {
+  margin-right: 1em;
+  background-color: #CFB886;
+}
+
+main section.member .container .main_member .comment .comment_box:nth-child(even) .txt_box:after,
+main section.member .container .main_astrologist .comment .comment_box:nth-child(even) .txt_box:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.5em;
+  right: 0;
+  -webkit-transform: translateX(90%);
+          transform: translateX(90%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1em 1em 0 0;
+  border-color: #CFB886 transparent transparent transparent;
+}
+
+main section.member .container .main_member .comment .active,
+main section.member .container .main_astrologist .comment .active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: .5em;
+}
+
+main section.member .container .main_member .comment .active input,
+main section.member .container .main_astrologist .comment .active input {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-right: 1em;
+}
+
+main section.member .container .main_member .message,
+main section.member .container .main_astrologist .message {
+  width: 50%;
+}
+
+main section.member .container .main_member .message .message_box,
+main section.member .container .main_astrologist .message .message_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1em;
+  overflow: hidden;
+}
+
+main section.member .container .main_member .message .message_box .article_info,
+main section.member .container .main_astrologist .message .message_box .article_info {
+  position: relative;
+  padding: .8em;
+  background-color: #5558;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+main section.member .container .main_member .message .message_box .article_info:hover,
+main section.member .container .main_astrologist .message .message_box .article_info:hover {
+  background-color: #555;
+}
+
+main section.member .container .main_member .message .message_box .article_info:not(:first-child),
+main section.member .container .main_astrologist .message .message_box .article_info:not(:first-child) {
+  margin-top: .5em;
+}
+
+main section.member .container .main_member .message .message_box .article_info:before,
+main section.member .container .main_astrologist .message .message_box .article_info:before {
+  content: attr(data-newMsg);
+  display: inline-block;
+  position: absolute;
+  top: .5em;
+  right: .5em;
+  width: 1.5em;
+  line-height: 1.5em;
+  vertical-align: bottom;
+  text-align: center;
+  background-color: #d89482;
+  color: #fff;
+  border-radius: 50%;
+}
+
+main section.member .container .main_member .item.calendar,
+main section.member .container .main_astrologist .item.calendar {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  main section.member .container .main_member .item.calendar,
+  main section.member .container .main_astrologist .item.calendar {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .item.ast_comment,
+main section.member .container .main_astrologist .item.ast_comment {
+  width: 50%;
+}
+
+main section.member .container .main_member .item.ast_comment > *,
+main section.member .container .main_astrologist .item.ast_comment > * {
+  height: auto;
+  outline: none;
+  font-size: 0;
+}
+
+main section.member .container .main_member .item.ast_comment > * button,
+main section.member .container .main_astrologist .item.ast_comment > * button {
+  padding: .5em 1em;
+}
+
+@media screen and (min-width: 767px) {
+  main section.member .container .main_member .item.ast_comment .active_star,
+  main section.member .container .main_astrologist .item.ast_comment .active_star {
+    display: none;
+  }
+  main section.member .container .main_member .item.ast_comment .ast_hidden,
+  main section.member .container .main_astrologist .item.ast_comment .ast_hidden {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main section.member .container .main_member .item.ast_comment,
+  main section.member .container .main_astrologist .item.ast_comment {
+    width: 100%;
+  }
+  main section.member .container .main_member .item.ast_comment .ast_hidden,
+  main section.member .container .main_astrologist .item.ast_comment .ast_hidden {
+    height: 4rem;
+    overflow: hidden;
+  }
+  main section.member .container .main_member .item.ast_comment .action button,
+  main section.member .container .main_astrologist .item.ast_comment .action button {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+  main section.member .container .main_member .item.ast_comment .action button:not(:first-child):hover,
+  main section.member .container .main_astrologist .item.ast_comment .action button:not(:first-child):hover {
+    background-color: #CFB886;
+  }
+  main section.member .container .main_member .item.ast_comment .action button.display_none,
+  main section.member .container .main_astrologist .item.ast_comment .action button.display_none {
+    display: none;
+  }
+  main section.member .container .main_member .item.ast_comment .action button:first-child:before,
+  main section.member .container .main_astrologist .item.ast_comment .action button:first-child:before {
+    content: '';
+    position: absolute;
+    right: .3em;
+    top: 30%;
+    width: 0;
+    height: 0;
+    border-left: .2em solid transparent;
+    border-right: .2em solid transparent;
+    border-bottom: .3em solid black;
+  }
+  main section.member .container .main_member .item.ast_comment .action button:first-child:after,
+  main section.member .container .main_astrologist .item.ast_comment .action button:first-child:after {
+    content: '';
+    position: absolute;
+    right: .3em;
+    bottom: 30%;
+    width: 0;
+    height: 0;
+    border-left: .2em solid transparent;
+    border-right: .2em solid transparent;
+    border-top: .3em solid black;
+  }
+}
+
+main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment,
+main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment {
+  outline: 1px solid #CFB886;
+}
+
+main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment span,
+main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment span {
+  display: block;
+}
+
+main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment p,
+main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment p {
+  padding: 2em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .item,
+  main section.member .container .main_astrologist .item {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz,
+main section.member .container .main_astrologist .tarot_quiz {
+  width: 100%;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box {
+  width: 50%;
+  -webkit-perspective: 800px;
+          perspective: 800px;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .draggable,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .draggable {
+  cursor: move;
+  background-color: #5558;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
+  width: calc(50% - 1em);
+  margin: 0.5em;
+  padding: .8em;
+  background-color: #5558;
+  border-radius: 0.5em;
+  cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateY(10deg) rotateX(10deg) rotateZ(0deg);
+          transform: rotateY(10deg) rotateX(10deg) rotateZ(0deg);
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head P,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_head P {
+  color: #aaa;
+  font-size: 0.8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_result,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_cards .quiz_result {
+  margin: 1em 0 0.5em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
+  margin: 0.5em;
+  width: 50%;
+  border: 2px dashed #888;
+  border-radius: 0.5em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
+    display: none;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view {
+  text-align: center;
+  padding: 8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .draggable,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .draggable {
+  cursor: move;
+  background-color: #5558;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards {
+  width: calc(100% - 1em);
+  margin: 0.5em;
+  padding: .8em;
+  background-color: #5558;
+  border-radius: 0.5em;
+  cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateY(10deg) rotateX(10deg) rotateZ(0deg);
+          transform: rotateY(10deg) rotateX(10deg) rotateZ(0deg);
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards {
+    width: 100%;
+  }
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_head,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_head P,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_head P {
+  color: #aaa;
+  font-size: 0.8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_result,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_cards .quiz_result {
+  margin: 1em 0 0.5em;
+}
+
+main section.member .container .login_box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 3em;
+  outline: 1px solid #CFB886;
+  border-radius: 0.5em;
+}
+
+main section.member .container .login_box .login_info .item {
+  margin-bottom: 1em;
+}
+
+main section.member .container .login_box .login_info button {
+  width: 100%;
+}
+
+main section.member .container .sign_up_box {
+  padding: 1em;
+}
+
+main section.member .container .sign_up_box .sign_up_info .item {
+  margin-bottom: .5em;
+  padding: 1em;
+  border-radius: 0.5em;
+  width: 100%;
+}
+
+main section.member .container .sign_up_box .sign_up_info .item input[type=text],
+main section.member .container .sign_up_box .sign_up_info .item input[type=password],
+main section.member .container .sign_up_box .sign_up_info .item input[type=email],
+main section.member .container .sign_up_box .sign_up_info .item textarea {
+  width: 100%;
+}
+
+main section.member .container .sign_up_box .sign_up_info .item .pwd_item {
+  margin-bottom: 1em;
+}
+
+main section.member .container .sign_up_box .sign_up_info .login,
+main section.member .container .sign_up_box .sign_up_info .action,
+main section.member .container .sign_up_box .sign_up_info .upload_img {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main section.member .container .sign_up_box .sign_up_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  main section.member .container .sign_up_box .sign_up_info h3 {
+    width: 100%;
+  }
+  main section.member .container .sign_up_box .sign_up_info .item {
+    margin: 1em;
+    width: calc(50% - 2em);
+  }
+}
+
+main section.member .container .reservation_box {
+  width: 100%;
+}
+
+main section.member .container .reservation_box .reservation_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card {
+  width: calc(100% / 3 - 3em);
+  margin: 1em;
+  padding: 2em 1em;
+  outline: 1px solid #fff;
+  border-radius: 0.5em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .reservation_box .reservation_list .reservation_card {
+    width: 100%;
+  }
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .txt_box {
+  text-align: center;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .card_content {
+  padding: 1em 0;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .card_content .img_box {
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+  overflow: hidden;
+  width: 8em;
+  border-radius: 50%;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .card_footer {
+  text-align: center;
+}
+
+main section.member .container .reservation_box .reservation_list .reservation_card .card_footer button {
+  padding: 0.3em 1.5em;
+  margin: 0.3em;
+}
+
+/* === 星座頁籤 by JC === */
+main {
+  /* 討論區 by JC */
+  /*瀏覽文章燈箱 by JC */
+  /*美美的scroll bar*/
+  /* 使用者要留言的地方 */
+  /* 文章檢舉 */
+  /* 撰寫文章頁 */
+  /* 我的文章 */
+}
+
+@media screen and (max-width: 767px) {
+  main .pagination_nav {
+    display: none;
+  }
+}
+
+main .pagination_nav .container {
+  padding: 1em 8.33333%;
+}
+
+main .pagination_nav .container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .pagination_nav .container ul li {
+  margin: 1em;
+}
+
+main .pagination_nav .container label {
+  margin: .9em;
+  padding: .5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: .5em;
+  cursor: pointer;
+}
+
+main .pagination_nav .container label:hover {
+  background-color: #CFB886;
+  color: #000;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main .discuss {
+  /* 搜尋bar那塊 */
+  /* 文章卡片 */
+}
+
+main .discuss img {
+  vertical-align: top;
+}
+
+@media screen and (min-width: 768px) {
+  main .discuss .owl-carousel {
+    display: none;
+  }
+}
+
+main .discuss .container {
+  padding: 1em 8.33333%;
+  width: 100%;
+  margin: auto;
+}
+
+main .discuss .content_head {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+main .discuss .content_head .content_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1.2em;
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .content_head .content_header {
+    width: 100%;
+  }
+}
+
+main .discuss .content_head .content_header .search_bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-right: 1.5em;
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .content_head .content_header .search_bar {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+main .discuss .content_head .content_header .search_bar input:nth-child(1) {
+  width: 85%;
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .content_head .content_header .search_bar input:nth-child(1) {
+    width: 75%;
+  }
+}
+
+main .discuss .content_head .content_header .search_bar .third_btn {
+  padding: 0.2em 0.5em;
+  margin-left: 1em;
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .content_head .content_header .search_bar .third_btn {
+    padding: 0.2em 0.5em;
+  }
+}
+
+main .discuss .content_head .content_header .icon_btn {
+  width: 5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .discuss .content_head .content_header .icon_btn img {
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+}
+
+main .discuss .content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  /* 左欄文章分類 */
+  /* 文章區 */
+}
+
+main .discuss .content .content_cate {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  left: 0;
+  text-align: center;
+  width: 20%;
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .content .content_cate {
+    width: 0;
+  }
+}
+
+main .discuss .content .content_cate li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  padding: 0.6em 0;
+  border-bottom: 1px solid #CFB886;
+  cursor: pointer;
+}
+
+main .discuss .content .content_cate li .category {
+  cursor: pointer;
+}
+
+main .discuss .content .content_cate li:hover {
+  background-color: #3A3A3A;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .content .content_cate ul {
+    display: none;
+  }
+}
+
+main .discuss .content .content_article {
+  border: 1px solid #CFB886;
+  background-color: transparent;
+  border-radius: 0.5em;
+  width: 80%;
+  padding: 3em;
+  /* 熱門最新 */
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .content .content_article {
+    width: 100%;
+    border: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+main .discuss .content .content_article .content_wrap {
+  width: 100%;
+}
+
+main .discuss .content .content_article .content_wrap .content_label {
+  margin-bottom: 1em;
+}
+
+main .discuss .content .content_article .content_wrap .content_label label {
+  border: 1px solid #CFB886;
+  padding: 0.5em 1.6em;
+  margin: 0.2em 0.2em 1em 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+main .discuss .content .content_article .content_wrap .content_label .select_label {
+  border: 1px solid #CFB886;
+  background-color: #CFB886;
+  color: #000;
+}
+
+main .discuss .content .content_article .content_wrap .label_hidden {
+  display: none;
+}
+
+main .discuss .content .content_article .content_wrap .label_show {
+  display: block;
+}
+
+main .discuss .content .content_article .content_pages {
+  text-align: right;
+}
+
+main .discuss .content .content_article .content_pages button {
+  margin: 0.2em 0 0.2em 0.2em;
+}
+
+main .discuss .content .content_article .content_pages span {
+  margin-left: 0.2em;
+  color: #CFB886;
+  cursor: pointer;
+}
+
+main .discuss .article_cards {
+  width: 100%;
+  border: 1px solid #CFB886;
+  background-color: transparent;
+  padding: 2em;
+  border-radius: 0.5em;
+  margin: 1em 0;
+  cursor: pointer;
+}
+
+main .discuss .article_cards .line_top span {
+  color: #000;
+  background-color: #d89482;
+  padding: 0.2em 0.5em;
+  margin-right: 0.5em;
+}
+
+main .discuss .article_cards .line_top p {
+  color: #aaa;
+  display: inline-block;
+}
+
+main .discuss .article_cards .line_middle {
+  margin-bottom: 1em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .discuss .article_cards .line_middle .line_middle_txt {
+  width: 80%;
+}
+
+main .discuss .article_cards .line_middle .line_middle_txt h3 {
+  color: #CFB886;
+  font-weight: 500;
+  margin: 0.3em 0;
+}
+
+main .discuss .article_cards .line_middle .line_middle_txt .words_limit {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+main .discuss .article_cards .line_middle .line_middle_txt p {
+  color: #fff;
+}
+
+main .discuss .article_cards .line_middle .line_middle_pic {
+  width: 8em;
+  height: auto;
+}
+
+main .discuss .article_cards .line_middle .line_middle_pic img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .article_cards .line_middle .line_middle_pic img {
+    display: none;
+  }
+}
+
+main .discuss .article_cards .line_bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .discuss .article_cards .line_bottom .using_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0px;
+  line-height: 30px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+main .discuss .article_cards .line_bottom .using_btn .active {
+  fill: #d89482;
+  stroke: #d89482;
+  stroke-width: 1px;
+}
+
+main .discuss .article_cards .line_bottom .using_btn svg {
+  width: 25px;
+  stroke: #cfb886;
+  stroke-width: 1px;
+  fill: none;
+  padding-right: 2px;
+}
+
+main .discuss .article_cards .line_bottom .using_btn svg:hover {
+  stroke: #d89482;
+  stroke-width: 1px;
+  fill: #d89482;
+}
+
+main .discuss .article_cards .line_bottom .using_btn .fav_animation {
+  -webkit-transition: fill 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transition: fill 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: inline-block;
+}
+
+main .discuss .article_cards .line_bottom img {
+  margin-right: 0.3em;
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+}
+
+main .discuss .article_cards .line_bottom p {
+  margin-right: 0.6em;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.8em;
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .article_cards .line_bottom p {
+    font-size: .6em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .discuss .discuss_mine .article_mine_board {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+main .articleShow {
+  display: block;
+  z-index: 2500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+main .articleHidden {
+  display: none;
+}
+
+main #articleView::-webkit-scrollbar, main #write_content textarea::-webkit-scrollbar {
+  width: 30px;
+}
+
+main #articleView::-webkit-scrollbar-track, main #write_content textarea::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+main #articleView::-webkit-scrollbar-thumb, main #write_content textarea::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 10px solid transparent;
+  background-clip: content-box;
+  background-color: #CFB886;
+}
+
+main #articleView {
+  background-color: #333333;
+  width: 50%;
+  min-height: 100%;
+  margin: auto;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  /* 文章裡的照片 */
+  /* 功能列-- 愛心回應數分享等等*/
+  /* 留言回應區塊 */
+}
+
+@media screen and (max-width: 767px) {
+  main #articleView {
+    width: 100%;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+main #articleView .article_icon_box img, main #articleView .article_using img {
+  width: 1.8em;
+  height: 1.8em;
+  cursor: pointer;
+}
+
+main #articleView .article_icon_box {
+  text-align: right;
+}
+
+main #articleView .author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 2em;
+}
+
+main #articleView .author span {
+  margin-left: 1em;
+}
+
+main #articleView .author img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
+main #articleView .article_view_title {
+  margin: 1.5em 0;
+}
+
+main #articleView .article_view_title h3 {
+  font-weight: 500;
+  margin: 0.3em 0;
+}
+
+main #articleView .article_view_title P {
+  color: #ccc;
+  font-size: 0.8em;
+  display: inline;
+}
+
+main #articleView .article_view_pic.img_box img {
+  width: 100%;
+  height: auto;
+}
+
+main #articleView .article_view_content p {
+  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 1.5em;
+}
+
+main #articleView .narrow {
+  padding: 2% 16.666666%;
+}
+
+@media screen and (max-width: 767px) {
+  main #articleView .narrow {
+    padding: 2% 1%;
+  }
+}
+
+main #articleView .article_using {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main #articleView .article_using img {
+  margin: 0 0.2em;
+}
+
+main #articleView .article_using p {
+  margin: 0 0.2em;
+  color: #aaa;
+}
+
+main #articleView .article_using span {
+  margin: 0 0.2em;
+  color: #aaa;
+  width: 100%;
+}
+
+main #articleView .article_response {
+  width: 100%;
+}
+
+main #articleView .article_response hr.style {
+  border-top: #3A3A3A 1px solid;
+  margin: 1em 0;
+}
+
+main #articleView .article_response .response_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main #articleView .article_response .response_card .other_btn {
+  width: 2.2em;
+  height: 2.2em;
+}
+
+main #articleView .article_response .response_card .card_author {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
+main #articleView .article_response .response_card .card_txt {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main #articleView .article_response .response_card .card_txt .response_author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main #articleView .article_response .response_card .card_txt .response_card_content {
+  margin: 1em 0;
+}
+
+main #articleView .article_response .response_card span {
+  color: #ccc;
+  font-size: 0.9em;
+}
+
+main #articleView .article_response .response_card .card_author {
+  margin: 0.3em 1.5em 0 0;
+  width: 3em;
+  height: 3em;
+}
+
+main #articleView .article_response .response_card .card_author img {
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
+main .response_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  background-color: #414141;
+  padding: 0.5em 0.5em;
+}
+
+main .response_box .user_img_box {
+  width: 15%;
+  width: 3.5em;
+  height: 3.5em;
+}
+
+main .response_box .user_img_box img {
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
+main .response_box .user_txt_box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+}
+
+main .response_box .user_txt_box textarea {
+  width: 100%;
+}
+
+main .response_box .res_btn_box {
+  width: 15%;
+  text-align: center;
+}
+
+main .response_box .res_btn_box .submit_btn {
+  padding: .3em .5em;
+}
+
+main .noticeShow {
+  display: block;
+  z-index: 2501;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 768px) {
+  main .noticeShow {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+
+main .article_notice {
+  margin: auto;
+  border: 1px solid #cfb886;
+  background-color: #00000080;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_notice {
+    width: 100%;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+main .article_notice .container {
+  padding: 1em 8.33333%;
+}
+
+main .article_notice .container .form_notice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: .5em 0;
+}
+
+main .article_notice .container .form_notice .notice_btn_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: right;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+main .article_writing_board {
+  width: 100%;
+  border: 1px solid #CFB886;
+  padding: 5%;
+  border-radius: 0.5em;
+  /* 撰寫文章的標題 */
+}
+
+main .article_writing_board .choose_theme select {
+  margin: 0.5em 0;
+}
+
+main .article_writing_board .write_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0.5em 0;
+}
+
+main .article_writing_board .write_head .author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-right: 1em;
+}
+
+main .article_writing_board .write_head .author img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
+main .article_writing_board .write_head .writer_detail_box .getTime {
+  font-size: 0.8em;
+  color: #aaa;
+}
+
+main .article_writing_board .write_title #write_txt_title {
+  width: 30%;
+  margin-left: 0.3em;
+}
+
+main .article_writing_board textarea {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+main .article_writing_board .write_bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_writing_board .write_bottom {
+    margin: .8em;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .article_writing_board .write_bottom .write_using_btn .file_insert_btn {
+    margin: .8em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main .article_writing_board .write_bottom .write_using_btn a {
+    margin: .8em;
+  }
+}
+
+main .article_mine_board {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_mine_board {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+main .article_mine_board .mine_cate {
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main .article_mine_board .mine_cate {
+    width: 20%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+}
+
+main .article_mine_board .mine_cate .mine_img_box {
+  text-align: center;
+  width: 8em;
+  height: 8em;
+  margin: 1.5em auto;
+}
+
+main .article_mine_board .mine_cate .mine_img_box img {
+  border-radius: 50%;
+  width: 100%;
+  margin-bottom: 2em;
+  border: 1px solid #CFB886;
+}
+
+main .article_mine_board .mine_cate .mine_list ul {
+  margin-top: 1em;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_mine_board .mine_cate .mine_list ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+main .article_mine_board .mine_cate .mine_list ul li:not(.no_style) {
+  text-align: left;
+  padding: 1.5em 1em 1.5em;
+  border-bottom: #CFB886 1px solid;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_mine_board .mine_cate .mine_list ul li:not(.no_style) {
+    margin: 1.5em 0;
+    width: 10em;
+    text-align: center;
+    padding: 1.2em 1em;
+    border-radius: 0.2em;
+    border: #CFB886 1px solid;
+  }
+}
+
+main .article_mine_board .mine_cate .mine_list ul li:not(.no_style):hover {
+  background-color: #3a3a3a;
+}
+
+main .article_mine_board .mine_cate .mine_list ul li.no_style {
+  margin-top: 2em;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_mine_board .mine_cate .mine_list ul li.no_style {
+    display: none;
+  }
+}
+
+main .article_mine_board .content_article {
+  width: 80%;
+}
+
+@media screen and (max-width: 767px) {
+  main .article_mine_board .content_article {
+    margin-top: 2em;
+    width: 100%;
+  }
+}
+
+main .article_mine_board .content_article .choose_month {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .article_mine_board .content_article .choose_month #article_mine_month {
+  margin-left: 2em;
+  width: 100px;
+}
+
+main .article_mine_board .content_hidden {
+  display: none;
+}
+
+/* === 星座頁籤 by JC === */
+main {
+  /* 討論區 by JC */
+}
+
+@media screen and (max-width: 767px) {
+  main .pagination_nav {
+    display: none;
+  }
+}
+
+main .pagination_nav .container {
+  padding: 1em 8.33333%;
+}
+
+main .pagination_nav .container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .pagination_nav .container ul li {
+  margin: 1em;
+}
+
+main .pagination_nav .container label {
+  margin: .9em;
+  padding: .5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: .5em;
+  cursor: pointer;
+}
+
+main .pagination_nav .container label:hover {
+  background-color: #CFB886;
+  color: #000;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main .discuss img {
+  vertical-align: top;
+}
+
+@media screen and (min-width: 768px) {
+  main .discuss .owl-carousel {
+    display: none;
+  }
+}
+
+main .discuss .container {
+  padding: 1em 8.33333%;
+  width: 100%;
+  margin: auto;
+}
+
+.content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  /* 左欄文章分類 */
+}
+
+.content .content_cate {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  left: 0;
+  text-align: center;
+  width: 20%;
+}
+
+@media screen and (max-width: 767px) {
+  .content .content_cate {
+    width: 0;
+  }
+}
+
+.content .content_cate li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  margin: 0.3em 0;
+  border-bottom: 1px solid #CFB886;
+  cursor: pointer;
+}
+
+.content .content_cate li .category {
+  cursor: pointer;
+  padding-bottom: 0.5em;
+}
+
+.content .content_cate li:hover {
+  background-color: #3A3A3A;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+@media screen and (max-width: 767px) {
+  .content .content_cate ul {
+    display: none;
+  }
+}
+
+/* 有共用的就用同一個class名稱 ex: */
+/* .container{
+    width: 100%;
+    padding: 8.333333%;
+    box-sizing: border-box;
+    
+} 
+
+
+/* 最大寬度768以上不顯示 所以這裡是手機 */
+/* 0~767px */
+/* 手機板不顯示頁籤 */
+@media screen and (max-width: 767px) {
+  main .discuss .container .content .content_article .content_wrap .today h2 {
+    width: 100%;
+    text-align: center;
+  }
+  main .discuss .container .content .content_article .content_wrap .today p {
+    width: 100%;
+    text-align: center;
+  }
+  main .discuss .container .content_article .content_wrap .today .numbers p:nth-child(odd) {
+    color: #CFB886;
+  }
+  main .forture_dec .container .overall_fortune h4 {
+    width: 100%;
+    text-align: center;
+  }
+  main .forture_dec .container .overall_fortune .overall_fortune_txt {
+    text-align: center;
+    padding: 2% 8.333333%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt p {
+    text-align: left;
+  }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune h4 {
+    padding: 2% 0%;
+    margin-top: 5%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+/* === 星座頁籤 by JC === */
+main {
+  /* 討論區 by JC */
+}
+
+@media screen and (max-width: 767px) {
+  main .pagination_nav {
+    display: none;
+  }
+}
+
+main .pagination_nav .container {
+  padding: 1em 8.33333%;
+}
+
+main .pagination_nav .container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .pagination_nav .container ul li {
+  margin: 1em;
+}
+
+main .pagination_nav .container label {
+  margin: .9em;
+  padding: .5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: .5em;
+  cursor: pointer;
+}
+
+main .pagination_nav .container label:hover {
+  background-color: #CFB886;
+  color: #000;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main .discuss img {
+  vertical-align: top;
+}
+
+@media screen and (min-width: 768px) {
+  main .discuss .owl-carousel {
+    display: none;
+  }
+}
+
+main .discuss .container {
+  padding: 1em 8.33333%;
+  width: 100%;
+  margin: auto;
+}
+
+.content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  /* 左欄文章分類 */
+}
+
+.content .content_cate {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  left: 0;
+  text-align: center;
+  width: 20%;
+}
+
+@media screen and (max-width: 767px) {
+  .content .content_cate {
+    width: 0;
+  }
+}
+
+.content .content_cate li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  margin: 0.3em 0;
+  border-bottom: 1px solid #CFB886;
+  cursor: pointer;
+}
+
+.content .content_cate li .category {
+  cursor: pointer;
+  padding-bottom: 0.5em;
+}
+
+.content .content_cate li:hover {
+  background-color: #3A3A3A;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+@media screen and (max-width: 767px) {
+  .content .content_cate ul {
+    display: none;
+  }
+}
+
+/* 有共用的就用同一個class名稱 ex: */
+/* .container{
+    width: 100%;
+    padding: 8.333333%;
+    box-sizing: border-box;
+    
+} 
+
+
+/* 最大寬度768以上不顯示 所以這裡是手機 */
+/* 0~767px */
+/* 手機板不顯示頁籤 */
+@media screen and (max-width: 767px) {
+  main .discuss .container .content .content_article .content_wrap .today h2 {
+    width: 100%;
+    text-align: center;
+  }
+  main .discuss .container .content .content_article .content_wrap .today p {
+    width: 100%;
+    text-align: center;
+  }
+  main .discuss .container .content_article .content_wrap .today .numbers p:nth-child(odd) {
+    color: #CFB886;
+  }
+  main .forture_dec .container .overall_fortune h4 {
+    width: 100%;
+    text-align: center;
+  }
+  main .forture_dec .container .overall_fortune .overall_fortune_txt {
+    text-align: center;
+    padding: 2% 8.333333%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune h4 {
+    padding: 2% 0%;
+    margin-top: 5%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content .content_cate li {
+    display: none;
+  }
+}
+
+/* 這裡是桌機 */
+@media screen and (min-width: 768px) {
+  main .today_fortune .container .content_cate {
+    width: 20%;
+    padding-left: 30px;
+  }
+  main .discuss .container .content .today {
+    width: 95%;
+  }
+  main .discuss .container .content .today .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+  }
+  main .discuss .container .content .today .item .pic {
+    width: 50%;
+  }
+  main .discuss .container .content .today .item .pic img {
+    width: 100%;
+  }
+  main .discuss .container .content .today {
+    width: 95%;
+  }
+  main .discuss .container .content .today .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+  }
+  main .discuss .container .content .today .item .pic {
+    width: 50%;
+  }
+  main .discuss .container .content .today .item .pic img {
+    width: 100%;
+  }
+  main .discuss .container .content .numbers .txt_box {
+    /* height: 100%;
+        display: flex; */
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    text-align: center;
+  }
+  main .discuss .container .content .numbers .txt_box p {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    text-align: center;
+    padding: 3.5% 0%;
+  }
+  main .discuss .container .content .numbers {
+    width: 50%;
+    margin: auto;
+  }
+  main .discuss .container .content_article .content_wrap .today .item .pic .txt_box p {
+    text-align: center;
+  }
+  main .discuss .container .content_article .content_wrap .today .numbers p:nth-child(odd) {
+    color: #CFB886;
+  }
+  main .forture_dec .container .overall_fortune h4 {
+    padding: 2%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content_article .content_wrap .today .overall_fortune .overall_fortune_txt {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+section.login .container {
+  z-index: 3000;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000c;
+}
+
+section.login .container .display_none {
+  display: none;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch {
+  background-color: #555;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .item .switch:before {
+  -webkit-transform: translateX(44px) rotate(-270deg);
+          transform: translateX(44px) rotate(-270deg);
+  background-color: #CFB886;
+  color: #555;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .select_title h3:first-child {
+  color: #555a;
+}
+
+section.login .container #reg_log:checked ~ .card_box .switch_box .select_title h3:last-child {
+  color: #CFB886;
+}
+
+section.login .container #reg_log:checked ~ .card_box {
+  max-height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  section.login .container #reg_log:checked ~ .card_box {
+    max-height: 70%;
+  }
+}
+
+section.login .container #reg_log:checked ~ .card_box .rotate_3d_box {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+section.login .container section.card_box {
+  position: absolute;
+  top: 5em;
+  bottom: 5em;
+  width: 25em;
+  max-width: 90%;
+  max-height: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  section.login .container section.card_box {
+    max-height: 50%;
+  }
+}
+
+section.login .container section.card_box .switch_box {
+  padding-bottom: 1.5em;
+}
+
+section.login .container section.card_box .switch_box .select_title {
+  text-align: center;
+}
+
+section.login .container section.card_box .switch_box .select_title h3 {
+  display: inline-block;
+  padding: 0 2em;
+  color: #CFB886;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+}
+
+section.login .container section.card_box .switch_box .select_title h3:last-child {
+  color: #555a;
+}
+
+section.login .container section.card_box .switch_box .item .switch {
+  width: 100%;
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #CFB886;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+section.login .container section.card_box .switch_box .item .switch:before {
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #CFB886;
+  background-color: #555;
+  font-family: 'unicons';
+  content: '\eb4f';
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+section.login .container section.card_box .rotate_3d_box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 600ms ease-out;
+  transition: all 600ms ease-out;
+  background-color: #111;
+  border: 1px solid #CFB886;
+  border-radius: .5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  margin: auto;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  padding: 0 2em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_font {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item {
+  border: 1px solid #CFB886;
+  padding: .5em;
+  margin: 1em 0;
+  border-radius: .5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input {
+  width: 90%;
+  border: none;
+  background-color: transparent;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item input[type=date] {
+  width: 80%;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item textarea {
+  width: 95%;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label {
+  cursor: pointer;
+  display: block;
+  padding: 1em 0 .5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label .img_box {
+  width: 7em;
+  height: 7em;
+  padding: 1em;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+  overflow: hidden;
+  margin: auto;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label .img_box img {
+  width: 100%;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label span {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify {
+  padding: 0;
+  margin-top: -1em;
+  border: none;
+  overflow: hidden;
+  height: 0;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul {
+  padding: 0.5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul li {
+  font-size: 0.9em;
+  padding: 0.3em;
+  color: #9999;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.verify ul li:before {
+  content: '\01F7CD';
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  font-size: 1.5em;
+  margin-right: 0.5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action {
+  text-align: center;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action > * {
+  margin: .5em 0;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action .forgot_pwd {
+  color: #8888;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action .forgot_pwd:hover {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back {
+  overflow-y: scroll;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  padding: 1em 1.5em;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar {
+  width: 30px;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+section.login .container section.card_box .rotate_3d_box .card_item.card_back::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 10px solid transparent;
+  background-clip: content-box;
+  background-color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box .account_info,
+section.login .container section.card_box .rotate_3d_box .mem_info,
+section.login .container section.card_box .rotate_3d_box .astrologist_info {
+  overflow: hidden;
+}
+
+section.login .container section.card_box .rotate_3d_box .mem_info,
+section.login .container section.card_box .rotate_3d_box .astrologist_info {
+  height: 0;
+}
+
+section.login .container section.card_box .rotate_3d_box #general:checked ~ .identity .general,
+section.login .container section.card_box .rotate_3d_box #general:checked ~ .identity .general_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ .identity .astrologist,
+section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ .identity .astrologist_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box .item.identity i:not(:first-child),
+section.login .container section.card_box .rotate_3d_box .item.identity label {
+  cursor: pointer;
+  color: #888;
+}
+
+body {
+  min-height: 100vh;
+}
+
+body section.back {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body section.back .img_box img {
+  width: 100%;
+  display: block;
+}
+
+body section.back .selected_btn,
+body section.back .unselected_btn {
+  padding: .5em 1em;
+}
+
+body section.back .third_btn {
+  background: transparent;
+  border: 1px solid #CFB886;
+}
+
+body section.back .detail_btn {
+  padding: 0.3em;
+  background: transparent;
+  border: 1px solid #CFB886;
+  cursor: pointer;
+  border-radius: 0.5em;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+body section.back .detail_btn:hover {
+  background: #CFB886;
+  color: #000;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+body section.back .display_none {
+  display: none;
+}
+
+body section.back .link_panel {
+  position: relative;
+  z-index: 2001;
+  width: 15em;
+}
+
+body section.back .link_panel .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5em 0;
+}
+
+body section.back .link_panel .logo .img_box {
+  width: 3em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+body section.back .link_panel .logo .txt_box {
+  margin-left: 1em;
+  padding: 0.5em 0;
+}
+
+body section.back .link_panel .link_list li {
+  width: 100%;
+  padding: .5em 2em;
+  text-align: center;
+}
+
+body section.back .link_panel .link_list li a {
+  display: block;
+}
+
+body section.back .contain {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: relative;
+  min-height: 100vh;
+  background-color: #5558;
+}
+
+body section.back .contain header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  height: 4em;
+  background-color: #0003;
+}
+
+body section.back .contain header button {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+body section.back .contain main .container {
+  position: relative;
+  padding: 5em 3em;
+}
+
+body section.back .contain main .container .action_box.top {
+  margin-bottom: 1em;
+}
+
+body section.back .contain main .container .action_box.top > * {
+  display: inline-block;
+}
+
+body section.back .contain main .container .action_box.top .secondary_btn {
+  padding: 0.5em;
+  margin-right: 1em;
+}
+
+body section.back .contain main .container .action_box.top .row_limit > option {
+  text-align: center;
+}
+
+body section.back .contain main .container .popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+body section.back .contain main .container .popup .content_box {
+  padding: 3em 5em 2em;
+  border-radius: 0.5em;
+  background-color: #555e;
+  -webkit-box-shadow: #fff8 0 0 5px 5px;
+          box-shadow: #fff8 0 0 5px 5px;
+}
+
+body section.back .contain main .container .popup .content_box .info_box:not(:first-child) {
+  margin-top: 1em;
+}
+
+body section.back .contain main .container .popup .content_box .info_box .img_box {
+  width: 8em;
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+}
+
+body section.back .contain main .container .popup .content_box .info_box .img_box img {
+  width: 100%;
+}
+
+body section.back .contain main .container .popup .content_box .action_box {
+  text-align: center;
+}
+
+body section.back .contain main .container .popup .content_box .action_box button {
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+body section.back .contain main .container .table_wrapper {
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  overflow: hidden;
+  display: inline-block;
+}
+
+body section.back .contain main .container .table_wrapper table tr {
+  border: 1px solid #CFB886;
+}
+
+body section.back .contain main .container .table_wrapper table tr th,
+body section.back .contain main .container .table_wrapper table tr td {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #CFB886;
+  padding: .5em 1em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+body section.back .contain main .container .table_wrapper table tr th {
+  position: relative;
+  background-color: #CFB886;
+  color: #000;
+  cursor: pointer;
+}
+
+body section.back .contain main .container .table_wrapper table tr th:not(:first-child):before {
+  content: '';
+  position: absolute;
+  right: .3em;
+  top: 30%;
+  width: 0;
+  height: 0;
+  border-left: .2em solid transparent;
+  border-right: .2em solid transparent;
+  border-bottom: .3em solid black;
+}
+
+body section.back .contain main .container .table_wrapper table tr th:not(:first-child):after {
+  content: '';
+  position: absolute;
+  right: .3em;
+  bottom: 30%;
+  width: 0;
+  height: 0;
+  border-left: .2em solid transparent;
+  border-right: .2em solid transparent;
+  border-top: .3em solid black;
+}
+
+body section.back .contain main .container .table_wrapper table tr .status {
+  display: block;
+  margin: auto;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #CFB886;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+body section.back .contain main .container .table_wrapper table tr .status.active {
+  background-color: #CFB886;
+}
+
+#twinklingStar .dot {
+  position: absolute;
+  background-color: white;
+  width: 5px;
+  height: 5px;
+  opacity: .8;
+  -webkit-filter: blur(0.1px);
+          filter: blur(0.1px);
+  border-radius: 50%;
+}
+
+@-webkit-keyframes twinkleAnm {
+  0% {
+    opacity: .2;
+  }
+  25% {
+    opacity: .2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+@keyframes twinkleAnm {
+  0% {
+    opacity: .2;
+  }
+  25% {
+    opacity: .2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+#twinklingStar .twinkle {
+  -webkit-animation-name: twinkleAnm;
+          animation-name: twinkleAnm;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+main {
+  /* 星座共用 */
+  /* 開始推算 */
+}
+
+main .astrolabe .container .img_box img {
+  width: 100%;
+  vertical-align: top;
+}
+
+main .astrolabe .container .astrolabe_start_box {
+  position: relative;
+  margin-top: 2em;
+  /* 填寫表單 */
+}
+
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box {
+    height: 350px;
+  }
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start {
+  width: 45%;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* 推算按鈕 定位父層在.img_box.start*/
+}
+
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box .img_box.start {
+    margin-top: 4em;
+    margin-bottom: -1.5em;
+    width: 80%;
+  }
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start #canvas {
+  width: 100%;
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box button.big_style {
+  border: none;
+  padding: 10px 80px;
+  cursor: pointer;
+}
+
+main .astrolabe .container .astrolabe_start_box .img_box.start .btn_box button.big_style p {
+  color: #000;
+  font-weight: 600;
+}
+
+main .astrolabe .container .astrolabe_start_box .start_hidden {
+  display: none;
+}
+
+main .astrolabe .container .astrolabe_start_box .start_show {
+  display: block;
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 50%;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  z-index: 2;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box .form_item {
+    width: 100%;
+  }
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background-color: #3a3a3ab0;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 2em;
+  border-radius: 0.5em;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item form:hover {
+  background-color: #3d3d3dbb;
+}
+
+@media screen and (max-width: 767px) {
+  main .astrolabe .container .astrolabe_start_box .form_item form .input_width {
+    width: 100%;
+  }
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item .form_btns {
+  margin-top: 1em;
+  text-align: center;
+  /* 名稱的輸入盒 */
+}
+
+main .astrolabe .container .astrolabe_start_box .form_item .form_btns #name {
+  width: 60%;
+}
+
+main section.chart .container h1 {
+  text-align: left;
+  display: inline-block;
+}
+
+main section.chart .container .astrolabe_chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 2em;
+  /* 宮位分類欄 有11個該死的宮位 */
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification {
+  width: 10%;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_classification {
+    display: none;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul {
+  margin: 0 .5em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_classification ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li {
+  margin: .5em;
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li label {
+  border-bottom: 1px solid #CFB886;
+  padding-bottom: .2em;
+  cursor: pointer;
+}
+
+main section.chart .container .astrolabe_chart .chart_classification ul li label:hover {
+  color: #d89482;
+  border-bottom: 1px solid #d89482;
+}
+
+main section.chart .container .astrolabe_chart .chart_classification .li_active {
+  background-color: #fff;
+}
+
+main section.chart .container .astrolabe_chart .parse_box {
+  width: 55%;
+  margin-top: 2em;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .parse_box {
+    width: 100%;
+  }
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg {
+  position: relative;
+  border: 1px solid #CFB886;
+  padding: 5%;
+  background-image: url("../images/constellation/bg_astrolabe_card.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  border-radius: 0.5em;
+  /* 星盤解讀分析內容的大標 父層定位在.analyze_bg上 */
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_title {
+  position: relative;
+  bottom: 4.2em;
+  right: 1.2em;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_title h2 {
+  background-color: #000;
+  display: inline-block;
+  font-size: 2.8rem;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_txt h3 {
+  margin-bottom: 1em;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .analyze_txt p {
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .hiddenPanel {
+  display: none;
+}
+
+main section.chart .container .astrolabe_chart .parse_box .analyze_bg .showPanel {
+  display: block;
+}
+
+main section.chart .container .astrolabe_chart .chart_info {
+  width: 35%;
+  margin: 0 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_info {
+    width: 100%;
+    margin: 2em auto;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_txt {
+  margin: auto;
+  padding: 2em 3.5em;
+  background-color: #3a3a3a;
+  border-radius: 0.5em;
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_txt p {
+  color: #CFB886;
+}
+
+main section.chart .container .astrolabe_chart .chart_info .chart_img {
+  width: 70%;
+  margin: auto;
+}
+
+@media screen and (max-width: 767px) {
+  main section.chart .container .astrolabe_chart .chart_info .chart_img {
+    margin: 2em auto;
+  }
+}
+
+main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+    display: none;
+  }
+}
+
+main .products_cards .products_content .products_title_wrap {
+  width: 100%;
+  text-align: left;
+  margin: 5em 0 2em;
+}
+
+main .products_cards .products_content .product_box .row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .products_cards .products_content .product_box .row .item {
+  width: 46%;
+  padding: 0.5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: 10em;
+  margin: 2%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main .products_cards .products_content .product_box .row .item {
+    width: 21%;
+  }
+}
+
+main .products_cards .products_content .product_box .row .item .img_box {
+  border-radius: 50%;
+}
+
+main .products_cards .products_content .product_box .row .item .img_box img {
+  padding: 1em;
+  width: 100%;
+  border-radius: 50%;
+}
+
+main .products_cards .products_content .product_box .row .item .icon_box {
+  width: 30%;
+  padding-top: 0.5em;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  main .products_cards .products_content .product_box .row .item .icon_box img {
+    position: relative;
+    bottom: -50px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main .products_cards .products_content .product_box .row .item:hover .icon_box img {
+    bottom: 0.25em;
+    -webkit-transition: 0.8s;
+    transition: 0.8s;
+  }
+}
+
+main .products_cards .products_content .product_box .row .item:hover {
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+}
+
+main section.draw_cards .container {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  /* 抽牌圈 */
+  /* 抽牌結果 */
+}
+
+main section.draw_cards .container .cards_box {
+  z-index: 10;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  /* 抽牌提示 */
+}
+
+main section.draw_cards .container .cards_box p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  padding: .5em 8em;
+  white-space: nowrap;
+  color: #888;
+}
+
+main section.draw_cards .container .cards_box .all {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+main section.draw_cards .container .cards_box .all ul {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "listoverlap";
+  -webkit-transform: rotate(-90deg) scale(0.9);
+          transform: rotate(-90deg) scale(0.9);
+  font-size: 2vmin;
+  position: relative;
+}
+
+main section.draw_cards .container .cards_box .all ul > li {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: listoverlap;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "itemoverlap";
+  --rotate: calc(360deg / var(--event-count) * var(--event-index));
+  -webkit-transform: rotate(var(--rotate)) translateX(19em) scale(var(--scale, 1));
+          transform: rotate(var(--rotate)) translateX(19em) scale(var(--scale, 1));
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+
+main section.draw_cards .container .cards_box .all ul > li.event {
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 0 var(--shadowSpread, 0) var(--highlightcolor, black), 0 0 1em black;
+          box-shadow: 0 0 0 var(--shadowSpread, 0) var(--highlightcolor, black), 0 0 1em black;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  outline: none;
+}
+
+main section.draw_cards .container .cards_box .all ul > li.event > * {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: itemoverlap;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+main section.draw_cards .container .cards_box .all ul > li.event > img {
+  width: 12em;
+  height: 8em;
+  aspect-ratio: 1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-transform: rotate(90deg) scale(1.55);
+          transform: rotate(90deg) scale(1.55);
+}
+
+main section.draw_cards .container .cards_box .all ul > li.event.selected, main section.draw_cards .container .cards_box .all ul > li.event:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  z-index: 100;
+  --scale: 1.2;
+  --highlightcolor: #CFB886;
+  --shadowSpread: 0.1em;
+}
+
+main section.draw_cards .container .cards_box .all ul > li.event.selected {
+  z-index: 150;
+}
+
+main section.draw_cards .container .cards_box .all ul > li.event.selected:hover {
+  --shadowSpread: 0.2em;
+}
+
+main section.draw_cards .container .detail_box {
+  z-index: 20;
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* 圖片 */
+  /* 解析 */
+}
+
+main section.draw_cards .container .detail_box .img_box {
+  z-index: 2;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  background-color: #000;
+}
+
+main section.draw_cards .container .detail_box .img_box .item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+main section.draw_cards .container .detail_box .img_box .item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+main section.draw_cards .container .detail_box .img_box .item.font {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+main section.draw_cards .container .detail_box .img_box .item.back {
+  z-index: 400;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+main section.draw_cards .container .detail_box .txt_box {
+  z-index: 1;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 1px solid #CFB886;
+  border-radius: .5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media screen and (min-width: 767px) {
+  main section.draw_cards .container .detail_box .txt_box {
+    width: 40%;
+    padding: 2em 3em 2em 5em;
+  }
+  main section.draw_cards .container .detail_box .txt_box .txt_content {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    padding: 2em 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main section.draw_cards .container .detail_box .txt_box {
+    position: fixed;
+    top: 7em;
+    bottom: 3em;
+    left: 1em;
+    right: 1em;
+    -webkit-transform: none;
+            transform: none;
+    padding: 2em 1em;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  main section.draw_cards .container .detail_box .txt_box .item {
+    margin: .5em;
+  }
+}
+
+main section.draw_cards .container .detail_box .txt_box .action {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.draw_cards .container .detail_box .txt_box .action li {
+  width: calc(100% / 4);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0.5em;
+  line-height: 1em;
+  letter-spacing: normal;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+main section.query_orders .container > .action {
+  width: 100%;
+  text-align: center;
+}
+
+main section.query_orders .container > .action button {
+  margin: 0 1em;
+}
+
+main section.query_orders .action_bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .action_bar {
+    -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+  }
+  main section.query_orders .action_bar .status_btn {
+    margin-top: 1em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  main section.query_orders .action_bar .status_btn button {
+    width: calc(100% / 4);
+    padding: 0 .5em;
+  }
+}
+
+main section.query_orders .action_bar .search {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0 2em;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .action_bar .search {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .action_bar button.secondary_btn {
+    padding: .3em;
+    margin-left: 1em;
+  }
+}
+
+main section.query_orders .mem_orders .order_list .order_item {
+  margin: 1em 0;
+  padding: 1em;
+  border: 1px solid #CFB886;
+  border-radius: 0.5em;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 1em;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content {
+  padding: 1em;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .mem_orders .order_list .order_item .order_content .item {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .img_box {
+  width: 20%;
+  display: inline-block;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .img_box img {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .mem_orders .order_list .order_item .order_content .item .img_box {
+    width: 80%;
+  }
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box {
+  padding-left: 2em;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box .info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box .info span {
+  padding: 1em 0;
+}
+
+@media screen and (max-width: 768px) {
+  main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box {
+    width: 100%;
+    padding-left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  main section.query_orders .mem_orders .order_list .order_item .order_content .item .txt_box .info {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_footer {
+  padding: 0 1em;
+}
+
+main section.query_orders .mem_orders .order_list .order_item .order_footer .item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em 0;
+}
+
+main section.member .container section.main_astrologist {
+  /* calendar footer */
+}
+
+main section.member .container section.main_astrologist #schedule {
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main section.member .container section.main_astrologist #calendarContain {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
+  padding: 0 1px;
+  padding-bottom: 1px;
+}
+
+main section.member .container section.main_astrologist #calendarHeader {
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px 0;
+}
+
+main section.member .container section.main_astrologist #schedule .month {
+  color: #CFB886;
+  font-size: 30px;
+}
+
+main section.member .container section.main_astrologist #schedule .lastmonth {
+  font-size: 16px;
+  color: #CFB886;
+  cursor: pointer;
+}
+
+main section.member .container section.main_astrologist #schedule .nextmonth {
+  font-size: 16px;
+  color: #CFB886;
+  cursor: pointer;
+}
+
+main section.member .container section.main_astrologist #schedule .lastmonth:after,
+main section.member .container section.main_astrologist #schedule .nextmonth:after {
+  border-bottom: 1px solid #68433780;
+  content: '';
+  display: block;
+  width: 0%;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+main section.member .container section.main_astrologist #schedule .lastmonth:hover:after,
+main section.member .container section.main_astrologist #schedule .nextmonth:hover:after {
+  width: 100%;
+}
+
+main section.member .container section.main_astrologist #schedule .week {
+  width: 100%;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section.member .container section.main_astrologist #schedule #week0 {
+  height: 30px;
+  line-height: 12px;
+  background-color: #5558;
+  color: #CFB886;
+  font-size: 24px;
+}
+
+main section.member .container section.main_astrologist #schedule .day {
+  width: calc(100% / 7);
+  border: 1px solid #5558;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-top: 5px;
+  position: relative;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main section.member .container section.main_astrologist #schedule .day p {
+  color: #CFB886;
+}
+
+main section.member .container section.main_astrologist #schedule .week:not(#week0) .day:not(:empty):hover {
+  -webkit-box-shadow: 0 0 3px 2px #CFB886;
+          box-shadow: 0 0 3px 2px #CFB886;
+  cursor: pointer;
+}
+
+main section.member .container section.main_astrologist #schedule .week:not(#week0) .day:not(:empty):active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+main section.member .container section.main_astrologist #schedule #week5 .day0 {
+  border-bottom-left-radius: 5px;
+}
+
+main section.member .container section.main_astrologist #schedule #week5 .day6 {
+  border-bottom-right-radius: 5px;
+}
+
+main section.member .container section.main_astrologist #schedule .calendarFooter {
+  padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod {
+  line-height: 30px;
+  color: #684337;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod span {
+  padding-right: 20px;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod span:before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod span:nth-child(2):before {
+  background-color: #CFB886;
+}
+
+main section.member .container section.main_astrologist #schedule .timePeriod span:nth-child(3):before {
+  background-color: #7799d5;
+}
+
+.sky {
+  height: 100vh;
+  padding: 0;
+}
+
+.sky .dot {
+  position: absolute;
+  background-color: white;
+  width: 5px;
+  height: 5px;
+  opacity: .8;
+  -webkit-filter: blur(0.1px);
+          filter: blur(0.1px);
+  border-radius: 50%;
+}
+
+@keyframes twinkleAnm {
+  0% {
+    opacity: .2;
+  }
+  25% {
+    opacity: .2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+.sky .twinkle {
+  -webkit-animation-name: twinkleAnm;
+          animation-name: twinkleAnm;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.sky .welcome_index {
+  min-height: 100vh;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.sky .welcome_index .container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sky .welcome_index .container .welcome_index_logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sky .welcome_index .container .welcome_index_logo img {
+  width: 6em;
+  margin: auto;
+}
+
+.sky .welcome_index .container .welcome_index_box {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sky .welcome_index .container .welcome_index_box .welcome_item {
+  width: 35%;
+  padding: 5em;
+  height: 100%;
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .container .welcome_index_box .welcome_item {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 60%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .container .welcome_index_box .welcome_item {
+    width: 100%;
+  }
+}
+
+.sky .welcome_index .container .welcome_footer {
+  text-align: left;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .container .welcome_footer {
+    margin-top: 3em;
+  }
+}
+
+.sky .welcome_index .container .welcome_footer p {
+  color: #999;
+  font-size: .8em;
+}
+
+@media screen and (max-width: 767px) {
+  .sky .welcome_index .container .welcome_footer p {
+    font-size: .7em;
+  }
+}
+
+.sky .welcome_index .container .welcome_footer span {
+  color: #CFB886;
+  font-size: .6em;
+}
+
+@media screen and (max-width: 767px) {
+  main section.shop_banner .container {
+    padding: 0;
+  }
+}
+
+main section.shop_banner .container .slider {
+  position: relative;
+}
+
+main section.shop_banner .container .slider .prebtn {
+  position: absolute;
+  top: 50%;
+}
+
+main section.shop_banner .container .slider .nextbtn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+main section.shop_banner .container .slider .slider_box {
+  height: 15em;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shop_banner .container .slider .slider_box {
+    height: 22em;
+  }
+}
+
+main section.shop_banner .container .slider .slider_box .slider_item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+main section.shop_banner .container .slider .slider_box .slider_item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main section.shop_banner .container .slider .slider_box .slider_item:not(:first-child) {
+  opacity: 0;
+}
+
+main section.shopping_item .container h1 {
+  padding: 0.25em 0em;
+}
+
+main section.shopping_item .container .product_search {
+  text-align: center;
+}
+
+main section.shopping_item .container .product_nav {
+  margin: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media screen and (max-width: 767px) {
+  main section.shopping_item .container .product_nav {
+    display: none;
+  }
+}
+
+main section.shopping_item .container .product_box .row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main section.shopping_item .container .product_box .row .item {
+  width: 46%;
+  padding: 0.5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: 10em;
+  margin: 2%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item {
+    width: 21%;
+  }
+}
+
+main section.shopping_item .container .product_box .row .item .img_box {
+  border-radius: 50%;
+}
+
+main section.shopping_item .container .product_box .row .item .img_box img {
+  padding: 1em;
+  width: 100%;
+  border-radius: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item .img_box img {
+    padding: 1.5em;
+  }
+}
+
+main section.shopping_item .container .product_box .row .item .icon_box {
+  width: 30%;
+  padding-top: 0.5em;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item .icon_box img {
+    position: relative;
+    bottom: -10em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box .row .item:hover .icon_box img {
+    bottom: 0em;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+  }
+}
+
+main section.shopping_item .container .product_box .row .item:hover {
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+@-webkit-keyframes showRight {
+  0% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes showRight {
+  0% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes hideRight {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -100%;
+    opacity: 0;
+  }
+}
+
+@keyframes hideRight {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -100%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes showLeft {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes showLeft {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes hideLeft {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes hideLeft {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+main .daily .daily_btn_box {
+  text-align: right;
+}
+
+main .daily .dc_box {
+  position: relative;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+}
+
+@media screen and (max-width: 767px) {
+  main .daily .dc_box {
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+main .daily .dc_box .daily_card {
+  width: 33.333333%;
+  background-color: grey;
+  border-radius: .5em;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 30px 10px #cfb8863d;
+          box-shadow: 0px 0px 30px 10px #cfb8863d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2em;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  main .daily .dc_box .daily_card {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+main .daily .dc_box .daily_card:hover {
+  -webkit-box-shadow: 0px 0px 30px 10px #cfb886dc;
+          box-shadow: 0px 0px 30px 10px #cfb886dc;
+}
+
+main .daily .dc_box .daily_card img {
+  width: 100%;
+}
+
+/* === 星座頁籤 by JC === */
+main {
+  /* 討論區 by JC */
+}
+
+@media screen and (max-width: 767px) {
+  main .pagination_nav {
+    display: none;
+  }
+}
+
+main .pagination_nav .container {
+  padding: 1em 8.33333%;
+}
+
+main .pagination_nav .container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .pagination_nav .container ul li {
+  margin: 1em;
+}
+
+main .pagination_nav .container label {
+  margin: .9em;
+  padding: .5em 1em;
+  border: 1px solid #CFB886;
+  border-radius: .5em;
+  cursor: pointer;
+}
+
+main .pagination_nav .container label:hover {
+  background-color: #CFB886;
+  color: #000;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+main .discuss img {
+  vertical-align: top;
+}
+
+@media screen and (min-width: 768px) {
+  main .discuss .owl-carousel {
+    display: none;
+  }
+}
+
+main .discuss .container {
+  padding: 1em 8.33333%;
+  width: 100%;
+  margin: auto;
+}
+
+.content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  /* 左欄文章分類 */
+}
+
+.content .content_cate {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  left: 0;
+  text-align: center;
+  width: 20%;
+}
+
+@media screen and (max-width: 767px) {
+  .content .content_cate {
+    width: 0;
+  }
+}
+
+.content .content_cate li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  margin: 0.3em 0;
+  border-bottom: 1px solid #CFB886;
+  cursor: pointer;
+}
+
+.content .content_cate li .category {
+  cursor: pointer;
+  padding-bottom: 0.5em;
+}
+
+.content .content_cate li:hover {
+  background-color: #3A3A3A;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+@media screen and (max-width: 767px) {
+  .content .content_cate ul {
+    display: none;
+  }
+}
+
+/* 最大寬度768以上不顯示 所以這裡是手機 */
+/* 0~767px */
+/* 手機板不顯示頁籤 */
+@media screen and (max-width: 767px) {
+  main .discuss .container .content .content_article h2 {
+    padding: 2%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content .content_article .content_wrap .img_box img {
+    width: 100%;
+    padding: 2%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    vertical-align: bottom;
+  }
+  main .discuss .container .content .content_article .content_wrap p {
+    padding: 2% 0%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content .content_article .content_wrap .txt_box {
+    padding: 10% 20%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content .content_article .content_wrap h2 {
+    text-align: center;
+  }
+  main .discuss .container .content {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+/* 這裡是桌機 */
+@media screen and (min-width: 768px) {
+  main .discuss .container .content .content_article .content_wrap .img_box {
+    width: 100%;
+  }
+  main .discuss .container .content .content_article .content_wrap .img_box img {
+    width: 100%;
+    padding: 2%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    vertical-align: bottom;
+  }
+  main .discuss .container .content .content_article .content_wrap p {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main .discuss .container .content .content_article .content_wrap .txt_box {
+    margin: auto;
+    width: 50%;
+    text-align: left;
+  }
+  main .discuss .container .content .content_article .content_wrap .img_box {
+    width: 50%;
+    margin: auto;
+  }
+  main .discuss .container .content .content_article .content_wrap .img_box img {
+    width: 100%;
+  }
+  main .discuss .container .content .content_article .content_wrap .img_box h2 {
+    margin-left: 20%;
+    margin-bottom: 5%;
+  }
+  main .discuss .container .content .content_article .content_wrap .story_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  main .discuss .container .content_cate ul li a {
+    color: #CFB886;
+  }
+}
+
+* {
+  font-family: 'Cinzel','Shippori Mincho', serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #CFB886;
+}
+
+html {
+  height: 100%;
+}
+
+html body {
+  height: 100%;
+  background-color: #000;
+}
+
+html body::-webkit-scrollbar {
+  width: 30px;
+}
+
+html body::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+html body::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 10px solid transparent;
+  background-clip: content-box;
+  background-color: #CFB886;
+}
+
+html body main {
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
+
+html body main > section {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+html body main > section > .container {
+  width: 100%;
+  padding: 0 8.333333%;
+  margin: auto;
+}
+
+/* ===== 按鈕 ===== */
+/* --- 主按鈕 --- */
+/* 一個按鈕在html裡下列要全放
+
+<button class="primary_btn">
+<span>立級購買</span>
+<svg>
+<polyline class="o1" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
+<polyline class="o2" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
+</svg>
+</button> 
+
+---------------------------*/
+/* 要花錢的按鈕 購買、預約 */
+button.primary_line_btn {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+button.primary_line_btn svg {
+  height: 55px;
+  width: 150px;
+  fill: none;
+  stroke-width: 4;
+  border-radius: 0.2em;
+}
+
+button.primary_line_btn svg .o1 {
+  stroke: #d3b065 216, 148, 130, 0.7;
+  fill: #CFB886;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+button.primary_line_btn svg .o2 {
+  stroke: white;
+  stroke-dasharray: 20 420;
+  stroke-dashoffset: 20;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+button.primary_line_btn span {
+  position: absolute;
+  letter-spacing: 0.3em;
+  color: #000;
+  font-weight: 600;
+}
+
+button.primary_line_btn:hover .o1 {
+  fill: #cfa54a;
+}
+
+button.primary_line_btn:hover .o2 {
+  stroke-dashoffset: -420;
+}
+
+button.primary_line_btn:active {
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+button.primary_line_btn:active ol {
+  fill: #ffd16eef;
+}
+
+/* --- 主按鈕 --- */
+/* 塔羅牌 */
+/* 星座--開始測驗 */
+/* 占卜師專區--接受 */
+/* --------------------------- */
+.primary_btn {
+  border-radius: 0.2em;
+  color: #000;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  font-weight: 500;
+  background-color: #CFB886;
+  border: 1px solid #CFB886;
+  display: inline-block;
+  padding: 0.8em 2em;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
+          box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.349);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.primary_btn:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  background-color: #f8d68d;
+  border: 1px solid #f8d68d;
+  -webkit-box-shadow: 0px 0px 20px 3px #cfb886dc;
+          box-shadow: 0px 0px 20px 3px #cfb886dc;
+}
+
+.primary_btn:active {
+  background-color: #f8e5bf;
+  border: 1px solid #f8e5bf;
+  -webkit-box-shadow: 0px 0px 20px 3px #cfb886dc;
+          box-shadow: 0px 0px 20px 3px #cfb886dc;
+}
+
+/* --- 二級按鈕 --- */
+/* 跳轉頁的button */
+/* 首頁--商品瀏覽、占卜師瀏覽 */
+/* 體驗占卜--線上占卜、再看一次、推薦商品 */
+/* 線上占卜--其他問題、預約占卜師、推薦商品 */
+/* 預約占卜--開始預約、確認預約、下一步、確認 */
+/* 登入註冊 */
+.secondary_btn {
+  border-radius: 0.2em;
+  color: #000;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  background-color: #CFB886;
+  border: 1px solid #CFB886;
+  display: inline-block;
+  padding: 0.8em 2em;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.secondary_btn:hover {
+  background-color: #ffe09c;
+  border: 1px solid #ffe09c;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+/* 頁籤 */
+/* 預約占卜--頁籤(線上或實體) */
+/* 星座--頁籤 */
+/* 占卜師專區--星級頁籤 */
+/* 占卜師專區--分析資料頁籤 */
+.selected_btn {
+  color: #000;
+  letter-spacing: 0.3em;
+  background-color: #CFB886;
+  border: 1px solid #CFB886;
+  text-align: center;
+  line-height: 40px;
+  padding: 0.5em 3em;
+  cursor: pointer;
+}
+
+.selected_btn:hover {
+  color: #eed7a4;
+  border: 1px solid #eed7a4;
+}
+
+.unselected_btn {
+  color: #fff;
+  letter-spacing: 0.3em;
+  background-color: transparent;
+  border: 1px #CFB886 solid;
+  text-align: center;
+  line-height: 40px;
+  padding: 0.5em 3em;
+  cursor: pointer;
+}
+
+.unselected_btn:hover {
+  color: #eed7a4;
+  border: 1px solid #eed7a4;
+}
+
+/* --- 三級按鈕 --- */
+/* 發表/檢舉文章按鈕 */
+/* 會員--修改資料、新增休假資料、取消 */
+/* 占卜師專區--拒絕 */
+/* 星座--測驗選項(要加固定寬) */
+.third_btn {
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  border-radius: 0.2em;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #fff;
+  padding: 0.8em 2em;
+  cursor: pointer;
+  font-weight: 500;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.third_btn:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+/* --- 其他按鈕 --- */
+/* icon線條顏色--#fff */
+.other_btn {
+  color: #CFB886;
+  border-radius: 50%;
+  border: 1px solid #CFB886;
+  background-color: transparent;
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.other_btn:hover {
+  color: #eed7a4;
+  border: 1px solid #eed7a4;
+}
+
+.count_btn {
+  color: #000;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: 1px solid #ffffff00;
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* ===== 文字 ===== */
+/*==== 手機板字體大小一定要加這個html ====*/
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/*==== 手機板字體大小一定要加這個html ====*/
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+  line-height: 1.5;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 2.3rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #CFB886;
+}
+
+h3 {
+  font-size: 1.75rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #CFB886;
+}
+
+h4 {
+  font-size: 1.25rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+  color: #CFB886;
+}
+
+p {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+label:not(.no_style) {
+  color: #CFB886;
+  padding: 2px 5px;
+  line-height: 2;
+}
+
+input {
+  border: 1px #CFB886 solid;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #CFB886;
+  padding: 2px 5px;
+  outline: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+select {
+  border: 1px #CFB886 solid;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #CFB886;
+  padding: 2px 5px;
+}
+
+select option {
+  background-color: #000;
+}
+
+textarea {
+  border: 1px #CFB886 solid;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #CFB886;
+  outline: none;
+  resize: none;
+  padding: 0.6em;
+  font-size: 1em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #cfb886cb;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea:-ms-input-placeholder {
+  color: #cfb886cb;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea::-ms-input-placeholder {
+  color: #cfb886cb;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea::placeholder {
+  color: #cfb886cb;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/*# sourceMappingURL=style.css.map */
