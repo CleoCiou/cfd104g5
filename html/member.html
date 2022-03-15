@@ -24,7 +24,7 @@
                     <!-- 基本資料 -->
                     <div class="info_box">
                         <div class="img_box sticker">
-                            <img src="images/icon/user.svg">
+                            <img :src="imgSrc('member', userData.sticker)">
                         </div>
                         <div class="txt_box">
                             <span>{{ userData.userId }}</span>
@@ -33,7 +33,9 @@
                         </div>
                         <div class="action_box">
                             <button @click="showDetailInfo" class="third_btn">修改資料</button>
-                            <a href="astrologist.html"><button class="secondary_btn">占卜師專區</button></a>
+                            <a href="astrologist.html">
+                                <button v-if="userData.identity==='占卜師'" class="secondary_btn">占卜師專區</button>
+                            </a>
                             <button class="third_btn display_none">取消</button>
                         </div>
 
@@ -93,123 +95,119 @@
     
                 <!-- 目前預約 -->
                 <section class="item reservation">
-                    
                     <div class="txt_box">
                         <span>我的預約</span>
                         <span class="more">更多預約 ></span>
                     </div>
                     <div class="reservation_box">
-                        <p>預約成功</p>
-                        <div class="astrologist_info">
-                            <h3>吳恆隼</h3>
-                            <div class="img_box">
-                                <img src="images/icon/icon_discuss_mine.svg">
+                        <div class="info" v-if="appointInfo.length > 0">
+                            <div class="astrologist_info">
+                                <div class="txt_box">
+                                    <p>{{ appointInfo[0].status }}</p>
+                                    <h3>{{ appointInfo[0].memName }}</h3>
+                                    <p class="reservation_time">{{ appointInfo[0].appointDate }} {{ appointInfo[0].appointTime }}</p>
+                                </div>
+                                <div class="img_box">
+                                    <img :src="imgSrc('member', appointInfo[0].memImage)">
+                                </div>
                             </div>
                         </div>
-                        <span class="reservation_time">2022.02.28 上午</span>
+                        <div class="no_reservation" v-else>
+                            <p>尚無預約</p>
+                        </div>
                     </div>
                 </section>
     
                 <!-- 目前訂單 -->
                 <section class="item orders">
                     我的訂單
-                    <div class="orders_box">
+                    <div class="orders_box" v-if="latestOrder[0].prodImage !== null">
                         <div class="order_header">
-                            <span>待出貨</span>
+                            <span>{{ latestOrder[0].status }}</span>
                         </div>
                         <div class="order_content">
                             <div class="img_box">
-                                <img src="images/shop/tarot/lucky_stone/lucky stone_white_crystal.jpg">
+                                <img :src="imgSrc('product', latestOrder[0].prodImage)">
                             </div>
                             <div class="txt_box">
-                                <p>開運項鍊 x1</p>
+                                <p>
+                                    {{ latestOrder[0].prodName }}
+                                    <span v-if="latestOrder[0].totalMount > 1"> +{{ latestOrder[0].totalMount - 1 }} </span>
+                                    
+                                </p>
+                                <p>共 {{ latestOrder[0].totalMount }} 項</p>
                             </div>
                         </div>
                         <div class="order_footer">
-                            <p class="total">訂單金額: NT$800</p>
+                            <p class="total">訂單金額: NT${{ latestOrder[0].totalPrice }}</p>
                         </div>
                         <a class="other_order" href="mem_orders_vue_try.html">檢視其他訂單</a>
+                    </div>
+                    <div class="orders_box" v-else>
+                        <p>尚無紀錄</p>
                     </div>
                 </section>
     
                 <!-- 最近的評論(占卜師) -->
                 <section class="item comment">
-                    給占卜師的評論
-                    <div class="comment_list">
-                        <!-- 占卜資訊 -->
-                        <div class="comment_box">
-                            <div class="reservation_info">
-                                <div class="img_box sticker">
-                                    <img src="images/icon/icon_discuss_mine.svg">
+                    預約紀錄及評論
+                    <ul class="comment_list" v-if="appointLogs.length === 0">
+                        <p>尚無紀錄</p>
+                    </ul>
+                    <ul class="comment_list" v-else>
+                        <li class="comment_info" v-for="(comment, idx) in appointLogs" v-if="viewAllComments===true || idx === (appointLogs.length - 1)">
+                            <!-- 占卜資訊 -->
+                            <div class="comment_box">
+                                <div class="reservation_info">
+                                    <div class="img_box sticker">
+                                        <img :src="imgSrc('member', appointLogs[idx].memImage)">
+                                    </div>
+                                </div>
+                                <div class="txt_box ast_info">
+                                    <span>#{{ comment.astNo }}</span>
+                                    <h3>{{ comment.memName }}</h3>
+                                </div>
+                                <p class="reservation_time">{{ comment.appointDate }} {{ comment.appointTime }}</p>
+                            </div>
+    
+                            <!-- 給占卜師的評論 -->
+                            <div class="comment_box">
+                                <div class="txt_box comment">
+                                    <p v-if="appointLogs[idx].star !== null" class="star">{{ comment.star }}★</p>
+                                    <p v-if="appointLogs[idx].star !== null">{{ comment.content }}</p>
+                                    <p v-else>尚未評論</p>
                                 </div>
                             </div>
-                            <div class="txt_box ast_info">
-                                <span>#001</span>
-                                <h3>吳恆隼</h3>
-                            </div>
-                            <p class="reservation_time">2022.02.20 上午</p>
-                        </div>
-
-                        <!-- 給占卜師的評論 -->
-                        <div class="comment_box">
-                            <div class="reservation_info">
-                                <div class="img_box sticker">
-                                    <img src="images/icon/user.svg">
-                                </div>
-                            </div>
-                            
-                            <div class="txt_box comment">
-                                <span class="star">★★★</span>
-                                <p>
-                                    真的是當天一時興起訂了的那種，居然聽到運勢總論說到可能需要出國走走來豐富最近平淡的生活，我聽到的當下真的嚇呆了。
-                                </p>
-                            </div>
-                        </div>
+                        </li>
 
                         <p class="prev_comment" @click="old_comment">查看其他評論 ^</p>
 
                         <div class="active">
-                            <input type="text">
+                            <textarea class="new_comment"></textarea>
                             <button class="third_btn">發送</button>
                         </div>
 
-                    </div>
+                    </ul>
                 </section>
     
-                <!-- 最近的留言 -->
+                <!-- 最近留言的文章 -->
                 <section class="item message">
-                    最新文章留言
-                    <ul class="message_box">
-                        <li class="article_info" data-newMsg="1">
-                            <a href="discuss.html">
-                                <span class="artNo">#004</span>
+                    最近留言的文章
+                    <ul class="message_box" v-if="newMessages.length > 0">
+                        <li v-for="(info, index) in newMessages" class="article_info" :data-newMsg="newMessages[index].count">
+                            <a :href="commentHref(index)">
+                                <span class="artNo"># {{ info.artNo }}</span>
                                 <h4 class="artTitle">
-                                    本圖隱藏下個合作提示，明天還有更多提示哦~
+                                    {{ info.title }}
                                 </h4>
                             </a>
                         </li>
-                        <li class="article_info" data-newMsg="5">
-                            <span class="artNo">#012</span>
-                            <h4 class="artTitle">
-                                哇噢！新手必學超簡易畫畫技巧！
-                            </h4>
-                        </li>
-                        <li class="article_info" data-newMsg="N">
-                            <span class="artNo">#033</span>
-                            <h4 class="artTitle">
-                                抽屜也能養魚？！
-                            </h4>
-                        </li>
-                        <li class="article_info" data-newMsg="3">
-                            <span class="artNo">#120</span>
-                            <h4 class="artTitle">
-                                最近很火的自制豆腐做法
-                            </h4>
-                        </li>
                     </ul>
+                    <p class="no_comments" v-else>尚無紀錄</p>
                 </section>
                 
                 <!-- 線上占卜測驗紀錄 by JC -->
+                <!-- 資料串接 by PIN -->
                 <section class="item tarot_quiz">
                     線上占卜紀錄
                     <div class="quiz_box">
@@ -217,51 +215,19 @@
                         <div class="quiz_left_box">
 
                             <!-- 第一排 -->
-                            <div class="quiz_row box">
+                            <div class="quiz_row box" v-if="divinationLogs.length > 0">
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true" id="quiz_cards1">
+                                <div class="quiz_cards draggable" draggable="true" v-for="log in divinationLogs">
                                     <div class="quiz_cate">
-                                        <h3>愛情</h3>
-                                        <p>這三個月會有正緣嗎?</p>
+                                        <h3>{{ log.typeName }}</h3>
+                                        <p>{{ log.title }}</p>
                                     </div>
                                     <div class="quiz_result">
-                                        17 星星
-                                    </div>
-                                </div>
-                                <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards2">
-                                    <div class="quiz_cate">
-                                        <h3>工作</h3>
-                                        <p>心中默念問題</p>
-                                    </div>
-                                    <div class="quiz_result">
-                                        11 正義
-                                    </div>
-                                </div>
-                                
-                                <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards3">
-                                    <div class="quiz_cate">
-                                        <h3>健康</h3>
-                                        <p>心中默念問題</p>
-                                    </div>
-                                    <div class="quiz_result">
-                                        14 節制
-                                    </div>
-                                </div>
-                            
-                                <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true"  id="quiz_cards4">
-                                    
-                                    <div class="quiz_cate">
-                                        <h3>愛情</h3>
-                                        <p>對方目前對我的想法?</p>
-                                    </div>
-                                    <div class="quiz_result">
-                                        10 命運之輪
+                                        {{ log.tarNo }} {{ log.tarName }}
                                     </div>
                                 </div>
                             </div>
+                            <p class="no_log" v-else>尚無紀錄</p>
 
                         </div>
 
@@ -286,50 +252,185 @@
 @@include('layout/footer.html')
 
 <script>
-    // === getSessionData.php
-    // getSessionData()
-    // $msg = [
-    //     'userId' => $_SESSION['userId'],
-    //     'userName' => $_SESSION['userName'],
-    //     'identity' => $_SESSION['identity'],
-    //     'sticker' => $_SESSION['sticker'],
-    //     'email' => $_SESSION['email'],
-    //     'creditNum' => $_SESSION['creditNum'],
-    // ];
-    // ===
-    
-    new Vue({
-        el: '#app',
-        data: {
-            userData: getSessionData()
-        },
-        methods: {
-            showDetailInfo(e) {
-                e.target.innerText = (e.target.innerText === '修改資料') ? '儲存' : '修改資料';
-                e.target.nextElementSibling.classList.toggle('display_none');
-                let normalInfo = e.target.parentNode.previousElementSibling;
-                let detailInfo = e.target.parentNode.nextElementSibling;
-                normalInfo.classList.toggle('invisible');
-                detailInfo.classList.toggle('invisible');
+
+    // 若尚未登入
+    if (getSessionData() === false) {
+        $('section.member').css({opacity: 0});
+        alert('請先登入');
+        $('section.login').removeClass('display_none');
+        document.body.classList.add('login_hidden');
+    }
+    else {
+        getMemberData();
+    }
+
+    // 取得登入的會員資料
+    function getMemberData() {
+        new Vue({
+            el: '#app',
+            data: {
+                userData: getSessionData(),
+                newMessages: {},
+                divinationLogs: {},
+                appointInfo: [],
+                appointLogs: [],
+                latestOrder: [],
+                viewAllComments: false
             },
-            changePwd(e) {
-                e.target.innerText = (e.target.innerText === '修改') ? '取消' : '修改';
-                let chgPwdBox = e.target.parentNode.nextElementSibling;
-                chgPwdBox.classList.toggle('display_none');
+            mounted() {
+                // 取得最近留言文章
+                this.getNewMessages();
+                // 取得最近占卜紀錄
+                this.getDivinationLog();
+                // 取得我的預約、已完成的預約評論
+                this.getMyAppointment();
+                // 取得我的訂單，顯示最近一筆
+                this.getOrders();
             },
-            old_comment(e) {
-                e.target.innerText = (e.target.innerText === '查看其他評論 ^') ? '關閉' : '查看其他評論 ^';
-                let comment_list = e.target.parentNode;
-                comment_list.classList.toggle('view_old');
-                document.body.classList.toggle('overflow_hidden');
+            methods: {
+                showDetailInfo(e) {
+                    e.target.innerText = (e.target.innerText === '修改資料') ? '儲存' : '修改資料';
+                    e.target.nextElementSibling.classList.toggle('display_none');
+                    let normalInfo = e.target.parentNode.previousElementSibling;
+                    let detailInfo = e.target.parentNode.nextElementSibling;
+                    normalInfo.classList.toggle('invisible');
+                    detailInfo.classList.toggle('invisible');
+                },
+                changePwd(e) {
+                    e.target.innerText = (e.target.innerText === '修改') ? '取消' : '修改';
+                    let chgPwdBox = e.target.parentNode.nextElementSibling;
+                    chgPwdBox.classList.toggle('display_none');
+                },
+                old_comment(e) {
+                    if (this.viewAllComments) {
+                        e.target.innerText = '查看其他評論 ^';
+                        this.viewAllComments = false;
+                    }
+                    else {
+                        e.target.innerText = '關閉';
+                        this.viewAllComments = true;
+                    }
+                    let comment_list = e.target.parentNode;
+                    comment_list.classList.toggle('view_old');
+                    document.body.classList.toggle('overflow_hidden');
+                },
+                // 會員最近留言過的文章，最多四個
+                // 若該文章有新留言，取得文章編號、文章主旨、新留言數
+                getNewMessages() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/back_getCol.php',
+                        data: {
+                            // 查詢的資料表
+                            table: 'newMessages',
+                            no: this.userData.userNo,
+                        },
+                        async: false,
+                        success: function(data) {
+                            data = JSON.parse(data);
+                            thisVue.newMessages = data.msg;
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                // 點擊跳轉至文章頁面，附上點擊文章編號在網址列
+                commentHref(idx) {
+                    return `discuss.html?no=${this.newMessages[idx].artNo}`;
+                },
+                // 取得會員最近占卜項目，最多四個
+                getDivinationLog() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/back_getCol.php',
+                        data: {
+                            // 查詢的資料表
+                            table: 'divinationLog',
+                            no: this.userData.userNo,
+                        },
+                        async: false,
+                        success: function(data) {
+                            data = JSON.parse(data);
+                            thisVue.divinationLogs = data.msg;
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                // 取得會員預約情況、預約完成後的評論紀錄
+                getMyAppointment() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/back_getCol.php',
+                        data: {
+                            // 查詢的資料表
+                            table: 'myAppointment',
+                            no: this.userData.userNo,
+                        },
+                        async: false,
+                        success: function(data) {
+                            data = JSON.parse(data);
+                            let logIdx = -1;
+                            for (let i = 0; i < data.msg.length; i++) {
+                                let appDate = new Date(data.msg[i].appointDate);
+                                // 如果預約日期小於當天，新增至歷史紀錄清單
+                                if (new Date() > appDate) {
+                                    thisVue.appointLogs.push(data.msg[i]);
+                                }
+                                // 否則新增至目前預約清單
+                                else {
+                                    thisVue.appointInfo.push(data.msg[i]);
+                                }
+                            }
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                imgSrc(folder, image) {
+                    switch (folder) {
+                        case 'member':
+                            folder = 'teller_mem';
+                            break;
+                        case 'product':
+                            folder = 'shop';
+                            break;
+                    }
+                    let path = `images/${folder}`;
+                    return `${path}/${image}`;
+                },
+                getOrders() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/back_getCol.php',
+                        data: {
+                            // 查詢的資料表
+                            table: 'latestOrder',
+                            no: this.userData.userNo,
+                        },
+                        async: false,
+                        success: function(data) {
+                            data = JSON.parse(data);
+                            thisVue.latestOrder = data.msg;
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                }
             }
-        },
-        computed: {
-            
-        }
-    });
+        });
+    }
 </script>
-<!-- drag and drop -->
+
+<!-- drag and drop by NJ -->
 <script>
     var dropTarget = document.querySelector(".quiz_box")
     var draggables = document.querySelectorAll('.draggable')

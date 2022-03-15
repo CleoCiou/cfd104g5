@@ -20,7 +20,7 @@ function checkLogin() {
             data = JSON.parse(data);
             if (data.msg === true) {
                 alert('登入成功');
-                window.location.href = 'index.html';
+                location.reload();
             }
             else {
                 alert(data.msg);
@@ -119,6 +119,7 @@ $(function() {
     // === 按鈕監控 === //
     // 註冊 | 登入
     $(".secondary_btn").click( (e) => {
+        // e.preventDefault();
         if (e.target.innerText === '登入') {
             checkLogin();
         }

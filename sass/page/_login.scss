@@ -1,4 +1,12 @@
+// 登入視窗鎖body
+.login_hidden {
+    overflow: hidden;
+}
+
 section.login {
+    &.display_none {
+        display: none;
+    }
     .container {
         z-index: 3000;
         position: fixed;

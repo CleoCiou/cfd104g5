@@ -179,7 +179,7 @@
 	}
 	.tarot_book_intro .tarot_box .img_box{
 		padding: 0.5em 0;
-		width: 70%;
+		width: 60%;
 		margin: auto;
 	}
 	.tarot_book_intro h2{
@@ -193,7 +193,13 @@
 		display: none;
 	}
 	.tarot_book_menu li{
-		line-height: 1.3;
+		line-height: 1.5;
+	}
+	.big_cards{
+		margin: 1em 0 0.5em;
+	}
+	.small_cards{
+		margin: 2em 0 0.5em;
 	}
 }
 @media screen and (max-width:991px) {

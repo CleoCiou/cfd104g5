@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('layout/head.html', {
+    'title': '解星鏡 Mistro | 塔羅'
+})
+<link rel="stylesheet" href="css/tarot_books.css">
+
+
+<body>
+    
+<!-- 網頁頭 -->
+<!-- 內容由 common.js 新增 by PIN -->
+@@include('layout/header.html')
+
+
+<!-- 網頁內容 -->
+<main>
+
+<!-- 塔羅卡牌 by NJ -->
+<section class="tarot_book_intro">
+    <div class="container">
+       <div class="tarot_box">
+           
+           <div class="img_box">
+               <img src="./images/be_teller/black_cat_wizard.svg" alt="">
+           </div>
+           <div class="txt_box">
+               <h2>塔羅牌介紹</h2>
+               <p>傳統上塔羅牌有78張牌，由兩種不同的牌組所組成。第一種稱為大阿爾克那，由22張沒有花色的牌所組成。第二種稱為小阿爾克那，由56張牌所組成，而這56張牌又可以分成4種花色。每種花色有數字2到數字10的牌，加上一張Ace和四張宮廷牌。</p>
+           </div>
+       </div>
+    </div>
+</section>
+
+    <section class="tarot_books">
+        <div class="container">
+            <div id="app">
+                <div id="tarotbook">
+                    <!-- <div class="owl-carousel owl-theme"> -->
+                        <div class="page first_page">123</div>
+                        <div class="page" v-for="tarotCard in tarotCards">
+                            <div class="item" >
+                                <div class="img_box">
+                                    <img :src="src+tarotCard.tarImage" alt="魔術師">
+                                </div>
+                            <div class="txt_box">
+                                <h3>{{tarotCard.tarName}}</h3>
+                                <p>
+                                {{tarotCard.tarProduction}}</p>
+                            </div>
+                            </div>
+                        </div>
+        
+                        <!-- <div class="page"> Page 2 </div>
+                        <div class="page"> Page 3 </div>
+                        <div class="page"> Page 4 </div> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+</main> 
+    
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                tarotCards: [
+                        // {title: 'Andy',
+                        // content: '2132132132131213',
+                        // pic:'01The _magician.svg'},
+                        // {title: '2',content: '2132132132131213',pic:'01The _magician.svg'},
+                        // {title: '3',content: '2132132132131213',pic:'01The _magician.svg'},
+                        // {title: '4',content: '2132132132131213',pic:'01The _magician.svg'},
+                        // {title: '5',content: '2132132132131213',pic:'01The _magician.svg'},
+                        // {title: '6',content: '2132132132131213',pic:'01The _magician.svg'},
+                        // {title: '7',content: '2132132132131213',pic:'01The _magician.svg'},
+                        // {title: '8',content: '2132132132131213',pic:'01The _magician.svg'},
+                        // {title: '9',content: '2132132132131213',pic:'01The _magician.svg'},
+                       
+                        // 測試用內容，裡面資料從資料庫撈
+                    ],
+                src: 'images/tarot_cards/',
+            },
+        mounted() {
+        this.getTarCards_vue();
+        },
+        methods: {
+            getTarCards_vue() {
+                // 在 ajax 中的 this 會是 ajax 的物件
+                // 所以先把 vue 的 this 存起來
+                let thisVue = this;
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+                        // 要查詢的資料表
+                        table: 'tarot',
+                        // 要查詢的欄位
+                        queryCol: 'tarNo, tarName, tarEngName, tarImage, tarMeaning, tarProduction',
+                        // condition: 'artNo = 1',
+                        // other: 'limit 8'
+                    },
+                    //用箭頭函式可以不用加thisVue 直接用this
+                    success: function(data) {
+                        if (data.msg !== false){
+                            console.log(data)
+                            thisVue.tarotCards = data.msg;
+                            thisVue.$nextTick(thisVue.turnInit);
+                        }
+                    },
+                    error: function() {
+                        console.log('ajax error');
+                    }
+                });
+            },
+            turnInit() {
+                $('#tarotbook').turn({gradients: true, acceleration: true});
+                //要先撈完資料庫再跑js
+            },
+        }
+        })
+    </script>    
+
+<script src="js/turn.js"></script>   
+
+
+<!-- <script>
+// 推薦商品 貓頭鷹套件
+
+    $(".owl-carousel").owlCarousel({
+        loop: true, // 循環播放
+        margin: 10, // 外距 10px
+        dots: false,
+        nav: false, // 顯示點點
+        responsive: {
+            0: {
+                items: 1,
+                nav: true // 螢幕大小為 0~600 顯示 1 個項目
+            },
+            980: {
+                items: 1,
+                nav: false// 螢幕大小為 1000 以上 顯示 5 個項目
+            }
+        }
+    });
+</script> -->
+    
+
+
+</body>
+</html>

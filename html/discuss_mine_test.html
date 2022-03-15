@@ -191,6 +191,7 @@
                                 </div>
                                 <div class="response_card_time">
                                     <span>{{message[index].msgTime}}</span>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -232,43 +233,55 @@
             mounted() {
                 this.getCol();
             },
-            // methods: {
-            //     changeLike(index){
-            //         if(this.$data.article[index].activeIndex == 0){
-            //             this.$data.article[index].likes -= 1;
-            //         }else if(this.$data.article[index].activeIndex == 1){
-            //             this.$data.article[index].likes += 1;
-            //         }
-            //     },
-            //     getIndex(index){
-            //         this.getTitle = this.article[index];
-            //     },
-            //     getCol() {
-            //         let thisVue = this;
-            //         $.ajax({
-            //             type: 'POST',
-            //             url: 'php/select.php',
-            //             data: {
-            //                 table: 'article',
-            //                 joinTable: 'article_topic',
-            //                 joinOn: 'topicNo',
-            //                 queryCol: 'artNo, memNo, artTime, topicName, title, content, likes, artFavs, artImage, activeIndex, favIndex',
-            //             },
-            //             success: function(data) {
-            //                 // console.log(data.msg);
-            //                 // thisVue.article = data.msg;
-            //                 if (data.msg !== false){
-            //                     thisVue.article = data.msg;
-            //                 }
+            methods: {
+                changeLike(index){
+                    if(this.$data.article[index].activeIndex == 0){
+                        this.$data.article[index].likes -= 1;
+                    }else if(this.$data.article[index].activeIndex == 1){
+                        this.$data.article[index].likes += 1;
+                    }
+                },
+                getIndex(index){
+                    this.getTitle = this.article[index];
+                },
+                getCol() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/select.php',
+                        data: {
+                            table: 'article',
+                            joinTable: 'article_topic',
+                            joinOn: 'topicNo',
+                            queryCol: 'artNo, memNo,artTime, topicName, title, content, likes, artFavs, artImage, activeIndex, favIndex',
+                        },
+                       
+                        success: function(data) {
+                            console.log(data);
+                            thisVue.article = data.msg;
+                            if (data.msg !== false){
+                                thisVue.article = data.msg;
+                            }
 
-            //             },
-            //             error: function() {
-            //                 console.log('ajax error');
-            //             }
-            //         });
-            //     },
-            // },
-
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+            },
+                //   // 要查詢的資料表
+                // table: 'article',
+                // // 要 join 的資料表 (如果沒有就不用打)
+                // joinTable: 'article_topic',
+                // // 要查詢的欄位
+                // queryCol: 'artNo, topicName, title',
+                // // join 的條件 (如果沒有join就不用打)
+                // joinOn: 'topicNo',
+                // // condition: 'artNo = 1',
+                // // other: 'limit 1'
+             
+             
 
         });
         let myFavBoard = document.getElementById('myFavBoard');

@@ -4,6 +4,7 @@
 @@include('layout/head.html', {
 'title': '星座故事'
 })
+
 <body>
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')
@@ -15,18 +16,19 @@
             <section class="discuss">
                 <!-- 控制整個討論區padding的大大容器 -->
                 <div class="container">
-                          
+
                     <div class="content">
-                        
+
                         <div class="owl-carousel owl-theme display">
                             <div class="item" v-for="(url, cate) in cates">
                                 <a :href="url"> <label>{{cate}}</label></a>
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="content_cate">
                             <ul>
-                                <li v-for="(url, cate) in cates"><span class="category"><a :href="url">{{cate}}</a></span></li>
+                                <li v-for="(url, cate) in cates"><span class="category"><a
+                                            :href="url">{{cate}}</a></span></li>
                             </ul>
                         </div>
                         <!-- 左邊分類欄
@@ -54,47 +56,48 @@
                         <!-- 右邊內容欄 -->
                         <div class="content_article">
                             <div class="content_wrap">
-                                
+
                                 <h2>星座故事</h2>
                                 <!-- 請從這裡開始寫~~~~~~~~~~~~~ -->
-                               <div class="story_box">
-                                 <div class="img_box">
-                                     <img src="./images/con_story/story-sagit.svg" alt="">
-                                    
-
-                                 </div>
-
-                                 <div class="txt_box">
-                                    <p>射手座又叫人馬座，夏夜的時候，抬頭看南方的天空，人馬座就在天蠍座的東邊。
-                                       希臘神話故事中的射手座，是一個上半身為人形，下半身是馬的怪物，名叫奇龍。
-                                       這種半人半馬的怪獸，被稱為山杜爾族，居住在派利翁山上。他們以狩獵維生，性情非常兇猛。
-                                       奇龍卻與其他的山杜爾族不一樣，他以善良和智慧聞名。因此，在山杜爾族裡，他是一個受尊敬的賢者。他是族中唯一能長生不老的人，但是他最後還是逃不過死神的召喚。</p>
-                                     
-                                </div>
-                               </div> 
-
-                               
+                                <div class="story_box">
+                                    <div class="img_box">
+                                        <img src="./images/con_story/story-sagit.svg" alt="">
 
 
+                                    </div>
 
+                                    <div class="txt_box">
+                                        <p>射手座又叫人馬座，夏夜的時候，抬頭看南方的天空，人馬座就在天蠍座的東邊。
+                                            希臘神話故事中的射手座，是一個上半身為人形，下半身是馬的怪物，名叫奇龍。
+                                            這種半人半馬的怪獸，被稱為山杜爾族，居住在派利翁山上。他們以狩獵維生，性情非常兇猛。
+                                            奇龍卻與其他的山杜爾族不一樣，他以善良和智慧聞名。因此，在山杜爾族裡，他是一個受尊敬的賢者。他是族中唯一能長生不老的人，但是他最後還是逃不過死神的召喚。
+                                        </p>
 
-
-
-
-
-                                      
                                     </div>
                                 </div>
-                                       
+
+
+
+
+
+
+
+
+
+
+
                             </div>
                         </div>
+
                     </div>
                 </div>
-            </section>
-           
-          
         </div>
-        
+        </div>
+        </section>
+
+
+        </div>
+
     </main>
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
@@ -144,7 +147,35 @@
                 author_hat_img: 'images/black_cat_wizard.svg',
                 // isChecked: 0,
             },
+            mounted() {
+                $(document).ready(function () {
+                    $.ajax({
+                        url: 'phps/story_test.php',
+                        type: "POST",
+                        success(data) {
+                            console.log(data.msg);
+                            // console.log(res[0].content);
+                            // let story_p = document.querySelector('.txt_box p')
+
+                            // story_p.innerHTML = res[0].content
+                            // console.log(story_p);
+                            // console.log(res[0].content);
+                            // // 確認連到資料庫了
+                            // let story_p = document.querySelector('.txt_box p')
+                            // console.log(story_p);
+                            // // console.log(story_p);
+                            // // 確定找到我要準備換資料的了   
+                            // story_p.innerText = res[0].content
+
+
+                        }
+                    })
+                })
+
+
+            },
             methods: {
+
                 changeLike(e) {
                     // if(e.target.src == )
                     console.log(e.target.src);
@@ -207,26 +238,6 @@
                     xhr.send(`mem_id=${mem_id.value}`);
     </script> -->
     <script>
-        $(document).ready(function(){
-            $.ajax({
-                url:'php/story_test.php',
-                type:"POST",
-                success(res){
-                    console.log(res);
-                }
-                let story_p = $('.txt_box p')
-                console.log(story_p);
-                
-
-
-
-            })
-                
-
-
-
-
-        })
 
 
 
