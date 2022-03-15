@@ -4064,7 +4064,8 @@ main .products_cards .products_content .product_box .row .item .icon_box {
 }
 
 main .products_cards .products_content .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886,
+ 1px 1px 2px 1px  #CFB886 inset;
 }
 
 main section.draw_cards .container {
@@ -4928,7 +4929,8 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886,
+ 1px 1px 2px 1px  #CFB886 inset;
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
