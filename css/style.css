@@ -4814,8 +4814,9 @@ main section.shopping_item .container .product_nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 @media screen and (max-width: 767px) {
@@ -4862,6 +4863,10 @@ main section.shopping_item .container .product_box .row .item .img_box img {
   main section.shopping_item .container .product_box .row .item .img_box img {
     padding: 1.5em;
   }
+}
+
+main section.shopping_item .container .product_box .row .item .img_box .prod_No {
+  display: none;
 }
 
 main section.shopping_item .container .product_box .row .item .icon_box {
