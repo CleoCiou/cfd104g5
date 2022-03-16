@@ -53,12 +53,12 @@
 
                                 <!-- 熱門 & 最新的兩個標籤 -->
                                 <div class="content_label">
-                                    <label v-for="(label,index) in labels" @click="isChecked = index" :class="{select_label: isChecked == index}">{{label}}</label>
+                                    <label v-for="(label,index) in labels" @click="isChecked = index" :class="{select_label: isChecked == index}" :key="article.artNo">{{label}}</label>
                                 </div>
                                 <!-- == 熱門 == 放文章的地方 -->
                                 <div class="row" :class="{'label_hidden' : isChecked}">
                                     <!-- 文章卡片 -->
-                                    <div class="article_cards" v-for="(card,index) in article" >
+                                    <div class="article_cards" v-for="(card,index) in article" ::key="index">
                                         <div class="line_top">
                                             <p>{{article[index].topicName}}</p>
                                             <p>|</p>
@@ -168,11 +168,11 @@
                             <hr class="style">
                             <div class="response_card">
                                 <div class="card_author img_box">
-                                    <img :src="author_hat_img" alt="會員頭像">
+                                    <img :src="'./images/teller_mem/'+ message[index].memImage" alt="會員頭像">
                                 </div>
                                 <div class="card_txt">
                                     <div class="response_author">
-                                        <span>{{message[index].artNo}}</span>
+                                        <span>{{message[index].memId}}</span>
                                     </div>
                                     <div class="response_card_content">
                                         <p>{{message[index].msgContent}}</p>
@@ -283,12 +283,11 @@
                 article: [],
                 message: [],
                 getTitle: {},
-                msgGet: {}
+                msgIdx:{},
             },
             created() {
                 this.getCol();
                 this.getTopic();
-                this.getMsg();
             },
             mounted() {
             },
@@ -303,6 +302,7 @@
                 getIndex(index){
                     // console.log(this.getTitle);
                     this.getTitle = this.article[index];
+                    this.getMsg(index);
                 },
 
                 // 取文章跟燈箱的資料
@@ -312,8 +312,7 @@
                         url: 'phps/discuss.php',
                         dataType: 'JSON',
                         success: data => {
-                            // console.log(data);
-                            // thisVue.article = data.msg;
+                            console.log(data);
                             if (data !== false){
                                 this.article = data;
                                 // console.log(this.article);
@@ -348,20 +347,24 @@
                     });
                 },
                 //取留言的資料
-                getMsg() {
+                getMsg(index) {
+                    let msgIdx = this.article[index];
+                    console.log(msgIdx);
                     $.ajax({
                         type: 'POST',
                         url: 'phps/select.php',
                         
                         data: {
                             table: 'article_message',
-                            queryCol: 'artNo, msgTime, msgContent',
-                            // joinTable: 'article',
-                            // joinOn: 'artNo',
-                            // condition: `article_message.artNo = {$_POST[""]}.artNo`
+                            queryCol: 'artNo, msgTime, msgContent, memId, memImage',
+                            joinTable: 'members',
+                            joinOn: 'memNo',
+                            condition: `article_message.artNo =  ${msgIdx.artNo}`,
+                            other: 'order by msgTime',
                         },
                         success: data => {
-                            console.log(data.msg);
+                            // console.log(data.msg);
+                            console.log(data.sql);
                             if (data.msg !== false){
                                 this.message = data.msg;
                                 // console.log(thisVue.message);
