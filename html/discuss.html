@@ -33,8 +33,8 @@
                     </div>
                     <!-- 貓頭鷹分類 -->
                     <div class="owl-carousel owl-theme display">
-                        <div class="item" v-for="(name,index) in cates">
-                            <label>{{name.topicName}}</label>
+                        <div class="item" v-for="cate in cates">
+                            <label>{{cate}}</label>
                         </div>
                     </div>
                     <!-- 文章 搜尋bar下排包住左邊和右邊的容器 -->
@@ -43,7 +43,7 @@
                         <!-- 左邊分類欄 -->
                         <div class="content_cate">
                             <ul>
-                                <li v-for="(name,index) in cates"><label class="category">{{name.topicName}}</label></li>
+                                <li v-for="cate in cates"><label class="category">{{cate}}</label></li>
                             </ul>
                         </div>
 
@@ -53,12 +53,12 @@
 
                                 <!-- 熱門 & 最新的兩個標籤 -->
                                 <div class="content_label">
-                                    <label v-for="(label,index) in labels" @click="isChecked = index" :class="{select_label: isChecked == index}">{{label}}</label>
+                                    <label v-for="(label,index) in labels" :key="index" @click="isChecked = index" :class="{select_label: isChecked == index}">{{label}}</label>
                                 </div>
                                 <!-- == 熱門 == 放文章的地方 -->
                                 <div class="row" :class="{'label_hidden' : isChecked}">
                                     <!-- 文章卡片 -->
-                                    <div class="article_cards" v-for="(card,index) in article" >
+                                    <div class="article_cards" v-for="(card,index) in article">
                                         <div class="line_top">
                                             <p>{{article[index].topicName}}</p>
                                             <p>|</p>
@@ -70,7 +70,7 @@
                                                 <p class="words_limit">{{article[index].content}}</p>
                                             </div>
                                             <div class="line_middle_pic">
-                                                <!-- <img :src="article[index].artImage">          -->
+                                                <img :src="article[index].artImage">         
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -85,7 +85,7 @@
                                             
                                             <!-- 留言 -->
                                             <img :src="iconMessage">
-                                            <p>{{article[index].msgs}}回應</p>
+                                            <p>28回應</p>
                                             <!-- 收藏 -->
                                             <button class="using_btn" @click="article[index].favIndex =! article[index].favIndex">
                                                 <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: article[index].favIndex == 1}">
@@ -140,7 +140,7 @@
                         <p>{{getTitle.artTime}}</p>
                     </div>
                     <div class="article_view_pic img_box narrow">
-                        <!-- <img :src="getTitle.artImage" alt="文章圖片">                    -->
+                        <img :src="getTitle.artImage" alt="文章圖片">                   
                     </div>
                     <div class="article_view_content narrow">
                             <p>{{getTitle.content}}</p>
@@ -150,7 +150,7 @@
                         <!-- 左 -->
                         <img src="images/icon/icon_discuss_likes.svg" alt="按喜歡的數量">
                         <p>{{getTitle.likes}}</p>
-                        <span>| {{getTitle.msgs}} 回應</span>
+                        <span>| 28 回應</span>
                         <!-- 右 -->
                         <img src="images/icon/icon_discuss_favorite.svg" alt="收藏">
                         <img src="images/icon/icon_discuss_share.svg" alt="分享">
@@ -172,10 +172,10 @@
                                 </div>
                                 <div class="card_txt">
                                     <div class="response_author">
-                                        <span>{{message[index].artNo}}</span>
+                                        <span>{{message[index].memId}}</span>
                                     </div>
                                     <div class="response_card_content">
-                                        <p>{{message[index].msgContent}}</p>
+                                        <p>{{message[index].content}}</p>
                                     </div>
                                     <div class="response_card_time">
                                         <span>{{message[index].msgTime}}</span>
@@ -271,7 +271,7 @@
                     '星座討論區': 'discuss.html',
                 },
                 navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
-                cates: {},
+                cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
                 labels: ['熱門','最新'],
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
@@ -280,17 +280,18 @@
                 showBoard: 0,
                 showNotice: 0,
                 index: '',
+                message: [
+                    {
+                        memId: "test00000",
+                        msgTime: "2022/03/10 11:21:23",
+                        content: "測試嗚嗚嗚 有成功嗎嗚嗚",
+                    }
+                ],
                 article: [],
-                message: [],
-                getTitle: {},
-                msgGet: {}
-            },
-            created() {
-                this.getCol();
-                this.getTopic();
-                this.getMsg();
+                getTitle: {}
             },
             mounted() {
+                this.getCol();
             },
             methods: {
                 changeLike(index){
@@ -301,78 +302,31 @@
                     }
                 },
                 getIndex(index){
-                    // console.log(this.getTitle);
+                    // console.log(this.article[index]);
                     this.getTitle = this.article[index];
                 },
-
-                // 取文章跟燈箱的資料
+                // 依選擇項目取得資料表
                 getCol() {
+                    let thisVue = this;
                     $.ajax({
                         type: 'POST',
                         url: 'phps/discuss.php',
                         dataType: 'JSON',
-                        success: data => {
-                            // console.log(data);
+                        success: function(data) {
+                            console.log(data);
                             // thisVue.article = data.msg;
-                            if (data !== false){
-                                this.article = data;
-                                // console.log(this.article);
+
+                            if (data.msg !== false){
+                                thisVue.article = data;
                             }
-                        },
-                        error: err => {
-                            console.log('ajax error');
-                        }
-                    });
-                },
-                //取文章類別
-                getTopic() {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'phps/select.php',
-                        
-                        data: {
-                            table: 'article_topic',
-                            queryCol: 'topicName',
 
                         },
-                        success:  data => {
-                            // console.log(data.msg);
-                            if (data.msg !== false){
-                                this.cates = data.msg;
-                                // console.log(this.cates);
-                            }
-                        },
-                        error: err => {
+                        error: function() {
                             console.log('ajax error');
                         }
                     });
                 },
-                //取留言的資料
-                getMsg() {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'phps/select.php',
-                        
-                        data: {
-                            table: 'article_message',
-                            queryCol: 'artNo, msgTime, msgContent',
-                            // joinTable: 'article',
-                            // joinOn: 'artNo',
-                            // condition: `article_message.artNo = {$_POST[""]}.artNo`
-                        },
-                        success: data => {
-                            console.log(data.msg);
-                            if (data.msg !== false){
-                                this.message = data.msg;
-                                // console.log(thisVue.message);
-                            }
-                        },
-                        error: err => {
-                            console.log('ajax error');
-                        }
-                    });
-                },
-            },
+            }
         });
         $(document).ready(function(){
             $('.owl-carousel').owlCarousel({
