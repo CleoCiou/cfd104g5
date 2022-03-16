@@ -52,6 +52,7 @@ main{
             }
             .product_search{
                 text-align: center;
+                
             }
             .product_nav{
                 @include mobile{
@@ -59,8 +60,9 @@ main{
                 }
                 margin: 1em 0;
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-evenly;
             }
+
             .product_box{
                 .row{
                     width: 100%;
@@ -85,6 +87,9 @@ main{
                                 @include desktop{
                                     padding: 1.5em;
                                 }
+                            }
+                            .prod_No{
+                                display: none;
                             }
                         }
                         .icon_box{

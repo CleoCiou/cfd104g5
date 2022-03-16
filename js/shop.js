@@ -27,3 +27,68 @@ window.onload = function () {
   setInterval("handleNext()", 3000);
 };
 
+// 撈資料哩
+function getProduct() {
+  $.ajax({
+      type: 'POST',
+      url: 'phps/select.php',
+      
+      data: {
+
+          table: 'product',
+          joinTable: 'product_category',
+          queryCol: 'product.prodImage1 , product.prodImage2, product.prodImage3,product_category.cateType, product_category.cateName, product.prodName,product.price, product.prodspec, product.prodIntro,product.prodNo',
+          joinOn: 'prodCateNo',
+          condition: "product_category.prodCateNo = 101",
+      },
+
+      success: function(data) {
+          if (data.msg !== false){
+              console.log(data.msg);
+              // 照片路徑變數  
+              let productImg = "images/product_inner_page/tarot/wristband/";
+              // -要包最外層的div-
+              // 商城
+              let shopRow = ` <div class="row">`;
+              for (let i = 0; i < data.msg.length; i++) {
+                shopRow +=   `
+                  <a class="item">
+                    <div class="img_box">
+                      <div class="prod_No">${data.msg[i].prodNo}</div>
+                      <span >
+                        <img src="${productImg}${data.msg[i].prodImage1}" />
+                        <div class="txt_box">
+                          <h4>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</h4>
+                          <p>NT$ ${data.msg[i].price}</p>
+                        </div>
+                      </span>
+                    </div>
+                    <div class="icon_box">
+                      <span><img src="images/icon/icon_shop_eye.svg"></span>
+                    </div>
+
+                  </a>
+                  `;
+              }
+              shopRow += `</div>`;
+
+              
+              $('.product_box').append(shopRow);
+              
+              
+
+              
+          }
+      },
+      error: function() {
+          console.log('ajax error');
+      }
+  });
+}
+$(document).on('click','.item',function(){
+  // alert($(this).find('.prod_No').text());
+  localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
+  window.location.href = "product.html";
+});
+window.addEventListener('load', getProduct);
+
