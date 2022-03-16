@@ -3,7 +3,7 @@ let calendar = document.querySelector('.calendar')
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 isLeapYear = (year) => {
-    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
+    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 === 0)
 }
 
 getFebDays = (year) => {
@@ -28,7 +28,7 @@ generateCalendar = (month, year) => {
     calendar_header_year.innerHTML = year
 
     // get first day of month
-    
+
     let first_day = new Date(year, month, 1)
 
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
@@ -69,8 +69,8 @@ month_picker.onclick = () => {
 
 let currDate = new Date()
 
-let curr_month = {value: currDate.getMonth()}
-let curr_year = {value: currDate.getFullYear()}
+let curr_month = { value: currDate.getMonth() }
+let curr_year = { value: currDate.getFullYear() }
 
 generateCalendar(curr_month.value, curr_year.value)
 
@@ -89,4 +89,49 @@ let dark_mode_toggle = document.querySelector('.dark-mode-switch')
 dark_mode_toggle.onclick = () => {
     document.querySelector('body').classList.toggle('light')
     document.querySelector('body').classList.toggle('dark')
-}
+};
+
+
+
+//資料庫連結
+window.onload = function Teller() {
+    $.ajax({
+        type: 'POST',
+        url: 'phps/select.php',
+        data: {
+
+            table: 'members',
+
+            joinTable: 'astrologist',
+
+            joinOn: 'memNo',
+
+            queryCol: 'members.memName, members.memImage, astrologist.introduction',
+
+        },
+        success: function (data) {
+            if (data.msg !== false) {
+                let tellerImg = "images/teller_mem/"
+                let tellerInfo = `
+                                    <div class="teller_profile">
+                                        <div class="img_box">
+                                            <img src="${tellerImg}${data.msg[0].memImage}">
+                                        </div>
+                                        <div class="txt_box">
+                                            <h3>
+                                                ${data.msg[0].memName}
+                                            </h3>
+                                            <p>
+                                                ${data.msg[0].introduction}
+                                            </p>
+                                        </div>
+                                    </div>
+                                `;
+                $('#tellerRes').prepend(tellerInfo)
+            }
+        },
+        error: function () {
+            console.log('ajax error');
+        }
+    });
+};

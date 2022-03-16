@@ -152,15 +152,21 @@
                     $.ajax({
                         url: 'phps/story_test.php',
                         type: "POST",
-                        success(res) {
-                            // console.log(res);
-                            console.log(res[0].content);
-                            // 確認連到資料庫了
-                            let story_p = document.querySelector('.txt_box p')
-                            console.log(story_p);
+                        success(data) {
+                            console.log(data.msg);
+                            // console.log(res[0].content);
+                            // let story_p = document.querySelector('.txt_box p')
+
+                            // story_p.innerHTML = res[0].content
                             // console.log(story_p);
-                            // 確定找到我要準備換資料的了   
-                            story_p.innerText = res[0].content
+                            // console.log(res[0].content);
+                            // // 確認連到資料庫了
+                            // let story_p = document.querySelector('.txt_box p')
+                            // console.log(story_p);
+                            // // console.log(story_p);
+                            // // 確定找到我要準備換資料的了   
+                            // story_p.innerText = res[0].content
+
 
                         }
                     })

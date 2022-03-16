@@ -55,7 +55,7 @@
                                 <div class="content_label">
                                     <label v-for="(label,index) in labels" :key="index" @click="isChecked = index" :class="{select_label: isChecked == index}">{{label}}</label>
                                 </div>
-                                <!-- 放文章的地方 -->
+                                <!-- == 熱門 == 放文章的地方 -->
                                 <div class="row" :class="{'label_hidden' : isChecked}">
                                     <!-- 文章卡片 -->
                                     <div class="article_cards" v-for="(card,index) in article">
@@ -102,7 +102,21 @@
                                         <button class="other_btn">3</button>
                                         <span>&#10230;</span>
                                     </div>
-                                </div>    
+                                </div>
+                                <!-- == 最新 == 放文章的地方 -->
+                                <div class="row" :class="{'label_hidden' : isChecked == index}">
+                                    <!-- 文章卡片 -->
+                                    <div class="article_cards">
+                                        test
+                                    </div>
+                                    <!-- 頁籤按鈕 -->
+                                    <div class="content_pages">
+                                        <button class="other_btn">1</button>
+                                        <button class="other_btn">2</button>
+                                        <button class="other_btn">3</button>
+                                        <span>&#10230;</span>
+                                    </div>
+                                </div>      
                             </div>
                         </div>
                     </div>
@@ -118,7 +132,7 @@
                     </div>
                     <div class="author img_box narrow">
                         <img :src="author_hat_img" alt="會員頭像">
-                        <span>{{getTitle.memNo}}</span>
+                        <span>{{getTitle.memId}}</span>
                     </div>
                     <div class="article_view_title narrow">
                         <h3>{{getTitle.title}}</h3>
@@ -265,6 +279,7 @@
                 isChecked: 0,
                 showBoard: 0,
                 showNotice: 0,
+                index: '',
                 message: [
                     {
                         memId: "test00000",
@@ -280,9 +295,6 @@
             },
             methods: {
                 changeLike(index){
-                    // console.log(index);
-                    // console.log(this.$data.articleTxt[index].activeIndex);
-                    // console.log(this.$data.articleTxt[index].likes);
                     if(this.$data.article[index].activeIndex == 0){
                         this.$data.article[index].likes -= 1;
                     }else if(this.$data.article[index].activeIndex == 1){
@@ -298,20 +310,14 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'phps/select.php',
-                        data: {
-                            table: 'article',
-                            joinTable: 'article_topic',
-                            joinOn: 'topicNo',
-                            queryCol: 'artNo, memNo, artTime, topicName, title, content, likes, artFavs, artImage, activeIndex, favIndex',
-                        },
+                        url: 'phps/discuss.php',
+                        dataType: 'JSON',
                         success: function(data) {
-                            // console.log(data.msg);
+                            console.log(data);
                             // thisVue.article = data.msg;
 
                             if (data.msg !== false){
-                            // 很多! -> 迴圈寫在 html 標籤上
-                                thisVue.article = data.msg;
+                                thisVue.article = data;
                             }
 
                         },

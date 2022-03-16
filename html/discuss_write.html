@@ -24,8 +24,8 @@
                             <img :src="author_hat_img" alt="會員頭像">
                         </div>
                         <div class="writer_detail_box">
-                            <p>{{members[0].memId}}</p>
-                            <p class="getTime">{{getYear}} / {{getMonth}} / {{getDate}}</p>
+                            <p>{{ members[5].memId }}</p>
+                            <p class="getTime">{{getCurrentTime}}</p>
                         </div>
                     </div>
                     <form action="">
@@ -47,8 +47,8 @@
                                 <input type="file" id="theFile">
                             </div>
                             <div class="write_using_btn">
-                                <a href="discuss.html"><button class="third_btn">取消</button></a>
-                                <a href="discuss.html"><button class="third_btn" @click="insertData">發佈</button></a>
+                                <a :href=backUrl><button class="third_btn">取消</button></a>
+                                <a :href=backUrl><button class="third_btn">發佈</button></a>
                                 
                             </div>
                         </div>
@@ -66,102 +66,115 @@
             data: { //變數放這
                 cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
                 author_hat_img: 'images/black_cat_wizard.svg',
+                backUrl: 'discuss.html',
                 members: [],
-                getYear: new Date().getFullYear(),
-                getMonth: new Date().getMonth()+1,
-                getDate: new Date().getDate(),
                 topic: '',
                 title: '',
                 content: '',
-                reses: '',
             },
             mounted() {
-                // let memId;
-                // fetch('phps/try_fetchApi.php', 
-                // { 
-                //     method: 'POST', 
-                //     body:encodeURI(JSON.stringify({
-                //         memId: 'memId',
-                //     })),
-                //     headers: {
-                //         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-                //     }
-                // } 
-                // )
-                // // .then((res) => {
-                // //     console.log(res);
-                // // })
+
+                fetch('phps/try_fetchApi.php',
+                { 
+                    method: 'POST', 
+                    body:encodeURI(JSON.stringify({
+                        memId : this.memId,
+                    })),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+                    }
+                } 
+                )
                 // .then((res) => {
-                //     return res.json();
+                //     console.log(res);
                 // })
-                // .catch((error) => {
-                //     console.log(`Error: ${error}`);
-                // });
-                this.getMemId();
+                .then((res) => {
+                    return res.json();
+                    // console.log(res.json());
+                })
+
+                .then((res) => {
+                    this.members = res;
+                    console.log(this.members);
+                })
+
+                .catch((error) => {
+                    console.log(`Error: ${error}`);
+                });
+                // this.getMemId();
             },
             methods: {
-                getMemId() {
-                    let thisVue = this;
-                    $.ajax({
-                        type: 'POST',
-                        url: 'phps/try_fetchApi.php',
-                        success: function(data) {
-                            console.log(data);
-                            console.log(thisVue.members);
-                            if (data !== false){
-                                let members;
-                                thisVue.members = data;
-                            }
-                        },
-                        error: function() {
-                            console.log('ajax error');
-                        }
-                    });
-                },
-                insertData() {
-                    let topic = this.topicName;
-                    let title = this.title;
-                    let content = this.content;
-                    // 檢查欄位是否已填
-                    // if (!topic) {
-                    //     this.resetInput('請選擇看板名稱');
-                    //     return;
-                    // }
-                    // if(!title){
-                    //     this.resetInput('請輸入標題');
-                    //     return;
-                    // }
-                    // if(!content){
-                    //     this.resetInput('請輸入內容');
-                    //     return;
-                    // }
-                    // 新增資料
-                    let thisVue = this;
-                    $.ajax({
-                        type: 'POST',
-                        url: 'phps/insert.php',
-                        data: {
-                            table: 'article',
-                            queryCol: 'title , content',
-                            insertValue: `'${title}', '${content}'`
-                        },
-                        success: function(data) {
-                            console.log(sql);
-                            console.log(data.msg);
-                            thisVue.resetInput('成功發表文章!');
-                            thisVue.insertData();
-                        },
-                        error: function() {
-                            console.log('ajax error');
-                        }
-                    });
-                },
-                resetInput(msg = false) {
-                    if(msg) alert(msg);
-                    console.log(msg);
-                },
+                // getMemId() {
+                //     let thisVue = this;
+                //     $.ajax({
+                //         type: 'POST',
+                //         url: 'phps/try_fetchApi.php',
+                //         dataType: 'json',
+                //         success: function(data) {
+                //             // console.log(data);
+                //             if (data !== false){
+                //                 thisVue.members = data;
+                //                 console.log(thisVue.members);
+                //             }
+                //         },
+                //         error: function() {
+                //             console.log('ajax error');
+                //         }
+                //     });
+                // },
+                // insertData() {
+                //     let topic = this.topicName;
+                //     let title = this.title;
+                //     let content = this.content;
+                //     // 檢查欄位是否已填
+                //     // if (!topic) {
+                //     //     this.resetInput('請選擇看板名稱');
+                //     //     return;
+                //     // }
+                //     // if(!title){
+                //     //     this.resetInput('請輸入標題');
+                //     //     return;
+                //     // }
+                //     // if(!content){
+                //     //     this.resetInput('請輸入內容');
+                //     //     return;
+                //     // }
+                //     // 新增資料
+                //     let thisVue = this;
+                //     $.ajax({
+                //         type: 'POST',
+                //         url: 'phps/insert.php',
+                //         data: {
+                //             table: 'article',
+                //             queryCol: 'title , content',
+                //             insertValue: `'${title}', '${content}'`
+                //         },
+                //         success: function(data) {
+                //             console.log(sql);
+                //             console.log(data.msg);
+                //             thisVue.resetInput('成功發表文章!');
+                //             thisVue.insertData();
+                //         },
+                //         error: function() {
+                //             console.log('ajax error');
+                //         }
+                //     });
+                // },
+                // resetInput(msg = false) {
+                //     if(msg) alert(msg);
+                //     console.log(msg);
+                // },
 
             },
+            computed: {
+                getCurrentTime(){
+                    var today = new Date();
+                    var date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    var dateTime = date + ' ' +time;
+                    return dateTime;
+                }
+            }
             
         })
     </script>

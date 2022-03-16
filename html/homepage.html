@@ -96,9 +96,9 @@
 
             <h1>熱門占卜師</h1>  
 
-            <div class="hot_fortune_teller_box">
+            <div id="hotTellerMem">
                 <!-- 熱門占卜師_卡片 -->
-                <a href="teller_reservation.html">
+                <!-- <a href="teller_reservation.html">
                     <div class="hot_fortune_teller_card">
                         <div class="hot_fortune_teller_img">
                             <img src="images/index/index_hot_fortune_teller.svg">
@@ -136,7 +136,7 @@
                             <img src="images/icon/icon_shop_eye.svg">
                         </div>
                     </div>
-                </a>  
+                </a>   -->
             </div>
             <!-- 占卜師總覽 -->
             <div class="teller_verview">
@@ -150,8 +150,8 @@
         <div class="container">
             <h1>主打商品</h1>
             <!-- 主打商品_卡片 -->
-            <div class="hot_product_box">
-                <a href="product.html">    
+            <div id="hotProduct">
+                <!-- <a href="product.html">    
                     <div class="hot_product_card">
                         <div class="hot_product_card_img">
                             <img src="images/shop/Constellation/wristband/wristband_aries.png">
@@ -192,7 +192,7 @@
                             <img src="images/icon/icon_shop_eye.svg">
                         </div>
                     </div>
-                </a>
+                </a> -->
             </div>
 
             <!--商品總覽 -->
@@ -291,5 +291,122 @@
     });
     </script>
 
+<!-- 撈資料庫資料 -->
+<script>
+// 首頁熱門占卜師 -> 要放在 hot_fortune_teller_box 
+// 想從 g5資料庫 的 members資料表 撈出所有的identity="占卜師" 的memName 、 memImage占卜師名稱和圖片 資料
+// 以及astrologist 資料表的totalScore欄位
+ 
+// 我要把 memImage放到 img
+//        memName放到 h3
+function getHotTellerMemsList() {
+        $.ajax({
+            type: 'POST',
+            url: 'phps/select.php',
+            data: {
+                // 要查詢的資料表
+                table: 'members',
+                // 要 join 的資料表 (如果沒有就不用打)
+                joinTable: 'astrologist',
+                // 要查詢的欄位
+                queryCol: 'memName, memImage, totalScore',
+                // join 的條件 (如果沒有join就不用打)
+                joinOn: 'memNo',
+                condition: 'identity="占卜師"',
+                other: 'ORDER BY totalScore asc limit 3'
+            },
+            success: function(data) {
+                if (data.msg !== false){
+                    console.log(data.msg);
+
+                    // 很多! -> 迴圈
+                    let hotTellerImg = "images/teller_mem/"
+                    let hotTellerMems = `<div class="hot_fortune_teller_box">`;
+                    for (let i = 0; i < data.msg.length; i++) {
+                        hotTellerMems +=   `
+                                    <a href="teller_reservation.html">
+                                    <div class="hot_fortune_teller_card">
+                                        <div class="hot_fortune_teller_img">
+                                            <img src="${hotTellerImg}${data.msg[i].memImage}">
+                                        </div>
+                                        <div class="hot_fortune_teller_txt">
+                                            <h3>${data.msg[i].memName}</h3>
+                                        </div>
+                                        <div class="hot_fortune_teller_icon">
+                                            <img src="images/icon/icon_shop_eye.svg">
+                                        </div>
+                                    </div>
+                                </a>  
+                                `;
+                }
+                hotTellerMems += `</div>`
+                $('#hotTellerMem').append(hotTellerMems)
+                }
+            },
+            error: function() {
+                console.log('ajax error');
+            }
+        });
+    }
+    // 何時要?
+    window.addEventListener('load', getHotTellerMemsList);
+// 首頁主打商品 -> 要放在 hot_product_box 
+// 想從 g5資料庫 的 members資料表 撈出所有的identity="占卜師" 的memName 、 memImage占卜師名稱和圖片 資料
+// 以及astrologist 資料表的totalScore欄位
+ 
+// 我要把 memImage放到 img
+//        memName放到 h3
+function getHotProductsList() {
+    $.ajax({
+        type: 'POST',
+        url: 'phps/select.php',
+        data: {
+            // 要查詢的資料表
+            table: 'product',
+            // 要查詢的欄位
+            queryCol: 'prodName, price, prodImage1',
+            other: ' ORDER BY  RAND() limit 3',
+        },
+        success: function(data) {
+            if (data.msg !== false){
+                console.log(data.msg);
+
+                // 很多! -> 迴圈
+                let hotProductsImg = "images/teller_mem/"
+                let hotProducts = ` <div class="hot_product_box">`;
+                for (let i = 0; i < data.msg.length; i++) {
+                    hotProducts +=   `
+                            <a href="product.html">    
+                            <div class="hot_product_card">
+                                <div class="hot_product_card_img">
+                                    <img src="${hotProductsImg}${data.msg[i].prodImage1}">
+                                </div>
+                                <div class="hot_product_card_txt">
+                                    <h4>${data.msg[i].prodName}</h4>
+                                    <h4>$${data.msg[i].price}</h4>
+                                </div>
+                                <div class="hot_product_icon">
+                                    <img src="images/icon/icon_shop_eye.svg">
+                                </div>
+                            </div>
+                        </a>
+                            `;
+            }
+            hotProducts += `</div>`
+            $('#hotProduct').append(hotProducts)
+            }
+        },
+        error: function() {
+            console.log('ajax error');
+        }
+    });
+}
+// 何時要?
+window.addEventListener('load', getHotProductsList);
+
+
+
+
+</script>
 </body>
 </html>
