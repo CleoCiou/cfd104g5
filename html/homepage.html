@@ -48,10 +48,11 @@
                 <img src="images/index/index_black_bg.svg">
             </div>
             <div class="planets">
-                <img src="images/index/index_planet.png" alt="">
-                <img src="images/index/index_full_moon.png" alt="">
-                 <img src="images/index/index_moon.png" alt="">
-                <img src="images/index/index_universe.png" alt="">
+                <img src="images/index/index_planet.png" alt="行星" id="planet">
+                <img src="images/index/index_full_moon.png" alt="滿月" id="full_moon">
+                 <img src="images/index/index_moon.png" alt="月亮" id="moon">
+                <img src="images/index/index_universe.png" alt="宇宙"
+                id="universe">
             </div>
         </div>
 
@@ -212,8 +213,10 @@
 <!-- <footer class="main_footer"></footer> -->
 @@include('layout/footer.html')
 
-<!-- 視差滾動 動畫效果 -->
+
 <script>
+
+// 視差滾動 黑洞放大效果
     gsap.to('.scroll_circle_big', {
             scrollTrigger: {
                 // 需要視差滾動的class
@@ -234,6 +237,40 @@
             opacity:0
             
         });
+
+// 視差滾動 行星動
+    gsap.to('#planet', {
+            x: 10,
+            y: 40,
+            duration: 2,
+            repeat: -1, 
+            yoyo: true, 
+        });
+
+    gsap.to('#full_moon', {
+            x: -15,
+            y: 40,
+            duration: 4,
+            repeat: -1, 
+            yoyo: true, 
+        });
+        
+    gsap.to('#moon', {
+            y: 40,
+            duration: 3,
+            repeat: -1, 
+            yoyo: true, 
+        });
+    
+    gsap.to('#universe', {
+            y: 30,
+            duration: 5,
+            repeat: -1, 
+            yoyo: true, 
+        });
+    
+
+    
 
 
     // 推薦商品 貓頭鷹套件
