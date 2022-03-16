@@ -13,7 +13,7 @@
 
             case "hotPost":
 
-                $sql = "SELECT artno, article.topicNo, topicName, article.memNo, members.memName, title, artTime, content, likes, artFavs FROM `article` 
+                $sql = "SELECT artNo, article.topicNo, topicName, article.memNo, members.memName, title, artTime, content, likes, artFavs, msgs FROM `article` 
                 join members on members.memNo = article.memNo
                 join article_topic on article.topicNo = article_topic.topicNo";
 
@@ -27,7 +27,7 @@
                 break;
         
             case "newPost":
-                $sql = "SELECT artno, article.topicNo, topicName, article.memNo, members.memName, title, artTime, content, likes, artFavs FROM `article` 
+                $sql = "SELECT artNo, article.topicNo, topicName, article.memNo, members.memName, title, artTime, content, likes, artFavs, msgs FROM `article` 
                 join members on members.memNo = article.memNo
                 join article_topic on article.topicNo = article_topic.topicNo
                 order by artTime desc
