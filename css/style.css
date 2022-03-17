@@ -2357,7 +2357,10 @@ main #articleView .article_response .response_card .card_author {
 
 main #articleView .article_response .response_card .card_author img {
   width: 100%;
+  height: 100%;
   border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
   border: 1px solid #CFB886;
 }
 
@@ -2534,9 +2537,9 @@ main .article_writing_board .write_bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -3522,6 +3525,82 @@ body section.back .contain header button {
           transform: translateY(-50%);
 }
 
+body section.back .contain section.back_login {
+  background-color: #000;
+  position: fixed;
+  z-index: 3000;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  margin: auto;
+}
+
+body section.back .contain section.back_login .back_login_box {
+  position: absolute;
+  top: 5em;
+  bottom: 5em;
+  width: 25em;
+  max-width: 90%;
+  max-height: 60%;
+  left: 30%;
+  top: 20%;
+  text-align: center;
+}
+
+body section.back .contain section.back_login .back_login_box .login_box_item {
+  border: 1px solid #CFB886;
+  border-radius: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 2em;
+}
+
+body section.back .contain section.back_login .back_login_box .login_box_item .item {
+  border: 1px solid #CFB886;
+  padding: .5em;
+  margin: 1em 0;
+  border-radius: .5em;
+}
+
+body section.back .contain section.back_login .back_login_box .login_box_item .item input {
+  width: 90%;
+  border: none;
+  background-color: transparent;
+}
+
+body section.back .contain section.back_login .back_login_box .login_box_item .item input[type=date] {
+  width: 80%;
+}
+
+body section.back .contain section.back_login .back_login_footer {
+  padding: 0.5em 0;
+}
+
+body section.back .contain section.back_login .back_login_footer .back_action {
+  text-align: center;
+}
+
+body section.back .contain section.back_login .back_login_footer .back_action .txt_box {
+  padding: 0.5em 0;
+}
+
+body section.back .contain section.back_login .back_login_footer .back_action .back_forgot_pwd {
+  color: #8888;
+}
+
+body section.back .contain section.back_login .back_login_footer .back_action .back_forgot_pwd:hover {
+  color: #CFB886;
+}
+
 body section.back .contain main .container {
   position: relative;
   padding: 0 3em 5em;
@@ -4064,8 +4143,7 @@ main .products_cards .products_content .product_box .row .item .icon_box {
 }
 
 main .products_cards .products_content .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886,
- 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
 }
 
 main section.draw_cards .container {
@@ -4856,8 +4934,9 @@ main section.shopping_item .container .product_nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 @media screen and (max-width: 767px) {
@@ -4906,6 +4985,10 @@ main section.shopping_item .container .product_box .row .item .img_box img {
   }
 }
 
+main section.shopping_item .container .product_box .row .item .img_box .prod_No {
+  display: none;
+}
+
 main section.shopping_item .container .product_box .row .item .icon_box {
   width: 30%;
   padding-top: 0.5em;
@@ -4929,8 +5012,7 @@ main section.shopping_item .container .product_box .row .item .icon_box {
 }
 
 main section.shopping_item .container .product_box .row .item:hover {
-  Box-shadow: 1px 1px 12px 1px  #CFB886,
- 1px 1px 2px 1px  #CFB886 inset;
+  Box-shadow: 1px 1px 12px 1px  #CFB886, 1px 1px 2px 1px  #CFB886 inset;
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
