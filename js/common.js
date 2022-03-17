@@ -39,3 +39,45 @@ function logout() {
     
     location.reload();
 }
+
+// ==============================================
+
+
+// 管理員登入
+function getSessionDataBack() {
+    let sessionData;
+    
+    $.ajax({
+        type: 'POST',
+        url: 'phps/getSessionDataBack.php',
+        async: false,
+        success: function(data) {
+            sessionData = JSON.parse(data);
+        },
+        error: function() {
+            console.log('ajax error');
+        }
+    });
+    
+    return sessionData;
+}
+
+// 登出，刪除session資料
+function back_logout() {
+    $.ajax({
+        type: 'POST',
+        url: 'phps/back_check_login.php',
+        data: {
+            logout: true,
+        },
+        async: false,
+        success: function(data) {
+            sessionData = JSON.parse(data);
+        },
+        error: function() {
+            console.log('ajax error');
+        }
+    });
+    
+    location.reload();
+}

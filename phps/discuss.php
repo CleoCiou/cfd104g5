@@ -10,14 +10,13 @@ try{
 		on (a.topicNo = t.topicNo) 
 	join members m 
 		on (a.memNo = m.memNo)
-	
+	order by likes desc
 	"; 
 	$article = $pdo->query($sql);
 	$articleRow = $article->fetchAll(PDO::FETCH_ASSOC);
 
 	if($article -> rowCount()>0){
 		echo json_encode($articleRow);
-		// 把這的二維陣列的檔案 轉成JSIN檔看得懂的字串
 	}
 
 
