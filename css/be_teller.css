@@ -158,10 +158,24 @@ h2{
 .other{
     display: none;
 }
-.test_result{
+.pass_item{
     display: none;
 }
-
+.fail_item{
+    display: none;
+}
+.pass_item .img_box{
+    width: 40%;
+}
+.fail_item .img_box{
+    width: 40%;
+}
+.pass_item .img_box img{
+    width: 100%;
+}
+.fail_item .img_box img{
+    width: 100%;
+}
 
 /* 手機專用 */
 @media screen and (max-width:768px) {
