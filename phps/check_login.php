@@ -22,20 +22,19 @@
                 
                 if ($row['status'] == '停權') {
                     $msg['msg'] = '您的帳號已被停權';
-                    return;
                 }
-
-                // 登入成功
-                $msg['msg'] = true;
-                $_SESSION['userNo'] = $row['memNo'];
-                $_SESSION['userId'] = $row['memId'];
-                $_SESSION['userName'] = $row['memName'];
-                $_SESSION['identity'] = $row['identity'];
-                $_SESSION['sticker'] = $row['memImage'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['creditNum'] = $row['creditNum'];
-                // ...
-
+                else {
+                    // 登入成功
+                    $msg['msg'] = true;
+                    $_SESSION['userNo'] = $row['memNo'];
+                    $_SESSION['userId'] = $row['memId'];
+                    $_SESSION['userName'] = $row['memName'];
+                    $_SESSION['identity'] = $row['identity'];
+                    $_SESSION['sticker'] = $row['memImage'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['creditNum'] = $row['creditNum'];
+                    // ...
+                }
             }
             // 登入失敗
             else {
