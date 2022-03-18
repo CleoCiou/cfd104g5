@@ -151,50 +151,55 @@
 <link rel="stylesheet" href="./node_modules/fullcalendar/main.css">
 <script src='./node_modules/fullcalendar/main.js'></script>
 <script>
-    $(function() {
-        createCalendar();
-    })
+    // 日曆
+    createCalendar();
+
     new Vue({
         el: '#app',
         data: {
             userData: getSessionData(),
-            astrologistInfo: []
+            schedule: [],
+            appointments: []
         },
         mounted() {
-            this.loadInfo()
+            this.getSchedule();
         },
         methods: {
-            loadInfo() {
-                let thisVue = this;
+            getSchedule() {
+                // 取得排班情形
                 $.ajax({
                     type: 'POST',
                     url: 'phps/back_getCol.php',
                     data: {
-                        // 查詢的資料表
-                        table: 'astrologist',
-                        no: thisVue.userData.userNo
+                        no: this.userData.userNo,
+                        table: 'schedule',
                     },
-                    async: false,
-                    success: function(data) {
+                    success: data => {
                         data = JSON.parse(data);
-                        thisVue.astrologistInfo = data.msg[0];
+                        this.schedule = data.msg;
+                        
                     },
-                    error: function() {
-                        console.log('ajax error');
+                    error: err => {
+                        console.log(err);
                     }
                 });
-            },
-            imgSrc(folder, image) {
-                switch (folder) {
-                    case 'member':
-                        folder = 'teller_mem';
-                        break;
-                    case 'product':
-                        folder = 'shop';
-                        break;
-                }
-                let path = `images/${folder}`;
-                return `${path}/${image}`;
+
+                // 取得預約資訊
+                // $.ajax({
+                //     type: 'POST',
+                //     url: 'phps/back_getCol.php',
+                //     data: {
+                //         no: this.userData.userNo,
+                //         table: 'schedule',
+                //     },
+                //     success: data => {
+                //         data = JSON.parse(data);
+                //         this.schedule = data.msg;
+                //     },
+                //     error: err => {
+                //         console.log(err);
+                //     }
+                // });
             },
             updateIntro(e) {
                 let intro = document.querySelectorAll('.introduce')[0];
@@ -244,7 +249,9 @@
             }
         },
         computed: {
-            
+            updateSchedule() {
+                console.log(this.schedule);
+            }
         }
     });
 </script>

@@ -13,9 +13,9 @@
                 <div class="article_writing_board">
                     <!-- 選擇看板 -->
                     <div class="choose_theme">
-                        <select name="topic" id="article_mine_month" v-model="topic">
-                            <option selected disabled>選擇看板</option>
-                            <option v-for="cate in cates" >{{cate}}</option>
+                        <select name="topic" id="article_mine_month">
+                            <option  selected disabled>選擇看板</option>
+                            <option v-for="cate in cates" :value="cates.topicName">{{cate.topicName}}</option>
                         </select>
                     </div>
                     
@@ -24,8 +24,8 @@
                             <img :src="author_hat_img" alt="會員頭像">
                         </div>
                         <div class="writer_detail_box">
-                            <p>{{members[0].memId}}</p>
-                            <p class="getTime">{{getYear}} / {{getMonth}} / {{getDate}}</p>
+                            <p>{{ members[5].memId }}</p>
+                            <p class="getTime">{{getCurrentTime}}</p>
                         </div>
                     </div>
                     <form action="">
@@ -38,17 +38,14 @@
                         <!-- 寫內容的地方 -->
                         <div class="write_content" id="write_content">
                             <label>內容
-                            <textarea name="content" rows="12" placeholder="請輸入文章內容..." v-model="content"></textarea>
+                            <textarea name="content" rows="12" placeholder="請輸入文章內容..." v-model="content" type="text"></textarea>
                             </label>
                         </div>
                         <!-- 最下面 選圖片 清除 發布 -->
                         <div class="write_bottom">
-                            <div class="file_insert_btn">
-                                <input type="file" id="theFile">
-                            </div>
                             <div class="write_using_btn">
-                                <a href="discuss.html"><button class="third_btn">取消</button></a>
-                                <a href="discuss.html"><button class="third_btn" @click="insertData">發佈</button></a>
+                                <a :href=backUrl><input type="button" class="third_btn">取消</a>
+                                <input type="button" class="third_btn" @click="insertData">發佈</a>
                                 
                             </div>
                         </div>
@@ -64,56 +61,58 @@
         new Vue({
             el: '#app',
             data: { //變數放這
-                cates: ['全部','塔羅秘笈','塔羅實例','愛情診療室','塔羅牌陣','占卜專區'],
+                cates: [],
                 author_hat_img: 'images/black_cat_wizard.svg',
+                backUrl: 'discuss.html',
                 members: [],
-                getYear: new Date().getFullYear(),
-                getMonth: new Date().getMonth()+1,
-                getDate: new Date().getDate(),
                 topic: '',
                 title: '',
                 content: '',
-                reses: '',
             },
-            mounted() {
-                // let memId;
-                // fetch('phps/try_fetchApi.php', 
-                // { 
-                //     method: 'POST', 
-                //     body:encodeURI(JSON.stringify({
-                //         memId: 'memId',
-                //     })),
-                //     headers: {
-                //         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-                //     }
-                // } 
-                // )
-                // // .then((res) => {
-                // //     console.log(res);
-                // // })
-                // .then((res) => {
-                //     return res.json();
-                // })
-                // .catch((error) => {
-                //     console.log(`Error: ${error}`);
-                // });
-                this.getMemId();
+            created() {
+                this.getCol();
+                this.getTopic();
             },
             methods: {
-                getMemId() {
-                    let thisVue = this;
+                getCol(){
                     $.ajax({
                         type: 'POST',
-                        url: 'phps/try_fetchApi.php',
-                        success: function(data) {
-                            console.log(data);
-                            console.log(thisVue.members);
-                            if (data !== false){
-                                let members;
-                                thisVue.members = data;
+                        url: 'phps/select.php',
+                        
+                        data: {
+                            table: 'members',
+                            queryCol: 'memId',
+
+                        },
+                        success:  data => {
+                            // console.log(data.msg);
+                            if (data.msg !== false){
+                                this.members = data.msg;
                             }
                         },
-                        error: function() {
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                getTopic() {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/select.php',
+                        
+                        data: {
+                            table: 'article_topic',
+                            queryCol: 'topicName',
+
+                        },
+                        success:  data => {
+                            // console.log(data.msg);
+                            if (data.msg !== false){
+                                this.cates = data.msg;
+                                // console.log(this.cates);
+                            }
+                        },
+                        error: err => {
                             console.log('ajax error');
                         }
                     });
@@ -122,6 +121,8 @@
                     let topic = this.topicName;
                     let title = this.title;
                     let content = this.content;
+                    console.log(title);
+                    // console.log(data)
                     // 檢查欄位是否已填
                     // if (!topic) {
                     //     this.resetInput('請選擇看板名稱');
@@ -136,32 +137,42 @@
                     //     return;
                     // }
                     // 新增資料
-                    let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        url: 'phps/insert.php',
+                        url: 'phps/insert_col.php',
                         data: {
                             table: 'article',
-                            queryCol: 'title , content',
+                            col: 'title , content',
                             insertValue: `'${title}', '${content}'`
                         },
-                        success: function(data) {
-                            console.log(sql);
-                            console.log(data.msg);
-                            thisVue.resetInput('成功發表文章!');
-                            thisVue.insertData();
+                        success: data => {
+                            // this.resetInput('成功發表文章!');
+                            this.getCol();
+                            console.log(data.sql);
                         },
-                        error: function() {
+                        error: err => {
                             console.log('ajax error');
                         }
                     });
+                    // window.location.href = "discuss.html";
                 },
                 resetInput(msg = false) {
                     if(msg) alert(msg);
                     console.log(msg);
+                    this.title = '';
+                    this.content = '';
                 },
-
+                
             },
+            computed: {
+                getCurrentTime(){
+                    var today = new Date();
+                    var date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    var dateTime = date + ' ' +time;
+                    return dateTime;
+                }
+            }
             
         })
     </script>

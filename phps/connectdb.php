@@ -3,7 +3,7 @@
         // 資料庫設定
         $host = "cfd104g5.asuscomm.com";
         $dbname = "g5";
-        $user = "jc"; // 記得改成自己的名字
+        $user = "nj"; // 記得改成自己的名字
         $password = "cfd104_g5@gogo";
     
         $dsn = "mysql:host=$host;port=3306;dbname=$dbname;charset=utf8";

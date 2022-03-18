@@ -6,7 +6,7 @@
 
 <body>
     <!-- 網頁頭 by NJ -->
-    @@include('layout/header.html')    
+    <!-- @@include('layout/header.html')     -->
     <main id="app">
         <section class="discuss discuss_mine">
             <div class="container">
@@ -98,30 +98,30 @@
                                     <option v-for="cate in cates">{{cate}}</option>
                                 </select>
                             </div>
-                            <div class="row">
+                            <div class="row" v-for="(item, index) in postArticle" :key="index">
                                 <!-- 文章卡片 -->
                                 <div class="article_cards">
                                     <div class="line_top">
-                                        <p>星座版</p>
+                                        <p>{{ postArticle[index].title }}</p>
                                         <p>|</p>
-                                        <p>2022/03/06</p>
+                                        <p>{{ postArticle[index].artTime }}</p>
                                     </div>
                                     <div class="line_middle">
                                         <div class="line_middle_txt">
-                                            <h3>金牛座對暗戀對象的舉動？</h3>
-                                            <p>........</p>
+                                            <h3>{{ postArticle[index].title }}</h3>
+                                            <p  class="words_limit">{{ postArticle[index].content }}</p>
                                         </div>
                                         <div class="line_middle_pic">
-                                            <img src="images/constellation/discuss_fruit.jpg" alt="文章圖片">
+                                            
                                         </div>
                                     </div>
                                     <div class="line_bottom">
                                         <img src="images/icon/icon_discuss_like.svg">
-                                        <p>59讚</p>
+                                        <p>{{ postArticle[index].likes }} 讚</p>
                                         <img src="images/icon/icon_discuss_message.svg">
                                         <p>6回應</p>
                                         <img src="images/icon/icon_discuss_favorite.svg">
-                                        <p>收藏</p>
+                                        <p>{{ postArticle[index].artFavs }} 收藏</p>
                                     </div>
                                 </div>
 
@@ -224,10 +224,12 @@
                 showBoard: 0,
                 showNotice: 0,
                 article: [],
-                getTitle: {}
+                getTitle: {},
+                postArticle:[],
             },
             mounted() {
                 this.getCol();
+                this.getCols();
             },
             methods: {
                 changeLike(index){
@@ -258,6 +260,22 @@
                                 thisVue.article = data.msg;
                             }
 
+                        },
+                        error: function() {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+
+                getCols() {
+                    let thisVue = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/selects.php',
+                     
+                        success: function(data) {
+                            // console.log(data.msg);
+                            thisVue.postArticle = data;
                         },
                         error: function() {
                             console.log('ajax error');

@@ -19,7 +19,8 @@ function rotate(e) {
   });
 }
 
-function getTeller() {
+//資料庫連結
+window.onload = function getTeller() {
     $.ajax({
         type: 'POST',
         url: 'phps/select.php',
@@ -27,9 +28,13 @@ function getTeller() {
 
             table: 'members',
 
-            queryCol: 'memName ,identity,memImage',
+            joinTable: 'astrologist',
 
-            condition: "identity = '占卜師'",
+            joinOn: 'memNo',
+
+            queryCol: 'members.memName, members.memImage',
+
+            condition: "members.identity = '占卜師' AND astrologist.status = '通過'",
 
         },
         success: function(data) {
@@ -37,10 +42,11 @@ function getTeller() {
                 let tellerImg = "images/teller_mem/"
                 let tellerMems = `<div class="row">`;
                 for (let i = 0; i < data.msg.length; i++) {
+                    tellerCount = i
                     tellerMems +=   `
                                     <div class="item">                                                
                                         <div class="img_box">
-                                            <a href="teller_reservation.html">
+                                            <a href="teller_reservation.html?type=${tellerCount}">
                                                 <img src="${tellerImg}${data.msg[i].memImage}">
                                             </a>
                                         </div>
@@ -58,6 +64,5 @@ function getTeller() {
             console.log('ajax error');
         }
     });
-}
+};
 
-window.addEventListener('load', getTeller);

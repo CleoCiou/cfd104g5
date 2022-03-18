@@ -130,6 +130,21 @@
                 $where = "astrologist.memNo = $no";
             }
             break;
+        
+        case 'schedule':
+            $no = $_REQUEST['no'];
+            $col = 'schedule.astNo, workDate, workTime';
+            $joinTable = 'astrologist';
+            $joinOn = 'astNo';
+            $where = "astrologist.memNo = $no";
+            break;
+
+        case 'appointment':
+            $no = $_REQUEST['no'];
+            $col = '*';
+            $joinTable = 'astrologist';
+            $joinOn = 'astNo';
+            break;
     }
 
     // SQL
