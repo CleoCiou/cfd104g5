@@ -4930,7 +4930,7 @@ main section.shopping_item .container .product_search {
 }
 
 main section.shopping_item .container .product_nav {
-  margin: 1em 0;
+  margin: 1.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4939,10 +4939,18 @@ main section.shopping_item .container .product_nav {
           justify-content: space-evenly;
 }
 
-@media screen and (max-width: 767px) {
-  main section.shopping_item .container .product_nav {
-    display: none;
-  }
+main section.shopping_item .container .unselected_btn {
+  padding: 0.1em 1.8em;
+  border: 1px solid #CFB886;
+  border-radius: .5em;
+  cursor: pointer;
+}
+
+main section.shopping_item .container .unselected_btn:hover {
+  background-color: #CFB886;
+  color: #000;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 main section.shopping_item .container .product_box .row {
