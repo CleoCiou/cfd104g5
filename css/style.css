@@ -3301,15 +3301,17 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label .img_box {
   width: 7em;
   height: 7em;
-  padding: 1em;
   border-radius: 50%;
   border: 1px solid #CFB886;
   overflow: hidden;
   margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label .img_box img {
   width: 100%;
+  height: 100%;
 }
 
 section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .item.memImage label span {
