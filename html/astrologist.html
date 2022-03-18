@@ -4,8 +4,7 @@
 @@include('layout/head.html', {
     'title': '占卜師專區'
 })
-<!-- <link rel="stylesheet" href="css/schedule.css"> -->
-<script src="js/schedule.js"></script>
+
 <body>
 
 @@include('layout/header.html')
@@ -25,24 +24,26 @@
                     <!-- 基本資料 -->
                     <div class="info_box">
                         <div class="img_box ast_sticker">
-                            <img :src="imgSrc('member', userData.sticker)">
+                            <img src="images/icon/user.svg">
                         </div>
                         <div class="txt_box">
                             
                             <h3 class="ast_name">
-                                {{ userData.userName }}
+                                吳恆隼
                                 <span class="ast_star">★★★★</span>
                             </h3>
                             <p class="introduce">
-                                {{ astrologistInfo.introduction }}
+                                占卜與詳細解析很消耗牌師精力的唷!!!<br>
+                                麻煩多多支持體諒與尊重占卜師的專業價值~~<br> 
+                                我們為您付出時間、專業知識、建議<br>
+                                事件結果還請自行決擇<br>
+                                請勿議價或惡意負評，謝謝您!!<br>
                             </p>
                             <textarea class="update_intro invisible"></textarea>
                         </div>
                         <div class="action_box ast_action">
                             <button @click="updateIntro" class="third_btn">更新介紹</button>
-                            <a href="member.html">
-                                <button class="secondary_btn">會員專區</button>
-                            </a>
+                            <a href="member.html"><button class="secondary_btn">會員專區</button></a>
                         </div>
 
                     </div>
@@ -110,7 +111,7 @@
                 <!-- 行事曆 -->
                 <section class="item calendar">
                     我的行事曆
-                    <div id="schedule"></div>
+                    <calendar></calendar>
                 </section>
     
                 <!-- 我的評論 -->
@@ -148,59 +149,13 @@
 
 @@include('layout/footer.html')
 
-<link rel="stylesheet" href="./node_modules/fullcalendar/main.css">
-<script src='./node_modules/fullcalendar/main.js'></script>
+<script src="js/calendar.js"></script>
 <script>
-    // 日曆
-    createCalendar();
-
     new Vue({
         el: '#app',
         data: {
-            userData: getSessionData(),
-            schedule: [],
-            appointments: []
-        },
-        mounted() {
-            this.getSchedule();
         },
         methods: {
-            getSchedule() {
-                // 取得排班情形
-                $.ajax({
-                    type: 'POST',
-                    url: 'phps/back_getCol.php',
-                    data: {
-                        no: this.userData.userNo,
-                        table: 'schedule',
-                    },
-                    success: data => {
-                        data = JSON.parse(data);
-                        this.schedule = data.msg;
-                        
-                    },
-                    error: err => {
-                        console.log(err);
-                    }
-                });
-
-                // 取得預約資訊
-                // $.ajax({
-                //     type: 'POST',
-                //     url: 'phps/back_getCol.php',
-                //     data: {
-                //         no: this.userData.userNo,
-                //         table: 'schedule',
-                //     },
-                //     success: data => {
-                //         data = JSON.parse(data);
-                //         this.schedule = data.msg;
-                //     },
-                //     error: err => {
-                //         console.log(err);
-                //     }
-                // });
-            },
             updateIntro(e) {
                 let intro = document.querySelectorAll('.introduce')[0];
                 let textarea = intro.nextElementSibling;
@@ -234,24 +189,19 @@
                     activeStar.parentNode.classList.toggle('ast_hidden');
                 }
             },
-            carsoul_last(e) {
-            },
-            carsoul_next(e) {
-                console.log(e.target);
-                let reservation_card = document.querySelectorAll('.reservation_card');
-                console.log(reservation_card);
-                let activeCard = document.querySelectorAll('.reservation_card.active')[0];
-                console.log(activeCard);
-                let i = Array.from(reservation_card).indexOf(activeCard);
-                let moveList = document.querySelectorAll('.reservation_list')[0];
-                console.log(moveList);
-                moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
-            }
-        },
-        computed: {
-            updateSchedule() {
-                console.log(this.schedule);
-            }
+            // carsoul_last(e) {
+            // },
+            // carsoul_next(e) {
+            //     console.log(e.target);
+            //     let reservation_card = document.querySelectorAll('.reservation_card');
+            //     console.log(reservation_card);
+            //     let activeCard = document.querySelectorAll('.reservation_card.active')[0];
+            //     console.log(activeCard);
+            //     let i = Array.from(reservation_card).indexOf(activeCard);
+            //     let moveList = document.querySelectorAll('.reservation_list')[0];
+            //     console.log(moveList);
+            //     moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
+            // }
         }
     });
 </script>

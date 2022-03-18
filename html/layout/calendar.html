@@ -1,0 +1,37 @@
+<div id="schedule">
+    <div id="calendarHeader" class="calendarHeader"  @dragover="dragOverHandler($event)" @drop="dropHandler($event)">
+        <div id="lastmonth" class="lastmonth" @click="prevMonth">
+            {{ (month === 0) ? monthShort[monthShort.length-1] : monthShort[month-1] }}
+        </div>
+        <div class="month">
+            {{ year }}
+            {{ monthShort[month] }}
+        </div>
+        <div id="nextmonth" class="nextmonth" @click="nextMonth">
+            {{ (month === monthShort.length-1) ? monthShort[0] : monthShort[month+1] }}
+        </div>
+    </div>
+    <div id="calendarContain">
+        <div class="container">
+            <div v-for="weekTitle in week" class="day weekTitle">{{ weekTitle }}</div>
+            <div class="day" v-for="i in (firstWeekDay)"></div>
+            <div class="day" v-for="(date, idx) in dateInfo" @dragover="dragOverHandler($event)" @drop="dropHandler($event)">
+                {{ date.date }}
+                <p class="morning" :class="timeClass(date.workTime[0])" draggable='true' @dragstart="dragStartHandler" v-if="date.workTime[0] !== '0'">上午</p>
+                <p class="afternoon" :class="timeClass(date.workTime[1])" draggable='true' @dragstart="dragStartHandler" v-if="date.workTime[1] !== '0'">下午</p>
+                <p class="night" :class="timeClass(date.workTime[2])" draggable='true' @dragstart="dragStartHandler" v-if="date.workTime[2] !== '0'">晚上</p>
+            </div>
+            <div class="day" v-for="i in ((lastWeekDay === 6) ? 0 : (6 - lastWeekDay))"></div>
+        </div>
+    </div>
+    <div id="calendarFooter" class="calendarFooter" @dragover="dragOverHandler($event)" @drop="dropHandler($event)">
+        <div id="timePeriod" class="timePeriod">
+            拖曳至指定排休日:
+            <span class="drag_rest" draggable='true' @dragstart="dragStartHandler">整日</span>
+            <span class="drag_rest" draggable='true' @dragstart="dragStartHandler">上午</span>
+            <span class="drag_rest" draggable='true' @dragstart="dragStartHandler">下午</span>
+            <span class="drag_rest" draggable='true' @dragstart="dragStartHandler">晚上</span>
+        </div>
+        <button class="primary_btn save" @click="updateDb">儲存</button>
+    </div>
+</div>
