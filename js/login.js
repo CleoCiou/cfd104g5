@@ -255,6 +255,20 @@ $(function() {
 
 
     // === 基本資訊 === //    
+    // === 大頭貼 === //
+    document.getElementById("memImage").onchange = fileChange;
+    function fileChange(){
+        let file = document.getElementById("memImage").files[0];
+        let readFile = new FileReader();
+        readFile.readAsDataURL(file);
+        readFile.addEventListener("load",function(){
+            let image = document.getElementById("memImgBox");
+            image.src = readFile.result;
+            // image.style.maxWidth = "100%";
+            // image.style.maxHeight = "100%";
+        });
+    }
+
     // === 姓名 === //
     // 開啟驗證框
     $("#memName").focus( () => {
