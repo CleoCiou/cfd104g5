@@ -76,6 +76,7 @@
         height:130vh;
         position:relative;
         overflow:hidden;
+        margin-top: 2em;
     }
     
     .scroll_circle_txt{
@@ -91,9 +92,35 @@
         position: relative;
     }
 
-    .planets{
-        position: absolute; 
-        width: 20%;
+
+    .planets img:nth-child(1){
+        width: 14%;
+        position: absolute;
+        top: 10%;
+        left: 6%;
+        transform: rotate(-55deg);
+    }
+
+    .planets img:nth-child(2){
+        width: 23%;
+        position: absolute;
+        right: 5%;
+        top: 1%;
+    }
+
+    .planets img:nth-child(3){
+        width: 15%;
+        position: absolute;
+        left: 4%;
+        top: 58%;
+    }
+
+    .planets img:nth-child(4){
+        width: 23%;
+        position: absolute;
+        right: 5%;
+        top: 58%;
+        transform: rotate(15deg);
     }
 
     .planets img{
@@ -103,8 +130,15 @@
 
     .scroll_circle_big img{
         width: 100vw;
-
+        
     }
+
+    .scroll_circle_big{
+        position: relative;
+        z-index: 100;
+    }
+
+    
 
     
 
@@ -179,11 +213,17 @@
         border-radius:0.5em;
         
     }
+    
+    .hot_fortune_teller_img{
+        width: 80%;
+        margin: auto;
+    }
 
     .hot_fortune_teller_img img{
-        width: 80%;
+        width: 100%;
         border-radius:0.5em;
         vertical-align: top;
+        
     }
 
     .hot_fortune_teller_txt{

@@ -482,7 +482,9 @@ main {
                     height: 3em;
                     img{
                         width: 100%;
+                        height: 100%;
                         border-radius: $circle;
+                        object-fit: cover;
                         border: 1px solid #CFB886;
                     }
                 }
@@ -619,7 +621,7 @@ main {
         }
         .write_bottom{
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             @include mobile{
                 margin: .8em;
