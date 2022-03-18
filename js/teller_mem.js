@@ -42,10 +42,11 @@ window.onload = function getTeller() {
                 let tellerImg = "images/teller_mem/"
                 let tellerMems = `<div class="row">`;
                 for (let i = 0; i < data.msg.length; i++) {
+                    tellerCount = i
                     tellerMems +=   `
                                     <div class="item">                                                
                                         <div class="img_box">
-                                            <a href="teller_reservation.html">
+                                            <a href="teller_reservation.html?type=${tellerCount}">
                                                 <img src="${tellerImg}${data.msg[i].memImage}">
                                             </a>
                                         </div>

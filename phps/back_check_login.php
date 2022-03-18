@@ -8,7 +8,7 @@
     if (isset($_REQUEST['id']) && isset($_REQUEST['pwd'])) {
         $data=[$_REQUEST['id'], $_REQUEST['pwd']];
         
-        $sql = "select * from members where memId = ? and memPwd = ?";
+        $sql = "select * from admin where adminId = ? and adminPwd = ?";
 
         try {
             $result = $pdo -> prepare($sql);
@@ -22,19 +22,14 @@
                 
                 if ($row['status'] == '停權') {
                     $msg['msg'] = '您的帳號已被停權';
+                    return;
                 }
-                else {
-                    // 登入成功
-                    $msg['msg'] = true;
-                    $_SESSION['userNo'] = $row['memNo'];
-                    $_SESSION['userId'] = $row['memId'];
-                    $_SESSION['userName'] = $row['memName'];
-                    $_SESSION['identity'] = $row['identity'];
-                    $_SESSION['sticker'] = $row['memImage'];
-                    $_SESSION['email'] = $row['email'];
-                    $_SESSION['creditNum'] = $row['creditNum'];
-                    // ...
-                }
+
+                // 登入成功
+                $msg['msg'] = true;
+                $_SESSION['userId'] = $row['adminId'];
+                // ...
+
             }
             // 登入失敗
             else {

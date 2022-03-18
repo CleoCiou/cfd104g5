@@ -95,7 +95,72 @@ body {
                     right: 1em;
                     transform: translateY(-50%);
                 }
+
             }
+            
+            section.back_login {
+                background-color: #000;
+                position: fixed;
+                z-index: 3000;
+                height: 100vh;
+                width: 100vw;
+                top: 0;
+                left: 0;
+                margin: auto;
+                .back_login_box {
+                    position: absolute;
+                    top: 5em;
+                    bottom: 5em;
+                    width: 25em;
+                    max-width: 90%;
+                    max-height: 60%;
+                    left: 30%;
+                    top: 20%;
+                    text-align: center;
+                    .login_box_item{
+                        border:1px solid #CFB886;
+                        border-radius: 0.5em;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding: 0 2em;
+                        .item {
+                            border: 1px solid map-get($primary_color, 'content');
+                            padding: .5em;
+                            margin: 1em 0;
+                            border-radius: .5em;
+
+                            input {
+                                width: 90%;
+                                border: none;
+                                background-color: transparent;
+                                &[type=date] {
+                                    width: 80%;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                .back_login_footer{
+                    padding: 0.5em 0;
+                    .back_action {
+                        text-align: center;
+                        .txt_box{
+                            padding: 0.5em 0;
+                        }
+                        .back_forgot_pwd {
+                            color: #8888;
+                            
+                            
+                            &:hover {
+                                color: map-get($primary_color, 'content');
+                            }
+                        }
+                    }
+                }
+            }
+
             main {
                 .container {
                     position: relative;
@@ -143,6 +208,24 @@ body {
                                         width: 100%;
                                     }
                                 }
+    
+                                // 商品管理-新增:商品圖片
+                                &.prodImage {
+                                    .prod_img_box {
+                                        .img_box {
+                                            width: 100%;
+                                            margin: auto;
+                                            border-radius: $borderRadius;
+                                            text-align: center;
+                                            
+                                            img {
+                                                width: 100%;
+                                                height: 10em;
+                                                object-fit: cover;
+                                            }
+                                        }
+                                    }
+                                }
                             }
                             .action_box {
                                 // margin: auto;
@@ -154,7 +237,8 @@ body {
                                 }
                             }
                         }
-                    }
+
+                    } // popup
                     
                     .table_wrapper {
                         border-top-left-radius: $borderRadius;
@@ -216,11 +300,6 @@ body {
                                 }
                             }
                         }
-                    }
-
-                    // 商品管理-新增:商品圖片
-                    .prod_img_box {
-                        
                     }
 
                 }

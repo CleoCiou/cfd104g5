@@ -37,7 +37,7 @@
             <div id="app">
                 <div id="tarotbook">
                     <!-- <div class="owl-carousel owl-theme"> -->
-                        <div class="page first_page">123</div>
+                        <div class="page first_page"></div>
                         <div class="page" v-for="tarotCard in tarotCards">
                             <div class="item" >
                                 <div class="img_box">
@@ -57,10 +57,13 @@
                     <!-- </div> -->
                 </div>
             </div>
+            
         </div>
     </section>
 </main> 
-    
+<!-- 網頁尾 -->
+<!-- 內容由 common.js 新增 by PIN -->
+@@include('layout/footer.html')    
     <script>
         new Vue({
             el:"#app",
@@ -125,7 +128,7 @@
 <script src="js/turn.js"></script>   
 
 
-<!-- <script>
+<script>
 // 推薦商品 貓頭鷹套件
 
     $(".owl-carousel").owlCarousel({
@@ -144,7 +147,7 @@
             }
         }
     });
-</script> -->
+</script>
     
 
 

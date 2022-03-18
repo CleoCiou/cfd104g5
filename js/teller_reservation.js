@@ -95,23 +95,28 @@ dark_mode_toggle.onclick = () => {
 
 //資料庫連結
 window.onload = function Teller() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const Counts = urlParams.get('type');
     $.ajax({
         type: 'POST',
-        url: 'phps/select.php',
+        url: 'phps/teller_reservation.php',
         data: {
-
-            table: 'members',
-
-            joinTable: 'astrologist',
-
-            joinOn: 'memNo',
-
-            queryCol: 'members.memName, members.memImage, astrologist.introduction',
-
+            astNo: `${Counts}+1`,
         },
         success: function (data) {
+            console.log(data.msg);
             if (data.msg !== false) {
                 let tellerImg = "images/teller_mem/"
+                let tellerComments =`<h3>評論區</h3>`;
+                for (let i = 0; i < data.msg.length; i++) {
+                    tellerComments +=   `
+                                        <div class="txt_box">
+                                            <h4>${data.msg[i].memId}</h4>
+                                            <p>${data.msg[i].content}</p>
+                                        </div>
+                                        `;
+                }
                 let tellerInfo = `
                                     <div class="teller_profile">
                                         <div class="img_box">
@@ -128,6 +133,7 @@ window.onload = function Teller() {
                                     </div>
                                 `;
                 $('#tellerRes').prepend(tellerInfo)
+                $('#tellerComment').prepend(tellerComments)
             }
         },
         error: function () {
