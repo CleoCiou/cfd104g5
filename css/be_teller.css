@@ -166,9 +166,11 @@ h2{
 }
 .pass_item .img_box{
     width: 40%;
+    margin: auto;
 }
 .fail_item .img_box{
     width: 40%;
+    margin: auto;
 }
 .pass_item .img_box img{
     width: 100%;
