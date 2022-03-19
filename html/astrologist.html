@@ -33,13 +33,9 @@
                                 <span class="ast_star">★★★★</span>
                             </h3>
                             <p class="introduce">
-                                占卜與詳細解析很消耗牌師精力的唷!!!<br>
-                                麻煩多多支持體諒與尊重占卜師的專業價值~~<br> 
-                                我們為您付出時間、專業知識、建議<br>
-                                事件結果還請自行決擇<br>
-                                請勿議價或惡意負評，謝謝您!!<br>
+                                {{ intro[0].introduction }}
                             </p>
-                            <textarea class="update_intro invisible"></textarea>
+                            <textarea class="update_intro invisible" id="astrologist_Intro" ></textarea>
                         </div>
                         <div class="action_box ast_action">
                             <button @click="updateIntro" class="third_btn">更新介紹</button>
@@ -154,8 +150,35 @@
     new Vue({
         el: '#app',
         data: {
+            intro: [],
+            introUpdate: [],
+        },
+        mounted() {
+            this.getIntro();
         },
         methods: {
+            getIntro() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    
+                    data: {
+                        table: 'astrologist',
+                        queryCol: 'introduction',
+
+                    },
+                    success:  data => {
+                        // console.log(data.msg);
+                        if (data.msg !== false){
+                            this.intro = data.msg;
+                            // console.log(this.intro);
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
+            },
             updateIntro(e) {
                 let intro = document.querySelectorAll('.introduce')[0];
                 let textarea = intro.nextElementSibling;
@@ -167,7 +190,26 @@
                 else {
                     e.target.innerText = '更新介紹';
                     intro.innerText = textarea.value;
-                }
+                    let Intro = $("#astrologist_Intro").val();
+                //     $.ajax({
+                //             type: 'POST',
+                //             url: 'phps/update.php',
+                //             data: {
+                //                 table: 'astrologist',
+                //                 updateValue: `introduction = '${Intro}'`,
+                //                 where: `memNo = '${this.userData.userNo}'`
+                //             },
+                //             success: data => {
+                //                 // console.log(data.msg);
+                //                 if(data.msg !== false){
+                //                     this.introUpdate = data.msg;
+                //                 }
+                //             },
+                //             error: err => {
+                //                 console.log(err);
+                //             }
+                //     });        
+                };
                 intro.classList.toggle('invisible');
                 textarea.classList.toggle('invisible');
             },
@@ -192,15 +234,15 @@
             carsoul_last(e) {
             },
             carsoul_next(e) {
-                console.log(e.target);
-                let reservation_card = document.querySelectorAll('.reservation_card');
-                console.log(reservation_card);
-                let activeCard = document.querySelectorAll('.reservation_card.active')[0];
-                console.log(activeCard);
-                let i = Array.from(reservation_card).indexOf(activeCard);
-                let moveList = document.querySelectorAll('.reservation_list')[0];
-                console.log(moveList);
-                moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
+            //     console.log(e.target);
+            //     let reservation_card = document.querySelectorAll('.reservation_card');
+            //     console.log(reservation_card);
+            //     let activeCard = document.querySelectorAll('.reservation_card.active')[0];
+            //     console.log(activeCard);
+            //     let i = Array.from(reservation_card).indexOf(activeCard);
+            //     let moveList = document.querySelectorAll('.reservation_list')[0];
+            //     console.log(moveList);
+            //     moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
             }
         }
     });

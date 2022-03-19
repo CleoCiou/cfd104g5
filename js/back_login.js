@@ -34,13 +34,15 @@ function checkBackLogin() {
 
 // === 按鈕監控 === //
 // 註冊 | 登入
-function doFirst() {
-    //要寫判斷有沒有.back_login_btn
-    document.querySelector('.back_login_btn').addEventListener('click', function(e) {
-        if (e.target.innerText === '登入') {
-            checkBackLogin();
-        }
-    })
-}
 
+function doFirst() {
+    if (document.querySelector('.back_login_btn')) { 
+    //要寫判斷有沒有.back_login_btn
+        document.querySelector('.back_login_btn').addEventListener('click', function(e) {
+            if (e.target.innerText === '登入') {
+                checkBackLogin();
+            }
+        })
+    }
+}
 window.addEventListener('load', doFirst);
