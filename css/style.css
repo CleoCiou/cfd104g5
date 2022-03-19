@@ -2228,6 +2228,8 @@ main #articleView .author span {
 main #articleView .author img {
   width: 5em;
   height: 5em;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
   border: 1px solid #CFB886;
 }

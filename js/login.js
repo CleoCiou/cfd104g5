@@ -124,7 +124,8 @@ $(function() {
             checkLogin();
         }
         else if (e.target.innerText === '註冊') {
-            window.location.href = 'homepage.html';
+            alert('註冊成功！');
+            window.location.reload();
         }
     })
     // 下一步
@@ -255,7 +256,7 @@ $(function() {
 
 
     // === 基本資訊 === //    
-    // === 大頭貼 === //
+    // === 大頭貼 by JC === //
     document.getElementById("memImage").onchange = fileChange;
     function fileChange(){
         let file = document.getElementById("memImage").files[0];
@@ -264,8 +265,6 @@ $(function() {
         readFile.addEventListener("load",function(){
             let image = document.getElementById("memImgBox");
             image.src = readFile.result;
-            // image.style.maxWidth = "100%";
-            // image.style.maxHeight = "100%";
         });
     }
 
@@ -284,6 +283,7 @@ $(function() {
         closeVerify($(".item.memName + .verify"));
     })
 
+
     // === 信箱 === //
     // 開啟驗證框
     $("#email").focus( () => {
@@ -296,11 +296,38 @@ $(function() {
 
         // 格式檢查
         el = $(".item.email + .verify ul li:nth-child(1)");
-        reg = /^\w+((-\w+)|(\.\w+))*\@/;
-        verify(el, reg.test($("#email").val()));
+        verify(el, $("#email").val().length > 0, '信箱為必填欄位');
+
+        // 格式檢查
+        el = $(".item.email + .verify ul li:nth-child(2)");
+        reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+        verify(el, reg.test($("#email").val()),'E-mail信箱格式正確');
     });
     // 收起驗證框
     $("#email").focusout( () => {
         closeVerify($(".item.email + .verify"));
     })
+
+
+   // === 電話 === //
+    // 開啟驗證框
+    $("#tel").focus( () => {
+        openVerify($(".item.tel + .verify"));
+    });
+    // 輸入時驗證
+    $("#tel").keyup( () => {
+        let reg = '';
+        let el = '';
+
+        // 格式檢查
+        el = $(".item.tel + .verify ul li:nth-child(1)");
+        reg = /^(09)+[0-9]{8}/;
+        verify(el, reg.test($("#tel").val()),'手機號碼格式正確');
+    });
+    // 收起驗證框
+    $("#tel").focusout( () => {
+        closeVerify($(".item.tel + .verify"));
+    })
+
+
 })

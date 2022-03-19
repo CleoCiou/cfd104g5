@@ -69,8 +69,7 @@
                                                 <h3>{{article[index].title}}</h3>
                                                 <p class="words_limit">{{article[index].content}}</p>
                                             </div>
-                                            <div class="line_middle_pic">
-                                                <img :src="article[index].artImage">         
+                                            <div class="line_middle_pic">    
                                             </div>
                                         </div>
                                         <div class="line_bottom">
@@ -102,21 +101,7 @@
                                         <button class="other_btn">3</button>
                                         <span>&#10230;</span>
                                     </div>
-                                </div>
-                                <!-- == 最新 == 放文章的地方 -->
-                                <div class="row" :class="{'label_hidden' : isChecked == index}">
-                                    <!-- 文章卡片 -->
-                                    <div class="article_cards">
-                                        test
-                                    </div>
-                                    <!-- 頁籤按鈕 -->
-                                    <div class="content_pages">
-                                        <button class="other_btn">1</button>
-                                        <button class="other_btn">2</button>
-                                        <button class="other_btn">3</button>
-                                        <span>&#10230;</span>
-                                    </div>
-                                </div>      
+                                </div>     
                             </div>
                         </div>
                     </div>
@@ -131,16 +116,13 @@
                         <img :src="iconClose" id="close">
                     </div>
                     <div class="author img_box narrow">
-                        <img :src="author_hat_img" alt="會員頭像">
-                        <span>{{getTitle.memId}}</span>
+                        <img :src="'./images/teller_mem/'+ getTitle.memImage" alt="會員頭像">
+                        <span>{{getTitle.memName}}</span>
                     </div>
                     <div class="article_view_title narrow">
                         <h3>{{getTitle.title}}</h3>
                         <a href="discuss.html">{{getTitle.topicName}}</a>
                         <p>{{getTitle.artTime}}</p>
-                    </div>
-                    <div class="article_view_pic img_box narrow">
-                        <!-- <img :src="getTitle.artImage" alt="文章圖片">                    -->
                     </div>
                     <div class="article_view_content narrow">
                             <p>{{getTitle.content}}</p>
@@ -300,6 +282,18 @@
                     }else if(this.$data.article[index].activeIndex == 1){
                         this.$data.article[index].likes += 1;
                     }
+                },
+                imgSrc(folder, image) {
+                    switch (folder) {
+                        case 'member':
+                            folder = 'teller_mem';
+                            break;
+                        case 'product':
+                            folder = 'shop';
+                            break;
+                        }
+                    let path = `images/${folder}`;
+                    return `${path}/${image}`;
                 },
                 getIndex(index){
                     // console.log(this.getMsg(index));
