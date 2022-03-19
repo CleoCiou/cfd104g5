@@ -2,13 +2,17 @@
 <html lang="en">
 
     @@include('layout/head.html', {
-        'title': '首頁'
+        'title': '全方位線上共享占卜平台'
     })
 
 <link rel="stylesheet" href="css/index.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 <body>
-    
+    <div class="opening_animation">
+        <video autoplay muted>
+            <source src="images/media/opening_animation.mp4" type="audio/ogg">
+        </video>
+    </div>
 <!-- 網頁頭 by NJ -->
 <!-- <header class="main_header"></header> -->
 @@include('layout/header.html')
@@ -403,10 +407,13 @@ function getHotProductsList() {
 }
 // 何時要?
 window.addEventListener('load', getHotProductsList);
-
-
-
-
+//先執行外面closeVideo載入完成後  跑出裡面fadeOut淡出功能
+window.addEventListener('load',closeVideo);
+function closeVideo(){
+    setTimeout(function(){
+        $('.opening_animation').fadeOut(1000)
+    }, 6000);
+}
 </script>
 </body>
 </html>
