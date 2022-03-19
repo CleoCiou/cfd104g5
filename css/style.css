@@ -4939,11 +4939,32 @@ main section.shopping_item .container .product_nav {
           justify-content: space-evenly;
 }
 
+@media screen and (max-width: 767px) {
+  main section.shopping_item .container .product_nav {
+    margin: 1em 0 1em 0;
+    padding: 1em 0 1em 0;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: black;
+  }
+}
+
 main section.shopping_item .container .unselected_btn {
-  padding: 0.1em 1.8em;
+  padding: 0 1.8em;
   border: 1px solid #CFB886;
   border-radius: .5em;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  main section.shopping_item .container .unselected_btn {
+    white-space: nowrap;
+    padding: 0 0.7em;
+  }
 }
 
 main section.shopping_item .container .unselected_btn:hover {

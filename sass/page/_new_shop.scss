@@ -56,16 +56,24 @@ main{
             }
             .product_nav{
                 @include mobile{
-                   
+                    margin: 1em 0 1em 0;
+                    padding: 1em 0 1em 0;
+                    justify-content:space-between;
+                    position: sticky;
+                    top: 0;
+                    background-color: black;
                 }
                 margin: 1.5em;
                 display: flex;
-                // flex-direction: row;
                 justify-content: space-evenly;
             }
             
             .unselected_btn{
-                padding: 0.1em 1.8em;
+                @include mobile{
+                    white-space:nowrap;
+                    padding: 0 0.7em;
+                }
+                padding: 0 1.8em;
                 border: 1px solid #CFB886;
                 border-radius: .5em;
                 cursor: pointer;
