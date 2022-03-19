@@ -2228,6 +2228,8 @@ main #articleView .author span {
 main #articleView .author img {
   width: 5em;
   height: 5em;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
   border: 1px solid #CFB886;
 }
@@ -3657,6 +3659,20 @@ body section.back .contain main .container .popup .content_box .info_box .img_bo
   width: 100%;
 }
 
+body section.back .contain main .container .popup .content_box .info_box.prodImage .prod_img_box .img_box {
+  width: 100%;
+  margin: auto;
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+body section.back .contain main .container .popup .content_box .info_box.prodImage .prod_img_box .img_box img {
+  width: 100%;
+  height: 10em;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 body section.back .contain main .container .popup .content_box .action_box {
   text-align: center;
 }
@@ -4550,11 +4566,7 @@ main section.query_orders .mem_orders .order_list .order_item .order_footer .ite
   padding: 1em 0;
 }
 
-main section.member .container section.main_astrologist {
-  /* calendar footer */
-}
-
-main section.member .container section.main_astrologist #schedule {
+#schedule {
   padding: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4566,19 +4578,10 @@ main section.member .container section.main_astrologist #schedule {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  /* calendar footer */
 }
 
-main section.member .container section.main_astrologist #calendarContain {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  text-align: left;
-  overflow: hidden;
-  width: 100%;
-  padding: 0 1px;
-  padding-bottom: 1px;
-}
-
-main section.member .container section.main_astrologist #calendarHeader {
+#schedule #calendarHeader {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -4593,25 +4596,25 @@ main section.member .container section.main_astrologist #calendarHeader {
   padding: 15px 0;
 }
 
-main section.member .container section.main_astrologist #schedule .month {
+#schedule #calendarHeader .month {
   color: #CFB886;
   font-size: 30px;
 }
 
-main section.member .container section.main_astrologist #schedule .lastmonth {
+#schedule #calendarHeader .lastmonth {
   font-size: 16px;
   color: #CFB886;
   cursor: pointer;
 }
 
-main section.member .container section.main_astrologist #schedule .nextmonth {
+#schedule #calendarHeader .nextmonth {
   font-size: 16px;
   color: #CFB886;
   cursor: pointer;
 }
 
-main section.member .container section.main_astrologist #schedule .lastmonth:after,
-main section.member .container section.main_astrologist #schedule .nextmonth:after {
+#schedule #calendarHeader .lastmonth:after,
+#schedule #calendarHeader .nextmonth:after {
   border-bottom: 1px solid #68433780;
   content: '';
   display: block;
@@ -4620,62 +4623,43 @@ main section.member .container section.main_astrologist #schedule .nextmonth:aft
   transition: .4s;
 }
 
-main section.member .container section.main_astrologist #schedule .lastmonth:hover:after,
-main section.member .container section.main_astrologist #schedule .nextmonth:hover:after {
+#schedule #calendarHeader .lastmonth:hover:after,
+#schedule #calendarHeader .nextmonth:hover:after {
   width: 100%;
 }
 
-main section.member .container section.main_astrologist #schedule .week {
-  width: 100%;
-  height: 70px;
+#schedule #calendarContain .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-main section.member .container section.main_astrologist #schedule #week0 {
-  height: 30px;
-  line-height: 12px;
-  background-color: #5558;
-  color: #CFB886;
-  font-size: 24px;
-}
-
-main section.member .container section.main_astrologist #schedule .day {
+#schedule #calendarContain .container .day {
   width: calc(100% / 7);
-  border: 1px solid #5558;
+  min-height: 5em;
+  border: 1px solid #ccc;
+}
+
+#schedule #calendarContain .container .day.weekTitle {
+  min-height: auto;
+  padding: .5em;
+}
+
+#schedule #calendarContain .container .day .time {
   font-size: 12px;
-  padding-left: 5px;
-  padding-top: 5px;
-  position: relative;
-  -webkit-transition: .3s;
-  transition: .3s;
+  background-color: #f00;
+  margin: 0.3em;
+  border-radius: .5em;
+  padding: 0.3em;
 }
 
-main section.member .container section.main_astrologist #schedule .day p {
-  color: #CFB886;
+#schedule #calendarContain .container .day .time.rest {
+  background-color: #00f;
 }
 
-main section.member .container section.main_astrologist #schedule .week:not(#week0) .day:not(:empty):hover {
-  -webkit-box-shadow: 0 0 3px 2px #CFB886;
-          box-shadow: 0 0 3px 2px #CFB886;
-  cursor: pointer;
-}
-
-main section.member .container section.main_astrologist #schedule .week:not(#week0) .day:not(:empty):active {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
-}
-
-main section.member .container section.main_astrologist #schedule #week5 .day0 {
-  border-bottom-left-radius: 5px;
-}
-
-main section.member .container section.main_astrologist #schedule #week5 .day6 {
-  border-bottom-right-radius: 5px;
-}
-
-main section.member .container section.main_astrologist #schedule .calendarFooter {
+#schedule .calendarFooter {
   padding: 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4685,31 +4669,13 @@ main section.member .container section.main_astrologist #schedule .calendarFoote
           justify-content: space-between;
 }
 
-main section.member .container section.main_astrologist #schedule .timePeriod {
-  line-height: 30px;
-  color: #684337;
-}
-
-main section.member .container section.main_astrologist #schedule .timePeriod span {
-  padding-right: 20px;
-}
-
-main section.member .container section.main_astrologist #schedule .timePeriod span:before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background-color: #ccc;
-  display: inline-block;
-  border-radius: 50%;
-  margin-right: 5px;
-}
-
-main section.member .container section.main_astrologist #schedule .timePeriod span:nth-child(2):before {
-  background-color: #CFB886;
-}
-
-main section.member .container section.main_astrologist #schedule .timePeriod span:nth-child(3):before {
-  background-color: #7799d5;
+#schedule .timePeriod .drag_rest {
+  color: #fff;
+  background-color: #00f;
+  margin: 0.3em;
+  padding: 0.3em;
+  border-radius: .5em;
+  cursor: pointer;
 }
 
 .sky {

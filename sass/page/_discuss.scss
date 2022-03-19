@@ -387,6 +387,7 @@ main {
             img{
                 width: 5em;
                 height: 5em;
+                object-fit: cover;
                 border-radius: $circle;
                 border: 1px solid #CFB886;
             }
