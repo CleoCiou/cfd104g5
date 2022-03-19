@@ -215,15 +215,17 @@
     }
     
     .hot_fortune_teller_img{
-        width: 80%;
+        width:  12em;
+        height: 15em; 
         margin: auto;
     }
 
     .hot_fortune_teller_img img{
         width: 100%;
+        height: 100%;
         border-radius:0.5em;
         vertical-align: top;
-        
+        object-fit: cover;
     }
 
     .hot_fortune_teller_txt{
