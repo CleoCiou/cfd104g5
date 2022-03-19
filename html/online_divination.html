@@ -26,14 +26,14 @@
             </div>
 
                 
-                <div class="content">
+            <div class="content">
 
                 <!-- 工作 -->
                 <div class="card">
                     <div class="front">
-                    <h3>工作</h3>
+                        <h3>工作</h3>
                     </div>
-                    <div class="back">
+                    <!-- <div class="back">
                         <div>
                             <a href="draw_cards.html?type=1">
                                 <button class="choose_btn">工作的潛力?</button>
@@ -48,15 +48,15 @@
                                 <button class="choose_btn">心中默念問題</button>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <!-- 健康 -->
                 <div class="card">
                     <div class="front">
-                    <h3>健康</h3>
+                        <h3>健康</h3>
                     </div>
-                    <div class="back">
+                    <!-- <div class="back">
                         <div>
                             <a href="draw_cards.html?type=2">
                                 <button class="choose_btn">最近身體狀況?</button>
@@ -71,14 +71,14 @@
                                 <button class="choose_btn">心中默念問題</button>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- 愛情 -->
                 <div class="card">
                     <div class="front">
-                    <h3>愛情</h3>
+                        <h3>愛情</h3>
                     </div>
-                    <div class="back">
+                    <!-- <div class="back">
                         <div>
                             <a href="draw_cards.html?type=3">
                                 <button class="choose_btn">暗戀成功機率?</button>
@@ -93,14 +93,14 @@
                                 <button class="choose_btn">心中默念問題</button>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- 財富 -->
                 <div class="card">
                     <div class="front">
-                    <h3>財富</h3>
+                        <h3>財富</h3>
                     </div>
-                    <div class="back">
+                    <!-- <div class="back">
                         <div>
                             <a href="draw_cards.html?type=4">
                                 <button class="choose_btn">存款會增加嗎?</button>
@@ -115,8 +115,10 @@
                                 <button class="choose_btn">心中默念問題</button>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+
+            </div>
                 
         </div>
     </section>
@@ -128,5 +130,110 @@
 <!-- 內容由 common.js 新增 by PIN -->
 <!-- <footer class="main_footer"></footer> -->
 @@include('layout/footer.html')
+<script>
+    for(let i=0; i< 4; i++){
+    const card = document.querySelectorAll('.card')[i];
+    const front = document.querySelectorAll('.card .front')[i];
+    const back = document.querySelectorAll('.card .back')[i];
+        card.addEventListener('click', () => {
+            
+            back.classList.toggle("rotate");
+            front.classList.toggle("flip");
+        });
+    }
+
+
+
+
+// =================================================================
+// 撈問題
+
+    function getQuestionList() {
+        $.ajax({
+            type: 'POST',
+            url: 'phps/select.php',
+            data: {
+                // 要查詢的資料表
+                table: 'divination',
+                // 要查詢的欄位
+                queryCol: '*',
+            },
+            success: function(data) {
+                if (data.msg !== false){
+                    // console.log(data.msg);
+                    let cards = $('.card');
+                    // console.log(cards);
+                    for (let i = 0; i < data.msg.length; i++) {
+                        let typeno = data.msg[i].typeNo-1;
+                        let card = cards[typeno]; //有幾個問題
+                        
+                        // 找card的小孩有沒有class="back"
+                        // if( document.getElementsByClassName("back").length > 0){
+                            let back = document.createElement("div");
+                            back.classList.add("back");
+                            document.querySelector('.card').appendChild(back);
+                            let backDiv = document.createElement("div");
+                            back.appendChild(backDiv);
+                            let a = document.createElement('a');
+                            a.href = `draw_cards.html?type=${data.msg[i].typeNo}`;
+                            a.classList.add('cardLink');
+                            backDiv.appendChild(a); 
+                            
+                        // }
+                        
+                        console.log(card);
+                        
+                    }
+
+
+                    // ==============================================
+                    // let cardQ =  `<div class="back"><div>`;
+                    // // 很多! -> 迴圈
+                    // for (let i = 1; i < 5; i++) {
+                    // cardQ +=  `<a href="draw_cards.html?type=${i}">`;
+                    //     for(let j = 1; j <5; j++){
+                    //         cardQ += `<button class="choose_btn">${data.msg[j*i].title}</button>`
+                    //         }
+                    // cardQ +=`</a>`;
+                        
+                    // }
+                    // cardQ +=  `</div></div>`
+                    // $('.back').append(cardQ)
+
+                    // ===============================================
+
+                    // for (let i = 0; i < 4; i++){
+                    //     let cardQ = document.createElement("div");
+                    //     cardQ.classList.add("back");
+                    //     document.querySelectorAll('.card')[i].appendChild(cardQ);
+                    //     cardQ.appendChild(document.createElement("div"));
+                    // }
+                    // for(let i = 1; i < 5; i++){
+                    //     let cardQ = document.querySelectorAll('.back div')[i-1];
+                    //     for (let j = 1; j < 5; j++){
+                    //         let a = document.createElement('a');
+                    //         a.href = `draw_cards.html?type=${i}`;
+                    //         a.classList.add('cardLink');
+                    //         cardQ.appendChild(a);
+                    //     }
+                    // }
+                    // for(let i = 0; i < data.msg.length; i++){
+                    //     let cardLink = document.querySelectorAll('.cardLink')[i];
+                    //     let cardBtn = document.createElement('button');
+                    //     cardBtn.classList.add('choose_btn');
+                    //     cardBtn.innerHTML = data.msg[i].title;
+                    //     cardLink.appendChild(cardBtn);
+                    // }
+                }
+            },
+            error: function() {
+                console.log('ajax error');
+            }
+        });
+    }
+    // 何時要?
+    window.addEventListener('load', getQuestionList);
+
+</script>
 </body>
 </html>

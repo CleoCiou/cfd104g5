@@ -56,11 +56,32 @@ main{
             }
             .product_nav{
                 @include mobile{
-                    display: none;
+                    margin: 1em 0 1em 0;
+                    padding: 1em 0 1em 0;
+                    justify-content:space-between;
+                    position: sticky;
+                    top: 0;
+                    background-color: black;
                 }
-                margin: 1em 0;
+                margin: 1.5em;
                 display: flex;
                 justify-content: space-evenly;
+            }
+            
+            .unselected_btn{
+                @include mobile{
+                    white-space:nowrap;
+                    padding: 0 0.7em;
+                }
+                padding: 0 1.8em;
+                border: 1px solid #CFB886;
+                border-radius: .5em;
+                cursor: pointer;
+                &:hover{
+                    background-color: map-get($primary_color, 'content' );
+                    color: map-get($primary_color, 'bg' );
+                    transition: .3s;
+                }
             }
 
             .product_box{

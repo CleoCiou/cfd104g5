@@ -3542,13 +3542,16 @@ body section.back .contain section.back_login {
 
 body section.back .contain section.back_login .back_login_box {
   position: absolute;
-  top: 5em;
+  top: 7em;
   bottom: 5em;
   width: 25em;
   max-width: 90%;
   max-height: 60%;
-  left: 30%;
-  top: 20%;
+  left: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   text-align: center;
 }
 
@@ -4898,7 +4901,7 @@ main section.shopping_item .container .product_search {
 }
 
 main section.shopping_item .container .product_nav {
-  margin: 1em 0;
+  margin: 1.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4909,8 +4912,37 @@ main section.shopping_item .container .product_nav {
 
 @media screen and (max-width: 767px) {
   main section.shopping_item .container .product_nav {
-    display: none;
+    margin: 1em 0 1em 0;
+    padding: 1em 0 1em 0;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: black;
   }
+}
+
+main section.shopping_item .container .unselected_btn {
+  padding: 0 1.8em;
+  border: 1px solid #CFB886;
+  border-radius: .5em;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  main section.shopping_item .container .unselected_btn {
+    white-space: nowrap;
+    padding: 0 0.7em;
+  }
+}
+
+main section.shopping_item .container .unselected_btn:hover {
+  background-color: #CFB886;
+  color: #000;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 main section.shopping_item .container .product_box .row {

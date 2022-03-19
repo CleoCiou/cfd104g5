@@ -27,7 +27,7 @@ function getProduct() {
 
             table: 'product',
             joinTable: 'product_category',
-            queryCol: 'product.prodImage1 , product.prodImage2, product.prodImage3,product_category.cateType, product_category.cateName, product.prodName,product.price, product.prodspec, product.prodIntro, product.prodNo',
+            queryCol: "product.prodImage1 , product.prodImage2, product.prodImage3,product_category.cateType, product_category.cateName, product.prodName, FORMAT(price, 'C') price , product.prodspec, product.prodIntro, product.prodNo",
             joinOn: 'prodCateNo',
             condition: `product.prodNo=${localStorage.getItem('prodNumber')}`,
         },

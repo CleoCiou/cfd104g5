@@ -44,24 +44,24 @@
                             <!-- 個人資訊 -->
                             <div class="item personal">
                                 <div class="id_box">
-                                    <label for="memId">會員ID</label>
-                                    <label>{{ userData.userId }}</label>
+                                    <label for="mem_Id">會員ID</label>
+                                    <label id="mem_Id">{{ userData.userId }}</label>
                                 </div>
                                 <div class="name_box">
-                                    <label for="memName">會員姓名</label>
-                                    <input type="text" id="memName" :value="userData.userName">
+                                    <label for="mem_Name">會員姓名</label>
+                                    <input type="text" id="mem_Name" :value="userData.userName">
                                 </div>
                                 <div class="account_box">
-                                    <label for="email">信箱</label>
-                                    <input type="text" id="email" :value="userData.email">
+                                    <label for="mem_email">信箱</label>
+                                    <input type="text" id="mem_email" :value="userData.email">
                                 </div>
                                 <div class="birthday_box">
-                                    <label for="birthday">生日</label>
-                                    <input type="date" id="birthday" :value="userData.birthday">
+                                    <label for="mem_birthday">生日</label>
+                                    <input type="date" id="mem_birthday" :value="userData.birthday">
                                 </div>
                                 <div class="credit_box">
                                     <label for="creditNum">卡號</label>
-                                    <input type="text" :value="userData.creditNum">
+                                    <input id="creditNum" type="text" :value="userData.creditNum">
                                 </div>
                             </div>
                             <!-- 更改密碼、身分 -->
@@ -289,12 +289,41 @@
             },
             methods: {
                 showDetailInfo(e) {
-                    e.target.innerText = (e.target.innerText === '修改資料') ? '儲存' : '修改資料';
+                    // 打開個人資訊詳細框
                     e.target.nextElementSibling.classList.toggle('display_none');
                     let normalInfo = e.target.parentNode.previousElementSibling;
                     let detailInfo = e.target.parentNode.nextElementSibling;
                     normalInfo.classList.toggle('invisible');
                     detailInfo.classList.toggle('invisible');
+
+                    // 更改按鈕名稱
+                    if (e.target.innerText === '修改資料') {
+                        e.target.innerText = '儲存'
+                    }
+                    // 修改資料庫
+                    else {
+                        e.target.innerText = '修改資料'
+                        let name = $("#mem_Name").val();
+                        let birthday = $("#mem_birthday").val();
+                        let email = $("#mem_email").val();
+                        let creditNum = $("#creditNum").val();
+                        $.ajax({
+                            type: 'POST',
+                            url: 'phps/update.php',
+                            data: {
+                                table: 'members',
+                                updateValue: `memName = '${name}', birthday = '${birthday}', email = '${email}', creditNum = '${creditNum}'`,
+                                where: `memNo = '${this.userData.userNo}'`
+                            },
+                            // function success(data) {}
+                            success: data => {
+                                // console.log(data);
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                        });
+                    }
                 },
                 changePwd(e) {
                     e.target.innerText = (e.target.innerText === '修改') ? '取消' : '修改';
@@ -399,7 +428,7 @@
                             folder = 'teller_mem';
                             break;
                         case 'product':
-                            folder = 'shop';
+                            folder = 'shop/tarot';
                             break;
                     }
                     let path = `images/${folder}`;
