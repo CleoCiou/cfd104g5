@@ -27,14 +27,23 @@ body {
     position: relative;
 }
 @media screen and (max-width: 992px) {
-.card {
-    width: calc(50% - 2rem);
-}
+    .card {
+        width: calc(50% - 2rem);
+    }
 }
 @media screen and (max-width: 768px) {
-.card {
-    width: 60%;
-}
+    .card {
+        width: 60%;
+    }
+    
+    /* 手機版點擊 */
+    .filp{ 
+        transform: rotateY(180deg)
+    }
+    .rotate{ 
+        transform: rotateY(0deg);
+    }
+    
 }
 
 .front,
@@ -104,3 +113,4 @@ body {
     color: #000;
     background-color:#CFB886;
 }
+

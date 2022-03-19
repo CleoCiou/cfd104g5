@@ -39,13 +39,13 @@
 				<div class="txt_box">
 					<!-- 牌名 -->
 					<div class="item txt_header">
-						<h3 class="tarName">愚者 The Fool</h3>
+						<h3 class="tarName"></h3>
 					</div>
 					<!-- 解析內容 -->
 					<div class="item txt_content">
-						<p class="direction">正位</p>
-						<p class="tarMeaning">愚者塔羅牌意義：旅程</p>
-						<p class="detail">它表明您希望尋求未來的機會，但缺乏明確的具體計劃。由於你沒有什麼顧慮，有時這些特質反而會給你帶來意想不到的成功。然而沒有遠見，使你容易產生動搖，當遇到太多障礙的時候往往會失去原有的目標。 當你想要開始諸如學習，搬家或簽署商業協議之類的，追隨你的直覺並付出行動是不錯的方式。</p>
+						<p class="direction"></p>
+						<p class="tarMeaning"></p>
+						<p class="detail"></p>
 					</div>
 					<!-- 其他連結 -->
 					<div class="item txt_footer action">
@@ -276,10 +276,21 @@
 			opacity: 1,
 			duration: 1.5,
 		})
+
+		let userData = getSessionData();
+		let insertData = getTarotDetail();
+		console.log(insertData);
+		// insertData = `default, userNo, 1, ${data.msg[0].tarDetNo}, default`;
+		// 有登入才需要存紀錄
+		if (userData !== false) {
+			insertData = insertData.replace('userNo', userData.userNo);
+			inserHandler(insertData);
+			// console.log(insertData);
+		}
+
 		
 	}
-</script>
-<script>
+
 	// 牌的詳解 -> 要放在 detail_box (圖片:img_box item font 解釋: txt_box txt_header txt_content)
 	// 想從 g5資料庫 的 tarot資料表 撈出所有的塔羅牌編號(tarNo)、塔羅牌名稱(tarName)、塔羅牌英文名稱(tarEngName)、塔羅牌圖片(tarImage) 資料
 	// 以及從 tarot_detail資料表 撈出所有的塔羅牌解析編號(tarDetNo)、塔羅牌編號(tarNo)、正逆位解析(detail)
@@ -306,48 +317,70 @@
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const typeNo = urlParams.get('type');
-	        $.ajax({
-	            type: 'POST',
-	            url: 'phps/select.php',
-	            data: {
-	                // 要查詢的資料表
-	                table: 'tarot',
-	                // 要 join 的資料表 (如果沒有就不用打)
-	                joinTable: 'tarot_detail',
-	                // 要查詢的欄位
-	                queryCol: 'tarot.tarNo, tarName, tarEngName, tarImage, tarDetNo, detail, direction, tarMeaning',
-	                // join 的條件 (如果沒有join就不用打)
-	                joinOn: 'tarNo',
-	                condition: `typeNo = ${typeNo}`,
-	                other: ' ORDER BY  RAND() limit 1',
-	            },
-	            success: function(data) {
-					// console.log(data)
-	                if (data.msg !== false){
-						for (let i = 0; i < data.msg.length; i++) {
-							let path = 'images/tarot_cards/';
-								document.querySelector('.tarImage').src = path + data.msg[i].tarImage;
-							if(data.msg[i].direction == '逆位'){	
-								document.querySelector('.tarImage').style.transform = `rotate(180deg)`;
-							}
-							document.querySelector('.tarName').innerHTML = data.msg[i].tarName + data.msg[i].tarEngName;
-							document.querySelector('.direction').innerHTML = "牌位方向 : "+data.msg[i].direction;
-							document.querySelector('.tarMeaning').innerHTML = data.msg[i].tarMeaning;
-							document.querySelector('.detail').innerHTML = data.msg[i].detail;
-						// console.log(data.msg[2].detail);
-						}
-	                }
-	            },
-	            error: function() {
-	                console.log('ajax error');
-	            }
-	        });
-	    }
-	    // 何時要?
-	    window.addEventListener('load', getTarotDetail);
-	
-	
-	
+		
+		// 回傳要新增的資料
+		let insertData;
+
+		$.ajax({
+			type: 'POST',
+			url: 'phps/select.php',
+			async: false,
+			data: {
+				// 要查詢的資料表
+				table: 'tarot',
+				// 要 join 的資料表 (如果沒有就不用打)
+				joinTable: 'tarot_detail',
+				// 要查詢的欄位
+				queryCol: 'tarot.tarNo, tarName, tarEngName, tarImage, tarDetNo, detail, direction, tarMeaning',
+				// join 的條件 (如果沒有join就不用打)
+				joinOn: 'tarNo',
+				condition: `typeNo = ${typeNo}`,
+				other: ' ORDER BY  RAND() limit 1',
+			},
+			success: function(data) {
+				if (data.msg !== false){
+					let path = 'images/tarot_cards/';
+					document.querySelector('.tarImage').src = path + data.msg[0].tarImage;
+					if(data.msg[0].direction == '逆位'){	
+						document.querySelector('.tarImage').style.transform = `rotate(180deg)`;
+					}
+					document.querySelector('.tarName').innerHTML = data.msg[0].tarName + data.msg[0].tarEngName;
+					document.querySelector('.direction').innerHTML = "牌位方向 : "+data.msg[0].direction;
+					document.querySelector('.tarMeaning').innerHTML = data.msg[0].tarMeaning;
+					document.querySelector('.detail').innerHTML = data.msg[0].detail;
+					tarDetNo = data.msg[0].tarDetNo;
+
+					insertData = `default, userNo, 1, ${data.msg[0].tarDetNo}, default`;
+				}
+			},
+			error: function() {
+				console.log('ajax error');
+			}
+		});
+
+		return insertData;
+	}
+
+	function inserHandler(insertData) {
+		console.log(insertData);
+		$.ajax({
+			type: 'POST',
+			url: 'phps/insert.php',
+			data: {
+				table: 'divination_log',
+				insertValue: insertData
+			},
+			success: function(data) {
+				console.log('新增成功');
+			},
+			error: function() {
+				console.log('ajax error');
+			}
+		});
+	}
+	// 何時要?
+	// window.addEventListener('load', getTarotDetail);
+
 	
 	</script>
 
