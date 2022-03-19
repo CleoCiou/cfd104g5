@@ -29,7 +29,7 @@
                         <div class="txt_box">
                             
                             <h3 class="ast_name">
-                                吳恆隼
+                                {{ ast_name[0].memName }}
                                 <span class="ast_star">★★★★</span>
                             </h3>
                             <p class="introduce">
@@ -147,9 +147,23 @@
 
 <script src="js/calendar.js"></script>
 <script>
+    // // 若尚未登入
+    // if (getSessionData() === false) {
+    //         $('section.member').css({opacity: 0});
+    //         alert('請先登入');
+    //         $('section.login').removeClass('display_none');
+    //         document.body.classList.add('login_hidden');
+    //     }
+    //     else {
+    //         getMemberData();
+    //     }
+
     new Vue({
         el: '#app',
         data: {
+            // 變數放這兒
+            userData: getSessionData(),
+            // 要更改的框框
             intro: [],
             introUpdate: [],
         },
