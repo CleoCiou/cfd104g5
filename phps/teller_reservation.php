@@ -13,7 +13,7 @@
                 JOIN comment ON comment.appointNo = appointment.appointNo
                 JOIN members C ON C.memNo = appointment.memNo
                 WHERE astrologist.astNo = $astNo;";
-
+        $msg['sql'] = $sql;
 
         try {
             $result = $pdo -> prepare($sql);

@@ -189,19 +189,19 @@
                     activeStar.parentNode.classList.toggle('ast_hidden');
                 }
             },
-            // carsoul_last(e) {
-            // },
-            // carsoul_next(e) {
-            //     console.log(e.target);
-            //     let reservation_card = document.querySelectorAll('.reservation_card');
-            //     console.log(reservation_card);
-            //     let activeCard = document.querySelectorAll('.reservation_card.active')[0];
-            //     console.log(activeCard);
-            //     let i = Array.from(reservation_card).indexOf(activeCard);
-            //     let moveList = document.querySelectorAll('.reservation_list')[0];
-            //     console.log(moveList);
-            //     moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
-            // }
+            carsoul_last(e) {
+            },
+            carsoul_next(e) {
+                console.log(e.target);
+                let reservation_card = document.querySelectorAll('.reservation_card');
+                console.log(reservation_card);
+                let activeCard = document.querySelectorAll('.reservation_card.active')[0];
+                console.log(activeCard);
+                let i = Array.from(reservation_card).indexOf(activeCard);
+                let moveList = document.querySelectorAll('.reservation_list')[0];
+                console.log(moveList);
+                moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
+            }
         }
     });
 </script>
