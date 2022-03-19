@@ -17,6 +17,7 @@
             'sticker' => $_SESSION['sticker'],
             'email' => $_SESSION['email'],
             'creditNum' => $_SESSION['creditNum'],
+            'phoneNum' => $_SESSION['phoneNum'],
         ];
     }
 
