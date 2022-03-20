@@ -31,8 +31,41 @@ function checkLogin() {
         }
     });
 }
+// 新增註冊
+function insertData() {
+    let memId = document.getElementById('memId').value;
+    let memPwd = document.getElementById('memPwd').value;
+    let memName = document.getElementById('memName').value;
+    let email = document.getElementById('email').value;
+    let birthday = document.getElementById('birthday').value;
+    let sex = document.querySelector('input[name="sex"]:checked').value;
+    let tel = document.getElementById('tel').value;
+    let memImage = document.getElementById('memImage').value;
+    // let pathIdx = memImage.lastIndexOf("fakepath");
+    // memImage.slice(pathIdx+1);
+    let identity = document.querySelector('input[name="identity"]:checked').value;
+    // console.log(identity);
 
-
+    // 新增資料
+    $.ajax({
+        type: 'POST',
+        url: 'phps/insert.php',
+        data: {
+            table: 'members',
+            //insertValue: 'memNo, memId, memPwd, memName, identity, phoneNum, birthday, sex, email, address, creditNum, memImage, status',
+            insertValue: `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, '${memImage}' , default`
+        },
+        success: data => {
+            console.log('成功insert');
+            console.log(data.sql);
+            
+            // console.log(memImage);
+        },
+        error: err => {
+            console.log('ajax error');
+        }
+    });   
+}
 // ===== 註冊 ===== //
 // 驗證輸入欄位
 // 驗證(元素, 條件, 正確訊息, 錯誤訊息)
@@ -114,31 +147,52 @@ function closeVerify(el) {
             duration: 1
         })
     }
-    
+
+
 $(function() {
     // === 按鈕監控 === //
-    // 註冊 | 登入
+    // 登入 | 註冊 註冊完成要跳轉
     $(".secondary_btn").click( (e) => {
         // e.preventDefault();
         if (e.target.innerText === '登入') {
             checkLogin();
         }
         else if (e.target.innerText === '註冊') {
-            alert('註冊成功！');
-            window.location.reload();
+            
+            // $("input, textarea").each(function(){
+            //     console.log($('input'));
+            //     if($(this).val().length === 0){
+            //         $('input').parent("div").addClass('warning');
+            //     }else{
+            //         $(this).parent("div").removeClass('warning');
+            //     }
+            // })
+            // insertData();
+            // alert('註冊成功！請重新登入');
+            // window.location.reload();
         }
     })
+
     // 下一步
     $(".next_step").click( (e) => {
-        if ($(".account_info").css('height') !== '0px') {
-            switchPanel($(".account_info"), $(".mem_info"));
-            $(".last_step").css({display: 'inline-block'});
-            $(".next_step").text('註冊');
+        // 第一關驗證帳號密碼有沒有填 都有填才能下一步
+        // $("#memId").val() !== '' && $("#memPwd").val() !== '' && $("#confirm_pwd").val() !== ''
+        // !$('#memId').parent("div").hasClass(".warning") 
+        if( $('#memId').parent("div").hasClass("warning") || $('#memPwd').parent("div").hasClass("warning") || $('#confirm_pwd').parent("div").hasClass("warning")){
+            console.log('fail');
+        }else{
+            console.log('success');
+            if ($(".account_info").css('height') !== '0px') {
+                switchPanel($(".account_info"), $(".mem_info"));
+                $(".last_step").css({display: 'inline-block'});
+                $(".next_step").text('註冊');
+            }else if ($(".mem_info").css('height') !== '0px') {
+                switchPanel($(".mem_info"), $(".astrologist_info"));
+                $(".next_step").text('註冊');
+            }
         }
-        else if ($(".mem_info").css('height') !== '0px') {
-            switchPanel($(".mem_info"), $(".astrologist_info"));
-            $(".next_step").text('註冊');
-        }
+            
+        
     })
     // 上一步
     $(".last_step").click( (e) => {
@@ -193,23 +247,53 @@ $(function() {
     // 開啟驗證框
     $("#memId").focus( () => {
         openVerify($(".item.account + .verify"));
+        
     });
+    //輸入後驗證帳號
+    $('#memId').change( () => {
+        console.log($('#memId').val());
+        if( $("#memId").val().length === 0 || /\W/.test($("#memId").val()) ) {
+            $("#memId").parent("div").addClass('warning');
+        }
+        if( $("#memId").val().length > 0 && /\w/.test($("#memId").val()) ) {
+            $("#memId").parent("div").removeClass('warning');
+        }
+    })
+    
     // 輸入時驗證
     $("#memId").keyup( () => {
-        let el = $(".item.account + .verify ul li:nth-child(1)");
-        verify(el, $("#memId").val().length > 0, '帳號可使用', '帳號不可為空');
+        let el = '';
+        let reg = '';
+        el = $(".item.account + .verify ul li:nth-child(1)");
+        reg = /\W/;
+        verify(el, reg.test($("#memId").val()), '帳號不可使用特殊符號', '帳號不可為空');
+
+        el = $(".item.account + .verify ul li:nth-child(2)");
+        reg = /\w/;
+        verify(el, reg.test($("#memId").val()));
+
     });
     // 收起驗證框
     $("#memId").focusout( () => {
         closeVerify($(".item.account + .verify"));
     })
 
+    
 
     // === 密碼 === //
     // 開啟驗證框
     $("#memPwd").focus( () => {
         openVerify($(".item.password + .verify"));
     });
+    $('#memPwd').change(() => {
+        //輸入後驗證密碼
+        if( $("#memPwd").val().length === 0 || $("#memPwd").val().length <= 5 || !(/[A-Za-z\d]/.test($("#memPwd").val())) ) {
+            $("#memPwd").parent("div").addClass('warning');
+        }
+        if( $("#memPwd").val().length > 5 && /[A-Za-z\d]/.test($("#memPwd").val())) {
+            $("#memPwd").parent("div").removeClass('warning');
+        }
+    })
     // 輸入時驗證密碼
     $("#memPwd").keyup( () => {
         let reg = '';
@@ -237,6 +321,15 @@ $(function() {
         // 檢查再次輸入是否一致
         checkPwd();
     });
+    $('#confirm_pwd').change( () => {
+        //確認密碼
+        if( $("#confirm_pwd").val().length === 0 || $("#confirm_pwd").val().length <= 5 || !(/[A-Za-z\d]/.test($("#confirm_pwd").val())) ) {
+            $("#confirm_pwd").parent("div").addClass('warning');
+        }
+        if( $("#confirm_pwd").val().length > 5 && $("#confirm_pwd").val() === $("#memPwd").val()) {
+            $("#confirm_pwd").parent("div").removeClass('warning');
+        }
+    })
     // 收起密碼驗證框
     $("#memPwd").focusout( () => {
         closeVerify($(".item.password + .verify"));
@@ -302,7 +395,9 @@ $(function() {
         el = $(".item.email + .verify ul li:nth-child(2)");
         reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
         verify(el, reg.test($("#email").val()),'E-mail信箱格式正確');
+
     });
+
     // 收起驗證框
     $("#email").focusout( () => {
         closeVerify($(".item.email + .verify"));

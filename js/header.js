@@ -32,6 +32,17 @@ $(function() {
         $(this).toggleClass("click_sub_menu");
     })
 
+    //按其他區域 關閉燈箱
+    let loginSection = document.getElementById('loginSection');
+    
+    loginSection.addEventListener('click', function(e){
+        // console.log(e.target.classList[0])
+        // console.log(cardBox);
+        if(e.target.classList[0] === 'container' ){
+            loginSection.classList.add('display_none');
+            // console.log(e.target.classList);
+        }
+    })
 })
 
 // header縮上去的transition

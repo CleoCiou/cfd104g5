@@ -116,7 +116,7 @@
                         <img :src="iconClose" id="close">
                     </div>
                     <div class="author img_box narrow">
-                        <img :src="'./images/teller_mem/'+ getTitle.memImage" alt="會員頭像">
+                        <img :src="imgSrc('member', getTitle.memImage)" alt="會員頭像">
                         <span>{{getTitle.memName}}</span>
                     </div>
                     <div class="article_view_title narrow">
@@ -241,6 +241,12 @@
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
     <script>
+    // 若尚未登入
+    if (getSessionData() !== false || getSessionData() === false) {
+        getData();
+    }
+
+    function getData(){
         new Vue({
             el: '#app',
             data: { //變數放這
@@ -257,7 +263,7 @@
                 labels: ['熱門','最新'],
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
-                author_hat_img: 'images/black_cat_wizard.svg',
+                author_img: 'images/black_cat_wizard.svg',
                 isChecked: 0,
                 showBoard: 0,
                 showNotice: 0,
@@ -393,6 +399,8 @@
                 },
             },
         });
+    }
+        
         $(document).ready(function(){
             $('.owl-carousel').owlCarousel({
                 stagePadding: 10,
