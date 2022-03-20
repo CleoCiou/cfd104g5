@@ -8,11 +8,14 @@
 <link rel="stylesheet" href="css/index.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 <body>
-    <div class="opening_animation">
+    <!-- 開場動畫 -->
+    <div class="opening_animation" id="video" > 
+        <button class="btn_hidden other_btn"  onclick="videoHidden()">SKIP</button>
         <video autoplay muted>
             <source src="images/media/opening_animation.mp4" type="audio/ogg">
         </video>
     </div>
+    
 <!-- 網頁頭 by NJ -->
 <!-- <header class="main_header"></header> -->
 @@include('layout/header.html')
@@ -414,6 +417,11 @@ function closeVideo(){
         $('.opening_animation').fadeOut(1000)
     }, 6000);
 }
+//開場動畫SKIP
+function videoHidden() {
+   document.getElementById('video').style.display = "none";
+}
+
 </script>
 </body>
 </html>

@@ -29,7 +29,7 @@
                         <div class="txt_box">
                             
                             <h3 class="ast_name">
-                                吳恆隼
+                                {{ userData.userName }}
                                 <span class="ast_star">★★★★</span>
                             </h3>
                             <p class="introduce">
@@ -147,9 +147,13 @@
 
 <script src="js/calendar.js"></script>
 <script>
+    
     new Vue({
         el: '#app',
         data: {
+            // 變數放這兒
+            userData: getSessionData(),
+            // 要更改的框框
             intro: [],
             introUpdate: [],
         },
@@ -164,8 +168,8 @@
                     
                     data: {
                         table: 'astrologist',
-                        queryCol: 'introduction',
-
+                        queryCol: 'astNo, introduction',
+                        condition: `memNo = ${this.userData.userNo}`
                     },
                     success:  data => {
                         // console.log(data.msg);
@@ -190,25 +194,25 @@
                 else {
                     e.target.innerText = '更新介紹';
                     intro.innerText = textarea.value;
-                    let Intro = $("#astrologist_Intro").val();
-                //     $.ajax({
-                //             type: 'POST',
-                //             url: 'phps/update.php',
-                //             data: {
-                //                 table: 'astrologist',
-                //                 updateValue: `introduction = '${Intro}'`,
-                //                 where: `memNo = '${this.userData.userNo}'`
-                //             },
-                //             success: data => {
-                //                 // console.log(data.msg);
-                //                 if(data.msg !== false){
-                //                     this.introUpdate = data.msg;
-                //                 }
-                //             },
-                //             error: err => {
-                //                 console.log(err);
-                //             }
-                //     });        
+                    
+                    $.ajax({
+                            type: 'POST',
+                            url: 'phps/update.php',
+                            data: {
+                                table: 'astrologist',
+                                updateValue: `introduction = '${textarea.value}'`,
+                                where: `memNo = '${this.userData.userNo}'`
+                            },
+                            success: data => {
+                                // console.log(data.msg);
+                                if(data.msg !== false){
+                                    this.introUpdate = data.msg;
+                                }
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                    });        
                 };
                 intro.classList.toggle('invisible');
                 textarea.classList.toggle('invisible');
