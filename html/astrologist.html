@@ -217,6 +217,26 @@
                 intro.classList.toggle('invisible');
                 textarea.classList.toggle('invisible');
             },
+            getReservation() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    
+                    data: {
+                        table: 'appointment',
+                        queryCol: 'introduction',
+
+                    },
+                    success:  data => {
+                        if (data.msg !== false){
+                            this.intro = data.msg;
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
+            },
             changeStar(e) {
                 if (e.target.classList.contains('active_star')) {
                     let parent = e.target.parentNode;
