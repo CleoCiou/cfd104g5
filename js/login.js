@@ -175,13 +175,13 @@ $(function() {
 
     // 下一步
     $(".next_step").click( (e) => {
-        // 第一關驗證帳號密碼有沒有填 都有填才能下一步
-        // $("#memId").val() !== '' && $("#memPwd").val() !== '' && $("#confirm_pwd").val() !== ''
-        // !$('#memId').parent("div").hasClass(".warning") 
-        if( $('#memId').parent("div").hasClass("warning") || $('#memPwd').parent("div").hasClass("warning") || $('#confirm_pwd').parent("div").hasClass("warning")){
-            console.log('fail');
-        }else{
-            console.log('success');
+        // 第一關驗證帳號密碼 沒有紅框才能下一步
+        if( $('#memId').parent("div").hasClass("warning") === true || $('#memPwd').parent("div").hasClass("warning") === true || $('#confirm_pwd').parent("div").hasClass("warning") === true ){
+            alert('請填寫正確的帳號或密碼');
+            return false;
+        }
+
+        if(  $('#memId').val() !== '' && $('#memPwd').val() !== '' && $('#confirm_pwd').val() !== '' ){
             if ($(".account_info").css('height') !== '0px') {
                 switchPanel($(".account_info"), $(".mem_info"));
                 $(".last_step").css({display: 'inline-block'});
@@ -190,6 +190,8 @@ $(function() {
                 switchPanel($(".mem_info"), $(".astrologist_info"));
                 $(".next_step").text('註冊');
             }
+        }else{
+            alert('請填寫帳號或密碼');
         }
             
         
@@ -251,7 +253,6 @@ $(function() {
     });
     //輸入後驗證帳號
     $('#memId').change( () => {
-        console.log($('#memId').val());
         if( $("#memId").val().length === 0 || /\W/.test($("#memId").val()) ) {
             $("#memId").parent("div").addClass('warning');
         }

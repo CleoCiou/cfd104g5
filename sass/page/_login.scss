@@ -235,7 +235,8 @@ section.login {
                             }
                             //表單驗證用的紅框
                             .warning{
-                                border: 1px solid #e00000;
+                                border: 1px solid #cf1e1e9d;
+                                box-shadow: 0 0 .5em 0 #cf1e1e9d;
                                 transition: .5s;
                             }
 

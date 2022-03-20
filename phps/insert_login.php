@@ -12,8 +12,7 @@
         // 資料表
         $table = $_POST['table'];
         $value = $_POST['insertValue'];
-        $col = $_POST['col'];
-        $sql = "insert into $table($col) values($value)";
+        $sql = "insert into $table values($value)";
         $msg['sql'] = $sql;
         
         try {

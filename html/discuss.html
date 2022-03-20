@@ -58,7 +58,7 @@
                                 <!-- 放文章的地方 -->
                                 <div class="row" >
                                     <!-- 文章卡片 -->
-                                    <div class="article_cards" v-for="(card,index) in article">
+                                    <div class="article_cards" v-for="(card,index) in article.slice(startPage, startPage + perPage)">
                                         <div class="line_top">
                                             <p>{{article[index].topicName}}</p>
                                             <p>|</p>
@@ -96,10 +96,11 @@
                                     </div>
                                     <!-- 頁籤按鈕 -->
                                     <div class="content_pages">
-                                        <button class="other_btn">1</button>
-                                        <button class="other_btn">2</button>
-                                        <button class="other_btn">3</button>
-                                        <span>&#10230;</span>
+                                        <ul>
+                                            <!-- <li :class="{disabled: currentPage === 1}" @click="setPage(currentPage-1)"><a href="#">Prev</a></li> -->
+                                            <button class="other_btn" v-for="n in totalPage" @click="setPage(n)"><a href="#">{{n}}</a></button>
+                                            <!-- <li :class="{disabled: currentPage === totalPage}" @click="setPage(currentPage+1)"><a href="#"><span>&#10230;</span></a></li> -->
+                                        </ul>
                                     </div>
                                 </div>     
                             </div>
@@ -116,7 +117,7 @@
                         <img :src="iconClose" id="close">
                     </div>
                     <div class="author img_box narrow">
-                        <img :src="imgSrc('member', getTitle.memImage)" alt="會員頭像">
+                        <img :src="imgSrc(getTitle.memImage)" alt="會員頭像">
                         <span>{{getTitle.memName}}</span>
                     </div>
                     <div class="article_view_title narrow">
@@ -170,7 +171,7 @@
                 <!-- 使用者要留言的地方 -->
                 <div class="response_box">
                     <div class="user_img_box">
-                        <img :src="author_hat_img" alt="會員頭像">
+                        <img :src="imgSrc(userData.sticker)" alt="會員頭像">
                     </div>
                     <div class="user_txt_box">
                         <textarea  cols="1" rows="1"></textarea>
@@ -250,15 +251,14 @@
         new Vue({
             el: '#app',
             data: { //變數放這
+                userData: getSessionData(),
                 urls: {
-                    '今日運勢': 'con_today_fortune.html',
-                    '星座配對': 'con_pair.html',
-                    '真實星座': 'con_real_constellation.html',
-                    '星盤推算': 'astrolabe.html',
-                    '星座故事': 'con_story.html',
-                    '星座討論區': 'discuss.html',
+                    '體驗占卜師': 'be_tellers.html',
+                    '線上占卜': 'online_divination.html',
+                    '預約占卜師': 'teller_mem.html',
+                    '塔羅討論區': 'discuss.html',
                 },
-                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+                navs: ['體驗占卜師','線上占卜','占卜師總覽','塔羅討論區'],
                 cates: {},
                 labels: ['熱門','最新'],
                 iconMessage: 'images/icon/icon_discuss_message.svg',
@@ -273,6 +273,8 @@
                 getTitle: {},
                 msgIdx:{},
                 newPost:[],
+                perPage: 5,
+                currentPage: 1,
             },
             created() {
                 this.getCol();
@@ -289,17 +291,9 @@
                         this.$data.article[index].likes += 1;
                     }
                 },
-                imgSrc(folder, image) {
-                    switch (folder) {
-                        case 'member':
-                            folder = 'teller_mem';
-                            break;
-                        case 'product':
-                            folder = 'shop';
-                            break;
-                        }
-                    let path = `images/${folder}`;
-                    return `${path}/${image}`;
+                imgSrc(image){
+                let path = `images/teller_mem`;
+                return `${path}/${image}`;
                 },
                 getIndex(index){
                     // console.log(this.getMsg(index));
@@ -396,6 +390,17 @@
                             console.log('ajax error');
                         }
                     });
+                },
+                setPage(thePage){
+                    this.currentPage = thePage;
+                },
+            },
+            computed: {
+                totalPage(){
+                    return Math.ceil(this.article.length / this.perPage);
+                },
+                startPage(){
+                    return (this.currentPage - 1) * this.perPage;
                 },
             },
         });
