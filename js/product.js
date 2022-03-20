@@ -200,3 +200,46 @@ $(document).on('click','.item',function(){
 });
 window.addEventListener('load', getRecommended);
 
+//購物車功能
+function setCart() {
+    let tocart = document.querySelector('#buyNow');
+    let topay = document.querySelector('#addCart');
+
+    tocart.addEventListener('click',save)
+    topay.addEventListener('click',save)
+};
+
+setCart();
+
+function save(){
+    let thisProdNo = localStorage.getItem('prodNumber');
+    let count = document.querySelector('#prodAmount').value;
+    let item = {    //要存的("key","value")
+        prodNo: thisProdNo,
+        amount: count,
+    };
+
+
+    //(重複商品不加購物車)
+    console.log(item)
+    let cart = localStorage.getItem('cart');    //拿到localstorage
+    cart = cart ? JSON.parse(cart) : [];    //轉JSON格式
+    let found = false;
+
+    for(let i=0; i<cart.length; i++){    
+        if(cart[i].prodNo === item.prodNo){
+            cart[i] = item;
+            found = true;
+            break;
+        }    
+    }
+
+
+    if(found === false){
+        cart.push(item);   //新的都要往後加
+    }
+
+    // console.log(cart)
+    localStorage.setItem('cart', JSON.stringify(cart));    //轉成字串，傳到localstorage
+}
+
