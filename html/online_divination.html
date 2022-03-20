@@ -12,9 +12,11 @@
 
 
 <!-- 網頁內容 -->
-<main>
+<main id="app">
+     <!-- 塔羅頁籤 謝謝蘋姊拯救世界 by NJ -->
+     @@include('layout/tar_page.html')
 
-<!-- 線上占卜 by NJ -->
+    <!-- 線上占卜 by NJ -->
     <!-- 占卜選項 -->
     <section class="basicinfor">
         <div class="container">
@@ -131,6 +133,21 @@
 <!-- <footer class="main_footer"></footer> -->
 @@include('layout/footer.html')
 <script>
+
+        new Vue({
+            el: '#app',
+            data: { //變數放這
+                urls: {
+                    '體驗占卜師': 'be_tellers.html',
+                    '線上占卜': 'online_divination.html',
+                    '預約占卜師': 'teller_mem.html',
+                    '塔羅討論區': 'discuss.html',
+                },
+                navs: ['體驗占卜師','線上占卜','占卜師總覽','塔羅討論區'],
+            },
+         });
+
+
     for(let i=0; i< 4; i++){
     const card = document.querySelectorAll('.card')[i];
     const front = document.querySelectorAll('.card .front')[i];
@@ -164,24 +181,42 @@
                     let cards = $('.card');
                     // console.log(cards);
                     for (let i = 0; i < data.msg.length; i++) {
-                        let typeno = data.msg[i].typeNo-1;
-                        let card = cards[typeno]; //有幾個問題
-                        
-                        // 找card的小孩有沒有class="back"
-                        // if( document.getElementsByClassName("back").length > 0){
-                            let back = document.createElement("div");
+                        let typeno = data.msg[i].typeNo;
+                        // let card = cards[typeno]; // 這個問題放在哪個卡片裡
+                        // console.log(cards.children());
+                        let card = $(`.card:nth-child(${typeno})`);
+                        let back = $(`.card:nth-child(${typeno}) .back`);
+                        if (back.length === 0) {
+                            // console.log(card);
+                            back = document.createElement("div");
                             back.classList.add("back");
-                            document.querySelector('.card').appendChild(back);
+                            card.append(back);
                             let backDiv = document.createElement("div");
-                            back.appendChild(backDiv);
-                            let a = document.createElement('a');
-                            a.href = `draw_cards.html?type=${data.msg[i].typeNo}`;
-                            a.classList.add('cardLink');
-                            backDiv.appendChild(a); 
-                            
+                            back.append(backDiv);
+                        }
+                        // console.log($('.card .back').length);
+                        // 找card的小孩有沒有class="back"
+                        // let cards = document.querySelector("card");
+                        // if( !card.has("back") ){
+                        //     let back = document.createElement("div");
+                        //     back.classList.add("back");
+                        //     document.querySelector('.card').appendChild(back);
                         // }
+
+                            
+                            let a = document.createElement('a');
+                            a.href = `draw_cards.html?type=${typeno}&no=${data.msg[i].divNo}`;
+                            a.classList.add('cardLink');
+                            $(`.card:nth-child(${typeno}) .back div`).append(a); 
+                            // let cardLink = document.querySelector('.cardLink');
+                            let cardBtn = document.createElement('button');
+                            cardBtn.classList.add('choose_btn');
+                            cardBtn.innerHTML = data.msg[i].title;
+                            a.appendChild(cardBtn);
+                            
                         
-                        console.log(card);
+                        
+                        // console.log(card);
                         
                     }
 

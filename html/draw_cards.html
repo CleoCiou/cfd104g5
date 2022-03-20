@@ -331,7 +331,7 @@
 				// 要 join 的資料表 (如果沒有就不用打)
 				joinTable: 'tarot_detail',
 				// 要查詢的欄位
-				queryCol: 'tarot.tarNo, tarName, tarEngName, tarImage, tarDetNo, detail, direction, tarMeaning',
+				queryCol: 'tarot.tarNo, typeNo, tarName, tarEngName, tarImage, tarDetNo, detail, direction, tarMeaning',
 				// join 的條件 (如果沒有join就不用打)
 				joinOn: 'tarNo',
 				condition: `typeNo = ${typeNo}`,
@@ -350,7 +350,7 @@
 					document.querySelector('.detail').innerHTML = data.msg[0].detail;
 					tarDetNo = data.msg[0].tarDetNo;
 
-					insertData = `default, userNo, 1, ${data.msg[0].tarDetNo}, default`;
+					insertData = `default, userNo, ${data.msg[0].typeNo}, ${data.msg[0].tarDetNo}, default`;
 				}
 			},
 			error: function() {

@@ -12,259 +12,260 @@
     @@include('layout/header.html')
 
     <!-- 網頁內容 -->
-    <main>
+    <main id="app">
+        
+            <!-- 塔羅頁籤 謝謝蘋姊拯救世界 by NJ -->
+            @@include('layout/tar_page.html')
+            <!-- 體驗占卜師 by NJ -->
+            <!-- 塔羅牌介紹 -->
+            <section class="tarotcards">
+                <div class="container">
 
-        <!-- 體驗占卜師 by NJ -->
-        <!-- 塔羅牌介紹 -->
-        <section class="tarotcards">
-            <div class="container">
-
-                <h1>體驗占卜師</h1>
-                <!-- 容器到item_box，從item開始才是正式內容 -->
-                <h2>塔羅牌介紹</h2>
-                <div class="book_item">
-                    <div class="img_box">
-                        <img src="images/be_teller/tarot_cards_intro.gif" alt="">
-                        <div class="txt_box">
-                            <p>TAROT CARDS</p>
-                            <span>傳統上塔羅牌有78張牌，由兩種不同的牌組所組成。 第一種稱為大阿爾克那，由22張沒有花色的牌所組成，相當於所謂的「王牌」。
-                                第二種稱為小阿爾克那，由56張牌所組成，而這56張牌又可以分成4種花色。 每種花色有數字2到數字10的牌，加上一張Ace和四張宮廷牌。</span>
-                            <a href="tarot_book.html">
-                                <button class="secondary_btn">read more</button>
-                            </a>
+                    <h1>體驗占卜師</h1>
+                    <!-- 容器到item_box，從item開始才是正式內容 -->
+                    <h2>塔羅牌介紹</h2>
+                    <div class="book_item">
+                        <div class="img_box">
+                            <img src="images/be_teller/tarot_cards_intro.gif" alt="">
+                            <div class="txt_box">
+                                <p>TAROT CARDS</p>
+                                <span>傳統上塔羅牌有78張牌，由兩種不同的牌組所組成。 第一種稱為大阿爾克那，由22張沒有花色的牌所組成，相當於所謂的「王牌」。
+                                    第二種稱為小阿爾克那，由56張牌所組成，而這56張牌又可以分成4種花色。 每種花色有數字2到數字10的牌，加上一張Ace和四張宮廷牌。</span>
+                                <a href="tarot_books.html">
+                                    <button class="secondary_btn">read more</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
+            </section>
 
+            <!-- 塔羅牌禁忌 -->
+            <section class="taboo">
+                <div class="container">
 
-            </div>
-        </section>
-
-        <!-- 塔羅牌禁忌 -->
-        <section class="taboo">
-            <div class="container">
-
-                <!-- 容器到item_box，從item開始才是正式內容 -->
-                <h2>塔羅牌禁忌</h2>
-                <div class="taboo_box">
-                    <h3>占卜如何問得準？</h3>
-                    <div class="row_down">
-                        <div class="four">
-                            <div class="item">
-                                <div class="txt_box">
-                                    <h4>1. 一定要親手洗牌</h4>
+                    <!-- 容器到item_box，從item開始才是正式內容 -->
+                    <h2>塔羅牌禁忌</h2>
+                    <div class="taboo_box">
+                        <h3>占卜如何問得準？</h3>
+                        <div class="row_down">
+                            <div class="four">
+                                <div class="item">
+                                    <div class="txt_box">
+                                        <h4>1. 一定要親手洗牌</h4>
+                                    </div>
+                                    <div class="img_box">
+                                        <img src="images/be_teller/taboo_1.svg" alt="禁忌一">
+                                    </div>
                                 </div>
-                                <div class="img_box">
-                                    <img src="images/be_teller/taboo_1.svg" alt="禁忌一">
+                                <div class="item">
+                                    <div class="txt_box">
+                                        <h4>2. 正常洗牌</h4>
+                                    </div>
+                                    <div class="img_box">
+                                        <img src="images/be_teller/taboo_2.svg" alt="禁忌二">
+                                    </div>
                                 </div>
+                                <div class="item">
+                                    <div class="txt_box">
+                                        <h4>3. 邊洗牌邊想一個問題</h4>
+                                    </div>
+                                    <div class="img_box">
+                                        <img src="images/be_teller/taboo_3.svg" alt="禁忌三">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="txt_box">
+                                        <h4>4. 用非慣用手抽牌</h4>
+                                    </div>
+                                    <div class="img_box">
+                                        <img src="images/be_teller/taboo_4.svg" alt="禁忌四">
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="item">
                                 <div class="txt_box">
-                                    <h4>2. 正常洗牌</h4>
+                                    <h4>5. 清牌及抽牌時也要專注，心無雜念</h4>
                                 </div>
                                 <div class="img_box">
-                                    <img src="images/be_teller/taboo_2.svg" alt="禁忌二">
+                                    <img src="images/be_teller/taboo_5.svg" alt="禁忌五">
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="txt_box">
-                                    <h4>3. 邊洗牌邊想一個問題</h4>
-                                </div>
-                                <div class="img_box">
-                                    <img src="images/be_teller/taboo_3.svg" alt="禁忌三">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="txt_box">
-                                    <h4>4. 用非慣用手抽牌</h4>
-                                </div>
-                                <div class="img_box">
-                                    <img src="images/be_teller/taboo_4.svg" alt="禁忌四">
-                                </div>
-                            </div>
-
                         </div>
-                        <div class="item">
+                        <div class="row">
+                            <div class="item">
+                                <div class="txt_box">
+                                    <h4>6. 不用說任何東西給占卜師聽</h4>
+                                    <p>占卜師可從你抽的牌中看到事情的真相及狀況。
+                                    </p>
+                                </div>
+                                <div class="img_box">
+                                    <img src="images/be_teller/taboo_6.svg" alt="禁忌六">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="txt_box">
+                                    <h4>7. 如有第二條問題想問，一定要重新再洗牌</h4>
+                                    <p>絕不可一個問題任意抽卡，再狂問不同的問題。
+                                    </p>
+                                </div>
+                                <div class="img_box">
+                                    <img src="images/be_teller/taboo_7.svg" alt="禁忌七">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="taboo_item">
                             <div class="txt_box">
-                                <h4>5. 清牌及抽牌時也要專注，心無雜念</h4>
+                                <h3>占卜有甚麼禁忌？</h3>
+                                <ol>
+                                    <li>
+                                        1.不可於24小時內重複占卜完全相同的問題。
+                                    </li>
+                                    <li>
+                                        2.不可在一次洗牌中問多條問題
+                                    </li>
+                                    <li>
+                                        3.塔羅占卜最多只占卜到未來12個月的事，絕對問不到多於12個月的事情。
+                                    </li>
+                                </ol>
                             </div>
                             <div class="img_box">
-                                <img src="images/be_teller/taboo_5.svg" alt="禁忌五">
+                                <img src="images/be_teller/taboo.jpg" alt="禁忌照片
+                            ">
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="item">
+
+                </div>
+            </section>
+
+            <!-- 占卜師測驗 -->
+            <section class="tarottest">
+                <div class="container">
+
+                    <!-- 容器到item_box，從item開始才是正式內容 -->
+                    <h2>占卜師測驗</h2>
+
+                    <div class="test_block">
+                        <!-- 第一題 -->
+                        <div class="test_item">
+                            <div class="img_box">
+                                <img src="images/be_teller/black_cat_wizard.svg" alt="吉祥物">
+                            </div>
                             <div class="txt_box">
-                                <h4>6. 不用說任何東西給占卜師聽</h4>
-                                <p>占卜師可從你抽的牌中看到事情的真相及狀況。
-                                </p>
+                                <h4>問題:</h4>
+                                <p class="tarottestQ">哪一張塔羅牌的關鍵字是無限的能量，自由，期待，天真，更新，成長，發展?</p>
+                                <h4>選項:</h4>
+                                <div class="answer">
+                                    <button class="third_btn tarottestA" data-index="0">A.愚者</button>
+                                    <button class="third_btn tarottestB" data-index="0">B.教皇</button>
+                                    <button class="third_btn tarottestC" data-index="0">C.隱者</button>
+                                    <button class="third_btn tarottestD" data-index="0">D.魔術師</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 第二題 -->
+                        <div class="test_item other" id="second_subject">
+                            <div class="txt_box">
+                                <h4>問題:</h4>
+                                <p class="tarottestQ">隱者塔羅牌的關鍵字是自我發現，沉思，精神理解，超脫，直覺，保密，那他代表的意義為何?</p>
+                                <h4>選項:</h4>
+                                <button class="third_btn tarottestA" data-index="1">A.力量</button>
+                                <button class="third_btn tarottestB" data-index="1">B.旅程</button>
+                                <button class="third_btn tarottestC" data-index="1">C.尋求</button>
+                                <button class="third_btn tarottestD" data-index="1">D.智慧</button>
                             </div>
                             <div class="img_box">
-                                <img src="images/be_teller/taboo_6.svg" alt="禁忌六">
+                                <img src="images/be_teller/black_cat_wizard_left.svg" alt="吉祥物">
                             </div>
                         </div>
-                        <div class="item">
+                        <!-- 第三題 -->
+                        <div class="test_item other" id="third_subject">
+                            <div class="img_box">
+                                <img src="images/be_teller/black_cat_wizard.svg" alt="吉祥物">
+                            </div>
                             <div class="txt_box">
-                                <h4>7. 如有第二條問題想問，一定要重新再洗牌</h4>
-                                <p>絕不可一個問題任意抽卡，再狂問不同的問題。
-                                </p>
+                                <h4>問題:</h4>
+                                <p class="tarottestQ">
+                                    哪一張塔羅牌的統治行星是天王星，元素是風?</p>
+                                <h4>選項:</h4>
+                                <button class="third_btn tarottestA" data-index="2">A.月亮</button>
+                                <button class="third_btn tarottestB" data-index="2">B.太陽</button>
+                                <button class="third_btn tarottestC" data-index="2">C.星星</button>
+                                <button class="third_btn tarottestD" data-index="2">D.高塔</button>
+                            </div>
+                        </div>
+                        <!-- 第四題 -->
+                        <div class="test_item other" id="fourth_subject">
+                            <div class="txt_box">
+                                <h4>問題:</h4>
+                                <p class="tarottestQ">
+                                    哪一張塔羅牌的描述是一個疲憊的男人獨自站在一個防守的姿勢，緊緊地抱著一個接觸地面的權杖。<br>額頭上纏著繃帶，表明因戰鬥而受傷。身後還有八個不同大小的權杖，牢牢地紮在地上，像籬笆一樣排列。<br>
+                                    背景包括一連串青翠的山丘和上面的藍天?</p>
+                                <h4>選項:</h4>
+                                <button class="third_btn tarottestA" data-index="3">A.權杖三</button>
+                                <button class="third_btn tarottestB" data-index="3">B.權杖五</button>
+                                <button class="third_btn tarottestC" data-index="3">C.權杖七</button>
+                                <button class="third_btn tarottestD" data-index="3">D.權杖九</button>
                             </div>
                             <div class="img_box">
-                                <img src="images/be_teller/taboo_7.svg" alt="禁忌七">
+                                <img src="images/be_teller/black_cat_wizard_left.svg" alt="吉祥物">
+                            </div>
+                        </div>
+                        <!-- 第五題 -->
+                        <div class="test_item other" id="fifth_subject">
+                            <div class="img_box">
+                                <img src="images/be_teller/black_cat_wizard.svg" alt="吉祥物">
+                            </div>
+                            <div class="txt_box">
+                                <h4>問題:</h4>
+                                <p class="tarottestQ">
+                                    哪一張塔羅牌的關鍵字是長期遠見，耐心，投資，成功，獎勵，戶外旅行，渴望獲得更多?</p>
+                                <h4>選項:</h4>
+                                <button class="third_btn tarottestA" data-index="4">A.寶劍二</button>
+                                <button class="third_btn tarottestB" data-index="4">B.聖杯八</button>
+                                <button class="third_btn tarottestC" data-index="4">C.錢幣七</button>
+                                <button class="third_btn tarottestD" data-index="4">D.權杖六</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 測驗結果 -->
+                    <div class="test_result">
+                        <div class="pass_item">
+                            <div class="img_box">
+                                <img src="images/be_teller/pass_cat.png" alt="pass">
+                            </div>
+                            <div class="txt_box">
+                                <!-- <p>恭喜通過!</p> -->
+                            </div>
+                        </div>
+                        <div class="fail_item">
+                            <div class="img_box">
+                                <img src="images/be_teller/fail_cat.png" alt="fail">
+                            </div>
+                            <div class="txt_box">
+                                <!-- <p>未通過~</p> -->
                             </div>
                         </div>
                     </div>
 
-                    <div class="taboo_item">
-                        <div class="txt_box">
-                            <h3>占卜有甚麼禁忌？</h3>
-                            <ol>
-                                <li>
-                                    1.不可於24小時內重複占卜完全相同的問題。
-                                </li>
-                                <li>
-                                    2.不可在一次洗牌中問多條問題
-                                </li>
-                                <li>
-                                    3.塔羅占卜最多只占卜到未來12個月的事，絕對問不到多於12個月的事情。
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="img_box">
-                            <img src="images/be_teller/taboo.jpg" alt="禁忌照片
-                        ">
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </section>
-
-        <!-- 占卜師測驗 -->
-        <section class="tarottest">
-            <div class="container">
-
-                <!-- 容器到item_box，從item開始才是正式內容 -->
-                <h2>占卜師測驗</h2>
-
-                <div class="test_block">
-                    <!-- 第一題 -->
-                    <div class="test_item">
-                        <div class="img_box">
-                            <img src="images/be_teller/black_cat_wizard.svg" alt="吉祥物">
-                        </div>
-                        <div class="txt_box">
-                            <p>問題:</p>
-                            <p class="tarottestQ">哪一張塔羅牌的關鍵字是無限的能量，自由，期待，天真，更新，成長，發展?</p>
-                            <p>選項:</p>
-                            <div class="answer">
-                                <button class="third_btn tarottestA" data-index="0">A.愚者</button>
-                                <button class="third_btn tarottestB" data-index="0">B.教皇</button>
-                                <button class="third_btn tarottestC" data-index="0">C.隱者</button>
-                                <button class="third_btn tarottestD" data-index="0">D.魔術師</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 第二題 -->
-                    <div class="test_item other" id="second_subject">
-                        <div class="txt_box">
-                            <p>問題:</p>
-                            <p class="tarottestQ">隱者塔羅牌的關鍵字是自我發現，沉思，精神理解，超脫，直覺，保密，那他代表的意義為何?</p>
-                            <p>選項:</p>
-                            <button class="third_btn tarottestA" data-index="1">A.力量</button>
-                            <button class="third_btn tarottestB" data-index="1">B.旅程</button>
-                            <button class="third_btn tarottestC" data-index="1">C.尋求</button>
-                            <button class="third_btn tarottestD" data-index="1">D.智慧</button>
-                        </div>
-                        <div class="img_box">
-                            <img src="images/be_teller/black_cat_wizard.svg" alt="吉祥物">
-                        </div>
-                    </div>
-                    <!-- 第三題 -->
-                    <div class="test_item other" id="third_subject">
-                        <div class="img_box">
-                            <img src="images/be_teller/black_cat_wizard.svg" alt="吉祥物">
-                        </div>
-                        <div class="txt_box">
-                            <p>問題:</p>
-                            <p class="tarottestQ">
-                                哪一張塔羅牌的統治行星是天王星，元素是風?</p>
-                            <p>選項:</p>
-                            <button class="third_btn tarottestA" data-index="2">A.月亮</button>
-                            <button class="third_btn tarottestB" data-index="2">B.太陽</button>
-                            <button class="third_btn tarottestC" data-index="2">C.星星</button>
-                            <button class="third_btn tarottestD" data-index="2">D.高塔</button>
-                        </div>
-                    </div>
-                    <!-- 第四題 -->
-                    <div class="test_item other" id="fourth_subject">
-                        <div class="txt_box">
-                            <p>問題:</p>
-                            <p class="tarottestQ">
-                                哪一張塔羅牌的描述是一個疲憊的男人獨自站在一個防守的姿勢，緊緊地抱著一個接觸地面的權杖。<br>額頭上纏著繃帶，表明因戰鬥而受傷。身後還有八個不同大小的權杖，牢牢地紮在地上，像籬笆一樣排列。<br>
-                                背景包括一連串青翠的山丘和上面的藍天?</p>
-                            <p>選項:</p>
-                            <button class="third_btn tarottestA" data-index="3">A.權杖三</button>
-                            <button class="third_btn tarottestB" data-index="3">B.權杖五</button>
-                            <button class="third_btn tarottestC" data-index="3">C.權杖七</button>
-                            <button class="third_btn tarottestD" data-index="3">D.權杖九</button>
-                        </div>
-                        <div class="img_box">
-                            <img src="images/be_teller/black_cat_wizard.svg" alt="吉祥物">
-                        </div>
-                    </div>
-                    <!-- 第五題 -->
-                    <div class="test_item other" id="fifth_subject">
-                        <div class="img_box">
-                            <img src="images/be_teller/black_cat_wizard.svg" alt="吉祥物">
-                        </div>
-                        <div class="txt_box">
-                            <p>問題:</p>
-                            <p class="tarottestQ">
-                                哪一張塔羅牌的關鍵字是長期遠見，耐心，投資，成功，獎勵，戶外旅行，渴望獲得更多?</p>
-                            <p>選項:</p>
-                            <button class="third_btn tarottestA" data-index="4">A.寶劍二</button>
-                            <button class="third_btn tarottestB" data-index="4">B.聖杯八</button>
-                            <button class="third_btn tarottestC" data-index="4">C.錢幣七</button>
-                            <button class="third_btn tarottestD" data-index="4">D.權杖六</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- 測驗結果 -->
-                <div class="test_result">
-                    <div class="pass_item">
-                        <div class="img_box">
-                            <img src="images/be_teller/pass_cat.png" alt="pass">
-                        </div>
-                        <div class="txt_box">
-                            <!-- <p>恭喜通過!</p> -->
-                        </div>
-                    </div>
-                    <div class="fail_item">
-                        <div class="img_box">
-                            <img src="./images/be_teller/fail-cat1.png" alt="fail">
-                        </div>
-                        <div class="txt_box">
-                            <!-- <p>未通過~</p> -->
-                        </div>
+                    <!-- 跳頁按鈕 -->
+                    <div class="change_page_item">
+                        <a href="be_tellers.html"><button class="second_btn">再來一次</button></a>
+                        <a href="online_divination.html"><button class="second_btn">線上占卜</button></a>
+                        <a href="teller_mem.html"><button class="second_btn">預約占卜師</button></a>
+                        <a href="shop.html"><button class="second_btn">商城</button></a>
                     </div>
                 </div>
 
 
-                <!-- 跳頁按鈕 -->
-                <div class="change_page_item">
-                    <a href="be_tellers.html"><button class="second_btn">再來一次</button></a>
-                    <a href="online_divination.html"><button class="second_btn">線上占卜</button></a>
-                    <a href="teller_mem.html"><button class="second_btn">預約占卜師</button></a>
-                    <a href="shop.html"><button class="second_btn">商城</button></a>
                 </div>
-            </div>
-
-
-            </div>
-        </section>
-
+            </section>
     </main>
 
 
@@ -272,8 +273,23 @@
     <!-- 內容由 common.js 新增 by PIN -->
     @@include('layout/footer.html')
 
-    
+
+
+    <!-- ===================================== -->
     <script>
+         new Vue({
+            el: '#app',
+            data: { //變數放這
+                urls: {
+                    '體驗占卜師': 'be_tellers.html',
+                    '線上占卜': 'online_divination.html',
+                    '預約占卜師': 'teller_mem.html',
+                    '塔羅討論區': 'discuss.html',
+                },
+                navs: ['體驗占卜師','線上占卜','占卜師總覽','塔羅討論區'],
+            },
+         });
+  
         let ans = [];
         let alreadyTest = false;
         $(".third_btn").click(function () {
@@ -302,13 +318,7 @@
                 alreadyTest = true;  
             }
         });
-    </script>
-
-
-    <!-- ===================================== -->
-    <script>
-
-
+    
         // 塔羅測驗 -> 要放在 tarottest txt_box (問題: txt_box p)
         // 想從 g5資料庫 的 tarot資料表 撈出所有的塔羅牌編號(tarNo)、塔羅牌名稱(tarName)、塔羅牌英文名稱(tarEngName)、塔羅牌圖片(tarImage)、塔羅牌解析(tarProduction) 資料
 
@@ -388,31 +398,6 @@
                             // console.log(data.msg[4].tarName);
                         }
 
-                        //     // 很多! -> 迴圈
-                        //     for (let i = 0; i < data.msg.length; i++) {
-                        //         // 產生可用 createElement, appendChild 等等
-                        //         // 創造卡片
-                        //         let card = document.createElement('div');
-                        //         card.classList.add('card');
-                        //         // 創造文章編號
-                        //         let artNo = document.createElement('span');
-                        //         artNo.classList.add('artNo');
-                        //         artNo.innerText = data.msg[i].artNo;
-                        //         // 創造文章主題名稱
-                        //         let topicName = document.createElement('span');
-                        //         topicName.classList.add('topicName');
-                        //         topicName.innerText = data.msg[i].topicName;
-                        //         // 創造文章標題
-                        //         let title = document.createElement('p');
-                        //         title.classList.add('title');
-                        //         title.innerText = data.msg[i].title;
-                        //         // 把子項目放進 card 裡
-                        //         card.appendChild(artNo);
-                        //         card.appendChild(topicName);
-                        //         card.appendChild(title);
-                        //         // 把卡片放進資訊盒裡
-                        //         document.querySelector('.info_box_js').appendChild(card);
-                        //     }
                     }
                 },
                 error: function () {
