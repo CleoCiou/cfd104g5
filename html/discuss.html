@@ -174,10 +174,10 @@
                         <img :src="imgSrc(userData.sticker)" alt="會員頭像">
                     </div>
                     <div class="user_txt_box">
-                        <textarea  cols="1" rows="1"></textarea>
+                        <textarea  cols="1" rows="1" v-model="msgContent"></textarea>
                     </div>
                     <div class="res_btn_box">
-                        <input type="submit" class="submit_btn" value="送出">
+                        <button class="submit_btn" @click="insertData">送出</button>
                     </div>
                 </div>
             </section>
@@ -275,13 +275,14 @@
                 newPost:[],
                 perPage: 5,
                 currentPage: 1,
+                msgContent: '',
             },
             created() {
-                this.getCol();
+                this.getCol(this.isChecked);
                 this.getTopic();
             },
             mounted() {
-                this.getCol(this.isChecked);
+                
             },
             methods: {
                 changeLike(index){
@@ -372,7 +373,7 @@
                         
                         data: {
                             table: 'article_message',
-                            queryCol: 'artNo, msgTime, msgContent, memId, memImage',
+                            queryCol: 'msgNo, artNo, msgTime, msgContent, memId, memImage',
                             joinTable: 'members',
                             joinOn: 'memNo',
                             condition: `article_message.artNo =  ${msgIdx.artNo}`,
@@ -385,6 +386,31 @@
                                 this.message = data.msg;
                                 // console.log(thisVue.message);
                             }
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                insertData() {
+                    let msgContent = this.msgContent;
+                    let memNo = this.userData.userNo;
+                    let artNo = this.getTitle.artNo;
+
+                    // 新增資料
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/insert.php',
+                        data: {
+                            table: 'article_message',
+                            // col: 'msgNo, artNo, memNo, msgTime, MsgContent, statue',
+                            insertValue: `default, '${artNo}', '${memNo}', CURRENT_TIMESTAMP, '${msgContent}', default`
+                        },
+                        success: data => {
+                            alert('留言成功');
+                            console.log(data.sql);
+                            window.location.reload();
+                            this.getCol(v);
                         },
                         error: err => {
                             console.log('ajax error');
