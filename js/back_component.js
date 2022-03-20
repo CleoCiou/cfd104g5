@@ -58,6 +58,7 @@ Vue.component('top-action-bar', {
     methods: {
         updateDb(e) {
             this.$emit('update-db', e.target);
+            // 這邊this是找data裡的資料 this.$emit('自訂事件',)    如果要接受裡面的資料 就用 e.target自己定義的事件給別人    $emit是下往上丟
         }
     }
 })
@@ -89,10 +90,14 @@ Vue.component('my-table', {
             </table>
         </div>
     `,
+     // 從父層接收到'queryResult', 'colName', 'deconstructResult' 然後template就可以使用這三個東西
     props: ['queryResult', 'colName', 'deconstructResult'],
+    
     methods: {
         // 資料解構
         deconstructRow(row, index) {
+            
+        //    這邊this是找data裡的資料 this.$emit('自訂事件',)    如果要接受裡面的資料 就用deconstruct-row自己定義的事件給別人
             this.$emit('deconstruct-row', row, index);
             return deconstructResult;
         },

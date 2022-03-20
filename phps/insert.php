@@ -8,7 +8,10 @@
             echo json_encode($msg);
             return;
         }
-        
+        // (AA,aaa)
+        //ex: (死神,塔羅)
+        //ex: ($_POST['AAA'],$_POST['BB'])
+
         // 資料表
         $table = $_POST['table'];
         $value = $_POST['insertValue'];
