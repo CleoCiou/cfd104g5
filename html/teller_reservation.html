@@ -57,25 +57,28 @@
                     <div class="month-list"></div>
                 </div>
                 <div class="teller_form">
-                    <form action="">
+                    <form>
+                        <label>預約日期
+                            <input type="date" id="appointDate">
+                        </label>
+                        <label class="appointTime">預約時段
+                            <!-- 選項由 teller_reservation.js 動態新增 -->
+                        </label>
                         <label>
                             名　　稱
                             <input type="text" id="name">
                         </label>
-                        <label>性　　別
+                        <!-- <label>性　　別
                             <input type="radio" name="gender" value="male"> 男生
                             <input type="radio" name="gender" value="female"> 女生
-                        </label>
-                        <label>生　　日
-                            <input type="date">
-                        </label>
+                        </label> -->
                         <label>電　　話
-                            <input type="text">
+                            <input type="text" id="phone">
                         </label>
                     </form>
                     <!-- 表單按鈕 -->
                     <div class="teller_btn">
-                        <button class="primary_btn">送出</button>
+                        <button class="primary_btn send">送出</button>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,19 @@
+new Vue({
+    el: '#app',
+    data: { //變數放這
+        urls: {
+            '體驗占卜師': 'be_tellers.html',
+            '線上占卜': 'online_divination.html',
+            '預約占卜師': 'teller_mem.html',
+            '塔羅討論區': 'discuss.html',
+        },
+        navs: ['體驗占卜師','線上占卜','占卜師總覽','塔羅討論區'],
+    },
+ });
+
+
+
+
 var carousel = $(".item_box"),
   currdeg = 0;
 
@@ -34,7 +50,7 @@ window.onload = function getTeller() {
 
             queryCol: 'members.memName, members.memImage',
 
-            condition: "members.identity = '占卜師' AND astrologist.status = '通過'",
+            condition: "members.identity = '占卜師' AND astrologist.status = '一般'",
 
         },
         success: function(data) {
