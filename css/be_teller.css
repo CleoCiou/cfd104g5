@@ -1,3 +1,27 @@
+.tarot_nav .container ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.tarot_nav .container ul li{
+    margin: 1em;
+}
+.tarot_nav .container label{
+    margin: .9em;
+    padding: .5em 1em;
+    border: 1px solid #CFB886;
+    border-radius: .5em;
+    cursor: pointer;
+}
+.tarot_nav .container label:hover{
+    background-color: #CFB886;
+    color: #000;
+    transition: .3s;
+}
+
+
+/* ===================================================== */
 h2{
     padding-bottom: 0.5em;
 }
@@ -166,9 +190,11 @@ h2{
 }
 .pass_item .img_box{
     width: 40%;
+    margin: auto;
 }
 .fail_item .img_box{
     width: 40%;
+    margin: auto;
 }
 .pass_item .img_box img{
     width: 100%;
@@ -179,6 +205,9 @@ h2{
 
 /* 手機專用 */
 @media screen and (max-width:768px) {
+    .tarot_nav{
+        display: none;
+    }
     .tarotcards .book_item .img_box{
         position: relative;
         width: 100%;

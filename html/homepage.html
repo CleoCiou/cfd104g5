@@ -2,12 +2,19 @@
 <html lang="en">
 
     @@include('layout/head.html', {
-        'title': '首頁'
+        'title': '全方位線上共享占卜平台'
     })
 
 <link rel="stylesheet" href="css/index.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 <body>
+    <!-- 開場動畫 -->
+    <div class="opening_animation" id="video" > 
+        <button class="btn_hidden other_btn"  onclick="videoHidden()">SKIP</button>
+        <video autoplay muted>
+            <source src="images/media/opening_animation.mp4" type="audio/ogg">
+        </video>
+    </div>
     
 <!-- 網頁頭 by NJ -->
 <!-- <header class="main_header"></header> -->
@@ -309,10 +316,10 @@ function getHotTellerMemsList() {
                 // 要 join 的資料表 (如果沒有就不用打)
                 joinTable: 'astrologist',
                 // 要查詢的欄位
-                queryCol: 'memName, memImage, totalScore',
+                queryCol: 'astNo, memName, memImage, totalScore',
                 // join 的條件 (如果沒有join就不用打)
                 joinOn: 'memNo',
-                condition: 'identity="占卜師"',
+                condition: 'identity="占卜師" and astrologist.status = "一般"',
                 other: 'ORDER BY totalScore asc limit 3'
             },
             success: function(data) {
@@ -324,7 +331,7 @@ function getHotTellerMemsList() {
                     let hotTellerMems = `<div class="hot_fortune_teller_box">`;
                     for (let i = 0; i < data.msg.length; i++) {
                         hotTellerMems +=   `
-                                    <a href="teller_reservation.html">
+                                    <a href="teller_reservation.html?type=${data.msg[i].astNo - 1}">
                                     <div class="hot_fortune_teller_card">
                                         <div class="hot_fortune_teller_img">
                                             <img src="${hotTellerImg}${data.msg[i].memImage}">
@@ -363,8 +370,13 @@ function getHotProductsList() {
         data: {
             // 要查詢的資料表
             table: 'product',
+            // 要 join 的資料表 (如果沒有就不用打)
+            joinTable: 'product_category',
             // 要查詢的欄位
-            queryCol: 'prodName, price, prodImage1',
+            queryCol: 'prodName, product.prodCateNo, product_category.cateName, FORMAT(price, "C") price, prodImage1',
+            // join 的條件 (如果沒有join就不用打)
+            joinOn: 'prodCateNo',
+            
             other: ' ORDER BY  RAND() limit 3',
         },
         success: function(data) {
@@ -372,7 +384,7 @@ function getHotProductsList() {
                 console.log(data.msg);
 
                 // 很多! -> 迴圈
-                let hotProductsImg = "images/teller_mem/"
+                let hotProductsImg = "images/shop/tarot/"
                 let hotProducts = ` <div class="hot_product_box">`;
                 for (let i = 0; i < data.msg.length; i++) {
                     hotProducts +=   `
@@ -382,8 +394,8 @@ function getHotProductsList() {
                                     <img src="${hotProductsImg}${data.msg[i].prodImage1}">
                                 </div>
                                 <div class="hot_product_card_txt">
-                                    <h4>${data.msg[i].prodName}</h4>
-                                    <h4>$${data.msg[i].price}</h4>
+                                    <h4>${data.msg[i].prodName}${data.msg[i].cateName}</h4>
+                                    <h4>NT$${data.msg[i].price}</h4>
                                 </div>
                                 <div class="hot_product_icon">
                                     <img src="images/icon/icon_shop_eye.svg">
@@ -403,9 +415,17 @@ function getHotProductsList() {
 }
 // 何時要?
 window.addEventListener('load', getHotProductsList);
-
-
-
+//先執行外面closeVideo載入完成後  跑出裡面fadeOut淡出功能
+window.addEventListener('load',closeVideo);
+function closeVideo(){
+    setTimeout(function(){
+        $('.opening_animation').fadeOut(1000)
+    }, 6000);
+}
+//開場動畫SKIP
+function videoHidden() {
+   document.getElementById('video').style.display = "none";
+}
 
 </script>
 </body>

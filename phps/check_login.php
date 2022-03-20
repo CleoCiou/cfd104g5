@@ -33,6 +33,7 @@
                     $_SESSION['sticker'] = $row['memImage'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['creditNum'] = $row['creditNum'];
+                    $_SESSION['phoneNum'] = $row['phoneNum'];
                     // ...
                 }
             }

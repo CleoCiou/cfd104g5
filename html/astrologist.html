@@ -4,8 +4,7 @@
 @@include('layout/head.html', {
     'title': '占卜師專區'
 })
-<!-- <link rel="stylesheet" href="css/schedule.css"> -->
-<script src="js/schedule.js"></script>
+
 <body>
 
 @@include('layout/header.html')
@@ -25,7 +24,7 @@
                     <!-- 基本資料 -->
                     <div class="info_box">
                         <div class="img_box ast_sticker">
-                            <img :src="imgSrc('member', userData.sticker)">
+                            <img src="images/icon/user.svg">
                         </div>
                         <div class="txt_box">
                             
@@ -34,15 +33,13 @@
                                 <span class="ast_star">★★★★</span>
                             </h3>
                             <p class="introduce">
-                                {{ astrologistInfo.introduction }}
+                                {{ intro[0].introduction }}
                             </p>
-                            <textarea class="update_intro invisible"></textarea>
+                            <textarea class="update_intro invisible" id="astrologist_Intro" ></textarea>
                         </div>
                         <div class="action_box ast_action">
                             <button @click="updateIntro" class="third_btn">更新介紹</button>
-                            <a href="member.html">
-                                <button class="secondary_btn">會員專區</button>
-                            </a>
+                            <a href="member.html"><button class="secondary_btn">會員專區</button></a>
                         </div>
 
                     </div>
@@ -110,7 +107,7 @@
                 <!-- 行事曆 -->
                 <section class="item calendar">
                     我的行事曆
-                    <div id="schedule"></div>
+                    <calendar></calendar>
                 </section>
     
                 <!-- 我的評論 -->
@@ -148,58 +145,43 @@
 
 @@include('layout/footer.html')
 
-<link rel="stylesheet" href="./node_modules/fullcalendar/main.css">
-<script src='./node_modules/fullcalendar/main.js'></script>
+<script src="js/calendar.js"></script>
 <script>
-    // 日曆
-    createCalendar();
-
+    
     new Vue({
         el: '#app',
         data: {
+            // 變數放這兒
             userData: getSessionData(),
-            schedule: [],
-            appointments: []
+            // 要更改的框框
+            intro: [],
+            introUpdate: [],
         },
         mounted() {
-            this.getSchedule();
+            this.getIntro();
         },
         methods: {
-            getSchedule() {
-                // 取得排班情形
+            getIntro() {
                 $.ajax({
                     type: 'POST',
-                    url: 'phps/back_getCol.php',
+                    url: 'phps/select.php',
+                    
                     data: {
-                        no: this.userData.userNo,
-                        table: 'schedule',
+                        table: 'astrologist',
+                        queryCol: 'astNo, introduction',
+                        condition: `memNo = ${this.userData.userNo}`
                     },
-                    success: data => {
-                        data = JSON.parse(data);
-                        this.schedule = data.msg;
-                        
+                    success:  data => {
+                        // console.log(data.msg);
+                        if (data.msg !== false){
+                            this.intro = data.msg;
+                            // console.log(this.intro);
+                        }
                     },
                     error: err => {
-                        console.log(err);
+                        console.log('ajax error');
                     }
                 });
-
-                // 取得預約資訊
-                // $.ajax({
-                //     type: 'POST',
-                //     url: 'phps/back_getCol.php',
-                //     data: {
-                //         no: this.userData.userNo,
-                //         table: 'schedule',
-                //     },
-                //     success: data => {
-                //         data = JSON.parse(data);
-                //         this.schedule = data.msg;
-                //     },
-                //     error: err => {
-                //         console.log(err);
-                //     }
-                // });
             },
             updateIntro(e) {
                 let intro = document.querySelectorAll('.introduce')[0];
@@ -212,9 +194,48 @@
                 else {
                     e.target.innerText = '更新介紹';
                     intro.innerText = textarea.value;
-                }
+                    
+                    $.ajax({
+                            type: 'POST',
+                            url: 'phps/update.php',
+                            data: {
+                                table: 'astrologist',
+                                updateValue: `introduction = '${textarea.value}'`,
+                                where: `memNo = '${this.userData.userNo}'`
+                            },
+                            success: data => {
+                                // console.log(data.msg);
+                                if(data.msg !== false){
+                                    this.introUpdate = data.msg;
+                                }
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                    });        
+                };
                 intro.classList.toggle('invisible');
                 textarea.classList.toggle('invisible');
+            },
+            getReservation() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    
+                    data: {
+                        table: 'appointment',
+                        queryCol: 'introduction',
+
+                    },
+                    success:  data => {
+                        if (data.msg !== false){
+                            this.intro = data.msg;
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
             },
             changeStar(e) {
                 if (e.target.classList.contains('active_star')) {
@@ -237,20 +258,15 @@
             carsoul_last(e) {
             },
             carsoul_next(e) {
-                console.log(e.target);
-                let reservation_card = document.querySelectorAll('.reservation_card');
-                console.log(reservation_card);
-                let activeCard = document.querySelectorAll('.reservation_card.active')[0];
-                console.log(activeCard);
-                let i = Array.from(reservation_card).indexOf(activeCard);
-                let moveList = document.querySelectorAll('.reservation_list')[0];
-                console.log(moveList);
-                moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
-            }
-        },
-        computed: {
-            updateSchedule() {
-                console.log(this.schedule);
+            //     console.log(e.target);
+            //     let reservation_card = document.querySelectorAll('.reservation_card');
+            //     console.log(reservation_card);
+            //     let activeCard = document.querySelectorAll('.reservation_card.active')[0];
+            //     console.log(activeCard);
+            //     let i = Array.from(reservation_card).indexOf(activeCard);
+            //     let moveList = document.querySelectorAll('.reservation_list')[0];
+            //     console.log(moveList);
+            //     moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
             }
         }
     });

@@ -1,3 +1,27 @@
+.tarot_nav .container ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.tarot_nav .container ul li{
+    margin: 1em;
+}
+.tarot_nav .container label{
+    margin: .9em;
+    padding: .5em 1em;
+    border: 1px solid #CFB886;
+    border-radius: .5em;
+    cursor: pointer;
+}
+.tarot_nav .container label:hover{
+    background-color: #CFB886;
+    color: #000;
+    transition: .3s;
+}
+
+/* =========== 上面是頁籤 =========== */
+
 body {
     margin: 0;
     padding: 0;
@@ -27,14 +51,25 @@ body {
     position: relative;
 }
 @media screen and (max-width: 992px) {
-.card {
-    width: calc(50% - 2rem);
-}
+    .card {
+        width: calc(50% - 2rem);
+    }
 }
 @media screen and (max-width: 768px) {
-.card {
-    width: 60%;
-}
+    .card {
+        width: 60%;
+    }
+    
+    /* 手機版點擊 */
+    .filp{ 
+        transform: rotateY(180deg)
+    }
+    .rotate{ 
+        transform: rotateY(0deg);
+    }
+    .tarot_nav{
+        display: none;
+    }
 }
 
 .front,
@@ -104,3 +139,4 @@ body {
     color: #000;
     background-color:#CFB886;
 }
+
