@@ -34,7 +34,7 @@ window.onload = function getTeller() {
 
             queryCol: 'members.memName, members.memImage',
 
-            condition: "members.identity = '占卜師' AND astrologist.status = '通過'",
+            condition: "members.identity = '占卜師' AND astrologist.status = '一般'",
 
         },
         success: function(data) {

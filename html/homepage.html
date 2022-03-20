@@ -313,10 +313,10 @@ function getHotTellerMemsList() {
                 // 要 join 的資料表 (如果沒有就不用打)
                 joinTable: 'astrologist',
                 // 要查詢的欄位
-                queryCol: 'memName, memImage, totalScore',
+                queryCol: 'astNo, memName, memImage, totalScore',
                 // join 的條件 (如果沒有join就不用打)
                 joinOn: 'memNo',
-                condition: 'identity="占卜師"',
+                condition: 'identity="占卜師" and astrologist.status = "一般"',
                 other: 'ORDER BY totalScore asc limit 3'
             },
             success: function(data) {
@@ -328,7 +328,7 @@ function getHotTellerMemsList() {
                     let hotTellerMems = `<div class="hot_fortune_teller_box">`;
                     for (let i = 0; i < data.msg.length; i++) {
                         hotTellerMems +=   `
-                                    <a href="teller_reservation.html">
+                                    <a href="teller_reservation.html?type=${data.msg[i].astNo - 1}">
                                     <div class="hot_fortune_teller_card">
                                         <div class="hot_fortune_teller_img">
                                             <img src="${hotTellerImg}${data.msg[i].memImage}">

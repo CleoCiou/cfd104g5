@@ -363,6 +363,14 @@
     padding-top: 5px;
     text-align: right;
 }
+.teller_reservation .teller_btn .send.disabled {
+    background-color: #555;
+    border-color: transparent;
+    box-shadow: none;
+}
+.teller_reservation .teller_btn .send.disabled:hover {
+    transform: none;
+}
 .teller_board .txt_box{
     border: 1px solid #CFB886;
     border-radius: 0.5em;

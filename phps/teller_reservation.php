@@ -9,9 +9,9 @@
         $sql = "SELECT M.memName , M.memImage, C.memId, comment.content  , introduction
                 FROM astrologist
                 JOIN members M ON M.memNo = astrologist.memNo
-                JOIN appointment ON astrologist.astNo = appointment.astNo
-                JOIN comment ON comment.appointNo = appointment.appointNo
-                JOIN members C ON C.memNo = appointment.memNo
+                LEFT JOIN appointment ON astrologist.astNo = appointment.astNo
+                LEFT JOIN comment ON comment.appointNo = appointment.appointNo
+                LEFT JOIN members C ON C.memNo = appointment.memNo
                 WHERE astrologist.astNo = $astNo;";
         $msg['sql'] = $sql;
 

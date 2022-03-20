@@ -114,6 +114,20 @@ function changeDate() {
     month = month_names.indexOf(month) + 1;
     let date = $(this).text().trim()
     reservationDate = `${year}-${(month<10) ? '0'+month : month}-${(date<10) ? '0'+date : date}`;
+    // 可預約時間 以當日起算的 隔天到下個月同日
+    // e.g. 今天3/20, 可預約時間3/21-4/20
+    let nextM = new Date();
+    nextM.setMonth(nextM.getMonth() + 1);
+    let now = new Date();
+    now.setDate(now.getDate());
+    if (Date.parse(reservationDate) > Date.parse(now) && Date.parse(reservationDate) < Date.parse(nextM)) {
+        $('.teller_btn button.send')[0].disabled = false;
+        $('.teller_btn button.send')[0].classList.remove('disabled');
+    }
+    else {
+        $('.teller_btn button.send')[0].disabled = true;
+        $('.teller_btn button.send')[0].classList.add('disabled');
+    }
     $('#appointDate').val(reservationDate);
 
     // 查詢當日是否已有排班或排休
@@ -288,6 +302,7 @@ window.onload = function Teller() {
                 let tellerImg = "images/teller_mem/"
                 let tellerComments =`<h3>評論區</h3>`;
                 for (let i = 0; i < data.msg.length; i++) {
+                    if (data.msg[i].content === null) continue;
                     tellerComments +=   `
                                         <div class="txt_box">
                                             <h4>${data.msg[i].memId}</h4>
@@ -295,6 +310,7 @@ window.onload = function Teller() {
                                         </div>
                                         `;
                 }
+                tellerComments += (tellerComments === '<h3>評論區</h3>') ? `<div class="txt_box"><h4>尚無評論</h4></div>` : '';
                 let tellerInfo = `
                                     <div class="teller_profile">
                                         <div class="img_box">
