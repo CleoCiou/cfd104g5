@@ -1,9 +1,9 @@
-<section class="login display_none">
+<section class="login display_none" id="loginSection">
     <div class="container">
 
         <input type="checkbox" class="display_none" id="reg_log" name="reg_log">
 
-        <section class="card_box">
+        <section class="card_box" id="cardBox">
             <!-- 切換器 -->
             <div class="switch_box">
                 <div class="select_title">
@@ -52,6 +52,7 @@
                 </div>
     
                 <!-- 卡片背面: 註冊 -->
+                
                 <div class="card_item card_back">
                     <!-- 切換登入/註冊 -->
                     <div class="card_header">
@@ -73,13 +74,14 @@
                                 <div class="item verify">
                                     <ul>
                                         <li>帳號為必填欄位</li>
+                                        <li>帳號須為小寫英文、數字或底線的組合</li>
                                     </ul>
                                 </div>
         
                                 <!-- 密碼 -->
                                 <div class="item password">
                                     <i class="input-icon uil uil-lock-alt"></i>
-                                    <input type="password" name="memPwd" id="memPwd" placeholder="請輸入密碼">
+                                    <input type="password" name="memPwd" id="memPwd" minlength="6" placeholder="請輸入密碼">
                                 </div>
                                 <!-- 驗證 -->
                                 <div class="item verify">
@@ -109,7 +111,7 @@
                                 <!-- 大頭貼 -->
                                 <div class="item memImage">
                                     
-                                    <label for="memImage">
+                                    <label for="memImage" id="stickerLabel">
                                         <div class="img_box">
                                             <img src="images/icon/icon_discuss_mine.svg" alt="預設大頭貼" id="memImgBox">
                                         </div>
@@ -130,6 +132,17 @@
                                     <ul>
                                         <li>姓名不可為空</li>
                                     </ul>
+                                </div>
+
+                                <!-- 身分 -->
+                                <input type="radio" name="sex" id="male" class="display_none" value="男" checked>
+                                <input type="radio" name="sex" id="female" class="display_none" value="女">
+                                <div class="item sex">
+                                    <i class="fa-solid fa-person"></i>
+                                    <i class="uil uil-golf-ball male"></i>
+                                    <label class="male_txt" for="male">男性</label>
+                                    <i class="uil uil-golf-ball female"></i>
+                                    <label class="female_txt" for="female">女性</label>
                                 </div>
     
                                 <!-- 信箱 -->
@@ -166,8 +179,8 @@
                                 </div>
                                 
                                 <!-- 身分 -->
-                                <input type="radio" name="identity" id="general" class="display_none" checked>
-                                <input type="radio" name="identity" id="astrologist" class="display_none">
+                                <input type="radio" name="identity" id="general" class="display_none" value="一般會員" checked>
+                                <input type="radio" name="identity" id="astrologist" class="display_none" value="占卜師">
                                 <div class="item identity">
                                     <i class="uil uil-chat-bubble-user"></i>
                                     <i class="uil uil-golf-ball general"></i>
