@@ -62,6 +62,7 @@ section.login {
             left: 50%;
             transform: translate(-50%);
             transition: 1s;
+            z-index: 10;
 
             @media screen and (max-width:  768px) {
                 max-height: 50%;
@@ -232,6 +233,12 @@ section.login {
                                     }
                                 }
                             }
+                            //表單驗證用的紅框
+                            .warning{
+                                border: 1px solid #cf1e1e9d;
+                                box-shadow: 0 0 .5em 0 #cf1e1e9d;
+                                transition: .5s;
+                            }
 
                         } // content_box
                     } // card_content
@@ -297,13 +304,27 @@ section.login {
                         color: map-get($primary_color, 'content');
                     }
                 }
-                .item.identity {
+                #male:checked ~ .sex {
+                    .male,
+                    .male_txt {
+                        color: map-get($primary_color, 'content');
+                    }
+                }
+                #female:checked ~ .sex {
+                    .female,
+                    .female_txt {
+                        color: map-get($primary_color, 'content');
+                    }
+                }
+                .item.identity,
+                .item.sex {
                     i:not(:first-child),
                     label{
                         cursor: pointer;
                         color: #888;
                     }
                 }
+                
             }
 
         } // section.card_box

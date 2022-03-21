@@ -130,7 +130,7 @@
             getArtNo_vue() {
                 // 在 ajax 中的 this 會是 ajax 的物件
                 // 所以先把 vue 的 this 存起來
-                let thisVue = this;
+                
                 $.ajax({
                     type: 'POST',
                     url: 'phps/select.php',
@@ -146,13 +146,13 @@
                         // condition: 'artNo = 1',
                         // other: 'limit 1'
                     },
-                    success: function(data) {
+                    success: data => {
                         if (data.msg !== false){
-                            thisVue.artNo_vue = data.msg[0].artNo;
+                            this.artNo_vue = data.msg[0].artNo;
                             alert( data.msg[0].artNo)
                         }
                     },
-                    error: function() {
+                    error: err => {
                         console.log('ajax error');
                     }
                 });
