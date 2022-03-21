@@ -31,8 +31,31 @@ function checkLogin() {
         }
     });
 }
+
+//存圖片到server
+function sentImg(){
+    var form_data = new FormData();
+    var files = $('#memImage')[0].files;
+    console.log(files);
+    form_data.append('file', files[0]);
+    $.ajax({
+        type: 'POST',
+        url: 'phps/login_file_upload.php',
+        processData : false, 
+        contentType : false,
+        dataType: 'JSON',
+        data: form_data,
+        success: data => {
+            insertData(data.img);
+        },
+        error: err => {
+            console.log('ajax error');
+        }
+    });   
+}
+
 // 新增註冊
-function insertData() {
+function insertData(image) {
     let memId = document.getElementById('memId').value;
     let memPwd = document.getElementById('memPwd').value;
     let memName = document.getElementById('memName').value;
@@ -40,11 +63,10 @@ function insertData() {
     let birthday = document.getElementById('birthday').value;
     let sex = document.querySelector('input[name="sex"]:checked').value;
     let tel = document.getElementById('tel').value;
-    let memImage = document.getElementById('memImage').value;
-    // let pathIdx = memImage.lastIndexOf("fakepath");
-    // memImage.slice(pathIdx+1);
+    let memImage = image;
     let identity = document.querySelector('input[name="identity"]:checked').value;
-    // console.log(identity);
+    console.log(memImage);
+
 
     // 新增資料
     $.ajax({
@@ -56,9 +78,11 @@ function insertData() {
             insertValue: `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, '${memImage}' , default`
         },
         success: data => {
-            console.log('成功insert');
-            console.log(data.sql);
             
+            console.log(data.sql);
+            if(memImage !== ''){
+                console.log('頭貼');
+            }
             // console.log(memImage);
         },
         error: err => {
@@ -66,6 +90,27 @@ function insertData() {
         }
     });   
 }
+function fileUpload(){
+    
+    $('#stickerLabel').on('click', function() {
+        var file_data = $('#memImage').prop('files')[0];   //取得上傳檔案屬性
+          //建構new FormData()
+          //吧物件加到file後面
+                                  
+    $.ajax({
+            url: 'login_file_upload.php',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,     //data只能指定單一物件                 
+            type: 'post',
+            success: function(data){
+                $('#ajsxboxdhow').html(data);
+            }
+        });
+    });
+}
+
 // ===== 註冊 ===== //
 // 驗證輸入欄位
 // 驗證(元素, 條件, 正確訊息, 錯誤訊息)
@@ -168,6 +213,7 @@ $(function() {
             //     }
             // })
             // insertData();
+            sentImg();
             // alert('註冊成功！請重新登入');
             // window.location.reload();
         }
@@ -253,7 +299,8 @@ $(function() {
     });
     //輸入後驗證帳號
     $('#memId').change( () => {
-        if( $("#memId").val().length === 0 || /\W/.test($("#memId").val()) ) {
+        console.log(!/\W+/.test($("#memId").val()));
+        if( $("#memId").val().length === 0 || !/\W+/.test($("#memId").val()) ) {
             $("#memId").parent("div").addClass('warning');
         }
         if( $("#memId").val().length > 0 && /\w/.test($("#memId").val()) ) {
