@@ -52,7 +52,7 @@
             // 將 join 語法 加入前面的 select 語法中
             $sql = "$sql join $joinSql";
             // js console.log(data.sql) 可以看串完的完整語法
-            $msg['sql']="$sql join $joinSql";
+            $msg['sql']=$sql;
         }
         
         // 如果有查詢條件
