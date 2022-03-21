@@ -370,8 +370,13 @@ function getHotProductsList() {
         data: {
             // 要查詢的資料表
             table: 'product',
+            // 要 join 的資料表 (如果沒有就不用打)
+            joinTable: 'product_category',
             // 要查詢的欄位
-            queryCol: 'prodName, price, prodImage1',
+            queryCol: 'prodName, product.prodCateNo, product_category.cateName, FORMAT(price, "C") price, prodImage1',
+            // join 的條件 (如果沒有join就不用打)
+            joinOn: 'prodCateNo',
+            
             other: ' ORDER BY  RAND() limit 3',
         },
         success: function(data) {
@@ -389,8 +394,8 @@ function getHotProductsList() {
                                     <img src="${hotProductsImg}${data.msg[i].prodImage1}">
                                 </div>
                                 <div class="hot_product_card_txt">
-                                    <h4>${data.msg[i].prodName}</h4>
-                                    <h4>$${data.msg[i].price}</h4>
+                                    <h4>${data.msg[i].prodName}${data.msg[i].cateName}</h4>
+                                    <h4>NT$${data.msg[i].price}</h4>
                                 </div>
                                 <div class="hot_product_icon">
                                     <img src="images/icon/icon_shop_eye.svg">

@@ -3161,6 +3161,7 @@ section.login .container section.card_box {
           transform: translate(-50%);
   -webkit-transition: 1s;
   transition: 1s;
+  z-index: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3349,6 +3350,14 @@ section.login .container section.card_box .rotate_3d_box .card_item .card_conten
   margin-right: 0.5em;
 }
 
+section.login .container section.card_box .rotate_3d_box .card_item .card_content .content_box .warning {
+  border: 1px solid #cf1e1e9d;
+  -webkit-box-shadow: 0 0 .5em 0 #cf1e1e9d;
+          box-shadow: 0 0 .5em 0 #cf1e1e9d;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
 section.login .container section.card_box .rotate_3d_box .card_item .card_footer .action {
   text-align: center;
 }
@@ -3409,8 +3418,20 @@ section.login .container section.card_box .rotate_3d_box #astrologist:checked ~ 
   color: #CFB886;
 }
 
+section.login .container section.card_box .rotate_3d_box #male:checked ~ .sex .male,
+section.login .container section.card_box .rotate_3d_box #male:checked ~ .sex .male_txt {
+  color: #CFB886;
+}
+
+section.login .container section.card_box .rotate_3d_box #female:checked ~ .sex .female,
+section.login .container section.card_box .rotate_3d_box #female:checked ~ .sex .female_txt {
+  color: #CFB886;
+}
+
 section.login .container section.card_box .rotate_3d_box .item.identity i:not(:first-child),
-section.login .container section.card_box .rotate_3d_box .item.identity label {
+section.login .container section.card_box .rotate_3d_box .item.identity label,
+section.login .container section.card_box .rotate_3d_box .item.sex i:not(:first-child),
+section.login .container section.card_box .rotate_3d_box .item.sex label {
   cursor: pointer;
   color: #888;
 }
