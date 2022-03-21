@@ -116,7 +116,7 @@
                     <div class="comments">
 
                         <div class="action ast_hidden">
-                            <button class="selected_btn active_star" @click="changeStar">全部</button>
+                            <!-- <button class="selected_btn active_star" @click="changeStar">全部</button> -->
                             <button class="selected_btn star_btn" @click="changeStar">全部</button>
                             <button class="unselected_btn star_btn" @click="changeStar">五星</button>
                             <button class="unselected_btn star_btn" @click="changeStar">四星</button>
@@ -125,10 +125,13 @@
                             <button class="unselected_btn star_btn" @click="changeStar">一星</button>
                         </div>
                         <ul class="ast_comment_list">
-                            <li class="txt_box ast_comment" v-for="i in 3">
+                            <li v-if="comments.length === 0">
+                                <p>尚無評論</p>
+                            </li>
+                            <li class="txt_box ast_comments" v-for="i in comments">
                                 <p>
-                                    <span>★★★</span>
-                                    真的是當天一時興起訂了的那種，居然聽到運勢總論說到可能需要出國走走來豐富最近平淡的生活，我聽到的當下真的嚇呆了。
+                                    <span>{{ comments[i].star }}</span>
+                                    {{ comments[i].content }}
                                 </p>
                             </li>
                         </ul>
@@ -156,6 +159,7 @@
             // 要更改的框框
             intro: [],
             introUpdate: [],
+            comments: []
         },
         mounted() {
             this.getIntro();
@@ -172,10 +176,31 @@
                         condition: `memNo = ${this.userData.userNo}`
                     },
                     success:  data => {
-                        // console.log(data.msg);
                         if (data.msg !== false){
                             this.intro = data.msg;
-                            // console.log(this.intro);
+                            this.getComments();
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
+            },
+            // 取得占卜師評論
+            getComments() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+                        table: 'comment',
+                        joinTable: 'appointment',
+                        joinOn: 'appointNo',
+                        queryCol: 'commNo, star, content, commTime',
+                        condition: `appointment.astNo = ${this.intro[0].astNo}`
+                    },
+                    success:  data => {
+                        if (data.msg !== false){
+                            this.comments = data.msg;
                         }
                     },
                     error: err => {
@@ -204,7 +229,6 @@
                                 where: `memNo = '${this.userData.userNo}'`
                             },
                             success: data => {
-                                // console.log(data.msg);
                                 if(data.msg !== false){
                                     this.introUpdate = data.msg;
                                 }
@@ -217,43 +241,11 @@
                 intro.classList.toggle('invisible');
                 textarea.classList.toggle('invisible');
             },
-            getReservation() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'phps/select.php',
-                    
-                    data: {
-                        table: 'appointment',
-                        queryCol: 'introduction',
-
-                    },
-                    success:  data => {
-                        if (data.msg !== false){
-                            this.intro = data.msg;
-                        }
-                    },
-                    error: err => {
-                        console.log('ajax error');
-                    }
-                });
-            },
             changeStar(e) {
-                if (e.target.classList.contains('active_star')) {
-                    let parent = e.target.parentNode;
-                    parent.classList.toggle('ast_hidden');
-                    e.target.classList.toggle('display_none');
-                }
-                else {
-                    let allStarBtn = document.querySelectorAll('.star_btn');
-                    for (let i = 0; i < allStarBtn.length; i++) {
-                        allStarBtn[i].classList.replace('selected_btn', 'unselected_btn');
-                    }
-                    e.target.classList.replace('unselected_btn', 'selected_btn');
-                    let activeStar = document.querySelectorAll('.active_star')[0];
-                    activeStar.textContent = e.target.textContent;
-                    activeStar.classList.toggle('display_none');
-                    activeStar.parentNode.classList.toggle('ast_hidden');
-                }
+                $('.action .selected_btn')[0].classList.add('unselected_btn');
+                $('.action .selected_btn')[0].classList.remove('selected_btn');
+                e.target.classList.remove('unselected_btn');
+                e.target.classList.add('selected_btn');
             },
             carsoul_last(e) {
             },
