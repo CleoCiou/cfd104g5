@@ -151,9 +151,14 @@ Vue.component('calendar',{
             }
         },
         dragStartHandler(e) {
-            e.dataTransfer.setData('text/plain', e.target.innerText);
-            if (e.target.classList.contains('time')) {
-                this.dragEl = e.target;
+            if (e.target.classList.contains('rest')) {
+                e.dataTransfer.setData('text/plain', e.target.innerText);
+                if (e.target.classList.contains('time')) {
+                    this.dragEl = e.target;
+                }
+            }
+            else {
+                e.dataTransfer.setData('work', true);
             }
         },
         dragOverHandler(e) {
@@ -161,6 +166,8 @@ Vue.component('calendar',{
         },
         dropHandler(e) {
             e.preventDefault();
+
+            if (e.dataTransfer.getData('work')) return;
 
             let removeOnly = ( !e.target.classList.contains('day') ) ? true : false;
             
