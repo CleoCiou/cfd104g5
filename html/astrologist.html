@@ -244,6 +244,7 @@
                         // other: 'group by appointment.memNo'
                     },
                     success:  data => {
+                        // console.log(data.msg);
                         if (data.msg !== false){
                             this.appointments = data.msg;
                         }
