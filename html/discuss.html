@@ -260,7 +260,10 @@
                 },
                 navs: ['體驗占卜師','線上占卜','占卜師總覽','塔羅討論區'],
                 cates: {},
-                labels: ['熱門','最新'],
+                labels: {
+                            0: '熱門',
+                            1: '最新',
+                        },
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
                 author_img: 'images/black_cat_wizard.svg',
@@ -271,7 +274,8 @@
                 article: [],
                 message: [],
                 getTitle: {},
-                msgIdx:{},
+                msgIdx: {},
+                plusMsgIdx: {},
                 newPost:[],
                 perPage: 5,
                 currentPage: 1,
@@ -365,8 +369,7 @@
                 },
                 //取留言的資料
                 getMsg(index) {
-                    let msgIdx = this.article[index];
-                    console.log(msgIdx);
+                    let artNo = this.getTitle.artNo;
                     $.ajax({
                         type: 'POST',
                         url: 'phps/select.php',
@@ -376,7 +379,7 @@
                             queryCol: 'msgNo, artNo, msgTime, msgContent, memId, memImage',
                             joinTable: 'members',
                             joinOn: 'memNo',
-                            condition: `article_message.artNo =  ${msgIdx.artNo}`,
+                            condition: `article_message.artNo =  ${artNo}`,
                             other: 'order by msgTime',
                         },
                         success: data => {
@@ -384,8 +387,27 @@
                             // console.log(data.sql);
                             if (data.msg !== false){
                                 this.message = data.msg;
-                                // console.log(thisVue.message);
                             }
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                //更新留言數量
+                countMsg(index) {
+                    let artNo = this.getTitle.artNo;
+                    console.log(artNo);
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/update.php',
+                        data: {
+                            table: 'article',
+                            updateValue: 'msgs = msgs + 1',
+                            where: `artNo = '${artNo}'`
+                        },
+                        success: data => {
+                            console.log('plus ok');
                         },
                         error: err => {
                             console.log('ajax error');
@@ -408,9 +430,9 @@
                         },
                         success: data => {
                             alert('留言成功');
-                            console.log(data.sql);
                             window.location.reload();
-                            this.getCol(v);
+                            this.getCol();
+                            this.countMsg();
                         },
                         error: err => {
                             console.log('ajax error');

@@ -2,7 +2,8 @@
 /* ============================= */
   /* 產品 */
 
-  main .product_inner_page .product_inner_page{
+  main .product_inner_page 
+  .product_inner_page{
     padding-top: 1em;
   }
 
@@ -71,8 +72,8 @@
     display: none;
   }
 
-  main .product_inner_page .recommended_products h3{
-    padding-bottom: 1em;
+  main .product_inner_page .recommended_products .enter_online_divination h3{
+    padding-bottom: 0.5em;
   }
 
   main .product_inner_page .recommended_products_img{
@@ -87,6 +88,21 @@
   main .product_inner_page .recommended_products_img img{
     border-radius: 0.5em;
   }
+
+  .enter_online_divination{
+    padding:0 0 2em 0;
+  }
+
+  .enter_online_divination button{
+    border-radius: 0.2em;
+
+  }
+
+  .enter_online_divination p{
+    padding-bottom: 1em;
+  }
+
+  
 
   
   
