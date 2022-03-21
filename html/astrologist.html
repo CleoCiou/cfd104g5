@@ -141,7 +141,7 @@
             intro: [],
             introUpdate: [],
             comments: [],
-            appointments: {},
+            appointments: [],
             src: 'images/teller_mem/',
             schedule: [],
         },
@@ -247,7 +247,7 @@
                         // other: 'group by appointment.memNo'
                     },
                     success:  data => {
-                        // console.log(data.msg);vvvvvvv
+                        // console.log(data.msg);
                         if (data.msg !== false){
                             this.appointments = data.msg;
                             // console.log(this.intro);
