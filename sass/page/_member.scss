@@ -603,9 +603,10 @@ main {
                         }
                         .quiz_right_box{
                             width: 50%;
+                            height: 100%;
                             border: 2px dashed #888;
                             border-radius: $borderRadius;
-                            background: url('../images/draw_cards/card_back.jpg') no-repeat;
+                            background: url('../images/draw_cards/card_back_180.jpg') no-repeat;
 
                             .quiz_view{
                                 margin: auto;
