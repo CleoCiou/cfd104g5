@@ -13,11 +13,7 @@
 .tarot_book_intro p{
 	text-align: left;
 }
-.tarot_books .here{
-	position: absolute;
-	top: -2em;
-	right: 8em;
-}
+
 
 #tarotbook .turn-page{
 	background: linear-gradient(180deg, #73737A 3%, #939399 10%);
@@ -64,6 +60,11 @@
 		text-align: center;
 		padding: 3em 1.5em;
 	}
+	.tarot_books .here{
+		position: absolute;
+		top: -2em;
+		right: 8em;
+	}
 }
 
 @media screen and (max-width:768px) {
@@ -88,5 +89,10 @@
 	#tarotbook .first_page{
 		background-image: url("../images/be_teller/tarot_books3.svg");
 		background-size: cover;
+	}
+	.tarot_books .here{
+		position: relative;
+		top: 2em;
+		text-align: right;
 	}
 }
