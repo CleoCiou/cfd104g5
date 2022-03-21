@@ -81,39 +81,11 @@ function getProduct() {
                     <p>${data.msg[0].prodIntro}</p> 
                     `;
 
-                // 貓頭鷹推薦商品
-                
-                // let owlTheme = `<div class="owl-carousel owl-theme ">`;
-                // for (let i = 0; i < data.msg.length; i++) {
-
-                //     owlTheme +=   `
-                //         <a href="#">
-                //             <img src="${productImg}${data.msg[i].prodImage1}" alt="推薦商品" ">
-                //             <p>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</p>
-                //         </a>
-                //     `;
-                // }
-                // owlTheme += `</div>`;
 
                 $('.product_inner_img_left').append(productRow);
                 $('.product_txt').append(productTxt);
                 $('.product_detail_txt').append(productDetail);
-                // $('.recommended_products_img').append(owlTheme);
-
-                // $(".owl-carousel").owlCarousel({
-                //     loop: true, // 循環播放
-                //     margin: 10, // 外距 10px
-                //     dots: true,
-                //     nav: false, // 顯示點點
-                //     responsive: {
-                //         0: {
-                //             items: 2 // 螢幕大小為 0~600 顯示 1 個項目
-                //         },
-                //         980: {
-                //             items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
-                //         }
-                //     }
-                // });
+                
 
                 // 小圖換大圖
                 let smalls = document.getElementsByClassName("small");
