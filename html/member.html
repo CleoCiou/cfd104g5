@@ -183,8 +183,11 @@
                         <p class="prev_comment" @click="old_comment">查看其他評論 ^</p>
 
                         <div class="active">
+                            <select id="star">
+                                <option :value="i" v-for="i in 5">{{ i }}星</option>
+                            </select>
                             <textarea class="new_comment"></textarea>
-                            <button class="third_btn">發送</button>
+                            <button class="third_btn" @click="newComment">發送</button>
                         </div>
 
                     </ul>
@@ -217,7 +220,7 @@
                             <!-- 第一排 -->
                             <div class="quiz_row box" v-if="divinationLogs.length > 0">
                                 <!-- 測驗卡片 -->
-                                <div class="quiz_cards draggable" draggable="true" v-for="log in divinationLogs">
+                                <div :data-log="idx" class="quiz_cards draggable" draggable="true" v-for="(log, idx) in divinationLogs" @dragstart="dragStartHandler">
                                     <div class="quiz_cate">
                                         <h3>{{ log.typeName }}</h3>
                                         <p>{{ log.title }}</p>
@@ -233,8 +236,16 @@
 
                          <!-- 右欄拖曳用的容器 -->
                         <div class="quiz_right_box">
-                            <div class="quiz_view box">
+                            <div v-if="!showLogDetail" class="quiz_view box" @dragover="dragOverHandler($event)" @drop="dropHandler($event)">
                                 將卡片拖曳至方框內，以便檢視測驗紀錄
+                            </div>
+                            <div v-if="showLogDetail" class="quiz_view box"  @dragover="dragOverHandler($event)" @drop="dropHandler($event)">
+                                <div class="logDetail">
+                                    <div class="typeName">{{ showLogDetail.typeName }}</div>
+                                    <div class="title">{{ showLogDetail.title }}</div>
+                                    <div class="title">{{ showLogDetail.tarNo }} {{ showLogDetail.tarName }}</div>
+                                    <div class="detail">{{ showLogDetail.detail }}</div>
+                                </div>
                             </div>
                         </div>
                         
@@ -275,7 +286,8 @@
                 appointInfo: [],
                 appointLogs: [],
                 latestOrder: [],
-                viewAllComments: false
+                viewAllComments: false,
+                showLogDetail: false
             },
             mounted() {
                 // 取得最近留言文章
@@ -315,10 +327,8 @@
                                 updateValue: `memName = '${name}', birthday = '${birthday}', email = '${email}', creditNum = '${creditNum}'`,
                                 where: `memNo = '${this.userData.userNo}'`
                             },
-                            // function success(data) {}
-                            success: data => {
-                                // console.log(data);
-                            },
+                            // success: data => {
+                            // },
                             error: err => {
                                 console.log(err);
                             }
@@ -392,7 +402,8 @@
                 },
                 // 取得會員預約情況、預約完成後的評論紀錄
                 getMyAppointment() {
-                    let thisVue = this;
+                    this.appointInfo = [];
+                    this.appointLogs = [];
                     $.ajax({
                         type: 'POST',
                         url: 'phps/back_getCol.php',
@@ -402,18 +413,18 @@
                             no: this.userData.userNo,
                         },
                         async: false,
-                        success: function(data) {
+                        success: data => {
                             data = JSON.parse(data);
                             let logIdx = -1;
                             for (let i = 0; i < data.msg.length; i++) {
                                 let appDate = new Date(data.msg[i].appointDate);
                                 // 如果預約日期小於當天，新增至歷史紀錄清單
                                 if (new Date() > appDate) {
-                                    thisVue.appointLogs.push(data.msg[i]);
+                                    this.appointLogs.push(data.msg[i]);
                                 }
                                 // 否則新增至目前預約清單
                                 else {
-                                    thisVue.appointInfo.push(data.msg[i]);
+                                    this.appointInfo.push(data.msg[i]);
                                 }
                             }
                         },
@@ -453,6 +464,65 @@
                             console.log('ajax error');
                         }
                     });
+                },
+                newComment() {
+                    let log = this.appointLogs;
+                    let update = false;
+                    if (log[log.length-1].content !== null) {
+                        update = confirm('是否更新留言？');
+                    }
+                    // 更新評論
+                    if (update) {
+                        console.log(star);
+                        $.ajax({
+                            type: 'POST',
+                            url: 'phps/update.php',
+                            data: {
+                                table: 'comment',
+                                updateValue: `content = '${$('textarea.new_comment').val()}', star = '${$('#star').val()}', commTime = default`,
+                                where: `appointNo = '${log[log.length-1].appointNo}'`
+                            },
+                            success: data => {
+                                alert('更新成功');
+                                this.getMyAppointment();
+                                $('textarea.new_comment').val('');
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                        });
+                    }
+                    // 新增評論
+                    else {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'phps/insert.php',
+                            data: {
+                                table: 'comment',
+                                insertValue: `default, ${log[log.length-1].appointNo}, default, '${$('textarea.new_comment').val()}', '${$('#star').val()}'`
+                            },
+                            success: data => {
+                                alert('評論成功');
+                                this.getMyAppointment();
+                                $('textarea.new_comment').val('');
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                        });
+                    }
+                },
+                // 測驗紀錄拖曳查看
+                dragStartHandler(e) {
+                    e.dataTransfer.setData('log', e.target.getAttribute('data-log'));
+                },
+                dragOverHandler(e) {
+                    e.preventDefault();
+                },
+                dropHandler(e) {
+                    let log = e.dataTransfer.getData('log');
+                    $('.quiz_right_box .quiz_view ').display = 'none';
+                    this.showLogDetail = this.divinationLogs[log];
                 }
             }
         });
@@ -461,30 +531,30 @@
 
 <!-- drag and drop by NJ -->
 <script>
-    var dropTarget = document.querySelector(".quiz_box")
-    var draggables = document.querySelectorAll('.draggable')
-    // const containers =document.querySelector('.quiz_right_box')
+    // var dropTarget = document.querySelector(".quiz_box")
+    // var draggables = document.querySelectorAll('.draggable')
+    // // const containers =document.querySelector('.quiz_right_box')
 
-    for(let i = 0; i < draggables.length; i++){
-        draggables[i].addEventListener("dragstart", function(e){
-            e.dataTransfer.setData("srcId", e.target.id);
-        });
-    }
-    dropTarget.addEventListener("dragover", function(e){
-        e.preventDefault();
-    });
-    dropTarget.addEventListener("drop", function (e) {
-        e.preventDefault();
-        let target = e.target;
-        let srcId = e.dataTransfer.getData("srcId");
+    // for(let i = 0; i < draggables.length; i++){
+    //     draggables[i].addEventListener("dragstart", function(e){
+    //         e.dataTransfer.setData("srcId", e.target.id);
+    //     });
+    // }
+    // dropTarget.addEventListener("dragover", function(e){
+    //     e.preventDefault();
+    // });
+    // dropTarget.addEventListener("drop", function (e) {
+    //     e.preventDefault();
+    //     let target = e.target;
+    //     let srcId = e.dataTransfer.getData("srcId");
 
-        let droppable = target.classList.contains("box");
+    //     let droppable = target.classList.contains("box");
 
-        if (droppable){
-            target.appendChild(document.getElementById(srcId));
-        }
+    //     if (droppable){
+    //         target.appendChild(document.getElementById(srcId));
+    //     }
         
-    });
+    // });
 </script>
 </body>
 </html>

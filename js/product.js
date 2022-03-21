@@ -193,7 +193,6 @@ function save(){
 
 
     //(重複商品不加購物車)
-    console.log(item)
     let cart = localStorage.getItem('cart');    //拿到localstorage
     cart = cart ? JSON.parse(cart) : [];    //轉JSON格式
     let found = false;

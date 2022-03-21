@@ -28,6 +28,7 @@
                     <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
                     
                     <!-- 資料內容 -->
+                    <!-- 有用: 代表v-bind綁住 代表資料從Vue來 -->
                     <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
                     
                     <!-- 彈出視窗 -->
@@ -43,7 +44,6 @@
                                 <label>類別</label>
                                 <select :value="detail.cateType">
                                     <option>塔羅</option>
-                                    <option>星座</option>
                                 </select>
                             </div>
                             <!-- 商品項目 -->
@@ -146,6 +146,8 @@
                         },
                         success: function(data) {
                             data = JSON.parse(data);
+                            // console.log(data.msg[0]);
+
                             thisVue.queryResult = data.msg;
                         },
                         error: function() {
