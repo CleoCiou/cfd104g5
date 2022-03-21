@@ -32,6 +32,7 @@
                     $_SESSION['identity'] = $row['identity'];
                     $_SESSION['sticker'] = $row['memImage'];
                     $_SESSION['email'] = $row['email'];
+                    $_SESSION['birthday'] = $row['birthday'];
                     $_SESSION['creditNum'] = $row['creditNum'];
                     $_SESSION['phoneNum'] = $row['phoneNum'];
                     // ...
