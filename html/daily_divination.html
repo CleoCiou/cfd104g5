@@ -129,6 +129,16 @@
             })
         })
     })
+
+
+    function dailyCard() {
+    var answer = Math.floor((Math.random() * 12) + 1);
+     
+     if (answer === 1) {   
+       document.getElementById("fortune").innerHTML = "大吉"
+       document.getElementById("explain").innerHTML = "今日運勢";
+       document.getElementById("card").src = "../images/";
+     }
         
 
     
