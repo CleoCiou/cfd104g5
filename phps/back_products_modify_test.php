@@ -67,8 +67,6 @@
 	`prodImage1`='{$_POST["prodImage1"]}',
 	`prodImage2`='{$_POST["prodImage2"]}',
     `prodImage3`='{$_POST["prodImage3"]}'"
-
-    // VALUES (13, :prodCateNo, :prodName, :prodIntro,:prodImage1,:prodImage2, :prodImage3)' ;
    
     $fav = $pdo->prepare($sql);
     $fav->bindValue(":prodName",$_POST["prodName"]);
@@ -134,7 +132,3 @@
 
 
 
-<!-- INSERT INTO customers (C_Id, Name, City, Address, Phone)
-VALUES (3, '李三', '高雄縣', 'ZZ路300號', '07-12345678'); -->
-
-<!-- // $sql = 'INSERT INTO `product`(`prodNo`) VALUES ('11')'; -->

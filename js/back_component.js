@@ -90,7 +90,6 @@ Vue.component('my-table', {
             </table>
         </div>
     `,
-     // 從父層接收到'queryResult', 'colName', 'deconstructResult' 然後template就可以使用這三個東西
     props: ['queryResult', 'colName', 'deconstructResult'],
     
     methods: {

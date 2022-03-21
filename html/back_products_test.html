@@ -7,11 +7,13 @@
 })
         
 
+
+
 <body>
     <section id="app" class="back container">
-        
+
         <my-nav></my-nav>
-        
+
 
         <!-- 管理內容區 -->
         <div class="contain">
@@ -26,33 +28,36 @@
                 <div class="container">
                     <!-- 表格上方操作列 -->
                     <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
-                 
-                    
+
+
                     <!-- 資料內容 -->
                     <!-- 有用: 代表v-bind綁住 代表資料從Vue來 -->
-                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
-                    
+                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow"
+                        :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
+
                     <!-- 彈出視窗 -->
                     <form enctype="multipart/form-data" id="good">
+                        <input type="text" name="case" :value="editIndex" hidden>
+                        <input type="text" name="prodNo" :value="detail.prodNo" hidden>
                         <div :class="popup">
                             <div class="content_box">
                                 <!-- 商品名稱 -->
                                 <div class="info_box prodName">
                                     <label for="adminName">商品名稱</label>
-                                    <input name="prodName" type="text" :value="detail.prodName">
+                                    <input name="prodName" type="text" :value="detail.prodName"
+                                        v-model="detail.prodName">
                                 </div>
                                 <!-- 商品類別 -->
                                 <div class="info_box cateType">
                                     <label>類別</label>
                                     <select name="prodCateNooN" v-model="detail.cateType">
                                         <option>塔羅</option>
-                                        <option>星座</option>
                                     </select>
                                 </div>
                                 <!-- 商品項目 -->
                                 <div class="info_box catename">
                                     <label>品項</label>
-                                    <select name="prodCateNo" v-model="detail.cateName" >
+                                    <select name="prodCateNo" v-model="detail.cateName">
                                         <option>項鍊</option>
                                         <option>手鍊</option>
                                         <option>幸運石</option>
@@ -63,32 +68,45 @@
                                     <label>商品描述</label>
                                     <textarea name="prodIntro" id="prodIntro" v-model="detail.prodIntro"></textarea>
                                 </div>
+
+                                <!-- 商品狀態 -->
+                                <!-- 商品項目 -->
+                                <div class="info_box catename">
+                                    <label>品項</label>
+                                    <select name="status" v-model="detail.status">
+                                        <option>一般</option>
+                                        <option>下架</option>
+                                    </select>
+                                </div>
                                 <!-- 商品圖片 -->
-                        
-                                    <div class="info_box prodImage">
-                                        <label class="prod_img_box" for="prodImage">
-                                            <img aria-placeholder="請選擇圖片" :src="'images/'+detail.prodImage1 ">
-                                        </label>
-                                        <input type="file" id="prodImage" class="displaynone" name="prodImage1">
-                                    </div>
-                                    <div class="info_box prodImage">
-                                        <label class="prod_img_box" for="prodImage">
-                                            <img aria-placeholder="請選擇圖片" :src="'images/'+detail.prodImage2">
-                                        </label>
-                                        <input type="file" id="prodImage" class="displaynone" name="prodImage2">
-                                    </div>
-                                    <div class="info_box prodImage">
-                                        <label class="prod_img_box" for="prodImage">
-                                            <img aria-placeholder="請選擇圖片" :src="'images/'+detail.prodImage3">
-                                        </label>
-                                        <input type="file" id="prodImage" class="displaynone" name="prodImage3">
-                                    </div>
-                        
-                        
+
+                                <div class="info_box prodImage">
+                                    <label class="prod_img_box" for="prodImage">
+                                        <img aria-placeholder="請選擇圖片" :src="detail.prodImage1 ? 'images/'+detail.prodImage1 : image1">
+                                        <!-- 如果有圖片一就秀圖片一的連結 沒有的話就秀image1的值 -->
+                                    </label>
+                                    <input type="file" id="prodImage" class="displaynone" name="prodImage1" @change = "changeimage($event, 1)">
+                                    <!-- $event 代表事事件物件 1是第幾張圖 -->
+                                </div>
+                                <div class="info_box prodImage">
+                                    <label class="prod_img_box" for="prodImage">
+                                        <img aria-placeholder="請選擇圖片" :src="detail.prodImage2 ? 'images/'+detail.prodImage2 : image2">
+
+                                    </label>
+                                    <input type="file" id="prodImage" class="displaynone" name="prodImage2" @change = "changeimage($event, 2)">
+                                </div>
+                                <div class="info_box prodImage">
+                                    <label class="prod_img_box" for="prodImage">
+                                        <img aria-placeholder="請選擇圖片" :src="detail.prodImage3 ? 'images/'+detail.prodImage3 : image3">
+                                    </label>
+                                    <input type="file" id="prodImage" class="displaynone" name="prodImage3" @change = "changeimage($event, 3)">
+                                </div>
+
+
                                 <!-- 儲存/取消 -->
                                 <div class="info_box action_box">
                                     <div class="action">
-                                        <button type="button" class="third_btn" @click="displaynone=true">取消</button>
+                                        <button type="button" class="third_btn" @click="close">取消</button>
                                         <!-- <button class="secondary_btn" @click="displaynone=true">儲存</button> -->
                                         <button type="button" class="secondary_btn" @click="update">儲存</button>
                                         <!-- button點了之後 為了不讓他預設會跳轉 type用button -->
@@ -100,17 +118,22 @@
 
                 </div>
             </main>
-            
+
         </div>
     </section>
 </body>
+
 </html>
 <script src="js/back_component.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         new Vue({
             el: '#app',
             data: {
+                // image:'images/'+detail.prodImage1
+                image1: "",
+                image2: "",
+                image3: "",
                 // 資料表顯示欄位名稱
                 colName: [
                     '商品名稱',
@@ -130,13 +153,22 @@
                 // popup視窗開關class
                 displaynone: true,
                 // 表格上方操作列按鈕
-                actionBtn: ['新增', '修改', '下架']
+                actionBtn: ['新增','下架'],
+                editIndex: 0, //控制目前要顯示的是哪個POP UP (0 => 新增 => 1表示修改)
             },
             mounted() {
                 this.getCol();
                 // this.update();
             },
+            watch: {
+
+            },
             methods: {
+                changeimage(e, idx){
+                    console.log(idx)
+                   const file = e.target.files[0]
+                   this.image1 = URL.createObjectURL(file)
+                },
                 // 依選擇項目取得資料表
                 getCol() {
                     let thisVue = this;
@@ -148,81 +180,86 @@
                         data: {
                             table: 'product',
                         },
-                        success: function(data) {
+                        success: function (data) {
                             data = JSON.parse(data);
                             // console.log(data.msg[0]);
 
                             thisVue.queryResult = data.msg;
-                           
+
                         },
-                        error: function() {
+                        error: function () {
                             console.log('ajax error');
                         }
                     });
                 },
 
-                update(){
-                    let thisVue = this;
-                    let xhr = new XMLHttpRequest();
-                    xhr.onload = function(){
-                        alert(xhr.responseText);
+                update() {
+                    if (this.editIndex == 0) {
+                        let thisVue = this;
+                        let xhr = new XMLHttpRequest();
+                        xhr.onload = function () {
+                            alert(xhr.responseText);
+                        }
+                        // insert
+                        xhr.open("post", "phps/back_products_insert_test.php", true);
+                        let form = document.getElementById("good");
+                        let formData = new FormData(form);
+                        xhr.send(formData);
+
+                        this.editIndex == 0;
+                    } else {
+                        let thisVue = this;
+                        let xhr = new XMLHttpRequest();
+                        xhr.onload = function () {}
+                        // insert
+                        xhr.open("post", "phps/back_products_insert_test.php", true);
+                        let form = document.getElementById("good");
+                        let formData = new FormData(form);
+                        xhr.send(formData);
+
+                        this.displaynone = true;
+                        this.editIndex == 0
                     }
-                    // insert
-                    xhr.open("post","phps/back_products_insert_test.php",true);
-                    let form = document.getElementById("good");
-                    let formData = new FormData(form);
-                    xhr.send(formData);
 
-                    console.log(formData);
-                    // console.log(formData);
-                    // $.ajax({
-                    //     // phps/back_getCol.php
-                    //     type: 'POST',
-                    //     url: 'phps/back_products_insert_test.php',
-                    //     // data: {
-                    //     //     // table: 'product',
-                    //     //     table: 'product',
-                    //     //     insertValue: `'${detail.cateName}', '${detail.cateType}', default, default`
-                    //     //     // a:detail.cateName,
-                    //     //     // b:detail.cateType,
-                    //     // },
-                    //     data: formData,
-                    //     contentType:false,
-                    //     success: function(data) {
-                    //         // data = JSON.parse(data);
-                    //         console.log(data);
-                    //         // this.detail.cateName = data
 
-                    //         // thisVue.queryResult = data.msg;
-                    //         // console.log(data)
-                    //         thisVue.resetInput('新增成功');
-                    //         thisVue.getCol();
-                    //     },
-                    //     error: function() {
-                    //         console.log('ajax error');
-                    //     }
-                    // });
                 },
-                
+
                 updateDb(btnEl) {
                     // console.log('AAAA')
                     if (btnEl.innerText === '新增') {
                         this.displaynone = false;
                         this.detail = {}
                         // 選第二個選項時 第一個名稱會消失?
-                    }else if (btnEl.innerText === '修改') {
-                        
+                    } else if (btnEl.innerText === '修改') {
 
-                    }else if (btnEl.innerText === '下架') {
 
+                    } else if (btnEl.innerText === '下架') {
+                        this.onclick = splice(index, 1);
                     }
+
                 },
                 // 新增按下去時出現燈箱 
-             
+
                 // 解構欄位
                 deconstructRow(row, idx) {
-                    let {prodName, cateType, cateName, price, prodIntro, status, ...detail} = row;
-                    deconstructResult = {prodName, cateType, cateName, price, detail, prodIntro, status};
+                    let {
+                        prodName,
+                        cateType,
+                        cateName,
+                        price,
+                        prodIntro,
+                        status,
+                        ...detail
+                    } = row;
+                    deconstructResult = {
+                        prodName,
+                        cateType,
+                        cateName,
+                        price,
+                        detail,
+                        prodIntro,
+                        status
+                    };
                     // 不解構
                     // deconstructResult = this.queryResult[idx];
                 },
@@ -231,18 +268,14 @@
                 getDetail(idx) {
                     this.displaynone = false;
                     this.detail = this.queryResult[idx];
+                    this.editIndex = 1
                     // queryResult[idx] 收到點到整筆資料的索引值 
                     // console.log(detail);
-                    let thisVue = this;
-                    let xhr = new XMLHttpRequest();
-                    xhr.onload = function(){
-                        alert(xhr.responseText);
-                    }
-                    // insert
-                    xhr.open("post","phps/back_products_modify_test.php",true);
-                    let form = document.getElementById("good");
-                    let formData = new FormData(form);
-                    xhr.send(formData);
+
+                },
+                close() {
+                    this.displaynone = true;
+                    this.editIndex = 0
                 }
             },
             computed: {
