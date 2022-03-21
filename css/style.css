@@ -1695,9 +1695,11 @@ main section.member .container .reservation_box .reservation_list .reservation_c
 main section.member .container .reservation_box .reservation_list .reservation_card .card_content .img_box {
   display: block;
   margin: auto;
+  margin-top: 1em;
   margin-bottom: 1em;
   overflow: hidden;
   width: 8em;
+  height: 8em;
   border-radius: 50%;
 }
 

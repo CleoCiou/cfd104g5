@@ -51,50 +51,31 @@
                     <div class="reservation_box">
 
                         <ul class="reservation_list">
-                            <li class="reservation_card active">
-                                <div class="item card_header">
-                                    <p>預約日期</p>
-                                    <span>2022.02.28</span>
-                                    <span>上午</span>
-                                </div>
-                                <div class="item card_content">
-                                    <div class="txt_box">
-                                        <h4>王曉明</h4>
-                                    </div>
-                                    <div class="img_box sticker">
-                                        <img src="images/icon/icon_discuss_mine.svg">
-                                    </div>
-                                    <div class="txt_box">
-                                        <span>歷史預約次數</span>
-                                        <p>9</p>
-                                    </div>
-                                </div>
-                                <div class="item card_footer">
-                                    <button class="unselected_btn">接受</button>
-                                    <button class="selected_btn">拒絕</button>
-                                </div>
+                            <li v-if="appointments.length === 0">
+                                <p>尚無預約</p>
                             </li>
-                            <li class="reservation_card" v-for="i in 8">
+                            <li v-else class="reservation_card" v-for="(appointment, idx) in appointments">
                                 <div class="item card_header">
-                                    <p>預約日期</p>
-                                    <span>2022.02.28</span>
-                                    <span>上午</span>
+                                    <!-- <p>預約日期</p> -->
+                                    <span>{{appointment.appointDate}}</span>
+                                    <span>{{appointment.appointTime}}</span>
                                 </div>
                                 <div class="item card_content">
                                     <div class="txt_box">
-                                        <h4>王曉明</h4>
+                                        <h4>{{appointment.memName}}</h4>
                                     </div>
                                     <div class="img_box sticker">
-                                        <img src="images/icon/icon_discuss_mine.svg">
+                                        <!-- <img src="im ages/icon/icon_discuss_mine.svg"> -->
+                                        <img :src="src+appointment.memImage" alt="會員照片">
                                     </div>
-                                    <div class="txt_box">
+                                    <!-- <div class="txt_box">
                                         <span>歷史預約次數</span>
-                                        <p>{{i}}</p>
-                                    </div>
+                                        <p>{{appointment.times}}</p>
+                                    </div> -->
                                 </div>
                                 <div class="item card_footer">
-                                    <button class="unselected_btn">接受</button>
-                                    <button class="selected_btn">拒絕</button>
+                                    <button v-if="appointment.status == '未審核'" @click="updateStatus($event, idx)" class="selected_btn">接受</button>
+                                    <button @click="updateStatus($event, idx)" class="unselected_btn">取消</button>
                                 </div>
                             </li>
                         </ul>
@@ -156,6 +137,9 @@
             // 要更改的框框
             intro: [],
             introUpdate: [],
+            appointments: {},
+            src: 'images/teller_mem/',
+            schedule: [],
         },
         mounted() {
             this.getIntro();
@@ -165,17 +149,16 @@
                 $.ajax({
                     type: 'POST',
                     url: 'phps/select.php',
-                    
                     data: {
                         table: 'astrologist',
                         queryCol: 'astNo, introduction',
                         condition: `memNo = ${this.userData.userNo}`
                     },
                     success:  data => {
-                        // console.log(data.msg);
                         if (data.msg !== false){
                             this.intro = data.msg;
-                            // console.log(this.intro);
+                            this.getConfirm();
+                            this.getSchedule();
                         }
                     },
                     error: err => {
@@ -217,19 +200,30 @@
                 intro.classList.toggle('invisible');
                 textarea.classList.toggle('invisible');
             },
-            getReservation() {
+
+            // 撈審核預約資料
+            // appointment的預約編號appointNo的次數和預約日期appointDate預約時段appointTime、member的會員名稱(一般會員)
+            getConfirm() {
                 $.ajax({
                     type: 'POST',
                     url: 'phps/select.php',
                     
                     data: {
                         table: 'appointment',
-                        queryCol: 'introduction',
-
+                        joinTable: 'members',
+                        queryCol: 'appointNo, appointDate, appointTime, memName, members.memNo, memImage, appointment.status',
+                        joinOn: 'memNo',
+                        // condition: `appointment.astNo = ${this.intro[0].astNo}`,
+                        condition: `appointment.astNo = ${this.intro[0].astNo} and appointDate > CURDATE() and appointment.status <> '未通過'`,
+                        // sql的<>可以當作不等於
+                        //占卜師編號等於登入的這個人
+                        // other: 'group by appointment.memNo'
                     },
                     success:  data => {
+                        // console.log(data.msg);vvvvvvv
                         if (data.msg !== false){
-                            this.intro = data.msg;
+                            this.appointments = data.msg;
+                            // console.log(this.intro);
                         }
                     },
                     error: err => {
@@ -237,6 +231,129 @@
                     }
                 });
             },
+
+            updateStatus(e, idx) {
+                // console.log(this.appointments[idx].appointNo);
+                if (e.target.innerText === '接受') {
+                    $.ajax({
+                            type: 'POST',
+                            url: 'phps/update.php',
+                            data: {
+                                table: 'appointment',
+                                updateValue: "status = '已通過'",
+                                where: `appointNo = '${this.appointments[idx].appointNo}'`
+                            },
+                            success: data => {
+                                // console.log(data.msg);
+                                if(data.msg !== false){
+                                    this.statusUpdate = data.msg;
+                                    this.getConfirm();
+                                }
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                    });   
+                }
+                else {
+                    e.target.innerText === '取消';
+                    
+                    $.ajax({
+                            type: 'POST',
+                            url: 'phps/update.php',
+                            data: {
+                                table: 'appointment',
+                                updateValue: "status = '未通過'",
+                                where: `appointNo = '${this.appointments[idx].appointNo}'`
+                                // vue要加this
+                            },
+                            success: data => {
+                                // console.log(data.msg);
+                                if(data.msg !== false){
+                                    this.statusUpdate = data.msg;
+                                    this.getConfirm();
+                                }
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                    });        
+                };
+            },
+
+            // updateSchedule(e, idx) {
+            //     // console.log(this.appointments[idx].appointNo);
+            //     if (e.target.innerText === '接受') {
+            //         $.ajax({
+            //                 type: 'POST',
+            //                 url: 'phps/update.php',
+            //                 data: {
+            //                     table: 'schedule',
+            //                     updateValue: "workTime = '已通過'",
+            //                     where: `appointNo = '${this.appointments[idx].appointNo}'`
+            //                 },
+            //                 success: data => {
+            //                     // console.log(data.msg);
+            //                     if(data.msg !== false){
+            //                         this.statusUpdate = data.msg;
+            //                         this.getConfirm();
+            //                     }
+            //                 },
+            //                 error: err => {
+            //                     console.log(err);
+            //                 }
+            //         });   
+            //     }
+            //     else {
+            //         e.target.innerText === '取消';
+                    
+            //         $.ajax({
+            //                 type: 'POST',
+            //                 url: 'phps/update.php',
+            //                 data: {
+            //                     table: 'appointment',
+            //                     updateValue: "status = '未通過'",
+            //                     where: `appointNo = '${this.appointments[idx].appointNo}'`
+            //                     // vue要加this
+            //                 },
+            //                 success: data => {
+            //                     // console.log(data.msg);
+            //                     if(data.msg !== false){
+            //                         this.statusUpdate = data.msg;
+            //                         this.getConfirm();
+            //                     }
+            //                 },
+            //                 error: err => {
+            //                     console.log(err);
+            //                 }
+            //         });        
+            //     };
+            // },
+
+
+
+            // =====================================================
+            getSchedule() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+                        table: 'schedule',
+                        queryCol: 'workDate, workTime',
+                        condition: `astNo = '${this.intro[0].astNo}'`
+                    },
+                    success: data => {
+                        console.log(data.msg);
+                        this.schedule = data.msg;
+                    },
+                    error: err => {
+                        console.log(err);
+                    }
+                });
+            },
+
+
+            // =======================================================
             changeStar(e) {
                 if (e.target.classList.contains('active_star')) {
                     let parent = e.target.parentNode;
