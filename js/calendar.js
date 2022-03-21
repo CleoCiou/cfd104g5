@@ -151,7 +151,7 @@ Vue.component('calendar',{
             }
         },
         dragStartHandler(e) {
-            if (e.target.classList.contains('rest')) {
+            if (e.target.classList.contains('rest') || e.target.classList.contains('drag_rest')) {
                 e.dataTransfer.setData('text/plain', e.target.innerText);
                 if (e.target.classList.contains('time')) {
                     this.dragEl = e.target;
