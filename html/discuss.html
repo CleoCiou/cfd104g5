@@ -58,7 +58,7 @@
                                 <!-- 放文章的地方 -->
                                 <div class="row" >
                                     <!-- 文章卡片 -->
-                                    <div class="article_cards" v-for="(card,index) in article">
+                                    <div class="article_cards" v-for="(card,index) in article.slice(startPage, startPage + perPage)">
                                         <div class="line_top">
                                             <p>{{article[index].topicName}}</p>
                                             <p>|</p>
@@ -96,10 +96,11 @@
                                     </div>
                                     <!-- 頁籤按鈕 -->
                                     <div class="content_pages">
-                                        <button class="other_btn">1</button>
-                                        <button class="other_btn">2</button>
-                                        <button class="other_btn">3</button>
-                                        <span>&#10230;</span>
+                                        <ul>
+                                            <!-- <li :class="{disabled: currentPage === 1}" @click="setPage(currentPage-1)"><a href="#">Prev</a></li> -->
+                                            <button class="other_btn" v-for="n in totalPage" @click="setPage(n)"><a href="#">{{n}}</a></button>
+                                            <!-- <li :class="{disabled: currentPage === totalPage}" @click="setPage(currentPage+1)"><a href="#"><span>&#10230;</span></a></li> -->
+                                        </ul>
                                     </div>
                                 </div>     
                             </div>
@@ -116,7 +117,7 @@
                         <img :src="iconClose" id="close">
                     </div>
                     <div class="author img_box narrow">
-                        <img :src="'./images/teller_mem/'+ getTitle.memImage" alt="會員頭像">
+                        <img :src="imgSrc(getTitle.memImage)" alt="會員頭像">
                         <span>{{getTitle.memName}}</span>
                     </div>
                     <div class="article_view_title narrow">
@@ -170,13 +171,13 @@
                 <!-- 使用者要留言的地方 -->
                 <div class="response_box">
                     <div class="user_img_box">
-                        <img :src="author_hat_img" alt="會員頭像">
+                        <img :src="imgSrc(userData.sticker)" alt="會員頭像">
                     </div>
                     <div class="user_txt_box">
-                        <textarea  cols="1" rows="1"></textarea>
+                        <textarea  cols="1" rows="1" v-model="msgContent"></textarea>
                     </div>
                     <div class="res_btn_box">
-                        <input type="submit" class="submit_btn" value="送出">
+                        <button class="submit_btn" @click="insertData">送出</button>
                     </div>
                 </div>
             </section>
@@ -241,23 +242,31 @@
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
     <script>
+    // 若尚未登入
+    if (getSessionData() !== false || getSessionData() === false) {
+        getData();
+    }
+
+    function getData(){
         new Vue({
             el: '#app',
             data: { //變數放這
+                userData: getSessionData(),
                 urls: {
-                    '今日運勢': 'con_today_fortune.html',
-                    '星座配對': 'con_pair.html',
-                    '真實星座': 'con_real_constellation.html',
-                    '星盤推算': 'astrolabe.html',
-                    '星座故事': 'con_story.html',
-                    '星座討論區': 'discuss.html',
+                    '體驗占卜師': 'be_tellers.html',
+                    '線上占卜': 'online_divination.html',
+                    '預約占卜師': 'teller_mem.html',
+                    '塔羅討論區': 'discuss.html',
                 },
-                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+                navs: ['體驗占卜師','線上占卜','占卜師總覽','塔羅討論區'],
                 cates: {},
-                labels: ['熱門','最新'],
+                labels: {
+                            0: '熱門',
+                            1: '最新',
+                        },
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
-                author_hat_img: 'images/black_cat_wizard.svg',
+                author_img: 'images/black_cat_wizard.svg',
                 isChecked: 0,
                 showBoard: 0,
                 showNotice: 0,
@@ -265,15 +274,19 @@
                 article: [],
                 message: [],
                 getTitle: {},
-                msgIdx:{},
+                msgIdx: {},
+                plusMsgIdx: {},
                 newPost:[],
+                perPage: 5,
+                currentPage: 1,
+                msgContent: '',
             },
             created() {
-                this.getCol();
+                this.getCol(this.isChecked);
                 this.getTopic();
             },
             mounted() {
-                this.getCol(this.isChecked);
+                
             },
             methods: {
                 changeLike(index){
@@ -283,17 +296,9 @@
                         this.$data.article[index].likes += 1;
                     }
                 },
-                imgSrc(folder, image) {
-                    switch (folder) {
-                        case 'member':
-                            folder = 'teller_mem';
-                            break;
-                        case 'product':
-                            folder = 'shop';
-                            break;
-                        }
-                    let path = `images/${folder}`;
-                    return `${path}/${image}`;
+                imgSrc(image){
+                let path = `images/teller_mem`;
+                return `${path}/${image}`;
                 },
                 getIndex(index){
                     // console.log(this.getMsg(index));
@@ -364,18 +369,17 @@
                 },
                 //取留言的資料
                 getMsg(index) {
-                    let msgIdx = this.article[index];
-                    console.log(msgIdx);
+                    let artNo = this.getTitle.artNo;
                     $.ajax({
                         type: 'POST',
                         url: 'phps/select.php',
                         
                         data: {
                             table: 'article_message',
-                            queryCol: 'artNo, msgTime, msgContent, memId, memImage',
+                            queryCol: 'msgNo, artNo, msgTime, msgContent, memId, memImage',
                             joinTable: 'members',
                             joinOn: 'memNo',
-                            condition: `article_message.artNo =  ${msgIdx.artNo}`,
+                            condition: `article_message.artNo =  ${artNo}`,
                             other: 'order by msgTime',
                         },
                         success: data => {
@@ -383,7 +387,6 @@
                             // console.log(data.sql);
                             if (data.msg !== false){
                                 this.message = data.msg;
-                                // console.log(thisVue.message);
                             }
                         },
                         error: err => {
@@ -391,8 +394,66 @@
                         }
                     });
                 },
+                //更新留言數量
+                countMsg(index) {
+                    let artNo = this.getTitle.artNo;
+                    console.log(artNo);
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/update.php',
+                        data: {
+                            table: 'article',
+                            updateValue: 'msgs = msgs + 1',
+                            where: `artNo = '${artNo}'`
+                        },
+                        success: data => {
+                            console.log('plus ok');
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                insertData() {
+                    let msgContent = this.msgContent;
+                    let memNo = this.userData.userNo;
+                    let artNo = this.getTitle.artNo;
+
+                    // 新增資料
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/insert.php',
+                        data: {
+                            table: 'article_message',
+                            // col: 'msgNo, artNo, memNo, msgTime, MsgContent, statue',
+                            insertValue: `default, '${artNo}', '${memNo}', CURRENT_TIMESTAMP, '${msgContent}', default`
+                        },
+                        success: data => {
+                            alert('留言成功');
+                            window.location.reload();
+                            this.getCol();
+                            this.countMsg();
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                setPage(thePage){
+                    this.currentPage = thePage;
+                },
+            },
+            computed: {
+                totalPage(){
+                    return Math.ceil(this.article.length / this.perPage);
+                },
+                startPage(){
+                    return (this.currentPage - 1) * this.perPage;
+                },
             },
         });
+    }
+        
         $(document).ready(function(){
             $('.owl-carousel').owlCarousel({
                 stagePadding: 10,

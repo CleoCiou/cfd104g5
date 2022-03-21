@@ -58,13 +58,13 @@ function getProduct() {
                   <a class="item">
                     <div class="img_box">
                       <div class="prod_No">${data.msg[i].prodNo}</div>
-                      <span >
-                        <img src="${productImg}${data.msg[i].prodImage1}" />
-                        <div class="txt_box">
-                          <h4>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</h4>
-                          <p>NT$ ${data.msg[i].price}</p>
-                        </div>
-                      </span>
+                        <span>
+                            <img src="${productImg}${data.msg[i].prodImage1}" />
+                            <div class="txt_box">
+                                <h4>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</h4>
+                                <p>NT$ ${data.msg[i].price}</p>
+                            </div>
+                        </span>
                     </div>
                     <div class="icon_box">
                       <span><img src="images/icon/icon_shop_eye.svg"></span>

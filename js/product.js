@@ -81,39 +81,11 @@ function getProduct() {
                     <p>${data.msg[0].prodIntro}</p> 
                     `;
 
-                // 貓頭鷹推薦商品
-                
-                // let owlTheme = `<div class="owl-carousel owl-theme ">`;
-                // for (let i = 0; i < data.msg.length; i++) {
-
-                //     owlTheme +=   `
-                //         <a href="#">
-                //             <img src="${productImg}${data.msg[i].prodImage1}" alt="推薦商品" ">
-                //             <p>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</p>
-                //         </a>
-                //     `;
-                // }
-                // owlTheme += `</div>`;
 
                 $('.product_inner_img_left').append(productRow);
                 $('.product_txt').append(productTxt);
                 $('.product_detail_txt').append(productDetail);
-                // $('.recommended_products_img').append(owlTheme);
-
-                // $(".owl-carousel").owlCarousel({
-                //     loop: true, // 循環播放
-                //     margin: 10, // 外距 10px
-                //     dots: true,
-                //     nav: false, // 顯示點點
-                //     responsive: {
-                //         0: {
-                //             items: 2 // 螢幕大小為 0~600 顯示 1 個項目
-                //         },
-                //         980: {
-                //             items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
-                //         }
-                //     }
-                // });
+                
 
                 // 小圖換大圖
                 let smalls = document.getElementsByClassName("small");
@@ -199,4 +171,47 @@ $(document).on('click','.item',function(){
     window.location.href = "product.html";
 });
 window.addEventListener('load', getRecommended);
+
+//購物車功能
+function setCart() {
+    let tocart = document.querySelector('#buyNow');
+    let topay = document.querySelector('#addCart');
+
+    tocart.addEventListener('click',save)
+    topay.addEventListener('click',save)
+};
+
+setCart();
+
+function save(){
+    let thisProdNo = localStorage.getItem('prodNumber');
+    let count = document.querySelector('#prodAmount').value;
+    let item = {    //要存的("key","value")
+        prodNo: thisProdNo,
+        amount: count,
+    };
+
+
+    //(重複商品不加購物車)
+    console.log(item)
+    let cart = localStorage.getItem('cart');    //拿到localstorage
+    cart = cart ? JSON.parse(cart) : [];    //轉JSON格式
+    let found = false;
+
+    for(let i=0; i<cart.length; i++){    
+        if(cart[i].prodNo === item.prodNo){
+            cart[i] = item;
+            found = true;
+            break;
+        }    
+    }
+
+
+    if(found === false){
+        cart.push(item);   //新的都要往後加
+    }
+
+    // console.log(cart)
+    localStorage.setItem('cart', JSON.stringify(cart));    //轉成字串，傳到localstorage
+}
 

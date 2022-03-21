@@ -32,12 +32,18 @@
                     </div>
                     
                     <form> 
-                        <input class="quantity input_reduce" type=button value="  -  "><input class="quantity input_value" type=text name=a mount value="1"><input class="quantity input_add" type=button value="  +  ">
+                        <input class="quantity input_reduce" type=button value="  -  ">
+                        <input class="quantity input_value" type=text name=amount id="prodAmount" value="1">
+                        <input class="quantity input_add" type=button value="  +  ">
                     </form>
                     
                     <div class="buy_box">
-                        <a href="#"><input type="submit" id="submit" value="立即購買" class="primary_btn"></a>
-                        <a href="shopping_cart.html"><input type="submit" id="submit" value="加入購物車" class="third_btn"></a>
+                        <a href="shopping_cart.html">
+                            <button class="primary_btn" id="buyNow">立即購買</button>
+                        </a>
+                        <a href="#">
+                            <button class="third_btn" id="addCart">加入購物車</button>
+                        </a>
                     </div>
 
                 </div>
@@ -45,6 +51,20 @@
 
             <div class="product_detail_txt">
                
+            </div>
+
+            <div class="enter_online_divination">
+                <h3>線上占卜</h3>
+                <p>
+                    要買塔羅商品的客人建議先針對你心想的問題抽牌，<br>
+                    讓塔羅牌給你指引後，再挑選屬於你獨一無二的商品哦。
+                </p>
+                <a href="online_divination.html">
+                    <button class="unselected_btn">
+                        進入線上塔羅牌免費占卜
+                    </button>
+                </a>
+                
             </div>
 
             <div class="recommended_products">
@@ -69,7 +89,7 @@
 <script>
 
 // 數量增加減少
-    const input_reduce = document.querySelectorAll('.input_reduce');
+const input_reduce = document.querySelectorAll('.input_reduce');
 const input_value = document.querySelectorAll('.input_value');
 const input_add = document.querySelectorAll('.input_add');
 
