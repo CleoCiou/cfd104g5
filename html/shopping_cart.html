@@ -50,13 +50,13 @@
                             </div>
                             <div class="price"><span>NT${{getProduct(row.prodNo).price}}</span></div>
                             <div class="count">
-                                <button @click="handleSub(item)" class="count_btn">-</button>
-                                {{row.amount}}
-                                <button @click="handlePlus(item)" class="count_btn">+</button>
+                                <button @click="row.amount--" class="count_btn">-</button>
+                                <input type="text" v-model="cart[index].amount" class="prodAmount"></input>
+                                <button @click="row.amount++" class="count_btn">+</button>
                             </div> 
-                            <div class="amount"><span>NT${{sum(index)}}</span></div>
+                            <div class="amount">NT$<span>{{sum(index)}}</span></div>
                             <div class="operate">
-                                <button @click="handledelete(index)" class="count_btn">x</button>
+                                <button @click="handledelete(index);remove()" class="count_btn">x</button>
                             </div>
                         </div>
                     </div>                        
@@ -70,7 +70,7 @@
                 <div class="customer_info">
                     <div class="pay_way">
                         <label for="">付款方式：</label>
-                        <select>
+                        <select id="payWay">
                             <option>請選擇</option>
                             <option>轉帳付款</option>
                             <option>信用卡</option>
@@ -96,8 +96,8 @@
         <section class="confirm_btn">
             <div class="container">
                 <div class="confirm_btns">
-                    <a href=""><button class="third_btn">繼續購物</button></a>
-                    <a href="shopping_info.html"><button class="primary_btn">下一步</button></a>
+                    <a href="shop.html"><button class="third_btn" id="continue" @click="save">繼續購物</button></a>
+                    <a href="shopping_info.html"><button class="primary_btn" id="nextStep" @click="save">下一步</button></a>
                 </div>
             </div>
         </section>
@@ -163,35 +163,39 @@
         data:{
             queryResult: [],
             cart:[],
-            prodInfoList: {}
+            prodInfoList: {},
+            alreadycatch:false
         },
         mounted() {
             this.getList();
             this.getProdInfo_vue();
         },
-        methods:{
-            handlePlus: function(row){
-                cart.amount++;
-            },
-
-            handleSub: function(row){
-                if(row.amount>1){
-                row.amount--;                
+        watch:{
+            cart:{
+                deep:true,
+                handler(){
+                    let cart = JSON.stringify(this.cart);
+                    localStorage.setItem('cart',cart);
+                    if(this.cart.length == 0){
+                        alert('購物車已清空');
+                    }
                 }
-            },
-
-
+            }
+        },
+        methods:{
             handledelete: function(index){
                 this.cart.splice(index,1);
             },
 
             sum(idx){
-                return parseInt(this.prodInfoList[idx].price) * parseInt(this.cart[idx].count)
+                let prod = this.getProduct(this.cart[idx].prodNo);
+                return parseInt(prod.price) * parseInt(this.cart[idx].amount)
             },
 
             getList() {
                 let cart = JSON.parse(localStorage.getItem("cart"));
                 this.cart = cart;
+                this.alreadycatch = true;
             },
             
             getProdInfo_vue() {
@@ -206,7 +210,7 @@
 
                         joinOn:'prodCateNo',
 
-                        queryCol: "prodName, FORMAT(price, 'C') price, prodImage1, cateName, prodNo",
+                        queryCol: "prodName, price, prodImage1, cateName, prodNo",
                     },
                     success: data =>{
                         if (data.msg !== false){
@@ -230,11 +234,65 @@
                 return `${path}/${image}`;
             },
             
+            remove(){
+                localStorage.removeItem('cart')
+            },
+
+            save(){
+                let prodNo = localStorage.getItem('prodNumber');
+                let amount = document.querySelector('.prodAmount').value;
+                let payMethod = document.querySelector('#payWay').value;
+                let item = {    //要存的("key","value")
+                    prodNo,
+                    amount,
+                };
+
+                let itemSec = {
+                    payWay: payMethod,
+                }
+
+
+                //(重複商品不加購物車)
+                let cart = localStorage.getItem('cart');    //拿到localstorage
+                cart = cart ? JSON.parse(cart) : [];    //轉JSON格式
+                let found = false;
+
+                for(let i=0 ; i < this.cart.length; i++){    
+                    if(cart[i].prodNo === item.prodNo){
+                        cart[i] = item;
+                        found = true;
+                        break;
+                    }    
+                }
+
+                if(found === false){
+                    cart.push(item);   //新的都要往後加
+                }
+
+
+                // 付款方式驗證
+                let payWay = localStorage.getItem('payWay');
+                payWay = payWay ? JSON.parse(payWay) : [];    //轉JSON格式
+                if(payWay.payWay !== itemSec.payWay){
+                    payWay = itemSec;                    
+                };
+
+
+
+
+                // console.log(cart)
+                localStorage.setItem('cart', JSON.stringify(cart));    //轉成字串，傳到localstorage
+                localStorage.setItem('payWay', JSON.stringify(payWay));    //轉成字串，傳到localstorage
+            },
+                        
+
+
+            
         },
         computed:{
             total() {
                 let subtotal = 0;
-                for(let i = 0; i < this.queryResult.length; i++){
+                for(let i = 0; i < this.cart.length; i++){
                     subtotal += this.sum(i);
                 }
                 return subtotal;
@@ -243,7 +301,6 @@
                 let deliFee = 0;
                 if(this.cart.length == 0){
                     deliFee = 0;
-                    alert('購物車空空的喔趕快花錢喔')
                 }else{
                     deliFee = 60
                 }

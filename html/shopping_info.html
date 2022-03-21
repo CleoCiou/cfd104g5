@@ -35,21 +35,26 @@
                         <div class="amount">總計</div>
                     </div>
                     <!-- 購物車body -->
-                    <div class="cart_body" v-for="(item, index) in itemList" :key="item.id" >
+                    <!-- :key="row.id" -->
+                    <div class="cart_body" v-for="(row, index) in cart">
                         <div class="cart_body_box">
                             <div class="item_detail">
                                 <div class="cart_card">
-                                    <div class="img_box"><img v-bind:src="item.imgUrl" alt=""></div>
-                                    <div class="txt_box"><p>{{item.itemName}}</p></div>
+                                    <div class="img_box">
+                                        <img :src="imgSrc(getProduct(row.prodNo).prodImage1)" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p>{{getProduct(row.prodNo).prodName}}{{getProduct(row.prodNo).cateName}}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="price"><span>NT$</span>{{item.price}}</div>
+                            <div class="price"><span>NT${{getProduct(row.prodNo).price}}</span></div>
                             <div class="count">
-                                {{item.count}}
+                                {{cart[index].amount}}
                             </div> 
-                            <div class="amount"><span>NT$</span>{{sum(index)}}</div>
+                            <div class="amount">NT$<span>{{sum(index)}}</span></div>
                         </div>
-                    </div>        
+                    </div>                        
                 </div>
             </div>
         </section>
@@ -66,19 +71,19 @@
                             </label>
                             <label>
                                 <p>信箱</p>
-                                <input type="email">
+                                <input type="text" id="mail">
                             </label>
                             <label>
                                 <p>電話</p>
-                                <input type="text">
+                                <input type="text" id="phone">
                             </label>
                             <label>
                                 <p>地址</p>
-                                <input type="text">
+                                <input type="text" id="address">
                             </label>
                             <label>
                                 <p>信用卡卡號</p>
-                                <input type="text">
+                                <input type="text" id="credit">
                             </label>
                         </form>
                     </div>
@@ -89,7 +94,7 @@
                             <h4>小計：NT${{total}}</h4>
                         </div>
                         <div class="delivery_fee">
-                            <h4>運費：NT$60</h4>
+                            <h4>運費：NT${{fee}}</h4>
                         </div>
                         <div class="total_price">
                             <h4>總計：NT${{total+60}}</h4>
@@ -103,7 +108,7 @@
             <div class="container">
                 <div class="confirm_btns">
                     <a href="shopping_cart.html"><button class="third_btn">上一步</button></a>
-                    <a href="shopping_confirm.html"><button class="primary_btn">確認訂單</button></a>
+                    <a href="shopping_confirm.html"><button class="primary_btn" @click="save">確認訂單</button></a>
                 </div>
             </div>
         </section>
@@ -162,70 +167,107 @@
 <!-- 網頁尾 By NJ -->
 @@include('layout/footer.html')
 <script>
-    
     new Vue({
         el:'#app',
         data:{
-            // subtotal: 0,
-            itemList:[
-                {
-                    id:'1',
-                    itemName:'水瓶座戒指',
-                    imgUrl:'images/shop/Constellation/ring/ring_aquarius.jpg',
-                    price:'500',
-                    count:'2'
-                },
-                {
-                    id:'2',
-                    itemName:'巨蟹座項鍊',
-                    imgUrl:'images/shop/Constellation/necklace/necklace_cancer.png',
-                    price:'790',
-                    count:'3'
-                },
-                {
-                    id:'3',
-                    itemName:'雙魚座項鍊',
-                    imgUrl:'images/shop/Constellation/necklace/necklace_pisces.png',
-                    price:'1200',
-                    count:'1'
-                },
-                {
-                    id:'4',
-                    itemName:'雙子座戒指',
-                    imgUrl:'images/shop/Constellation/ring/ring_gemini.jpg',
-                    price:'2300',
-                    count:'1'
-                },
-
-            ]
+            queryResult: [],
+            cart:[],
+            prodInfoList: {},
         },
+        mounted() {
+            this.getList();
+            this.getProdInfo_vue();
+        },
+
         methods:{
-            handlePlus: function(item){
-                item.count++;
-            },
-            handleSub: function(item){
-                if(item.count>1){
-                item.count--;                
-                }
+            sum(idx){
+                let prod = this.getProduct(this.cart[idx].prodNo);
+                return parseInt(prod.price) * parseInt(this.cart[idx].amount)
             },
 
-            handledelete: function(index){
-                console.log(this);
-                this.itemList.splice(index,1);
+            getList() {
+                let cart = JSON.parse(localStorage.getItem("cart"));
+                this.cart = cart;
             },
-            sum(idx){
-                return parseInt(this.itemList[idx].price) * parseInt(this.itemList[idx].count)
-            }
+            
+            getProdInfo_vue() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+
+                        table: 'product',
+
+                        joinTable: 'product_category',
+
+                        joinOn:'prodCateNo',
+
+                        queryCol: "prodName, price, prodImage1, cateName, prodNo",
+                    },
+                    success: data =>{
+                        if (data.msg !== false){
+                            this.prodInfoList = data.msg;
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
+            },
+
+            getProduct(prodNo) {
+                let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
+                idx = prodNoList.indexOf(prodNo);
+                return this.prodInfoList[idx];
+            },
+
+            imgSrc(image){
+                let path = `images/shop/tarot`;
+                return `${path}/${image}`;
+            },
+            
+            save(){
+                let Name = document.querySelector('#name').value;
+                let Email = document.querySelector('#mail').value;
+                let Phone = document.querySelector('#phone').value;
+                let Address = document.querySelector('#address').value;
+                let Credit = document.querySelector('#credit').value;
+                let item = {
+                    Name,
+                    Email,
+                    Phone,
+                    Address,
+                    Credit,
+                };
+
+                let payWay = localStorage.getItem('payWay');    //拿到localstorage
+                payWay = payWay ? JSON.parse(payWay) : [];    //轉JSON格式
+                payWay.push(item);
+
+                localStorage.setItem('payWay', JSON.stringify(payWay));
+            },
+                        
+
+
             
         },
         computed:{
             total() {
                 let subtotal = 0;
-                for(let i = 0; i < this.itemList.length; i++){
+                for(let i = 0; i < this.cart.length; i++){
                     subtotal += this.sum(i);
                 }
                 return subtotal;
-            }
+            },
+            fee(){
+                let deliFee = 0;
+                if(this.cart.length == 0){
+                    deliFee = 0;
+                }else{
+                    deliFee = 60
+                }
+                return deliFee;
+            },
         }
 })
 </script>
