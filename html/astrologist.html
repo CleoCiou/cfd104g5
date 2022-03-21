@@ -95,6 +95,7 @@
                     <div class="comments">
 
                         <div class="action ast_hidden">
+                            <!-- <button class="selected_btn active_star" @click="changeStar">全部</button> -->
                             <button class="selected_btn star_btn" @click="changeStar">全部</button>
                             <button class="unselected_btn star_btn" @click="changeStar">五星</button>
                             <button class="unselected_btn star_btn" @click="changeStar">四星</button>
@@ -321,6 +322,19 @@
                 $('.action .selected_btn')[0].classList.remove('selected_btn');
                 e.target.classList.remove('unselected_btn');
                 e.target.classList.add('selected_btn');
+            },
+            carsoul_last(e) {
+            },
+            carsoul_next(e) {
+            //     console.log(e.target);
+            //     let reservation_card = document.querySelectorAll('.reservation_card');
+            //     console.log(reservation_card);
+            //     let activeCard = document.querySelectorAll('.reservation_card.active')[0];
+            //     console.log(activeCard);
+            //     let i = Array.from(reservation_card).indexOf(activeCard);
+            //     let moveList = document.querySelectorAll('.reservation_list')[0];
+            //     console.log(moveList);
+            //     moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
             }
         }
     });
