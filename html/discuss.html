@@ -86,7 +86,7 @@
                                             <img :src="iconMessage">
                                             <p>{{article[index].msgs}}回應</p>
                                             <!-- 收藏 -->
-                                            <button class="using_btn" @click="article[index].favIndex =! article[index].favIndex">
+                                            <button class="using_btn" @click="article[index].favIndex =! article[index].favIndex; checkFav()">
                                                 <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: article[index].favIndex == 1}">
                                                     <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
                                                 </svg>
@@ -151,7 +151,7 @@
                             <hr class="style">
                             <div class="response_card">
                                 <div class="card_author img_box">
-                                    <img :src="'./images/teller_mem/'+ message[index].memImage" alt="會員頭像">
+                                    <img :src="'./images/member/'+ message[index].memImage" alt="會員頭像">
                                 </div>
                                 <div class="card_txt">
                                     <div class="response_author">
@@ -177,7 +177,7 @@
                         <textarea  cols="1" rows="1" v-model="msgContent"></textarea>
                     </div>
                     <div class="res_btn_box">
-                        <button class="submit_btn" @click="insertData">送出</button>
+                        <button class="submit_btn" @click="checkMsg">送出</button>
                     </div>
                 </div>
             </section>
@@ -277,7 +277,7 @@
                 getIdx: {},
                 plusMsgIdx: {},
                 newPost:[],
-                perPage: 5,
+                perPage: 6,
                 currentPage: 1,
                 msgContent: '',
             },
@@ -295,6 +295,24 @@
                         this.changeLike(index);
                     }
                 },
+                //留言要先確認是否登入 若無登入就跳提示並且不能實現按鈕的功能
+                checkMsg(){
+                    if (getSessionData() === false) {
+                        alert('請先登入');
+                        return false;
+                    }else{
+                        this.insertData();
+                    }
+                },
+                //按收藏要先確認是否登入 若無登入就跳提示並且不能實現按鈕的功能
+                checkFav(){
+                    if (getSessionData() === false) {
+                        this.getTitle.favIndex === 0;
+                        alert('請先登入');
+                        return false;
+                        
+                    }
+                },
                 //判斷愛心有沒有被按 並且抓取index和activeIndex 再傳入countLikes的ajax
                 changeLike(index){
                     if(this.$data.article[index].activeIndex == 0){
@@ -308,7 +326,7 @@
                 },
                 //圖片路徑
                 imgSrc(image){
-                    let path = `images/teller_mem`;
+                    let path = `images/member`;
                     return `${path}/${image}`;
                 },
                 //抓文章和留言的index
@@ -382,7 +400,8 @@
                 //取留言的資料
                 getMsg(index) {
                     let artNo = this.getTitle.artNo;
-                    console.log(artNo);
+                    this.message = [];
+                    // console.log(artNo);
                     $.ajax({
                         type: 'POST',
                         url: 'phps/select.php',
@@ -398,6 +417,7 @@
                         success: data => {
                             if (data.msg !== false){
                                 this.message = data.msg;
+                                console.log(this.message);
                             }
                         },
                         error: err => {
@@ -418,19 +438,19 @@
                             where: `artNo = ${artNo}`
                         },
                         success: data => {
-                            console.log('plus ok');
+                            // console.log('plus ok');
                         },
                         error: err => {
                             console.log('ajax error');
                         }
                     });
                 },
+                //新增留言
                 insertData() {
                     let msgContent = this.msgContent;
                     let memNo = this.userData.userNo;
                     let artNo = this.getTitle.artNo;
 
-                    // 新增資料
                     $.ajax({
                         type: 'POST',
                         url: 'phps/insert.php',
@@ -440,9 +460,10 @@
                         },
                         success: data => {
                             alert('留言成功');
-                            // window.location.reload();
                             this.getCol();
                             this.countMsg();
+                            this.getMsg(artNo);
+                            this.msgContent = '';
                         },
                         error: err => {
                             console.log('ajax error');
@@ -452,7 +473,7 @@
                 //更新按讚數量
                 countLikes(index, activeIndex) {
                     let artNo = this.getIdx.artNo;
-                    console.log(artNo);
+                    // console.log(artNo);
                     
                     if(activeIndex == 1){
                         $.ajax({
@@ -500,7 +521,7 @@
                             insertValue: `'${artNo}', '${memNo}'`
                         },
                         success: data => {
-                            console.log('insert ok');
+                            // console.log('insert ok');
                         },
                         error: err => {
                             console.log('ajax error');

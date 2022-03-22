@@ -22,7 +22,7 @@
                     
                     <div class="write_head">
                         <div class="author img_box">
-                            <img :src="imgSrc('member', userData.sticker)" alt="會員頭像">
+                            <img :src="imgSrc(userData.sticker)" alt="會員頭像">
                         </div>
                         <div class="writer_detail_box">
                             <p>{{ userData.userId }}</p>
@@ -158,16 +158,8 @@
                     changeTopic(index){
                         this.topic = this.cates[index]
                     },
-                    imgSrc(folder, image) {
-                    switch (folder) {
-                        case 'member':
-                            folder = 'teller_mem';
-                            break;
-                        case 'product':
-                            folder = 'shop';
-                            break;
-                        }
-                        let path = `images/${folder}`;
+                    imgSrc(image){
+                        let path = `images/member`;
                         return `${path}/${image}`;
                     },
                     
