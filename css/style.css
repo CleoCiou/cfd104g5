@@ -1469,6 +1469,8 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_rig
   border: 2px dashed #888;
   border-radius: 0.5em;
   background: url("../images/draw_cards/card_back_180.jpg") no-repeat;
+  background-size: contain;
+  background-position-y: center;
 }
 
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view,
@@ -1476,6 +1478,26 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_rig
   margin: auto;
   height: 100%;
   padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail {
+  padding: 1em 2em;
+  margin-left: 1.8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail .title,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail .title {
+  padding: 0.2em 0;
 }
 
 main section.member .container .login_box {
@@ -2391,7 +2413,7 @@ main .article_writing_board .write_head {
   margin: 0.5em 0;
 }
 
-main .article_writing_board .write_head .author {
+main .article_writing_board .write_head .author.img_box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2400,13 +2422,17 @@ main .article_writing_board .write_head .author {
           align-items: center;
   text-align: center;
   margin-right: 1em;
-}
-
-main .article_writing_board .write_head .author img {
   width: 5em;
   height: 5em;
+}
+
+main .article_writing_board .write_head .author.img_box img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border: 1px solid #CFB886;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 main .article_writing_board .write_head .writer_detail_box .getTime {
