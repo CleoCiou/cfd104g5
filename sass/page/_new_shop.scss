@@ -118,6 +118,7 @@ main{
                             padding-top: 0.5em;
                             margin: 0 auto;
                             overflow: hidden;
+                            position: relative;
                             img{
                                 @include desktop{
                                     position: relative;
@@ -125,7 +126,22 @@ main{
                                 }
                             }
                         }
+                        .eyes_icon_box{
+                            width: 30%;
+                            padding-top: 0.5em;
+                            margin: 0 auto;
+                            overflow: hidden;
+                            position: relative;
+                            img{
+                                @include desktop{
+                                    position: relative;
+                                    bottom: -10em;
+                                }
+                            }   
+                        }
                     }
+
+            
                     .item:hover{
                         .icon_box{
                             img{
@@ -135,6 +151,15 @@ main{
                                 }
                             }
                         }
+                        .eyes_icon_box{
+                            img{
+                                @include desktop{
+                                    bottom: 0em;
+                                    transition: 0.6s;
+                                }
+                            }
+                        }
+
                     }
                     .item:hover{
                         Box-shadow: 1px 1px 12px 1px  #CFB886,
