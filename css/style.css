@@ -1469,6 +1469,8 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_rig
   border: 2px dashed #888;
   border-radius: 0.5em;
   background: url("../images/draw_cards/card_back_180.jpg") no-repeat;
+  background-size: contain;
+  background-position-y: center;
 }
 
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view,
@@ -1476,6 +1478,26 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_rig
   margin: auto;
   height: 100%;
   padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail {
+  padding: 1em 2em;
+  margin-left: 1.8em;
+}
+
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail .title,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail .title {
+  padding: 0.2em 0;
 }
 
 main section.member .container .login_box {

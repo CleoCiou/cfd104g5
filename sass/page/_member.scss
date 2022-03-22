@@ -607,11 +607,24 @@ main {
                             border: 2px dashed #888;
                             border-radius: $borderRadius;
                             background: url('../images/draw_cards/card_back_180.jpg') no-repeat;
+                            background-size: contain;
+                            background-position-y: center;
 
                             .quiz_view{
                                 margin: auto;
                                 height: 100%;
                                 padding: 1em;
+                                // text-align: center;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center; 
+                                .logDetail{
+                                    padding: 1em 2em;
+                                    margin-left: 1.8em;
+                                    .title{
+                                        padding: 0.2em 0;
+                                    }
+                                }
                             }
                         }
                     }     
