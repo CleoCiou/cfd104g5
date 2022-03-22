@@ -317,6 +317,7 @@
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const typeNo = urlParams.get('type');
+		const divNo = urlParams.get('no');
 		
 		// 回傳要新增的資料
 		let insertData;
@@ -350,7 +351,7 @@
 					document.querySelector('.detail').innerHTML = data.msg[0].detail;
 					tarDetNo = data.msg[0].tarDetNo;
 
-					insertData = `default, userNo, ${data.msg[0].typeNo}, ${data.msg[0].tarDetNo}, default`;
+					insertData = `default, userNo, ${divNo}, ${data.msg[0].tarDetNo}, default`;
 				}
 			},
 			error: function() {
