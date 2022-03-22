@@ -267,52 +267,51 @@
     
 /* 主打商品 開始 */
 
-    /* 主打商品容器 */
-    .hot_product_box{
-       justify-content: center;
-    }
-    /* 主打商品卡片 */
-    .hot_product_card{
-        box-sizing: border-box;
-        text-align: center;
-        border: 1px solid #CFB886;
-        border-image: initial;
-        padding: 3em ;
-        margin: 1em;
-        border-radius: 200px;
-    
-    }
-    
+main .hot_product 
+.hot_product_box img ,.icon_box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    /* 主打商品圖字icon上下間隔隔開 */
-    .hot_product_card_img, .hot_product_card_txt,.hot_product_icon{
-        padding-top: 2em;
-    }
-
-    .hot_product_card{
-        overflow: hidden;
+main .hot_product .item{
+    width: 46%;
+    padding:0.5em 1em;
+    border: 1px solid #CFB886;
+    border-radius: 10em;
+    margin: 2%;
+    text-align: center;
+    
     }
     
-    .hot_product_card_img img{
+main .hot_product .img_box{
+        border-radius: 60%;
+    }
+main .hot_product .img_box img{
+        padding: 1em;
         width: 100%;
-        height: 100%;
-        padding: 5%;
-        border-radius: 100%;
-        vertical-align: top;
-        object-fit: cover;
+        border-radius: 60%; 
     }
 
-    .hot_product_card_img{
-        width: 14em;
-        margin: auto;
+main .hot_product .prod_No{
+        display: none;
+    }
+    
+main .hot_product .icon_box{
+        width: 20%;
+        padding-top: 0.5em;
+        margin: 0 auto;
+       
+    }
+
+main .hot_product .icon_box img{
+        position: relative;
+            
     }
 
 
-    /* 眼睛icon */
-    .hot_product_icon img{
-        border-radius: 100%;
-        width: 25%;
-    }
+
+
 
     
 
@@ -395,37 +394,39 @@
 
         /* 眼睛hover動畫 */
 
+        main .hot_product .item ,
         .hot_fortune_teller_card{
             overflow: hidden;
         }
 
         
 
-        .hot_product_card:hover 
-        .hot_product_icon,.hot_fortune_teller_card:hover .hot_fortune_teller_icon{
-            bottom: -10px;
+        main .hot_product .item:hover .icon_box, 
+        .hot_fortune_teller_card:hover .hot_fortune_teller_icon{
+            bottom: -3px;
         }
 
-        .hot_product_icon,.hot_fortune_teller_icon{
+        .icon_box,.hot_fortune_teller_icon{
             position: relative;
             bottom: -150px;
             transition:bottom 0.8s ;
         }
 
         /* 產品卡片碰到後發亮 */
-        .hot_product_card:hover,.hot_fortune_teller_card:hover
+        main .hot_product .item:hover,.hot_fortune_teller_card:hover
         {
             Box-shadow: 1px 1px 12px 1px  #CFB886,
             1px 1px 2px 1px  #CFB886 inset;
 
         }
 
-
-        /* 商品總覽 */
         .product_overview{
             text-align: center;
-            padding-top: 2em;
         }
+
+
+        
+      
 
         
 

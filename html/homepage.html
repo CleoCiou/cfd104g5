@@ -101,49 +101,11 @@
     <section class="hot_fortune_teller" id="hft">
         <div class="container">
 
+            <!-- 熱門占卜師_卡片 -->
             <h1>熱門占卜師</h1>  
-
+            
             <div id="hotTellerMem">
-                <!-- 熱門占卜師_卡片 -->
-                <!-- <a href="teller_reservation.html">
-                    <div class="hot_fortune_teller_card">
-                        <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller.svg">
-                        </div>
-                        <div class="hot_fortune_teller_txt">
-                            <h3>吳恆準</h3>
-                        </div>
-                        <div class="hot_fortune_teller_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>  
-                <a href="teller_reservation.html">
-                    <div class="hot_fortune_teller_card">
-                        <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller_girl.svg">
-                        </div>
-                        <div class="hot_fortune_teller_txt">
-                            <h3>武材尊</h3>
-                        </div>
-                        <div class="hot_fortune_teller_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>  
-                <a href="teller_reservation.html">
-                    <div class="hot_fortune_teller_card">
-                        <div class="hot_fortune_teller_img">
-                            <img src="images/index/index_hot_fortune_teller_sex_girl.svg">
-                        </div>
-                        <div class="hot_fortune_teller_txt">
-                            <h3>巫亙准</h3>
-                        </div>
-                        <div class="hot_fortune_teller_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>   -->
+                
             </div>
             <!-- 占卜師總覽 -->
             <div class="teller_verview">
@@ -156,50 +118,10 @@
     <section class="hot_product" id="hp">
         <div class="container">
             <h1>主打商品</h1>
+
             <!-- 主打商品_卡片 -->
             <div id="hotProduct">
-                <!-- <a href="product.html">    
-                    <div class="hot_product_card">
-                        <div class="hot_product_card_img">
-                            <img src="images/shop/Constellation/wristband/wristband_aries.png">
-                        </div>
-                        <div class="hot_product_card_txt">
-                            <h4>星座手環-牡羊座</h4>
-                            <h4>NT$1,299</h4>
-                        </div>
-                        <div class="hot_product_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>
-                <a href="product.html">    
-                    <div class="hot_product_card">
-                        <div class="hot_product_card_img">
-                            <img src="images/shop/Constellation/wristband/wristband_gemini.png">
-                        </div>
-                        <div class="hot_product_card_txt">
-                            <h4>星座手環-雙子座</h4>
-                            <h4>NT$1,289</h4>
-                        </div>
-                        <div class="hot_product_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a>
-                <a href="product.html">    
-                    <div class="hot_product_card">
-                        <div class="hot_product_card_img">
-                            <img src="images/shop/Constellation/wristband/wristband_scorpio.png">
-                        </div>
-                        <div class="hot_product_card_txt">
-                            <h4>星座手環-天蠍座</h4>
-                            <h4>NT$1,299</h4>
-                        </div>
-                        <div class="hot_product_icon">
-                            <img src="images/icon/icon_shop_eye.svg">
-                        </div>
-                    </div>
-                </a> -->
+               
             </div>
 
             <!--商品總覽 -->
@@ -357,65 +279,72 @@ function getHotTellerMemsList() {
     }
     // 何時要?
     window.addEventListener('load', getHotTellerMemsList);
-// 首頁主打商品 -> 要放在 hot_product_box 
-// 想從 g5資料庫 的 members資料表 撈出所有的identity="占卜師" 的memName 、 memImage占卜師名稱和圖片 資料
-// 以及astrologist 資料表的totalScore欄位
- 
-// 我要把 memImage放到 img
-//        memName放到 h3
-function getHotProductsList() {
-    $.ajax({
-        type: 'POST',
-        url: 'phps/select.php',
-        data: {
-            // 要查詢的資料表
-            table: 'product',
-            // 要 join 的資料表 (如果沒有就不用打)
-            joinTable: 'product_category',
-            // 要查詢的欄位
-            queryCol: 'prodName, product.prodCateNo, product_category.cateName, FORMAT(price, "C") price, prodImage1',
-            // join 的條件 (如果沒有join就不用打)
-            joinOn: 'prodCateNo',
-            
-            other: ' ORDER BY  RAND() limit 3',
-        },
-        success: function(data) {
-            if (data.msg !== false){
-                console.log(data.msg);
 
-                // 很多! -> 迴圈
-                let hotProductsImg = "images/shop/tarot/"
-                let hotProducts = ` <div class="hot_product_box">`;
-                for (let i = 0; i < data.msg.length; i++) {
-                    hotProducts +=   `
-                            <a href="product.html">    
-                            <div class="hot_product_card">
-                                <div class="hot_product_card_img">
-                                    <img src="${hotProductsImg}${data.msg[i].prodImage1}">
-                                </div>
-                                <div class="hot_product_card_txt">
-                                    <h4>${data.msg[i].prodName}${data.msg[i].cateName}</h4>
-                                    <h4>NT$${data.msg[i].price}</h4>
-                                </div>
-                                <div class="hot_product_icon">
-                                    <img src="images/icon/icon_shop_eye.svg">
-                                </div>
+
+// 主打商品
+function getProduct() {
+  
+  $.ajax({
+      type: 'POST',
+      url: 'phps/select.php',
+      
+      data: {
+          table: 'product',
+          joinTable: 'product_category',
+          queryCol: "product.prodImage1 , product_category.cateType, product_category.cateName, product.prodName, FORMAT(price, 'C') price , product.prodspec, product.prodIntro,product.prodNo",
+          joinOn: 'prodCateNo',
+          other: ' ORDER BY  RAND() limit 3',
+          
+      },
+
+      success: function(data) {
+          if (data.msg !== false){
+              console.log(data.msg);
+              // 照片路徑變數  
+              let hotProductsImg = "images/shop/tarot/";
+              // 商城
+              let hotProducts = ` <div class="hot_product_box">`;
+              for (let i = 0; i < data.msg.length; i++) {
+                hotProducts +=   `
+                  <a class="item">
+                    <div class="img_box">
+                      <div class="prod_No">${data.msg[i].prodNo}</div>
+                        <span>
+                            <img src="${hotProductsImg}${data.msg[i].prodImage1}" />
+                            <div class="txt_box">
+                                <h4>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</h4>
+                                <p>NT$ ${data.msg[i].price}</p>
                             </div>
-                        </a>
-                            `;
-            }
-            hotProducts += `</div>`
-            $('#hotProduct').append(hotProducts)
-            }
-        },
-        error: function() {
-            console.log('ajax error');
-        }
-    });
+                        </span>
+                    </div>
+                    <div class="icon_box">
+                      <span><img src="images/icon/icon_shop_eye.svg"></span>
+                    </div>
+                  </a>
+                  `;
+              }
+              hotProducts += `</div>`;
+
+              
+              $('#hotProduct').append(hotProducts);
+          }
+      },
+      error: function() {
+          console.log('ajax error');
+      }
+  });
 }
 
-// 何時要?
-window.addEventListener('load', getHotProductsList);
+// 主打商品切換到商品頁面使用click事件
+$(document).on('click','.item',function(){
+  // alert($(this).find('.prod_No').text());
+  localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
+  window.location.href = "product.html";
+});
+window.addEventListener('load', getProduct);
+
+
+//開場動畫
 //先執行外面closeVideo載入完成後  跑出裡面fadeOut淡出功能
 window.addEventListener('load',closeVideo);
 function closeVideo(){
@@ -423,6 +352,7 @@ function closeVideo(){
         $('.opening_animation').fadeOut(1000)
     }, 6000);
 }
+
 //開場動畫SKIP
 function videoHidden() {
    document.getElementById('video').style.display = "none";
