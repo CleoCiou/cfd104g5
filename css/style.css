@@ -4942,6 +4942,12 @@ main section.shopping_item .container .product_box_Mobile .row .item .eyes_icon_
   position: relative;
 }
 
+@media screen and (max-width: 767px) {
+  main section.shopping_item .container .index_product_box .item {
+    display: none;
+  }
+}
+
 main section.shopping_item .container .product_box .row {
   width: 100%;
   display: -webkit-box;
@@ -4958,12 +4964,6 @@ main section.shopping_item .container .product_box .row .item {
   border-radius: 10em;
   margin: 2%;
   text-align: center;
-}
-
-@media screen and (max-width: 767px) {
-  main section.shopping_item .container .product_box .row .item {
-    display: none;
-  }
 }
 
 @media screen and (min-width: 768px) {

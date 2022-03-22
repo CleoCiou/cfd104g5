@@ -134,7 +134,15 @@ main{
                     }
                 }
             }
+            .index_product_box{
+                .item{
+                    @include mobile{
+                        display: none;
+                    }
 
+                }
+            }
+            
             .product_box{
                 .row{
                     width: 100%;
@@ -148,10 +156,6 @@ main{
                         border-radius: 10em;
                         margin: 2%;
                         text-align: center;
-                        @include mobile{
-                            display: none;
-                        }
-
                         @include desktop{
                             width: 21%;    
                         }
