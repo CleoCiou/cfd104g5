@@ -242,7 +242,7 @@
 
                 let payWay = localStorage.getItem('payWay');    //拿到localstorage
                 payWay = payWay ? JSON.parse(payWay) : [];    //轉JSON格式
-                payWay.push(item);
+                
 
                 localStorage.setItem('payWay', JSON.stringify(payWay));
             },

@@ -33,7 +33,7 @@
                                 <span class="ast_star">★★★★</span>
                             </h3>
                             <p class="introduce">
-                                {{ intro[0].introduction }}
+                                {{ intro.introduction }}
                             </p>
                             <textarea class="update_intro invisible" id="astrologist_Intro" ></textarea>
                         </div>
@@ -54,9 +54,8 @@
                             <li v-if="appointments.length === 0">
                                 <p>尚無預約</p>
                             </li>
-                            <li v-else class="reservation_card" v-for="(appointment, idx) in appointments">
+                            <li v-else class="reservation_card" v-for="(appointment, idx in appointments">
                                 <div class="item card_header">
-                                    <!-- <p>預約日期</p> -->
                                     <span>{{appointment.appointDate}}</span>
                                     <span>{{appointment.appointTime}}</span>
                                 </div>
@@ -65,7 +64,6 @@
                                         <h4>{{appointment.memName}}</h4>
                                     </div>
                                     <div class="img_box sticker">
-                                        <!-- <img src="im ages/icon/icon_discuss_mine.svg"> -->
                                         <img :src="src+appointment.memImage" alt="會員照片">
                                     </div>
                                     <!-- <div class="txt_box">
@@ -92,7 +90,7 @@
                 </section>
     
                 <!-- 我的評論 -->
-                <section class="item ast_comment">
+                <section class="item ast_comments">
                     我的評論
                     <div class="comments">
 
@@ -109,10 +107,9 @@
                             <li v-if="comments.length === 0">
                                 <p>尚無評論</p>
                             </li>
-                            <li class="txt_box ast_comments" v-for="i in comments">
+                            <li v-else class="txt_box ast_comment" v-for="comment in comments">
                                 <p>
-                                    <span>{{ comments[i].star }}</span>
-                                    {{ comments[i].content }}
+                                    {{ comment.content }}
                                 </p>
                             </li>
                         </ul>
@@ -141,7 +138,7 @@
             intro: [],
             introUpdate: [],
             comments: [],
-            appointments: {},
+            appointments: [],
             src: 'images/teller_mem/',
             schedule: [],
         },
@@ -160,14 +157,14 @@
                     },
                     success:  data => {
                         if (data.msg !== false){
-                            this.intro = data.msg;
+                            this.intro = data.msg[0];
                             this.getComments();
                             this.getConfirm();
                             this.getSchedule();
                         }
                     },
                     error: err => {
-                        console.log('ajax error');
+                        console.log(err);
                     }
                 });
             },
@@ -181,7 +178,7 @@
                         joinTable: 'appointment',
                         joinOn: 'appointNo',
                         queryCol: 'commNo, star, content, commTime',
-                        condition: `appointment.astNo = ${this.intro[0].astNo}`
+                        condition: `appointment.astNo = ${this.intro.astNo}`
                     },
                     success:  data => {
                         if (data.msg !== false){
@@ -241,26 +238,24 @@
                         queryCol: 'appointNo, appointDate, appointTime, memName, members.memNo, memImage, appointment.status',
                         joinOn: 'memNo',
                         // condition: `appointment.astNo = ${this.intro[0].astNo}`,
-                        condition: `appointment.astNo = ${this.intro[0].astNo} and appointDate > CURDATE() and appointment.status <> '未通過'`,
+                        condition: `appointment.astNo = ${this.intro.astNo} and appointDate > CURDATE() and appointment.status <> '未通過'`,
                         // sql的<>可以當作不等於
                         //占卜師編號等於登入的這個人
                         // other: 'group by appointment.memNo'
                     },
                     success:  data => {
-                        // console.log(data.msg);vvvvvvv
+                        // console.log(data.msg);
                         if (data.msg !== false){
                             this.appointments = data.msg;
-                            // console.log(this.intro);
                         }
                     },
                     error: err => {
-                        console.log('ajax error');
+                        console.log(err);
                     }
                 });
             },
 
             updateStatus(e, idx) {
-                // console.log(this.appointments[idx].appointNo);
                 if (e.target.innerText === '接受') {
                     $.ajax({
                             type: 'POST',
@@ -271,7 +266,6 @@
                                 where: `appointNo = '${this.appointments[idx].appointNo}'`
                             },
                             success: data => {
-                                // console.log(data.msg);
                                 if(data.msg !== false){
                                     this.statusUpdate = data.msg;
                                     this.getConfirm();
@@ -284,7 +278,6 @@
                 }
                 else {
                     e.target.innerText === '取消';
-                    
                     $.ajax({
                             type: 'POST',
                             url: 'phps/update.php',
@@ -295,7 +288,6 @@
                                 // vue要加this
                             },
                             success: data => {
-                                // console.log(data.msg);
                                 if(data.msg !== false){
                                     this.statusUpdate = data.msg;
                                     this.getConfirm();
@@ -307,59 +299,7 @@
                     });        
                 };
             },
-
-            // updateSchedule(e, idx) {
-            //     // console.log(this.appointments[idx].appointNo);
-            //     if (e.target.innerText === '接受') {
-            //         $.ajax({
-            //                 type: 'POST',
-            //                 url: 'phps/update.php',
-            //                 data: {
-            //                     table: 'schedule',
-            //                     updateValue: "workTime = '已通過'",
-            //                     where: `appointNo = '${this.appointments[idx].appointNo}'`
-            //                 },
-            //                 success: data => {
-            //                     // console.log(data.msg);
-            //                     if(data.msg !== false){
-            //                         this.statusUpdate = data.msg;
-            //                         this.getConfirm();
-            //                     }
-            //                 },
-            //                 error: err => {
-            //                     console.log(err);
-            //                 }
-            //         });   
-            //     }
-            //     else {
-            //         e.target.innerText === '取消';
-                    
-            //         $.ajax({
-            //                 type: 'POST',
-            //                 url: 'phps/update.php',
-            //                 data: {
-            //                     table: 'appointment',
-            //                     updateValue: "status = '未通過'",
-            //                     where: `appointNo = '${this.appointments[idx].appointNo}'`
-            //                     // vue要加this
-            //                 },
-            //                 success: data => {
-            //                     // console.log(data.msg);
-            //                     if(data.msg !== false){
-            //                         this.statusUpdate = data.msg;
-            //                         this.getConfirm();
-            //                     }
-            //                 },
-            //                 error: err => {
-            //                     console.log(err);
-            //                 }
-            //         });        
-            //     };
-            // },
-
-
-
-            // =====================================================
+            
             getSchedule() {
                 $.ajax({
                     type: 'POST',
@@ -367,10 +307,9 @@
                     data: {
                         table: 'schedule',
                         queryCol: 'workDate, workTime',
-                        condition: `astNo = '${this.intro[0].astNo}'`
+                        condition: `astNo = '${this.intro.astNo}'`
                     },
                     success: data => {
-                        console.log(data.msg);
                         this.schedule = data.msg;
                     },
                     error: err => {
@@ -379,8 +318,6 @@
                 });
             },
 
-
-            // =======================================================
             changeStar(e) {
                 $('.action .selected_btn')[0].classList.add('unselected_btn');
                 $('.action .selected_btn')[0].classList.remove('selected_btn');

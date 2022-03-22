@@ -36,19 +36,19 @@
                     </div>
                     <!-- 購物車body -->
                     <!-- :key="row.id" -->
-                    <div class="cart_body" v-for="(row, index) in cart">
+                    <div class="cart_body" v-for="(row, index) in cartFull">
                         <div class="cart_body_box">
                             <div class="item_detail">
                                 <div class="cart_card">
                                     <div class="img_box">
-                                        <img :src="imgSrc(getProduct(row.prodNo).prodImage1)" alt="">
+                                        <img :src="imgSrc(row.prodImage1)" alt="">
                                     </div>
                                     <div class="txt_box">
-                                        <p>{{getProduct(row.prodNo).prodName}}{{getProduct(row.prodNo).cateName}}</p>
+                                        <p>{{row.prodName}}{{getProduct(row.prodNo)?.cateName}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="price"><span>NT${{getProduct(row.prodNo).price}}</span></div>
+                            <div class="price"><span>NT${{getProduct(row.prodNo)?.price}}</span></div>
                             <div class="count">
                                 <button @click="row.amount--" class="count_btn">-</button>
                                 <input type="text" v-model="cart[index].amount" class="prodAmount"></input>
@@ -163,7 +163,7 @@
         data:{
             queryResult: [],
             cart:[],
-            prodInfoList: {},
+            prodInfoList: [],
             alreadycatch:false
         },
         mounted() {
@@ -189,7 +189,7 @@
 
             sum(idx){
                 let prod = this.getProduct(this.cart[idx].prodNo);
-                return parseInt(prod.price) * parseInt(this.cart[idx].amount)
+                return parseInt(prod?.price) * parseInt(this.cart[idx].amount)
             },
 
             getList() {
@@ -290,6 +290,15 @@
             
         },
         computed:{
+            cartFull() {
+                return this.cart.map(v => {
+                    let obj = this.prodInfoList.find(item => v.prodNo == item.prodNo);
+                    return {
+                        ...obj,
+                        ...v
+                    };
+                })
+            },
             total() {
                 let subtotal = 0;
                 for(let i = 0; i < this.cart.length; i++){
