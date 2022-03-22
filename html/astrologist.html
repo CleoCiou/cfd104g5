@@ -267,7 +267,6 @@
                             },
                             success: data => {
                                 if(data.msg !== false){
-                                    this.statusUpdate = data.msg;
                                     this.getConfirm();
                                 }
                             },
@@ -278,6 +277,43 @@
                 }
                 else {
                     e.target.innerText === '取消';
+
+                    // let time = this.schedule.filter( t => t.workDate === this.appointments.appointDate);
+                    let time = this.schedule.filter( t => t.workDate === this.appointments[idx].appointDate);
+                    time = time[0].workTime;
+                    // const schedule =data.msg;
+                    // const result = schedule.filter( time => time.workDate === appointDate);
+
+                    switch (this.appointments[idx].appointTime){
+                        case '上午':
+                            time = '0' + time[1] + time[2];
+                            break;
+                        case '下午':
+                            time = time[0] + '0' + time[2];
+                            break;
+                        case '晚上':
+                            time = time[0] + time[1] + '0';
+                            break;
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/update.php',
+                        data: {
+                            table: 'schedule',
+                            updateValue: `workTime = '${time}'`,
+                            where: `astNo = '${this.intro.astNo}' and workDate = '${this.appointments[idx].appointDate}'`
+                        },
+                        success: data => {
+                            updateSchedule = true;
+                            // alert('預約成功!');
+                            location.reload();
+                        },
+                        error: err => {
+                            console.log(err);
+                        }
+                    });
+
                     $.ajax({
                             type: 'POST',
                             url: 'phps/update.php',
@@ -289,17 +325,18 @@
                             },
                             success: data => {
                                 if(data.msg !== false){
-                                    this.statusUpdate = data.msg;
                                     this.getConfirm();
                                 }
                             },
                             error: err => {
                                 console.log(err);
                             }
-                    });        
+                    }); 
+
                 };
             },
-            
+
+            // 抓schedule資料
             getSchedule() {
                 $.ajax({
                     type: 'POST',
@@ -316,7 +353,9 @@
                         console.log(err);
                     }
                 });
+                
             },
+
 
             changeStar(e) {
                 $('.action .selected_btn')[0].classList.add('unselected_btn');
