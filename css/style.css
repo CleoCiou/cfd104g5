@@ -1326,49 +1326,49 @@ main section.member .container .main_astrologist .item.calendar {
   }
 }
 
-main section.member .container .main_member .item.ast_comment,
-main section.member .container .main_astrologist .item.ast_comment {
+main section.member .container .main_member .item.ast_comments,
+main section.member .container .main_astrologist .item.ast_comments {
   width: 50%;
 }
 
 @media screen and (max-width: 768px) {
-  main section.member .container .main_member .item.ast_comment,
-  main section.member .container .main_astrologist .item.ast_comment {
+  main section.member .container .main_member .item.ast_comments,
+  main section.member .container .main_astrologist .item.ast_comments {
     width: 100%;
   }
 }
 
-main section.member .container .main_member .item.ast_comment .action,
-main section.member .container .main_astrologist .item.ast_comment .action {
+main section.member .container .main_member .item.ast_comments .action,
+main section.member .container .main_astrologist .item.ast_comments .action {
   padding: .5em;
 }
 
-main section.member .container .main_member .item.ast_comment .action .star_btn,
-main section.member .container .main_astrologist .item.ast_comment .action .star_btn {
+main section.member .container .main_member .item.ast_comments .action .star_btn,
+main section.member .container .main_astrologist .item.ast_comments .action .star_btn {
   padding: 1em;
   line-height: 1em;
   border-radius: 0.5em;
 }
 
-main section.member .container .main_member .item.ast_comment .action .star_btn:not(:first-child),
-main section.member .container .main_astrologist .item.ast_comment .action .star_btn:not(:first-child) {
+main section.member .container .main_member .item.ast_comments .action .star_btn:not(:first-child),
+main section.member .container .main_astrologist .item.ast_comments .action .star_btn:not(:first-child) {
   margin-left: .5em;
 }
 
-main section.member .container .main_member .item.ast_comment .ast_comment_list,
-main section.member .container .main_astrologist .item.ast_comment .ast_comment_list {
+main section.member .container .main_member .item.ast_comments .ast_comment_list,
+main section.member .container .main_astrologist .item.ast_comments .ast_comment_list {
   padding: .5em;
 }
 
-main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment,
-main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment {
+main section.member .container .main_member .item.ast_comments .ast_comment_list .ast_comment,
+main section.member .container .main_astrologist .item.ast_comments .ast_comment_list .ast_comment {
   padding: 1em;
   background-color: #5558;
   border-radius: 0.5em;
 }
 
-main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment:not(:first-child),
-main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment:not(:first-child) {
+main section.member .container .main_member .item.ast_comments .ast_comment_list .ast_comment:not(:first-child),
+main section.member .container .main_astrologist .item.ast_comments .ast_comment_list .ast_comment:not(:first-child) {
   margin-top: 0.5em;
 }
 
@@ -1465,9 +1465,10 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
   width: 50%;
+  height: 100%;
   border: 2px dashed #888;
   border-radius: 0.5em;
-  background: url("../images/draw_cards/card_back.jpg") no-repeat;
+  background: url("../images/draw_cards/card_back_180.jpg") no-repeat;
 }
 
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view,

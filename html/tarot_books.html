@@ -31,26 +31,25 @@
             </div>
 
             <div id="app">
+                <p class="here">請翻頁~</p>
                 <div id="tarotbook">
-                    <!-- <div class="owl-carousel owl-theme"> -->
-                        <div class="page first_page"></div>
-                        <div class="page" v-for="tarotCard in tarotCards">
-                            <div class="item" >
-                                <div class="img_box">
-                                    <img :src="src+tarotCard.tarImage" alt="魔術師">
-                                </div>
-                            <div class="txt_box">
-                                <h3>{{tarotCard.tarName}}</h3>
-                                <p>
-                                {{tarotCard.tarProduction}}</p>
+                    <div class="page first_page"></div>
+                    <div class="page" v-for="tarotCard in tarotCards">
+                        <div class="item" >
+                            <div class="img_box">
+                                <img :src="src+tarotCard.tarImage" alt="魔術師">
                             </div>
-                            </div>
+                        <div class="txt_box">
+                            <h3>{{tarotCard.tarName}}</h3>
+                            <p>
+                            {{tarotCard.tarProduction}}</p>
                         </div>
-        
-                        <!-- <div class="page"> Page 2 </div>
-                        <div class="page"> Page 3 </div>
-                        <div class="page"> Page 4 </div> -->
-                    <!-- </div> -->
+                        </div>
+                    </div>
+    
+                    <!-- <div class="page"> Page 2 </div>
+                    <div class="page"> Page 3 </div>
+                    <div class="page"> Page 4 </div> -->
                 </div>
             </div>
             
@@ -82,7 +81,7 @@
                 src: 'images/tarot_cards/',
             },
         mounted() {
-        this.getTarCards_vue();
+            this.getTarCards_vue();
         },
         methods: {
             getTarCards_vue() {
@@ -114,36 +113,36 @@
                 });
             },
             turnInit() {
-                $('#tarotbook').turn({gradients: true, acceleration: true});
                 //要先撈完資料庫再跑js
+                // $('#tarotbook').turn({gradients: true, acceleration: true, display:"single"});
+                // 電腦動畫
+                if (window.screen.width >= 768) {
+                    $('#tarotbook').turn({gradients: true, acceleration: true});
+                }
+                // 手機動畫
+                else {
+                    $('#tarotbook').turn({gradients: true, acceleration: true, display:"single"});
+                }
             },
         }
         })
+
+        // 抽牌提示
+        let words = document.querySelector('.here');
+        let wordsTween;
+        // 抽牌提示
+		wordsTween =TweenMax.to(words, {
+			opacity: .3,
+			duration: 2,
+			repeat: -1,
+			ease: Expo.easeNone,
+			yoyo: true
+		});
+
     </script>    
 
 <script src="js/turn.js"></script>   
 
-
-<script>
-// 推薦商品 貓頭鷹套件
-
-    $(".owl-carousel").owlCarousel({
-        loop: true, // 循環播放
-        margin: 10, // 外距 10px
-        dots: false,
-        nav: false, // 顯示點點
-        responsive: {
-            0: {
-                items: 1,
-                nav: true // 螢幕大小為 0~600 顯示 1 個項目
-            },
-            980: {
-                items: 1,
-                nav: false// 螢幕大小為 1000 以上 顯示 5 個項目
-            }
-        }
-    });
-</script>
     
 
 
