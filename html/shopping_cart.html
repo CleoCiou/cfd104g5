@@ -190,7 +190,7 @@
 
             sum(idx){
                 let prod = this.getProduct(this.cart[idx].prodNo);
-                return parseInt(prod.price) * parseInt(this.cart[idx].amount)
+                return parseInt(prod?.price) * parseInt(this.cart[idx].amount)
             },
 
             getList() {

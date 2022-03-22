@@ -34,24 +34,35 @@ function checkLogin() {
 
 //存圖片到server
 function sentImg(){
-    var form_data = new FormData();
-    var files = $('#memImage')[0].files;
-    console.log(files);
-    form_data.append('file', files[0]);
-    $.ajax({
-        type: 'POST',
-        url: 'phps/login_file_upload.php',
-        processData : false, 
-        contentType : false,
-        dataType: 'JSON',
-        data: form_data,
-        success: data => {
-            insertData(data.img);
-        },
-        error: err => {
-            console.log('ajax error');
-        }
-    });   
+    let uploadFile = document.getElementById('memImage').value;
+    // console.log(uploadFile);
+
+        
+    if(uploadFile !== ''){
+        var form_data = new FormData();
+        var files = $('#memImage')[0].files;
+        console.log(files);
+        form_data.append('file', files[0]);
+        $.ajax({
+            type: 'POST',
+            url: 'phps/login_file_upload.php',
+            processData : false, 
+            contentType : false,
+            dataType: 'JSON',
+            data: form_data,
+            success: data => {
+                insertData(data.img);
+            },
+            error: err => {
+                console.log('ajax error');
+            }
+        });   
+    }
+    else{
+        let empty = 'default';
+        insertData(empty)
+    }
+    
 }
 
 // 新增註冊
@@ -65,8 +76,11 @@ function insertData(image) {
     let tel = document.getElementById('tel').value;
     let memImage = image;
     let identity = document.querySelector('input[name="identity"]:checked').value;
-    console.log(memImage);
 
+    let uploadFile = document.getElementById('memImage').value;
+    // console.log(uploadFile);
+
+    // console.log(memImage);
 
     // 新增資料
     $.ajax({
@@ -78,38 +92,14 @@ function insertData(image) {
             insertValue: `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, '${memImage}' , default`
         },
         success: data => {
-            
             console.log(data.sql);
-            if(memImage !== ''){
-                console.log('頭貼');
-            }
-            // console.log(memImage);
         },
         error: err => {
             console.log('ajax error');
         }
     });   
 }
-function fileUpload(){
-    
-    $('#stickerLabel').on('click', function() {
-        var file_data = $('#memImage').prop('files')[0];   //取得上傳檔案屬性
-          //建構new FormData()
-          //吧物件加到file後面
-                                  
-    $.ajax({
-            url: 'login_file_upload.php',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,     //data只能指定單一物件                 
-            type: 'post',
-            success: function(data){
-                $('#ajsxboxdhow').html(data);
-            }
-        });
-    });
-}
+
 
 // ===== 註冊 ===== //
 // 驗證輸入欄位
@@ -198,49 +188,64 @@ $(function() {
     // === 按鈕監控 === //
     // 登入 | 註冊 註冊完成要跳轉
     $(".secondary_btn").click( (e) => {
-        // e.preventDefault();
+        
+        if (e.target.innerText === '註冊' || e.target.innerText === '下一步') {
+            let input; 
+            let radio;
+            let email;
+            let birthday;
+            let tel;
+            
+
+            if ($(".account_info").css('height') !== '0px') {
+                input = $('.account_info input');
+            }
+            else if ($(".mem_info").css('height') !== '0px') {
+                input = $('.mem_info input');
+            }
+
+            for (let i = 0; i < input.length; i++) {
+                // console.log(input[i].value);
+                let verify = input[i];
+                if (verify.value === '' && verify.type !== 'file') {
+                    alert('尚有欄位未填寫');
+                    return
+                }
+            } 
+        }
+
         if (e.target.innerText === '登入') {
             checkLogin();
         }
         else if (e.target.innerText === '註冊') {
-            
-            // $("input, textarea").each(function(){
-            //     console.log($('input'));
-            //     if($(this).val().length === 0){
-            //         $('input').parent("div").addClass('warning');
-            //     }else{
-            //         $(this).parent("div").removeClass('warning');
-            //     }
-            // })
-            // insertData();
             sentImg();
-            // alert('註冊成功！請重新登入');
-            // window.location.reload();
+            alert('註冊成功！請重新登入');
+            window.location.reload();
         }
     })
 
     // 下一步
     $(".next_step").click( (e) => {
+        if (e.target.innerText === '註冊') return;
         // 第一關驗證帳號密碼 沒有紅框才能下一步
-        if( $('#memId').parent("div").hasClass("warning") === true || $('#memPwd').parent("div").hasClass("warning") === true || $('#confirm_pwd').parent("div").hasClass("warning") === true ){
-            alert('請填寫正確的帳號或密碼');
-            return false;
-        }
+        // if( $('#memId').parent("div").hasClass("warning") === true || $('#memPwd').parent("div").hasClass("warning") === true || $('#confirm_pwd').parent("div").hasClass("warning") === true ){
+        //     alert('請填寫正確的帳號或密碼');
+        //     return false;
+        // }
 
-        if(  $('#memId').val() !== '' && $('#memPwd').val() !== '' && $('#confirm_pwd').val() !== '' ){
+        if(  $('#memId').val() !== '' && $('#memPwd').val() !== '' && $('#confirm_pwd').val() !== '' ){  
+
             if ($(".account_info").css('height') !== '0px') {
                 switchPanel($(".account_info"), $(".mem_info"));
                 $(".last_step").css({display: 'inline-block'});
                 $(".next_step").text('註冊');
+
             }else if ($(".mem_info").css('height') !== '0px') {
                 switchPanel($(".mem_info"), $(".astrologist_info"));
                 $(".next_step").text('註冊');
+                
             }
-        }else{
-            alert('請填寫帳號或密碼');
         }
-            
-        
     })
     // 上一步
     $(".last_step").click( (e) => {
@@ -299,11 +304,9 @@ $(function() {
     });
     //輸入後驗證帳號
     $('#memId').change( () => {
-        console.log(!/\W+/.test($("#memId").val()));
-        if( $("#memId").val().length === 0 || !/\W+/.test($("#memId").val()) ) {
+        if( $("#memId").val().length === 0 || /\W/.test($("#memId").val()) ) {
             $("#memId").parent("div").addClass('warning');
-        }
-        if( $("#memId").val().length > 0 && /\w/.test($("#memId").val()) ) {
+        }else {
             $("#memId").parent("div").removeClass('warning');
         }
     })

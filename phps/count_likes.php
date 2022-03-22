@@ -10,8 +10,11 @@
 
             case "plus":
 
-                $sql = "update article set msg = msg + 1 
-                where artNo = `${msgIdx.artNo}`";
+                //文章編號的變數
+                $no = $_POST['no'];
+
+                $sql = "update article set likes = likes + 1 
+                where artNo = $no";
 
                 $plus = $pdo->query($sql);
                 $plusRows = $plus->fetch(PDO::FETCH_ASSOC);
@@ -21,10 +24,13 @@
                 break;
         
             case "reduce":
-                $sql = "update article set msg = msg - 1 
-                where artNo = `${msgIdx.artNo}`";
+
+                //文章編號的變數
+                $no = $_POST['no'];
+
+                $sql = "update article set likes = likes - 1 
+                where artNo = $no";
         
-                // 執行
                 $reduce = $pdo->query($sql);
                 $reduceRows = $reduce->fetch(PDO::FETCH_ASSOC);
             

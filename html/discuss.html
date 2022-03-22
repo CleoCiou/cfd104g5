@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="line_bottom">
                                             <!-- 愛心 -->
-                                            <button class="using_btn"  @click="article[index].activeIndex =! article[index].activeIndex; changeLike(index)" >
+                                            <button class="using_btn"  @click="article[index].activeIndex =! article[index].activeIndex; checkLike(index)" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="fav_animation" :class="{active: article[index].activeIndex == 1}">
                                                     <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z" fill-rule="evenodd">
                                                     </path>
@@ -261,8 +261,8 @@
                 navs: ['體驗占卜師','線上占卜','占卜師總覽','塔羅討論區'],
                 cates: {},
                 labels: {
-                            0: '熱門',
-                            1: '最新',
+                            0: '最新',
+                            1: '熱門',
                         },
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconClose: 'images/icon/icon_discuss_close.svg',
@@ -274,7 +274,7 @@
                 article: [],
                 message: [],
                 getTitle: {},
-                msgIdx: {},
+                getIdx: {},
                 plusMsgIdx: {},
                 newPost:[],
                 perPage: 5,
@@ -285,26 +285,38 @@
                 this.getCol(this.isChecked);
                 this.getTopic();
             },
-            mounted() {
-                
-            },
             methods: {
+                //按愛心要先確認是否登入 若無登入就跳提示並且不能實現按鈕的功能
+                checkLike(index){
+                    if (getSessionData() === false) {
+                        alert('請先登入');
+                        return false;
+                    }else{
+                        this.changeLike(index);
+                    }
+                },
+                //判斷愛心有沒有被按 並且抓取index和activeIndex 再傳入countLikes的ajax
                 changeLike(index){
                     if(this.$data.article[index].activeIndex == 0){
                         this.$data.article[index].likes -= 1;
                     }else if(this.$data.article[index].activeIndex == 1){
                         this.$data.article[index].likes += 1;
                     }
+                    this.getIdx = this.article[index];
+                    this.countLikes(index , this.$data.article[index].activeIndex);
+                    this.insertLikeData();
                 },
+                //圖片路徑
                 imgSrc(image){
-                let path = `images/teller_mem`;
-                return `${path}/${image}`;
+                    let path = `images/teller_mem`;
+                    return `${path}/${image}`;
                 },
+                //抓文章和留言的index
                 getIndex(index){
-                    // console.log(this.getMsg(index));
                     this.getTitle = this.article[index];
                     this.getMsg(index);
                 },
+                //抓最新和熱門的標籤的判斷
                 getPost(index){
                     this.isChecked = index;
                     this.getCol(this.isChecked);
@@ -314,7 +326,7 @@
                 getCol(v) {
                     let thisVue = this;
 
-                    if(v == 0){
+                    if(v == 1){
                         $.ajax({
                             type: 'POST',
                             url: 'phps/post.php',
@@ -370,6 +382,7 @@
                 //取留言的資料
                 getMsg(index) {
                     let artNo = this.getTitle.artNo;
+                    console.log(artNo);
                     $.ajax({
                         type: 'POST',
                         url: 'phps/select.php',
@@ -379,12 +392,10 @@
                             queryCol: 'msgNo, artNo, msgTime, msgContent, memId, memImage',
                             joinTable: 'members',
                             joinOn: 'memNo',
-                            condition: `article_message.artNo =  ${artNo}`,
-                            other: 'order by msgTime',
+                            condition: `article_message.artNo = ${artNo}`,
+                            // other: 'order by msgTime',
                         },
                         success: data => {
-                            // console.log(data.msg);
-                            // console.log(data.sql);
                             if (data.msg !== false){
                                 this.message = data.msg;
                             }
@@ -397,14 +408,14 @@
                 //更新留言數量
                 countMsg(index) {
                     let artNo = this.getTitle.artNo;
-                    console.log(artNo);
+                    // console.log(artNo);
                     $.ajax({
                         type: 'POST',
                         url: 'phps/update.php',
                         data: {
                             table: 'article',
                             updateValue: 'msgs = msgs + 1',
-                            where: `artNo = '${artNo}'`
+                            where: `artNo = ${artNo}`
                         },
                         success: data => {
                             console.log('plus ok');
@@ -425,12 +436,11 @@
                         url: 'phps/insert.php',
                         data: {
                             table: 'article_message',
-                            // col: 'msgNo, artNo, memNo, msgTime, MsgContent, statue',
                             insertValue: `default, '${artNo}', '${memNo}', CURRENT_TIMESTAMP, '${msgContent}', default`
                         },
                         success: data => {
                             alert('留言成功');
-                            window.location.reload();
+                            // window.location.reload();
                             this.getCol();
                             this.countMsg();
                         },
@@ -439,6 +449,65 @@
                         }
                     });
                 },
+                //更新按讚數量
+                countLikes(index, activeIndex) {
+                    let artNo = this.getIdx.artNo;
+                    console.log(artNo);
+                    
+                    if(activeIndex == 1){
+                        $.ajax({
+                            type: 'POST',
+                            url: 'phps/count_likes.php',
+                            data: {
+                                case: 'plus',
+                                no: `${artNo}`,
+                            },
+                            success: data => {
+                                // console.log('plus');
+                            },
+                            error: err => {
+                                console.log('ajax error');
+                            }
+                        });
+                    }else{
+                        $.ajax({
+                            type: 'POST',
+                            url: 'phps/count_likes.php',
+                            data: {
+                                case: 'reduce',
+                                no: `${artNo}`,
+                            },
+                            success: data => {
+                                // console.log('reduce');
+                            },
+                            error: err => {
+                                console.log('ajax error');
+                            }
+                        });
+                    }
+                },
+                //會員的按讚寫入資料表去紀錄
+                insertLikeData() {
+                    let memNo = this.userData.userNo;
+                    let artNo = this.getIdx.artNo;
+
+                    // 新增資料
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/insert.php',
+                        data: {
+                            table: 'article_like',
+                            insertValue: `'${artNo}', '${memNo}'`
+                        },
+                        success: data => {
+                            console.log('insert ok');
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                //分頁
                 setPage(thePage){
                     this.currentPage = thePage;
                 },
@@ -465,7 +534,7 @@
                         items:3
                     },
                     767:{
-                        items:3
+                        items:4
                     },
 
                 }
