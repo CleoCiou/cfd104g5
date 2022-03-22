@@ -54,6 +54,12 @@ main{
                 text-align: center;
                 
             }
+
+            .product_overview{
+                text-align: center;
+                padding-top: 1em;
+            }
+            
             .product_nav{
                 @include mobile{
                     margin: 1em 0 1em 0;
@@ -83,12 +89,58 @@ main{
                     transition: .3s;
                 }
             }
+            
+            .product_box_Mobile{
+                @include mobile{
+                    display: block;
+                }
+                @include desktop{
+                    display: none;    
+                }
+                .row{
+                    width: 90%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin: auto;
+                    
+                    .owl-item{
+                        width: 50%;
+                        border: 1px solid #CFB886;
+                        border-radius: 20em;
+                    }
+                    .item{
+                        text-align: center;
+                        .img_box{
+                            border-radius: 50%;
+                            width: 80%;
+                            margin: auto;
+
+                            img{
+                                padding: 1em;
+                                width: 100%;
+                                border-radius: 50%;
+                            }
+                            .prod_No{
+                                display: none;
+                            }
+                        }
+                        .eyes_icon_box{
+                            width: 20%;
+                            padding:1em 0 1em 0;
+                            margin: 0 auto;
+                            overflow: hidden;
+                            position: relative; 
+                        }
+                    }
+                }
+            }
 
             .product_box{
                 .row{
                     width: 100%;
                     display: flex;
                     flex-wrap: wrap;
+                    
                     .item{
                         width: 46%;
                         padding:0.5em 1em;
@@ -96,9 +148,14 @@ main{
                         border-radius: 10em;
                         margin: 2%;
                         text-align: center;
-                        @include desktop{
-                            width: 21%;
+                        @include mobile{
+                            display: none;
                         }
+
+                        @include desktop{
+                            width: 21%;    
+                        }
+                        
                         .img_box{
                             border-radius: 50%;
                             img{
@@ -141,7 +198,6 @@ main{
                         }
                     }
 
-            
                     .item:hover{
                         .icon_box{
                             img{
@@ -171,6 +227,8 @@ main{
         }
     }
 }
+
+
 @keyframes showRight {
     0% {
         left: 100%;

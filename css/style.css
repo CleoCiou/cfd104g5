@@ -4836,6 +4836,11 @@ main section.shopping_item .container .product_search {
   text-align: center;
 }
 
+main section.shopping_item .container .product_overview {
+  text-align: center;
+  padding-top: 1em;
+}
+
 main section.shopping_item .container .product_nav {
   margin: 1.5em;
   display: -webkit-box;
@@ -4881,6 +4886,62 @@ main section.shopping_item .container .unselected_btn:hover {
   transition: .3s;
 }
 
+@media screen and (max-width: 767px) {
+  main section.shopping_item .container .product_box_Mobile {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main section.shopping_item .container .product_box_Mobile {
+    display: none;
+  }
+}
+
+main section.shopping_item .container .product_box_Mobile .row {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: auto;
+}
+
+main section.shopping_item .container .product_box_Mobile .row .owl-item {
+  width: 50%;
+  border: 1px solid #CFB886;
+  border-radius: 20em;
+}
+
+main section.shopping_item .container .product_box_Mobile .row .item {
+  text-align: center;
+}
+
+main section.shopping_item .container .product_box_Mobile .row .item .img_box {
+  border-radius: 50%;
+  width: 80%;
+  margin: auto;
+}
+
+main section.shopping_item .container .product_box_Mobile .row .item .img_box img {
+  padding: 1em;
+  width: 100%;
+  border-radius: 50%;
+}
+
+main section.shopping_item .container .product_box_Mobile .row .item .img_box .prod_No {
+  display: none;
+}
+
+main section.shopping_item .container .product_box_Mobile .row .item .eyes_icon_box {
+  width: 20%;
+  padding: 1em 0 1em 0;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
 main section.shopping_item .container .product_box .row {
   width: 100%;
   display: -webkit-box;
@@ -4897,6 +4958,12 @@ main section.shopping_item .container .product_box .row .item {
   border-radius: 10em;
   margin: 2%;
   text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  main section.shopping_item .container .product_box .row .item {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {

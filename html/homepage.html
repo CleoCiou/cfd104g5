@@ -122,6 +122,10 @@
             <div class="product_box" id="hotProduct">
                 
             </div>
+            <!-- 主打商品_手機 -->
+            <div class="product_box_Mobile" id="hotProductMobile">
+
+            </div>
 
             <!--商品總覽 -->
             <div class="product_overview">
@@ -279,17 +283,13 @@ function getHotTellerMemsList() {
 
 
 
-
 // 主打商品
 function getProduct() {
-  
-
   $.ajax({
       type: 'POST',
       url: 'phps/select.php',
       
       data: {
-
           table: 'product',
           joinTable: 'product_category',
           queryCol: "product.prodImage1 ,product_category.cateType, product_category.cateName, product.prodName, FORMAT(price, 'C') price , product.prodspec, product.prodIntro,product.prodNo",
@@ -325,13 +325,7 @@ function getProduct() {
                   `;
               }
               shopRow += `</div>`;
-
-              
-              $('#hotProduct').append(shopRow);
-              
-              
-
-              
+              $('#hotProduct').append(shopRow);   
           }
       },
       error: function() {
@@ -347,6 +341,80 @@ $(document).on('click','.item',function(){
   window.location.href = "product.html";
 });
 window.addEventListener('load', getProduct);
+
+// 主打商品手機版
+function getProductMobile() {
+    $.ajax({
+        type: 'POST',
+        url: 'phps/select.php',
+        
+        data: {
+            table: 'product',
+            joinTable: 'product_category',
+            queryCol: "product.prodImage1 ,product_category.cateType, product_category.cateName, product.prodName, FORMAT(price, 'C') price , product.prodspec, product.prodIntro,product.prodNo",
+            joinOn: 'prodCateNo',
+            other: ' ORDER BY  RAND() limit 4',
+        },
+
+        success: function(data) {
+            if (data.msg !== false){
+                console.log(data.msg);
+                let productImg = "images/shop/tarot/";
+                let owlTheme = `<div class="productmb owl-carousel owl-theme row  ">`;
+                    for (let i = 0; i < data.msg.length; i++) {
+                    owlTheme +=   `
+                    <a class="item">
+                        <div class="img_box">
+                            <div class="prod_No">${data.msg[i].prodNo}</div>
+                                <span>
+                                    <img src="${productImg}${data.msg[i].prodImage1}" />
+                                    <div class="txt_box">
+                                        <h4>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</h4>
+                                        <p>NT$ ${data.msg[i].price}</p>
+                                    </div>
+                                </span>
+                            </div>
+                        <div class="eyes_icon_box">
+                            <span><img src="images/icon/icon_shop_eye.svg"></span>
+                        </div>
+                  </a>
+                    `;
+                    }
+                    owlTheme += `</div>`;
+
+                $('#hotProductMobile').append(owlTheme);
+
+                $(".owl-carousel").owlCarousel({
+                    loop: false, // 循環播放
+                    margin: 10,
+                    dots: false,
+                    nav: true, // 顯示點點
+                    responsive: {
+                        0: {
+                            items:1 // 螢幕大小為 0~600 顯示 1 個項目
+                        },
+                        980: {
+                            items:1 // 螢幕大小為 1000 以上 顯示 5 個項目
+                        }
+                    }
+                });
+            }
+        },
+        error: function() {
+            console.log('ajax error');
+        }
+    });
+}
+
+// 商城切換到商品頁面使用click事件
+$(document).on('click','.item',function(){
+    // alert($(this).find('.prod_No').text());
+    localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
+    window.location.href = "product.html";
+});
+window.addEventListener('load', getProductMobile);
+
+
 
 // 開場動畫
 //先執行外面closeVideo載入完成後  跑出裡面fadeOut淡出功能
