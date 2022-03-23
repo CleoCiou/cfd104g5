@@ -211,6 +211,7 @@ function save(){
     }
 
     // console.log(cart)
-    localStorage.setItem('cart', JSON.stringify(cart));    //轉成字串，傳到localstorage
+    localStorage.setItem('cart', JSON.stringify(cart));   //轉成字串，傳到localstorage
+    alert("成功加入購物車")
 }
 
