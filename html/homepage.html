@@ -350,7 +350,7 @@ function getProduct() {
 }
 
 // 主打商品切換到商品頁面使用click事件
-$(document).on('click','.item',function(){
+$(document).on('click','product_box .item',function(){
   // alert($(this).find('.prod_No').text());
   localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
   window.location.href = "product.html";
@@ -422,7 +422,7 @@ function getProductMobile() {
 }
 
 // 商城切換到商品頁面使用click事件
-$(document).on('click','.item',function(){
+$(document).on('click','.product_box .item',function(){
     // alert($(this).find('.prod_No').text());
     localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
     window.location.href = "product.html";
