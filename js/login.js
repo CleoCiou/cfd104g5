@@ -99,7 +99,26 @@ function insertData(image) {
         }
     });   
 }
-
+function fileUpload(){
+    
+    $('#stickerLabel').on('click', function() {
+        var file_data = $('#memImage').prop('files')[0];   //取得上傳檔案屬性
+          //建構new FormData()
+          //吧物件加到file後面
+                                  
+    $.ajax({
+            url: 'login_file_upload.php',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,     //data只能指定單一物件                 
+            type: 'post',
+            success: function(data){
+                $('#ajsxboxdhow').html(data);
+            }
+        });
+    });
+}
 
 // ===== 註冊 ===== //
 // 驗證輸入欄位
@@ -213,8 +232,8 @@ $(function() {
         }
         else if (e.target.innerText === '註冊') {
             sentImg();
-            alert('註冊成功！請重新登入');
-            window.location.reload();
+            // alert('註冊成功！請重新登入');
+            // window.location.reload();
         }
     })
 
