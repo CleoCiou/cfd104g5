@@ -357,12 +357,24 @@
                             },
                             success: function(data) {
                                 thisVue.article = data;
+
+                                // 若url有值，自動開啟文章盒子
+                                const queryString = window.location.search;
+                                const urlParams = new URLSearchParams(queryString);
+                                const no = urlParams.get('no');
+                                if (no !== null) {
+                                    let idx = thisVue.article.filter(art => art.artNo === parseInt(no));
+                                    idx = thisVue.article.indexOf(idx[0]);                                 
+                                    thisVue.getIndex(idx);
+                                    thisVue.showBoard =! thisVue.showBoard
+                                }
                             },
                             error: function() {
                                 console.log('ajax error');
                             }
                         });
                     }
+                    
                 },
                 //取文章類別
                 getTopic() {

@@ -34,7 +34,7 @@
                 <div class="introduce_txt_box">
                     <div class="introduce_txt">
                         <h2>Mistro解星鏡</h2>
-                        <h3>透過占卜與星座給予你方向與力量,找到屬於自己最好的存在方式。</h3>
+                        <h3>透過占卜與星座給予你方向與力量,<br>找到屬於自己最好的存在方式。</h3>
                     </div>
                 </div>
             </div>
@@ -350,7 +350,7 @@ function getProduct() {
 }
 
 // 主打商品切換到商品頁面使用click事件
-$(document).on('click','.item',function(){
+$(document).on('click','product_box .item',function(){
   // alert($(this).find('.prod_No').text());
   localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
   window.location.href = "product.html";
@@ -422,7 +422,7 @@ function getProductMobile() {
 }
 
 // 商城切換到商品頁面使用click事件
-$(document).on('click','.item',function(){
+$(document).on('click','.product_box .item',function(){
     // alert($(this).find('.prod_No').text());
     localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
     window.location.href = "product.html";

@@ -505,12 +505,15 @@
                 newComment() {
                     let log = this.appointLogs;
                     let update = false;
+                    let star = parseInt($('#star').val());
+                    let people = 1;
                     if (log[log.length-1].content !== null) {
                         update = confirm('是否更新留言？');
                     }
                     // 更新評論
                     if (update) {
-                        console.log(star);
+                        star = star - log[log.length-1].star;
+                        people = 0;
                         $.ajax({
                             type: 'POST',
                             url: 'phps/update.php',
@@ -520,8 +523,7 @@
                                 where: `appointNo = '${log[log.length-1].appointNo}'`
                             },
                             success: data => {
-                                alert('更新成功');
-                                this.getMyAppointment();
+                                // this.getMyAppointment();
                                 $('textarea.new_comment').val('');
                             },
                             error: err => {
@@ -539,8 +541,7 @@
                                 insertValue: `default, ${log[log.length-1].appointNo}, default, '${$('textarea.new_comment').val()}', '${$('#star').val()}'`
                             },
                             success: data => {
-                                alert('評論成功');
-                                this.getMyAppointment();
+                                // this.getMyAppointment();
                                 $('textarea.new_comment').val('');
                             },
                             error: err => {
@@ -548,6 +549,25 @@
                             }
                         });
                     }
+
+                    // 更新占卜師表
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/update.php',
+                        data: {
+                            table: 'astrologist',
+                            updateValue: `people = people+${people}, totalScore = totalScore+(${star
+                            })`,
+                            where: `astNo = (select astNo from appointment where appointNo = '${log[log.length-1].appointNo}')`
+                        },
+                        success: data => {
+                            alert('更新成功');
+                            this.getMyAppointment();
+                        },
+                        error: err => {
+                            console.log(err);
+                        }
+                    });
                 },
                 // 測驗紀錄拖曳查看
                 dragStartHandler(e) {
