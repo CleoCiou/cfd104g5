@@ -32,12 +32,13 @@ function checkLogin() {
     });
 }
 
-//存圖片到server
+//上傳圖片到server 要將檔案路徑變成流水編號
 function sentImg(){
+    //抓input=file的值
     let uploadFile = document.getElementById('memImage').value;
     // console.log(uploadFile);
 
-        
+    //如果有選擇圖片檔案 就不等於空值
     if(uploadFile !== ''){
         var form_data = new FormData();
         var files = $('#memImage')[0].files;
@@ -58,6 +59,7 @@ function sentImg(){
             }
         });   
     }
+    //沒有選擇圖片檔案的話 就傳default進去insertData
     else{
         let empty = 'default';
         insertData(empty)
@@ -67,6 +69,7 @@ function sentImg(){
 
 // 新增註冊
 function insertData(image) {
+    //抓每個input的值
     let memId = document.getElementById('memId').value;
     let memPwd = document.getElementById('memPwd').value;
     let memName = document.getElementById('memName').value;
@@ -77,10 +80,8 @@ function insertData(image) {
     let memImage = image;
     let identity = document.querySelector('input[name="identity"]:checked').value;
 
-    let uploadFile = document.getElementById('memImage').value;
-    // console.log(uploadFile);
-
-    // console.log(memImage);
+    //sentImg()傳入的值 判斷如果image是default的話 memImage就會是default
+    let sql = (image === 'default') ? `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, default , default` : `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, '${memImage}' , default`;
 
     // 新增資料
     $.ajax({
@@ -88,8 +89,7 @@ function insertData(image) {
         url: 'phps/insert.php',
         data: {
             table: 'members',
-            //insertValue: 'memNo, memId, memPwd, memName, identity, phoneNum, birthday, sex, email, address, creditNum, memImage, status',
-            insertValue: `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, '${memImage}' , default`
+            insertValue: sql
         },
         success: data => {
             console.log(data.sql);
@@ -99,7 +99,26 @@ function insertData(image) {
         }
     });   
 }
-
+function fileUpload(){
+    
+    $('#stickerLabel').on('click', function() {
+        var file_data = $('#memImage').prop('files')[0];   //取得上傳檔案屬性
+          //建構new FormData()
+          //吧物件加到file後面
+                                  
+    $.ajax({
+            url: 'login_file_upload.php',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,     //data只能指定單一物件                 
+            type: 'post',
+            success: function(data){
+                $('#ajsxboxdhow').html(data);
+            }
+        });
+    });
+}
 
 // ===== 註冊 ===== //
 // 驗證輸入欄位
@@ -191,23 +210,17 @@ $(function() {
         
         if (e.target.innerText === '註冊' || e.target.innerText === '下一步') {
             let input; 
-            let radio;
-            let email;
-            let birthday;
-            let tel;
-            
-
             if ($(".account_info").css('height') !== '0px') {
-                input = $('.account_info input');
+                input = $('section.login .account_info input');
             }
             else if ($(".mem_info").css('height') !== '0px') {
-                input = $('.mem_info input');
+                input = $('section.login .mem_info input');
             }
 
             for (let i = 0; i < input.length; i++) {
-                // console.log(input[i].value);
                 let verify = input[i];
                 if (verify.value === '' && verify.type !== 'file') {
+                    console.log(verify);
                     alert('尚有欄位未填寫');
                     return
                 }
@@ -219,19 +232,14 @@ $(function() {
         }
         else if (e.target.innerText === '註冊') {
             sentImg();
-            alert('註冊成功！請重新登入');
-            window.location.reload();
+            // alert('註冊成功！請重新登入');
+            // window.location.reload();
         }
     })
 
     // 下一步
     $(".next_step").click( (e) => {
         if (e.target.innerText === '註冊') return;
-        // 第一關驗證帳號密碼 沒有紅框才能下一步
-        // if( $('#memId').parent("div").hasClass("warning") === true || $('#memPwd').parent("div").hasClass("warning") === true || $('#confirm_pwd').parent("div").hasClass("warning") === true ){
-        //     alert('請填寫正確的帳號或密碼');
-        //     return false;
-        // }
 
         if(  $('#memId').val() !== '' && $('#memPwd').val() !== '' && $('#confirm_pwd').val() !== '' ){  
 
@@ -262,10 +270,10 @@ $(function() {
 
 
     // === 輸入框監控 === //
-    $("input").focus( (e) => {
+    $("section.login input").focus( (e) => {
         e.target.parentNode.style.boxShadow = "0 0 1em 0 #CFB88665";
     })
-    $("input").focusout( (e) => {
+    $("section.login input").focusout( (e) => {
         e.target.parentNode.removeAttribute('style');
     })
 

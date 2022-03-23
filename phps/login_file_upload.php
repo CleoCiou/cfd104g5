@@ -11,7 +11,7 @@
         $ext = $fileInfo["extension"]; // 副檔名
         $fileName = "$file.$ext"; // 9988877766.jpg
         $from = $_FILES['file']['tmp_name']; //暫存區含路徑
-        $to1 = "../images/teller_mem/$fileName";
+        $to1 = "../images/member/$fileName";
         copy($from, $to1);
 
         $to2 = "$fileName";

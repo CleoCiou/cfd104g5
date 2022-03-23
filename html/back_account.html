@@ -99,7 +99,6 @@
             methods: {
                 // 依選擇項目取得資料表
                 getCol(update = true) {
-                    let thisVue = this;
                     let result;
                     $.ajax({
                         type: 'POST',
@@ -108,15 +107,15 @@
                             table: 'admin',
                         },
                         async: false,
-                        success: function(data) {
+                        success: data => {
                             data = JSON.parse(data);
                             result = data.msg;
                             if(update) {
-                                thisVue.queryResult = data.msg;
+                                this.queryResult = data.msg;
                             }
                         },
-                        error: function() {
-                            console.log('ajax error');
+                        error: err => {
+                            console.log(err);
                         }
                     });
                     return result;
@@ -148,13 +147,13 @@
                     }
                     // 檢查帳號是否重複
                     let where = `adminId = '${id}'`;
-                    if (this.getCol(false, where)) {
+                    let adminIdList = this.queryResult.filter(existId => existId.adminId === id);
+                    if (adminIdList.length !== 0) {
                         this.resetInput('帳號已存在');
                         return;
                     }
                     
                     // 新增資料
-                    let thisVue = this;
                     $.ajax({
                         type: 'POST',
                         url: 'phps/insert.php',
@@ -162,12 +161,12 @@
                             table: 'admin',
                             insertValue: `'${id}', '${name}', default, default`
                         },
-                        success: function(data) {
-                            thisVue.resetInput('新增成功');
-                            thisVue.getCol();
+                        success: data => {
+                            this.resetInput('新增成功');
+                            this.getCol();
                         },
-                        error: function() {
-                            console.log('ajax error');
+                        error: err => {
+                            console.log(err);
                         }
                     });
                 },

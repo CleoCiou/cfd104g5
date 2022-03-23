@@ -2,7 +2,7 @@
 <html lang="en">
 
     @@include('layout/head.html', {
-        'title': '全方位線上共享占卜平台'
+        'title': '全方位線上占卜共享平台'
     })
 
 <link rel="stylesheet" href="css/index.css">
@@ -101,12 +101,12 @@
     <section class="hot_fortune_teller" id="hft">
         <div class="container">
 
-            <!-- 熱門占卜師_卡片 -->
             <h1>熱門占卜師</h1>  
-            
+
             <div id="hotTellerMem">
-                
+                <!-- 熱門占卜師_卡片 -->
             </div>
+
             <!-- 占卜師總覽 -->
             <div class="teller_verview">
                 <a href="teller_mem.html"><input type="submit" id="submit" value="占卜師瀏覽" class="primary_btn"></a>
@@ -115,13 +115,16 @@
     </section>
 
     <!-- 主打商品 -->
-    <section class="hot_product" id="hp">
+    <section class="shopping_item" id="hp">
         <div class="container">
             <h1>主打商品</h1>
-
             <!-- 主打商品_卡片 -->
-            <div id="hotProduct">
-               
+            <div class="product_box index_product_box" id="hotProduct">
+                
+            </div>
+            <!-- 主打商品_手機 -->
+            <div class="product_box_Mobile" id="hotProductMobile">
+
             </div>
 
             <!--商品總覽 -->
@@ -132,8 +135,6 @@
 
     
     </section>
-
-    
 
 </main>
 
@@ -167,9 +168,25 @@
             
         });
 
+        gsap.to('.scroll_circle_txt', {
+            scrollTrigger: {
+                // 需要視差滾動的class
+               trigger: '.scroll_circle_txt',
+               // 打開滾動前後效果一致
+               scrub: true, 
+            },
+            //放大幾倍
+            scale: 1.4,
+            //持續時間
+            duration: 2,
+            //透明度
+            opacity:0.6
+            
+        });
+
 // 視差滾動 行星動
     gsap.to('#planet', {
-            x: 10,
+            x: 20,
             y: 40,
             duration: 2,
             repeat: -1, 
@@ -178,28 +195,27 @@
 
     gsap.to('#full_moon', {
             x: -15,
-            y: 40,
-            duration: 4,
+            y: 50,
+            duration: 3,
             repeat: -1, 
             yoyo: true, 
         });
         
     gsap.to('#moon', {
-            y: 40,
-            duration: 3,
+            x: 15,
+            x: 40,
+            duration: 2,
             repeat: -1, 
             yoyo: true, 
         });
     
     gsap.to('#universe', {
             y: 30,
-            duration: 5,
+            duration: 3,
             repeat: -1, 
             yoyo: true, 
         });
-    
 
-    
 
 
     // 推薦商品 貓頭鷹套件
@@ -246,10 +262,10 @@ function getHotTellerMemsList() {
             },
             success: function(data) {
                 if (data.msg !== false){
-                    console.log(data.msg);
+                    // console.log(data.msg);
 
                     // 很多! -> 迴圈
-                    let hotTellerImg = "images/teller_mem/"
+                    let hotTellerImg = "images/member/"
                     let hotTellerMems = `<div class="hot_fortune_teller_box">`;
                     for (let i = 0; i < data.msg.length; i++) {
                         hotTellerMems +=   `
@@ -281,9 +297,9 @@ function getHotTellerMemsList() {
     window.addEventListener('load', getHotTellerMemsList);
 
 
+
 // 主打商品
 function getProduct() {
-  
   $.ajax({
       type: 'POST',
       url: 'phps/select.php',
@@ -291,42 +307,40 @@ function getProduct() {
       data: {
           table: 'product',
           joinTable: 'product_category',
-          queryCol: "product.prodImage1 , product_category.cateType, product_category.cateName, product.prodName, FORMAT(price, 'C') price , product.prodspec, product.prodIntro,product.prodNo",
+          queryCol: "product.prodImage1 ,product_category.cateType, product_category.cateName, product.prodName, FORMAT(price, 'C') price , product.prodspec, product.prodIntro,product.prodNo",
           joinOn: 'prodCateNo',
-          other: ' ORDER BY  RAND() limit 3',
-          
+          other: ' ORDER BY  RAND() limit 4',
       },
 
       success: function(data) {
           if (data.msg !== false){
-              console.log(data.msg);
+            //   console.log(data.msg);
               // 照片路徑變數  
-              let hotProductsImg = "images/shop/tarot/";
+              let productImg = "images/shop/tarot/";
+              // -要包最外層的div-
               // 商城
-              let hotProducts = ` <div class="hot_product_box">`;
+              let shopRow = ` <div class="row shopRow">`;
               for (let i = 0; i < data.msg.length; i++) {
-                hotProducts +=   `
+                shopRow +=   `
                   <a class="item">
                     <div class="img_box">
                       <div class="prod_No">${data.msg[i].prodNo}</div>
                         <span>
-                            <img src="${hotProductsImg}${data.msg[i].prodImage1}" />
+                            <img src="${productImg}${data.msg[i].prodImage1}" />
                             <div class="txt_box">
                                 <h4>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</h4>
                                 <p>NT$ ${data.msg[i].price}</p>
                             </div>
                         </span>
                     </div>
-                    <div class="icon_box">
+                    <div class="eyes_icon_box">
                       <span><img src="images/icon/icon_shop_eye.svg"></span>
                     </div>
                   </a>
                   `;
               }
-              hotProducts += `</div>`;
-
-              
-              $('#hotProduct').append(hotProducts);
+              shopRow += `</div>`;
+              $('#hotProduct').append(shopRow);   
           }
       },
       error: function() {
@@ -343,8 +357,81 @@ $(document).on('click','.item',function(){
 });
 window.addEventListener('load', getProduct);
 
+// 主打商品手機版
+function getProductMobile() {
+    $.ajax({
+        type: 'POST',
+        url: 'phps/select.php',
+        
+        data: {
+            table: 'product',
+            joinTable: 'product_category',
+            queryCol: "product.prodImage1 ,product_category.cateType, product_category.cateName, product.prodName, FORMAT(price, 'C') price , product.prodspec, product.prodIntro,product.prodNo",
+            joinOn: 'prodCateNo',
+            other: ' ORDER BY  RAND() limit 4',
+        },
 
-//開場動畫
+        success: function(data) {
+            if (data.msg !== false){
+                // console.log(data.msg);
+                let productImg = "images/shop/tarot/";
+                let owlTheme = `<div class="productmb owl-carousel owl-theme row  ">`;
+                    for (let i = 0; i < data.msg.length; i++) {
+                    owlTheme +=   `
+                    <a class="item">
+                        <div class="img_box">
+                            <div class="prod_No">${data.msg[i].prodNo}</div>
+                                <span>
+                                    <img src="${productImg}${data.msg[i].prodImage1}" />
+                                    <div class="txt_box">
+                                        <h4>${data.msg[i].cateType}${data.msg[i].cateName} - ${data.msg[i].prodName}</h4>
+                                        <p>NT$ ${data.msg[i].price}</p>
+                                    </div>
+                                </span>
+                            </div>
+                        <div class="eyes_icon_box">
+                            <span><img src="images/icon/icon_shop_eye.svg"></span>
+                        </div>
+                  </a>
+                    `;
+                    }
+                    owlTheme += `</div>`;
+
+                $('#hotProductMobile').append(owlTheme);
+
+                $(".owl-carousel").owlCarousel({
+                    loop: false, // 循環播放
+                    margin: 10,
+                    dots: false,
+                    nav: true, // 顯示點點
+                    responsive: {
+                        0: {
+                            items:1 // 螢幕大小為 0~600 顯示 1 個項目
+                        },
+                        980: {
+                            items:1 // 螢幕大小為 1000 以上 顯示 5 個項目
+                        }
+                    }
+                });
+            }
+        },
+        error: function() {
+            console.log('ajax error');
+        }
+    });
+}
+
+// 商城切換到商品頁面使用click事件
+$(document).on('click','.item',function(){
+    // alert($(this).find('.prod_No').text());
+    localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
+    window.location.href = "product.html";
+});
+window.addEventListener('load', getProductMobile);
+
+
+
+// 開場動畫
 //先執行外面closeVideo載入完成後  跑出裡面fadeOut淡出功能
 window.addEventListener('load',closeVideo);
 function closeVideo(){
