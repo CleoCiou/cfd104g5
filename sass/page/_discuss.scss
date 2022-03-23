@@ -374,8 +374,8 @@ main {
             }
         } 
         .article_icon_box{
-            margin: 1em 1em 0 0;
             text-align: right;
+            margin: 1.2em 1.2em 0 0;
         }
         .author{
             display: flex;
@@ -405,24 +405,18 @@ main {
 
             }
         }
-        /* 文章裡的照片 */
-        .article_view_pic.img_box{
-            img{
-                width: 100%;
-                height: auto;
-            }
-        }
         .article_view_content{
             p{
                 line-height: 1.6;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 margin-bottom: 1.5em;
+                overflow-wrap: break-word;
             }
         }
         .narrow{
             padding: 2% 16.666666%;
             @include mobile {
-                padding: 2% 1%;
+                padding: .5em 1.3em;
             }
         }
         /* 功能列-- 愛心回應數分享等等*/
@@ -430,18 +424,22 @@ main {
             width: 100%;
             display: flex;
             align-items: center;
+            .using_icon_box{
+                flex-grow: 1;
+                display: flex;
+                p{
+                    display: flex;
+                    margin: 0 0.2em;
+                    color: #aaa;
+                }
+            }
             img{
                 margin: 0 0.2em;
             }
-            p{
-                margin: 0 0.2em;
-                color: #aaa;
+            .notice_icon.img_box{
+                flex-grow: 0;
             }
-            span{
-                margin: 0 0.2em;
-                color: #aaa;
-                width: 100%;
-            }
+            
         }
         /* 留言回應區塊 */
         .article_response{
@@ -622,7 +620,7 @@ main {
         }
         textarea{
             width: 100%;
-            // resize: vertical;
+            white-space: pre;
             overflow-y: scroll;
         }
         .write_bottom{
