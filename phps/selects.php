@@ -11,17 +11,29 @@
 
     // 記得用session去拿到會員的memNo
     // $memNo = $_SESSION['userNo']
+    $mem_no = $_POST['mem_no'];
 
     $sql = "SELECT artno, article.topicNo, topicName, article.memNo, members.memName, title, artTime, content, likes, artFavs FROM `article` 
     join members on members.memNo = article.memNo
     join article_topic on article.topicNo = article_topic.topicNo
-    where(members.memNo = 1)"; //where(members.memNo = $memNo)"
+    where(members.memNo = $mem_no)";
 
 
-    $fav = $pdo->query($sql);
+    $sql1 = "SELECT article_favorite.artNo, article.memNo, article.artTime, article_topic.topicName, article.title, article.content, likes, artFavs FROM `article_favorite` 
+    left join article on article.artNo = article_favorite.artNo
+    left join article_topic on article_topic.topicNo = article.topicNo
+    WHERE article_favorite.memNo = $mem_no";
+
+
+    $post = $pdo->query($sql);
+    $postRows = $post->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $fav = $pdo->query($sql1);
     $favRows = $fav->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($favRows);
+    $php_array = array('post' => $postRows, 'fav' => $favRows);
+    echo json_encode($php_array);
         
 
     }

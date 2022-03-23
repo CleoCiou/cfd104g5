@@ -175,9 +175,10 @@
 
             methods:{
                 sum(idx){
-                    let prod = this.getProduct(this.cart[idx].prodNo);
+                    let prod = this.cartFull[idx];
                     return parseInt(prod.price) * parseInt(this.cart[idx].amount)
                 },
+
 
                 getList() {
                     let cart = JSON.parse(localStorage.getItem("cart"));
@@ -308,22 +309,16 @@
                             insertValue: `${valueMul}`
                         },
                         success: data => {
-                            alert('訂購成功');
                         },
                         error: err => {
                             console.log('ajax error');
                         }
                     })
+                    alert('訂購成功');
 
                 },
                 
 
-
-                getProduct(prodNo) {
-                    let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
-                    idx = prodNoList.indexOf(prodNo);
-                    return this.prodInfoList[idx];
-                },
 
                 imgSrc(image){
                     let path = `images/shop/tarot`;

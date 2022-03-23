@@ -124,17 +124,17 @@
                         // 新增資料
                         $.ajax({
                             type: 'POST',
-                            url: 'phps/insert.php',
+                            url: 'phps/insert_br.php',
                             data: {
                                 table: 'article',
                                 // col: 'artNo, memNo, artTime, topicNo, title , content, likes, artFavs, msgs, artImage, status, activeIndex, favIndex',
-                                insertValue: `null, '${no}', CURRENT_TIMESTAMP , '${topicNo}' ,'${title}', '${content}', default, default, default, default, default, default, default`
+                                contentValue: content,
+                                insertValue: `null, '${no}', CURRENT_TIMESTAMP , '${topicNo}' ,'${title}', default, default, default, default, default, default, default`
                             },
                             success: data => {
-                                // this.resetInput('成功發表文章!');
-                                alert('成功發表文章');
+                                // alert('成功發表文章');
                                 console.log(data.sql);
-                                window.location.href = "discuss.html";
+                                // window.location.href = "discuss.html";
                             },
                             error: err => {
                                 console.log('ajax error');

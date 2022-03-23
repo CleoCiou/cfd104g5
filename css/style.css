@@ -3714,6 +3714,11 @@ body section.back .contain main .container .table_wrapper table tr .status.activ
   background-color: #CFB886;
 }
 
+#back_nav {
+  width: 20%;
+  min-width: 1;
+}
+
 #twinklingStar .star {
   position: absolute;
   width: 2px;
@@ -4890,6 +4895,11 @@ main section.shopping_item .container .product_nav {
     top: 0;
     background-color: black;
   }
+}
+
+main section.shopping_item .container .product_nav .btn_clicked {
+  background-color: #CFB886;
+  color: #000;
 }
 
 main section.shopping_item .container .unselected_btn {
