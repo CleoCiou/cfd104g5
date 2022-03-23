@@ -90,7 +90,7 @@
 }
 
 
-.shopping_cart .container .cart_detail .cart_body .cart_body_box>div:not(:last-child){
+.shopping_cart .container .cart_detail .cart_body .cart_body_box>div{
     width: 25%;
     text-align: center;
 }
@@ -108,7 +108,7 @@
     text-align: center;
     padding: 0.5em;
 }
-.shopping_cart .container .cart_detail .cart_body .cart_body_box .operate{
+.shopping_cart .container .cart_detail .cart_body .cart_body_box .deleteBtn{
     position: absolute;
     right: 0.5em;
     top: 0.5em;
@@ -120,21 +120,17 @@
 }
 
 /* 填寫資料區 */
-.cart_deliver .container .customer_info .customer_form{
-    display: flex;
-    margin-bottom: 1em;
-}
-.cart_deliver .container .customer_info .customer_form form label{
-    padding: 0;
-}
-.cart_deliver .container .customer_info .pay_way{
-    margin-bottom: 1em;
-}
 .cart_deliver .container .cart_info_right{
-    margin: 1em 0;
+    margin-bottom: 1em;
 }
 .confirm_btn .container .confirm_btns{
     text-align: right;
+}
+.cart_deliver .container .customer_info .pay_way select,input{
+    margin: 0.5em 0;
+}
+#carderror{
+    color: red;
 }
 
 /* 底部推薦商品 */
@@ -158,7 +154,7 @@
     width: 100%;
     height: 100%;
     padding: 1em;
-    object-fit: cover;
+    object-fit: contain;
 }
 .cart_bottom .container .item_box .item .txt_box{
     text-align: center;
@@ -178,9 +174,6 @@
     .cart_card .img_box {
         height: 10em;
     }
-    .shopping_cart .container .cart_detail .cart_body .cart_body_box .item_detail .cart_card .img_box {
-        height: 10em;
-    }
     .shopping_cart .container .cart_body .cart_body_box .count input{
         width: 5em;
     }
@@ -195,13 +188,6 @@
     }
     .cart_deliver .container .customer_info{
         width: 50%;
-    }
-    .cart_deliver .container .customer_info .customer_form form label{
-        display: flex;
-        flex-direction: column;
-    }
-    .cart_deliver .container .customer_info .customer_form form label p{
-        margin:0 1em;
     }
     /* 底部商品區 */
     .cart_bottom .container .item_box .item{
