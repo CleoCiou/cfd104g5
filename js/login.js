@@ -90,7 +90,26 @@ function insertData(image) {
         }
     });   
 }
-
+function fileUpload(){
+    
+    $('#stickerLabel').on('click', function() {
+        var file_data = $('#memImage').prop('files')[0];   //取得上傳檔案屬性
+          //建構new FormData()
+          //吧物件加到file後面
+                                  
+    $.ajax({
+            url: 'login_file_upload.php',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,     //data只能指定單一物件                 
+            type: 'post',
+            success: function(data){
+                $('#ajsxboxdhow').html(data);
+            }
+        });
+    });
+}
 
 // ===== 註冊 ===== //
 // 驗證輸入欄位
@@ -179,15 +198,16 @@ $(function() {
     // === 按鈕監控 === //
     // 登入 | 註冊 註冊完成要跳轉
     $(".secondary_btn").click( (e) => {
+        // e.preventDefault();
         if (e.target.innerText === '登入') {
             checkLogin();
         }
         else if (e.target.innerText === '註冊') {
 
-            insertData();
+            // insertData();
             sentImg();
-            alert('註冊成功！請重新登入');
-            window.location.reload();
+            // alert('註冊成功！請重新登入');
+            // window.location.reload();
         }
     })
 
@@ -271,8 +291,8 @@ $(function() {
     });
     //輸入後驗證帳號
     $('#memId').change( () => {
-        console.log(!/\W+/.test($("#memId").val()));
-        if( $("#memId").val().length === 0 || /\W/.test($("#memId").val()) ) {
+        console.log(!/\W/.test($("#memId").val()));
+        if( $("#memId").val().length === 0 || !/\W/.test($("#memId").val()) ) {
             $("#memId").parent("div").addClass('warning');
         }
         if( $("#memId").val().length > 0 && /\w/.test($("#memId").val()) ) {
