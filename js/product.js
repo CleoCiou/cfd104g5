@@ -165,7 +165,7 @@ function getRecommended() {
 
 }
 // 商城切換到商品頁面使用click事件
-$(document).on('click','.item',function(){
+$(document).on('click','.recommended_products_img .item',function(){
     // alert($(this).find('.prod_No').text());
     localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
     window.location.href = "product.html";
