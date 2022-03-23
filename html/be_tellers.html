@@ -298,7 +298,7 @@
             $(this).addClass('btn_clicked');
             let index = $(this).data('index');
             ans[index] = $(this).data('correct');
-            console.log(ans);
+            // console.log(ans);
             let nextQ = $(this).parents('.test_item').next('.test_item')[0];
 
             if (nextQ) {
@@ -307,12 +307,12 @@
                 // console.log(ans)
             }else{
                 if (ans.filter(v=>v).length  > 2){
-                    console.log('tr');
+                    // console.log('tr');
 
                     $('.test_result .pass_item').css("display","block");
                
                 }else{
-                    console.log('no');
+                    // console.log('no');
                     $('.test_result .fail_item').css("display","block");
                 }
                 alreadyTest = true;  
@@ -381,7 +381,7 @@
 
                         for (let i = 0; i < 5; i++) {
                             let list = setAnsList();
-                            console.log(list)
+                            // console.log(list)
                             let correct = list.find(function (v) { return v.correct });
                             document.querySelectorAll('.tarottestQ')[i].innerHTML = correct.tarProduction;
                             document.querySelectorAll('.tarottestA')[i].innerHTML = 'A.' + list[0].tarName;

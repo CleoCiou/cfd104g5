@@ -195,9 +195,12 @@ Vue.component('calendar',{
             }
 
             if (el.querySelector(`.${time}`) === null && !removeOnly) {
+                // 取得日期
                 let date = el.childNodes[0].nodeValue.trim();
                 // yyyy-mm-dd
                 let infoDate = `${this.year}-${((this.month+1) < 10) ? '0'+(this.month+1) : this.month + 1}-${(date < 10) ? '0'+date : date}`;
+                // <--不能排休-- |明天| --可以排休-->
+                if (Date.parse(infoDate) < Date.parse(new Date())) return;
                 
                 // 整日休假
                 if (mark === 3) {
@@ -209,15 +212,6 @@ Vue.component('calendar',{
                         afternoon: '下午',
                         night: '晚上'
                     };
-                    
-                    for (t in times) {
-                        let newEl = document.createElement('p');
-                        newEl.className = `${t} rest time`;
-                        newEl.innerText = times[t];
-                        newEl.draggable = 'true';
-                        newEl.addEventListener('dragstart', this.dragStartHandler);
-                        el.appendChild(newEl);
-                    }
                 }
                 else {
                     // 更新排班資訊
@@ -228,14 +222,6 @@ Vue.component('calendar',{
                     // 新增至更新清單
                     // 若按儲存將更新清單更新至資料庫
                     this.updateInfo[infoDate] = work.join('');
-
-                    // 動態插入休假時段
-                    let newEl = document.createElement('p');
-                    newEl.className = `${time} rest time`;
-                    newEl.innerText = timeTxt;
-                    newEl.draggable = 'true';
-                    newEl.addEventListener('dragstart', this.dragStartHandler);
-                    el.appendChild(newEl);
                 }
             }
             
@@ -249,12 +235,11 @@ Vue.component('calendar',{
                 work = [workTime[0], workTime[1], workTime[2]];
                 work[mark] = '0';
                 this.updateInfo[oriDate] = work.join('');
-                let parentEl = this.dragEl.parentNode;
                 this.dragEl.remove();
                 this.dragEl = null;
             }
 
-            this.dateHandler();
+            this.dateHandler(true);
         },
         // 點擊儲存更新資料庫
         updateDb() {

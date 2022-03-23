@@ -26,26 +26,9 @@
     <!-- 幻燈片 -->
     <section class="teller_pic ">
         <div class="container">
-          <div class="item_box">
-            <div class="item a">
-              <img src="images/teller_mem/teller_subway.jpeg">
-            </div>
-            <div class="item b">
-              <img src="images/teller_mem/teller_suit.jpeg">
-            </div>
-            <div class="item c">
-              <a href="">
-                <img src="images/teller_mem/teller_hat.jpeg">
-              </a>
-            </div>
-            <div class="item d">
-              <img src="images/teller_mem/teller_work.jpeg">
-            </div>
-            <div class="item e">
-              <img src="images/teller_mem/teller_jeans.jpeg">
-            </div>
-            <div class="item f">
-              <img src="images/teller_mem/teller_dress.jpeg">
+          <div class="item_box" :style="rotate">
+            <div class="item" v-for="i in tellers.slice(0,6)">
+              <img :src="imgUrl(i.memImage)">
             </div>
           </div>
         </div>
@@ -54,16 +37,17 @@
       <!-- 占卜師介紹 -->
       <section class="teller_info">
         <div class="container">
-          <div class="teller_name">
-            <h2>吳恆準</h2>
-            <p>4.8 <i class="fa-solid fa-star"></i></p>
+          <div class="teller_name" v-if="selectIdx !== -1">
+            <h2>{{ tellers[selectIdx].memName }}</h2>
+            <p v-if="tellers[selectIdx].avgScore !== null">{{ Math.round(tellers[selectIdx].avgScore,1) }} <i class="fa-solid fa-star"></i></p>
+            <p v-else>尚無評分</p>
             <br>
-            <button class="next_teller other_btn"><</button>
-            <button class="prev_teller other_btn">></button>
+            <button class="next_teller other_btn" @click="ang-=60; selectIdx = (selectIdx === tellers.length) ? 0 : selectIdx+1"><</button>
+            <button class="prev_teller other_btn" @click="ang+=60; selectIdx = (selectIdx === 0) ? 5 : selectIdx-1">></button>
           </div>
           <div class="txt_box">
-            <p>大家好，我是吳恆準老師。遇到困難不要害怕。老師一定會幫你想辦法。讓老師帶你走出絕望找到希望!!!</p>
-            <div class="reservation_btn"><a href="teller_reservation.html"><button class="primary_btn">立即預約</button></a>
+            <p>{{ tellers[selectIdx].introduction }}</p>
+            <div class="reservation_btn"><a :href="getHref"><button class="primary_btn">立即預約</button></a>
             </div>
           </div>
         </div>
@@ -74,6 +58,18 @@
       <div class="container" id="tellerMem">
         <div class="txt_box">
           <h2>占卜師總覽</h2>
+        </div>
+        <div class="row">
+          <div class="item" v-for="teller in tellers">                                         
+            <div class="img_box">
+                <a href="teller_reservation.html?type=0">
+                    <img :src="imgUrl(teller.memImage)">
+                </a>
+            </div>
+            <div class="txt_box">
+                {{ teller.memName }}
+            </div>
+        </div>
         </div>
       </div>
     </section>
