@@ -30,7 +30,8 @@
                             
                             <h3 class="ast_name">
                                 {{ userData.userName }}
-                                <span class="ast_star">★★★★</span>
+                                <span class="ast_star" v-if="intro.people !== 0">{{ Math.round(intro.totalScore / intro.people, 1) }}★</span>
+                                <span class="ast_star" v-else>尚無評分</span>
                             </h3>
                             <p class="introduce">
                                 {{ intro.introduction }}
@@ -50,7 +51,7 @@
                     審核預約
                     <div class="reservation_box">
 
-                        <ul class="reservation_list">
+                        <ul class="reservation_list" :style="cardTranslate">
                             <li v-if="appointments.length === 0">
                                 <p>尚無預約</p>
                             </li>
@@ -67,10 +68,6 @@
                                     <div class="img_box sticker">
                                         <img :src="src+appointment.memImage" alt="會員照片">
                                     </div>
-                                    <!-- <div class="txt_box">
-                                        <span>歷史預約次數</span>
-                                        <p>{{appointment.times}}</p>
-                                    </div> -->
                                 </div>
                                 <div class="item card_footer">
                                     <button v-if="appointment.status == '未審核'" @click="updateStatus($event, idx)" class="selected_btn">接受</button>
@@ -79,8 +76,8 @@
                             </li>
                         </ul>
 
-                        <div @click="carsoul_last" class="change_page last_page gray">←</div>
-                        <div @click="carsoul_next" class="change_page next_page">→</div>
+                        <div @click="(translateIdx > 0) ? translateIdx-- : ''" class="change_page last_page" :class="(translateIdx === 0) ? 'gray' : ''">←</div>
+                        <div @click="(translateIdx < appointments.length-4) ? translateIdx++ : ''" class="change_page next_page" :class="(translateIdx === appointments.length-4) ? 'gray' : ''">→</div>
                     </div>
                 </section>
     
@@ -160,6 +157,7 @@
                 appointments: [],
                 src: 'images/member/',
                 schedule: [],
+                translateIdx: 0
             },
             mounted() {
                 this.getIntro();
@@ -171,7 +169,7 @@
                         url: 'phps/select.php',
                         data: {
                             table: 'astrologist',
-                            queryCol: 'astNo, introduction',
+                            queryCol: 'astNo, introduction, people, totalScore',
                             condition: `memNo = ${this.userData.userNo}`
                         },
                         success:  data => {
@@ -343,18 +341,16 @@
                     e.target.classList.remove('unselected_btn');
                     e.target.classList.add('selected_btn');
                 },
+                // 輪播 function 刪掉會出事先等等
                 carsoul_last(e) {
                 },
+                // 輪播 function 刪掉會出事先等等
                 carsoul_next(e) {
-                //     console.log(e.target);
-                //     let reservation_card = document.querySelectorAll('.reservation_card');
-                //     console.log(reservation_card);
-                //     let activeCard = document.querySelectorAll('.reservation_card.active')[0];
-                //     console.log(activeCard);
-                //     let i = Array.from(reservation_card).indexOf(activeCard);
-                //     let moveList = document.querySelectorAll('.reservation_list')[0];
-                //     console.log(moveList);
-                //     moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
+                }
+            },
+            computed: {
+                cardTranslate() {
+                    return `transform: translate(${this.translateIdx * -268}px); transition: 1s`;
                 }
             }
         });

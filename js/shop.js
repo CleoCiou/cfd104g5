@@ -1,3 +1,11 @@
+$(".unselected_btn").click(function () {
+  // console.log($('.product_nav_item').children())
+  $('.product_nav_item').children().removeClass('btn_clicked');
+  $(this).addClass('btn_clicked');
+});
+
+
+
 let current = 0;
 let items = document.querySelectorAll(".slider_item");
 
@@ -29,8 +37,6 @@ window.onload = function () {
 
 // 撈資料哩
 function getProduct() {
-  
-
   $.ajax({
       type: 'POST',
       url: 'phps/select.php',
@@ -41,13 +47,12 @@ function getProduct() {
           joinTable: 'product_category',
           queryCol: "product.prodImage1 , product.prodImage2, product.prodImage3,product_category.cateType, product_category.cateName, product.prodName, FORMAT(price, 'C') price , product.prodspec, product.prodIntro,product.prodNo",
           joinOn: 'prodCateNo',
-          // condition: "product_category.prodCateNo = 1001",
           
       },
 
       success: function(data) {
           if (data.msg !== false){
-              console.log(data.msg);
+              // console.log(data.msg);
               // 照片路徑變數  
               let productImg = "images/shop/tarot/";
               // -要包最外層的div-
@@ -89,7 +94,7 @@ function getProduct() {
 }
 //全部btn
 $('#product_all').on('click',function(){
-  $('.item').remove();
+  $('.product_box .item').remove();
   $.ajax({
     type: 'POST',
     url: 'phps/select.php',
@@ -147,7 +152,7 @@ $('#product_all').on('click',function(){
 });
 //手鍊btn
 $('#product_wristband').on('click',function(){
-    $('.item').remove();
+    $('.product_box .item').remove();
     $.ajax({
       type: 'POST',
       url: 'phps/select.php',
@@ -164,7 +169,7 @@ $('#product_wristband').on('click',function(){
 
       success: function(data) {
           if (data.msg !== false){
-              console.log(data.msg);
+              // console.log(data.msg);
               // 照片路徑變數  
               let productImg = "images/shop/tarot/";
               // -要包最外層的div-
@@ -206,7 +211,7 @@ $('#product_wristband').on('click',function(){
 });
 //項鍊btn
 $('#product_necklace').on('click',function(){
-  $('.item').remove();
+  $('.product_box .item').remove();
   $.ajax({
     type: 'POST',
     url: 'phps/select.php',
@@ -223,7 +228,7 @@ $('#product_necklace').on('click',function(){
 
     success: function(data) {
         if (data.msg !== false){
-            console.log(data.msg);
+            // console.log(data.msg);
             // 照片路徑變數  
             let productImg = "images/shop/tarot/";
             // -要包最外層的div-
@@ -265,7 +270,7 @@ $('#product_necklace').on('click',function(){
 });
 //幸運石btn
 $('#product_lucky_stone').on('click',function(){
-  $('.item').remove();
+  $('.product_box .item').remove();
   $.ajax({
     type: 'POST',
     url: 'phps/select.php',
@@ -282,7 +287,7 @@ $('#product_lucky_stone').on('click',function(){
 
     success: function(data) {
         if (data.msg !== false){
-            console.log(data.msg);
+            // console.log(data.msg);
             // 照片路徑變數  
             let productImg = "images/shop/tarot/";
             // -要包最外層的div-
@@ -325,10 +330,12 @@ $('#product_lucky_stone').on('click',function(){
 
 
 // 商城切換到商品頁面使用click事件
-$(document).on('click','.item',function(){
+$(document).on('click','.product_box .item',function(){
   // alert($(this).find('.prod_No').text());
   localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
   window.location.href = "product.html";
 });
 window.addEventListener('load', getProduct);
+
+
 

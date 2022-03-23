@@ -47,7 +47,7 @@
                                                                 <span>NT${{ detail.price * detail.mount }}</span>
                                                             </div> 
                                                             <div class="txt subtotal">
-                                                                <span>x1</span>
+                                                                <span>{{ detail.mount }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -161,7 +161,7 @@
                     let sum = 0;
                     for (let i = 0; i < this.orderItemList.length; i++) {
                         if (no === this.orderItemList[i].orderNo) {
-                            sum += this.orderItemList[i].mount;
+                            sum += parseInt(this.orderItemList[i].mount);
                         }
                     }
                     return sum;

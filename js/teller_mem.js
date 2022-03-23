@@ -8,7 +8,55 @@ new Vue({
             '塔羅討論區': 'discuss.html',
         },
         navs: ['體驗占卜師','線上占卜','占卜師總覽','塔羅討論區'],
+        tellers: [],
+        selectIdx: -1,
+        ang: 0
     },
+    mounted() {
+        this.getTeller();
+    },
+    methods: {
+        getTeller() {
+            $.ajax({
+                type: 'POST',
+                url: 'phps/select.php',
+                data: {
+                    table: 'members',
+                    joinTable: 'astrologist',
+                    joinOn: 'memNo',
+                    queryCol: 'astNo, members.memName, members.memImage, astrologist.introduction, (totalScore / people)  avgScore',
+                    condition: "members.identity = '占卜師' AND astrologist.status = '一般'",
+                    others: 'order by avgScore'
+                },
+                success: data => {
+                    if (data.msg !== false){
+                        this.tellers = data.msg;
+                        this.selectIdx = 0;
+                    }
+                },
+                error: err => {
+                    console.log(err);
+                }
+            });
+        },
+        imgUrl(img) {
+            return `images/member/${img}`;
+        },
+        getName(idx) {
+            return this.tellers[idx].memName;
+        },
+        getScore(idx) {
+            return this.tellers[idx].avgScore;
+        }
+    },
+    computed: {
+        rotate() {
+            return `transform: rotateY(${this.ang}deg)`;
+        },
+        getHref() {
+            return `teller_reservation.html?type=${ this.tellers[this.selectIdx].astNo-1 }`;
+        }
+    }
  });
 
 
@@ -37,48 +85,6 @@ function rotate(e) {
 
 //資料庫連結
 window.onload = function getTeller() {
-    $.ajax({
-        type: 'POST',
-        url: 'phps/select.php',
-        data: {
-
-            table: 'members',
-
-            joinTable: 'astrologist',
-
-            joinOn: 'memNo',
-
-            queryCol: 'members.memName, members.memImage',
-
-            condition: "members.identity = '占卜師' AND astrologist.status = '一般'",
-
-        },
-        success: function(data) {
-            if (data.msg !== false){
-                let tellerImg = "images/member/"
-                let tellerMems = `<div class="row">`;
-                for (let i = 0; i < data.msg.length; i++) {
-                    tellerCount = i
-                    tellerMems +=   `
-                                    <div class="item">                                                
-                                        <div class="img_box">
-                                            <a href="teller_reservation.html?type=${tellerCount}">
-                                                <img src="${tellerImg}${data.msg[i].memImage}">
-                                            </a>
-                                        </div>
-                                        <div class="txt_box">
-                                            ${data.msg[i].memName}
-                                        </div>
-                                    </div>
-                                    `;
-                }
-                tellerMems += `</div>`
-                $('#tellerMem').append(tellerMems)
-            }
-        },
-        error: function() {
-            console.log('ajax error');
-        }
-    });
+    
 };
 

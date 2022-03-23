@@ -21,6 +21,7 @@ Vue.component('my-nav',{
             </ul>
         </nav>
     `,
+    
     data() {
         return {
             // 管理欄位

@@ -3058,7 +3058,7 @@ section.login .container {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #000c;
+  background-color: #000;
 }
 
 section.login .container .display_none {
@@ -3720,6 +3720,11 @@ body section.back .contain main .container .table_wrapper table tr .status {
 
 body section.back .contain main .container .table_wrapper table tr .status.active {
   background-color: #CFB886;
+}
+
+#back_nav {
+  width: 20%;
+  min-width: 1;
 }
 
 #twinklingStar .star {
@@ -4898,6 +4903,11 @@ main section.shopping_item .container .product_nav {
     top: 0;
     background-color: black;
   }
+}
+
+main section.shopping_item .container .product_nav .btn_clicked {
+  background-color: #CFB886;
+  color: #000;
 }
 
 main section.shopping_item .container .unselected_btn {
