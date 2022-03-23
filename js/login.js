@@ -31,8 +31,45 @@ function checkLogin() {
         }
     });
 }
+
+//上傳圖片到server 要將檔案路徑變成流水編號
+function sentImg(){
+    //抓input=file的值
+    let uploadFile = document.getElementById('memImage').value;
+    // console.log(uploadFile);
+
+    //如果有選擇圖片檔案 就不等於空值
+    if(uploadFile !== ''){
+        var form_data = new FormData();
+        var files = $('#memImage')[0].files;
+        console.log(files);
+        form_data.append('file', files[0]);
+        $.ajax({
+            type: 'POST',
+            url: 'phps/login_file_upload.php',
+            processData : false, 
+            contentType : false,
+            dataType: 'JSON',
+            data: form_data,
+            success: data => {
+                insertData(data.img);
+            },
+            error: err => {
+                console.log('ajax error');
+            }
+        });   
+    }
+    //沒有選擇圖片檔案的話 就傳default進去insertData
+    else{
+        let empty = 'default';
+        insertData(empty)
+    }
+    
+}
+
 // 新增註冊
-function insertData() {
+function insertData(image) {
+    //抓每個input的值
     let memId = document.getElementById('memId').value;
     let memPwd = document.getElementById('memPwd').value;
     let memName = document.getElementById('memName').value;
@@ -40,11 +77,11 @@ function insertData() {
     let birthday = document.getElementById('birthday').value;
     let sex = document.querySelector('input[name="sex"]:checked').value;
     let tel = document.getElementById('tel').value;
-    let memImage = document.getElementById('memImage').value;
-    // let pathIdx = memImage.lastIndexOf("fakepath");
-    // memImage.slice(pathIdx+1);
+    let memImage = image;
     let identity = document.querySelector('input[name="identity"]:checked').value;
-    // console.log(identity);
+
+    //sentImg()傳入的值 判斷如果image是default的話 memImage就會是default
+    let sql = (image === 'default') ? `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, default , default` : `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, '${memImage}' , default`;
 
     // 新增資料
     $.ajax({
@@ -52,20 +89,37 @@ function insertData() {
         url: 'phps/insert.php',
         data: {
             table: 'members',
-            //insertValue: 'memNo, memId, memPwd, memName, identity, phoneNum, birthday, sex, email, address, creditNum, memImage, status',
-            insertValue: `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, '${memImage}' , default`
+            insertValue: sql
         },
         success: data => {
-            console.log('成功insert');
             console.log(data.sql);
-            
-            // console.log(memImage);
         },
         error: err => {
             console.log('ajax error');
         }
     });   
 }
+function fileUpload(){
+    
+    $('#stickerLabel').on('click', function() {
+        var file_data = $('#memImage').prop('files')[0];   //取得上傳檔案屬性
+          //建構new FormData()
+          //吧物件加到file後面
+                                  
+    $.ajax({
+            url: 'login_file_upload.php',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,     //data只能指定單一物件                 
+            type: 'post',
+            success: function(data){
+                $('#ajsxboxdhow').html(data);
+            }
+        });
+    });
+}
+
 // ===== 註冊 ===== //
 // 驗證輸入欄位
 // 驗證(元素, 條件, 正確訊息, 錯誤訊息)
@@ -153,21 +207,31 @@ $(function() {
     // === 按鈕監控 === //
     // 登入 | 註冊 註冊完成要跳轉
     $(".secondary_btn").click( (e) => {
-        // e.preventDefault();
+        
+        if (e.target.innerText === '註冊' || e.target.innerText === '下一步') {
+            let input; 
+            if ($(".account_info").css('height') !== '0px') {
+                input = $('section.login .account_info input');
+            }
+            else if ($(".mem_info").css('height') !== '0px') {
+                input = $('section.login .mem_info input');
+            }
+
+            for (let i = 0; i < input.length; i++) {
+                let verify = input[i];
+                if (verify.value === '' && verify.type !== 'file') {
+                    console.log(verify);
+                    alert('尚有欄位未填寫');
+                    return
+                }
+            } 
+        }
+
         if (e.target.innerText === '登入') {
             checkLogin();
         }
         else if (e.target.innerText === '註冊') {
-            
-            // $("input, textarea").each(function(){
-            //     console.log($('input'));
-            //     if($(this).val().length === 0){
-            //         $('input').parent("div").addClass('warning');
-            //     }else{
-            //         $(this).parent("div").removeClass('warning');
-            //     }
-            // })
-            // insertData();
+            sentImg();
             // alert('註冊成功！請重新登入');
             // window.location.reload();
         }
@@ -175,26 +239,21 @@ $(function() {
 
     // 下一步
     $(".next_step").click( (e) => {
-        // 第一關驗證帳號密碼 沒有紅框才能下一步
-        if( $('#memId').parent("div").hasClass("warning") === true || $('#memPwd').parent("div").hasClass("warning") === true || $('#confirm_pwd').parent("div").hasClass("warning") === true ){
-            alert('請填寫正確的帳號或密碼');
-            return false;
-        }
+        if (e.target.innerText === '註冊') return;
 
-        if(  $('#memId').val() !== '' && $('#memPwd').val() !== '' && $('#confirm_pwd').val() !== '' ){
+        if(  $('#memId').val() !== '' && $('#memPwd').val() !== '' && $('#confirm_pwd').val() !== '' ){  
+
             if ($(".account_info").css('height') !== '0px') {
                 switchPanel($(".account_info"), $(".mem_info"));
                 $(".last_step").css({display: 'inline-block'});
                 $(".next_step").text('註冊');
+
             }else if ($(".mem_info").css('height') !== '0px') {
                 switchPanel($(".mem_info"), $(".astrologist_info"));
                 $(".next_step").text('註冊');
+                
             }
-        }else{
-            alert('請填寫帳號或密碼');
         }
-            
-        
     })
     // 上一步
     $(".last_step").click( (e) => {
@@ -211,10 +270,10 @@ $(function() {
 
 
     // === 輸入框監控 === //
-    $("input").focus( (e) => {
+    $("section.login input").focus( (e) => {
         e.target.parentNode.style.boxShadow = "0 0 1em 0 #CFB88665";
     })
-    $("input").focusout( (e) => {
+    $("section.login input").focusout( (e) => {
         e.target.parentNode.removeAttribute('style');
     })
 
@@ -255,8 +314,7 @@ $(function() {
     $('#memId').change( () => {
         if( $("#memId").val().length === 0 || /\W/.test($("#memId").val()) ) {
             $("#memId").parent("div").addClass('warning');
-        }
-        if( $("#memId").val().length > 0 && /\w/.test($("#memId").val()) ) {
+        }else {
             $("#memId").parent("div").removeClass('warning');
         }
     })

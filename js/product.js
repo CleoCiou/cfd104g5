@@ -165,7 +165,7 @@ function getRecommended() {
 
 }
 // 商城切換到商品頁面使用click事件
-$(document).on('click','.item',function(){
+$(document).on('click','.recommended_products_img .item',function(){
     // alert($(this).find('.prod_No').text());
     localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
     window.location.href = "product.html";
@@ -193,7 +193,6 @@ function save(){
 
 
     //(重複商品不加購物車)
-    console.log(item)
     let cart = localStorage.getItem('cart');    //拿到localstorage
     cart = cart ? JSON.parse(cart) : [];    //轉JSON格式
     let found = false;
@@ -212,6 +211,7 @@ function save(){
     }
 
     // console.log(cart)
-    localStorage.setItem('cart', JSON.stringify(cart));    //轉成字串，傳到localstorage
+    localStorage.setItem('cart', JSON.stringify(cart));   //轉成字串，傳到localstorage
+    alert("成功加入購物車")
 }
 

@@ -35,28 +35,27 @@
                         <div class="amount">總計</div>
                     </div>
                     <!-- 購物車body -->
-                    <!-- :key="row.id" -->
-                    <div class="cart_body" v-for="(row, index) in cart">
+                    <div class="cart_body" v-for="(row, index) in cartFull">
                         <div class="cart_body_box">
                             <div class="item_detail">
                                 <div class="cart_card">
                                     <div class="img_box">
-                                        <img :src="imgSrc(getProduct(row.prodNo).prodImage1)" alt="">
+                                        <img :src="imgSrc(row.prodImage1)" alt="">
                                     </div>
                                     <div class="txt_box">
-                                        <p>{{getProduct(row.prodNo).prodName}}{{getProduct(row.prodNo).cateName}}</p>
+                                        <p>{{row.prodName}}{{row.cateName}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="price"><span>NT${{getProduct(row.prodNo).price}}</span></div>
+                            <div class="price"><span>NT${{row.price}}</span></div>
                             <div class="count">
-                                <button @click="handleSub(item)" class="count_btn">-</button>
-                                {{row.amount}}
-                                <button @click="handlePlus(item)" class="count_btn">+</button>
+                                <button @click="cart[index].amount--" class="count_btn">-</button>
+                                <input type="text" v-model="cartFull[index].amount" class="prodAmount"></input>
+                                <button @click="cart[index].amount++" class="count_btn">+</button>
                             </div> 
-                            <div class="amount"><span>NT${{sum(index)}}</span></div>
+                            <div class="amount">NT$<span>{{sum(index)}}</span></div>
                             <div class="operate">
-                                <button @click="handledelete(index)" class="count_btn">x</button>
+                                <button @click="handledelete(index);remove()" class="count_btn">x</button>
                             </div>
                         </div>
                     </div>                        
@@ -68,14 +67,14 @@
         <section class="cart_deliver">
             <div class="container">
                 <div class="customer_info">
-                    <div class="pay_way">
+                    <!-- <div class="pay_way">
                         <label for="">付款方式：</label>
-                        <select>
+                        <select id="payWay">
                             <option>請選擇</option>
                             <option>轉帳付款</option>
                             <option>信用卡</option>
                         </select>
-                    </div>            
+                    </div> -->
                     <div class="txt_box">
                         <p>
                             約3~7個工作天到貨，離島運送時間需要多3~5個工作天
@@ -96,8 +95,8 @@
         <section class="confirm_btn">
             <div class="container">
                 <div class="confirm_btns">
-                    <a href=""><button class="third_btn">繼續購物</button></a>
-                    <a href="shopping_info.html"><button class="primary_btn">下一步</button></a>
+                    <a href="shop.html"><button class="third_btn" id="continue" @click="save">繼續購物</button></a>
+                    <a href="shopping_info.html"><button class="primary_btn" id="nextStep" @click="save">下一步</button></a>
                 </div>
             </div>
         </section>
@@ -108,44 +107,14 @@
             <div class="container">
                 <h3>主打商品</h3>
                 <div class="item_box">
-                    <div class="item">
-                        <a href="product.html">
+                    <div class="item" v-for=" (i, idx) in queryResult">
+                        <a @click="getPromptProduct(idx)">
                             <div class="img_box">
-                                <img src="images/shop/Constellation/ring/ring_aquarius.jpg">
+                                <img :src="imgSrc(i.prodImage1)" alt="">
                             </div>
                         </a>
                         <div class="txt_box">
-                            <p>水瓶座戒指</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/ring/ring_gemini.jpg">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>雙子座戒指</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/necklace/necklace_cancer.png">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>巨蟹座項鍊</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/necklace/necklace_pisces.png">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>雙魚座項鍊</p>
+                            <p>{{i.prodName}}{{i.cateName}}</p>
                         </div>
                     </div>
                 </div>
@@ -163,37 +132,43 @@
         data:{
             queryResult: [],
             cart:[],
-            prodInfoList: {}
+            prodInfoList: [],
+            alreadycatch:false
         },
         mounted() {
             this.getList();
             this.getProdInfo_vue();
+            this.getPrompt();
+        },
+        watch:{
+            cart:{
+                deep:true,
+                handler(){
+                    let cart = JSON.stringify(this.cart);
+                    localStorage.setItem('cart',cart);
+                    if(this.cart.length == 0){
+                        alert('購物車已清空');
+                    }
+                }
+            }
         },
         methods:{
-            handlePlus: function(row){
-                cart.amount++;
-            },
-
-            handleSub: function(row){
-                if(row.amount>1){
-                row.amount--;                
-                }
-            },
-
-
             handledelete: function(index){
                 this.cart.splice(index,1);
             },
 
             sum(idx){
-                return parseInt(this.prodInfoList[idx].price) * parseInt(this.cart[idx].count)
+                let prod = this.cartFull[idx];
+                return parseInt(prod.price) * parseInt(this.cart[idx].amount)
             },
+
 
             getList() {
                 let cart = JSON.parse(localStorage.getItem("cart"));
                 this.cart = cart;
+                this.alreadycatch = true;
             },
-            
+
             getProdInfo_vue() {
                 $.ajax({
                     type: 'POST',
@@ -206,7 +181,7 @@
 
                         joinOn:'prodCateNo',
 
-                        queryCol: "prodName, FORMAT(price, 'C') price, prodImage1, cateName, prodNo",
+                        queryCol: "prodName, price, prodImage1, cateName, prodNo",
                     },
                     success: data =>{
                         if (data.msg !== false){
@@ -219,22 +194,106 @@
                 });
             },
 
-            getProduct(prodNo) {
-                let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
-                idx = prodNoList.indexOf(prodNo);
-                return this.prodInfoList[idx];
+            
+            // 底部商品列
+            getPrompt(){
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+
+                        table: 'product',
+
+                        joinTable: 'product_category',
+
+                        joinOn:'prodCateNo',
+
+                        queryCol: "prodName, prodImage1, cateName, prodNo",
+
+                        other: 'limit 4'
+                    },
+                    success: data =>{
+                        if (data.msg !== false){
+                            this.queryResult = data.msg;
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
             },
+            
+            getPromptProduct(index){
+                let prod_Num = this.queryResult[index].prodNo;
+                localStorage.setItem('prodNumber',`${prod_Num}`);  
+                window.location.href = "product.html";
+            },
+
 
             imgSrc(image){
                 let path = `images/shop/tarot`;
                 return `${path}/${image}`;
             },
             
+            remove(){
+                localStorage.removeItem('cart')
+            },
+
+            save(){
+                let prodNo = localStorage.getItem('prodNumber');
+                let amount = document.querySelector('.prodAmount').value;
+                let payMethod = document.querySelector('#payWay').value;
+                let item = {    //要存的("key","value")
+                    prodNo,
+                    amount,
+                };
+
+                let itemSec = {
+                    payWay: payMethod,
+                }
+
+
+                //(重複商品不加購物車)
+                let cart = localStorage.getItem('cart');    //拿到localstorage
+                cart = cart ? JSON.parse(cart) : [];    //轉JSON格式
+                let found = false;
+
+                for(let i=0 ; i < this.cart.length; i++){    
+                    if(cart[i].prodNo === item.prodNo){
+                        cart[i] = item;
+                        found = true;
+                        break;
+                    }    
+                }
+
+                if(found === false){
+                    cart.push(item);   //新的都要往後加
+                }
+
+
+                // console.log(cart)
+                localStorage.setItem('cart', JSON.stringify(cart));    //轉成字串，傳到localstorage
+                // localStorage.setItem('payWay', JSON.stringify(payWay));    //轉成字串，傳到localstorage
+            },
+                        
+
+
+            
         },
         computed:{
+            cartFull() {
+                return this.cart.map(v => {
+                    let obj = this.prodInfoList.find(item => v.prodNo == item.prodNo);
+                    return {
+                        ...obj,
+                        ...v
+                    };
+                })
+            },
+            
             total() {
                 let subtotal = 0;
-                for(let i = 0; i < this.queryResult.length; i++){
+                for(let i = 0; i < this.cartFull.length; i++){
                     subtotal += this.sum(i);
                 }
                 return subtotal;
@@ -243,7 +302,6 @@
                 let deliFee = 0;
                 if(this.cart.length == 0){
                     deliFee = 0;
-                    alert('購物車空空的喔趕快花錢喔')
                 }else{
                     deliFee = 60
                 }
