@@ -55,7 +55,7 @@ window.onload = function getTeller() {
         },
         success: function(data) {
             if (data.msg !== false){
-                let tellerImg = "images/teller_mem/"
+                let tellerImg = "images/member/"
                 let tellerMems = `<div class="row">`;
                 for (let i = 0; i < data.msg.length; i++) {
                     tellerCount = i
