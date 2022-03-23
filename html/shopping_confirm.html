@@ -35,21 +35,25 @@
                         <div class="amount">總計</div>
                     </div>
                     <!-- 購物車body -->
-                    <div class="cart_body" v-for="(item, index) in itemList" :key="item.id" >
+                    <div class="cart_body" v-for="(row, index) in cartFull">
                         <div class="cart_body_box">
                             <div class="item_detail">
                                 <div class="cart_card">
-                                    <div class="img_box"><img v-bind:src="item.imgUrl" alt=""></div>
-                                    <div class="txt_box"><p>{{item.itemName}}</p></div>
+                                    <div class="img_box">
+                                        <img :src="imgSrc(row.prodImage1)" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p>{{row.prodName}}{{row.cateName}}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="price"><span>NT$</span>{{item.price}}</div>
+                            <div class="price"><span>NT${{row.price}}</span></div>
                             <div class="count">
-                                {{item.count}}
+                                {{cartFull[index].amount}}
                             </div> 
-                            <div class="amount"><span>NT$</span>{{sum(index)}}</div>
+                            <div class="amount">NT$<span>{{sum(index)}}</span></div>
                         </div>
-                    </div>        
+                    </div>                        
                 </div>
             </div>
         </section>
@@ -60,14 +64,11 @@
                 <div class="customer_info">
                     <div class="customer_confirm">
                     <h4>姓名</h4>
-                    <p>Windward</p>
+                    <p>{{memberInfo[0].memName}}</p>
                     <h4>電話</h4>
-                    <p>09123456789</p>
-                    <h4>信箱</h4>
-                    <p>aabbcc@gmail.com</p>
+                    <p>{{memberInfo[0].phoneNum}}</p>
                     <h4>地址</h4>
-                    <p>桃園市中壢區復興路46號9樓
-                    </p>
+                    <p>{{memberInfo[0].address}}</p>
                     </div>
                 </div>
                 <div class="cart_info_right">
@@ -76,10 +77,10 @@
                             <h4>小計：NT${{total}}</h4>
                         </div>
                         <div class="delivery_fee">
-                            <h4>運費：NT$60</h4>
+                            <h4>運費：NT${{fee}}</h4>
                         </div>
                         <div class="total_price">
-                            <h4>總計：NT${{total+60}}</h4>
+                            <h4>總計：NT$<span id="totalPrice">{{total+fee}}</span></h4>
                         </div>
                     </div>
                 </div>
@@ -101,44 +102,14 @@
             <div class="container">
                 <h3>主打商品</h3>
                 <div class="item_box">
-                    <div class="item">
-                        <a href="product.html">
+                    <div class="item" v-for=" (i, idx) in bottomProd">
+                        <a @click="getPromptProduct(idx)">
                             <div class="img_box">
-                                <img src="images/shop/Constellation/ring/ring_aquarius.jpg">
+                                <img :src="imgSrc(i.prodImage1)" alt="">
                             </div>
                         </a>
                         <div class="txt_box">
-                            <p>水瓶座戒指</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/ring/ring_gemini.jpg">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>雙子座戒指</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/necklace/necklace_cancer.png">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>巨蟹座項鍊</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/necklace/necklace_pisces.png">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>雙魚座項鍊</p>
+                            <p>{{i.prodName}}{{i.cateName}}</p>
                         </div>
                     </div>
                 </div>
@@ -150,74 +121,165 @@
 <!-- 網頁尾 By NJ -->
 @@include('layout/footer.html')
 <script>
-    
-    new Vue({
+
+new Vue({
         el:'#app',
         data:{
-            // subtotal: 0,
-            itemList:[
-                {
-                    id:'1',
-                    itemName:'水瓶座戒指',
-                    imgUrl:'images/shop/Constellation/ring/ring_aquarius.jpg',
-                    price:'500',
-                    count:'2'
-                },
-                {
-                    id:'2',
-                    itemName:'巨蟹座項鍊',
-                    imgUrl:'images/shop/Constellation/necklace/necklace_cancer.png',
-                    price:'790',
-                    count:'3'
-                },
-                {
-                    id:'3',
-                    itemName:'雙魚座項鍊',
-                    imgUrl:'images/shop/Constellation/necklace/necklace_pisces.png',
-                    price:'1200',
-                    count:'1'
-                },
-                {
-                    id:'4',
-                    itemName:'雙子座戒指',
-                    imgUrl:'images/shop/Constellation/ring/ring_gemini.jpg',
-                    price:'2300',
-                    count:'1'
-                },
-
-            ]
+            bottomProd: [],
+            cart:[],
+            prodInfoList: [],
+            memberInfo:[],
+            selectOrderNo:[],
+            userData: getSessionData(),
         },
-        methods:{
-            handlePlus: function(item){
-                item.count++;
-            },
-            handleSub: function(item){
-                if(item.count>1){
-                item.count--;                
-                }
-            },
-
-            handledelete: function(index){
-                console.log(this);
-                this.itemList.splice(index,1);
-            },
-            sum(idx){
-                return parseInt(this.itemList[idx].price) * parseInt(this.itemList[idx].count)
-            }
+        mounted() {
+            this.getList();
+            this.getProdInfo_vue();
+            this.getPrompt();
+            this.getMemberInfo();
             
         },
+
+        methods:{
+            sum(idx){
+                let prod = this.getProduct(this.cart[idx].prodNo);
+                return parseInt(prod.price) * parseInt(this.cart[idx].amount)
+            },
+
+            getList() {
+                let cart = JSON.parse(localStorage.getItem("cart"));
+                this.cart = cart;
+            },
+            
+            // 底部商品列
+            getPrompt(){
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+
+                        table: 'product',
+
+                        joinTable: 'product_category',
+
+                        joinOn:'prodCateNo',
+
+                        queryCol: "prodName, prodImage1, cateName, prodNo",
+
+                        other: 'limit 4'
+                    },
+                    success: data =>{
+                        if (data.msg !== false){
+                            this.bottomProd = data.msg;
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
+            },
+            
+            getPromptProduct(index){
+                let prod_Num = this.bottomProd[index].prodNo;
+                localStorage.setItem('prodNumber',`${prod_Num}`);  
+                window.location.href = "product.html";
+            },
+            // 購物車商品資料
+            getProdInfo_vue() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+
+                        table: 'product',
+
+                        joinTable: 'product_category',
+
+                        joinOn:'prodCateNo',
+
+                        queryCol: "prodName, price, prodImage1, cateName, prodNo",
+                    },
+                    success: data =>{
+                        if (data.msg !== false){
+                            this.prodInfoList = data.msg;
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
+            },
+
+            //會員資料
+            getMemberInfo() {
+                let memNo = this.userData.userNo;
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+
+                        table: 'members',
+
+                        queryCol: "memName, phoneNum, address",
+
+                        condition: `memNo = '${memNo}'`
+                    },
+                    success: data =>{
+                        if (data.msg !== false){
+                            this.memberInfo = data.msg;
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
+            },
+            
+
+
+            getProduct(prodNo) {
+                let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
+                idx = prodNoList.indexOf(prodNo);
+                return this.prodInfoList[idx];
+            },
+
+            imgSrc(image){
+                let path = `images/shop/tarot`;
+                return `${path}/${image}`;
+            },
+
+        },
         computed:{
+            cartFull() {
+                return this.cart.map(v => {
+                    let obj = this.prodInfoList.find(item => v.prodNo == item.prodNo);
+                    return {
+                        ...obj,
+                        ...v
+                    };
+                })
+            },
+        
             total() {
                 let subtotal = 0;
-                for(let i = 0; i < this.itemList.length; i++){
+                for(let i = 0; i < this.cart.length; i++){
                     subtotal += this.sum(i);
                 }
                 return subtotal;
-            }
+            },
+            fee(){
+                let deliFee = 0;
+                if(this.cart.length == 0){
+                    deliFee = 0;
+                }else{
+                    deliFee = 60
+                }
+                return deliFee;
+            },
         }
-})
+    });
 </script>
-
 
 </body>
 </html>

@@ -228,6 +228,10 @@
                                     <div class="quiz_result">
                                         {{ log.tarNo }} {{ log.tarName }}
                                     </div>
+                                    <!-- 手機板解析 -->
+                                    <div class="quiz_detail_cellphone">
+                                        <p>{{ log.detail }}</p>
+                                    </div>
                                 </div>
                             </div>
                             <p class="no_log" v-else>尚無紀錄</p>
@@ -389,7 +393,6 @@
                 // 會員最近留言過的文章，最多四個
                 // 若該文章有新留言，取得文章編號、文章主旨、新留言數
                 getNewMessages() {
-                    let thisVue = this;
                     $.ajax({
                         type: 'POST',
                         url: 'phps/back_getCol.php',
@@ -399,12 +402,12 @@
                             no: this.userData.userNo,
                         },
                         async: false,
-                        success: function(data) {
+                        success: data => {
                             data = JSON.parse(data);
-                            thisVue.newMessages = data.msg;
+                            this.newMessages = data.msg;
                         },
-                        error: function() {
-                            console.log('ajax error');
+                        error: err => {
+                            console.log(err);
                         }
                     });
                 },
@@ -470,7 +473,7 @@
                 imgSrc(folder, image) {
                     switch (folder) {
                         case 'member':
-                            folder = 'teller_mem';
+                            folder = 'member';
                             break;
                         case 'product':
                             folder = 'shop/tarot';

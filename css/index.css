@@ -16,9 +16,9 @@
 /* ============================= */
 
      /* 各章節間隔隔開 */
-     main .scroll_keyhole,.online_test,.hot_fortune_teller,.hot_product{ 
+     main .scroll_keyhole,.online_test,.hot_fortune_teller,.shopping_item{ 
         width: 100%;
-        margin-top: 15%;
+        margin-top: 10%;
     }
     /* 開場動畫設置 */
     .opening_animation .btn_hidden{
@@ -159,11 +159,7 @@
     .scroll_circle_big{
         position: relative;
         z-index: 100;
-    }
-
-    
-
-    
+    }  
 
 /* 線上測驗開始 */
     
@@ -265,54 +261,6 @@
     }
 
     
-/* 主打商品 開始 */
-
-main .hot_product 
-.hot_product_box img ,.icon_box img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-main .hot_product .item{
-    width: 46%;
-    padding:0.5em 1em;
-    border: 1px solid #CFB886;
-    border-radius: 10em;
-    margin: 2%;
-    text-align: center;
-    
-    }
-    
-main .hot_product .img_box{
-        border-radius: 60%;
-    }
-main .hot_product .img_box img{
-        padding: 1em;
-        width: 100%;
-        border-radius: 60%; 
-    }
-
-main .hot_product .prod_No{
-        display: none;
-    }
-    
-main .hot_product .icon_box{
-        width: 20%;
-        padding-top: 0.5em;
-        margin: 0 auto;
-       
-    }
-
-main .hot_product .icon_box img{
-        position: relative;
-            
-    }
-
-
-
-
-
     
 
    

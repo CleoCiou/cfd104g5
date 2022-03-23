@@ -186,6 +186,11 @@ function insertData() {
     }
     if ($('#phone').val() === '') {
         alert('請填寫手機');
+        return;  
+    }
+    // checkPhone() 的 return值是 false 時，加 ! 為不等於false ，會為 true
+    // 格式不正確時就離開
+    else if (!checkPhone()) {
         return;
     }
 
@@ -299,7 +304,7 @@ window.onload = function Teller() {
         success: function (data) {
             // console.log(data.msg);
             if (data.msg !== false) {
-                let tellerImg = "images/teller_mem/"
+                let tellerImg = "images/member/"
                 let tellerComments =`<h3>評論區</h3>`;
                 for (let i = 0; i < data.msg.length; i++) {
                     if (data.msg[i].content === null) continue;
@@ -353,3 +358,15 @@ window.onload = function Teller() {
     
     generateCalendar(curr_month.value, curr_year.value)
 };
+
+
+function checkPhone(){
+    let phone = document.getElementById('phone').value;
+    if(!(/^[0-9]{10}$/g.test(phone))){
+        document.getElementById('phone_info').innerHTML = '請輸入正確的手機號碼';
+        return false;
+    } else{
+        document.getElementById('phone_info').innerHTML = '';
+        return true;
+    }  
+}

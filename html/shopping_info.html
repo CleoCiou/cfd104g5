@@ -35,22 +35,21 @@
                         <div class="amount">總計</div>
                     </div>
                     <!-- 購物車body -->
-                    <!-- :key="row.id" -->
-                    <div class="cart_body" v-for="(row, index) in cart">
+                    <div class="cart_body" v-for="(row, index) in cartFull">
                         <div class="cart_body_box">
                             <div class="item_detail">
                                 <div class="cart_card">
                                     <div class="img_box">
-                                        <img :src="imgSrc(getProduct(row.prodNo).prodImage1)" alt="">
+                                        <img :src="imgSrc(row.prodImage1)" alt="">
                                     </div>
                                     <div class="txt_box">
-                                        <p>{{getProduct(row.prodNo).prodName}}{{getProduct(row.prodNo).cateName}}</p>
+                                        <p>{{row.prodName}}{{row.cateName}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="price"><span>NT${{getProduct(row.prodNo).price}}</span></div>
+                            <div class="price"><span>NT${{row.price}}</span></div>
                             <div class="count">
-                                {{cart[index].amount}}
+                                {{cartFull[index].amount}}
                             </div> 
                             <div class="amount">NT$<span>{{sum(index)}}</span></div>
                         </div>
@@ -90,10 +89,12 @@
                     <div class="pay_way">
                         <label for="">付款方式：</label>
                         <select id="payWay">
-                            <option>請選擇</option>
+                            <option disabled>請選擇</option>
                             <option>轉帳付款</option>
                             <option>信用卡</option>
                         </select>
+                        <p>信用卡卡號</p>
+                        <input type="text" id="credit">
                     </div>
                 </div>
                 <div class="cart_info_right">
@@ -105,7 +106,7 @@
                             <h4>運費：NT${{fee}}</h4>
                         </div>
                         <div class="total_price">
-                            <h4>總計：NT${{total+fee}}</h4>
+                            <h4>總計：NT$<span id="totalPrice">{{total+fee}}</span></h4>
                         </div>
                     </div>
                 </div>
@@ -116,7 +117,7 @@
             <div class="container">
                 <div class="confirm_btns">
                     <a href="shopping_cart.html"><button class="third_btn">上一步</button></a>
-                    <a href="shopping_confirm.html"><button class="primary_btn">確認訂單</button></a>
+                    <a href="shopping_confirm.html"><button class="primary_btn" @click="insertData">確認訂單</button></a>
                 </div>
             </div>
         </section>
@@ -126,44 +127,14 @@
             <div class="container">
                 <h3>主打商品</h3>
                 <div class="item_box">
-                    <div class="item">
-                        <a href="product.html">
+                    <div class="item" v-for=" (i, idx) in queryResult">
+                        <a @click="getPromptProduct(idx)">
                             <div class="img_box">
-                                <img src="images/shop/Constellation/ring/ring_aquarius.jpg">
+                                <img :src="imgSrc(i.prodImage1)" alt="">
                             </div>
                         </a>
                         <div class="txt_box">
-                            <p>水瓶座戒指</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/ring/ring_gemini.jpg">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>雙子座戒指</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/necklace/necklace_cancer.png">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>巨蟹座項鍊</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/necklace/necklace_pisces.png">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>雙魚座項鍊</p>
+                            <p>{{i.prodName}}{{i.cateName}}</p>
                         </div>
                     </div>
                 </div>
@@ -175,6 +146,7 @@
 <!-- 網頁尾 By NJ -->
 @@include('layout/footer.html')
 <script>
+    //驗證登入
     if (getSessionData() === false) {
         $('main').css({opacity: 0});
         alert('請先登入');
@@ -190,26 +162,17 @@
             data:{
                 queryResult: [],
                 cart:[],
-                prodInfoList: {},
+                prodInfoList: [],
+                selectOrderNo:[],
                 userData: getSessionData(),
             },
             mounted() {
                 this.getList();
                 this.getProdInfo_vue();
-                this.insertData();
+                this.getPrompt();
+                
             },
-            watch:{
-                cart:{
-                    deep:true,
-                    handler(){
-                        let cart = JSON.stringify(this.cart);
-                        localStorage.setItem('cart',cart);
-                        if(this.cart.length == 0){
-                            alert('購物車已清空');
-                        }
-                    }
-                }
-            },
+
             methods:{
                 sum(idx){
                     let prod = this.getProduct(this.cart[idx].prodNo);
@@ -221,6 +184,40 @@
                     this.cart = cart;
                 },
                 
+                // 底部商品列
+                getPrompt(){
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/select.php',
+                        data: {
+
+                            table: 'product',
+
+                            joinTable: 'product_category',
+
+                            joinOn:'prodCateNo',
+
+                            queryCol: "prodName, prodImage1, cateName, prodNo",
+
+                            other: 'limit 4'
+                        },
+                        success: data =>{
+                            if (data.msg !== false){
+                                this.queryResult = data.msg;
+                            }
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+                
+                getPromptProduct(index){
+                    let prod_Num = this.queryResult[index].prodNo;
+                    localStorage.setItem('prodNumber',`${prod_Num}`);  
+                    window.location.href = "product.html";
+                },
+
                 getProdInfo_vue() {
                     $.ajax({
                         type: 'POST',
@@ -244,26 +241,42 @@
                             console.log('ajax error');
                         }
                     });
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/select.php',
+                        data: {
+
+                            table: 'orders',
+
+                            queryCol: "orderNo",
+
+                            other: 'ORDER BY orderNo DESC LIMIT 1'
+
+                        },
+                        success: data =>{
+                            if (data.msg !== false){
+                                this.selectOrderNo = data.msg;
+                            }
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
                 },
 
                 // 更新資料庫
                 insertData() {
                     let cart_data =  JSON.parse(localStorage.getItem('cart'));
-                    console.log(cart_data);
-                    let payMethod = document.querySelector('#payWay').value;
+                    // console.log(cart_data);
+                    let payWay = document.querySelector('#payWay').value;
                     let no = this.userData.userNo;
-                    let value = [];
-                    for (let i = 0; i < cart_data.length; i++) {
-                        let str = `no, ${cart_data[i].prodNo}, ${cart_data[i].amount}`;
-                        value.push(str);
-                    }
-                    console.log(value);
-                    value = value.join('),(');
-                    console.log(`values(${value})`);
-                    let subtotal = this.total() + this.fee();
-                    console.log(subtotal);
-
-                    // 檢查欄位是否已填
+                    let totalPrice = document.querySelector('#totalPrice').innerText;
+                    let credit = document.querySelector('#credit').value;
+                    console.log(credit);
+                    console.log(payWay);
+                    console.log(totalPrice);
+                    console.log(no);
+                    
                     
                     // 新增資料
                     $.ajax({
@@ -271,32 +284,37 @@
                         url: 'phps/insert.php',
                         data: {
                             table: 'orders',
-                            insertValue: `default, ${no}, default, total, ${no}, `
+                            insertValue: `default, ${no}, default, ${totalPrice}, "${payWay}", ${credit}, default`
+                        },
+                        success: data => {
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                    let valueMul = [];
+                    let orderNum = Number(this.selectOrderNo[0].orderNo) + 1;
+                    console.log(orderNum);
+                    for (let i = 0; i < cart_data.length; i++) {
+                        let str = `${orderNum}, ${cart_data[i].prodNo}, ${cart_data[i].amount}`;
+                        valueMul.push(str);
+                    }
+                    valueMul = valueMul.join('),(');                 
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/insert.php',
+                        data: {
+                            table: 'order_item',
+                            insertValue: `${valueMul}`
                         },
                         success: data => {
                             alert('訂購成功');
-                            localStorage.removeItem('cart');
                         },
                         error: err => {
                             console.log('ajax error');
                         }
                     })
-                    // $.ajax({
-                    //     type: 'POST',
-                    //     url: 'phps/insert.php',
-                    //     data: {
-                    //         table: 'order_item',
-                    //         insertValue: `default,  `
-                    //     },
-                    //     success: data => {
-                    //         alert('訂購成功');
-                    //         localStorage.removeItem('cart');
-                    //     },
-                    //     error: err => {
-                    //         console.log('ajax error');
-                    //     }
-                    // })
-                    
+
                 },
                 
 
@@ -314,6 +332,16 @@
 
             },
             computed:{
+                cartFull() {
+                    return this.cart.map(v => {
+                        let obj = this.prodInfoList.find(item => v.prodNo == item.prodNo);
+                        return {
+                            ...obj,
+                            ...v
+                        };
+                    })
+                },
+            
                 total() {
                     let subtotal = 0;
                     for(let i = 0; i < this.cart.length; i++){
