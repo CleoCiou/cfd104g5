@@ -44,10 +44,11 @@
 	#tarotbook .first_page{
 		background-image: url("../images/be_teller/tarot_books.svg");
 		background-size: cover;
+		background-repeat: no-repeat;
 	}
 	#tarotbook{
 		margin: auto;
-		width: 95%;
+		width: 100%;
 		height: 560px;
 	}
 	.tarot_book_intro {

@@ -35,22 +35,6 @@
                     <div class="front">
                         <h3>工作</h3>
                     </div>
-                    <!-- <div class="back">
-                        <div>
-                            <a href="draw_cards.html?type=1">
-                                <button class="choose_btn">工作的潛力?</button>
-                            </a>
-                            <a href="draw_cards.html?type=1">
-                                <button class="choose_btn">升遷機率大嗎?</button>
-                            </a>
-                            <a href="draw_cards.html?type=1">
-                                <button class="choose_btn">調職機會多嗎?</button>
-                            </a>
-                            <a href="draw_cards.html?type=1">
-                                <button class="choose_btn">心中默念問題</button>
-                            </a>
-                        </div>
-                    </div> -->
                 </div>
                 
                 <!-- 健康 -->
@@ -58,66 +42,18 @@
                     <div class="front">
                         <h3>健康</h3>
                     </div>
-                    <!-- <div class="back">
-                        <div>
-                            <a href="draw_cards.html?type=2">
-                                <button class="choose_btn">最近身體狀況?</button>
-                            </a>
-                            <a href="draw_cards.html?type=2">
-                                <button class="choose_btn">家人身體狀況?</button>
-                            </a>
-                            <a href="draw_cards.html?type=2">
-                                <button class="choose_btn">病情會好轉嗎?</button>
-                            </a>
-                            <a href="draw_cards.html?type=2">
-                                <button class="choose_btn">心中默念問題</button>
-                            </a>
-                        </div>
-                    </div> -->
                 </div>
                 <!-- 愛情 -->
                 <div class="card">
                     <div class="front">
                         <h3>愛情</h3>
                     </div>
-                    <!-- <div class="back">
-                        <div>
-                            <a href="draw_cards.html?type=3">
-                                <button class="choose_btn">暗戀成功機率?</button>
-                            </a>
-                            <a href="draw_cards.html?type=3">
-                                <button class="choose_btn">現任匹配程度?</button>
-                            </a>
-                            <a href="draw_cards.html?type=3">
-                                <button class="choose_btn">感情是否順利?</button>
-                            </a>
-                            <a href="draw_cards.html?type=3">
-                                <button class="choose_btn">心中默念問題</button>
-                            </a>
-                        </div>
-                    </div> -->
                 </div>
                 <!-- 財富 -->
                 <div class="card">
                     <div class="front">
                         <h3>財富</h3>
                     </div>
-                    <!-- <div class="back">
-                        <div>
-                            <a href="draw_cards.html?type=4">
-                                <button class="choose_btn">存款會增加嗎?</button>
-                            </a>
-                            <a href="draw_cards.html?type=4">
-                                <button class="choose_btn">中樂透機率?</button>
-                            </a>
-                            <a href="draw_cards.html?type=4">
-                                <button class="choose_btn">投資有成效嗎?</button>
-                            </a>
-                            <a href="draw_cards.html?type=4">
-                                <button class="choose_btn">心中默念問題</button>
-                            </a>
-                        </div>
-                    </div> -->
                 </div>
 
             </div>
@@ -194,16 +130,6 @@
                             let backDiv = document.createElement("div");
                             back.append(backDiv);
                         }
-                        // console.log($('.card .back').length);
-                        // 找card的小孩有沒有class="back"
-                        // let cards = document.querySelector("card");
-                        // if( !card.has("back") ){
-                        //     let back = document.createElement("div");
-                        //     back.classList.add("back");
-                        //     document.querySelector('.card').appendChild(back);
-                        // }
-
-                            
                             let a = document.createElement('a');
                             a.href = `draw_cards.html?type=${typeno}&no=${data.msg[i].divNo}`;
                             a.classList.add('cardLink');
@@ -219,46 +145,6 @@
                         // console.log(card);
                         
                     }
-
-
-                    // ==============================================
-                    // let cardQ =  `<div class="back"><div>`;
-                    // // 很多! -> 迴圈
-                    // for (let i = 1; i < 5; i++) {
-                    // cardQ +=  `<a href="draw_cards.html?type=${i}">`;
-                    //     for(let j = 1; j <5; j++){
-                    //         cardQ += `<button class="choose_btn">${data.msg[j*i].title}</button>`
-                    //         }
-                    // cardQ +=`</a>`;
-                        
-                    // }
-                    // cardQ +=  `</div></div>`
-                    // $('.back').append(cardQ)
-
-                    // ===============================================
-
-                    // for (let i = 0; i < 4; i++){
-                    //     let cardQ = document.createElement("div");
-                    //     cardQ.classList.add("back");
-                    //     document.querySelectorAll('.card')[i].appendChild(cardQ);
-                    //     cardQ.appendChild(document.createElement("div"));
-                    // }
-                    // for(let i = 1; i < 5; i++){
-                    //     let cardQ = document.querySelectorAll('.back div')[i-1];
-                    //     for (let j = 1; j < 5; j++){
-                    //         let a = document.createElement('a');
-                    //         a.href = `draw_cards.html?type=${i}`;
-                    //         a.classList.add('cardLink');
-                    //         cardQ.appendChild(a);
-                    //     }
-                    // }
-                    // for(let i = 0; i < data.msg.length; i++){
-                    //     let cardLink = document.querySelectorAll('.cardLink')[i];
-                    //     let cardBtn = document.createElement('button');
-                    //     cardBtn.classList.add('choose_btn');
-                    //     cardBtn.innerHTML = data.msg[i].title;
-                    //     cardLink.appendChild(cardBtn);
-                    // }
                 }
             },
             error: function() {
