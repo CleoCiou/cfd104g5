@@ -111,23 +111,14 @@
                     },
                     insertData() {
                         let topicNo = this.topic;
-                        // console.log(topicNo);
                         let title = this.title;
                         let content = this.content;
                         let no = this.userData.userNo;
 
                         // 檢查欄位是否已填
                         
-                        if (!topicNo) {
-                            this.resetInput('請選擇看板名稱');
-                            return;
-                        }
-                        if(!title){
-                            this.resetInput('請輸入標題');
-                            return;
-                        }
-                        if(!content){
-                            this.resetInput('請輸入內容');
+                        if (!topicNo || !title || !content) {
+                            this.resetInput('尚有欄位未填寫');
                             return;
                         }
                         // 新增資料
