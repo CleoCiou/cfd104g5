@@ -16,9 +16,9 @@
 /* ============================= */
 
      /* 各章節間隔隔開 */
-     main .scroll_keyhole,.online_test,.hot_fortune_teller,.hot_product{ 
+     main .scroll_keyhole,.online_test,.hot_fortune_teller,.shopping_item{ 
         width: 100%;
-        margin-top: 15%;
+        margin-top: 10%;
     }
     /* 開場動畫設置 */
     .opening_animation .btn_hidden{
@@ -159,11 +159,7 @@
     .scroll_circle_big{
         position: relative;
         z-index: 100;
-    }
-
-    
-
-    
+    }  
 
 /* 線上測驗開始 */
     
@@ -265,55 +261,6 @@
     }
 
     
-/* 主打商品 開始 */
-
-    /* 主打商品容器 */
-    .hot_product_box{
-       justify-content: center;
-    }
-    /* 主打商品卡片 */
-    .hot_product_card{
-        box-sizing: border-box;
-        text-align: center;
-        border: 1px solid #CFB886;
-        border-image: initial;
-        padding: 3em ;
-        margin: 1em;
-        border-radius: 200px;
-    
-    }
-    
-
-    /* 主打商品圖字icon上下間隔隔開 */
-    .hot_product_card_img, .hot_product_card_txt,.hot_product_icon{
-        padding-top: 2em;
-    }
-
-    .hot_product_card{
-        overflow: hidden;
-    }
-    
-    .hot_product_card_img img{
-        width: 100%;
-        height: 100%;
-        padding: 5%;
-        border-radius: 100%;
-        vertical-align: top;
-        object-fit: cover;
-    }
-
-    .hot_product_card_img{
-        width: 14em;
-        margin: auto;
-    }
-
-
-    /* 眼睛icon */
-    .hot_product_icon img{
-        border-radius: 100%;
-        width: 25%;
-    }
-
     
 
    
@@ -395,37 +342,39 @@
 
         /* 眼睛hover動畫 */
 
+        main .hot_product .item ,
         .hot_fortune_teller_card{
             overflow: hidden;
         }
 
         
 
-        .hot_product_card:hover 
-        .hot_product_icon,.hot_fortune_teller_card:hover .hot_fortune_teller_icon{
-            bottom: -10px;
+        main .hot_product .item:hover .icon_box, 
+        .hot_fortune_teller_card:hover .hot_fortune_teller_icon{
+            bottom: -3px;
         }
 
-        .hot_product_icon,.hot_fortune_teller_icon{
+        .icon_box,.hot_fortune_teller_icon{
             position: relative;
             bottom: -150px;
             transition:bottom 0.8s ;
         }
 
         /* 產品卡片碰到後發亮 */
-        .hot_product_card:hover,.hot_fortune_teller_card:hover
+        main .hot_product .item:hover,.hot_fortune_teller_card:hover
         {
             Box-shadow: 1px 1px 12px 1px  #CFB886,
             1px 1px 2px 1px  #CFB886 inset;
 
         }
 
-
-        /* 商品總覽 */
         .product_overview{
             text-align: center;
-            padding-top: 2em;
         }
+
+
+        
+      
 
         
 

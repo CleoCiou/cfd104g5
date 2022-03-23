@@ -142,9 +142,10 @@
             alert('請先註冊占卜師');
             window.location.href = 'member.html';
         }
-        getAstData();
+        else {
+            getAstData();
+        }
     }
-
     function getAstData() {
         new Vue({
             el: '#app',

@@ -63,7 +63,7 @@
         <section class="cart_deliver">
             <div class="container">
                 <div class="customer_info">
-                    <div class="customer_form">
+                    <!-- <div class="customer_form">
                         <form action="">
                             <label>
                                 <p>姓名</p>
@@ -86,6 +86,14 @@
                                 <input type="text" id="credit">
                             </label>
                         </form>
+                    </div> -->
+                    <div class="pay_way">
+                        <label for="">付款方式：</label>
+                        <select id="payWay">
+                            <option>請選擇</option>
+                            <option>轉帳付款</option>
+                            <option>信用卡</option>
+                        </select>
                     </div>
                 </div>
                 <div class="cart_info_right">
@@ -97,7 +105,7 @@
                             <h4>運費：NT${{fee}}</h4>
                         </div>
                         <div class="total_price">
-                            <h4>總計：NT${{total+60}}</h4>
+                            <h4>總計：NT${{total+fee}}</h4>
                         </div>
                     </div>
                 </div>
@@ -108,7 +116,7 @@
             <div class="container">
                 <div class="confirm_btns">
                     <a href="shopping_cart.html"><button class="third_btn">上一步</button></a>
-                    <a href="shopping_confirm.html"><button class="primary_btn" @click="save">確認訂單</button></a>
+                    <a href="shopping_confirm.html"><button class="primary_btn">確認訂單</button></a>
                 </div>
             </div>
         </section>
@@ -167,109 +175,164 @@
 <!-- 網頁尾 By NJ -->
 @@include('layout/footer.html')
 <script>
-    new Vue({
-        el:'#app',
-        data:{
-            queryResult: [],
-            cart:[],
-            prodInfoList: {},
-        },
-        mounted() {
-            this.getList();
-            this.getProdInfo_vue();
-        },
-
-        methods:{
-            sum(idx){
-                let prod = this.getProduct(this.cart[idx].prodNo);
-                return parseInt(prod.price) * parseInt(this.cart[idx].amount)
+    if (getSessionData() === false) {
+        $('main').css({opacity: 0});
+        alert('請先登入');
+        $('section.login').removeClass('display_none');
+        document.body.classList.add('login_hidden');
+    }
+    else {
+        getMemberData();
+    }
+    function getMemberData(){
+        new Vue({
+            el:'#app',
+            data:{
+                queryResult: [],
+                cart:[],
+                prodInfoList: {},
+                userData: getSessionData(),
             },
-
-            getList() {
-                let cart = JSON.parse(localStorage.getItem("cart"));
-                this.cart = cart;
+            mounted() {
+                this.getList();
+                this.getProdInfo_vue();
+                this.insertData();
             },
-            
-            getProdInfo_vue() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'phps/select.php',
-                    data: {
-
-                        table: 'product',
-
-                        joinTable: 'product_category',
-
-                        joinOn:'prodCateNo',
-
-                        queryCol: "prodName, price, prodImage1, cateName, prodNo",
-                    },
-                    success: data =>{
-                        if (data.msg !== false){
-                            this.prodInfoList = data.msg;
+            watch:{
+                cart:{
+                    deep:true,
+                    handler(){
+                        let cart = JSON.stringify(this.cart);
+                        localStorage.setItem('cart',cart);
+                        if(this.cart.length == 0){
+                            alert('購物車已清空');
                         }
-                    },
-                    error: err => {
-                        console.log('ajax error');
                     }
-                });
+                }
             },
+            methods:{
+                sum(idx){
+                    let prod = this.getProduct(this.cart[idx].prodNo);
+                    return parseInt(prod.price) * parseInt(this.cart[idx].amount)
+                },
 
-            getProduct(prodNo) {
-                let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
-                idx = prodNoList.indexOf(prodNo);
-                return this.prodInfoList[idx];
-            },
+                getList() {
+                    let cart = JSON.parse(localStorage.getItem("cart"));
+                    this.cart = cart;
+                },
+                
+                getProdInfo_vue() {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/select.php',
+                        data: {
 
-            imgSrc(image){
-                let path = `images/shop/tarot`;
-                return `${path}/${image}`;
-            },
-            
-            save(){
-                let Name = document.querySelector('#name').value;
-                let Email = document.querySelector('#mail').value;
-                let Phone = document.querySelector('#phone').value;
-                let Address = document.querySelector('#address').value;
-                let Credit = document.querySelector('#credit').value;
-                let item = {
-                    Name,
-                    Email,
-                    Phone,
-                    Address,
-                    Credit,
-                };
+                            table: 'product',
 
-                let payWay = localStorage.getItem('payWay');    //拿到localstorage
-                payWay = payWay ? JSON.parse(payWay) : [];    //轉JSON格式
+                            joinTable: 'product_category',
+
+                            joinOn:'prodCateNo',
+
+                            queryCol: "prodName, price, prodImage1, cateName, prodNo",
+                        },
+                        success: data =>{
+                            if (data.msg !== false){
+                                this.prodInfoList = data.msg;
+                            }
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
+
+                // 更新資料庫
+                insertData() {
+                    let cart_data =  JSON.parse(localStorage.getItem('cart'));
+                    console.log(cart_data);
+                    let payMethod = document.querySelector('#payWay').value;
+                    let no = this.userData.userNo;
+                    let value = [];
+                    for (let i = 0; i < cart_data.length; i++) {
+                        let str = `no, ${cart_data[i].prodNo}, ${cart_data[i].amount}`;
+                        value.push(str);
+                    }
+                    console.log(value);
+                    value = value.join('),(');
+                    console.log(`values(${value})`);
+                    let subtotal = this.total() + this.fee();
+                    console.log(subtotal);
+
+                    // 檢查欄位是否已填
+                    
+                    // 新增資料
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/insert.php',
+                        data: {
+                            table: 'orders',
+                            insertValue: `default, ${no}, default, total, ${no}, `
+                        },
+                        success: data => {
+                            alert('訂購成功');
+                            localStorage.removeItem('cart');
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    })
+                    // $.ajax({
+                    //     type: 'POST',
+                    //     url: 'phps/insert.php',
+                    //     data: {
+                    //         table: 'order_item',
+                    //         insertValue: `default,  `
+                    //     },
+                    //     success: data => {
+                    //         alert('訂購成功');
+                    //         localStorage.removeItem('cart');
+                    //     },
+                    //     error: err => {
+                    //         console.log('ajax error');
+                    //     }
+                    // })
+                    
+                },
                 
 
-                localStorage.setItem('payWay', JSON.stringify(payWay));
-            },
-                        
 
+                getProduct(prodNo) {
+                    let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
+                    idx = prodNoList.indexOf(prodNo);
+                    return this.prodInfoList[idx];
+                },
 
-            
-        },
-        computed:{
-            total() {
-                let subtotal = 0;
-                for(let i = 0; i < this.cart.length; i++){
-                    subtotal += this.sum(i);
-                }
-                return subtotal;
+                imgSrc(image){
+                    let path = `images/shop/tarot`;
+                    return `${path}/${image}`;
+                },
+
             },
-            fee(){
-                let deliFee = 0;
-                if(this.cart.length == 0){
-                    deliFee = 0;
-                }else{
-                    deliFee = 60
-                }
-                return deliFee;
-            },
-        }
-})
+            computed:{
+                total() {
+                    let subtotal = 0;
+                    for(let i = 0; i < this.cart.length; i++){
+                        subtotal += this.sum(i);
+                    }
+                    return subtotal;
+                },
+                fee(){
+                    let deliFee = 0;
+                    if(this.cart.length == 0){
+                        deliFee = 0;
+                    }else{
+                        deliFee = 60
+                    }
+                    return deliFee;
+                },
+            }
+        });
+    };
 </script>
 
 </body>

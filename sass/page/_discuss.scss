@@ -591,16 +591,19 @@ main {
             display: flex;
             align-items: center;
             margin: 0.5em 0;
-            .author{
+            .author.img_box{
                 display: flex;
                 align-items: center;
                 text-align: center;
                 margin-right: 1em;
+                width: 5em;
+                height: 5em;
                 img{
-                    width: 5em;
-                    height: 5em;
+                    width: 100%;
+                    height: 100%;
                     border-radius: $circle;
                     border: 1px solid #CFB886;
+                    object-fit: cover;
                 }
             }
             .writer_detail_box{

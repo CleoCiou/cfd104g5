@@ -44,14 +44,15 @@
                                         <img :src="imgSrc(row.prodImage1)" alt="">
                                     </div>
                                     <div class="txt_box">
-                                        <p>{{row.prodName}}{{getProduct(row.prodNo)?.cateName}}</p>
+                                        <!-- <p>{{getProduct(row.prodNo).prodName}}{{getProduct(row.prodNo).cateName}}</p> -->
+                                        <p>{{row.prodName}}{{row.cateName}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="price"><span>NT${{getProduct(row.prodNo)?.price}}</span></div>
+                            <div class="price"><span>NT${{row.price}}</span></div>
                             <div class="count">
                                 <button @click="row.amount--" class="count_btn">-</button>
-                                <input type="text" v-model="cart[index].amount" class="prodAmount"></input>
+                                <input type="text" v-model="cartFull[index].amount" class="prodAmount"></input>
                                 <button @click="row.amount++" class="count_btn">+</button>
                             </div> 
                             <div class="amount">NT$<span>{{sum(index)}}</span></div>
@@ -68,14 +69,14 @@
         <section class="cart_deliver">
             <div class="container">
                 <div class="customer_info">
-                    <div class="pay_way">
+                    <!-- <div class="pay_way">
                         <label for="">付款方式：</label>
                         <select id="payWay">
                             <option>請選擇</option>
                             <option>轉帳付款</option>
                             <option>信用卡</option>
                         </select>
-                    </div>            
+                    </div> -->
                     <div class="txt_box">
                         <p>
                             約3~7個工作天到貨，離島運送時間需要多3~5個工作天
@@ -104,7 +105,7 @@
 
 
         <!-- 底部推薦商品 -->
-        <section class="cart_bottom">
+        <!-- <section class="cart_bottom">
             <div class="container">
                 <h3>主打商品</h3>
                 <div class="item_box">
@@ -150,7 +151,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main> 
 
 
@@ -198,6 +199,12 @@
                 this.alreadycatch = true;
             },
             
+            getProduct(prodNo) {
+                let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
+                idx = prodNoList.indexOf(prodNo);
+                return this.prodInfoList[idx];
+            },
+
             getProdInfo_vue() {
                 $.ajax({
                     type: 'POST',
@@ -223,11 +230,6 @@
                 });
             },
 
-            getProduct(prodNo) {
-                let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
-                idx = prodNoList.indexOf(prodNo);
-                return this.prodInfoList[idx];
-            },
 
             imgSrc(image){
                 let path = `images/shop/tarot`;
@@ -301,7 +303,7 @@
             },
             total() {
                 let subtotal = 0;
-                for(let i = 0; i < this.cart.length; i++){
+                for(let i = 0; i < this.cartFull.length; i++){
                     subtotal += this.sum(i);
                 }
                 return subtotal;

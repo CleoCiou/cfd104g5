@@ -228,6 +228,10 @@
                                     <div class="quiz_result">
                                         {{ log.tarNo }} {{ log.tarName }}
                                     </div>
+                                    <!-- 手機板解析 -->
+                                    <div class="quiz_detail_cellphone">
+                                        <p>{{ log.detail }}</p>
+                                    </div>
                                 </div>
                             </div>
                             <p class="no_log" v-else>尚無紀錄</p>
@@ -241,10 +245,10 @@
                             </div>
                             <div v-if="showLogDetail" class="quiz_view box"  @dragover="dragOverHandler($event)" @drop="dropHandler($event)">
                                 <div class="logDetail">
-                                    <div class="typeName">{{ showLogDetail.typeName }}</div>
-                                    <div class="title">{{ showLogDetail.title }}</div>
+                                    <div class="typeName"><h3>{{ showLogDetail.typeName }}</h3></div>
+                                    <div class="title"><p>{{ showLogDetail.title }}</p></div>
                                     <div class="title">{{ showLogDetail.tarNo }} {{ showLogDetail.tarName }}</div>
-                                    <div class="detail">{{ showLogDetail.detail }}</div>
+                                    <div class="detail"><p>{{ showLogDetail.detail }}</p></div>
                                 </div>
                             </div>
                         </div>
@@ -424,6 +428,7 @@
                         },
                         async: false,
                         success: function(data) {
+                            
                             data = JSON.parse(data);
                             thisVue.divinationLogs = data.msg;
                         },
@@ -468,7 +473,7 @@
                 imgSrc(folder, image) {
                     switch (folder) {
                         case 'member':
-                            folder = 'teller_mem';
+                            folder = 'member';
                             break;
                         case 'product':
                             folder = 'shop/tarot';
