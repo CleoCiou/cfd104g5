@@ -55,7 +55,7 @@
         border-radius: 200px;
         justify-content: center;
         border-image: initial;
-        padding: 15px;
+        
         
     }
 
@@ -78,7 +78,7 @@
     }
 
     .introduce_txt{
-        padding: 6%;
+        
         text-align: center;
     }
     .introduce_txt h4{
@@ -307,7 +307,12 @@
         .introduce_box{
             display: flex;
             align-items: center;
+            width: 100%;
             
+        }
+
+        .introduce_txt_box{
+            width: 60%;
         }
 
         .scroll_keyhole{

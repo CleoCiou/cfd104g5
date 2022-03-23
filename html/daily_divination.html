@@ -16,8 +16,6 @@
                 <h1>每日占卜</h1>
                 <h4></h4>
                 
-                
-
                 <!-- 裝卡片的容器 -->
                 <div class="dc_box">
                     <!-- 左 -->
@@ -26,15 +24,26 @@
                     </div>
                     <!-- 中 -->
                     <div class="daily_card t_card" id="triangle">
-                        <img src="images/draw_cards/card_triangle.jpg" alt="貓頭鷹卡牌">
+                        <img src="images/draw_cards/card_triangle.jpg" alt="三角形卡牌">
                     </div>
                     <!-- 右 -->
-                    <div class="daily_card lion_card">
-                        <img src="images/draw_cards/card_lion.jpg" alt="貓頭鷹卡牌">
+                    <div class="daily_card lion_card" id="lion">
+                        <img src="images/draw_cards/card_lion.jpg" alt="獅子卡牌">
                     </div>
                 </div>
-              </div>
+
+                <!-- 文字解析 -->
+                <div class="txt_box">
+                    <!-- 今日運勢 -->
+                    <div class="fortune"></div>
+                    <!--運勢解說 -->
+                    <div class="explain"></div>
+                </div>
+
+            </div>
+
         </section>
+
     </main>
 <script>
     let owl = document.getElementById('owl');
@@ -122,23 +131,45 @@
             // });
         });
         card.addEventListener('click', function(){
-            alert('hi');
+            // alert('確定這張卡牌嗎');
             tl.pause();
-            TweenLite.to(this, 1,{
-                rotation: 0,
+            gsap.to(this, 1,{
+                // rotation: 90,
+                duration: 1,
+				rotationY: 720,
+				left: '50%',
+				top: '50%',
+				translateX: '-50%',
+				translateY: '-50%',
+				scale: 1,//縮放
+				boxShadow: '0 0 5px 0.5em #CFB886',
+				ease: Power1.easeOut,
+
+
+                onComplete: showDetail
             })
         })
     })
 
+    function showDetail(){
+        window.alert('aaaaaa');
+        
+    }
 
-    function dailyCard() {
-    var answer = Math.floor((Math.random() * 12) + 1);
+    // function dailyCard() {
+    // var answer = Math.floor((Math.random() * 5) + 1);
      
-     if (answer === 1) {   
-       document.getElementById("fortune").innerHTML = "大吉"
-       document.getElementById("explain").innerHTML = "今日運勢";
-       document.getElementById("card").src = "../images/";
-     }
+    //  if (answer === 1) {   
+    //    document.getElementById("fortune").innerHTML = "大吉"
+    //    document.getElementById("explain").innerHTML = "今日運勢";
+    //    document.getElementById("card").src = "../images/";
+    //  }
+
+    // }
+
+
+     
+
         
 
     
