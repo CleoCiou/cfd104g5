@@ -2064,7 +2064,7 @@ main .discuss .article_cards .line_bottom p {
 
 @media screen and (max-width: 767px) {
   main .discuss .article_cards .line_bottom p {
-    font-size: .6em;
+    font-size: .9em;
   }
 }
 
@@ -2139,6 +2139,7 @@ main #articleView .article_icon_box img, main #articleView .article_using img {
 }
 
 main #articleView .article_icon_box {
+  margin: 1em 1em 0 0;
   text-align: right;
 }
 
@@ -2551,8 +2552,11 @@ main .article_mine_board .mine_cate .mine_img_box {
 main .article_mine_board .mine_cate .mine_img_box img {
   border-radius: 50%;
   width: 100%;
+  height: 100%;
   margin-bottom: 2em;
   border: 1px solid #CFB886;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 main .article_mine_board .mine_cate .mine_list ul {
