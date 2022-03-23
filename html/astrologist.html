@@ -58,6 +58,7 @@
                                 <div class="item card_header">
                                     <span>{{appointment.appointDate}}</span>
                                     <span>{{appointment.appointTime}}</span>
+                                    <span class="appointment_status">{{appointment.status}}</span>
                                 </div>
                                 <div class="item card_content">
                                     <div class="txt_box">
@@ -129,255 +130,236 @@
 <script src="js/calendar.js"></script>
 <script>
     
-    new Vue({
-        el: '#app',
-        data: {
-            // 變數放這兒
-            userData: getSessionData(),
-            // 要更改的框框
-            intro: [],
-            introUpdate: [],
-            comments: [],
-            appointments: [],
-            src: 'images/teller_mem/',
-            schedule: [],
-        },
-        mounted() {
-            this.getIntro();
-        },
-        methods: {
-            getIntro() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'phps/select.php',
-                    data: {
-                        table: 'astrologist',
-                        queryCol: 'astNo, introduction',
-                        condition: `memNo = ${this.userData.userNo}`
-                    },
-                    success:  data => {
-                        if (data.msg !== false){
-                            this.intro = data.msg[0];
-                            this.getComments();
-                            this.getConfirm();
-                            this.getSchedule();
-                        }
-                    },
-                    error: err => {
-                        console.log(err);
-                    }
-                });
+    // 若尚未登入
+    let userData = getSessionData();
+    if (userData === false) {
+        $('section.member').css({opacity: 0});
+        alert('請先登入');
+        $('section.login').removeClass('display_none');
+        document.body.classList.add('login_hidden');
+    }
+    else {
+        if (userData.identity === '一般會員') {
+            alert('請先註冊占卜師');
+            window.location.href = 'member.html';
+        }
+        else {
+            getAstData();
+        }
+    }
+    function getAstData() {
+        new Vue({
+            el: '#app',
+            data: {
+                // 變數放這兒
+                userData,
+                // 要更改的框框
+                intro: [],
+                introUpdate: [],
+                comments: [],
+                appointments: [],
+                src: 'images/member/',
+                schedule: [],
             },
-            // 取得占卜師評論
-            getComments() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'phps/select.php',
-                    data: {
-                        table: 'comment',
-                        joinTable: 'appointment',
-                        joinOn: 'appointNo',
-                        queryCol: 'commNo, star, content, commTime',
-                        condition: `appointment.astNo = ${this.intro.astNo}`
-                    },
-                    success:  data => {
-                        if (data.msg !== false){
-                            this.comments = data.msg;
-                        }
-                    },
-                    error: err => {
-                        console.log('ajax error');
-                    }
-                });
+            mounted() {
+                this.getIntro();
             },
-            
-            updateIntro(e) {
-                let intro = document.querySelectorAll('.introduce')[0];
-                let textarea = intro.nextElementSibling;
-                
-                if (e.target.innerText === '更新介紹') {
-                    e.target.innerText = '儲存';
-                    textarea.value = intro.innerText;
-                }
-                else {
-                    e.target.innerText = '更新介紹';
-                    intro.innerText = textarea.value;
-                    
-                    $.ajax({
-                            type: 'POST',
-                            url: 'phps/update.php',
-                            data: {
-                                table: 'astrologist',
-                                updateValue: `introduction = '${textarea.value}'`,
-                                where: `memNo = '${this.userData.userNo}'`
-                            },
-                            success: data => {
-                                if(data.msg !== false){
-                                    this.introUpdate = data.msg;
-                                }
-                            },
-                            error: err => {
-                                console.log(err);
-                            }
-                    });        
-                };
-                intro.classList.toggle('invisible');
-                textarea.classList.toggle('invisible');
-            },
-
-            // 撈審核預約資料
-            // appointment的預約編號appointNo的次數和預約日期appointDate預約時段appointTime、member的會員名稱(一般會員)
-            getConfirm() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'phps/select.php',
-                    
-                    data: {
-                        table: 'appointment',
-                        joinTable: 'members',
-                        queryCol: 'appointNo, appointDate, appointTime, memName, members.memNo, memImage, appointment.status',
-                        joinOn: 'memNo',
-                        // condition: `appointment.astNo = ${this.intro[0].astNo}`,
-                        condition: `appointment.astNo = ${this.intro.astNo} and appointDate > CURDATE() and appointment.status <> '未通過'`,
-                        // sql的<>可以當作不等於
-                        //占卜師編號等於登入的這個人
-                        // other: 'group by appointment.memNo'
-                    },
-                    success:  data => {
-                        // console.log(data.msg);
-                        if (data.msg !== false){
-                            this.appointments = data.msg;
-                        }
-                    },
-                    error: err => {
-                        console.log(err);
-                    }
-                });
-            },
-
-            updateStatus(e, idx) {
-                if (e.target.innerText === '接受') {
-                    $.ajax({
-                            type: 'POST',
-                            url: 'phps/update.php',
-                            data: {
-                                table: 'appointment',
-                                updateValue: "status = '已通過'",
-                                where: `appointNo = '${this.appointments[idx].appointNo}'`
-                            },
-                            success: data => {
-                                if(data.msg !== false){
-                                    this.getConfirm();
-                                }
-                            },
-                            error: err => {
-                                console.log(err);
-                            }
-                    });   
-                }
-                else {
-                    e.target.innerText === '取消';
-
-                    // let time = this.schedule.filter( t => t.workDate === this.appointments.appointDate);
-                    let time = this.schedule.filter( t => t.workDate === this.appointments[idx].appointDate);
-                    time = time[0].workTime;
-                    // const schedule =data.msg;
-                    // const result = schedule.filter( time => time.workDate === appointDate);
-
-                    switch (this.appointments[idx].appointTime){
-                        case '上午':
-                            time = '0' + time[1] + time[2];
-                            break;
-                        case '下午':
-                            time = time[0] + '0' + time[2];
-                            break;
-                        case '晚上':
-                            time = time[0] + time[1] + '0';
-                            break;
-                    }
-
+            methods: {
+                getIntro() {
                     $.ajax({
                         type: 'POST',
-                        url: 'phps/update.php',
+                        url: 'phps/select.php',
                         data: {
-                            table: 'schedule',
-                            updateValue: `workTime = '${time}'`,
-                            where: `astNo = '${this.intro.astNo}' and workDate = '${this.appointments[idx].appointDate}'`
+                            table: 'astrologist',
+                            queryCol: 'astNo, introduction',
+                            condition: `memNo = ${this.userData.userNo}`
                         },
-                        success: data => {
-                            updateSchedule = true;
-                            // alert('預約成功!');
-                            location.reload();
+                        success:  data => {
+                            if (data.msg !== false){
+                                this.intro = data.msg[0];
+                                this.getComments();
+                                this.getConfirm();
+                                this.getSchedule();
+                            }
                         },
                         error: err => {
                             console.log(err);
                         }
                     });
-
+                },
+                // 取得占卜師評論
+                getComments() {
                     $.ajax({
-                            type: 'POST',
-                            url: 'phps/update.php',
-                            data: {
-                                table: 'appointment',
-                                updateValue: "status = '未通過'",
-                                where: `appointNo = '${this.appointments[idx].appointNo}'`
-                                // vue要加this
-                            },
-                            success: data => {
-                                if(data.msg !== false){
-                                    this.getConfirm();
-                                }
-                            },
-                            error: err => {
-                                console.log(err);
+                        type: 'POST',
+                        url: 'phps/select.php',
+                        data: {
+                            table: 'comment',
+                            joinTable: 'appointment',
+                            joinOn: 'appointNo',
+                            queryCol: 'commNo, star, content, commTime',
+                            condition: `appointment.astNo = ${this.intro.astNo}`
+                        },
+                        success:  data => {
+                            if (data.msg !== false){
+                                this.comments = data.msg;
                             }
-                    }); 
-
-                };
-            },
-
-            // 抓schedule資料
-            getSchedule() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'phps/select.php',
-                    data: {
-                        table: 'schedule',
-                        queryCol: 'workDate, workTime',
-                        condition: `astNo = '${this.intro.astNo}'`
-                    },
-                    success: data => {
-                        this.schedule = data.msg;
-                    },
-                    error: err => {
-                        console.log(err);
-                    }
-                });
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
+                },
                 
-            },
+                updateIntro(e) {
+                    let intro = document.querySelectorAll('.introduce')[0];
+                    let textarea = intro.nextElementSibling;
+                    
+                    if (e.target.innerText === '更新介紹') {
+                        e.target.innerText = '儲存';
+                        textarea.value = intro.innerText;
+                    }
+                    else {
+                        e.target.innerText = '更新介紹';
+                        intro.innerText = textarea.value;
+                        
+                        $.ajax({
+                                type: 'POST',
+                                url: 'phps/update.php',
+                                data: {
+                                    table: 'astrologist',
+                                    updateValue: `introduction = '${textarea.value}'`,
+                                    where: `memNo = '${this.userData.userNo}'`
+                                },
+                                success: data => {
+                                    if(data.msg !== false){
+                                        this.introUpdate = data.msg;
+                                    }
+                                },
+                                error: err => {
+                                    console.log(err);
+                                }
+                        });        
+                    };
+                    intro.classList.toggle('invisible');
+                    textarea.classList.toggle('invisible');
+                },
 
+                // 撈審核預約資料
+                // appointment的預約編號appointNo的次數和預約日期appointDate預約時段appointTime、member的會員名稱(一般會員)
+                getConfirm() {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/select.php',
+                        
+                        data: {
+                            table: 'appointment',
+                            joinTable: 'members',
+                            queryCol: 'appointNo, appointDate, appointTime, memName, members.memNo, memImage, appointment.status',
+                            joinOn: 'memNo',
+                            // condition: `appointment.astNo = ${this.intro[0].astNo}`,
+                            condition: `appointment.astNo = ${this.intro.astNo} and appointDate > CURDATE() and appointment.status <> '未通過'`,
+                            // sql的<>可以當作不等於
+                            //占卜師編號等於登入的這個人
+                            // other: 'group by appointment.memNo'
+                        },
+                        success:  data => {
+                            // console.log(data.msg);
+                            if (data.msg !== false){
+                                this.appointments = data.msg;
+                            }
+                        },
+                        error: err => {
+                            console.log(err);
+                        }
+                    });
+                },
 
-            changeStar(e) {
-                $('.action .selected_btn')[0].classList.add('unselected_btn');
-                $('.action .selected_btn')[0].classList.remove('selected_btn');
-                e.target.classList.remove('unselected_btn');
-                e.target.classList.add('selected_btn');
-            },
-            carsoul_last(e) {
-            },
-            carsoul_next(e) {
-            //     console.log(e.target);
-            //     let reservation_card = document.querySelectorAll('.reservation_card');
-            //     console.log(reservation_card);
-            //     let activeCard = document.querySelectorAll('.reservation_card.active')[0];
-            //     console.log(activeCard);
-            //     let i = Array.from(reservation_card).indexOf(activeCard);
-            //     let moveList = document.querySelectorAll('.reservation_list')[0];
-            //     console.log(moveList);
-            //     moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
+                updateStatus(e, idx) {
+                    if (e.target.innerText === '接受') {
+                        $.ajax({
+                                type: 'POST',
+                                url: 'phps/update.php',
+                                data: {
+                                    table: 'appointment',
+                                    updateValue: "status = '已通過'",
+                                    where: `appointNo = '${this.appointments[idx].appointNo}'`
+                                },
+                                success: data => {
+                                    if(data.msg !== false){
+                                        this.statusUpdate = data.msg;
+                                        this.getConfirm();
+                                    }
+                                },
+                                error: err => {
+                                    console.log(err);
+                                }
+                        });   
+                    }
+                    else {
+                        e.target.innerText === '取消';
+                        $.ajax({
+                                type: 'POST',
+                                url: 'phps/update.php',
+                                data: {
+                                    table: 'appointment',
+                                    updateValue: "status = '未通過'",
+                                    where: `appointNo = '${this.appointments[idx].appointNo}'`
+                                    // vue要加this
+                                },
+                                success: data => {
+                                    if(data.msg !== false){
+                                        this.statusUpdate = data.msg;
+                                        this.getConfirm();
+                                    }
+                                },
+                                error: err => {
+                                    console.log(err);
+                                }
+                        });        
+                    };
+                },
+                
+                getSchedule() {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/select.php',
+                        data: {
+                            table: 'schedule',
+                            queryCol: 'workDate, workTime',
+                            condition: `astNo = '${this.intro.astNo}'`
+                        },
+                        success: data => {
+                            this.schedule = data.msg;
+                        },
+                        error: err => {
+                            console.log(err);
+                        }
+                    });
+                },
+
+                changeStar(e) {
+                    $('.action .selected_btn')[0].classList.add('unselected_btn');
+                    $('.action .selected_btn')[0].classList.remove('selected_btn');
+                    e.target.classList.remove('unselected_btn');
+                    e.target.classList.add('selected_btn');
+                },
+                carsoul_last(e) {
+                },
+                carsoul_next(e) {
+                //     console.log(e.target);
+                //     let reservation_card = document.querySelectorAll('.reservation_card');
+                //     console.log(reservation_card);
+                //     let activeCard = document.querySelectorAll('.reservation_card.active')[0];
+                //     console.log(activeCard);
+                //     let i = Array.from(reservation_card).indexOf(activeCard);
+                //     let moveList = document.querySelectorAll('.reservation_list')[0];
+                //     console.log(moveList);
+                //     moveList.style.Left = `${-(i + 1) * activeCard.cilentWidth} px`;
+                }
             }
-        }
-    });
+        });
+    }
+    
 </script>
 </body>
 </html>

@@ -58,7 +58,7 @@
                                 <!-- 放文章的地方 -->
                                 <div class="row" >
                                     <!-- 文章卡片 -->
-                                    <div class="article_cards" v-for="(card,index) in article.slice(startPage, startPage + perPage)">
+                                    <div class="article_cards" v-for="(card,index) in article">
                                         <div class="line_top">
                                             <p>{{article[index].topicName}}</p>
                                             <p>|</p>
@@ -86,7 +86,7 @@
                                             <img :src="iconMessage">
                                             <p>{{article[index].msgs}}回應</p>
                                             <!-- 收藏 -->
-                                            <button class="using_btn" @click="article[index].favIndex =! article[index].favIndex; checkFav()">
+                                            <button class="using_btn" @click="article[index].favIndex =! article[index].favIndex; clickFav(index)" v-if="userData !== false">
                                                 <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="origin fav_animation" :class="{active: article[index].favIndex == 1}">
                                                     <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
                                                 </svg>
@@ -95,13 +95,13 @@
                                         </div>
                                     </div>
                                     <!-- 頁籤按鈕 -->
-                                    <div class="content_pages">
+                                    <!-- <div class="content_pages">
                                         <ul>
-                                            <!-- <li :class="{disabled: currentPage === 1}" @click="setPage(currentPage-1)"><a href="#">Prev</a></li> -->
+                                            <li :class="{disabled: currentPage === 1}" @click="setPage(currentPage-1)"><a href="#"><i class="fa-solid fa-angle-left"></i></a></li>
                                             <button class="other_btn" v-for="n in totalPage" @click="setPage(n)"><a href="#">{{n}}</a></button>
-                                            <!-- <li :class="{disabled: currentPage === totalPage}" @click="setPage(currentPage+1)"><a href="#"><span>&#10230;</span></a></li> -->
+                                            <li :class="{disabled: currentPage === totalPage}" @click="setPage(currentPage+1)"><a href="#"><i class="fa-solid fa-angle-right"></i></a></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>     
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <!-- 使用者要留言的地方 -->
-                <div class="response_box">
+                <div class="response_box" v-if="userData !== false">
                     <div class="user_img_box">
                         <img :src="imgSrc(userData.sticker)" alt="會員頭像">
                     </div>
@@ -177,7 +177,7 @@
                         <textarea  cols="1" rows="1" v-model="msgContent"></textarea>
                     </div>
                     <div class="res_btn_box">
-                        <button class="submit_btn" @click="checkMsg">送出</button>
+                        <button class="submit_btn" @click="insertData">送出</button>
                     </div>
                 </div>
             </section>
@@ -274,11 +274,13 @@
                 article: [],
                 message: [],
                 getTitle: {},
+                getFav: {},
                 getIdx: {},
+                getFavIdx: {},
                 plusMsgIdx: {},
                 newPost:[],
-                perPage: 6,
-                currentPage: 1,
+                // perPage: 5,
+                // currentPage: 1,
                 msgContent: '',
             },
             created() {
@@ -286,31 +288,13 @@
                 this.getTopic();
             },
             methods: {
-                //按愛心要先確認是否登入 若無登入就跳提示並且不能實現按鈕的功能
+                //按愛心要先確認是否登入 若無登入就跳提示並且不能執行按鈕的功能
                 checkLike(index){
                     if (getSessionData() === false) {
                         alert('請先登入');
                         return false;
                     }else{
                         this.changeLike(index);
-                    }
-                },
-                //留言要先確認是否登入 若無登入就跳提示並且不能實現按鈕的功能
-                checkMsg(){
-                    if (getSessionData() === false) {
-                        alert('請先登入');
-                        return false;
-                    }else{
-                        this.insertData();
-                    }
-                },
-                //按收藏要先確認是否登入 若無登入就跳提示並且不能實現按鈕的功能
-                checkFav(){
-                    if (getSessionData() === false) {
-                        this.getTitle.favIndex === 0;
-                        alert('請先登入');
-                        return false;
-                        
                     }
                 },
                 //判斷愛心有沒有被按 並且抓取index和activeIndex 再傳入countLikes的ajax
@@ -324,6 +308,11 @@
                     this.countLikes(index , this.$data.article[index].activeIndex);
                     this.insertLikeData();
                 },
+                //按收藏要先確認是否登入 若無登入就跳提示並且不能執行按鈕的功能
+                clickFav(index){
+                    this.getFavIdx = this.article[index];
+                    this.insertFavData();
+                },
                 //圖片路徑
                 imgSrc(image){
                     let path = `images/member`;
@@ -334,6 +323,7 @@
                     this.getTitle = this.article[index];
                     this.getMsg(index);
                 },
+                
                 //抓最新和熱門的標籤的判斷
                 getPost(index){
                     this.isChecked = index;
@@ -367,12 +357,24 @@
                             },
                             success: function(data) {
                                 thisVue.article = data;
+
+                                // 若url有值，自動開啟文章盒子
+                                const queryString = window.location.search;
+                                const urlParams = new URLSearchParams(queryString);
+                                const no = urlParams.get('no');
+                                if (no !== null) {
+                                    let idx = thisVue.article.filter(art => art.artNo === parseInt(no));
+                                    idx = thisVue.article.indexOf(idx[0]);                                 
+                                    thisVue.getIndex(idx);
+                                    thisVue.showBoard =! thisVue.showBoard
+                                }
                             },
                             error: function() {
                                 console.log('ajax error');
                             }
                         });
                     }
+                    
                 },
                 //取文章類別
                 getTopic() {
@@ -383,10 +385,8 @@
                         data: {
                             table: 'article_topic',
                             queryCol: 'topicName',
-
                         },
                         success:  data => {
-                            // console.log(data.msg);
                             if (data.msg !== false){
                                 this.cates = data.msg;
                                 // console.log(this.cates);
@@ -401,7 +401,6 @@
                 getMsg(index) {
                     let artNo = this.getTitle.artNo;
                     this.message = [];
-                    // console.log(artNo);
                     $.ajax({
                         type: 'POST',
                         url: 'phps/select.php',
@@ -417,7 +416,6 @@
                         success: data => {
                             if (data.msg !== false){
                                 this.message = data.msg;
-                                console.log(this.message);
                             }
                         },
                         error: err => {
@@ -473,7 +471,6 @@
                 //更新按讚數量
                 countLikes(index, activeIndex) {
                     let artNo = this.getIdx.artNo;
-                    // console.log(artNo);
                     
                     if(activeIndex == 1){
                         $.ajax({
@@ -528,18 +525,39 @@
                         }
                     });
                 },
-                //分頁
-                setPage(thePage){
-                    this.currentPage = thePage;
+                //會員的收藏寫入資料表去紀錄
+                insertFavData() {
+                    let memNo = this.userData.userNo;
+                    let artNo = this.getFavIdx.artNo;
+
+                    // 新增資料
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/insert.php',
+                        data: {
+                            table: 'article_favorite',
+                            insertValue: `'${artNo}', '${memNo}'`
+                        },
+                        success: data => {
+                            console.log('insert Fav ok');
+                        },
+                        error: err => {
+                            console.log('ajax error');
+                        }
+                    });
                 },
+                //分頁
+                // setPage(thePage){
+                //     this.currentPage = thePage;
+                // },
             },
             computed: {
-                totalPage(){
-                    return Math.ceil(this.article.length / this.perPage);
-                },
-                startPage(){
-                    return (this.currentPage - 1) * this.perPage;
-                },
+                // totalPage(){
+                //     return Math.ceil(this.article.length / this.perPage);
+                // },
+                // startPage(){
+                //     return (this.currentPage - 1) * this.perPage;
+                // },
             },
         });
     }

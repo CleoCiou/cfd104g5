@@ -228,6 +228,10 @@
                                     <div class="quiz_result">
                                         {{ log.tarNo }} {{ log.tarName }}
                                     </div>
+                                    <!-- 手機板解析 -->
+                                    <div class="quiz_detail_cellphone">
+                                        <p>{{ log.detail }}</p>
+                                    </div>
                                 </div>
                             </div>
                             <p class="no_log" v-else>尚無紀錄</p>
@@ -389,7 +393,6 @@
                 // 會員最近留言過的文章，最多四個
                 // 若該文章有新留言，取得文章編號、文章主旨、新留言數
                 getNewMessages() {
-                    let thisVue = this;
                     $.ajax({
                         type: 'POST',
                         url: 'phps/back_getCol.php',
@@ -399,12 +402,12 @@
                             no: this.userData.userNo,
                         },
                         async: false,
-                        success: function(data) {
+                        success: data => {
                             data = JSON.parse(data);
-                            thisVue.newMessages = data.msg;
+                            this.newMessages = data.msg;
                         },
-                        error: function() {
-                            console.log('ajax error');
+                        error: err => {
+                            console.log(err);
                         }
                     });
                 },
@@ -470,7 +473,7 @@
                 imgSrc(folder, image) {
                     switch (folder) {
                         case 'member':
-                            folder = 'teller_mem';
+                            folder = 'member';
                             break;
                         case 'product':
                             folder = 'shop/tarot';
@@ -502,12 +505,15 @@
                 newComment() {
                     let log = this.appointLogs;
                     let update = false;
+                    let star = parseInt($('#star').val());
+                    let people = 1;
                     if (log[log.length-1].content !== null) {
                         update = confirm('是否更新留言？');
                     }
                     // 更新評論
                     if (update) {
-                        console.log(star);
+                        star = star - log[log.length-1].star;
+                        people = 0;
                         $.ajax({
                             type: 'POST',
                             url: 'phps/update.php',
@@ -517,8 +523,7 @@
                                 where: `appointNo = '${log[log.length-1].appointNo}'`
                             },
                             success: data => {
-                                alert('更新成功');
-                                this.getMyAppointment();
+                                // this.getMyAppointment();
                                 $('textarea.new_comment').val('');
                             },
                             error: err => {
@@ -536,8 +541,7 @@
                                 insertValue: `default, ${log[log.length-1].appointNo}, default, '${$('textarea.new_comment').val()}', '${$('#star').val()}'`
                             },
                             success: data => {
-                                alert('評論成功');
-                                this.getMyAppointment();
+                                // this.getMyAppointment();
                                 $('textarea.new_comment').val('');
                             },
                             error: err => {
@@ -545,6 +549,25 @@
                             }
                         });
                     }
+
+                    // 更新占卜師表
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/update.php',
+                        data: {
+                            table: 'astrologist',
+                            updateValue: `people = people+${people}, totalScore = totalScore+(${star
+                            })`,
+                            where: `astNo = (select astNo from appointment where appointNo = '${log[log.length-1].appointNo}')`
+                        },
+                        success: data => {
+                            alert('更新成功');
+                            this.getMyAppointment();
+                        },
+                        error: err => {
+                            console.log(err);
+                        }
+                    });
                 },
                 // 測驗紀錄拖曳查看
                 dragStartHandler(e) {

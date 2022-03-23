@@ -978,6 +978,12 @@ main section.member .container .main_astrologist .ast_reservation .reservation_b
   background-color: #5558;
 }
 
+main section.member .container .main_member .ast_reservation .reservation_box .reservation_list .reservation_card .appointment_status,
+main section.member .container .main_astrologist .ast_reservation .reservation_box .reservation_list .reservation_card .appointment_status {
+  margin-left: 1em;
+  color: #fff;
+}
+
 main section.member .container .main_member .ast_reservation .reservation_box .change_page,
 main section.member .container .main_astrologist .ast_reservation .reservation_box .change_page {
   display: block;
@@ -1417,10 +1423,19 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
           align-items: center;
 }
 
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row .quiz_detail_cellphone,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row .quiz_detail_cellphone {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row,
   main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row {
     width: 100%;
+  }
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row .quiz_detail_cellphone,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row .quiz_detail_cellphone {
+    display: block;
   }
 }
 
@@ -1465,11 +1480,12 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
   width: 50%;
+  min-height: 16em;
   height: 100%;
   border: 2px dashed #888;
   border-radius: 0.5em;
   background: url("../images/draw_cards/card_back_180.jpg") no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   background-position-y: center;
 }
 
@@ -1498,6 +1514,13 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_rig
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail .title,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail .title {
   padding: 0.2em 0;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
+    display: none;
+  }
 }
 
 main section.member .container .login_box {
@@ -2041,7 +2064,7 @@ main .discuss .article_cards .line_bottom p {
 
 @media screen and (max-width: 767px) {
   main .discuss .article_cards .line_bottom p {
-    font-size: .6em;
+    font-size: .9em;
   }
 }
 
@@ -2116,6 +2139,7 @@ main #articleView .article_icon_box img, main #articleView .article_using img {
 }
 
 main #articleView .article_icon_box {
+  margin: 1em 1em 0 0;
   text-align: right;
 }
 
@@ -2528,8 +2552,11 @@ main .article_mine_board .mine_cate .mine_img_box {
 main .article_mine_board .mine_cate .mine_img_box img {
   border-radius: 50%;
   width: 100%;
+  height: 100%;
   margin-bottom: 2em;
   border: 1px solid #CFB886;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 main .article_mine_board .mine_cate .mine_list ul {

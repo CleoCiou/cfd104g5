@@ -153,14 +153,14 @@
     // join
     if($joinTable !== '') {
         $sql = "$sql join $joinTable on ($table.$joinOn = $joinTable.$joinOn)";
-        $msg['sql'] = $sql;
     }
     
     // where
     if ($where !== '') {
         $sql = "$sql where $where";
-        $msg['sql'] = $sql;
     }
+    
+    $msg['sql'] = $sql;
 
     try {
         $result = $pdo -> prepare($sql);
