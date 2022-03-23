@@ -262,10 +262,10 @@ function getHotTellerMemsList() {
             },
             success: function(data) {
                 if (data.msg !== false){
-                    console.log(data.msg);
+                    // console.log(data.msg);
 
                     // 很多! -> 迴圈
-                    let hotTellerImg = "images/teller_mem/"
+                    let hotTellerImg = "images/member/"
                     let hotTellerMems = `<div class="hot_fortune_teller_box">`;
                     for (let i = 0; i < data.msg.length; i++) {
                         hotTellerMems +=   `
@@ -314,7 +314,7 @@ function getProduct() {
 
       success: function(data) {
           if (data.msg !== false){
-              console.log(data.msg);
+            //   console.log(data.msg);
               // 照片路徑變數  
               let productImg = "images/shop/tarot/";
               // -要包最外層的div-
@@ -373,7 +373,7 @@ function getProductMobile() {
 
         success: function(data) {
             if (data.msg !== false){
-                console.log(data.msg);
+                // console.log(data.msg);
                 let productImg = "images/shop/tarot/";
                 let owlTheme = `<div class="productmb owl-carousel owl-theme row  ">`;
                     for (let i = 0; i < data.msg.length; i++) {

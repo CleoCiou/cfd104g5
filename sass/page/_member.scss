@@ -225,6 +225,11 @@ main {
                                 flex-shrink: 0;
                                 outline: none;
                                 background-color: #5558;
+                                .appointment_status{
+                                    margin-left: 1em;
+                                    // border: 1px solid #fff;
+                                    color: #fff;
+                                }
                             }
                         }
                         .change_page {
