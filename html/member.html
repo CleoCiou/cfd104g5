@@ -228,6 +228,10 @@
                                     <div class="quiz_result">
                                         {{ log.tarNo }} {{ log.tarName }}
                                     </div>
+                                    <!-- 手機板解析 -->
+                                    <div class="quiz_detail_cellphone">
+                                        <p>{{ log.detail }}</p>
+                                    </div>
                                 </div>
                             </div>
                             <p class="no_log" v-else>尚無紀錄</p>
@@ -470,7 +474,7 @@
                 imgSrc(folder, image) {
                     switch (folder) {
                         case 'member':
-                            folder = 'teller_mem';
+                            folder = 'member';
                             break;
                         case 'product':
                             folder = 'shop/tarot';

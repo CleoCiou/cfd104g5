@@ -1417,10 +1417,19 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
           align-items: center;
 }
 
+main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row .quiz_detail_cellphone,
+main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row .quiz_detail_cellphone {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row,
   main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row {
     width: 100%;
+  }
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_left_box .quiz_row .quiz_detail_cellphone,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_left_box .quiz_row .quiz_detail_cellphone {
+    display: block;
   }
 }
 
@@ -1465,11 +1474,12 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_lef
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
   width: 50%;
+  min-height: 16em;
   height: 100%;
   border: 2px dashed #888;
   border-radius: 0.5em;
   background: url("../images/draw_cards/card_back_180.jpg") no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   background-position-y: center;
 }
 
@@ -1498,6 +1508,13 @@ main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_rig
 main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail .title,
 main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box .quiz_view .logDetail .title {
   padding: 0.2em 0;
+}
+
+@media screen and (max-width: 767px) {
+  main section.member .container .main_member .tarot_quiz .quiz_box .quiz_right_box,
+  main section.member .container .main_astrologist .tarot_quiz .quiz_box .quiz_right_box {
+    display: none;
+  }
 }
 
 main section.member .container .login_box {
