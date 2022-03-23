@@ -39,15 +39,14 @@
                         <!-- 寫內容的地方 -->
                         <div class="write_content" id="write_content">
                             <label>內容
-                            <textarea name="content" rows="12" placeholder="請輸入文章內容..." v-model="content" type="text"></textarea>
+                            <textarea name="content" rows="12" placeholder="請輸入文章內容..." v-model="content" type="text" id="writeContent"></textarea>
                             </label>
                         </div>
-                        <!-- 最下面 選圖片 清除 發布 -->
+                        <!--  取消 發布 -->
                         <div class="write_bottom">
                             <div class="write_using_btn">
                                 <a :href=backUrl><input type="button" class="third_btn" value="取消"></a>
                                 <input type="button" class="third_btn" @click="insertData" value="發佈"></a>
-                                
                             </div>
                         </div>
                     </form>
@@ -59,7 +58,6 @@
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
     <script>
-            // 若尚未登入
         if (getSessionData() === false) {
             $('section.discuss.discuss_write').css({opacity: 0});
             alert('請先登入');
@@ -70,13 +68,18 @@
             getMemberData();
         }
 
+        let reg = new RegExp("\r\n","g");
+
+        let content = document.getElementById("writeContent").value;
+        content = content.replace(reg, ' <br /> ');
+        document.getElementById("writeContent").value = content;
+
         function getMemberData(){
             new Vue({
                 el: '#app',
-                data: { //變數放這
+                data: { 
                     userData: getSessionData(),
                     cates: [],
-                    // authorImg: './images/teller_mem/',
                     backUrl: 'discuss.html',
                     members: [],
                     topic: 1,
@@ -95,13 +98,10 @@
                             data: {
                                 table: 'article_topic',
                                 queryCol: 'topicNo, topicName',
-
                             },
                             success:  data => {
-                                // console.log(data.msg);
                                 if (data.msg !== false){
                                     this.cates = data.msg;
-                                    // console.log(this.cates);
                                 }
                             },
                             error: err => {
@@ -114,9 +114,6 @@
                         let title = this.title;
                         let content = this.content;
                         let no = this.userData.userNo;
-
-                        // 檢查欄位是否已填
-                        
                         if (!topicNo || !title || !content) {
                             this.resetInput('尚有欄位未填寫');
                             return;
@@ -127,14 +124,14 @@
                             url: 'phps/insert_br.php',
                             data: {
                                 table: 'article',
-                                // col: 'artNo, memNo, artTime, topicNo, title , content, likes, artFavs, msgs, artImage, status, activeIndex, favIndex',
-                                contentValue: content,
+                                contentValue: `'${content}'`,
+                                getColumn: 'artNo, memNo, artTime, topicNo, title, likes, artFavs, msgs, artImage, status, activeIndex, favIndex, content',
                                 insertValue: `null, '${no}', CURRENT_TIMESTAMP , '${topicNo}' ,'${title}', default, default, default, default, default, default, default`
                             },
                             success: data => {
-                                // alert('成功發表文章');
+                                alert('成功發表文章!');
                                 console.log(data.sql);
-                                // window.location.href = "discuss.html";
+                                window.location.href = "discuss.html";
                             },
                             error: err => {
                                 console.log('ajax error');
@@ -144,7 +141,6 @@
                     },
                     resetInput(msg = false) {
                         if(msg) alert(msg);
-                        console.log(msg);
                     },
                     changeTopic(index){
                         this.topic = this.cates[index]

@@ -32,7 +32,7 @@ function checkLogin() {
     });
 }
 
-//上傳圖片到server 要將檔案路徑變成流水編號
+//上傳大頭貼圖片到server 要將檔案路徑變成流水編號
 function sentImg(){
     //抓input=file的值
     let uploadFile = document.getElementById('memImage').value;
@@ -67,6 +67,7 @@ function sentImg(){
     
 }
 
+
 // 新增註冊
 function insertData(image) {
     //抓每個input的值
@@ -98,26 +99,6 @@ function insertData(image) {
             console.log('ajax error');
         }
     });   
-}
-function fileUpload(){
-    
-    $('#stickerLabel').on('click', function() {
-        var file_data = $('#memImage').prop('files')[0];   //取得上傳檔案屬性
-          //建構new FormData()
-          //吧物件加到file後面
-                                  
-    $.ajax({
-            url: 'login_file_upload.php',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,     //data只能指定單一物件                 
-            type: 'post',
-            success: function(data){
-                $('#ajsxboxdhow').html(data);
-            }
-        });
-    });
 }
 
 // ===== 註冊 ===== //
@@ -201,13 +182,27 @@ function closeVerify(el) {
             duration: 1
         })
     }
+    //登入區 打完密碼可以Enter登入
+    $('#login_memPwd').keypress(function(event){
+        let keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            checkLogin();
+        }
+    });
 
+    // //註冊區 打完密碼可以Enter登入
+    // $('#confirm_pwd').keypress(function(event){
+    //     let keycode = (event.keyCode ? event.keyCode : event.which);
+    //     if(keycode == '13'){
+    //         alert('confirm');
+    //     }
+    // });
 
 $(function() {
     // === 按鈕監控 === //
     // 登入 | 註冊 註冊完成要跳轉
     $(".secondary_btn").click( (e) => {
-        
+
         if (e.target.innerText === '註冊' || e.target.innerText === '下一步') {
             let input; 
             if ($(".account_info").css('height') !== '0px') {
@@ -228,20 +223,28 @@ $(function() {
         }
 
         if (e.target.innerText === '登入') {
+            
             checkLogin();
         }
         else if (e.target.innerText === '註冊') {
             sentImg();
-            // alert('註冊成功！請重新登入');
-            // window.location.reload();
+            console.log('login ok');
+            alert('註冊成功！請重新登入');
+            window.location.reload();
         }
     })
 
-    // 下一步
+    // // 下一步
     $(".next_step").click( (e) => {
+
         if (e.target.innerText === '註冊') return;
 
-        if(  $('#memId').val() !== '' && $('#memPwd').val() !== '' && $('#confirm_pwd').val() !== '' ){  
+        if($(".account_info input").parent("div").hasClass('warning') === true){
+            alert('請填寫正確的帳號或密碼');
+            return false;
+        }
+
+        if(  $(".account_info input").val() !== ''){  
 
             if ($(".account_info").css('height') !== '0px') {
                 switchPanel($(".account_info"), $(".mem_info"));
@@ -270,10 +273,10 @@ $(function() {
 
 
     // === 輸入框監控 === //
-    $("section.login input").focus( (e) => {
+    $("section.login.display_none input").focus( (e) => {
         e.target.parentNode.style.boxShadow = "0 0 1em 0 #CFB88665";
     })
-    $("section.login input").focusout( (e) => {
+    $("section.login.display_none input").focusout( (e) => {
         e.target.parentNode.removeAttribute('style');
     })
 
@@ -301,6 +304,7 @@ $(function() {
             }
         })
     })
+
 
 
     // === 帳號資訊 === ///
