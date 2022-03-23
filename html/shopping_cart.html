@@ -35,7 +35,6 @@
                         <div class="amount">總計</div>
                     </div>
                     <!-- 購物車body -->
-                    <!-- :key="row.id" -->
                     <div class="cart_body" v-for="(row, index) in cartFull">
                         <div class="cart_body_box">
                             <div class="item_detail">
@@ -51,9 +50,9 @@
                             </div>
                             <div class="price"><span>NT${{row.price}}</span></div>
                             <div class="count">
-                                <button @click="row.amount--" class="count_btn">-</button>
+                                <button @click="cart[index].amount--" class="count_btn">-</button>
                                 <input type="text" v-model="cartFull[index].amount" class="prodAmount"></input>
-                                <button @click="row.amount++" class="count_btn">+</button>
+                                <button @click="cart[index].amount++" class="count_btn">+</button>
                             </div> 
                             <div class="amount">NT$<span>{{sum(index)}}</span></div>
                             <div class="operate">
@@ -105,53 +104,23 @@
 
 
         <!-- 底部推薦商品 -->
-        <!-- <section class="cart_bottom">
+        <section class="cart_bottom">
             <div class="container">
                 <h3>主打商品</h3>
                 <div class="item_box">
-                    <div class="item">
-                        <a href="product.html">
+                    <div class="item" v-for=" (i, idx) in queryResult">
+                        <a @click="getPromptProduct(idx)">
                             <div class="img_box">
-                                <img src="images/shop/Constellation/ring/ring_aquarius.jpg">
+                                <img :src="imgSrc(i.prodImage1)" alt="">
                             </div>
                         </a>
                         <div class="txt_box">
-                            <p>水瓶座戒指</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/ring/ring_gemini.jpg">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>雙子座戒指</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/necklace/necklace_cancer.png">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>巨蟹座項鍊</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="product.html">
-                            <div class="img_box">
-                                <img src="images/shop/Constellation/necklace/necklace_pisces.png">
-                            </div>
-                        </a>
-                        <div class="txt_box">
-                            <p>雙魚座項鍊</p>
+                            <p>{{i.prodName}}{{i.cateName}}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
     </main> 
 
 
@@ -170,6 +139,7 @@
         mounted() {
             this.getList();
             this.getProdInfo_vue();
+            this.getPrompt();
         },
         watch:{
             cart:{
@@ -230,6 +200,41 @@
                 });
             },
 
+            
+            // 底部商品列
+            getPrompt(){
+                $.ajax({
+                    type: 'POST',
+                    url: 'phps/select.php',
+                    data: {
+
+                        table: 'product',
+
+                        joinTable: 'product_category',
+
+                        joinOn:'prodCateNo',
+
+                        queryCol: "prodName, prodImage1, cateName, prodNo",
+
+                        other: 'limit 4'
+                    },
+                    success: data =>{
+                        if (data.msg !== false){
+                            this.queryResult = data.msg;
+                        }
+                    },
+                    error: err => {
+                        console.log('ajax error');
+                    }
+                });
+            },
+            
+            getPromptProduct(index){
+                let prod_Num = this.queryResult[index].prodNo;
+                localStorage.setItem('prodNumber',`${prod_Num}`);  
+                window.location.href = "product.html";
+            },
+
 
             imgSrc(image){
                 let path = `images/shop/tarot`;
@@ -273,18 +278,18 @@
 
 
                 // 付款方式驗證
-                let payWay = localStorage.getItem('payWay');
-                payWay = payWay ? JSON.parse(payWay) : [];    //轉JSON格式
-                if(payWay.payWay !== itemSec.payWay){
-                    payWay = itemSec;                    
-                };
+                // let payWay = localStorage.getItem('payWay');
+                // payWay = payWay ? JSON.parse(payWay) : [];    //轉JSON格式
+                // if(payWay.payWay !== itemSec.payWay){
+                //     payWay = itemSec;                    
+                // };
 
 
 
 
                 // console.log(cart)
                 localStorage.setItem('cart', JSON.stringify(cart));    //轉成字串，傳到localstorage
-                localStorage.setItem('payWay', JSON.stringify(payWay));    //轉成字串，傳到localstorage
+                // localStorage.setItem('payWay', JSON.stringify(payWay));    //轉成字串，傳到localstorage
             },
                         
 
@@ -301,6 +306,7 @@
                     };
                 })
             },
+            
             total() {
                 let subtotal = 0;
                 for(let i = 0; i < this.cartFull.length; i++){
