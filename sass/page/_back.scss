@@ -74,7 +74,7 @@ body {
             }
         } // link_panel
 
-        .contain {
+        .contain{
             flex-grow: 1;
             flex-shrink: 0;
             position: relative;
@@ -97,7 +97,7 @@ body {
                 }
 
             }
-            
+        
             section.back_login {
                 background-color: #000;
                 position: fixed;
@@ -310,3 +310,18 @@ body {
         } // contain
     } // section.back
 } // body
+
+// 商品管理更改的東西
+// .contain{
+//     .container_a{
+//         width: 80%;
+//         // width: 100%;
+//         padding: 0 8.333333%;
+//         margin: auto;
+//     }
+// }
+
+#back_nav{
+    width: 20%;
+    min-width: 1;
+}
