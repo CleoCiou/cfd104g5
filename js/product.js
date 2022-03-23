@@ -34,7 +34,6 @@ function getProduct() {
 
         success: function(data) {
             if (data.msg !== false){
-                console.log(data.msg);
                 // 照片路徑變數 手鍊  
                 let productImg = "images/shop/tarot/";
                 
@@ -122,7 +121,6 @@ function getRecommended() {
 
         success: function(data) {
             if (data.msg !== false){
-                console.log(data.msg);
                 let recProductImg = "images/shop/tarot/";
                 let owlTheme = `<div class="owl-carousel owl-theme ">`;
                 for (let i = 0; i < data.msg.length; i++) {

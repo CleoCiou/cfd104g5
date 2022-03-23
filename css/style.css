@@ -4623,28 +4623,31 @@ main section.query_orders .mem_orders .order_list .order_item .order_footer .ite
 #schedule #calendarContain .container .day {
   width: calc(100% / 7);
   min-height: 5em;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
 }
 
 #schedule #calendarContain .container .day.weekTitle {
   min-height: auto;
   padding: .5em;
+  color: #fff;
 }
 
 #schedule #calendarContain .container .day .time {
   font-size: 12px;
-  background-color: #f00;
+  background-color: #d89482;
   margin: 0.3em;
   border-radius: .5em;
   padding: 0.3em;
+  text-align: center;
 }
 
 #schedule #calendarContain .container .day .time.rest {
-  background-color: #00f;
+  background-color: #888;
+  text-align: center;
 }
 
 #schedule .calendarFooter {
-  padding: 10px 0;
+  padding: 20px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4655,9 +4658,10 @@ main section.query_orders .mem_orders .order_list .order_item .order_footer .ite
 
 #schedule .timePeriod .drag_rest {
   color: #fff;
-  background-color: #00f;
+  background-color: #888;
+  font-size: 0.8em;
   margin: 0.3em;
-  padding: 0.3em;
+  padding: 0.5em;
   border-radius: .5em;
   cursor: pointer;
 }

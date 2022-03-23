@@ -62,39 +62,16 @@
         <section class="cart_deliver">
             <div class="container">
                 <div class="customer_info">
-                    <!-- <div class="customer_form">
-                        <form action="">
-                            <label>
-                                <p>姓名</p>
-                                <input type="text" id="name">
-                            </label>
-                            <label>
-                                <p>信箱</p>
-                                <input type="text" id="mail">
-                            </label>
-                            <label>
-                                <p>電話</p>
-                                <input type="text" id="phone">
-                            </label>
-                            <label>
-                                <p>地址</p>
-                                <input type="text" id="address">
-                            </label>
-                            <label>
-                                <p>信用卡卡號</p>
-                                <input type="text" id="credit">
-                            </label>
-                        </form>
-                    </div> -->
                     <div class="pay_way">
-                        <label for="">付款方式：</label>
+                        <p>付款方式</p>
                         <select id="payWay">
-                            <option disabled>請選擇</option>
+                            <option>請選擇</option>
                             <option>轉帳付款</option>
                             <option>信用卡</option>
                         </select>
                         <p>信用卡卡號</p>
-                        <input type="text" id="credit">
+                        <input type="text" id="credit" @keyup="checkCredit()" placeholder="0000-0000-0000-0000">
+                        <p id="carderror">卡號有誤</p>
                     </div>
                 </div>
                 <div class="cart_info_right">
@@ -116,7 +93,7 @@
         <section class="confirm_btn">
             <div class="container">
                 <div class="confirm_btns">
-                    <a href="shopping_cart.html"><button class="third_btn">上一步</button></a>
+                    <a href="shopping_cart.html" id="nextPage"><button class="third_btn">上一步</button></a>
                     <a href="shopping_confirm.html"><button class="primary_btn" @click="insertData">確認訂單</button></a>
                 </div>
             </div>
@@ -170,7 +147,7 @@
                 this.getList();
                 this.getProdInfo_vue();
                 this.getPrompt();
-                
+                this.checkCredit();
             },
 
             methods:{
@@ -273,58 +250,81 @@
                     let no = this.userData.userNo;
                     let totalPrice = document.querySelector('#totalPrice').innerText;
                     let credit = document.querySelector('#credit').value;
-                    console.log(credit);
-                    console.log(payWay);
-                    console.log(totalPrice);
-                    console.log(no);
-                    
-                    
-                    // 新增資料
-                    $.ajax({
-                        type: 'POST',
-                        url: 'phps/insert.php',
-                        data: {
-                            table: 'orders',
-                            insertValue: `default, ${no}, default, ${totalPrice}, "${payWay}", ${credit}, default`
-                        },
-                        success: data => {
-                        },
-                        error: err => {
-                            console.log('ajax error');
+                    let nextPage = document.querySelector('#nextPage')
+                    if(payWay == "請選擇" || credit == ""){
+                        alert('必填欄位未填寫');
+                        event.preventDefault();
+                    }else{                          
+                        // 新增資料
+                        $.ajax({
+                            type: 'POST',
+                            url: 'phps/insert.php',
+                            data: {
+                                table: 'orders',
+                                insertValue: `default, ${no}, default, ${totalPrice}, "${payWay}", ${credit}, default`
+                            },
+                            success: data => {
+                            },
+                            error: err => {
+                                console.log('ajax error');
+                            }
+                        });
+                        let valueMul = [];
+                        let orderNum = Number(this.selectOrderNo[0].orderNo) + 1;
+                        console.log(orderNum);
+                        for (let i = 0; i < cart_data.length; i++) {
+                            let str = `${orderNum}, ${cart_data[i].prodNo}, ${cart_data[i].amount}`;
+                            valueMul.push(str);
                         }
-                    });
-                    let valueMul = [];
-                    let orderNum = Number(this.selectOrderNo[0].orderNo) + 1;
-                    console.log(orderNum);
-                    for (let i = 0; i < cart_data.length; i++) {
-                        let str = `${orderNum}, ${cart_data[i].prodNo}, ${cart_data[i].amount}`;
-                        valueMul.push(str);
+                        valueMul = valueMul.join('),(');                 
+                        $.ajax({
+                            type: 'POST',
+                            url: 'phps/insert.php',
+                            data: {
+                                table: 'order_item',
+                                insertValue: `${valueMul}`
+                            },
+                            success: data => {
+                            },
+                            error: err => {
+                                console.log('ajax error');
+                            }
+                        })
+                        alert('訂購成功');
                     }
-                    valueMul = valueMul.join('),(');                 
-                    $.ajax({
-                        type: 'POST',
-                        url: 'phps/insert.php',
-                        data: {
-                            table: 'order_item',
-                            insertValue: `${valueMul}`
-                        },
-                        success: data => {
-                        },
-                        error: err => {
-                            console.log('ajax error');
-                        }
-                    })
-                    alert('訂購成功');
+
 
                 },
                 
-
-
                 imgSrc(image){
                     let path = `images/shop/tarot`;
                     return `${path}/${image}`;
                 },
-
+                //信用卡驗證
+                checkCredit(){
+                    let cardReg = /\b(?:3[47]\d{2}([\ \-]?)\d{6}\1\d|(?:(?:4\d|5[1-5]|65)\d{2}|6011)([\ \-]?)\d{4}\2\d{4}\2)\d{4}\b/
+                    let card = document.getElementById('credit');   //取得id number 設變數名為card
+                    let alert = document.getElementById('carderror');   //取得id error 設變數名為alert
+                    if(cardReg.test(card.value)){        //如果與rel比較為true
+                        alert.style.display="none"  
+                    }else{                          //如果比對為false
+                        alert.style.display="block"  //顯示錯誤訊息
+                    }
+                },
+                //付款方式變化
+                payWayChange(){
+                    let payMethod = document.querySelector('#payWay').value;
+                    let card = document.getElementById('credit');   //取得id number 設變數名為card
+                    let alert = document.getElementById('carderror');   //取得id error 設變數名為alert
+                    if(payMethod === "轉帳付款"){
+                        alert.style.display="none"
+                        card.style.display="none"  
+                    }else{
+                        alert.style.display="block"
+                        card.style.display="block"  
+                    }
+                    console.log(payMethod);
+                }
             },
             computed:{
                 cartFull() {
