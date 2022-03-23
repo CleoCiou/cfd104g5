@@ -35,7 +35,7 @@
                                                 <li class="detail_item" v-if="item.orderNo === detail.orderNo" v-for="(detail, j) in orderItemList">
                                                     <div class="item">
                                                         <div class="img_box">
-                                                            <img src="images/shop/tarot/wristband/wristband_death.jpg">
+                                                            <img :src="imgUrl(detail.prodImage1)">
                                                         </div> 
                                                         <div class="txt_box">
                                                             <div class="txt info">
@@ -53,14 +53,15 @@
                                         
                                         <div class="order_footer">
                                             <div class="item">
-                                                <span class="order_mount">共2商品</span>
-                                                <span class="total">訂單金額NT$1,200</span>
+                                                <span class="order_mount">共{{ totalMount(item.orderNo) }}商品</span>
+                                                <span class="total">訂單金額NT${{ item.totalPrice }}</span>
                                             </div> 
                                             <div class="item">
-                                                <span class="order_time">2022/02/20 09:00</span> 
+                                                <span class="order_time">{{ item.orderTime }}</span> 
                                                 <button class="third_btn">取消</button>
                                             </div>
                                         </div>
+
                                     </li>
                                 </ul>
                             </div>
@@ -102,12 +103,10 @@
             el: '#app',
             data: {
                 userData: getSessionData(),
-                imgUrl: 'images/shop',
                 status: ['已下單', '待出貨', '運送中', '已到店'],
                 onSelectStatus: 0,
                 orderList: [],
-                orderItemList: [],
-                imgUrl: 'images/shop'
+                orderItemList: []
             },
             mounted() {
                 this.getOrders();
@@ -153,6 +152,18 @@
                             console.log(err);
                         }
                     });
+                },
+                totalMount(no) {
+                    let sum = 0;
+                    for (let i = 0; i < this.orderItemList.length; i++) {
+                        if (no === this.orderItemList[i].orderNo) {
+                            sum += this.orderItemList[i].mount;
+                        }
+                    }
+                    return sum;
+                },
+                imgUrl(img) {
+                    return `images/shop/tarot/${img}`;
                 }
             }
         })
