@@ -142,7 +142,7 @@ new Vue({
 
         methods:{
             sum(idx){
-                let prod = this.getProduct(this.cart[idx].prodNo);
+                let prod = this.cartFull[idx];
                 return parseInt(prod.price) * parseInt(this.cart[idx].amount)
             },
 
@@ -184,6 +184,7 @@ new Vue({
                 localStorage.setItem('prodNumber',`${prod_Num}`);  
                 window.location.href = "product.html";
             },
+
             // 購物車商品資料
             getProdInfo_vue() {
                 $.ajax({
@@ -236,13 +237,6 @@ new Vue({
                 });
             },
             
-
-
-            getProduct(prodNo) {
-                let prodNoList = this.prodInfoList.map(prodNum => Object.values(prodNum)[4]);
-                idx = prodNoList.indexOf(prodNo);
-                return this.prodInfoList[idx];
-            },
 
             imgSrc(image){
                 let path = `images/shop/tarot`;
