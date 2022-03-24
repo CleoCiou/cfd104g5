@@ -49,7 +49,7 @@
                             </div>
                             <div class="price"><span>NT${{row.price}}</span></div>
                             <div class="count">
-                                <button @click="cart[index].amount--" class="count_btn">-</button>
+                                <button @click="(cart[index].amount > 0) ? cart[index].amount-- : 0" class="count_btn">-</button>
                                 <input type="text" v-model="cartFull[index].amount" class="prodAmount"></input>
                                 <button @click="cart[index].amount++" class="count_btn">+</button>
                             </div> 
@@ -146,6 +146,8 @@
             handledelete: function(index){
                 this.cart.splice(index,1);
             },
+
+            
 
             imgSrc(image){
                 let path = `images/shop/tarot`;
@@ -297,6 +299,7 @@
                 }
                 return deliFee;
             },
+
         }
 })
 </script>
