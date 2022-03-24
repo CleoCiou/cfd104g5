@@ -16,17 +16,13 @@
         <!-- 管理內容區 -->
         <div class="contain">
             <!-- 登出 -->
-             <!-- <header>
-                <div class="burger"></div>
-                <button class="third_btn">登出</button>
-            </header> -->
             @@include('layout/back_header.html')
 
             <!-- 管理內容 -->
             <main>
                 <div class="container">
                     <!-- 表格上方操作列 -->
-                    <top-action-bar :action-btn="actionBtn"></top-action-bar>
+                    <!-- <top-action-bar :action-btn="actionBtn"></top-action-bar> -->
                     
                     <!-- 資料內容 -->
                     <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail" @change-status="changeStatus"></my-table>
@@ -42,33 +38,33 @@
                             <!-- 會員姓名 -->
                             <div class="info_box memName">
                                 <label for="adminName">姓名</label>
-                                <input type="text" :value="detail.memName">
+                                <input type="text" :value="detail.memName" id="memName">
                             </div>
                             <!-- 會員信箱 -->
                             <div class="info_box email">
                                 <label for="email">信箱</label>
-                                <input type="email" :value="detail.email">
+                                <input type="email" :value="detail.email" id="email">
                             </div>
                             <!-- 會員生日 -->
                             <div class="info_box birthday">
                                 <label for="birthday">生日</label>
-                                <input type="date" :value="detail.birthday">
+                                <input type="date" :value="detail.birthday" id="birthday">
                             </div>
                             <!-- 會員地址 -->
                             <div class="info_box address">
                                 <label for="address">地址</label>
-                                <input type="text" :value="detail.address">
+                                <input type="text" :value="detail.address" id="address">
                             </div>
                             <!-- 會員卡號 -->
                             <div class="info_box creditNum">
                                 <label for="creditNum">卡號</label>
-                                <input type="text" :value="detail.creditNum">
+                                <input type="text" :value="detail.creditNum" id="creditNum">
                             </div>
                             <!-- 儲存/取消 -->
                             <div class="info_box action_box">
                                 <div class="action">
                                     <button class="third_btn" @click="displaynone=true">取消</button>
-                                    <button class="secondary_btn" @click="displaynone=true">儲存</button>
+                                    <button class="secondary_btn" @click="displaynone=true;updateData()">儲存</button>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +117,6 @@
                         },
                         success: function(data) {
                             data = JSON.parse(data);
-                            // console.log(data.msg);
                             thisVue.queryResult = data.msg;
                         },
                         error: function() {
@@ -164,6 +159,31 @@
                         },
                         error: function() {
                             console.log('ajax error');
+                        }
+                    });
+                },
+                updateData() {
+                    let name = $("#memName").val();
+                    let email = $("#email").val();
+                    let birthday = $("#birthday").val();
+                    let address = $("#address").val();
+                    let credit = $("#creditNum").val();
+
+                    // 更新資料
+                    $.ajax({
+                        type: 'POST',
+                        url: 'phps/update.php',
+                        data: {
+                            table: 'members',
+                            updateValue: `memName = '${name}', email = '${email}', birthday = '${birthday}', address = '${address}', creditNum = '${credit}'`,
+                            where: `memId = '${this.detail.memId}'`
+                        },
+                        success: data => {
+                            alert('更新成功');
+                            this.getCol();
+                        },
+                        error: err => {
+                            console.log(err);
                         }
                     });
                 }

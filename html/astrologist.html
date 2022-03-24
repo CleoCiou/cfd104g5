@@ -77,7 +77,7 @@
                         </ul>
 
                         <div @click="(translateIdx > 0) ? translateIdx-- : ''" class="change_page last_page" :class="(translateIdx === 0) ? 'gray' : ''">←</div>
-                        <div @click="(translateIdx < appointments.length-4) ? translateIdx++ : ''" class="change_page next_page" :class="(translateIdx >= appointments.length-4) ? 'gray' : ''">→</div>
+                        <div @click="(translateIdx < appointments.length-1) ? translateIdx++ : ''" class="change_page next_page" :class="(translateIdx >= appointments.length-1) ? 'gray' : ''">→</div>
                     </div>
                 </section>
     
@@ -254,14 +254,9 @@
                             joinTable: 'members',
                             queryCol: 'appointNo, appointDate, appointTime, memName, members.memNo, memImage, appointment.status',
                             joinOn: 'memNo',
-                            // condition: `appointment.astNo = ${this.intro[0].astNo}`,
                             condition: `appointment.astNo = ${this.intro.astNo} and appointDate > CURDATE() and appointment.status <> '未通過'`,
-                            // sql的<>可以當作不等於
-                            //占卜師編號等於登入的這個人
-                            // other: 'group by appointment.memNo'
                         },
                         success:  data => {
-                            // console.log(data.msg);
                             if (data.msg !== false){
                                 this.appointments = data.msg;
                             }
@@ -297,8 +292,6 @@
                         e.target.innerText === '取消';
                         let time = this.schedule.filter( t => t.workDate === this.appointments[idx].appointDate);
                         time = time[0].workTime;
-                        // const schedule =data.msg;
-                        // const result = schedule.filter( time => time.workDate === appointDate);
 
                         switch (this.appointments[idx].appointTime){
                             case '上午':
