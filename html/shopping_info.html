@@ -245,7 +245,6 @@
                 // 更新資料庫
                 insertData() {
                     let cart_data =  JSON.parse(localStorage.getItem('cart'));
-                    // console.log(cart_data);
                     let payWay = document.querySelector('#payWay').value;
                     let no = this.userData.userNo;
                     let totalPrice = document.querySelector('#totalPrice').innerText;
@@ -271,7 +270,6 @@
                         });
                         let valueMul = [];
                         let orderNum = Number(this.selectOrderNo[0].orderNo) + 1;
-                        console.log(orderNum);
                         for (let i = 0; i < cart_data.length; i++) {
                             let str = `${orderNum}, ${cart_data[i].prodNo}, ${cart_data[i].amount}`;
                             valueMul.push(str);
@@ -311,20 +309,6 @@
                         alert.style.display="block"  //顯示錯誤訊息
                     }
                 },
-                //付款方式變化
-                payWayChange(){
-                    let payMethod = document.querySelector('#payWay').value;
-                    let card = document.getElementById('credit');   //取得id number 設變數名為card
-                    let alert = document.getElementById('carderror');   //取得id error 設變數名為alert
-                    if(payMethod === "轉帳付款"){
-                        alert.style.display="none"
-                        card.style.display="none"  
-                    }else{
-                        alert.style.display="block"
-                        card.style.display="block"  
-                    }
-                    console.log(payMethod);
-                }
             },
             computed:{
                 cartFull() {
