@@ -4,6 +4,7 @@ $(function() {
     if (getSessionData() !== false) {
         $('header .pc_login p').text('登出');
         $('header .menu_login').text('登出');
+        $('header .menu_signup').css('display', 'none');
     }
 
     // 點擊登入打開燈箱

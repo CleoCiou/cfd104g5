@@ -77,7 +77,7 @@
                         </ul>
 
                         <div @click="(translateIdx > 0) ? translateIdx-- : ''" class="change_page last_page" :class="(translateIdx === 0) ? 'gray' : ''">←</div>
-                        <div @click="(translateIdx < appointments.length-4) ? translateIdx++ : ''" class="change_page next_page" :class="(translateIdx === appointments.length-4) ? 'gray' : ''">→</div>
+                        <div @click="(translateIdx < appointments.length-1) ? translateIdx++ : ''" class="change_page next_page" :class="(translateIdx >= appointments.length-1) ? 'gray' : ''">→</div>
                     </div>
                 </section>
     
@@ -254,14 +254,9 @@
                             joinTable: 'members',
                             queryCol: 'appointNo, appointDate, appointTime, memName, members.memNo, memImage, appointment.status',
                             joinOn: 'memNo',
-                            // condition: `appointment.astNo = ${this.intro[0].astNo}`,
                             condition: `appointment.astNo = ${this.intro.astNo} and appointDate > CURDATE() and appointment.status <> '未通過'`,
-                            // sql的<>可以當作不等於
-                            //占卜師編號等於登入的這個人
-                            // other: 'group by appointment.memNo'
                         },
                         success:  data => {
-                            // console.log(data.msg);
                             if (data.msg !== false){
                                 this.appointments = data.msg;
                             }
@@ -295,25 +290,56 @@
                     }
                     else {
                         e.target.innerText === '取消';
+                        let time = this.schedule.filter( t => t.workDate === this.appointments[idx].appointDate);
+                        time = time[0].workTime;
+
+                        switch (this.appointments[idx].appointTime){
+                            case '上午':
+                                time = '0' + time[1] + time[2];
+                                break;
+                            case '下午':
+                                time = time[0] + '0' + time[2];
+                                break;
+                            case '晚上':
+                                time = time[0] + time[1] + '0';
+                                break;
+                        }
+
                         $.ajax({
-                                type: 'POST',
-                                url: 'phps/update.php',
-                                data: {
-                                    table: 'appointment',
-                                    updateValue: "status = '未通過'",
-                                    where: `appointNo = '${this.appointments[idx].appointNo}'`
-                                    // vue要加this
-                                },
-                                success: data => {
-                                    if(data.msg !== false){
-                                        this.statusUpdate = data.msg;
-                                        this.getConfirm();
-                                    }
-                                },
-                                error: err => {
-                                    console.log(err);
+                            type: 'POST',
+                            url: 'phps/update.php',
+                            data: {
+                                table: 'schedule',
+                                updateValue: `workTime = '${time}'`,
+                                where: `astNo = '${this.intro.astNo}' and workDate = '${this.appointments[idx].appointDate}'`
+                            },
+                            success: data => {
+                                updateSchedule = true;
+                                location.reload();
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: 'phps/update.php',
+                            data: {
+                                table: 'appointment',
+                                updateValue: "status = '未通過'",
+                                where: `appointNo = '${this.appointments[idx].appointNo}'`
+                                // vue要加this
+                            },
+                            success: data => {
+                                if(data.msg !== false){
+                                    this.getConfirm();
                                 }
-                        });        
+                            },
+                            error: err => {
+                                console.log(err);
+                            }
+                    });        
                     };
                 },
                 
@@ -340,12 +366,6 @@
                     $('.action .selected_btn')[0].classList.remove('selected_btn');
                     e.target.classList.remove('unselected_btn');
                     e.target.classList.add('selected_btn');
-                },
-                // 輪播 function 刪掉會出事先等等
-                carsoul_last(e) {
-                },
-                // 輪播 function 刪掉會出事先等等
-                carsoul_next(e) {
                 }
             },
             computed: {

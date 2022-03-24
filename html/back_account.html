@@ -18,17 +18,13 @@
         <!-- 管理內容區 -->
         <div class="contain">
             <!-- 登出 -->
-             <!-- <header>
-                <div class="burger"></div>
-                <button class="third_btn">登出</button>
-            </header> -->
             @@include('layout/back_header.html')
 
             <!-- 管理內容 -->
             <main>
                 <div class="container">
                     <!-- 表格上方操作列 -->
-                    <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
+                    <!-- <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar> -->
                     
                     <!-- 資料內容 -->
                     <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow" :deconstruct-result="deconstructResult" @get-detail="getDetail" @change-status="changeStatus"></my-table>

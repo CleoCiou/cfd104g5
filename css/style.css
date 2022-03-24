@@ -704,6 +704,7 @@ main section.member .container section.item {
 main section.member .container section.item > *:not(.txt_box) {
   height: 100%;
   width: 100%;
+  min-height: 5em;
   outline: 1px solid #CFB886;
   padding: .5em;
   border-radius: 0.5em;
@@ -4691,6 +4692,13 @@ main section.query_orders .mem_orders .order_list .order_item .order_footer .ite
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  #schedule .timePeriod .drag_rest_txt {
+    display: block;
+    margin-bottom: 1.5em;
+  }
 }
 
 #schedule .timePeriod .drag_rest {

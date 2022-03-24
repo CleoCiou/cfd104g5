@@ -467,15 +467,17 @@ $(function() {
 
     // === 基本資訊 === //    
     // === 大頭貼 by JC === //
-    document.getElementById("memImage").onchange = fileChange;
-    function fileChange(){
-        let file = document.getElementById("memImage").files[0];
-        let readFile = new FileReader();
-        readFile.readAsDataURL(file);
-        readFile.addEventListener("load",function(){
-            let image = document.getElementById("memImgBox");
-            image.src = readFile.result;
-        });
+    if (document.getElementById('memImage') !== null) {
+        document.getElementById("memImage").onchange = fileChange;
+        function fileChange(){
+            let file = document.getElementById("memImage").files[0];
+            let readFile = new FileReader();
+            readFile.readAsDataURL(file);
+            readFile.addEventListener("load",function(){
+                let image = document.getElementById("memImgBox");
+                image.src = readFile.result;
+            });
+        }
     }
 
     // === 姓名 === //

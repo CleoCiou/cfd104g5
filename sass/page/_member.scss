@@ -43,6 +43,7 @@ main {
                 > *:not(.txt_box) {
                     height: 100%;
                     width: 100%;
+                    min-height: 5em;
                     outline: 1px solid map-get($primary_color, 'content');
                     padding: .5em;
                     border-radius: $borderRadius;
