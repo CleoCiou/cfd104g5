@@ -4,7 +4,7 @@
     @@include('layout/head.html', {
         'title': '全方位線上占卜共享平台'
     })
-
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <link rel="stylesheet" href="css/index.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 <body>
@@ -432,13 +432,22 @@ window.addEventListener('load', getProductMobile);
 
 
 // 開場動畫
+// 使用jquery cookie插件
 //先執行外面closeVideo載入完成後  跑出裡面fadeOut淡出功能
-window.addEventListener('load',closeVideo);
+
 function closeVideo(){
-    setTimeout(function(){
-        $('.opening_animation').fadeOut(1000)
-    }, 6000);
+        setTimeout(function(){
+            $('.opening_animation').fadeOut(1000)
+        }, 6000);
 }
+if ($.cookie('hasSeenAnimation') == null){
+    window.addEventListener('load',closeVideo);
+    $.cookie('hasSeenAnimation','true');
+}else{
+    window.addEventListener('load',function(){
+        $('.opening_animation').fadeOut(0)
+    });
+};
 
 //開場動畫SKIP
 function videoHidden() {
