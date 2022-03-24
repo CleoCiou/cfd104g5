@@ -685,10 +685,15 @@ main section.member .container .img_box img {
 main section.member .container .img_box.sticker {
   width: 4em;
   height: 4em;
-  -o-object-fit: cover;
-     object-fit: cover;
   border-radius: 50%;
   overflow: hidden;
+}
+
+main section.member .container .img_box.sticker img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 main section.member .container section.item {
@@ -2119,7 +2124,6 @@ main #articleView {
   margin: auto;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
-  /* 文章裡的照片 */
   /* 功能列-- 愛心回應數分享等等*/
   /* 留言回應區塊 */
 }
@@ -2139,8 +2143,8 @@ main #articleView .article_icon_box img, main #articleView .article_using img {
 }
 
 main #articleView .article_icon_box {
-  margin: 1em 1em 0 0;
   text-align: right;
+  margin: 1.2em 1.2em 0 0;
 }
 
 main #articleView .author {
@@ -2181,15 +2185,11 @@ main #articleView .article_view_title P {
   display: inline;
 }
 
-main #articleView .article_view_pic.img_box img {
-  width: 100%;
-  height: auto;
-}
-
 main #articleView .article_view_content p {
   line-height: 1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 1.5em;
+  overflow-wrap: break-word;
 }
 
 main #articleView .narrow {
@@ -2198,7 +2198,7 @@ main #articleView .narrow {
 
 @media screen and (max-width: 767px) {
   main #articleView .narrow {
-    padding: 2% 1%;
+    padding: .5em 1.3em;
   }
 }
 
@@ -2212,19 +2212,31 @@ main #articleView .article_using {
           align-items: center;
 }
 
+main #articleView .article_using .using_icon_box {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main #articleView .article_using .using_icon_box p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.2em;
+  color: #aaa;
+}
+
 main #articleView .article_using img {
   margin: 0 0.2em;
 }
 
-main #articleView .article_using p {
-  margin: 0 0.2em;
-  color: #aaa;
-}
-
-main #articleView .article_using span {
-  margin: 0 0.2em;
-  color: #aaa;
-  width: 100%;
+main #articleView .article_using .notice_icon.img_box {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
 }
 
 main #articleView .article_response {
@@ -2471,6 +2483,7 @@ main .article_writing_board .write_title #write_txt_title {
 
 main .article_writing_board textarea {
   width: 100%;
+  white-space: pre;
   overflow-y: scroll;
 }
 
@@ -4056,7 +4069,7 @@ main section.chart .container .astrolabe_chart .chart_info .chart_img {
   }
 }
 
-main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+main section.chart .container .astrolabe_chart .chart_info .owl-carousel.owl-theme.display {
   margin-top: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4064,7 +4077,7 @@ main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display
 }
 
 @media screen and (min-width: 768px) {
-  main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+  main section.chart .container .astrolabe_chart .chart_info .owl-carousel.owl-theme.display {
     display: none;
   }
 }
@@ -4610,28 +4623,31 @@ main section.query_orders .mem_orders .order_list .order_item .order_footer .ite
 #schedule #calendarContain .container .day {
   width: calc(100% / 7);
   min-height: 5em;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
 }
 
 #schedule #calendarContain .container .day.weekTitle {
   min-height: auto;
   padding: .5em;
+  color: #fff;
 }
 
 #schedule #calendarContain .container .day .time {
   font-size: 12px;
-  background-color: #f00;
+  background-color: #d89482;
   margin: 0.3em;
   border-radius: .5em;
   padding: 0.3em;
+  text-align: center;
 }
 
 #schedule #calendarContain .container .day .time.rest {
-  background-color: #00f;
+  background-color: #888;
+  text-align: center;
 }
 
 #schedule .calendarFooter {
-  padding: 10px 0;
+  padding: 20px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4642,9 +4658,10 @@ main section.query_orders .mem_orders .order_list .order_item .order_footer .ite
 
 #schedule .timePeriod .drag_rest {
   color: #fff;
-  background-color: #00f;
+  background-color: #888;
+  font-size: 0.8em;
   margin: 0.3em;
-  padding: 0.3em;
+  padding: 0.5em;
   border-radius: .5em;
   cursor: pointer;
 }
