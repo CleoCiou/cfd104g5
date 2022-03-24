@@ -47,6 +47,10 @@ new Vue({
         },
         getScore(idx) {
             return this.tellers[idx].avgScore;
+        },
+        getIdxHref(idx) {
+            return `teller_reservation.html?type=${ idx }`;
+
         }
     },
     computed: {
