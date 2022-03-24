@@ -1169,12 +1169,6 @@ main section.member .container .main_astrologist .comment .comment_list.view_old
   top: 1em;
 }
 
-main section.member .container .main_member .comment .comment_list.view_old .comment_info:last-of-type .comment_box .comment,
-main section.member .container .main_astrologist .comment .comment_list.view_old .comment_info:last-of-type .comment_box .comment {
-  -webkit-box-shadow: 0 0 5px 0 #fff;
-          box-shadow: 0 0 5px 0 #fff;
-}
-
 main section.member .container .main_member .comment .comment_box,
 main section.member .container .main_astrologist .comment .comment_box {
   width: 100%;
@@ -1348,41 +1342,6 @@ main section.member .container .main_astrologist .item.ast_comments {
   main section.member .container .main_astrologist .item.ast_comments {
     width: 100%;
   }
-<<<<<<< HEAD
-}
-
-main section.member .container .main_member .item.ast_comment .action,
-main section.member .container .main_astrologist .item.ast_comment .action {
-  padding: .5em;
-}
-
-main section.member .container .main_member .item.ast_comment .action .star_btn,
-main section.member .container .main_astrologist .item.ast_comment .action .star_btn {
-  padding: 1em;
-  line-height: 1em;
-  border-radius: 0.5em;
-}
-
-main section.member .container .main_member .item.ast_comment .action .star_btn:not(:first-child),
-main section.member .container .main_astrologist .item.ast_comment .action .star_btn:not(:first-child) {
-  margin-left: .5em;
-}
-
-main section.member .container .main_member .item.ast_comment .ast_comment_list,
-main section.member .container .main_astrologist .item.ast_comment .ast_comment_list {
-  padding: .5em;
-}
-
-main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment,
-main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment {
-  padding: 1em;
-  background-color: #5558;
-  border-radius: 0.5em;
-}
-
-main section.member .container .main_member .item.ast_comment .ast_comment_list .ast_comment:not(:first-child),
-main section.member .container .main_astrologist .item.ast_comment .ast_comment_list .ast_comment:not(:first-child) {
-=======
 }
 
 main section.member .container .main_member .item.ast_comments .action,
@@ -1416,7 +1375,6 @@ main section.member .container .main_astrologist .item.ast_comments .ast_comment
 
 main section.member .container .main_member .item.ast_comments .ast_comment_list .ast_comment:not(:first-child),
 main section.member .container .main_astrologist .item.ast_comments .ast_comment_list .ast_comment:not(:first-child) {
->>>>>>> bdba41fb1283af5e41ea744dc6862f42fcf6b878
   margin-top: 0.5em;
 }
 

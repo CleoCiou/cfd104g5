@@ -33,32 +33,14 @@
                         </div>
                         <!-- 左邊分類欄
 
-                       
-
-                        <div class="content_cate owl-carousel owl-theme display">
-                            
-                            <label v-for="(url, cate) in cates" class="item">
-                                <a :href="url">
-                                    {{cate}}
-                                </a>
-                            </label>
-            
-                        </div>
-                      
-                        如果用vue還是出事 用HTML改 
-
-                        <!-- <div class="content_cate owl-carousel owl-theme display">
-                            <li v-for="(url, cate) in cates"><a :href="url"><label class="category">
-                                {{cate}}</a>
-                        </label></li>
-                        </div> -->
+        
 
                         <!-- 右邊內容欄 -->
                         <div class="content_article">
                             <div class="content_wrap">
 
                                 <h2>星座故事</h2>
-                                <!-- 請從這裡開始寫~~~~~~~~~~~~~ -->
+                
                                 <div class="story_box">
                                     <div class="img_box">
                                         <img src="./images/con_story/story-sagit.svg" alt="">
@@ -114,7 +96,7 @@
                     '星座故事': 'con_story.html',
                     '星座討論區': 'discuss.html',
                 },
-                navs: ['今日運勢', '星座配對', '性格測驗', '星盤推算', '星座故事', '星座討論區'],
+                navs: ['今日運勢', '星座配對', '性格測驗', '星盤推算', '星座故事'],
                 cates: {
                     '射手座': 'con_story.html',
                     '水瓶座': 'con_story_water.html',
@@ -131,11 +113,6 @@
 
                 },
                 iconLike: './images/icon/icon_discuss_like.svg',
-                // iconLike: {
-                //     url: './images/icon/',
-                //     img: './icon_discuss_like.svg',
-                //     active: 'icon_discuss_likes.svg'
-                // },
                 iconLikeClick: 'images/icon/icon_discuss_likes.svg',
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
@@ -145,7 +122,7 @@
                 con_ast: 'images/constellation/discuss_astronomy.jpg',
                 author_img: 'images/black_cat.svg',
                 author_hat_img: 'images/black_cat_wizard.svg',
-                // isChecked: 0,
+            
             },
             mounted() {
                 $(document).ready(function () {
@@ -153,21 +130,7 @@
                         url: 'phps/story_test.php',
                         type: "POST",
                         success(data) {
-                            console.log(data.msg);
-                            // console.log(res[0].content);
-                            // let story_p = document.querySelector('.txt_box p')
-
-                            // story_p.innerHTML = res[0].content
-                            // console.log(story_p);
-                            // console.log(res[0].content);
-                            // // 確認連到資料庫了
-                            // let story_p = document.querySelector('.txt_box p')
-                            // console.log(story_p);
-                            // // console.log(story_p);
-                            // // 確定找到我要準備換資料的了   
-                            // story_p.innerText = res[0].content
-
-
+                     
                         }
                     })
                 })
@@ -177,16 +140,10 @@
             methods: {
 
                 changeLike(e) {
-                    // if(e.target.src == )
-                    console.log(e.target.src);
-                    console.log(this.$data.iconLike);
+                 
+                  
                     this.$data.num += 1;
-                    // if(e.target.text == "我喜歡"){
-                    // }
-                    // console.log(e.target.text);
-                    // console.log(e);
-                    // console.log(this.$data.iconLike);
-
+          
                 },
                 isChecked() {
 
@@ -212,31 +169,7 @@
         });
     </script>
 
-    <!-- <script>
-        let xhr = new XMLHttpRequest();
-                    //2.建立請求事件的監聽
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState == 4 && xhr.status == 200) {
-                            if (xhr.response == 0) { //當前使用者存在
-                                alert('當前註冊帳號已存在')
-                                document.getElementById('register').disabled = true;
-                            }else{
-                                alert('當前帳號可使用')
-                                document.getElementById('register').disabled = false;
-                            }
-                        }
-                    }
-
-                    //3.初始化一個url請求
-                    var url = 'phps/memid_verify.php';
-                    xhr.open('post', url, true); //請求型別為post，互動方式為非同步
-
-                    //4.設定請求頭
-                    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-
-                    //5.傳送url請求,需要傳入引數
-                    xhr.send(`mem_id=${mem_id.value}`);
-    </script> -->
+    
     <script>
 
 

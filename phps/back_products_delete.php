@@ -9,8 +9,6 @@
     // 如果 ajax 使用 POST 傳送才處理
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // 記得用session去拿到會員的memNo
-    // $memNo = $_SESSION['userNo']
 
     $sql = "select product.`prodName`,product_category.cateType,product_category.cateName,product.price,product.`prodImage1`, product.`prodImage2`,product.`prodImage3`,product.`prodIntro`,product.`status` from product join product_category on (product.prodCateNo = product_category.prodCateNo);"
 

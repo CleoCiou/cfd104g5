@@ -95,13 +95,7 @@
                                         </div>
                                     </div>
                                     <!-- 頁籤按鈕 -->
-                                    <!-- <div class="content_pages">
-                                        <ul>
-                                            <li :class="{disabled: currentPage === 1}" @click="setPage(currentPage-1)"><a href="#"><i class="fa-solid fa-angle-left"></i></a></li>
-                                            <button class="other_btn" v-for="n in totalPage" @click="setPage(n)"><a href="#">{{n}}</a></button>
-                                            <li :class="{disabled: currentPage === totalPage}" @click="setPage(currentPage+1)"><a href="#"><i class="fa-solid fa-angle-right"></i></a></li>
-                                        </ul>
-                                    </div> -->
+                                  
                                 </div>     
                             </div>
                         </div>
@@ -250,7 +244,7 @@
     function getData(){
         new Vue({
             el: '#app',
-            data: { //變數放這
+            data: { 
                 userData: getSessionData(),
                 urls: {
                     '體驗占卜師': 'be_tellers.html',
@@ -279,8 +273,6 @@
                 getFavIdx: {},
                 plusMsgIdx: {},
                 newPost:[],
-                // perPage: 5,
-                // currentPage: 1,
                 msgContent: '',
             },
             created() {
@@ -345,7 +337,7 @@
                                 thisVue.article = data;
                             },
                             error: function() {
-                                console.log('ajax error');
+                             
                             }
                         });
                     }else{
@@ -370,7 +362,7 @@
                                 }
                             },
                             error: function() {
-                                console.log('ajax error');
+                              
                             }
                         });
                     }
@@ -389,11 +381,11 @@
                         success:  data => {
                             if (data.msg !== false){
                                 this.cates = data.msg;
-                                // console.log(this.cates);
+                             
                             }
                         },
                         error: err => {
-                            console.log('ajax error');
+                           
                         }
                     });
                 },
@@ -411,7 +403,7 @@
                             joinTable: 'members',
                             joinOn: 'memNo',
                             condition: `article_message.artNo = ${artNo}`,
-                            // other: 'order by msgTime',
+                         
                         },
                         success: data => {
                             if (data.msg !== false){
@@ -419,14 +411,14 @@
                             }
                         },
                         error: err => {
-                            console.log('ajax error');
+                          
                         }
                     });
                 },
                 //更新留言數量
                 countMsg(index) {
                     let artNo = this.getTitle.artNo;
-                    // console.log(artNo);
+                  ;
                     $.ajax({
                         type: 'POST',
                         url: 'phps/update.php',
@@ -436,10 +428,10 @@
                             where: `artNo = ${artNo}`
                         },
                         success: data => {
-                            // console.log('plus ok');
+                         
                         },
                         error: err => {
-                            console.log('ajax error');
+                         
                         }
                     });
                 },
@@ -464,7 +456,7 @@
                             this.msgContent = '';
                         },
                         error: err => {
-                            console.log('ajax error');
+                           
                         }
                     });
                 },
@@ -481,10 +473,10 @@
                                 no: `${artNo}`,
                             },
                             success: data => {
-                                // console.log('plus');
+                            
                             },
                             error: err => {
-                                console.log('ajax error');
+                             
                             }
                         });
                     }else{
@@ -496,10 +488,10 @@
                                 no: `${artNo}`,
                             },
                             success: data => {
-                                // console.log('reduce');
+                               
                             },
                             error: err => {
-                                console.log('ajax error');
+                              
                             }
                         });
                     }
@@ -518,10 +510,10 @@
                             insertValue: `'${artNo}', '${memNo}'`
                         },
                         success: data => {
-                            // console.log('insert ok');
+                           
                         },
                         error: err => {
-                            console.log('ajax error');
+                         
                         }
                     });
                 },
@@ -539,25 +531,17 @@
                             insertValue: `'${artNo}', '${memNo}'`
                         },
                         success: data => {
-                            console.log('insert Fav ok');
+                          
                         },
                         error: err => {
-                            console.log('ajax error');
+                        
                         }
                     });
                 },
-                //分頁
-                // setPage(thePage){
-                //     this.currentPage = thePage;
-                // },
+         
             },
             computed: {
-                // totalPage(){
-                //     return Math.ceil(this.article.length / this.perPage);
-                // },
-                // startPage(){
-                //     return (this.currentPage - 1) * this.perPage;
-                // },
+        
             },
         });
     }

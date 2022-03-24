@@ -16,9 +16,9 @@
                     <div class="mine_cate">
                         <div class="mine_row">
                             <div class="mine_img_box" style="margin-bottom: 60px;">
-                                <img :src="'images/teller_mem/'+ userData.sticker " alt="預設頭貼">
-                                <!-- <img :src="'images/member/'+ userData.sticker " alt="預設頭貼">
-                                拉下來之後改路徑images/member/ -->
+                         
+                                <img :src="'images/member/'+ userData.sticker " alt="預設頭貼">
+                               
                             </div>
                             <div class="mine_id_box">
                                 <h3>{{userData.userName}}</h3>
@@ -153,10 +153,8 @@
                     <img :src="iconClose" id="close">
                 </div>
                 <div class="author img_box narrow">
-                    <!-- <img :src="author_hat_img" alt="會員頭像"> -->
-                    <img :src="'images/teller_mem/'+ userData.sticker " alt="會員頭貼">
-                    <!-- 拉下來之後改路徑images/member/ -->
-                    <!-- <span>{{getTitle.memNo}}</span> -->
+          
+                    <img :src="'images/member/'+ userData.sticker " alt="會員頭貼">
                     <span>{{userData.userName}}</span>
                 </div>
                 <div class="article_view_title narrow">
@@ -170,14 +168,14 @@
                 </div>
                 <!-- 功能列-- 愛心回應數分享等等 -->
                 <div class="article_using narrow">
-                    <!-- 左 -->
-                    <img src="images/icon/icon_discuss_likes.svg" alt="按喜歡的數量">
-                    <p>{{getTitle.likes}}</p>
-                    <span>| 28 回應</span>
+                    <div class="using_icon_box">
+                        <p> {{getTitle.likes}} 讚</p>
+                        <p>| {{getTitle.msgs}} 回應</p>
+                    </div>
                     <!-- 右 -->
-                    <img src="images/icon/icon_discuss_favorite.svg" alt="收藏">
-                    <img src="images/icon/icon_discuss_share.svg" alt="分享">
-                    <img src="images/icon/icon_discuss_notice.svg" alt="檢舉" @click="showNotice =! showNotice">
+                    <div class="notice_icon img_box">
+                        <img src="images/icon/icon_discuss_notice.svg" alt="檢舉" @click="showNotice =! showNotice">
+                    </div>
                 </div>
 
                 <!-- 留言回應區塊  -->
@@ -237,7 +235,7 @@
         }
         else {
             getMemberData();
-            console.log(sessionData.userNo);
+         
 
         }
 
@@ -260,7 +258,7 @@
                     postArticle: [],
                 },
                 mounted() {
-                    // this.getCol();
+               
                     this.getCols();
                 },
                 methods: {
@@ -274,31 +272,7 @@
                     getIndex(index) {
                         this.getTitle = this.article[index];
                     },
-                    // getCol() {
-                    //     let thisVue = this;
-                    //     $.ajax({
-                    //         type: 'POST',
-                    //         url: 'phps/select.php',
-                    //         data: {
-                    //             table: 'article',
-                    //             joinTable: 'article_topic',
-                    //             joinOn: 'topicNo',
-                    //             queryCol: 'artNo, memNo, artTime, topicName, title, content, likes, artFavs, artImage, activeIndex, favIndex',
-                    //             mem_no: sessionData.userNo
-                    //         },
-                    //         success: function (data) {
-                    //             // console.log(data.msg);
-                    //             // thisVue.article = data.msg;
-                    //             if (data.msg !== false) {
-                    //                 thisVue.article = data.msg;
-                    //             }
-
-                    //         },
-                    //         error: function () {
-                    //             console.log('ajax error');
-                    //         }
-                    //     });
-                    // },
+         
 
                     getCols() {
                         let thisVue = this;
@@ -310,14 +284,13 @@
                             },
 
                             success: function (data) {
-                                // console.log(data.msg);
-                                console.log(data);
+                            
                                 thisVue.postArticle = data.post;
                                 thisVue.article = data.fav;
                                 
                             },
                             error: function () {
-                                console.log('ajax error');
+                             
                             }
                         });
                     },
@@ -351,19 +324,16 @@
                 url: 'phps/discuss_mine.php',
                 type: "POST",
                 success(res) {
-                    console.log(res[0].memNo);
+                 
                     for (let i = 0; i < res.length; i++) {
-                        // console.log(res[i].artTime);
+                      
                     }
 
 
                     let time = $('.article_cards .line_top p:last-child')
                     let title = $('.line_middle_txt h3')
                     let content = $('.line_middle_txt p')
-                    // console.log(content);
-
-
-                    // console.log(title);
+                
                     for (let i = 0; i < 2; i++) {
                         time[i].innerText = res[i].artTime
                         title[i].innerText = res[i].title
