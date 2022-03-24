@@ -251,7 +251,6 @@ Vue.component('calendar',{
             for (update in this.updateInfo) {
 
                 // 原資料庫內無當日排班資訊，新增至資料庫
-                // $sql = "insert into $table values($value)";
                 if (this.workInfo[update] === undefined) {
                     insertData.push(`${no}, '${update}', '${this.updateInfo[update]}'`);
                 }
