@@ -36,7 +36,6 @@ function checkLogin() {
 function sentImg(){
     //抓input=file的值
     let uploadFile = document.getElementById('memImage').value;
-    // console.log(uploadFile);
 
     //如果有選擇圖片檔案 就不等於空值
     if(uploadFile !== ''){
@@ -64,7 +63,6 @@ function sentImg(){
         let empty = 'default';
         insertData(empty)
     }
-    
 }
 
 
@@ -100,79 +98,7 @@ function insertData(image) {
         }
     });   
 }
-//上傳占卜師證書圖片到server 要將檔案路徑變成流水編號
-function certificateImg(){
-    //抓input=file的值
-    // let uploadImg = document.getElementById('certificate').value;
-    // // console.log(uploadFile);
-        var form_data = new FormData();
-        var files = $('#certificate')[0].files;
-        console.log(files);
-        form_data.append('file', files[0]);
-        $.ajax({
-            type: 'POST',
-            url: 'phps/login_astrologist_upload.php',
-            processData : false, 
-            contentType : false,
-            dataType: 'JSON',
-            data: form_data,
-            success: data => {
-                insertData(data.img);
-            },
-            error: err => {
-                console.log('ajax error');
-            }
-        });   
-}
-// 新增註冊
-function astroInsert(image) {
-    //抓每個input的值
-    let memId = document.getElementById('memId').value;
-    let memPwd = document.getElementById('memPwd').value;
-    let memName = document.getElementById('memName').value;
-    let email = document.getElementById('email').value;
-    let birthday = document.getElementById('birthday').value;
-    let sex = document.querySelector('input[name="sex"]:checked').value;
-    let tel = document.getElementById('tel').value;
-    let memImage = image;
-    let identity = document.querySelector('input[name="identity"]:checked').value;
 
-    //sentImg()傳入的值 判斷如果image是default的話 memImage就會是default
-    let sql = (image === 'default') ? `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, default , default` : `null, '${memId}', '${memPwd}' , '${memName}', '${identity}', '${tel}', '${birthday}', '${sex}', '${email}', default, default, '${memImage}' , default`;
-
-    // 新增會員資料
-    $.ajax({
-        type: 'POST',
-        url: 'phps/insert.php',
-        data: {
-            table: 'members',
-            insertValue: sql
-        },
-        success: data => {
-            console.log(data.sql);
-        },
-        error: err => {
-            console.log('ajax error');
-        }
-    });   
-    let intro = document.getElementById('intro').value;
-    let certificateImg = image;
-    $.ajax({
-        type: 'POST',
-        url: 'phps/insert.php',
-        data: {
-            table: 'astrologist',
-            // col: astNo, memNo,introduction,quiz,certificate,status,people,totalScore
-            insertValue: `null, '${memId}', '${intro}', default, ${certificateImg}, default, default, default `
-        },
-        success: data => {
-            console.log(data.sql);
-        },
-        error: err => {
-            console.log('ajax error');
-        }
-    });   
-}
 // ===== 註冊 ===== //
 // 驗證輸入欄位
 // 驗證(元素, 條件, 正確訊息, 錯誤訊息)
@@ -270,20 +196,16 @@ $(function() {
             for (let i = 0; i < input.length; i++) {
                 let verify = input[i];
                 if (verify.value === '' && verify.type !== 'file') {
-                    console.log(verify);
                     alert('尚有欄位未填寫');
                     return
                 }
             } 
         }
-
         if (e.target.innerText === '登入') {
-            
             checkLogin();
         }
         else if (e.target.innerText === '註冊') {
-            certificateImg()
-            console.log('login ok');
+            sentImg();
             alert('註冊成功！請重新登入');
             window.location.reload();
         }
@@ -411,6 +333,7 @@ $(function() {
             $("#memPwd").parent("div").removeClass('warning');
         }
     })
+    
     // 輸入時驗證密碼
     $("#memPwd").keyup( () => {
         let reg = '';
@@ -438,6 +361,7 @@ $(function() {
         // 檢查再次輸入是否一致
         checkPwd();
     });
+
     $('#confirm_pwd').change( () => {
         //確認密碼
         if( $("#confirm_pwd").val().length === 0 || $("#confirm_pwd").val().length <= 5 || !(/[A-Za-z\d]/.test($("#confirm_pwd").val())) ) {
@@ -467,17 +391,15 @@ $(function() {
 
     // === 基本資訊 === //    
     // === 大頭貼 by JC === //
-    if (document.getElementById('memImage') !== null) {
-        document.getElementById("memImage").onchange = fileChange;
-        function fileChange(){
-            let file = document.getElementById("memImage").files[0];
-            let readFile = new FileReader();
-            readFile.readAsDataURL(file);
-            readFile.addEventListener("load",function(){
-                let image = document.getElementById("memImgBox");
-                image.src = readFile.result;
-            });
-        }
+    document.getElementById("memImage").onchange = fileChange;
+    function fileChange(){
+        let file = document.getElementById("memImage").files[0];
+        let readFile = new FileReader();
+        readFile.readAsDataURL(file);
+        readFile.addEventListener("load",function(){
+            let image = document.getElementById("memImgBox");
+            image.src = readFile.result;
+        });
     }
 
     // === 姓名 === //

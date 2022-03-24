@@ -69,11 +69,11 @@
                                 <div class="identity_box">
                                     <label for="identity">身分</label>
                                     <label>{{ memberInfo.identity }}</label>
-                                    <button v-if="memberInfo.identity==='一般會員'" class="third_btn">成為占卜師</button>
+                                    <!-- <button v-if="memberInfo.identity==='一般會員'" class="third_btn">成為占卜師</button> -->
                                 </div>
-                                <div class="pwd_box">
+                                <!-- <div class="pwd_box">
                                     <label for="memPwd">密碼</label>
-                                    <!-- <input type="password" id="memPwd"> -->
+                                    <input type="password" id="memPwd">
                                     <button @click="changePwd" class="third_btn">修改</button>
                                 </div>
                                 <div class="change_pwd_box display_none">
@@ -86,7 +86,7 @@
                                         <li>長度大於6個字元</li>
                                         <li>長度小於20個字元</li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -97,7 +97,7 @@
                 <section class="item reservation">
                     <div class="txt_box">
                         <span>我的預約</span>
-                        <span class="more">更多預約 ></span>
+                        <!-- <span class="more">更多預約 ></span> -->
                     </div>
                     <div class="reservation_box">
                         <div class="info" v-if="appointInfo.length > 0">
