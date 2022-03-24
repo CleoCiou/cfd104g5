@@ -29,8 +29,8 @@ Vue.component('my-nav',{
                 '帳號管理': './back_account.html',
                 '會員管理': './back_member.html',
                 '商品管理': './back_products.html',
-                '文章審核': './back_article.html',
-                '占卜師審核': './back_astrologist.html'
+                // '文章審核': './back_article.html',
+                // '占卜師審核': './back_astrologist.html'
             }
         }
     }

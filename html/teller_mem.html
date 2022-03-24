@@ -42,7 +42,7 @@
             <p v-if="tellers[selectIdx].avgScore !== null">{{ Math.round(tellers[selectIdx].avgScore,1) }} <i class="fa-solid fa-star"></i></p>
             <p v-else>尚無評分</p>
             <br>
-            <button class="next_teller other_btn" @click="ang-=60; selectIdx = (selectIdx === tellers.length) ? 0 : selectIdx+1"><</button>
+            <button class="next_teller other_btn" @click="ang-=60; selectIdx = (selectIdx === tellers.length-1) ? 0 : selectIdx+1"><</button>
             <button class="prev_teller other_btn" @click="ang+=60; selectIdx = (selectIdx === 0) ? 5 : selectIdx-1">></button>
           </div>
           <div class="txt_box">
@@ -62,7 +62,7 @@
         <div class="row">
           <div class="item" v-for="teller in tellers">                                         
             <div class="img_box">
-                <a href="teller_reservation.html?type=0">
+                <a :href="getIdxHref(teller.astNo-1)">
                     <img :src="imgUrl(teller.memImage)">
                 </a>
             </div>
