@@ -309,7 +309,6 @@ function getProduct() {
 
       success: function(data) {
           if (data.msg !== false){
-            //   console.log(data.msg);
               // 照片路徑變數  
               let productImg = "images/shop/tarot/";
               // -要包最外層的div-
@@ -345,7 +344,7 @@ function getProduct() {
 }
 
 // 主打商品切換到商品頁面使用click事件
-$(document).on('click','product_box .item',function(){
+$(document).on('click','.product_box .item',function(){
   // alert($(this).find('.prod_No').text());
   localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
   window.location.href = "product.html";
@@ -416,9 +415,15 @@ function getProductMobile() {
     });
 }
 
-// 商城切換到商品頁面使用click事件
+// 主打商品切換到商品頁面使用click事件
 $(document).on('click','.product_box .item',function(){
-    // alert($(this).find('.prod_No').text());
+    localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
+    window.location.href = "product.html";
+});
+window.addEventListener('load', getProductMobile);
+
+// 主打商品手機版
+$(document).on('click','.productmb .item',function(){
     localStorage.setItem('prodNumber',$(this).find('.prod_No').text());
     window.location.href = "product.html";
 });
@@ -439,6 +444,8 @@ function closeVideo(){
 function videoHidden() {
    document.getElementById('video').style.display = "none";
 }
+
+
 
 </script>
 </body>

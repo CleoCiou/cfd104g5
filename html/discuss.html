@@ -233,6 +233,7 @@
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
     <script>
+        
     // 若尚未登入
     if (getSessionData() !== false || getSessionData() === false) {
         getData();
@@ -334,7 +335,7 @@
                                 thisVue.article = data;
                             },
                             error: function() {
-                                console.log('ajax error');
+                             
                             }
                         });
                     }else{
@@ -359,7 +360,7 @@
                                 }
                             },
                             error: function() {
-                                console.log('ajax error');
+                              
                             }
                         });
                     }
@@ -378,9 +379,25 @@
                             if (data.msg !== false){
                                 this.cates = data.msg;
                             }
+                            $(document).ready(function(){
+                                $('.owl-carousel').owlCarousel({
+                                    stagePadding: 10,
+                                    loop:true,
+                                    margin:5,
+                                    nav:false,
+                                    responsive:{
+                                        0:{
+                                            items:3
+                                        },
+                                        767:{
+                                            items:4
+                                        },
+                                    }
+                                });
+                            });
                         },
                         error: err => {
-                            console.log('ajax error');
+                           
                         }
                     });
                 },
@@ -405,7 +422,7 @@
                             }
                         },
                         error: err => {
-                            console.log('ajax error');
+                          
                         }
                     });
                 },
@@ -423,7 +440,7 @@
                         success: data => {
                         },
                         error: err => {
-                            console.log('ajax error');
+                         
                         }
                     });
                 },
@@ -448,7 +465,7 @@
                             this.msgContent = '';
                         },
                         error: err => {
-                            console.log('ajax error');
+                           
                         }
                     });
                 },
@@ -467,7 +484,7 @@
                             success: data => {
                             },
                             error: err => {
-                                console.log('ajax error');
+                             
                             }
                         });
                     }else{
@@ -481,7 +498,7 @@
                             success: data => {
                             },
                             error: err => {
-                                console.log('ajax error');
+                              
                             }
                         });
                     }
@@ -502,7 +519,7 @@
                         success: data => {
                         },
                         error: err => {
-                            console.log('ajax error');
+                         
                         }
                     });
                 },
@@ -518,33 +535,17 @@
                             insertValue: `'${artNo}', '${memNo}'`
                         },
                         success: data => {
-                            console.log('insert Fav ok');
+                          
                         },
                         error: err => {
-                            console.log('ajax error');
+                        
                         }
                     });
                 },
             },
         });
     }
-        
-    $(document).ready(function(){
-        $('.owl-carousel.owl-theme.display').owlCarousel({
-            stagePadding: 10,
-            loop:true,
-            margin:5,
-            nav:false,
-            responsive:{
-                0:{
-                    items:3
-                },
-                767:{
-                    items:4
-                },
-            }
-        });
-    });
+    
     </script>
     
 </body>

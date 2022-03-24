@@ -92,13 +92,13 @@ Vue.component('my-table', {
         // 資料解構
         deconstructRow(row, index) {
             
-        //    這邊this是找data裡的資料 this.$emit('自訂事件',)    如果要接受裡面的資料 就用deconstruct-row自己定義的事件給別人
             this.$emit('deconstruct-row', row, index);
             return deconstructResult;
         },
         // 取得收在按鈕中的詳細資料，開啟popup視窗
         getDetail(index) {
             this.$emit('get-detail', index);
+    
         },
         // 一鍵全選
         checkAll(e) {
@@ -118,8 +118,6 @@ Vue.component('my-table', {
             e.target.classList.toggle('active');
             let status = e.target.classList.contains('active');
 
-            // this.queryResult[idx] - 更動的資料
-            // status - 更新後的狀態
             this.$emit('change-status', this.queryResult[idx], status);
         }
     }

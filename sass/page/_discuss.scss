@@ -304,12 +304,33 @@ main {
                 }
             }
         }
-        .discuss_mine{
+        .discuss.discuss_mine{
             .article_mine_board{
                 @include mobile{
                     display: flex;
                     flex-direction: column;
                 }
+            }
+            .article_using{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                .using_icon_box{
+                    flex-grow: 1;
+                    display: flex;
+                    p{
+                        display: flex;
+                        margin: 0 0.2em;
+                        color: #aaa;
+                    }
+                }
+                img{
+                    margin: 0 0.2em;
+                }
+                .notice_icon.img_box{
+                    flex-grow: 0;
+                }
+                
             }
         }
     }
@@ -396,13 +417,13 @@ main {
                 line-height: 1.6;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 margin-bottom: 1.5em;
-                overflow-wrap: break-word;
+                white-space:pre-wrap;
             }
         }
         .narrow{
             padding: 2% 16.666666%;
             @include mobile {
-                padding: .5em 1.3em;
+                padding: .5em 1.5em;
             }
         }
         /* 功能列-- 愛心回應數分享等等*/
