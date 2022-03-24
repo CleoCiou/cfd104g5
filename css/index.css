@@ -1,17 +1,3 @@
-
-
-/* .container{
-    width: 100%;
-    padding: 8.333333%;
-    box-sizing: border-box;
-    }
-    
-    前面增加 main section 表示跟其他頁面檔名不會重疊
-    */
-
-
-
-
     /* 首頁 by ZH  手機*/
 /* ============================= */
 
@@ -43,6 +29,7 @@
         height: 100%;
         object-fit: cover;
     }
+
     main .introduce{
         padding-top: 4em;
     }
@@ -55,8 +42,6 @@
         border-radius: 200px;
         justify-content: center;
         border-image: initial;
-        
-        
     }
 
     .introduce_img{
@@ -70,6 +55,7 @@
         padding: 1em;
        
     }
+
     .introduce_img img {
         width: 100%;
         height: 100%;
@@ -78,14 +64,20 @@
     }
 
     .introduce_txt{
-        
+        padding-top: 1.5em;
         text-align: center;
     }
     .introduce_txt h4{
         padding:2px 0 3% 0;
-        /* letter-spacing: 6px;*/
     }
 
+    .introduce_txt h3{
+        font-size: 19px;
+    }
+
+    .introduce_txt h2{
+        padding-bottom: 0.1em;
+    }
 
 /* 視差滾動區塊 開始 */
 
@@ -150,7 +142,6 @@
         width: 100%;
     }
  
-
     .scroll_circle_big img{
         width: 100vw;
         
@@ -162,8 +153,7 @@
     }  
 
 /* 線上測驗開始 */
-    
-    
+
     .test_img{
         width: 60%;
         margin: auto;
@@ -178,10 +168,6 @@
     }
 
     
-
-    
-
-
     /* 更新貓頭鷹箭頭按鈕樣式 */
     .owl-carousel .owl-nav button.owl-prev,.owl-carousel .owl-nav button.owl-next{
         position: absolute;
@@ -230,7 +216,6 @@
         box-sizing: border-box;
         text-align: center;
         border-radius:0.5em;
-        
     }
     
     .hot_fortune_teller_img{
@@ -298,12 +283,16 @@
 
 
 
-
     
 /* 電腦 */
 @media screen and (min-width:768px) {
   
         /* 介紹 */
+        .introduce_txt h3{
+            font-size: 1.75rem;
+        }
+    
+
         .introduce_box{
             display: flex;
             align-items: center;
@@ -352,8 +341,6 @@
             overflow: hidden;
         }
 
-        
-
         main .hot_product .item:hover .icon_box, 
         .hot_fortune_teller_card:hover .hot_fortune_teller_icon{
             bottom: -3px;
@@ -380,21 +367,5 @@
 
         
       
-
-        
-
-        
-            
-
-
 }
 
-@media screen and (min-width:1200px) {
-
-
-
-    
-
-    
-
-}
