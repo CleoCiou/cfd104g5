@@ -25,7 +25,7 @@
                 <div class="container">
                     <!-- container -->
                     <!-- 表格上方操作列 -->
-                    <!-- <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar> -->
+                    <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
 
 
                     <!-- 資料內容 -->
@@ -177,7 +177,7 @@
                 // popup視窗開關class
                 displaynone: true,
                 // 表格上方操作列按鈕
-                actionBtn: ['新增', '下架'],
+                actionBtn: ['新增'],
                 editIndex: 0, //控制目前要顯示的是哪個POP UP (0 => 新增 => 1表示修改)
             },
             mounted() {
@@ -338,38 +338,38 @@
     }
 
     .contain main .container .table_wrapper table tr th:nth-child(1) {
-        width: 2%;
+        width: 13%;
     }
 
     .contain main .container .table_wrapper table tr th:nth-child(3) {
-        width: 10%;
+        width: 13%;
     }
 
     .contain main .container .table_wrapper table tr th:nth-child(2) {
-        width: 10%;
+        width: 13%;
     }
 
     .contain main .container .table_wrapper table tr th:nth-child(4) {
-        width: 10%;
+        width: 13%;
     }
 
     .contain main .container .table_wrapper table tr th:nth-child(5) {
-        width: 10%;
+        width: 13%;
     }
 
     .contain main .container .table_wrapper table tr th:nth-child(6) {
-        width: 10%;
+        width: 30%;
     }
 
     .contain main .container .table_wrapper table tr th:nth-child(7) {
-        width: 40%;
+        width: 5%;
     }
 
-    .contain main .container .table_wrapper table tr th:nth-child(8) {
+    /* .contain main .container .table_wrapper table tr th:nth-child(8) {
         width: 8%;
-    }
+    } */
 
-    body section.back .contain main .container .table_wrapper table tr td:nth-child(7) {
+    body section.back .contain main .container .table_wrapper table tr td:nth-child(6) {
         overflow: hidden;
         -webkit-line-clamp: 1;
         text-overflow: ellipsis;
