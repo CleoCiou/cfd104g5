@@ -233,6 +233,7 @@
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
     <script>
+        
     // 若尚未登入
     if (getSessionData() !== false || getSessionData() === false) {
         getData();
@@ -378,6 +379,22 @@
                             if (data.msg !== false){
                                 this.cates = data.msg;
                             }
+                            $(document).ready(function(){
+                                $('.owl-carousel').owlCarousel({
+                                    stagePadding: 10,
+                                    loop:true,
+                                    margin:5,
+                                    nav:false,
+                                    responsive:{
+                                        0:{
+                                            items:3
+                                        },
+                                        767:{
+                                            items:4
+                                        },
+                                    }
+                                });
+                            });
                         },
                         error: err => {
                             console.log('ajax error');
@@ -528,23 +545,7 @@
             },
         });
     }
-        
-    $(document).ready(function(){
-        $('.owl-carousel.owl-theme.display').owlCarousel({
-            stagePadding: 10,
-            loop:true,
-            margin:5,
-            nav:false,
-            responsive:{
-                0:{
-                    items:3
-                },
-                767:{
-                    items:4
-                },
-            }
-        });
-    });
+    
     </script>
     
 </body>
