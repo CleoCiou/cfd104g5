@@ -8,18 +8,15 @@
             echo json_encode($msg);
             return;
         }
-        // (AA,aaa)
-        //ex: (死神,塔羅)
-        //ex: ($_POST['AAA'],$_POST['BB'])
 
-        // 資料表
         $table = $_POST['table'];
+        $column = $_POST['getColumn'];
         $value = $_POST['insertValue'];
-        $content = $_POST['contentValue'];
+        $content = nl2br($_POST['contentValue']);
         $str = str_replace("<br />"," ", $content);
         $content = $str;
-
-        $sql = "insert into $table values($value,$content)";
+        
+        $sql = "insert into $table($column) values($value, $content)";
         $msg['sql'] = $sql;
         
         try {

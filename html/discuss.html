@@ -2,17 +2,14 @@
 <html lang="en">
 
     @@include('layout/head.html', {
-        'title': '星座討論區'
+        'title': '塔羅討論區'
     })
-    
-    <!-- <script src="js/lightbox.js"></script> -->
-
 <body>    
     <!-- 網頁頭 by NJ -->
     @@include('layout/header.html')    
     <main>
         <div id="app">
-            <!-- 星座頁籤 謝謝蘋姊拯救世界 by JC -->
+            <!-- 塔羅頁籤 by JC -->
             @@include('layout/con_page.html')
              <!-- 討論區 by JC -->
             <section class="discuss">
@@ -34,7 +31,9 @@
                     <!-- 貓頭鷹分類 -->
                     <div class="owl-carousel owl-theme display">
                         <div class="item" v-for="(name,index) in cates">
-                            <label>{{name.topicName}}</label>
+                            <label>
+                                {{name.topicName}}
+                            </label>
                         </div>
                     </div>
                     <!-- 文章 搜尋bar下排包住左邊和右邊的容器 -->
@@ -94,8 +93,6 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <!-- 頁籤按鈕 -->
-                                  
                                 </div>     
                             </div>
                         </div>
@@ -124,14 +121,14 @@
                     </div>
                     <!-- 功能列-- 愛心回應數分享等等 -->
                     <div class="article_using narrow">
-                        <!-- 左 -->
-                        <img src="images/icon/icon_discuss_likes.svg" alt="按喜歡的數量">
-                        <p>{{getTitle.likes}}</p>
-                        <span>| {{getTitle.msgs}} 回應</span>
+                        <div class="using_icon_box">
+                            <p> {{getTitle.likes}} 讚</p>
+                            <p>| {{getTitle.msgs}} 回應</p>
+                        </div>
                         <!-- 右 -->
-                        <img src="images/icon/icon_discuss_favorite.svg" alt="收藏">
-                        <img src="images/icon/icon_discuss_share.svg" alt="分享">
-                        <img src="images/icon/icon_discuss_notice.svg" alt="檢舉" @click="showNotice =! showNotice">
+                        <div class="notice_icon img_box">
+                            <img src="images/icon/icon_discuss_notice.svg" alt="檢舉" @click="showNotice =! showNotice">
+                        </div>
                     </div>
 
                     <!-- 留言回應區塊  -->
@@ -149,7 +146,7 @@
                                 </div>
                                 <div class="card_txt">
                                     <div class="response_author">
-                                        <span>{{message[index].memId}}</span>
+                                        <span>{{message[index].memName}}</span>
                                     </div>
                                     <div class="response_card_content">
                                         <p>{{message[index].msgContent}}</p>
@@ -366,7 +363,6 @@
                             }
                         });
                     }
-                    
                 },
                 //取文章類別
                 getTopic() {
@@ -381,7 +377,6 @@
                         success:  data => {
                             if (data.msg !== false){
                                 this.cates = data.msg;
-                             
                             }
                         },
                         error: err => {
@@ -399,11 +394,10 @@
                         
                         data: {
                             table: 'article_message',
-                            queryCol: 'msgNo, artNo, msgTime, msgContent, memId, memImage',
+                            queryCol: 'msgNo, artNo, msgTime, msgContent, memName, memImage',
                             joinTable: 'members',
                             joinOn: 'memNo',
                             condition: `article_message.artNo = ${artNo}`,
-                         
                         },
                         success: data => {
                             if (data.msg !== false){
@@ -418,7 +412,6 @@
                 //更新留言數量
                 countMsg(index) {
                     let artNo = this.getTitle.artNo;
-                  ;
                     $.ajax({
                         type: 'POST',
                         url: 'phps/update.php',
@@ -428,7 +421,6 @@
                             where: `artNo = ${artNo}`
                         },
                         success: data => {
-                         
                         },
                         error: err => {
                          
@@ -473,7 +465,6 @@
                                 no: `${artNo}`,
                             },
                             success: data => {
-                            
                             },
                             error: err => {
                              
@@ -488,7 +479,6 @@
                                 no: `${artNo}`,
                             },
                             success: data => {
-                               
                             },
                             error: err => {
                               
@@ -510,7 +500,6 @@
                             insertValue: `'${artNo}', '${memNo}'`
                         },
                         success: data => {
-                           
                         },
                         error: err => {
                          
@@ -521,8 +510,6 @@
                 insertFavData() {
                     let memNo = this.userData.userNo;
                     let artNo = this.getFavIdx.artNo;
-
-                    // 新增資料
                     $.ajax({
                         type: 'POST',
                         url: 'phps/insert.php',
@@ -538,31 +525,26 @@
                         }
                     });
                 },
-         
-            },
-            computed: {
-        
             },
         });
     }
         
-        $(document).ready(function(){
-            $('.owl-carousel').owlCarousel({
-                stagePadding: 10,
-                loop:true,
-                margin:5,
-                nav:false,
-                responsive:{
-                    0:{
-                        items:3
-                    },
-                    767:{
-                        items:4
-                    },
-
-                }
-            });
+    $(document).ready(function(){
+        $('.owl-carousel.owl-theme.display').owlCarousel({
+            stagePadding: 10,
+            loop:true,
+            margin:5,
+            nav:false,
+            responsive:{
+                0:{
+                    items:3
+                },
+                767:{
+                    items:4
+                },
+            }
         });
+    });
     </script>
     
 </body>

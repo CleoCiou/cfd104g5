@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @@include('layout/head.html', {
-'title': '塔羅'
+'title': '體驗占卜師'
 })
 <link rel="stylesheet" href="css/be_teller.css">
 
@@ -298,34 +298,25 @@
             $(this).addClass('btn_clicked');
             let index = $(this).data('index');
             ans[index] = $(this).data('correct');
-            console.log(ans);
+            // console.log(ans);
             let nextQ = $(this).parents('.test_item').next('.test_item')[0];
 
             if (nextQ) {
-                // console.log($(this).parents('.test_item').next('.test_item')[0].classList);
                 nextQ.classList.remove('other');
                 // console.log(ans)
             }else{
                 if (ans.filter(v=>v).length  > 2){
-                    console.log('tr');
 
                     $('.test_result .pass_item').css("display","block");
                
                 }else{
-                    console.log('no');
                     $('.test_result .fail_item').css("display","block");
                 }
                 alreadyTest = true;  
             }
         });
     
-        // 塔羅測驗 -> 要放在 tarottest txt_box (問題: txt_box p)
-        // 想從 g5資料庫 的 tarot資料表 撈出所有的塔羅牌編號(tarNo)、塔羅牌名稱(tarName)、塔羅牌英文名稱(tarEngName)、塔羅牌圖片(tarImage)、塔羅牌解析(tarProduction) 資料
-
-        // 我要把 塔羅牌圖片(tarImage)、塔羅牌名稱(tarName)、塔羅牌英文名稱(tarEngName)、塔羅牌解析(tarProduction)  放到 class="tarottest txt_box" 的 div 裡
-        // 塔羅牌圖片(tarImage)會放在 p，class="question" /////  div，answer，button，class="third_btn"
-        // 塔羅牌名稱(tarName)塔羅牌英文名稱(tarEngName)會是 p，class="question" /////  div，answer，button，class="third_btn"
-        // 塔羅牌解析(tarProduction)會是 p，class="question" /////  div，answer，button，class="third_btn"
+        // 塔羅測驗撈資料
 
         function shuffle(array) {
             let currentIndex = array.length, randomIndex;
@@ -355,13 +346,10 @@
                     // 要查詢的資料表
                     table: 'tarot',
                     queryCol: 'tarName, tarImage, tarMeaning, tarProduction',
-                    // condition: 'artNo = 1',
                     other: ' ORDER BY  RAND() ',
                 },
                 success: function (data) {
                     if (data.msg !== false) {
-                        // console.log(data.msg)
-
                         let arr = data.msg;
                         function setAnsList() { //先抽出四個亂數的答案及相對的解析
                             let ansList = [];
@@ -381,21 +369,21 @@
 
                         for (let i = 0; i < 5; i++) {
                             let list = setAnsList();
-                            console.log(list)
+                            // console.log(list)
                             let correct = list.find(function (v) { return v.correct });
                             document.querySelectorAll('.tarottestQ')[i].innerHTML = correct.tarProduction;
                             document.querySelectorAll('.tarottestA')[i].innerHTML = 'A.' + list[0].tarName;
                             document.querySelectorAll('.tarottestA')[i].dataset.correct=list[0].correct;
-                            // console.log(data.msg[1].tarName);
+
                             document.querySelectorAll('.tarottestB')[i].innerHTML = 'B.' + list[1].tarName;
                             document.querySelectorAll('.tarottestB')[i].dataset.correct=list[1].correct;
-                            // console.log(data.msg[2].tarName);
+
                             document.querySelectorAll('.tarottestC')[i].innerHTML = 'C.' + list[2].tarName;
                             document.querySelectorAll('.tarottestC')[i].dataset.correct=list[2].correct;
-                            // console.log(data.msg[3].tarName);
+
                             document.querySelectorAll('.tarottestD')[i].innerHTML = 'D.' + list[3].tarName;
                             document.querySelectorAll('.tarottestD')[i].dataset.correct=list[3].correct;
-                            // console.log(data.msg[4].tarName);
+
                         }
 
                     }

@@ -29,7 +29,6 @@ Vue.component('my-nav',{
                 '帳號管理': './back_account.html',
                 '會員管理': './back_member.html',
                 '商品管理': './back_products.html',
-                // '預約管理': './back_appointment.html',
                 '文章審核': './back_article.html',
                 '占卜師審核': './back_astrologist.html'
             }
@@ -71,13 +70,9 @@ Vue.component('my-table', {
         <div class="table_wrapper">
             <table>
                 <tr>
-                    <th scope="col">
-                        <input class="check_all" type="checkbox" @change="checkAll">
-                    </th>
                     <th scope="col" v-for="col in colName">{{ col }}</th>
                 </tr>
                 <tr v-for="(row, index) in queryResult">
-                    <td><input class="check_col" type="checkbox" @change="checkAll"></td>
                     <td v-for="(col, colName) in deconstructRow(row, index)">
                         <label v-if=" colName !== 'detail' && colName !== 'status' " :class="colName">{{ col }}</label>
                         <button v-else-if=" colName === 'detail' " class="detail_btn" @click="getDetail(index)">查看/編輯</button>

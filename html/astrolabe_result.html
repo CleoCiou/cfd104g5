@@ -148,16 +148,15 @@
     <script>
         new Vue({
             el: '#app',
-            data: { //變數放這
+            data: {
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',
-                    '真實星座': 'con_real_constellation.html',
+                    '性格測驗': 'con_real_constellation.html',
                     '星盤推算': 'astrolabe.html',
                     '星座故事': 'con_story.html',
-                    '星座討論區': 'discuss.html',
                 },
-                navs: ['今日運勢','星座配對','真實星座','星盤推算','星座故事','星座討論區'],
+                navs: ['今日運勢','星座配對','性格測驗','星盤推算','星座故事'],
             },
         });
         new Vue({
@@ -225,25 +224,6 @@
                 }
             });
         });
-        
-        // for(var i = 0; i < 500; i++) {
-        //         //get random dimensions
-        //         var x = Math.random() * 100;
-        //         var y = Math.random() * 100;
-        //         var d = Math.random() * 4;
-        //         var s = Math.random() * 2 + 1.5;
-        //         //create new element and add to html
-        //         var star = document.createElement("div");
-        //         star.classList.add("star");
-        //         var sky = document.getElementById("twinklingStar");
-        //         sky.appendChild(star);
-
-        //         star.style.width = d + "px";
-        //         star.style.height = d + "px";
-        //         star.style.top = y + "%";
-        //         star.style.left = x + "%";
-        //         star.style.animationDuration = s + "s";
-        //     }
     </script>
 </body>
 </html>

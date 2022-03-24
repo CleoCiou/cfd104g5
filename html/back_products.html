@@ -25,7 +25,9 @@
                 <div class="container">
                     <!-- container -->
                     <!-- 表格上方操作列 -->
-                    <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
+                    <!-- <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar> -->
+
+
                     <!-- 資料內容 -->
                        <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow"
                        :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
