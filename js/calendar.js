@@ -28,7 +28,7 @@ Vue.component('calendar',{
             </div>
             <div id="calendarFooter" class="calendarFooter" @dragover="dragOverHandler($event)" @drop="dropHandler($event)">
                 <div id="timePeriod" class="timePeriod">
-                    拖曳至指定排休日:
+                    <span class="drag_rest_txt">拖曳至指定排休日:</span>
                     <span class="drag_rest" draggable='true' @dragstart="dragStartHandler">整日</span>
                     <span class="drag_rest" draggable='true' @dragstart="dragStartHandler">上午</span>
                     <span class="drag_rest" draggable='true' @dragstart="dragStartHandler">下午</span>
@@ -251,7 +251,6 @@ Vue.component('calendar',{
             for (update in this.updateInfo) {
 
                 // 原資料庫內無當日排班資訊，新增至資料庫
-                // $sql = "insert into $table values($value)";
                 if (this.workInfo[update] === undefined) {
                     insertData.push(`${no}, '${update}', '${this.updateInfo[update]}'`);
                 }

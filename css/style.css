@@ -685,10 +685,15 @@ main section.member .container .img_box img {
 main section.member .container .img_box.sticker {
   width: 4em;
   height: 4em;
-  -o-object-fit: cover;
-     object-fit: cover;
   border-radius: 50%;
   overflow: hidden;
+}
+
+main section.member .container .img_box.sticker img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 main section.member .container section.item {
@@ -699,6 +704,7 @@ main section.member .container section.item {
 main section.member .container section.item > *:not(.txt_box) {
   height: 100%;
   width: 100%;
+  min-height: 5em;
   outline: 1px solid #CFB886;
   padding: .5em;
   border-radius: 0.5em;
@@ -2069,7 +2075,7 @@ main .discuss .article_cards .line_bottom p {
 }
 
 @media screen and (max-width: 767px) {
-  main .discuss .discuss_mine .article_mine_board {
+  main .discuss .discuss.discuss_mine .article_mine_board {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2078,6 +2084,43 @@ main .discuss .article_cards .line_bottom p {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+}
+
+main .discuss .discuss.discuss_mine .article_using {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .discuss .discuss.discuss_mine .article_using .using_icon_box {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .discuss .discuss.discuss_mine .article_using .using_icon_box p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.2em;
+  color: #aaa;
+}
+
+main .discuss .discuss.discuss_mine .article_using img {
+  margin: 0 0.2em;
+}
+
+main .discuss .discuss.discuss_mine .article_using .notice_icon.img_box {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
 }
 
 main .articleShow {
@@ -2184,7 +2227,7 @@ main #articleView .article_view_content p {
   line-height: 1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 1.5em;
-  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 main #articleView .narrow {
@@ -2193,7 +2236,7 @@ main #articleView .narrow {
 
 @media screen and (max-width: 767px) {
   main #articleView .narrow {
-    padding: .5em 1.3em;
+    padding: .5em 1.5em;
   }
 }
 
@@ -4064,7 +4107,7 @@ main section.chart .container .astrolabe_chart .chart_info .chart_img {
   }
 }
 
-main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+main section.chart .container .astrolabe_chart .chart_info .owl-carousel.owl-theme.display {
   margin-top: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4072,7 +4115,7 @@ main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display
 }
 
 @media screen and (min-width: 768px) {
-  main section.chart .container .astrolabe_chart .chart_info .owl-carousel.display {
+  main section.chart .container .astrolabe_chart .chart_info .owl-carousel.owl-theme.display {
     display: none;
   }
 }
@@ -4649,6 +4692,13 @@ main section.query_orders .mem_orders .order_list .order_item .order_footer .ite
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  #schedule .timePeriod .drag_rest_txt {
+    display: block;
+    margin-bottom: 1.5em;
+  }
 }
 
 #schedule .timePeriod .drag_rest {

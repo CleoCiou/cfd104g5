@@ -31,32 +31,13 @@
                         </div>
                         <!-- 左邊分類欄
 
-                       
-
-                        <div class="content_cate owl-carousel owl-theme display">
-                            
-                            <label v-for="(url, cate) in cates" class="item">
-                                <a :href="url">
-                                    {{cate}}
-                                </a>
-                            </label>
-            
-                        </div>
-                      
-                        如果用vue還是出事 用HTML改 
-
-                        <!-- <div class="content_cate owl-carousel owl-theme display">
-                            <li v-for="(url, cate) in cates"><a :href="url"><label class="category">
-                                {{cate}}</a>
-                        </label></li>
-                        </div> -->
 
                         <!-- 右邊內容欄 -->
                         <div class="content_article">
                             <div class="content_wrap">
                                 
                                 <h2>星座故事</h2>
-                                <!-- 請從這裡開始寫~~~~~~~~~~~~~ -->
+                              
                                <div class="story_box">
                                  <div class="img_box">
                                      <img src="./images/con_story/story-aquarius.svg" alt="">
@@ -124,11 +105,6 @@
 
                 },
                 iconLike: './images/icon/icon_discuss_like.svg',
-                // iconLike: {
-                //     url: './images/icon/',
-                //     img: './icon_discuss_like.svg',
-                //     active: 'icon_discuss_likes.svg'
-                // },
                 iconLikeClick: 'images/icon/icon_discuss_likes.svg',
                 iconMessage: 'images/icon/icon_discuss_message.svg',
                 iconFav: 'images/icon/icon_discuss_favorite.svg',
@@ -138,19 +114,13 @@
                 con_ast: 'images/constellation/discuss_astronomy.jpg',
                 author_img: 'images/black_cat.svg',
                 author_hat_img: 'images/black_cat_wizard.svg',
-                // isChecked: 0,
+         
             },
             methods: {
                 changeLike(e) {
-                    // if(e.target.src == )
-                    console.log(e.target.src);
-                    console.log(this.$data.iconLike);
+               
                     this.$data.num += 1;
-                    // if(e.target.text == "我喜歡"){
-                    // }
-                    // console.log(e.target.text);
-                    // console.log(e);
-                    // console.log(this.$data.iconLike);
+              
 
                 },
                 isChecked() {

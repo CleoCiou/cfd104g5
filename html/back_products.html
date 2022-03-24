@@ -3,9 +3,9 @@
 
 
 @@include('layout/head.html', {
-    'title': '後台管理'
+'title': '後台管理'
 })
-        
+
 
 
 
@@ -14,74 +14,48 @@
 
         <my-nav></my-nav>
 
-
-        <!-- 管理內容區 -->
         <div class="contain" style="width: 80%;">
-            <!-- 登出 -->
+              
             <header>
                 <div class="burger"></div>
                 <button class="third_btn">登出</button>
             </header>
-            
-          <!-- <p style="width:20%; min-width:185px;">color</p> -->
             <!-- 管理內容 -->
-            <!-- :style="spanStyle" class="span1"
-            <style>
-            export default {
-                 data() {
-                     return {
-                      spanStyle: {
-                      "--width": "20%"
-                                 },
-                 };
-                }
-            }
-            </style>
-<style scoped>
-    .span1 {
-    color: var(--width);
-    }
-</style> -->
-
-
-
-           
             <main>
-                <div class="container" >
+                <div class="container">
                     <!-- container -->
                     <!-- 表格上方操作列 -->
-                    <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar>
+                    <!-- <top-action-bar :action-btn="actionBtn" @update-db="updateDb"></top-action-bar> -->
 
 
                     <!-- 資料內容 -->
-                    <!-- 有用: 代表v-bind綁住 代表資料從Vue來 -->
-                    <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow"
-                        :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
+                       <my-table :query-result="queryResult" :col-name="colName" @deconstruct-row="deconstructRow"
+                       :deconstruct-result="deconstructResult" @get-detail="getDetail"></my-table>
 
                     <!-- 彈出視窗 -->
                     <form enctype="multipart/form-data" id="good">
                         <input type="text" name="case" :value="editIndex" hidden>
-                        <input type="text" name="prodNo" :value="detail.prodNo" hidden>
+                        <input type="text" name="prodNo" :value="editItem.prodNo" hidden>
                         <div :class="popup" style="z-index: 2500;overflow-y: scroll;
                         height: 100vh;">
                             <div class="content_box">
                                 <!-- 商品名稱 -->
                                 <div class="info_box prodName">
                                     <label for="adminName">商品名稱</label>
-                                    <input name="prodName" type="text" :value="detail.prodName"
-                                        v-model="detail.prodName">
+                                    <input name="prodName" type="text" :value="editItem.prodName"
+                                        v-model="editItem.prodName">
                                 </div>
                                 <!-- 商品類別 -->
                                 <div class="info_box cateType">
                                     <label>商品類別</label>
-                                    <select name="prodCateNooN" v-model="detail.cateType">
+                                    <select name="prodCateNooN" v-model="editItem.cateType">
                                         <option>塔羅</option>
                                     </select>
                                 </div>
                                 <!-- 商品項目 -->
                                 <div class="info_box catename">
                                     <label>商品品項</label>
-                                    <select name="prodCateNo" v-model="detail.cateName">
+                                    <select name="prodCateNo" v-model="editItem.cateName">
                                         <option>項鍊</option>
                                         <option>手鍊</option>
                                         <option>幸運石</option>
@@ -90,24 +64,21 @@
                                 <!-- 商品描述 -->
                                 <div class="info_box prodIntro">
                                     <label>商品描述</label>
-                                    <textarea name="prodIntro" id="prodIntro" v-model="detail.prodIntro"></textarea>
+                                    <textarea name="prodIntro" id="prodIntro" v-model="editItem.prodIntro"></textarea>
                                 </div>
 
                                 <!-- 商品價錢 -->
                                 <div class="info_box price">
                                     <label>商品單價</label>
-                                    <!-- <textarea name="price" v-model="detail.price" style="overflow: hidden;height: 25px;"> -->
-                                        <input name="price" type="text" :value="detail.price"
-                                        v-model="detail.price">
-                                        <!-- <option>1100</option>
-                                        <option>1299</option>
-                                        <option>1590</option> -->
+                
+                                    <input name="price" type="text" :value="editItem.price" v-model="editItem.price">
+                              
                                     </textarea>
                                 </div>
                                 <!-- 商品狀態 -->
                                 <div class="info_box catename">
                                     <label>商品狀態</label>
-                                    <select name="status" v-model="detail.status">
+                                    <select name="status" v-model="editItem.status">
                                         <option>一般</option>
                                         <option>下架</option>
                                     </select>
@@ -117,30 +88,40 @@
                                 <div class="info_box prodImage" style="display: flex;
                                 flex-direction: column;
                                 align-items: center;">
+                                    
                                     <label class="prod_img_box" for="prodImage">
-                                        <img aria-placeholder="請選擇圖片" :src="detail.prodImage1 ? 'images/'+detail.prodImage1 : image1" style="
+                                        <img aria-placeholder="請選擇圖片"
+                                            :src="editItem.prodImage1 ? 'images/shop/tarot/'+ editItem.prodImage1 : image1"
+                                            style="
                                         width: 250px;object-fit:cover;">
-                                        <!-- 如果有圖片一就秀圖片一的連結 沒有的話就秀image1的值 -->
+                                    
                                     </label>
-                                    <input type="file" id="prodImage" class="displaynone" name="prodImage1" @change = "changeimage($event, 1)" >
-                                    <!-- $event 代表是事件物件 1是第幾張圖 -->
+                                    <input type="file" id="prodImage" class="displaynone" name="prodImage1"
+                                        @change="changeimage($event, 1)">
+                                 
                                 </div>
                                 <div class="info_box prodImage" style="display: flex;
                                 flex-direction: column;
                                 align-items: center;">
                                     <label class="prod_img_box" for="prodImage">
-                                        <img aria-placeholder="請選擇圖片" :src="detail.prodImage2 ? 'images/'+detail.prodImage2 : image2" style="width: 250px;object-fit: cover;">
+                                        <img aria-placeholder="請選擇圖片"
+                                            :src="editItem.prodImage2 ? 'images/shop/tarot/'+editItem.prodImage2 : image2"
+                                            style="width: 250px;object-fit: cover;">
 
                                     </label>
-                                    <input type="file" id="prodImage" class="displaynone" name="prodImage2" @change = "changeimage($event, 2)">
+                                    <input type="file" id="prodImage" class="displaynone" name="prodImage2"
+                                        @change="changeimage($event, 2)">
                                 </div>
                                 <div class="info_box prodImage" style="display: flex;
                                 flex-direction: column;
                                 align-items: center;">
                                     <label class="prod_img_box" for="prodImage">
-                                        <img aria-placeholder="請選擇圖片" :src="detail.prodImage3 ? 'images/'+detail.prodImage3 : image3" style="width: 250px;object-fit: cover;">
+                                        <img aria-placeholder="請選擇圖片"
+                                            :src="editItem.prodImage3 ? 'images/shop/tarot/'+editItem.prodImage3 : image3"
+                                            style="width: 250px;object-fit: cover;">
                                     </label>
-                                    <input type="file" id="prodImage" class="displaynone" name="prodImage3" @change = "changeimage($event, 3)">
+                                    <input type="file" id="prodImage" class="displaynone" name="prodImage3"
+                                        @change="changeimage($event, 3)">
                                 </div>
 
 
@@ -148,9 +129,9 @@
                                 <div class="info_box action_box">
                                     <div class="action">
                                         <button type="button" class="third_btn" @click="close">取消</button>
-                                        <!-- <button class="secondary_btn" @click="displaynone=true">儲存</button> -->
+                                    
                                         <button type="button" class="secondary_btn" @click="update">儲存</button>
-                                        <!-- button點了之後 為了不讓他預設會跳轉 type用button -->
+                                   
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +152,9 @@
         new Vue({
             el: '#app',
             data: {
-                // image:'images/'+detail.prodImage1
+            
+                editItem: {},
+                default: {},
                 image1: "",
                 image2: "",
                 image3: "",
@@ -194,19 +177,17 @@
                 // popup視窗開關class
                 displaynone: true,
                 // 表格上方操作列按鈕
-                actionBtn: ['新增','下架'],
+                actionBtn: ['新增', '下架'],
                 editIndex: 0, //控制目前要顯示的是哪個POP UP (0 => 新增 => 1表示修改)
             },
             mounted() {
                 this.getCol();
-                // this.update();
-            },
-            watch: {
 
             },
+
             methods: {
-                changeimage(e, idx){
-                    console.log(idx)
+                changeimage(e, idx) {
+                 
                     const file = e.target.files[0]
                     switch (idx) {
                         case 1:
@@ -225,22 +206,18 @@
                     let thisVue = this;
                     $.ajax({
                         type: 'POST',
-                        // phps/back_products_insert_test.php
-                        // phps/back_getCol.php
+                    
                         url: 'phps/back_getCol.php',
                         data: {
                             table: 'product',
                         },
                         success: function (data) {
                             data = JSON.parse(data);
-                            // console.log(data.msg[0]);
-
                             thisVue.queryResult = data.msg;
 
                         },
                         error: function () {
-                            console.log('ajax error');
-                        }
+                                                 }
                     });
                 },
 
@@ -249,38 +226,51 @@
                         let thisVue = this;
                         let xhr = new XMLHttpRequest();
                         xhr.onload = function () {
-                            alert(xhr.responseText);
+                           
                         }
-                        // insert
+                    
                         xhr.open("post", "phps/back_products_insert_test.php", true);
                         let form = document.getElementById("good");
                         let formData = new FormData(form);
                         xhr.send(formData);
+                        this.$nextTick(() => {
+                            this.editItem = this.default
+
+                        })
+                        alert("新增成功");
                         this.displaynone = true;
                         this.editIndex == 0;
+
+
                     } else {
                         let thisVue = this;
                         let xhr = new XMLHttpRequest();
-                        xhr.onload = function () {}
-                        // insert
+                        xhr.onload = function () { }
+                       
                         xhr.open("post", "phps/back_products_insert_test.php", true);
                         let form = document.getElementById("good");
                         let formData = new FormData(form);
                         xhr.send(formData);
-
+                        this.detail = Object.assign({}, this.editItem)
+                        this.$nextTick(() => {
+                            this.editItem = this.default
+                        })
+                        alert("修改成功");
                         this.displaynone = true;
-                        this.editIndex == 0
+
+                        this.editIndex == 0;
+
                     }
 
 
                 },
 
                 updateDb(btnEl) {
-                    // console.log('AAAA')
+                    
                     if (btnEl.innerText === '新增') {
                         this.displaynone = false;
                         this.detail = {}
-                        // 選第二個選項時 第一個名稱會消失?
+                
                     } else if (btnEl.innerText === '修改') {
 
 
@@ -289,7 +279,7 @@
                     }
 
                 },
-                // 新增按下去時出現燈箱 
+              
 
                 // 解構欄位
                 deconstructRow(row, idx) {
@@ -320,8 +310,7 @@
                     this.displaynone = false;
                     this.detail = this.queryResult[idx];
                     this.editIndex = 1
-                    // queryResult[idx] 收到點到整筆資料的索引值 
-                    // console.log(detail);
+                    this.editItem = Object.assign({}, this.detail)
 
                 },
                 close() {
@@ -336,45 +325,55 @@
                         display_none: this.displaynone
                     }
                 }
-            }
+            },
+
         });
     });
 </script>
 <style>
-    .link_panel{
+    .link_panel {
         width: 20%;
         min-width:
-        185px;
+            185px;
     }
-    .contain main .container .table_wrapper table tr th:nth-child(1){
+
+    .contain main .container .table_wrapper table tr th:nth-child(1) {
         width: 2%;
     }
-    .contain main .container .table_wrapper table tr th:nth-child(3){
+
+    .contain main .container .table_wrapper table tr th:nth-child(3) {
         width: 10%;
     }
-    .contain main .container .table_wrapper table tr th:nth-child(2){
+
+    .contain main .container .table_wrapper table tr th:nth-child(2) {
         width: 10%;
     }
-    .contain main .container .table_wrapper table tr th:nth-child(4){
+
+    .contain main .container .table_wrapper table tr th:nth-child(4) {
         width: 10%;
     }
-    .contain main .container .table_wrapper table tr th:nth-child(5){
+
+    .contain main .container .table_wrapper table tr th:nth-child(5) {
         width: 10%;
     }
-    .contain main .container .table_wrapper table tr th:nth-child(6){
+
+    .contain main .container .table_wrapper table tr th:nth-child(6) {
         width: 10%;
     }
-    .contain main .container .table_wrapper table tr th:nth-child(7){
+
+    .contain main .container .table_wrapper table tr th:nth-child(7) {
         width: 40%;
     }
-    .contain main .container .table_wrapper table tr th:nth-child(8){
+
+    .contain main .container .table_wrapper table tr th:nth-child(8) {
         width: 8%;
     }
-    body section.back .contain main .container .table_wrapper table tr td:nth-child(7){
+
+    body section.back .contain main .container .table_wrapper table tr td:nth-child(7) {
         overflow: hidden;
-    -webkit-line-clamp: 1;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
     }
 </style>

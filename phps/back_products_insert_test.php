@@ -25,20 +25,19 @@
             if ($file1) {
                 $file = uniqid();
                 $fileInfo = pathinfo($_FILES['prodImage1']['name']);
-                $ext = $fileInfo["extension"]; // 副檔名
-                $fileName1 = "$file.$ext"; // 9988877766.jpg
-                $from = $_FILES['prodImage1']['tmp_name']; //暫存區含路徑
+                $ext = $fileInfo["extension"]; 
+                $fileName1 = "$file.$ext"; 
+                $from = $_FILES['prodImage1']['tmp_name']; 
                 $to1 = "../images/shop/tarot/$fileName1";
                 copy($from, $to1);
             }
     
-            // 資料庫存$fileName
             if ($file2) {
                 $file = uniqid();
                 $fileInfo = pathinfo($_FILES['prodImage2']['name']);
-                $ext = $fileInfo["extension"]; // 副檔名
+                $ext = $fileInfo["extension"]; 
                 $fileName2 = "$file.$ext";
-                $from = $_FILES['prodImage2']['tmp_name']; //暫存區含路徑
+                $from = $_FILES['prodImage2']['tmp_name']; 
                 $to2 = "../images/shop/tarot/$fileName2";
                 copy($from, $to2);
             }
@@ -46,9 +45,9 @@
             if ($file3) {
                 $file = uniqid();
                 $fileInfo = pathinfo($_FILES['prodImage3']['name']);
-                $ext = $fileInfo["extension"]; // 副檔名
+                $ext = $fileInfo["extension"]; 
                 $fileName3 = "$file.$ext";
-                $from = $_FILES['prodImage3']['tmp_name']; //暫存區含路徑
+                $from = $_FILES['prodImage3']['tmp_name']; 
                 $to3 = "../images/shop/tarot/$fileName3";
                 copy($from, $to3);
             }
@@ -61,7 +60,6 @@
     
             $fav = $pdo->prepare($sql);
             $fav->bindValue(":prodName", $_POST["prodName"]);
-            // $fav->bindValue(":prodCateNo",$_POST["prodCateNooN"]);
             $fav->bindValue(":prodCateNo", $prodCateNo);
             $fav->bindValue(":prodIntro", $_POST["prodIntro"]);
             $fav->bindValue(":prodImage1", $path1);
@@ -100,20 +98,19 @@
             if ($file1) {
                 $file = uniqid();
                 $fileInfo = pathinfo($_FILES['prodImage1']['name']);
-                $ext = $fileInfo["extension"]; // 副檔名
-                $fileName1 = "$file.$ext"; // 9988877766.jpg
-                $from = $_FILES['prodImage1']['tmp_name']; //暫存區含路徑
+                $ext = $fileInfo["extension"]; 
+                $fileName1 = "$file.$ext"; 
+                $from = $_FILES['prodImage1']['tmp_name']; 
                 $to1 = "../images/shop/tarot/$fileName1";
                 copy($from, $to1);
             }
     
-            // 資料庫存$fileName
             if ($file2) {
                 $file = uniqid();
                 $fileInfo = pathinfo($_FILES['prodImage2']['name']);
-                $ext = $fileInfo["extension"]; // 副檔名
+                $ext = $fileInfo["extension"]; 
                 $fileName2 = "$file.$ext";
-                $from = $_FILES['prodImage2']['tmp_name']; //暫存區含路徑
+                $from = $_FILES['prodImage2']['tmp_name']; 
                 $to2 = "../images/shop/tarot/$fileName2";
                 copy($from, $to2);
             }
@@ -121,9 +118,9 @@
             if ($file3) {
                 $file = uniqid();
                 $fileInfo = pathinfo($_FILES['prodImage3']['name']);
-                $ext = $fileInfo["extension"]; // 副檔名
+                $ext = $fileInfo["extension"]; 
                 $fileName3 = "$file.$ext";
-                $from = $_FILES['prodImage3']['tmp_name']; //暫存區含路徑
+                $from = $_FILES['prodImage3']['tmp_name']; 
                 $to3 = "../images/shop/tarot/$fileName3";
                 copy($from, $to3);
             }

@@ -233,6 +233,7 @@
     <!-- 網頁尾 By NJ -->
     @@include('layout/footer.html')
     <script>
+        
     // 若尚未登入
     if (getSessionData() !== false || getSessionData() === false) {
         getData();
@@ -241,7 +242,7 @@
     function getData(){
         new Vue({
             el: '#app',
-            data: { //變數放這
+            data: { 
                 userData: getSessionData(),
                 urls: {
                     '體驗占卜師': 'be_tellers.html',
@@ -270,8 +271,6 @@
                 getFavIdx: {},
                 plusMsgIdx: {},
                 newPost:[],
-                // perPage: 5,
-                // currentPage: 1,
                 msgContent: '',
             },
             created() {
@@ -336,7 +335,7 @@
                                 thisVue.article = data;
                             },
                             error: function() {
-                                console.log('ajax error');
+                             
                             }
                         });
                     }else{
@@ -361,11 +360,10 @@
                                 }
                             },
                             error: function() {
-                                console.log('ajax error');
+                              
                             }
                         });
                     }
-                    
                 },
                 //取文章類別
                 getTopic() {
@@ -381,9 +379,25 @@
                             if (data.msg !== false){
                                 this.cates = data.msg;
                             }
+                            $(document).ready(function(){
+                                $('.owl-carousel').owlCarousel({
+                                    stagePadding: 10,
+                                    loop:true,
+                                    margin:5,
+                                    nav:false,
+                                    responsive:{
+                                        0:{
+                                            items:3
+                                        },
+                                        767:{
+                                            items:4
+                                        },
+                                    }
+                                });
+                            });
                         },
                         error: err => {
-                            console.log('ajax error');
+                           
                         }
                     });
                 },
@@ -408,14 +422,13 @@
                             }
                         },
                         error: err => {
-                            console.log('ajax error');
+                          
                         }
                     });
                 },
                 //更新留言數量
                 countMsg(index) {
                     let artNo = this.getTitle.artNo;
-                    // console.log(artNo);
                     $.ajax({
                         type: 'POST',
                         url: 'phps/update.php',
@@ -425,10 +438,9 @@
                             where: `artNo = ${artNo}`
                         },
                         success: data => {
-                            // console.log('plus ok');
                         },
                         error: err => {
-                            console.log('ajax error');
+                         
                         }
                     });
                 },
@@ -453,7 +465,7 @@
                             this.msgContent = '';
                         },
                         error: err => {
-                            console.log('ajax error');
+                           
                         }
                     });
                 },
@@ -470,10 +482,9 @@
                                 no: `${artNo}`,
                             },
                             success: data => {
-                                // console.log('plus');
                             },
                             error: err => {
-                                console.log('ajax error');
+                             
                             }
                         });
                     }else{
@@ -485,10 +496,9 @@
                                 no: `${artNo}`,
                             },
                             success: data => {
-                                // console.log('reduce');
                             },
                             error: err => {
-                                console.log('ajax error');
+                              
                             }
                         });
                     }
@@ -507,10 +517,9 @@
                             insertValue: `'${artNo}', '${memNo}'`
                         },
                         success: data => {
-                            // console.log('insert ok');
                         },
                         error: err => {
-                            console.log('ajax error');
+                         
                         }
                     });
                 },
@@ -518,8 +527,6 @@
                 insertFavData() {
                     let memNo = this.userData.userNo;
                     let artNo = this.getFavIdx.artNo;
-
-                    // 新增資料
                     $.ajax({
                         type: 'POST',
                         url: 'phps/insert.php',
@@ -528,34 +535,17 @@
                             insertValue: `'${artNo}', '${memNo}'`
                         },
                         success: data => {
-                            console.log('insert Fav ok');
+                          
                         },
                         error: err => {
-                            console.log('ajax error');
+                        
                         }
                     });
                 },
             },
         });
     }
-        
-        $(document).ready(function(){
-            $('.owl-carousel').owlCarousel({
-                stagePadding: 10,
-                loop:true,
-                margin:5,
-                nav:false,
-                responsive:{
-                    0:{
-                        items:3
-                    },
-                    767:{
-                        items:4
-                    },
-
-                }
-            });
-        });
+    
     </script>
     
 </body>

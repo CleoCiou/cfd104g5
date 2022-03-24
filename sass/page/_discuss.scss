@@ -90,7 +90,6 @@ main {
                         }
                     }
                     .third_btn{
-                        // width: 10%;
                         padding: 0.2em 0.5em;
                         margin-left: 1em;
                         @include mobile {
@@ -108,7 +107,6 @@ main {
                         height: 2em;
                         cursor: pointer;
                     }
-                    
                 }
             }
         }
@@ -179,7 +177,6 @@ main {
                             color: #000;
                         }
                     }
-                    
                     .label_hidden{
                         display: none;
                     }
@@ -209,13 +206,6 @@ main {
             border-radius: $borderRadius;
             margin: 1em 0;
             cursor: pointer;
-            // &:hover{
-            //     box-shadow: 0 0 15px 2px #cfb88688;
-            //     border: 1px solid #000;
-            // }
-            @include mobile{
-                // box-sizing: content-box;
-            }
             .line_top{
                 span{
                     color: #000;
@@ -265,7 +255,6 @@ main {
             .line_bottom{
                 display: flex;
                 align-items: center;
-                
                 .using_btn {
                     display: flex;
                     align-items: center;
@@ -315,15 +304,34 @@ main {
                 }
             }
         }
-        .discuss_mine{
+        .discuss.discuss_mine{
             .article_mine_board{
                 @include mobile{
                     display: flex;
                     flex-direction: column;
                 }
-
             }
-
+            .article_using{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                .using_icon_box{
+                    flex-grow: 1;
+                    display: flex;
+                    p{
+                        display: flex;
+                        margin: 0 0.2em;
+                        color: #aaa;
+                    }
+                }
+                img{
+                    margin: 0 0.2em;
+                }
+                .notice_icon.img_box{
+                    flex-grow: 0;
+                }
+                
+            }
         }
     }
     /*瀏覽文章燈箱 by JC */
@@ -402,7 +410,6 @@ main {
                 color: #ccc;
                 font-size: 0.8em;
                 display: inline;
-
             }
         }
         .article_view_content{
@@ -410,13 +417,13 @@ main {
                 line-height: 1.6;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 margin-bottom: 1.5em;
-                overflow-wrap: break-word;
+                white-space:pre-wrap;
             }
         }
         .narrow{
             padding: 2% 16.666666%;
             @include mobile {
-                padding: .5em 1.3em;
+                padding: .5em 1.5em;
             }
         }
         /* 功能列-- 愛心回應數分享等等*/

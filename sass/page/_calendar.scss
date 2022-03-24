@@ -90,6 +90,12 @@
                     justify-content: space-between;
                 }
                 .timePeriod {
+                    .drag_rest_txt{
+                        @media screen and(max-width: 768px) {
+                            display: block;
+                            margin-bottom: 1.5em;
+                        }
+                    }
                     .drag_rest {
                         // display: block;
                         color: #fff;
@@ -99,6 +105,7 @@
                         padding: 0.5em;
                         border-radius: .5em;
                         cursor: pointer;
+                     
                     }
                 }
             }

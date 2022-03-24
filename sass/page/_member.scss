@@ -28,9 +28,13 @@ main {
             .img_box.sticker {
                 width: 4em;
                 height: 4em;
-                object-fit: cover;
                 border-radius: 50%;
                 overflow: hidden;
+                img{
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
             }
             // 會員專區首頁大區塊
             section.item {
@@ -39,6 +43,7 @@ main {
                 > *:not(.txt_box) {
                     height: 100%;
                     width: 100%;
+                    min-height: 5em;
                     outline: 1px solid map-get($primary_color, 'content');
                     padding: .5em;
                     border-radius: $borderRadius;

@@ -6,11 +6,6 @@
 <link rel="stylesheet" href="./css/real_constellation_2page.css">
 <script src="./js/con_real_constellation_buy.js"></script>
 
-
-<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js'
-        integrity='sha512-pSyYzOKCLD2xoGM1GwkeHbdXgMRVsSqQaaUoHskx/HF09POwvow2VfVEdARIYwdeFLbu+2FCOTRYuiyeGxXkEg=='
-        crossorigin='anonymous'></script> -->
-
 <body>
     @@include('layout/header.html')
     <main>
@@ -24,14 +19,12 @@
                 </div>
             </section>
         </div>
-        <!-- <h2>真實星座</h2> -->
         <div id="tab">
             <component :is='content' @this-tab="showTab"></component>
         </div>
 
-        <!-- @this-result="showresult" -->
         <script>
-            // wrapper
+   
             Vue.component('Q1', {
                 template: `
         <section class="real_constellation">    
@@ -50,11 +43,11 @@
                 <div class="answer">
                     <div class="btn third_btn" id="star">
                        <span @click="myTab" @mouseover="changeImg">星星</span>
-                        <input type="text" value="images/con_real/real_star.svg" hidden>
+                        <input type="text" value="./images/con_real/real_star.svg" hidden>
                     </div>
                     <div class="btn third_btn" id="moon">
                         <span @click="myTab" @mouseover="changeImg">月亮</span>
-                        <input type="text" value="images/con_real/real_moon.svg" hidden>
+                        <input type="text" value="./images/con_real/real_moon.svg" hidden>
                     </div>
                 </div>
                 
@@ -75,7 +68,7 @@
                     },
                     changeImg(e) {
                         doFirst();
-                        console.log(e.target);
+                      
                     }
 
                 }
@@ -98,11 +91,11 @@
               <!-- 包住圖文的容器   -->
                 <div class="answer">
                     <div class="btn third_btn" id="star">
-                       <span @click="myTab"  @mouseover="changeImg">踢足球</span>
+                       <span @click="myTab"  @mouseover="changeImgs">踢足球</span>
                         <input type="text" value="./images/con_real/real_footer.svg" hidden>
                     </div>
                     <div class="btn third_btn" id="moon">
-                        <span @click="myTab"  @mouseover="changeImg">閱讀書</span>
+                        <span @click="myTab"  @mouseover="changeImgs">閱讀書</span>
                         <input type="text" value="./images/con_real/real_read.svg" hidden>
                     </div>
                 </div>
@@ -115,7 +108,7 @@
                 ,
                 data() {
                     return {
-                        // 你平常的興趣是什麼 踢足球 看書
+                        
                         nextTabs: 'Q3'
                     }
                 },
@@ -123,12 +116,38 @@
                     myTab() {
                         this.$emit('this-tab', this.nextTabs)
                     },
-                    changeImg(e) {
-                        doFirst();
-                        console.log(e.target);
-                    }
+                 
+                    changeImgs() {
+                        let star = document.getElementById("star")
+                    
+                        let moon = document.getElementById("moon")
+                    
 
-                },
+
+
+                        let starimg = document.querySelector("#star input").value
+                 
+
+                        let moonimg = document.querySelector("#moon input").value
+
+
+
+
+
+                        let initimg = document.getElementById("initimg")
+                        star.onmouseover = function () {
+                         
+                            initimg.src = starimg
+
+                        }
+                        moon.onmouseover = function () {
+                        
+                            initimg.src = moonimg
+                        }
+
+
+                    },
+                }
 
 
 
@@ -169,17 +188,42 @@
 
                     return {
                         nextTabs: 'Q4'
-                        // ,
-                        // nextResult:'result'
+                        
                     }
                 },
                 methods: {
                     myTab() {
                         this.$emit('this-tab', this.nextTabs)
                     },
-                    changeImg(e) {
-                        doFirst();
-                        console.log(e.target);
+                    changeImg() {
+                        let star = document.getElementById("star")
+                  
+                        let moon = document.getElementById("moon")
+                      
+
+                 
+
+
+                        let starimg = document.querySelector("#star input").value
+                    
+
+                        let moonimg = document.querySelector("#moon input").value
+
+
+
+
+
+                        let initimg = document.getElementById("initimg")
+                        star.onmouseover = function () {
+                       
+                            initimg.src = starimg
+
+                        }
+                        moon.onmouseover = function () {
+                       
+                            initimg.src = moonimg
+                        }
+
                     }
 
                 }
@@ -219,7 +263,7 @@
 
             })
 
-         
+
 
 
 
@@ -243,7 +287,7 @@
     <script>
         new Vue({
             el: '#app',
-            data: { //變數放這
+            data: { 
                 urls: {
                     '今日運勢': 'con_today_fortune.html',
                     '星座配對': 'con_pair.html',

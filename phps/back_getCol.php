@@ -116,7 +116,7 @@
             break;
 
         case 'product':
-            $col = 'prodName, cateType, cateName, price, prodImage1, prodImage2, prodImage3, prodIntro, status';
+            $col = 'prodName, cateType, cateName, price, prodImage1, prodImage2, prodImage3, prodIntro, status, prodNo';
             $joinTable = 'product_category';
             $joinOn = 'prodCateNo';
             break;

@@ -282,7 +282,14 @@ h2{
     .test_item img{
         width: 100%;
     }
-    .third_btn{
+    .change_page_item{
+        text-align: center;
+        margin:auto;
+    }
+    .change_page_item .second_btn{
+       width: 40%;
+    }
+    .tarottest .third_btn{
         margin: 1em;
     }
     .test_item .txt_box {
