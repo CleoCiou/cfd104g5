@@ -55,75 +55,37 @@
                         .day {
                             width: calc(100% / 7);
                             min-height: 5em;
-                            border: 1px solid #ccc;
+                            border: 1px solid #444;
 
                             &.weekTitle {
                                 min-height: auto;
                                 padding: .5em;
+                                color:#fff;
                             }
 
                             .time {
                                 font-size: 12px;
-                                background-color: #f00;
+                                background-color: #d89482;
                                 margin: 0.3em;
                                 border-radius: .5em;
                                 padding: 0.3em;
+                                text-align: center;
                                 
                                 &.rest {
-                                    background-color: #00f;
+                                    background-color: #888;
+                                    // color: #000;
+                                    text-align: center;
                                 }
                             }
                         }
                     }
-                    // border-top-left-radius: 5px;
-                    // border-top-right-radius: 5px;
-                    // text-align: left;
-                    // overflow: hidden;
-                    // width: 100%;
-                    // padding: 0 1px;
-                    // padding-bottom: 1px;
+                    
                 }
-                // #schedule .week {
-                //     width: 100%;
-                //     height: 70px;
-                //     display: flex;
-                // }
-                // #schedule #week0 {
-                //     height: 30px;
-                //     line-height: 12px;
-                //     background-color: #5558;
-                //     color: map-get($primary_color, 'content');;
-                //     font-size: 24px;
-                // }
-                // #schedule .day {
-                //     width: calc(100% / 7);
-                //     border: 1px solid #5558;
-                //     font-size: 12px;
-                //     padding-left: 5px;
-                //     padding-top: 5px;
-                //     position: relative;
-                //     transition: .3s;
-                // }
-                // #schedule .day p {
-                //     color: map-get($primary_color, 'content');
-                // }
-                // #schedule .week:not(#week0) .day:not(:empty):hover {
-                //     box-shadow: 0 0 3px 2px map-get($primary_color, 'content');;
-                //     cursor: pointer;
-                // }
-                // #schedule .week:not(#week0) .day:not(:empty):active {
-                //     transform: scale(0.9);
-                // }
-                // #schedule #week5 .day0 {
-                //     border-bottom-left-radius: 5px;
-                // }
-                // #schedule #week5 .day6 {
-                //     border-bottom-right-radius: 5px;
-                // }
+                
                 
                 /* calendar footer */
                 .calendarFooter {
-                    padding: 10px 0;
+                    padding: 20px 0;
                     display: flex;
                     justify-content: space-between;
                 }
@@ -131,9 +93,10 @@
                     .drag_rest {
                         // display: block;
                         color: #fff;
-                        background-color: #00f;
+                        background-color: #888;
+                        font-size: 0.8em;
                         margin: 0.3em;
-                        padding: 0.3em;
+                        padding: 0.5em;
                         border-radius: .5em;
                         cursor: pointer;
                     }

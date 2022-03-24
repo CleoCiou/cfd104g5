@@ -46,10 +46,6 @@
                         </div>
                         </div>
                     </div>
-    
-                    <!-- <div class="page"> Page 2 </div>
-                    <div class="page"> Page 3 </div>
-                    <div class="page"> Page 4 </div> -->
                 </div>
             </div>
             
@@ -63,21 +59,7 @@
         new Vue({
             el:"#app",
             data:{
-                tarotCards: [
-                        // {title: 'Andy',
-                        // content: '2132132132131213',
-                        // pic:'01The _magician.svg'},
-                        // {title: '2',content: '2132132132131213',pic:'01The _magician.svg'},
-                        // {title: '3',content: '2132132132131213',pic:'01The _magician.svg'},
-                        // {title: '4',content: '2132132132131213',pic:'01The _magician.svg'},
-                        // {title: '5',content: '2132132132131213',pic:'01The _magician.svg'},
-                        // {title: '6',content: '2132132132131213',pic:'01The _magician.svg'},
-                        // {title: '7',content: '2132132132131213',pic:'01The _magician.svg'},
-                        // {title: '8',content: '2132132132131213',pic:'01The _magician.svg'},
-                        // {title: '9',content: '2132132132131213',pic:'01The _magician.svg'},
-                       
-                        // 測試用內容，裡面資料從資料庫撈
-                    ],
+                tarotCards: [],
                 src: 'images/tarot_cards/',
             },
         mounted() {
@@ -96,8 +78,7 @@
                         table: 'tarot',
                         // 要查詢的欄位
                         queryCol: 'tarNo, tarName, tarEngName, tarImage, tarMeaning, tarProduction',
-                        // condition: 'artNo = 1',
-                        // other: 'limit 8'
+
                     },
                     //用箭頭函式可以不用加thisVue 直接用this
                     success: function(data) {

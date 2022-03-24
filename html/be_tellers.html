@@ -302,17 +302,14 @@
             let nextQ = $(this).parents('.test_item').next('.test_item')[0];
 
             if (nextQ) {
-                // console.log($(this).parents('.test_item').next('.test_item')[0].classList);
                 nextQ.classList.remove('other');
                 // console.log(ans)
             }else{
                 if (ans.filter(v=>v).length  > 2){
-                    // console.log('tr');
 
                     $('.test_result .pass_item').css("display","block");
                
                 }else{
-                    // console.log('no');
                     $('.test_result .fail_item').css("display","block");
                 }
                 alreadyTest = true;  
@@ -377,16 +374,16 @@
                             document.querySelectorAll('.tarottestQ')[i].innerHTML = correct.tarProduction;
                             document.querySelectorAll('.tarottestA')[i].innerHTML = 'A.' + list[0].tarName;
                             document.querySelectorAll('.tarottestA')[i].dataset.correct=list[0].correct;
-                            // console.log(data.msg[1].tarName);
+
                             document.querySelectorAll('.tarottestB')[i].innerHTML = 'B.' + list[1].tarName;
                             document.querySelectorAll('.tarottestB')[i].dataset.correct=list[1].correct;
-                            // console.log(data.msg[2].tarName);
+
                             document.querySelectorAll('.tarottestC')[i].innerHTML = 'C.' + list[2].tarName;
                             document.querySelectorAll('.tarottestC')[i].dataset.correct=list[2].correct;
-                            // console.log(data.msg[3].tarName);
+
                             document.querySelectorAll('.tarottestD')[i].innerHTML = 'D.' + list[3].tarName;
                             document.querySelectorAll('.tarottestD')[i].dataset.correct=list[3].correct;
-                            // console.log(data.msg[4].tarName);
+
                         }
 
                     }
