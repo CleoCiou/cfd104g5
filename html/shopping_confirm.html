@@ -137,7 +137,7 @@ new Vue({
             this.getProdInfo_vue();
             this.getPrompt();
             this.getMemberInfo();
-            
+            this.removeCart();
         },
 
         methods:{
@@ -149,6 +149,10 @@ new Vue({
             getList() {
                 let cart = JSON.parse(localStorage.getItem("cart"));
                 this.cart = cart;
+            },
+
+            removeCart(){
+                localStorage.removeItem('cart');
             },
             
             // 底部商品列
